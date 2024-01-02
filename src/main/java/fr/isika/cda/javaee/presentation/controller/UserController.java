@@ -1,16 +1,18 @@
 package fr.isika.cda.javaee.presentation.controller;
 
-import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.User;
+import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 
-@ManagedBean(name = "User")
+@Named("User")
 public class UserController {
 
 	@Inject
 	private IDaoUser userDao;
+	private UserViewModel userViewModel;
 
 	public String addNewUser() {
 		User userToCreate = new User();
