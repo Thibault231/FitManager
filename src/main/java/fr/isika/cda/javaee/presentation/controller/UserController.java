@@ -2,6 +2,7 @@ package fr.isika.cda.javaee.presentation.controller;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -12,21 +13,29 @@ import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 
-@Named("User")
+@Named
 public class UserController {
 
 	@Inject
 	private IDaoUser userDao;
 	private UserViewModel userViewModel;
 
+	@PostConstruct
+	public void init() {
+		this.userViewModel = new UserViewModel();
+	}
+
+//***************************************
 	public UserViewModel getUserViewModel() {
 		return userViewModel;
 	}
 
 	public void setUserViewModel(UserViewModel userViewModel) {
 		this.userViewModel = userViewModel;
+
 	}
 
+//***************************************
 	public String createUser() {
 		User userToCreate = new User();
 		userToCreate.setActive(true);
@@ -53,19 +62,20 @@ public class UserController {
 
 	public String authenticate() {
 		String message;
+		System.out.println("**************");
 		FacesContext fc = FacesContext.getCurrentInstance();
 		if (userViewModel.getEmail().isEmpty()) {
-			message = "Login " + userViewModel.getEmail() + " inexistant !!";
+			message = "Login inexistant !!";
 			fc.addMessage(null, new FacesMessage(message));
-			return null;
+			return "LoginForm";
 		} else if (userViewModel.getPassword().isEmpty()) {
 			message = "vérifiez votre mot de passe ";
 			fc.addMessage(null, new FacesMessage(message));
-			return null;
+			return "LoginForm";
 		} else {
 			fc.getExternalContext().getSessionMap().put("login", userViewModel.getEmail());
 		}
-		return "Page2";
+		return "ManagerDashBoard";
 	}
 
 	public String logout() {
