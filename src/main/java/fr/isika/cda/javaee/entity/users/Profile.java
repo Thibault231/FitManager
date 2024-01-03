@@ -11,13 +11,12 @@ public class Profile {
 	@GeneratedValue
 	private Long profileId;
 	
-//	@OneToOne
-//	private Civility civility;
-//	@OneToOne
-//	private Adress adress;
-//	@OneToOne
-//	private Contact contact;
-//	
+	@OneToOne
+	private Civility civility;
+	@OneToOne
+	private Adress adress;
+	@OneToOne
+	private Contact contact;
 	
 	//Getter and setter
 	public Long getProfileId() {
