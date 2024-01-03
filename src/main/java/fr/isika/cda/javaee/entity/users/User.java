@@ -58,4 +58,10 @@ public class User {
 		this.profile = profile;
 	}
 
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", isActive=" + isActive + ", account=" + account + ", profile=" + profile
+				+ "]";
+	}
+
 }

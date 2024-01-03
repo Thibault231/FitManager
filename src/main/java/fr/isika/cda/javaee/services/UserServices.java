@@ -1,7 +1,7 @@
 package fr.isika.cda.javaee.services;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.Account;
@@ -12,30 +12,20 @@ import fr.isika.cda.javaee.entity.users.Profile;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 
-@Stateless
 public class UserServices {
-	@Inject
-	private IDaoUser userDao;
 
-	public Long createUser(UserViewModel userViewModel) {
-		User userToCreate = userViewModel.getUser();
+	public Long createUser(UserViewModel userViewModel, IDaoUser userDao) {
+		User userToCreate = new User();
+		userToCreate.setAccount(new Account());
+		userToCreate.setProfile(new Profile());
+		userToCreate.getProfile().setCivility(new Civility());
+		userToCreate.getProfile().setAdress(new Address());
+		userToCreate.getProfile().setContact(new Contact());
+		userToCreate.getProfile().getCivility().setName(userViewModel.getName());
 		userToCreate.setActive(true);
-
-		Profile profileToCreate = userViewModel.getProfile();
-		Account accountToCreate = userViewModel.getAccount();
-		Address addressToCreate = userViewModel.getAdress();
-		Civility civilityToCreate = userViewModel.getCivility();
-		Contact contactToCreate = userViewModel.getContact();
-
-		profileToCreate.setAdress(addressToCreate);
-		profileToCreate.setCivility(civilityToCreate);
-		profileToCreate.setContact(contactToCreate);
-
-		userToCreate.setAccount(accountToCreate);
-		userToCreate.setProfile(profileToCreate);
+		System.out.println(userToCreate);
 
 		return userDao.createUser(userToCreate);
-
 	}
 
 }

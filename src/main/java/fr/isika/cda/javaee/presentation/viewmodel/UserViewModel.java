@@ -1,32 +1,12 @@
 package fr.isika.cda.javaee.presentation.viewmodel;
 
-import fr.isika.cda.javaee.entity.users.Account;
-import fr.isika.cda.javaee.entity.users.Address;
-import fr.isika.cda.javaee.entity.users.Civility;
-import fr.isika.cda.javaee.entity.users.Contact;
-import fr.isika.cda.javaee.entity.users.Profile;
-import fr.isika.cda.javaee.entity.users.User;
-
 public class UserViewModel {
 	private String email;
 	private String password;
-	private User user;
-	private Profile profile;
-	private Account account;
-	private Address adress;
-	private Contact contact;
-	private Civility civility;
+	private String name;
+	private String forename;
+	private String sex;
 
-	public UserViewModel() {
-		this.user = new User();
-		this.civility = new Civility();
-		this.profile = new Profile();
-		this.account = new Account();
-		this.adress = new Address();
-		this.contact = new Contact();
-	}
-
-//**********************************
 	public String getEmail() {
 		return email;
 	}
@@ -43,52 +23,30 @@ public class UserViewModel {
 		this.password = password;
 	}
 
-	public User getUser() {
-		return user;
+	public String getName() {
+		return name;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Profile getProfile() {
-		return profile;
+	public String getForename() {
+		return forename;
 	}
 
-	public void setProfile(Profile profile) {
-		this.profile = profile;
+	public void setForename(String forename) {
+		this.forename = forename;
 	}
 
-	public Account getAccount() {
-		return account;
+	public String getSex() {
+		return sex;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
-	public Address getAdress() {
-		return adress;
-	}
-
-	public void setAdress(Address adress) {
-		this.adress = adress;
-	}
-
-	public Contact getContact() {
-		return contact;
-	}
-
-	public void setContact(Contact contact) {
-		this.contact = contact;
-	}
-
-	public Civility getCivility() {
-		return civility;
-	}
-
-	public void setCivility(Civility civility) {
-		this.civility = civility;
-	}
+//**********************************
 
 }
