@@ -38,6 +38,11 @@ public class UserController {
 	}
 
 //***************************************
+	/**
+	 * Create a new user in the database using the UserviewModel.
+	 * 
+	 * @return url (:String)
+	 */
 	public String createUser() {
 		User userToCreate = new User();
 		userToCreate.setActive(true);
@@ -45,24 +50,53 @@ public class UserController {
 		return "index";
 	}
 
+	/**
+	 * Delete a user from the database using it's Id.
+	 * 
+	 * @param userToDeleteId
+	 * @return url (:String)
+	 */
 	public String deleteUser(Long userToDeleteId) {
 		userDao.deleteUser(userToDeleteId);
 		return "index";
 	}
 
+	/**
+	 * Return all the users marked as active in the database.
+	 * 
+	 * @return (:List<User>)
+	 */
 	public List<User> getAllActiveUser() {
 		List<User> usersList = userDao.getAllUsers();
 		return usersList;
 	}
 
+	/**
+	 * Get a user from the database using it's Id.
+	 * 
+	 * @param userId (:Long)
+	 * @return (:User)
+	 */
 	public User getUser(Long userId) {
 		return userDao.getUserById(userId);
 	}
 
+	/**
+	 * Get a user from the database using it's Email.
+	 * 
+	 * @param userEmail (:String)
+	 * @return (:User)
+	 */
 	public User getUser(String userEmail) {
 		return userDao.getUserByEmail(userEmail);
 	}
 
+	/**
+	 * Authenticate a visitor from a login form and create a session object with
+	 * role and id.
+	 * 
+	 * @return url (:String)
+	 */
 	public String authenticate() {
 		String message;
 		System.out.println("**************");
@@ -81,6 +115,11 @@ public class UserController {
 		return "ManagerDashBoard";
 	}
 
+	/**
+	 * Logout a connected user.
+	 * 
+	 * @return url (:String)
+	 */
 	public String logout() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();

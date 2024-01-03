@@ -3,6 +3,7 @@ package fr.isika.cda.javaee.entity.users;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -12,10 +13,18 @@ public class User {
 	private Long userId;
 
 	private boolean isActive;
-	// private Account account;
-	// private Profil profil;
-	// private Sell sell;
-	// private Schedulde schedulde
+	
+	@OneToOne
+	private Account account;
+	
+	@OneToOne
+	private Profile profile;
+	
+//	@OneToOne
+//	private Sell sell;
+//	
+//	@OneToOne
+//	private Schedulde schedulde;
 
 	public Long getUserId() {
 		return userId;
