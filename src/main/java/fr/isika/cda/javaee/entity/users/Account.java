@@ -3,7 +3,6 @@ package fr.isika.cda.javaee.entity.users;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Account {
@@ -13,11 +12,7 @@ public class Account {
 	private Long accountId;
 	private String login;
 	private String password;
-
-//	@OneToOne
-//	private Role role;
-//	
-	// Getters and setters
+	private Role role;
 
 	public String getLogin() {
 		return login;
@@ -43,12 +38,12 @@ public class Account {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "Account [accountId=" + accountId + ", login=" + login + ", password=" + password + ", getLogin()="
-				+ getLogin() + ", getAccountId()=" + getAccountId() + ", getPassword()=" + getPassword()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }
