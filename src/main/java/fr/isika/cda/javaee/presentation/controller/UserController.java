@@ -1,25 +1,41 @@
 package fr.isika.cda.javaee.presentation.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-
+import javax.servlet.http.HttpSession;
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 
 @Named
 public class UserController implements Serializable {
-
 	@Inject
 	private IDaoUser userDao;
+	private UserViewModel userViewModel;
 
-	private UserViewModel form;
+	@PostConstruct
+	public void init() {
+		this.userViewModel = new UserViewModel();
+	}
 
-	public String addNewUser() {
+//***************************************
+	public UserViewModel getUserViewModel() {
+		return userViewModel;
+	}
+
+	public void setUserViewModel(UserViewModel userViewModel) {
+		this.userViewModel = userViewModel;
+
+	}
+
+//***************************************
+	public String createUser() {
 		User userToCreate = new User();
 		userToCreate.setActive(true);
 		userDao.createUser(userToCreate);
@@ -31,26 +47,41 @@ public class UserController implements Serializable {
 		return "index";
 	}
 
-	public String authentification() {
-		String msg;
+	public List<User> getAllActiveUser() {
+		List<User> usersList = userDao.getAllUsers();
+		return usersList;
+	}
+
+	public User getUser(Long userId) {
+		return userDao.getUserById(userId);
+	}
+
+	public User getUser(String userEmail) {
+		return userDao.getUserByEmail(userEmail);
+	}
+
+	public String authenticate() {
+		String message;
+		System.out.println("**************");
 		FacesContext fc = FacesContext.getCurrentInstance();
-		if (form.login.isEmpty()) {
-			msg = "Login " + form.login + " inexistant !!";
-			fc.addMessage(null, new FacesMessage(msg));
-			return null;
-		} else if (form.password.isEmpty()) {
-			msg = "vÃ©rifiez votre mot de passe ";
-			fc.addMessage(null, new FacesMessage(msg));
-			return null;
+		if (userViewModel.getEmail().isEmpty()) {
+			message = "Login inexistant !!";
+			fc.addMessage(null, new FacesMessage(message));
+			return "LoginForm";
+		} else if (userViewModel.getPassword().isEmpty()) {
+			message = "vérifiez votre mot de passe ";
+			fc.addMessage(null, new FacesMessage(message));
+			return "LoginForm";
 		} else {
-			fc.getExternalContext().getSessionMap().put("login", form.login);
+			fc.getExternalContext().getSessionMap().put("login", userViewModel.getEmail());
 		}
-		return "index";
+		return "ManagerDashBoard";
 	}
 
 	public String logout() {
-		form.login = form.password = "";
-		return null;
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.invalidate();
+		return "index";
 	}
 
 }

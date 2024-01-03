@@ -3,6 +3,6 @@
     <driver>mysql</driver>
     <security>
         <user-name>root</user-name>
-		<password>31500</password>
+		<password>Mijo</password>
     </security>
 </datasource>
