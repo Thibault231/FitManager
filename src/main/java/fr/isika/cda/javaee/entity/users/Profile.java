@@ -3,21 +3,21 @@ package fr.isika.cda.javaee.entity.users;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Profile {
-	
-		// private Profil profil;
-		// private Sell sell;
-		// private Schedulde schedulde
-	
 	@Id
 	@GeneratedValue
 	private Long profileId;
-//	private Civility civility;
-//	private Adress adress;
-//	private Contact contact;
 	
+//	@OneToOne
+//	private Civility civility;
+//	@OneToOne
+//	private Adress adress;
+//	@OneToOne
+//	private Contact contact;
+//	
 	
 	//Getter and setter
 	public Long getProfileId() {
