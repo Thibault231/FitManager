@@ -1,8 +1,11 @@
 package fr.isika.cda.javaee.dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import fr.isika.cda.javaee.entity.users.User;
 
@@ -31,8 +34,20 @@ public class UserDao implements IDaoUser {
 
 	@Override
 	public User getUserById(Long userToGetId) {
-		User userToGet = em.find(User.class, userToGetId);
-		return userToGet;
+		return em.find(User.class, userToGetId);
+	}
+
+	@Override
+	public User getUserByEmail(String userToGetEmail) {
+		Query queryOne = em.createQuery("SELECT u FROM User u WHERE u.isActive = 1");
+		return (User) queryOne.getSingleResult();
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		Query queryOne = em.createQuery("SELECT u FROM User u WHERE u.isActive = 1");
+		List<User> usersList = queryOne.getResultList();
+		return usersList;
 	}
 
 }

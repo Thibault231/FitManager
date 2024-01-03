@@ -1,18 +1,42 @@
 package fr.isika.cda.javaee.presentation.controller;
 
-import javax.faces.bean.ManagedBean;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.User;
+import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 
-@ManagedBean(name = "User")
+@Named
 public class UserController {
 
 	@Inject
 	private IDaoUser userDao;
+	private UserViewModel userViewModel;
 
-	public String addNewUser() {
+	@PostConstruct
+	public void init() {
+		this.userViewModel = new UserViewModel();
+	}
+
+//***************************************
+	public UserViewModel getUserViewModel() {
+		return userViewModel;
+	}
+
+	public void setUserViewModel(UserViewModel userViewModel) {
+		this.userViewModel = userViewModel;
+
+	}
+
+//***************************************
+	public String createUser() {
 		User userToCreate = new User();
 		userToCreate.setActive(true);
 		userDao.createUser(userToCreate);
@@ -21,6 +45,43 @@ public class UserController {
 
 	public String deleteUser(Long userToDeleteId) {
 		userDao.deleteUser(userToDeleteId);
+		return "index";
+	}
+
+	public List<User> getAllActiveUser() {
+		List<User> usersList = userDao.getAllUsers();
+		return usersList;
+	}
+
+	public User getUser(Long userId) {
+		return userDao.getUserById(userId);
+	}
+
+	public User getUser(String userEmail) {
+		return userDao.getUserByEmail(userEmail);
+	}
+
+	public String authenticate() {
+		String message;
+		System.out.println("**************");
+		FacesContext fc = FacesContext.getCurrentInstance();
+		if (userViewModel.getEmail().isEmpty()) {
+			message = "Login inexistant !!";
+			fc.addMessage(null, new FacesMessage(message));
+			return "LoginForm";
+		} else if (userViewModel.getPassword().isEmpty()) {
+			message = "vérifiez votre mot de passe ";
+			fc.addMessage(null, new FacesMessage(message));
+			return "LoginForm";
+		} else {
+			fc.getExternalContext().getSessionMap().put("login", userViewModel.getEmail());
+		}
+		return "ManagerDashBoard";
+	}
+
+	public String logout() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.invalidate();
 		return "index";
 	}
 
