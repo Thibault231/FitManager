@@ -15,8 +15,14 @@ import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 
 @Named
 public class UserController implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8909383167109211323L;
+
 	@Inject
 	private IDaoUser userDao;
+
 	private UserViewModel userViewModel;
 
 	@PostConstruct
