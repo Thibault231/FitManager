@@ -25,6 +25,7 @@ import fr.isika.cda.javaee.services.UserServices;
 @ManagedBean
 @RequestScoped
 public class UserController {
+  
 	@Inject
 	private IDaoUser userDao;
 
