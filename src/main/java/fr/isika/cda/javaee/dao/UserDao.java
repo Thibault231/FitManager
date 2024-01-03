@@ -1,5 +1,7 @@
 package fr.isika.cda.javaee.dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,6 +35,18 @@ public class UserDao implements IDaoUser {
 	public User getUserById(Long userToGetId) {
 		User userToGet = em.find(User.class, userToGetId);
 		return userToGet;
+	}
+
+	@Override
+	public User getUserByEmail(String userToGetEmail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

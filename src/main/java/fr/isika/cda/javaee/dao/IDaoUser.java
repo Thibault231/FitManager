@@ -1,5 +1,7 @@
 package fr.isika.cda.javaee.dao;
 
+import java.util.List;
+
 import fr.isika.cda.javaee.entity.users.User;
 
 public interface IDaoUser {
@@ -14,10 +16,25 @@ public interface IDaoUser {
 	/**
 	 * Return a user from the database if it exists or null otherwise.
 	 * 
-	 * @param userToGeId (:Long)
+	 * @param userToGetId (:Long)
 	 * @return user to get (:User)
 	 */
-	User getUserById(Long userToGeId);
+	User getUserById(Long userToGetId);
+
+	/**
+	 * Return the list of all active users, regardless their roles.
+	 * 
+	 * @return (:List<User>)
+	 */
+	List<User> getAllUsers();
+
+	/**
+	 * Return a user from the database if it exists or null otherwise.
+	 * 
+	 * @param userToGetEmail (:String)
+	 * @return user to get (:User)
+	 */
+	User getUserByEmail(String userToGetEmail);
 
 	/**
 	 * Hard delete of a user from the Db, using it's id.

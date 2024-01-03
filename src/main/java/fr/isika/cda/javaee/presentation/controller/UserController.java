@@ -49,15 +49,16 @@ public class UserController {
 	}
 
 	public List<User> getAllActiveUser() {
-		return null;
+		List<User> usersList = userDao.getAllUsers();
+		return usersList;
 	}
 
 	public User getUser(Long userId) {
-		return null;
+		return userDao.getUserById(userId);
 	}
 
 	public User getUser(String userEmail) {
-		return null;
+		return userDao.getUserByEmail(userEmail);
 	}
 
 	public String authenticate() {
