@@ -14,12 +14,16 @@ import javax.servlet.http.HttpSession;
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
+import fr.isika.cda.javaee.services.UserServices;
 
 @ManagedBean
 @RequestScoped
 public class UserController {
 	@Inject
 	private IDaoUser userDao;
+	@Inject
+	private UserServices userSvc;
+
 	private UserViewModel userViewModel;
 
 	@PostConstruct
@@ -44,9 +48,7 @@ public class UserController {
 	 * @return url (:String)
 	 */
 	public String createUser() {
-		User userToCreate = new User();
-		userToCreate.setActive(true);
-		userDao.createUser(userToCreate);
+		this.userSvc.createUser(this.userViewModel);
 		return "index";
 	}
 

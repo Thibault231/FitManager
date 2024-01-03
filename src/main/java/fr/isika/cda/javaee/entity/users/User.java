@@ -13,13 +13,13 @@ public class User {
 	private Long userId;
 
 	private boolean isActive;
-	
+
 	@OneToOne
 	private Account account;
-	
+
 	@OneToOne
 	private Profile profile;
-	
+
 //	@OneToOne
 //	private Sell sell;
 //	
@@ -42,9 +42,20 @@ public class User {
 		this.isActive = isActive;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", isActive=" + isActive + "]";
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Profile profile) {
+		this.profile = profile;
 	}
 
 }
