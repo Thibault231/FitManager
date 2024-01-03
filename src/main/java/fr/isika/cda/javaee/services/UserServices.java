@@ -19,6 +19,8 @@ public class UserServices {
 
 	public Long createUser(UserViewModel userViewModel) {
 		User userToCreate = userViewModel.getUser();
+		userToCreate.setActive(true);
+
 		Profile profileToCreate = userViewModel.getProfile();
 		Account accountToCreate = userViewModel.getAccount();
 		Address addressToCreate = userViewModel.getAdress();
@@ -31,7 +33,6 @@ public class UserServices {
 
 		userToCreate.setAccount(accountToCreate);
 		userToCreate.setProfile(profileToCreate);
-		userToCreate.setActive(true);
 
 		return userDao.createUser(userToCreate);
 

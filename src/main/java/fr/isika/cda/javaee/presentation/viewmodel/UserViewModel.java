@@ -1,7 +1,5 @@
 package fr.isika.cda.javaee.presentation.viewmodel;
 
-import java.beans.Visibility;
-
 import fr.isika.cda.javaee.entity.users.Account;
 import fr.isika.cda.javaee.entity.users.Address;
 import fr.isika.cda.javaee.entity.users.Civility;
@@ -18,6 +16,15 @@ public class UserViewModel {
 	private Address adress;
 	private Contact contact;
 	private Civility civility;
+
+	public UserViewModel() {
+		this.user = new User();
+		this.civility = new Civility();
+		this.profile = new Profile();
+		this.account = new Account();
+		this.adress = new Address();
+		this.contact = new Contact();
+	}
 
 //**********************************
 	public String getEmail() {
