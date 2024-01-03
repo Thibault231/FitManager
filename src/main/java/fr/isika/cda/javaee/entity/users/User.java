@@ -12,7 +12,6 @@ public class User {
 	private Long userId;
 
 	private boolean isActive;
-
 	// private Account account;
 	// private Profil profil;
 	// private Sell sell;
