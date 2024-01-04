@@ -1,21 +1,32 @@
 package fr.isika.cda.javaee.entity.users;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Account {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long accountId;
+	@NotNull
 	private String login;
+	@NotNull
+	@Size(min = 5)
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private AdministrativeDocument administrativeDocument;
 
 	public String getLogin() {
 		return login;
