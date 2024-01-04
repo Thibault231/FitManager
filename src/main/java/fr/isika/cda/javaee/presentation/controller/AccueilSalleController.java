@@ -11,6 +11,7 @@ import fr.isika.cda.javaee.presentation.util.SalleUtils;
 
 //@WebServlet("/espace/*")
 public class AccueilSalleController {
+
 	private String spaceId;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,4 +36,5 @@ public class AccueilSalleController {
 			response.sendRedirect("/erreur.html");
 		}
 	}
+
 }
