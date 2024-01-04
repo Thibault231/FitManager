@@ -2,11 +2,13 @@ package fr.isika.cda.javaee.entity.users;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 @Entity
 public class Civility {
@@ -14,9 +16,12 @@ public class Civility {
 	@GeneratedValue
 	private Long civilityId;
 	@NotNull(message = "Le nom est requis")
+	@Column(length = 100)
 	private String name;
 	@NotNull(message = "Le prénom est requis")
+	@Column(length = 200)
 	private String forename;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date birthday;
 	private String sex;
 

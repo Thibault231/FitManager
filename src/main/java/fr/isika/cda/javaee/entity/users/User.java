@@ -2,6 +2,8 @@ package fr.isika.cda.javaee.entity.users;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +19,7 @@ public class User {
 	private boolean isActive;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@Enumerated(EnumType.STRING)
 	private Account account;
 
 	@OneToOne(cascade = CascadeType.ALL)
