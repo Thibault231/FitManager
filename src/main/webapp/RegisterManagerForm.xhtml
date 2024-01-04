@@ -28,13 +28,13 @@ xmlns="http://www.w3.org/1999/xhtml"
 	                <div class="d-grid gap-2">
 	                
 	                	<div class="form-floating">
-	                       <h:inputText class="form-control" id="floatingInput01" placeholder="Nom" 
+	                       <h:inputText class="form-control" id="floatingInput01" placeholder="Nom" required="true"
 	                         size="20" value="#{userController.userViewModel.user.profile.civility.name}" />
 	                       <h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
 	                    </div>
 	                    
 	                    <div class="form-floating">
-	                       <h:inputText class="form-control" id="floatingInput02" placeholder="Prénom" 
+	                       <h:inputText class="form-control" id="floatingInput02" placeholder="Prénom" required="true"
 	                         size="20" value="#{userController.userViewModel.user.profile.civility.forename}" />
 	                       <h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 	                    </div>
@@ -54,57 +54,58 @@ xmlns="http://www.w3.org/1999/xhtml"
 	                    </div>
 
 	                    <div class="form-floating">
-	                       <h:inputText class="form-control" id="floatingInput05" placeholder="Email" 
-	                         size="20" />
+	                       <h:inputText class="form-control" id="floatingInput05" placeholder="Email" required="true"
+	                         size="20" value="#{userController.userViewModel.user.profile.contact.email}"/>
 	                       <h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
 	                    </div>
 	
 	                    <div class="form-floating ">
-	                        <h:inputSecret class="form-control" id="floatingInput06" placeholder="Mot de passe"
-	                          size="5"/>
+	                        <h:inputSecret class="form-control" id="floatingInput06" placeholder="Mot de passe" required="true"
+	                          size="5" value="#{userController.userViewModel.user.account.password}"/>
 	                        <h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 	                    </div>
 	                    
 	                     <div class="form-floating">
 	                       <h:inputText class="form-control" id="floatingInput07" placeholder="Adresse" 
-	                         size="20"/>
+	                         size="20" value="#{userController.userViewModel.user.profile.adress.street}"/>
 	                       <h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
 	                    </div>
 	                    
 	                     <div class="form-floating">
 	                       <h:inputText class="form-control" id="floatingInput08" placeholder="Code postal" 
-	                         size="20"/>
+	                         size="20"  value="#{userController.userViewModel.user.profile.adress.zipCode}"/>
 	                       <h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
 	                    </div>
 	                    
 	                     <div class="form-floating">
 	                       <h:inputText class="form-control" id="floatingInput09" placeholder="Ville" 
-	                         size="20" />
+	                         size="20"  value="#{userController.userViewModel.user.profile.adress.city}"/>
 	                       <h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 	                    </div>
+	                    
 	
-	                    <h:commandButton class="btn btn-warning" value="Créer mon compte" action="#{userController.createUser()}" />
+	                    <h:commandButton class="btn btn-warning" value="Créer mon compte" action="#{userController.createManagerAccount()}" />
 						
 	                    <h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
 	                </div>
 	            </div>
 	            </h:form>
-	            <div class="field col-12 md:col-4">
-					<label id="form:j_idt306" class="ui-outputlabel ui-widget" for="form:button_input">
-						<span class="ui-outputlabel-label">Button</span>
-					</label>
-					<span id="form:button" class="p-datepicker ui-calendar ui-trigger-calendar">
-					<input id="form:button_input" name="form:button_input" type="text" class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker" aria-labelledby="form:j_idt306" data-p-label="Button"/>
-					<button type="button" class="ui-datepicker-trigger ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" tabindex="0">
-						<span class="ui-button-icon-left ui-icon ui-icon-calendar">
-						</span>
-						<span class="ui-button-text">
-							ui-button
-						</span>
-					</button>
-					</span>
-				</div>
-	        </div>
+<!-- 	            <div class="field col-12 md:col-4"> -->
+<!-- 					<label id="form:j_idt306" class="ui-outputlabel ui-widget" for="form:button_input"> -->
+<!-- 						<span class="ui-outputlabel-label">Button</span> -->
+<!-- 					</label> -->
+<!-- 					<span id="form:button" class="p-datepicker ui-calendar ui-trigger-calendar"> -->
+<!-- 					<input id="form:button_input" name="form:button_input" type="text" class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker" aria-labelledby="form:j_idt306" data-p-label="Button"/> -->
+<!-- 					<button type="button" class="ui-datepicker-trigger ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" tabindex="0"> -->
+<!-- 						<span class="ui-button-icon-left ui-icon ui-icon-calendar"> -->
+<!-- 						</span> -->
+<!-- 						<span class="ui-button-text"> -->
+<!-- 							ui-button -->
+<!-- 						</span> -->
+<!-- 					</button> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+ 			</div>
 	    </main>
 </h:body>
 </html>

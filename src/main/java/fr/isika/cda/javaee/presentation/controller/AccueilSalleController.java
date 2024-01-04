@@ -11,13 +11,10 @@ import fr.isika.cda.javaee.presentation.util.SalleUtils;
 
 //@WebServlet("/espace/*")
 public class AccueilSalleController {
-	
 	private String spaceId;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
+
 		// Faire une logique pour récupérer l'ID de l'espace des salles de sport à partir de l'URL
 		//pathInfo est les chaîne de caractères qui composent l'url
 		//pathParts est un tableau fictif 
