@@ -50,8 +50,15 @@ public class UserDao implements IDaoUser {
 
 	@Override
 	public User getUserByEmail(String userToGetEmail) {
-		Query queryOne = em.createQuery("SELECT u FROM User u WHERE u.isActive = 1");
-		return (User) queryOne.getSingleResult();
+		Account account = (Account) em.createQuery("SELECT u FROM Account u WHERE u.login = :login")
+				.setParameter("login", userToGetEmail).getSingleResult();
+		if (account != null) {
+			User userToGet = (User) em.createQuery("SELECT u FROM User u WHERE u.account = :account")
+					.setParameter("account", account).getSingleResult();
+			return userToGet;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
