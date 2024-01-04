@@ -1,7 +1,9 @@
 package fr.isika.cda.javaee.entity.users;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -9,15 +11,15 @@ import javax.persistence.OneToOne;
 public class User {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userId;
 
 	private boolean isActive;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Account account;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Profile profile;
 
 //	@OneToOne
