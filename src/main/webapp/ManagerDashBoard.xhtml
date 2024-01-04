@@ -13,30 +13,6 @@
 	<ui:define name="content">
 		<!-- colone principal -->
 		<div class="container p-5">
-			<div class="d-flex w-100 justify-content-end pt-1">
-				<div class="d-flex justify-content-around">
-					<a class=" m-1">Nom de la salle </a>
-					<div class="dropdown">
-						<a href="#"
-							class="d-flex align-items-center text-white text-decoration-none dropdown-toggle "
-							data-bs-toggle="dropdown" aria-expanded="false"> <img
-							src="https://github.com/mdo.png" alt="" width="32" height="32"
-							class="rounded-circle me-2" /> <strong>mdo</strong>
-						</a>
-						<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-							<li><a class="dropdown-item" href="#">New project...</a></li>
-							<li><a class="dropdown-item" href="#">Settings</a></li>
-							<li><a class="dropdown-item" href="#">Profile</a></li>
-							<li><hr class="dropdown-divider" /></li>
-							<li><h:form>
-									<h:commandLink class="dropdown-item"
-										action="#{userController.logout()}">Sign out</h:commandLink>
-								</h:form></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row">
 				<h3>
 					Bienvenue
 					<h:outputText value="#{sessionScope.name}" />
@@ -67,7 +43,7 @@
 								<li class="nav-item mb-2"><a> Dashboard </a></li>
 								<li class="nav-item mb-2"><a> Orders </a></li>
 								<li class="nav-item mb-2"></li>
-								<li class="nav-item mb-2"><a> Customers </a></li>
+								<li class="nav-item mb-2"><h:link outcome="CreateSpaceForm.xhtml"> Nouvel espace </h:link></li>
 							</ul>
 						</div>
 					</div>
@@ -516,7 +492,6 @@
         menus.addEventListener('click',()=>{ menus.classList.toggle("desable"); })
 
     </script>
-		</div>
 	</ui:define>
 </ui:composition>
 </html>
