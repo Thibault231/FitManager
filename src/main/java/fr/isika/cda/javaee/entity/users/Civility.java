@@ -13,11 +13,10 @@ public class Civility {
 	@Id
 	@GeneratedValue
 	private Long civilityId;
-	@NotNull
+	@NotNull(message = "Le nom est requis")
 	private String name;
-	@NotNull
+	@NotNull(message = "Le prénom est requis")
 	private String forename;
-	@NotNull(message = "La date doit être au format dd/mm/aaaa. Exemple: 01/01/1960")
 	private Date birthday;
 	private String sex;
 
