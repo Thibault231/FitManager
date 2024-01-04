@@ -53,8 +53,8 @@ public class UserController {
 	 */
 	public String createManagerAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
-		this.userSvc.createUser(userViewModel, userDao);
-		return "index";
+		logIn(userSvc.createUser(userViewModel, userDao));
+		return "ManagerDashBoard";
 	}
 
 	/**
@@ -116,15 +116,26 @@ public class UserController {
 			fc.addMessage(null, new FacesMessage(message));
 			return "LoginForm";
 		} else {
-			fc.getExternalContext().getSessionMap().put("login", userViewModel.getEmail());
+			User userToLog = this.userDao.getUserByEmail(userViewModel.getEmail());
+			if (userToLog != null && userToLog.getAccount().getPassword().equals(userViewModel.getPassword())) {
+				fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
+				fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
+				fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
+				return "ManagerDashBoard";
+			} else {
+				message = "Mot de passe erroné. ";
+				fc.addMessage(null, new FacesMessage(message));
+				return "LoginForm";
+			}
 		}
-		return "ManagerDashBoard";
 	}
 
-	public boolean logIn() {
+	public boolean logIn(Long userId) {
+		User userToLog = this.userDao.getUserById(userId);
 		FacesContext fc = FacesContext.getCurrentInstance();
-		fc.getExternalContext().getSessionMap().put("role", userViewModel.getUser().getAccount().getRole());
-		fc.getExternalContext().getSessionMap().put("id", userViewModel.getUser().getUserId());
+		fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
+		fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
+		fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
 		return true;
 	}
 
