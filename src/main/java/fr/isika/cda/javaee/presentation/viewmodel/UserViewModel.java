@@ -1,11 +1,26 @@
 package fr.isika.cda.javaee.presentation.viewmodel;
 
+import fr.isika.cda.javaee.entity.users.User;
+
 public class UserViewModel {
 	private String email;
 	private String password;
 	private String name;
 	private String forename;
 	private String sex;
+	private User user;
+
+	public UserViewModel() {
+		this.user = new User(true);
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public String getEmail() {
 		return email;

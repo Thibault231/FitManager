@@ -20,7 +20,8 @@ public class UserServices {
 	 */
 	public Long createUser(UserViewModel userViewModel, IDaoUser userDao) {
 		User userToCreate = new User(true);
-		userToCreate.getProfile().getCivility().setName(userViewModel.getName());
+		userToCreate.setProfile(userViewModel.getUser().getProfile());
+		userToCreate.setAccount(userViewModel.getUser().getAccount());
 		return userDao.createUser(userToCreate);
 	}
 
