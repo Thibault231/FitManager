@@ -47,7 +47,9 @@ xmlns="http://www.w3.org/1999/xhtml"
 	                    
 	                     <div class="form-floating">
 	                       <h:inputText class="form-control" id="floatingInput04" placeholder="Date de naissance" 
-	                         size="20" />
+	                         size="20" value="#{userController.userViewModel.user.profile.civility.birthday}">
+					            <f:convertDateTime pattern = "dd-mm-yyyy" />
+					       </h:inputText>
 	                       <h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 	                    </div>
 
@@ -87,8 +89,22 @@ xmlns="http://www.w3.org/1999/xhtml"
 	                </div>
 	            </div>
 	            </h:form>
+	            <div class="field col-12 md:col-4">
+					<label id="form:j_idt306" class="ui-outputlabel ui-widget" for="form:button_input">
+						<span class="ui-outputlabel-label">Button</span>
+					</label>
+					<span id="form:button" class="p-datepicker ui-calendar ui-trigger-calendar">
+					<input id="form:button_input" name="form:button_input" type="text" class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker" aria-labelledby="form:j_idt306" data-p-label="Button"/>
+					<button type="button" class="ui-datepicker-trigger ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" tabindex="0">
+						<span class="ui-button-icon-left ui-icon ui-icon-calendar">
+						</span>
+						<span class="ui-button-text">
+							ui-button
+						</span>
+					</button>
+					</span>
+				</div>
 	        </div>
 	    </main>
-
 </h:body>
 </html>
