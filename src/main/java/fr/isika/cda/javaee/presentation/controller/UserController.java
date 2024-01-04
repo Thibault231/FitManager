@@ -106,7 +106,6 @@ public class UserController {
 	 */
 	public String authenticate() {
 		String message;
-		System.out.println("**************");
 		FacesContext fc = FacesContext.getCurrentInstance();
 		if (userViewModel.getEmail().isEmpty()) {
 			message = "Login inexistant !!";
@@ -120,6 +119,13 @@ public class UserController {
 			fc.getExternalContext().getSessionMap().put("login", userViewModel.getEmail());
 		}
 		return "ManagerDashBoard";
+	}
+
+	public boolean logIn() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		fc.getExternalContext().getSessionMap().put("role", userViewModel.getUser().getAccount().getRole());
+		fc.getExternalContext().getSessionMap().put("id", userViewModel.getUser().getUserId());
+		return true;
 	}
 
 	/**
