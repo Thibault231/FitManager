@@ -1,417 +1,443 @@
 <!DOCTYPE html>
-<html lang="en" 
-xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <meta charset="UTF-8"/>
-    <title>ManagerDashboard</title>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</h:head>
-<h:body>
-    <main class="d-flex">
-
-        <!-- contenaire central  -->
+	xmlns:p="http://primefaces.org/ui" lang="fr">
 
 
-            <!-- Menu lateral -->
-          <div class="menus " id="menus">
-              <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sticky-top" style="width: 100%;height: 100vh">
-                  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                      <svg class="bi pe-none me-2" width="40" height="32"><use href="#bootstrap"></use></svg>
-                      <span class="fs-4"> Logo</span>
-                  </a>
-                  <div class=" m-auto h-75">
-                      <ul class="nav nav-pills flex-column mb-auto menusItems" id="menusItems">
-                          <li class="nav-item mb-2">
-                              <a> Home </a>
-                          </li>
-                          <li class="nav-item mb-2">
-                              <a> Dashboard </a>
-                          </li>
-                          <li class="nav-item mb-2">
-                              <a> Orders </a>
-                          </li>
-                          <li class="nav-item mb-2">
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
-                          </li>
-                          <li class="nav-item mb-2">
-                              <a> Customers </a>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
+	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
+	<ui:define name="content">
 
-            <!-- colone principal -->
-          <div class="container p-5">
-              <div class="d-flex w-100 justify-content-end pt-1">
-                  <div class="d-flex justify-content-around">
-                    <a class=" m-1">Nom de la salle </a>
-                    <div class="dropdown">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                            <strong>mdo</strong>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="#">New project...</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><hr class="dropdown-divider"/></li>
-                            <li><h:form>
-								<h:commandLink class="dropdown-item" action="#{userController.logout()}">Sign out</h:commandLink>
-								</h:form></li>
-                        </ul>
-                    </div>
-                </div>
-              </div>
-              <div class="row">
-                  <h3>Bienvenue <h:outputText value="#{sessionScope.login}"/></h3>
-              </div>
+		<main class="d-flex">
 
-              <!-- bar de recherche  -->
-             <div>
-                 <div class="d-flex justify-content-around w-75 align-items-center m-auto ">
-                     <div class="form-floating mb-3 w-75 mt-4 ">
-                         <input type="text" class="form-control" id="floatingInput" placeholder="Recherche"/>
-                         <label for="floatingInput"> recherche</label>
-                     </div>
-                     <a> rechercher </a>
-                 </div>
-             </div>
-              <!-- fin bar de recherche  -->
+			<!-- contenaire central  -->
 
 
-              <div class="row pt-5">
-                  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 mb-4 h-75">
-                      <div class="container  text-center">
-                          <div class="row ">
-                            <div class="card p-3">
-                                <div class="d-flex justify-content-around align-items-center w-100">
-                                    <h4> 8888888888 </h4>
-                                    <div>
-                                        <p class="fs-6">Chiffre d’affaire</p>
-                                        <p class="fs-6">88/88/8888 - 88/88/8888</p>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-                      </div>
-                  </div>
+			<!-- Menu lateral -->
+			<div class="menus " id="menus">
+				<div
+					class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sticky-top"
+					style="width: 100%; height: 100vh">
+					<a href="/"
+						class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+						<svg class="bi pe-none me-2" width="40" height="32">
+							<use href="#bootstrap"></use></svg> <span class="fs-4"> Logo</span>
+					</a>
+					<div class=" m-auto h-75">
+						<ul class="nav nav-pills flex-column mb-auto menusItems"
+							id="menusItems">
+							<li class="nav-item mb-2"><a> Home </a></li>
+							<li class="nav-item mb-2"><a> Dashboard </a></li>
+							<li class="nav-item mb-2"><a> Orders </a></li>
+							<li class="nav-item mb-2"></li>
+							<li class="nav-item mb-2"><a> Customers </a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
-                  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
+			<!-- colone principal -->
+			<div class="container p-5">
+				<div class="d-flex w-100 justify-content-end pt-1">
+					<div class="d-flex justify-content-around">
+						<a class=" m-1">Nom de la salle </a>
+						<div class="dropdown">
+							<a href="#"
+								class="d-flex align-items-center text-white text-decoration-none dropdown-toggle "
+								data-bs-toggle="dropdown" aria-expanded="false"> <img
+								src="https://github.com/mdo.png" alt="" width="32" height="32"
+								class="rounded-circle me-2" /> <strong>mdo</strong>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+								<li><a class="dropdown-item" href="#">New project...</a></li>
+								<li><a class="dropdown-item" href="#">Settings</a></li>
+								<li><a class="dropdown-item" href="#">Profile</a></li>
+								<li><hr class="dropdown-divider" /></li>
+								<li><h:form>
+										<h:commandLink class="dropdown-item"
+											action="#{userController.logout()}">Sign out</h:commandLink>
+									</h:form></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<h3>
+						Bienvenue
+						<h:outputText value="#{sessionScope.login}" />
+					</h3>
+				</div>
 
-                          <div class="row gx-5 h-100">
-                              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 mb-4  ">
-                                  <div class="card p-3 h-100">
-                                      <div class="d-flex justify-content-around align-items-center w-100">
-                                          <h4> 88888 </h4>
-                                          <div>
-                                              <p class="fs-6">Fin de contrats</p>
-                                              <p class="fs-6">8888 - 8888</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 pb-4">
-                                  <div class="card p-3 h-100 ">
-                                      <div class="d-flex justify-content-around align-items-center w-100">
-                                          <h4> 88888 </h4>
-                                          <div>
-                                              <p class="fs-6">Résiliation</p>
-                                              <p class="fs-6">8888 - 8888</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                  </div>
-
-              </div>
-
-              <div class="row mb-4">
-                  <div class="container text-center">
-                      <div class="row gy-5">
-                          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                              <div class="card p-3">
-                                  <canvas id="ChartBar" class="w-100 h-50 p-auto"></canvas>
-                              </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-12 col-lg-6 ">
-                              <div class="card p-3">
-                                  <canvas id="Chartline" class="w-100 h-50 p-auto"></canvas>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="row">
-                  <div class="container  text-center">
-                      <div class="row gy-5">
-                          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
-                              <div class="card p-3">
-
-                                  <h3 class="text-start mb-3 fw-lighter">
-                                      Scéance
-                                  </h3>
-                                  <table class="table w-100">
-
-                                      <tbody>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              Mark
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Salle pizza</td>
-                                          <td>13h00</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-danger border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              Mark
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Salle pizza</td>
-                                          <td>13h00</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              Mark
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Salle pizza</td>
-                                          <td>13h00</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-danger border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              Mark
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Salle pizza</td>
-                                          <td>13h00</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-success border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              Mark
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Salle pizza</td>
-                                          <td>13h00</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-danger border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              Mark
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Salle pizza</td>
-                                          <td>13h00</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-success border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              Mark
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Salle pizza</td>
-                                          <td>13h00</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-success border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              Mark
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Salle pizza</td>
-                                          <td>13h00</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              Mark
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Salle pizza</td>
-                                          <td>13h00</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-success border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
+				<!-- bar de recherche  -->
+				<div>
+					<div
+						class="d-flex justify-content-around w-75 align-items-center m-auto ">
+						<div class="form-floating mb-3 w-75 mt-4 ">
+							<input type="text" class="form-control" id="floatingInput"
+								placeholder="Recherche" /> <label for="floatingInput">
+								recherche</label>
+						</div>
+						<a> rechercher </a>
+					</div>
+				</div>
+				<!-- fin bar de recherche  -->
 
 
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </div>
-                          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
-                              <div class="card p-3">
+				<div class="row pt-5">
+					<div
+						class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 mb-4 h-75">
+						<div class="container  text-center">
+							<div class="row ">
+								<div class="card p-3">
+									<div
+										class="d-flex justify-content-around align-items-center w-100">
+										<h4>8888888888</h4>
+										<div>
+											<p class="fs-6">Chiffre d’affaire</p>
+											<p class="fs-6">88/88/8888 - 88/88/8888</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                                  <h3 class="text-start mb-3 fw-lighter">
-                                      Coach
-                                  </h3>
-                                  <table class="table">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
 
-                                      <tbody>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                                              </a>
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>Body-pump</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                                              </a>
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>Body-pump</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                                              </a>
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>Body-pump</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                                              </a>
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>Body-pump</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                                              </a>
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>Body-pump</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                                              </a>
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>Body-pump</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                                              </a>
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>Body-pump</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      <tr class="p-1">
-                                          <th scope="row">
-                                              <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                                              </a>
-                                          </th>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>Body-pump</td>
-                                          <td>88/88/8888</td>
-                                          <td>
-                                              <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                          </td>
-                                      </tr>
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+						<div class="row gx-5 h-100">
+							<div
+								class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 mb-4  ">
+								<div class="card p-3 h-100">
+									<div
+										class="d-flex justify-content-around align-items-center w-100">
+										<h4>88888</h4>
+										<div>
+											<p class="fs-6">Fin de contrats</p>
+											<p class="fs-6">8888 - 8888</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div
+								class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 pb-4">
+								<div class="card p-3 h-100 ">
+									<div
+										class="d-flex justify-content-around align-items-center w-100">
+										<h4>88888</h4>
+										<div>
+											<p class="fs-6">Résiliation</p>
+											<p class="fs-6">8888 - 8888</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-          </div>
+				</div>
 
-    </main>
+				<div class="row mb-4">
+					<div class="container text-center">
+						<div class="row gy-5">
+							<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+								<div class="card p-3">
+									<canvas id="ChartBar" class="w-100 h-50 p-auto"></canvas>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-lg-6 ">
+								<div class="card p-3">
+									<canvas id="Chartline" class="w-100 h-50 p-auto"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-    <script>
+				<div class="row">
+					<div class="container  text-center">
+						<div class="row gy-5">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
+								<div class="card p-3">
+
+									<h3 class="text-start mb-3 fw-lighter">Scéance</h3>
+									<table class="table w-100">
+
+										<tbody>
+											<tr class="p-1">
+												<th scope="row">Mark</th>
+												<td>Mark</td>
+												<td>Salle pizza</td>
+												<td>13h00</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-danger border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+
+											<tr class="p-1">
+												<th scope="row">Mark</th>
+												<td>Mark</td>
+												<td>Salle pizza</td>
+												<td>13h00</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row">Mark</th>
+												<td>Mark</td>
+												<td>Salle pizza</td>
+												<td>13h00</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-danger border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row">Mark</th>
+												<td>Mark</td>
+												<td>Salle pizza</td>
+												<td>13h00</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-success border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row">Mark</th>
+												<td>Mark</td>
+												<td>Salle pizza</td>
+												<td>13h00</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-danger border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row">Mark</th>
+												<td>Mark</td>
+												<td>Salle pizza</td>
+												<td>13h00</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-success border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row">Mark</th>
+												<td>Mark</td>
+												<td>Salle pizza</td>
+												<td>13h00</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-success border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row">Mark</th>
+												<td>Mark</td>
+												<td>Salle pizza</td>
+												<td>13h00</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row">Mark</th>
+												<td>Mark</td>
+												<td>Salle pizza</td>
+												<td>13h00</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-success border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
+								<div class="card p-3">
+
+									<h3 class="text-start mb-3 fw-lighter">Coach</h3>
+									<table class="table">
+
+										<tbody>
+											<tr class="p-1">
+												<th scope="row"><a href="#"
+													class="d-flex align-items-center text-white text-decoration-none"
+													data-bs-toggle="dropdown" aria-expanded="false"> <img
+														src="https://github.com/mdo.png" alt="" width="32"
+														height="32" class="rounded-circle me-2" />
+												</a></th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>Body-pump</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row"><a href="#"
+													class="d-flex align-items-center text-white text-decoration-none"
+													data-bs-toggle="dropdown" aria-expanded="false"> <img
+														src="https://github.com/mdo.png" alt="" width="32"
+														height="32" class="rounded-circle me-2" />
+												</a></th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>Body-pump</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row"><a href="#"
+													class="d-flex align-items-center text-white text-decoration-none"
+													data-bs-toggle="dropdown" aria-expanded="false"> <img
+														src="https://github.com/mdo.png" alt="" width="32"
+														height="32" class="rounded-circle me-2" />
+												</a></th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>Body-pump</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row"><a href="#"
+													class="d-flex align-items-center text-white text-decoration-none"
+													data-bs-toggle="dropdown" aria-expanded="false"> <img
+														src="https://github.com/mdo.png" alt="" width="32"
+														height="32" class="rounded-circle me-2" />
+												</a></th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>Body-pump</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row"><a href="#"
+													class="d-flex align-items-center text-white text-decoration-none"
+													data-bs-toggle="dropdown" aria-expanded="false"> <img
+														src="https://github.com/mdo.png" alt="" width="32"
+														height="32" class="rounded-circle me-2" />
+												</a></th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>Body-pump</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row"><a href="#"
+													class="d-flex align-items-center text-white text-decoration-none"
+													data-bs-toggle="dropdown" aria-expanded="false"> <img
+														src="https://github.com/mdo.png" alt="" width="32"
+														height="32" class="rounded-circle me-2" />
+												</a></th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>Body-pump</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row"><a href="#"
+													class="d-flex align-items-center text-white text-decoration-none"
+													data-bs-toggle="dropdown" aria-expanded="false"> <img
+														src="https://github.com/mdo.png" alt="" width="32"
+														height="32" class="rounded-circle me-2" />
+												</a></th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>Body-pump</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+											<tr class="p-1">
+												<th scope="row"><a href="#"
+													class="d-flex align-items-center text-white text-decoration-none"
+													data-bs-toggle="dropdown" aria-expanded="false"> <img
+														src="https://github.com/mdo.png" alt="" width="32"
+														height="32" class="rounded-circle me-2" />
+												</a></th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>Body-pump</td>
+												<td>88/88/8888</td>
+												<td>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</main>
+
+		<script>
         // JavaScript code for creating a bar chart
 
         const ctx1 = document.getElementById('ChartBar').getContext('2d');
@@ -458,5 +484,6 @@ xmlns="http://www.w3.org/1999/xhtml"
 
     </script>
 
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>
