@@ -51,7 +51,7 @@ public class UserController {
 	 * 
 	 * @return url (:String)
 	 */
-	public String createUser() {
+	public String createManagerAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
 		this.userSvc.createUser(userViewModel, userDao);
 		return "index";

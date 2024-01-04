@@ -3,7 +3,6 @@ package fr.isika.cda.javaee.services;
 import javax.ejb.Stateless;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
-import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 

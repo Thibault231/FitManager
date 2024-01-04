@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.presentation.viewmodel;
 
-import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
 public class UserViewModel {
