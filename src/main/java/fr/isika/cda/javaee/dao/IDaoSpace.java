@@ -7,15 +7,15 @@ import fr.isika.cda.javaee.presentation.viewmodel.SpaceForm;
 
 public interface IDaoSpace {
 
-//	Long createSpace(SpaceForm spaceForm);
-//
-//	Long createSpace(Space spaceToCreate);
-//
-//	boolean deleteSpace(Long SpaceToDeleteIdSubscription);
-//
-//	Space getSpaceByIdSubscription(Long spaceToGetIdSubscription);
-//
-//	Space getSpaceByName(String spaceToGetName);
-//
-//	List<Space> getAllSpace();
+	Long createSpace(SpaceForm spaceForm);
+
+	// Long createSpace(Space spaceToCreate);
+
+	boolean deleteSpace(Long SpaceToDeleteIdSubscription);
+
+	Space getSpaceByIdSubscription(Long spaceToGetIdSubscription);
+
+	Space getSpaceByName(String spaceToGetName);
+
+	List<Space> getAllSpace();
 }

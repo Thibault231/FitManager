@@ -12,11 +12,12 @@ import fr.isika.cda.javaee.entity.spaces.Style;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceForm;
 
 @Stateless
-public class SpaceDao /* implements IDaoSpace */ {
+public class SpaceDao implements IDaoSpace {
 
 	@PersistenceContext
 	private EntityManager em;
 
+	@Override
 	public Long createSpace(SpaceForm spaceForm) {
 		Space space = new Space();
 		Administrative administrative = new Administrative();
@@ -33,6 +34,7 @@ public class SpaceDao /* implements IDaoSpace */ {
 
 		em.persist(administrative);
 		em.persist(space);
+		em.persist(style);
 
 		return space.getIdSubscription();
 	}
@@ -43,6 +45,7 @@ public class SpaceDao /* implements IDaoSpace */ {
 //		return spaceToCreate.getIdSubscription();
 //	}
 
+	@Override
 	public boolean deleteSpace(Long SpaceToDeleteIdSubscription) {
 		Space spaceTodelete = em.find(Space.class, SpaceToDeleteIdSubscription);
 		if (spaceTodelete != null) {
@@ -53,14 +56,17 @@ public class SpaceDao /* implements IDaoSpace */ {
 		}
 	}
 
+	@Override
 	public Space getSpaceByIdSubscription(Long spaceToGetIdSubscription) {
 		return em.find(Space.class, spaceToGetIdSubscription);
 	}
 
+	@Override
 	public Space getSpaceByName(String spaceToGetName) {
 		return em.createQuery("SELECT u FROM Space u WHERE u.isActive = 1", Space.class).getSingleResult();
 	}
 
+	@Override
 	public List<Space> getAllSpace() {
 		return em.createQuery("SELECT u FROM Space u WHERE u.isActive = 1", Space.class).getResultList();
 	}

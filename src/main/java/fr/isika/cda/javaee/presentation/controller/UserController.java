@@ -22,7 +22,6 @@ public class UserController implements Serializable {
 
 	@Inject
 	private IDaoUser userDao;
-
 	private UserViewModel userViewModel;
 
 	@PostConstruct
