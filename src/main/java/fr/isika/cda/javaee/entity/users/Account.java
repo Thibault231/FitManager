@@ -1,6 +1,8 @@
 package fr.isika.cda.javaee.entity.users;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -12,6 +14,7 @@ public class Account {
 	private Long accountId;
 	private String login;
 	private String password;
+	@Enumerated(EnumType.STRING)
 	private Role role;
 
 	public String getLogin() {

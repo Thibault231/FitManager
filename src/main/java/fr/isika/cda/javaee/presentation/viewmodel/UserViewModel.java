@@ -1,10 +1,12 @@
 package fr.isika.cda.javaee.presentation.viewmodel;
 
+import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
 public class UserViewModel {
 	private String email;
 	private String password;
+	private int role;
 	private User user;
 
 	public UserViewModel() {
@@ -33,6 +35,14 @@ public class UserViewModel {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 //**********************************
