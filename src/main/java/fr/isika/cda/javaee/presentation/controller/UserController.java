@@ -50,7 +50,8 @@ public class UserController {
 
 //***************************************
 	/**
-	 * Create a new user in the database using the UserviewModel.
+	 * Get the Creating user form using the UserviewModel, then call the UserService
+	 * to create a new user.
 	 * 
 	 * @return url (:String)
 	 */
