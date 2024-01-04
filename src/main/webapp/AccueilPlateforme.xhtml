@@ -29,7 +29,7 @@
 						<h:commandLink action="#{spaceDetailsController.showSpaceDetails()}" value="#{space.name}">
 							
 							<!-- Attention au nom du paramètre car utilisé dans le controller -->
-							<f:param name="spaceId" value="#{space.idSubscription}"/>
+							<f:param name="spaceId" value="#{space.spaceId}"/>
 						</h:commandLink>
 					</li>
 				</ui:repeat>

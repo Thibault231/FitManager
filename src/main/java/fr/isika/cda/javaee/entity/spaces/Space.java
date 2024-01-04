@@ -10,18 +10,8 @@ public class Space {
 
 	@Id
 	@GeneratedValue
-	private Long idSubscription;
+	private Long spaceId;
 
-	private String name;
-	private String password;
-
-	@OneToOne
-	private Administrative administrative;
-
-	@OneToOne
-	private Configuration configuration;
-
-	// FIXME : attention pourquoi dans Infos il y a aussi Configuration et Administrative et dans Space la même chose
 	@OneToOne
 	private Infos infos;
 
@@ -31,43 +21,36 @@ public class Space {
 	@OneToOne
 	private Planning planning;
 
-	@OneToOne
-	private Style style;
+//**************************************
+	/**
+	 * Empty constructor for controler.
+	 */
+	public Space() {
 
-	public Administrative getAdministrative() {
-		return administrative;
 	}
 
-	public void setAdministrative(Administrative administrative) {
-		this.administrative = administrative;
+	/**
+	 * Constructor for SpaceViewModel.
+	 * 
+	 * @param isViewModel (:Boolean)
+	 */
+	public Space(boolean isViewModel) {
+		Configuration configuration = new Configuration();
+		configuration.setStyle(new Style());
+		this.onlineShop = new OnlineShop();
+		this.planning = new Planning();
+		this.infos = new Infos();
+		this.infos.setAdministrative(new Administrative());
+		this.infos.setConfiguration(configuration);
 	}
 
-	public Configuration getConfiguration() {
-		return configuration;
+//**************************************
+	public Long getSpaceId() {
+		return spaceId;
 	}
 
-	public void setConfiguration(Configuration configuration) {
-		this.configuration = configuration;
-	}
-
-	public Style getStyle() {
-		return style;
-	}
-
-	public void setStyle(Style style) {
-		this.style = style;
-	}
-
-	public Long getIdSubscription() {
-		return idSubscription;
-	}
-
-	public void setIdSubscription(Long idSubscription) {
-		this.idSubscription = idSubscription;
-	}
-
-	public String getName() {
-		return name;
+	public void setSpaceId(Long spaceId) {
+		this.spaceId = spaceId;
 	}
 
 	public Planning getPlanning() {
@@ -76,10 +59,6 @@ public class Space {
 
 	public void setPlanning(Planning planning) {
 		this.planning = planning;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Infos getInfos() {
@@ -96,14 +75,6 @@ public class Space {
 
 	public void setOnlineShop(OnlineShop onlineShop) {
 		this.onlineShop = onlineShop;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 }

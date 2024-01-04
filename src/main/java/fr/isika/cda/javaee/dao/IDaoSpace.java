@@ -3,14 +3,18 @@ package fr.isika.cda.javaee.dao;
 import java.util.List;
 
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.presentation.viewmodel.SpaceForm;
+import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 
 public interface IDaoSpace {
 
-	Long createSpace(SpaceForm spaceForm);
-	Long saveSpaceAndRelations(Space space);
+	/**
+	 * 
+	 * @param space
+	 * @return
+	 */
+	Long createSpace(Space spaceToCreate);
 
-	// Long createSpace(Space spaceToCreate);
+	Long saveSpaceAndRelations(Space space);
 
 	boolean deleteSpace(Long SpaceToDeleteIdSubscription);
 
