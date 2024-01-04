@@ -5,21 +5,27 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.dao.UserDao;
+import fr.isika.cda.javaee.entity.users.Account;
+import fr.isika.cda.javaee.entity.users.Address;
+import fr.isika.cda.javaee.entity.users.Civility;
+import fr.isika.cda.javaee.entity.users.Contact;
+import fr.isika.cda.javaee.entity.users.Profile;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
+import fr.isika.cda.javaee.services.UserServices;
 
-@Named
-public class UserController implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8909383167109211323L;
-
+@ManagedBean
+@RequestScoped
+public class UserController {
+  
 	@Inject
 	private IDaoUser userDao;
 	private UserViewModel userViewModel;
@@ -40,31 +46,69 @@ public class UserController implements Serializable {
 	}
 
 //***************************************
+	/**
+	 * Create a new user in the database using the UserviewModel.
+	 * 
+	 * @return url (:String)
+	 */
 	public String createUser() {
+		System.out.println("***************");
 		User userToCreate = new User();
+		userToCreate.setProfile(new Profile());
+		userToCreate.getProfile().setCivility(new Civility());
+		userToCreate.getProfile().getCivility().setName(this.userViewModel.getName());
 		userToCreate.setActive(true);
 		userDao.createUser(userToCreate);
 		return "index";
 	}
 
+	/**
+	 * Delete a user from the database using it's Id.
+	 * 
+	 * @param userToDeleteId
+	 * @return url (:String)
+	 */
 	public String deleteUser(Long userToDeleteId) {
 		userDao.deleteUser(userToDeleteId);
 		return "index";
 	}
 
+	/**
+	 * Return all the users marked as active in the database.
+	 * 
+	 * @return (:List<User>)
+	 */
 	public List<User> getAllActiveUser() {
 		List<User> usersList = userDao.getAllUsers();
 		return usersList;
 	}
 
+	/**
+	 * Get a user from the database using it's Id.
+	 * 
+	 * @param userId (:Long)
+	 * @return (:User)
+	 */
 	public User getUser(Long userId) {
 		return userDao.getUserById(userId);
 	}
 
+	/**
+	 * Get a user from the database using it's Email.
+	 * 
+	 * @param userEmail (:String)
+	 * @return (:User)
+	 */
 	public User getUser(String userEmail) {
 		return userDao.getUserByEmail(userEmail);
 	}
 
+	/**
+	 * Authenticate a visitor from a login form and create a session object with
+	 * role and id.
+	 * 
+	 * @return url (:String)
+	 */
 	public String authenticate() {
 		String message;
 		System.out.println("**************");
@@ -83,6 +127,11 @@ public class UserController implements Serializable {
 		return "ManagerDashBoard";
 	}
 
+	/**
+	 * Logout a connected user.
+	 * 
+	 * @return url (:String)
+	 */
 	public String logout() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
