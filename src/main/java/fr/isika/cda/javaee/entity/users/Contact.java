@@ -11,7 +11,6 @@ public class Contact {
 	@Id
 	@GeneratedValue
 	private Long contactId;
-	@NotNull
 	private String phoneNumber;
 	@NotNull
 	private String email;
