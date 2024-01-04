@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
@@ -24,7 +25,7 @@ public class UserController {
 
 	@Inject
 	private UserServices userSvc;
-  
+
 	private UserViewModel userViewModel;
 
 	@PostConstruct
@@ -45,11 +46,13 @@ public class UserController {
 //***************************************
 	/**
 	 * Get the Creating user form using the UserviewModel, then call the UserService
-	 * to create a new user.
+	 * to create a new user.<br/>
+	 * <b>Use this method for creating only manager</b>
 	 * 
 	 * @return url (:String)
 	 */
-	public String createUser() {
+	public String createManagerAccount() {
+		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
 		this.userSvc.createUser(userViewModel, userDao);
 		return "index";
 	}
@@ -103,7 +106,6 @@ public class UserController {
 	 */
 	public String authenticate() {
 		String message;
-		System.out.println("**************");
 		FacesContext fc = FacesContext.getCurrentInstance();
 		if (userViewModel.getEmail().isEmpty()) {
 			message = "Login inexistant !!";
@@ -117,6 +119,13 @@ public class UserController {
 			fc.getExternalContext().getSessionMap().put("login", userViewModel.getEmail());
 		}
 		return "ManagerDashBoard";
+	}
+
+	public boolean logIn() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		fc.getExternalContext().getSessionMap().put("role", userViewModel.getUser().getAccount().getRole());
+		fc.getExternalContext().getSessionMap().put("id", userViewModel.getUser().getUserId());
+		return true;
 	}
 
 	/**

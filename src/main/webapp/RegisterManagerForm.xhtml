@@ -83,9 +83,8 @@ xmlns="http://www.w3.org/1999/xhtml"
 	                       <h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 	                    </div>
 	                    
-	                    <h:inputHidden value ="#{userController.userViewModel.role}" id = "floatingInput10" placeholder="1" /> 
 	
-	                    <h:commandButton class="btn btn-warning" value="Créer mon compte" action="#{userController.createUser()}" />
+	                    <h:commandButton class="btn btn-warning" value="Créer mon compte" action="#{userController.createManagerAccount()}" />
 						
 	                    <h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
 	                </div>

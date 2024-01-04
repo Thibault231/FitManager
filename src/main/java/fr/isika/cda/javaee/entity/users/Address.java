@@ -11,10 +11,8 @@ public class Address {
 	@Id
 	@GeneratedValue
 	private Long adressId;
-	@NotNull
 	private String street;
 	private int zipCode;
-	@NotNull
 	private String city;
 
 //****************************************

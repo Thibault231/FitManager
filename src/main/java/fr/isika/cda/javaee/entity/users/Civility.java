@@ -17,7 +17,6 @@ public class Civility {
 	private String name;
 	@NotNull
 	private String forename;
-	@NotNull(message = "La date doit être au format dd/mm/aaaa. Exemple: 01/01/1960")
 	private Date birthday;
 	private String sex;
 
