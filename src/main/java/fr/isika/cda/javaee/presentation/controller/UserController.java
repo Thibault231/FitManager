@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.presentation.controller;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,15 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+
 import fr.isika.cda.javaee.dao.IDaoUser;
-import fr.isika.cda.javaee.dao.UserDao;
-import fr.isika.cda.javaee.entity.users.Account;
-import fr.isika.cda.javaee.entity.users.Address;
-import fr.isika.cda.javaee.entity.users.Civility;
-import fr.isika.cda.javaee.entity.users.Contact;
-import fr.isika.cda.javaee.entity.users.Profile;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
@@ -25,7 +18,7 @@ import fr.isika.cda.javaee.services.UserServices;
 @ManagedBean
 @RequestScoped
 public class UserController {
-  
+
 	@Inject
 	private IDaoUser userDao;
 
