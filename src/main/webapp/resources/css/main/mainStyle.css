@@ -15,3 +15,83 @@
 .important {
 	font-weight: 800;
 }
+
+
+
+
+.menus {
+    width: 0px;
+    transition: all 1s ease-out;
+  
+}
+
+.desable{
+	transition: all 1s ease-out;
+    flex: 0 0 auto;
+    width: 15%;
+}
+
+
+.container{
+    width: 85%;
+}
+
+.contain_80{
+    height: 80vh;
+}
+
+.contain_50{
+    height: 50vh;
+}
+.dualimgcontainer{
+    display: flex;
+    width: 100%;
+    height: 21em;
+    margin-top: 2em;
+    justify-content: space-around;
+}
+
+.dualimgcontainer> img{
+    height: 20em;
+    width: 43%;
+}
+
+.imgdecaler{
+    right: -32%;
+    top: -52%;
+}
+
+.navBar{
+    height: 4em;
+}
+
+.sectionperso{height: 30em}
+
+
+@media screen and (min-width: 1400px){
+    .dualimgcontainer{
+        position: absolute;
+        height: 21em;
+        display: block;
+         width: inherit;
+        height:inherit;
+         margin-top:inherit;
+    }
+
+  /*  .dualimgcontainer> img{
+        position: relative;
+        height: 21em;
+        width: 34%;
+    }*/
+    
+    .desable{
+	transition: all 1s ease-out;
+    flex: 0 0 auto;
+    width: 10%;
+}
+
+    .contain{
+        height: 80vh;
+    }
+
+}
