@@ -16,6 +16,27 @@
 		<div class="container mt-3">
 			<!--  on ajoutera plus tard le contenu de la page comme les activités, les offres etc... -->
 		</div>
+		
+		<h:form>
+		
+		<!-- a supprimer une fois intégré avec la création de space dpuis la plateforme -->
+			<h:commandButton action="#{spaceDetailsController.creerSpaceDeTest()}" value="Créer un espace de test" />
+			<br/>
+			
+			<ul>
+				<ui:repeat value="#{spaceDetailsController.getAllSpaces()}" var="space">
+					<li>
+						<h:commandLink action="#{spaceDetailsController.showSpaceDetails()}" value="#{space.name}">
+							
+							<!-- Attention au nom du paramètre car utilisé dans le controller -->
+							<f:param name="spaceId" value="#{space.idSubscription}"/>
+						</h:commandLink>
+					</li>
+				</ui:repeat>
+			</ul>
+			
+			
+		</h:form>
 
 	</ui:define>
 </ui:composition>

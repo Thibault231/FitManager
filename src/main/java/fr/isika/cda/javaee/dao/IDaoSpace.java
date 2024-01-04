@@ -8,6 +8,7 @@ import fr.isika.cda.javaee.presentation.viewmodel.SpaceForm;
 public interface IDaoSpace {
 
 	Long createSpace(SpaceForm spaceForm);
+	Long saveSpaceAndRelations(Space space);
 
 	// Long createSpace(Space spaceToCreate);
 
@@ -18,4 +19,6 @@ public interface IDaoSpace {
 	Space getSpaceByName(String spaceToGetName);
 
 	List<Space> getAllSpace();
+
+	Space getSpaceById(Long spaceId);
 }

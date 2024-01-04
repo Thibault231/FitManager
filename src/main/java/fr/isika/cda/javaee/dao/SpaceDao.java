@@ -1,11 +1,8 @@
 package fr.isika.cda.javaee.dao;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.mail.Part;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -64,14 +61,29 @@ public class SpaceDao implements IDaoSpace {
 		return em.find(Space.class, spaceToGetIdSubscription);
 	}
 
+	// FIXME : attention il n'y plus de isActive dans Space !!!!
 	@Override
 	public Space getSpaceByName(String spaceToGetName) {
 		return em.createQuery("SELECT u FROM Space u WHERE u.isActive = 1", Space.class).getSingleResult();
 	}
 
+	// FIXME : attention il n'y plus de isActive dans Space !!!!
 	@Override
 	public List<Space> getAllSpace() {
-		return em.createQuery("SELECT u FROM Space u WHERE u.isActive = 1", Space.class).getResultList();
+		return em.createQuery("SELECT u FROM Space u", Space.class).getResultList();
 	}
 
+	@Override
+	public Space getSpaceById(Long spaceId) {
+		return em.createQuery("SELECT u FROM Space u WHERE u.idSubscription = :spaceIdParam", Space.class)
+				.setParameter("spaceIdParam", spaceId)
+				.getSingleResult();
+	}
+	
+	@Override
+	public Long saveSpaceAndRelations(Space space) {
+		em.persist(space.getAdministrative());
+		em.persist(space);
+		return space.getIdSubscription();
+	}
 }
