@@ -1,48 +1,22 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" lang="fr">
 
-<html lang="fr">
-<head>
-<meta charset="UTF-8"></meta>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-<title>Accueil - NOM SALLE DE SPORT</title>
-</head>
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
-
-<body>
-<!-- On commence par la barre de menu -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#">FitManager</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-	</button>
-	 <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <!-- Il faudra remplacer les liens par les URL réelles de l'app  -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">Mon Compte</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Créer mon Compte</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<!-- Ici, contenu de la page d'accueil -->
-<div class="container mt-3">
-<!--  on ajoutera plus tard le contenu de la page comme les activités, les offres etc... -->
-</div>
-
-</body>
-
-
+	<ui:define name="titleValue">Salles - Fit Manager</ui:define>
+	<ui:define name="content">
+		
+		<!-- Ici, contenu de la page d'accueil -->
+		<div class="container mt-3">
+		<!--  on ajoutera plus tard le contenu de la page comme les activités, les offres etc... -->
+		</div>
+</ui:define>
+</ui:composition>
 </html>
 
 

@@ -2,60 +2,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>TestUser</title>
-</h:head>
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+	<ui:define name="titleValue">Fit Manager :: Create Account</ui:define>
+	<ui:define name="content">
 
-<h:body>
+		<h:form>
+			<h:outputLabel class="outputLabel">Nom :</h:outputLabel>
+			<h:inputText id="firstNameInput" size="25"
+				value="#{UserController.form.name}" />
+			<br />
+			<h:outputLabel class="outputLabel">Prénom :</h:outputLabel>
+			<h:inputText id="lastNameInput" size="25"
+				value="#{UserController.form.foreName}" />
+			<br />
+			<h:outputLabel class="outputLabel">Sexe :</h:outputLabel>
+			<h:inputSecret id="passwordInput" size="10"
+				value="#{UserController.form.sexe}" />
+			<br />
+			<h:outputLabel class="outputLabel">Date de naissance :</h:outputLabel>
+			<h:inputSecret id="passwordInput" size="10"
+				value="#{UserController.form.birtday}" />
+			<br />
+			<h:outputLabel class="outputLabel">Téléphone :</h:outputLabel>
+			<h:inputSecret id="passwordInput" size="10"
+				value="#{UserController.form.phone}" />
+			<br />
+			<h:outputLabel class="outputLabel">Email :</h:outputLabel>
+			<h:inputText id="emailInput" size="40"
+				value="#{UserController.form.email}" />
+			<br />
+			<h:outputLabel class="outputLabel">Mot de passe :</h:outputLabel>
+			<h:inputSecret id="passwordInput" size="12"
+				value="#{UserController.form.password}" />
+			<br />
+			<h:outputLabel class="outputLabel">Adresse :</h:outputLabel>
+			<h:inputSecret id="passwordInput" size="40"
+				value="#{UserController.form.street}" />
+			<br />
+			<h:outputLabel class="outputLabel">Code postal :</h:outputLabel>
+			<h:inputSecret id="passwordInput" size="5"
+				value="#{UserController.form.zipcode}" />
+			<br />
+			<h:outputLabel class="outputLabel">Ville :</h:outputLabel>
+			<h:inputSecret id="passwordInput" size="20"
+				value="#{UserController.form.city}" />
+			<br />
 
-	<h:form>
-	<h:outputLabel class="outputLabel">Nom :</h:outputLabel>
-		<h:inputText id="firstNameInput" size="25"
-			value="#{UserController.form.name}" />
-	<br/>		
-	<h:outputLabel class="outputLabel">Prénom :</h:outputLabel>
-	<h:inputText id="lastNameInput" size="25" 
-			value="#{UserController.form.foreName}" />
-	<br/>	
-	<h:outputLabel class="outputLabel">Sexe :</h:outputLabel>
-	<h:inputSecret id="passwordInput" size="10" 
-			value="#{UserController.form.sexe}" />
-	<br/>
-	<h:outputLabel class="outputLabel">Date de naissance :</h:outputLabel>
-	<h:inputSecret id="passwordInput" size="10" 
-			value="#{UserController.form.birtday}" />
-	<br/>	
-	<h:outputLabel class="outputLabel">Téléphone :</h:outputLabel>
-	<h:inputSecret id="passwordInput" size="10" 
-			value="#{UserController.form.phone}" />
-	<br/>			
-	<h:outputLabel class="outputLabel">Email :</h:outputLabel>
-	<h:inputText id="emailInput" size="40" 
-			value="#{UserController.form.email}" />
-	<br/>		
-	<h:outputLabel class="outputLabel">Mot de passe :</h:outputLabel>
-	<h:inputSecret id="passwordInput" size="12" 
-			value="#{UserController.form.password}" />
-	<br/>
-	<h:outputLabel class="outputLabel">Adresse :</h:outputLabel>
-	<h:inputSecret id="passwordInput" size="40" 
-			value="#{UserController.form.street}" />
-	<br/>
-	<h:outputLabel class="outputLabel">Code postal :</h:outputLabel>
-	<h:inputSecret id="passwordInput" size="5" 
-			value="#{UserController.form.zipcode}" />
-	<br/>
-	<h:outputLabel class="outputLabel">Ville :</h:outputLabel>
-	<h:inputSecret id="passwordInput" size="20" 
-			value="#{UserController.form.city}" />
-	<br/>	
-	
-	<h:commandButton value="Créer mon compte" 
-			action="#{UserController.register()}" />
-	</h:form>
+			<h:commandButton value="Créer mon compte"
+				action="#{UserController.register()}" />
+		</h:form>
 
-</h:body>
+	</ui:define>
+</ui:composition>
 </html>
