@@ -22,7 +22,7 @@ public class UserServices {
 		User userToCreate = new User(true);
 		userToCreate.setProfile(userViewModel.getUser().getProfile());
 		userToCreate.setAccount(userViewModel.getUser().getAccount());
+		userToCreate.getAccount().setLogin(userToCreate.getProfile().getContact().getEmail());
 		return userDao.createUser(userToCreate);
 	}
-
 }
