@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import fr.isika.cda.javaee.entity.spaces.Administrative;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.spaces.Style;
-import fr.isika.cda.javaee.presentation.viewmodel.SpaceForm;
+import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 
 @Stateless
 public class SpaceDao implements IDaoSpace {
@@ -18,32 +18,16 @@ public class SpaceDao implements IDaoSpace {
 	private EntityManager em;
 
 	@Override
-	public Long createSpace(SpaceForm spaceForm) {
-		Space space = new Space();
-		Administrative administrative = new Administrative();
-		Style style = new Style();
-
-		space.setName(spaceForm.getName());
-
-		administrative.setSiret(spaceForm.getSiret());
-		administrative.setSiren(spaceForm.getSiren());
-		space.setAdministrative(administrative);
-
-		style.setLogo(spaceForm.getLogo());
-		space.setStyle(style);
-
-		em.persist(administrative);
-		em.persist(space);
-		em.persist(style);
-
-		return space.getIdSubscription();
+	public Long createSpace(Space spaceToCreate) {
+		em.persist(spaceToCreate.getInfos().getConfiguration().getStyle());
+		em.persist(spaceToCreate.getInfos().getAdministrative());
+		em.persist(spaceToCreate.getInfos().getConfiguration());
+		em.persist(spaceToCreate.getOnlineShop());
+		em.persist(spaceToCreate.getPlanning());
+		em.persist(spaceToCreate.getInfos());
+		em.persist(spaceToCreate);
+		return spaceToCreate.getSpaceId();
 	}
-
-//	@Override
-//	public Long createSpace(Space spaceToCreate) {
-//		em.persist(spaceToCreate);
-//		return spaceToCreate.getIdSubscription();
-//	}
 
 	@Override
 	public boolean deleteSpace(Long SpaceToDeleteIdSubscription) {
@@ -76,14 +60,13 @@ public class SpaceDao implements IDaoSpace {
 	@Override
 	public Space getSpaceById(Long spaceId) {
 		return em.createQuery("SELECT u FROM Space u WHERE u.idSubscription = :spaceIdParam", Space.class)
-				.setParameter("spaceIdParam", spaceId)
-				.getSingleResult();
+				.setParameter("spaceIdParam", spaceId).getSingleResult();
 	}
-	
+
 	@Override
 	public Long saveSpaceAndRelations(Space space) {
-		em.persist(space.getAdministrative());
+		// TODO
 		em.persist(space);
-		return space.getIdSubscription();
+		return space.getSpaceId();
 	}
 }

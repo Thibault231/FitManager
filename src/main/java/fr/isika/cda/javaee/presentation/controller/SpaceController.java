@@ -7,39 +7,32 @@ import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.presentation.viewmodel.SpaceForm;
+import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 
 @ManagedBean
 public class SpaceController {
 
 	@Inject
 	private IDaoSpace spaceDao;
-	private SpaceForm spaceForm = new SpaceForm();;
+
+	private SpaceViewModel spaceViewModel = new SpaceViewModel();;
 
 	@PostConstruct
 	public void init() {
-		this.spaceForm = new SpaceForm();
+		this.spaceViewModel = new SpaceViewModel();
 	}
 
-	public void createSpace() {
-
-		// Remplir les entités du modèle à partir du form
-		// save bdd
-
-		Long idSubscription = spaceDao.createSpace(spaceForm);
-
-		System.out.println("L'espace Fitness a été crée " + idSubscription);
-
-		// reset le form
-		spaceForm = new SpaceForm();
+	public String createSpace() {
+		spaceDao.createSpace(spaceViewModel.getSpace());
+		return "AccueilSalle";
 	}
 
-	public SpaceForm getSpaceForm() {
-		return spaceForm;
+	public SpaceViewModel getSpaceForm() {
+		return spaceViewModel;
 	}
 
-	public void setSpaceForm(SpaceForm spaceForm) {
-		this.spaceForm = spaceForm;
+	public void setSpaceForm(SpaceViewModel spaceForm) {
+		this.spaceViewModel = spaceForm;
 	}
 
 //	public String createSpace() {

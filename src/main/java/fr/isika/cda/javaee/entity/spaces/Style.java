@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Style {
@@ -11,20 +12,8 @@ public class Style {
 	@Id
 	@GeneratedValue
 	private Long id;
-
-	private String logo;
-
-	private String fitnessName;
-	private String color;
-	private String police;
-
-	public String getFitnessName() {
-		return fitnessName;
-	}
-
-	public void setFitnessName(String fitnessName) {
-		this.fitnessName = fitnessName;
-	}
+	private String backgroundColor;
+	private String navBarColor;
 
 	public Long getId() {
 		return id;
@@ -34,28 +23,20 @@ public class Style {
 		this.id = id;
 	}
 
-	public String getLogo() {
-		return logo;
+	public String getBackgroundColor() {
+		return backgroundColor;
 	}
 
-	public void setLogo(String logo) {
-		this.logo = logo;
+	public void setBackgroundColor(String backgroundColor) {
+		this.backgroundColor = backgroundColor;
 	}
 
-	public String getColor() {
-		return color;
+	public String getNavBarColor() {
+		return navBarColor;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public String getPolice() {
-		return police;
-	}
-
-	public void setPolice(String police) {
-		this.police = police;
+	public void setNavBarColor(String navBarColor) {
+		this.navBarColor = navBarColor;
 	}
 
 }
