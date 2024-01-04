@@ -26,6 +26,28 @@ public class User {
 //	@OneToOne
 //	private Schedulde schedulde;
 
+//******************************************************	
+	/**
+	 * Empty constructor for JEE.
+	 */
+	public User() {
+	}
+
+	/**
+	 * Constructor for UserControler and UserService
+	 * 
+	 * @param isActive
+	 */
+	public User(boolean isActive) {
+		this.setActive(isActive);
+		this.setProfile(new Profile());
+		this.setAccount(new Account());
+		this.getProfile().setCivility(new Civility());
+		this.getProfile().setAdress(new Address());
+		this.getProfile().setContact(new Contact());
+	}
+
+//******************************************************	
 	public Long getUserId() {
 		return userId;
 	}

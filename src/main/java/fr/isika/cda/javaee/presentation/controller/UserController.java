@@ -29,6 +29,9 @@ public class UserController {
 	@Inject
 	private IDaoUser userDao;
 
+	@Inject
+	private UserServices userSvc;
+
 	private UserViewModel userViewModel;
 
 	@PostConstruct
@@ -48,18 +51,13 @@ public class UserController {
 
 //***************************************
 	/**
-	 * Create a new user in the database using the UserviewModel.
+	 * Get the Creating user form using the UserviewModel, then call the UserService
+	 * to create a new user.
 	 * 
 	 * @return url (:String)
 	 */
 	public String createUser() {
-		System.out.println("***************");
-		User userToCreate = new User();
-		userToCreate.setProfile(new Profile());
-		userToCreate.getProfile().setCivility(new Civility());
-		userToCreate.getProfile().getCivility().setName(this.userViewModel.getName());
-		userToCreate.setActive(true);
-		userDao.createUser(userToCreate);
+		this.userSvc.createUser(userViewModel, userDao);
 		return "index";
 	}
 
