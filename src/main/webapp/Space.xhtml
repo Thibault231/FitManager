@@ -13,13 +13,20 @@
 	<ui:define name="content">
 		<h1>Ma Première Salle</h1>
 		<div id="1">
-			<h2>Details for Space ID: ${spaceId}</h2>
+			
+			<h2>Details for Space ID: #{spaceDetailsController.space.idSubscription}</h2>
 			<!-- Ajoutez ici les balises pour afficher les détails de la salle -->
+			
 			<!-- Par exemple, si vous avez des propriétés comme nom, adresse, etc. -->
-			<p>Nom de la salle: ${nomSalle}</p>
-			<p>Adresse: ${adresse}</p>
+			
+			<p>Nom de la salle: #{spaceDetailsController.space.name}</p>
+			<p>Siret: #{spaceDetailsController.space.administrative.siret}</p>
+			
 			<!-- Continuez avec d'autres détails de la salle -->
 		</div>
+		
+		<h:link outcome="AccueilPlateforme.xhtml" value="Accueil Plateforme"/>
+		
 	</ui:define>
 </ui:composition>
 </html>

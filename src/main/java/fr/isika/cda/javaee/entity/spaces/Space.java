@@ -21,6 +21,7 @@ public class Space {
 	@OneToOne
 	private Configuration configuration;
 
+	// FIXME : attention pourquoi dans Infos il y a aussi Configuration et Administrative et dans Space la même chose
 	@OneToOne
 	private Infos infos;
 
