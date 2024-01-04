@@ -1,10 +1,10 @@
 package fr.isika.cda.javaee.entity.users;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Max;
 
 @Entity
 public class Address {
