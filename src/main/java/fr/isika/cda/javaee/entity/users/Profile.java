@@ -1,21 +1,24 @@
 package fr.isika.cda.javaee.entity.users;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Profile {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long profileId;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Civility civility;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address adress;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Contact contact;
 
 	// Getter and setter

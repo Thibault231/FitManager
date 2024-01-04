@@ -3,15 +3,18 @@ package fr.isika.cda.javaee.entity.users;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Address {
 	@Id
 	@GeneratedValue
 	private Long adressId;
-
+	@NotNull
 	private String street;
 	private int zipCode;
+	@NotNull
 	private String city;
 
 //****************************************
