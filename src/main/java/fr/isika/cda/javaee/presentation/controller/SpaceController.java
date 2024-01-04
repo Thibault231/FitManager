@@ -1,9 +1,11 @@
 package fr.isika.cda.javaee.presentation.controller;
 
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
-import fr.isika.cda.javaee.dao.SpaceDao;
+import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceForm;
 
@@ -11,15 +13,15 @@ import fr.isika.cda.javaee.presentation.viewmodel.SpaceForm;
 public class SpaceController {
 
 	@Inject
-	private SpaceDao spaceDao;
+	private IDaoSpace spaceDao;
 	private SpaceForm spaceForm = new SpaceForm();;
 
-//	@PostConstruct
-//	public void init() {
-//		this.spaceForm = new SpaceForm();
-//	}
+	@PostConstruct
+	public void init() {
+		this.spaceForm = new SpaceForm();
+	}
 
-	public void registerSpace() {
+	public void createSpace() {
 
 		// Remplir les entités du modèle à partir du form
 		// save bdd

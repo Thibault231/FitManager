@@ -24,7 +24,7 @@ public class UserController {
 
 	@Inject
 	private UserServices userSvc;
-
+  
 	private UserViewModel userViewModel;
 
 	@PostConstruct
