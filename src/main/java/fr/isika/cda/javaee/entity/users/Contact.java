@@ -12,7 +12,7 @@ public class Contact {
 	@GeneratedValue
 	private Long contactId;
 	private String phoneNumber;
-	@NotNull
+	@NotNull(message = "L'adresse mail est requise")
 	private String email;
 
 	// Getters and setters

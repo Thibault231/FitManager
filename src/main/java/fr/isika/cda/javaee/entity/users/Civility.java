@@ -13,9 +13,9 @@ public class Civility {
 	@Id
 	@GeneratedValue
 	private Long civilityId;
-	@NotNull
+	@NotNull(message = "Le nom est requis")
 	private String name;
-	@NotNull
+	@NotNull(message = "Le prénom est requis")
 	private String forename;
 	private Date birthday;
 	private String sex;
