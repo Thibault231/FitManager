@@ -1,8 +1,11 @@
 package fr.isika.cda.javaee.dao;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.mail.Part;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
