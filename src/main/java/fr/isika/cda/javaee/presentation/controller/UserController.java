@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.presentation.controller;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,15 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+
 import fr.isika.cda.javaee.dao.IDaoUser;
-import fr.isika.cda.javaee.dao.UserDao;
-import fr.isika.cda.javaee.entity.users.Account;
-import fr.isika.cda.javaee.entity.users.Address;
-import fr.isika.cda.javaee.entity.users.Civility;
-import fr.isika.cda.javaee.entity.users.Contact;
-import fr.isika.cda.javaee.entity.users.Profile;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
@@ -25,9 +18,13 @@ import fr.isika.cda.javaee.services.UserServices;
 @ManagedBean
 @RequestScoped
 public class UserController {
-  
+
 	@Inject
 	private IDaoUser userDao;
+
+	@Inject
+	private UserServices userSvc;
+  
 	private UserViewModel userViewModel;
 
 	@PostConstruct
@@ -47,18 +44,13 @@ public class UserController {
 
 //***************************************
 	/**
-	 * Create a new user in the database using the UserviewModel.
+	 * Get the Creating user form using the UserviewModel, then call the UserService
+	 * to create a new user.
 	 * 
 	 * @return url (:String)
 	 */
 	public String createUser() {
-		System.out.println("***************");
-		User userToCreate = new User();
-		userToCreate.setProfile(new Profile());
-		userToCreate.getProfile().setCivility(new Civility());
-		userToCreate.getProfile().getCivility().setName(this.userViewModel.getName());
-		userToCreate.setActive(true);
-		userDao.createUser(userToCreate);
+		this.userSvc.createUser(userViewModel, userDao);
 		return "index";
 	}
 

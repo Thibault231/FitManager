@@ -24,7 +24,10 @@ public class UserDao implements IDaoUser {
 	@Override
 	public Long createUser(User userToCreate) {
 		em.persist(userToCreate.getProfile().getCivility());
+		em.persist(userToCreate.getProfile().getAdress());
+		em.persist(userToCreate.getProfile().getContact());
 		em.persist(userToCreate.getProfile());
+		em.persist(userToCreate.getAccount());
 		em.persist(userToCreate);
 		return userToCreate.getUserId();
 	}
