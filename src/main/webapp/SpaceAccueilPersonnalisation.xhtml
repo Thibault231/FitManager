@@ -6,18 +6,23 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" lang="fr">
 
+
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
-	<ui:define name="titleValue">Salles - Fit Manager</ui:define>
+	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
 	<ui:define name="content">
-		
-		<!-- Ici, contenu de la page d'accueil -->
-		<div class="container mt-3">
-		<!--  on ajoutera plus tard le contenu de la page comme les activités, les offres etc... -->
+
+		<div>
+			<h2>ACCEUIL</h2>
 		</div>
-</ui:define>
+		<div class="logo">
+			<h:graphicImage name="logo2.png" alt="logo" />
+		</div>
+		<h:form>
+			<h:outputLabel class="outputLabel">Logo :</h:outputLabel>
+			<h:inputText id="logoInput" size="15"
+				value="#{spaceController.spaceForm.logo}" />
+		</h:form>
+	</ui:define>
 </ui:composition>
 </html>
-
-
-
