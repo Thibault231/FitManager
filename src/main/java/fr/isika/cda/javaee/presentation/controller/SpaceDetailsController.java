@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.entity.spaces.Administrative;
+import fr.isika.cda.javaee.entity.spaces.Color;
 import fr.isika.cda.javaee.entity.spaces.Space;
 
 @Named
@@ -45,6 +46,7 @@ public class SpaceDetailsController implements Serializable {
 	}
 
 	public List<Space> getAllSpaces() {
+		String a = Color.getColorsTemplate().get("red");
 		return spaceDao.getAllSpace();
 	}
 
