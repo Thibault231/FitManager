@@ -23,16 +23,6 @@ public class UserServices {
 		userToCreate.setProfile(userViewModel.getUser().getProfile());
 		userToCreate.setAccount(userViewModel.getUser().getAccount());
 		userToCreate.getAccount().setLogin(userToCreate.getProfile().getContact().getEmail());
-		System.out.println("**********************" + userViewModel.getRole());
-		if (userViewModel.getRole() == 1) {
-			userToCreate.getAccount().setRole(Role.SuperAdmin);
-		} else if (userViewModel.getRole() == 2) {
-			userToCreate.getAccount().setRole(Role.Gestionnaire);
-		} else if (userViewModel.getRole() == 3) {
-			userToCreate.getAccount().setRole(Role.Coach);
-		} else {
-			userToCreate.getAccount().setRole(Role.Adherent);
-		}
 		return userDao.createUser(userToCreate);
 	}
 }
