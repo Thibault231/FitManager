@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -56,14 +57,16 @@
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput05"
 									placeholder="Email" required="true" size="20"
-									value="#{userController.userViewModel.user.profile.contact.email}" />
+									value="#{userController.userViewModel.user.account.login}" />
 								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
 							</div>
 
 							<div class="form-floating ">
-								<h:inputSecret class="form-control" id="floatingInput06"
-									placeholder="Mot de passe" required="true" size="5"
-									value="#{userController.userViewModel.user.account.password}" />
+								<p:password class="form-control" id="floatingInput06"
+									placeholder="Mot de passe" required="true" maxlength="12"
+									value="#{userController.userViewModel.user.account.password}">
+								<f:validateLength minimum="5" ></f:validateLength>
+								</p:password>
 								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 							</div>
 

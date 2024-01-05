@@ -1,13 +1,14 @@
 package fr.isika.cda.javaee.presentation.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
@@ -15,10 +16,16 @@ import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
+import fr.isika.cda.javaee.services.exceptions.UserExistsException;
 
-@ManagedBean
-@RequestScoped
-public class UserController {
+@Named
+@ViewScoped
+public class UserController implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8496614779097793938L;
 
 	@Inject
 	private IDaoUser userDao;
@@ -48,16 +55,21 @@ public class UserController {
 	 * Get the Creating user form using the UserviewModel, then call the UserService
 	 * to create a new user.<br/>
 	 * <b>Use this method for creating only manager</b>
-	 * 
-	 * @return url (:String)
 	 */
 	public String createManagerAccount() {
+
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
-		Long userToCreateId = userSvc.createUser(userViewModel, userDao);
-		if (userToCreateId != -1) {
+		Long userToCreateId;
+		try {
+			userToCreateId = userSvc.createUser(userViewModel);
 			logIn(userToCreateId);
+
+			// reset le view model
+			userViewModel = new UserViewModel();
+
 			return "ManagerDashBoard";
-		} else {
+		} catch (UserExistsException e) {
+			System.out.println("Exception : " + e.getMessage());
 			return "RegisterManagerForm";
 		}
 	}
