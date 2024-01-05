@@ -30,10 +30,10 @@ public class SpaceDao implements IDaoSpace {
 	}
 
 	@Override
-	public boolean deleteSpace(Long SpaceToDeleteIdSubscription) {
-		Space spaceTodelete = em.find(Space.class, SpaceToDeleteIdSubscription);
+	public boolean deleteSpace(Long SpaceToDeleteId) {
+		Space spaceTodelete = em.find(Space.class, SpaceToDeleteId);
 		if (spaceTodelete != null) {
-			em.remove(SpaceToDeleteIdSubscription);
+			em.remove(SpaceToDeleteId);
 			return true;
 		} else {
 			return false;

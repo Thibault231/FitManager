@@ -35,8 +35,9 @@ public class SpaceController {
 		this.spaceViewModel = spaceForm;
 	}
 
-	public String deleteSpace(Long spaceToDeleteIdSubscritption) {
-		spaceDao.deleteSpace(spaceToDeleteIdSubscritption);
+	public String deleteSpace(Long spaceToDeleteId) {
+		spaceDao.deleteSpace(spaceToDeleteId);
+
 		return "index";
 	}
 
@@ -45,8 +46,8 @@ public class SpaceController {
 		return spaceList;
 	}
 
-	public Space getSpace(Long spaceIdSubscritption) {
-		return spaceDao.getSpaceById(spaceIdSubscritption);
+	public Space getSpace(Long spaceId) {
+		return spaceDao.getSpaceById(spaceId);
 	}
 
 	public Space getSpace(String spaceName) {
