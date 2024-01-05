@@ -47,7 +47,6 @@ public class UserController implements Serializable {
 
 	public void setUserViewModel(UserViewModel userViewModel) {
 		this.userViewModel = userViewModel;
-
 	}
 
 //***************************************

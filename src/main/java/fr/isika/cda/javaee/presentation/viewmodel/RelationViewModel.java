@@ -11,6 +11,7 @@ public class RelationViewModel {
 	private Long spaceId;
 
 	public RelationViewModel() {
+		this.spaceId = null;
 		this.booking = new Booking();
 		this.planning = new Planning();
 		this.schedulde = new Schedulde();
@@ -48,5 +49,4 @@ public class RelationViewModel {
 	public void setSpaceId(Long spaceId) {
 		this.spaceId = spaceId;
 	}
-
 }

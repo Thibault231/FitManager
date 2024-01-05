@@ -46,10 +46,13 @@
 							</div>
 
 							<div class="form-floating">
+<!-- 								<p:outputLabel for="floatingInput04" value="Date de naissance" /> -->
+<!-- 								<p:datePicker id="floatingInput04" value="#{userController.userViewModel.user.profile.civility.birthday}" -->
+<!-- 									showIcon="true" /> -->
 								<h:inputText class="form-control" id="floatingInput04"
 									placeholder="Date de naissance" size="20"
 									value="#{userController.userViewModel.user.profile.civility.birthday}">
-									<f:convertDateTime pattern="dd-mm-yyyy" />
+									<f:convertDateTime pattern="dd/mm/yyyy" />
 								</h:inputText>
 								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 							</div>
@@ -62,10 +65,10 @@
 							</div>
 
 							<div class="form-floating ">
-								<p:password class="form-control" id="floatingInput06"
+								<p:password class="form-control" id="floatingInput06"  size="20"
 									placeholder="Mot de passe" required="true" maxlength="12"
 									value="#{userController.userViewModel.user.account.password}">
-								<f:validateLength minimum="5" ></f:validateLength>
+									<f:validateLength minimum="5"></f:validateLength>
 								</p:password>
 								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 							</div>

@@ -1,7 +1,10 @@
 package fr.isika.cda.javaee.dao.relations;
 
+import javax.ejb.Local;
+
 import fr.isika.cda.javaee.entity.relations.Planning;
 
+@Local
 public interface IPlanningDao {
 	/**
 	 * Add a new planning in the database.

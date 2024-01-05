@@ -16,16 +16,15 @@
 		<h:form>
 			<div>
 			<h4>Affichage de planning</h4>
-				<h:panelGrid columns="2">
-					<h:inputText class="form-control" id="floatingInput01"
-						placeholder="1" required="true" size="20"
-						value="#{}"/>
+
+					<h:inputText class="form-control" id="floatingInput01" placeholder="1" required="true" size="20" value="#{relationsController.relationViewModel.spaceId}"/>
 					<h:outputLabel class="outputLabel" for="floatingInput01">Id Planning</h:outputLabel>
-					<h:commandButton action="#{relationsController}"
+					<h:commandButton action="#{relationsController.printPlanning()}"
 						value="Afficher planning" />
-				</h:panelGrid>
+
 			</div>
 		</h:form>
+
 </ui:define>
 </ui:composition>
 </html>
