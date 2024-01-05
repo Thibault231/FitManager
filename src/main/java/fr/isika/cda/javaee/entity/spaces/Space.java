@@ -30,7 +30,7 @@ public class Space {
 	}
 
 	/**
-	 * Constructor for SpaceViewModel.
+	 * Constructor for SpaceViewModel and test.
 	 * 
 	 * @param isViewModel (:Boolean)
 	 */

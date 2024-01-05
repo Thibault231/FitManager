@@ -41,8 +41,8 @@ public class SpaceDao implements IDaoSpace {
 	}
 
 	@Override
-	public Space getSpaceByIdSubscription(Long spaceToGetIdSubscription) {
-		return em.find(Space.class, spaceToGetIdSubscription);
+	public Space getSpaceById(Long spaceToGetId) {
+		return em.find(Space.class, spaceToGetId);
 	}
 
 	// FIXME : attention il n'y plus de isActive dans Space !!!!
@@ -57,16 +57,4 @@ public class SpaceDao implements IDaoSpace {
 		return em.createQuery("SELECT u FROM Space u", Space.class).getResultList();
 	}
 
-	@Override
-	public Space getSpaceById(Long spaceId) {
-		return em.createQuery("SELECT u FROM Space u WHERE u.idSubscription = :spaceIdParam", Space.class)
-				.setParameter("spaceIdParam", spaceId).getSingleResult();
-	}
-
-	@Override
-	public Long saveSpaceAndRelations(Space space) {
-		// TODO
-		em.persist(space);
-		return space.getSpaceId();
-	}
 }

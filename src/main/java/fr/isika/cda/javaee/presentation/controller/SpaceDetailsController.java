@@ -56,14 +56,10 @@ public class SpaceDetailsController implements Serializable {
 
 	// A supprimer plus tard mais c'est pour créer un space de test
 	public void creerSpaceDeTest() {
-		Administrative a = new Administrative();
-		a.setSiret("10000");
-		a.setSiren("263-10000");
-
-		Space s = new Space();
-//		s.setName("test space");
-//		s.setAdministrative(a);
-
-		spaceDao.saveSpaceAndRelations(s);
+		Space s = new Space(true);
+		s.getInfos().getConfiguration().setFitnessName("SpaceTest");
+		s.getInfos().getAdministrative().setSiret("10000");
+		s.getInfos().getAdministrative().setSiren("236-10000");
+		spaceDao.createSpace(s);
 	}
 }

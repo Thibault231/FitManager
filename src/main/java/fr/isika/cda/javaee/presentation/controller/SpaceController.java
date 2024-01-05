@@ -54,7 +54,7 @@ public class SpaceController {
 	}
 
 	public Space getSpace(Long spaceIdSubscritption) {
-		return spaceDao.getSpaceByIdSubscription(spaceIdSubscritption);
+		return spaceDao.getSpaceById(spaceIdSubscritption);
 	}
 
 	public Space getSpace(String spaceName) {
