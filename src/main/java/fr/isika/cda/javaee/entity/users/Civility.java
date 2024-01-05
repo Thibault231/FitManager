@@ -16,10 +16,10 @@ public class Civility {
 	@GeneratedValue
 	private Long civilityId;
 	@NotNull(message = "Le nom est requis")
-	@Column(length = 100)
+	@Column(length = 50)
 	private String name;
 	@NotNull(message = "Le prénom est requis")
-	@Column(length = 200)
+	@Column(length = 50)
 	private String forename;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date birthday;
