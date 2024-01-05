@@ -26,6 +26,7 @@ public class SubscriptionController {
 		this.subscriptionViewModel = new SubscriptionViewModel();
 	}
 
+//*****************************************************************************
 	public String createSubscription() {
 		subscriptionDao.createSubscription(subscriptionViewModel.getSubscription());
 		return "ManagerDashBoard";
