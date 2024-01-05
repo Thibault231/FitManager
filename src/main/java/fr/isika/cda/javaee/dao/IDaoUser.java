@@ -2,10 +2,7 @@ package fr.isika.cda.javaee.dao;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
 import fr.isika.cda.javaee.entity.users.User;
-import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 
 public interface IDaoUser {
 	/**

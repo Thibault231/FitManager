@@ -1,20 +1,22 @@
 package fr.isika.cda.javaee.presentation.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.IDaoSubscription;
-import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
-import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 import fr.isika.cda.javaee.presentation.viewmodel.SubscriptionViewModel;
 
-@ManagedBean
-public class SubscriptionController {
+@Named
+@ViewScoped
+public class SubscriptionController implements Serializable {
+
+	private static final long serialVersionUID = 8496614779097793938L;
 
 	@Inject
 	private IDaoSubscription subscriptionDao;
@@ -26,8 +28,10 @@ public class SubscriptionController {
 		this.subscriptionViewModel = new SubscriptionViewModel();
 	}
 
+//*****************************************************************************
 	public String createSubscription() {
-		subscriptionDao.createSubscription(subscriptionViewModel.getSubscription());
+		Subscription subscriptionToCreate = subscriptionViewModel.getSubscription();
+		subscriptionDao.createSubscription(subscriptionToCreate);
 		return "ManagerDashBoard";
 	}
 

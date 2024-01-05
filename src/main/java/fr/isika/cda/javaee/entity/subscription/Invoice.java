@@ -1,7 +1,6 @@
 package fr.isika.cda.javaee.entity.subscription;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

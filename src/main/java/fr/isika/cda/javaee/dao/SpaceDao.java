@@ -6,10 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import fr.isika.cda.javaee.entity.spaces.Administrative;
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.entity.spaces.Style;
-import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 
 @Stateless
 public class SpaceDao implements IDaoSpace {

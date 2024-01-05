@@ -48,9 +48,11 @@ public class UserController implements Serializable {
 
 //***************************************
 	/**
-	 * Get the Creating user form using the UserviewModel, then call the UserService
-	 * to create a new user.<br/>
+	 * Get the Creating manager form using the UserviewModel, then call the
+	 * UserService to create a new user.<br/>
 	 * <b>Use this method for creating only manager</b>
+	 * 
+	 * @return url (:String)
 	 */
 	public String createManagerAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
@@ -66,6 +68,13 @@ public class UserController implements Serializable {
 		}
 	}
 
+	/**
+	 * Get the Creating coach form using the UserviewModel, then call the
+	 * UserService to create a new user.<br/>
+	 * <b>Use this method for creating only coach</b>
+	 * 
+	 * @return url (:String)
+	 */
 	public String createCoachAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Coach);
 		this.userViewModel.getUser().getAccount().setPassword("00000");
@@ -82,6 +91,13 @@ public class UserController implements Serializable {
 		}
 	}
 
+	/**
+	 * Get the Creating member form using the UserviewModel, then call the
+	 * UserService to create a new user.<br/>
+	 * <b>Use this method for creating only adherent</b>
+	 * 
+	 * @return url (:String)
+	 */
 	public String createAdherentAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Adherent);
 		Long userToCreateId;

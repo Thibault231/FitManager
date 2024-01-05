@@ -26,7 +26,7 @@
 			<ul>
 				<ui:repeat value="#{spaceDetailsController.getAllSpaces()}" var="space">
 					<li>
-						<h:commandLink action="#{spaceDetailsController.showSpaceDetails()}" value="#{space.name}">
+						<h:commandLink action="#{spaceDetailsController.showSpaceDetails()}" value="#{space.infos.configuration.fitnessName}">
 							
 							<!-- Attention au nom du paramètre car utilisé dans le controller -->
 							<f:param name="spaceId" value="#{space.spaceId}"/>

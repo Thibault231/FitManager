@@ -1,11 +1,14 @@
 package fr.isika.cda.javaee.dao;
 
 import java.util.List;
+
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 
+@Stateless
 public class SubscriptionDao implements IDaoSubscription {
 
 	@PersistenceContext
@@ -13,11 +16,7 @@ public class SubscriptionDao implements IDaoSubscription {
 
 	@Override
 	public Long createSubscription(Subscription subscriptionToCreate) {
-		em.persist(subscriptionToCreate.getPrice().getMonthlyPrice());
-		em.persist(subscriptionToCreate.getSubscriptionName());
-		em.persist(subscriptionToCreate.getDescription());
-		em.persist(subscriptionToCreate.getEngagement());
-		em.persist(subscriptionToCreate.getPromotion());
+		em.persist(subscriptionToCreate.getPrice());
 		em.persist(subscriptionToCreate);
 		return subscriptionToCreate.getSubscriptionId();
 	}
