@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FitManager:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>FitManager</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="FitManager.war">
+      <element id="artifact" artifact-name="FitManager:war exploded" />
+    </root>
+  </artifact>
+</component>
