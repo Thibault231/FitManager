@@ -7,7 +7,7 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
-	<ui:define name="titleValue">Register Manager - Fit Manager</ui:define>
+	<ui:define name="titleValue">Register Coach - Fit Manager</ui:define>
 	<ui:define name="content">
 
 		<main
@@ -60,13 +60,6 @@
 								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
 							</div>
 
-							<div class="form-floating ">
-								<h:inputSecret class="form-control" id="floatingInput06"
-									placeholder="Mot de passe" required="true" size="5"
-									value="#{userController.userViewModel.user.account.password}" />
-								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
-							</div>
-
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput07"
 									placeholder="Adresse" size="20"
@@ -87,16 +80,34 @@
 									value="#{userController.userViewModel.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 							</div>
+							<div class="form-floating ">
+								<h:inputText class="form-control" id="floatingInput06"
+									placeholder="Numéro matricule" required="true" size="5"
+									value="#{userController.userViewModel.user.account.administrativeDocument.registration}" />
+								<h:outputLabel class="outputLabel" for="floatingInput06">Numéro matricule</h:outputLabel>
+							</div>
 
+							<div class="field">
+								<h:outputLabel for="type" value="Document administratif" />
+								<h:selectOneMenu id="type"
+									value="#{userController.userViewModel.type}">
+									<f:selectItem itemLabel="Selectionnez un type de document"/>
+									<f:selectItem itemLabel="Diplôme" itemValue="0" />
+									<f:selectItem itemLabel="Pièce d'identité" itemValue="1" />
+									<f:selectItem itemLabel="Certificat médical" itemValue="2" />
+									<f:selectItem itemLabel="RIB" itemValue="3" />
+									<f:selectItem itemLabel="Autre" itemValue="4" />
+								</h:selectOneMenu>
+								<hr />
+							</div>
+							<h:commandButton class="btn btn-warning" value="Créer un compte coach"
+				action="#{userController.createCoachAccount()}" />
 
-							<h:commandButton class="btn btn-warning" value="Créer mon compte"
-								action="#{userController.createManagerAccount()}" />
-
-							<h:link class="text-center" outcome="ManagerDashBoard.xhtml">Annuler</h:link>
-						</div>
-					</div>
-				</h:form>
-				<!-- 	            <div class="field col-12 md:col-4"> -->
+			<h:link class="text-center" outcome="ManagerDashBoard.xhtml">Annuler</h:link>
+			</div>
+			</div>
+			</h:form>
+			<!-- 	            <div class="field col-12 md:col-4"> -->
 				<!-- 					<label id="form:j_idt306" class="ui-outputlabel ui-widget" for="form:button_input"> -->
 				<!-- 						<span class="ui-outputlabel-label">Button</span> -->
 				<!-- 					</label> -->
@@ -116,3 +127,5 @@
 	</ui:define>
 </ui:composition>
 </html>
+			
+			

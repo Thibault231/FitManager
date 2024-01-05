@@ -60,4 +60,12 @@ public class Account {
 		this.role = role;
 	}
 
+	public AdministrativeDocument getAdministrativeDocument() {
+		return administrativeDocument;
+	}
+
+	public void setAdministrativeDocument(AdministrativeDocument administrativeDocument) {
+		this.administrativeDocument = administrativeDocument;
+	}
+
 }

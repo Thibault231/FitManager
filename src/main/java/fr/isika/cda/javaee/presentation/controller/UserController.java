@@ -1,5 +1,6 @@
 package fr.isika.cda.javaee.presentation.controller;
 
+import java.text.Normalizer.Form;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.Role;
+import fr.isika.cda.javaee.entity.users.Type;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
@@ -55,6 +57,18 @@ public class UserController {
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
 		logIn(userSvc.createUser(userViewModel, userDao));
 		return "ManagerDashBoard";
+	}
+
+	public String createCoachAccount() {
+		this.userViewModel.getUser().getAccount().setRole(Role.Coach);
+		logIn(userSvc.createUser(userViewModel, userDao));
+		return "Test-CoachDashBoard";
+	}
+
+	public String createAdherentAccount() {
+		this.userViewModel.getUser().getAccount().setRole(Role.Adherent);
+		logIn(userSvc.createUser(userViewModel, userDao));
+		return "AdherentDashBoard";
 	}
 
 	/**
@@ -123,9 +137,18 @@ public class UserController {
 				fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
 				return "ManagerDashBoard";
 			} else {
-				message = "Mot de passe erroné. ";
-				fc.addMessage(null, new FacesMessage(message));
-				return "LoginForm";
+				User userToLogin = this.userDao.getUserByEmail(userViewModel.getEmail());
+				if (userToLog != null && userToLog.getAccount().getPassword().equals(userViewModel.getPassword())) {
+					fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
+					fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
+					fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
+					return "CoachDashBoard";
+
+				} else {
+					message = "Mot de passe erroné. ";
+					fc.addMessage(null, new FacesMessage(message));
+					return "LoginForm";
+				}
 			}
 		}
 	}

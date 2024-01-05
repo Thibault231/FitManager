@@ -50,6 +50,7 @@ public class User {
 		this.getProfile().setCivility(new Civility());
 		this.getProfile().setAdress(new Address());
 		this.getProfile().setContact(new Contact());
+		this.getAccount().setAdministrativeDocument(new AdministrativeDocument());
 	}
 
 //******************************************************	
