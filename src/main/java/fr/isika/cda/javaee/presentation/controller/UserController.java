@@ -75,6 +75,7 @@ public class UserController implements Serializable {
 			logIn(userToCreateId);
 			userViewModel = new UserViewModel();
 			return "Test-CoachDashBoard";
+
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
 			return "Test-RegisterCoach";
