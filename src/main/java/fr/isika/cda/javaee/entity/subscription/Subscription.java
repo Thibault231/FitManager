@@ -9,7 +9,6 @@ import fr.isika.cda.javaee.entity.spaces.Administrative;
 import fr.isika.cda.javaee.entity.spaces.Configuration;
 import fr.isika.cda.javaee.entity.spaces.Infos;
 import fr.isika.cda.javaee.entity.spaces.OnlineShop;
-import fr.isika.cda.javaee.entity.spaces.Planning;
 import fr.isika.cda.javaee.entity.spaces.Style;
 
 @Entity
@@ -27,18 +26,15 @@ public class Subscription {
 	@OneToOne
 	private Price price;
 
+//******************************************************
 	public Subscription() {
-
 	}
 
 	public Subscription(boolean isViewModel) {
-		this.getPrice();
-		this.getSubscriptionName();
-		this.getDescription();
-		this.getEngagement();
-		this.getEngagement();
+		this.setPrice(new Price());
 	}
 
+//******************************************************
 	public Long getSubscriptionId() {
 		return subscriptionId;
 	}

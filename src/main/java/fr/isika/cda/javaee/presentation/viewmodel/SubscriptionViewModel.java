@@ -8,10 +8,12 @@ public class SubscriptionViewModel {
 
 	private Subscription subscription;
 
+//******************************************************
 	public SubscriptionViewModel() {
 		this.subscription = new Subscription(true);
 	}
 
+//******************************************************
 	public Long getSubscriptionId() {
 		return subscriptionId;
 	}

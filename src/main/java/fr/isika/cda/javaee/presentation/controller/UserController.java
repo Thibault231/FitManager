@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.presentation.controller;
 
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.Role;
-import fr.isika.cda.javaee.entity.users.Type;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
@@ -24,9 +22,6 @@ import fr.isika.cda.javaee.services.UserServices;
 @ViewScoped
 public class UserController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8496614779097793938L;
 
 	@Inject
@@ -58,16 +53,12 @@ public class UserController implements Serializable {
 	 * <b>Use this method for creating only manager</b>
 	 */
 	public String createManagerAccount() {
-
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
 		Long userToCreateId;
 		try {
 			userToCreateId = userSvc.createUser(userViewModel, userDao);
 			logIn(userToCreateId);
-
-			// reset le view model
 			userViewModel = new UserViewModel();
-
 			return "ManagerDashBoard";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
@@ -77,14 +68,32 @@ public class UserController implements Serializable {
 
 	public String createCoachAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Coach);
-		logIn(userSvc.createUser(userViewModel, userDao));
-		return "Test-CoachDashBoard";
+		this.userViewModel.getUser().getAccount().setPassword("00000");
+		Long userToCreateId;
+		try {
+			userToCreateId = userSvc.createUser(userViewModel, userDao);
+			logIn(userToCreateId);
+			userViewModel = new UserViewModel();
+			return "Test-CoachDashBoard";
+
+		} catch (UserExistsException e) {
+			System.out.println("Exception : " + e.getMessage());
+			return "Test-RegisterCoach";
+		}
 	}
 
 	public String createAdherentAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Adherent);
-		logIn(userSvc.createUser(userViewModel, userDao));
-		return "AdherentDashBoard";
+		Long userToCreateId;
+		try {
+			userToCreateId = userSvc.createUser(userViewModel, userDao);
+			logIn(userToCreateId);
+			userViewModel = new UserViewModel();
+			return "Test-AdherentDashBoard";
+		} catch (UserExistsException e) {
+			System.out.println("Exception : " + e.getMessage());
+			return "index";
+		}
 	}
 
 	/**
@@ -153,18 +162,9 @@ public class UserController implements Serializable {
 				fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
 				return "ManagerDashBoard";
 			} else {
-				User userToLogin = this.userDao.getUserByEmail(userViewModel.getEmail());
-				if (userToLog != null && userToLog.getAccount().getPassword().equals(userViewModel.getPassword())) {
-					fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
-					fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
-					fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
-					return "CoachDashBoard";
-
-				} else {
-					message = "Mot de passe erroné. ";
-					fc.addMessage(null, new FacesMessage(message));
-					return "LoginForm";
-				}
+				message = "Mot de passe erroné. ";
+				fc.addMessage(null, new FacesMessage(message));
+				return "LoginForm";
 			}
 		}
 	}
