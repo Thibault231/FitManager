@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.presentation.controller;
 
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -58,16 +57,12 @@ public class UserController implements Serializable {
 	 * <b>Use this method for creating only manager</b>
 	 */
 	public String createManagerAccount() {
-
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
 		Long userToCreateId;
 		try {
 			userToCreateId = userSvc.createUser(userViewModel, userDao);
 			logIn(userToCreateId);
-
-			// reset le view model
 			userViewModel = new UserViewModel();
-
 			return "ManagerDashBoard";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
@@ -77,14 +72,30 @@ public class UserController implements Serializable {
 
 	public String createCoachAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Coach);
-		logIn(userSvc.createUser(userViewModel, userDao));
-		return "Test-CoachDashBoard";
+		Long userToCreateId;
+		try {
+			userToCreateId = userSvc.createUser(userViewModel, userDao);
+			logIn(userToCreateId);
+			userViewModel = new UserViewModel();
+			return "Test-CoachDashBoard";
+		} catch (UserExistsException e) {
+			System.out.println("Exception : " + e.getMessage());
+			return "Test-RegisterCoach";
+		}
 	}
 
 	public String createAdherentAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Adherent);
-		logIn(userSvc.createUser(userViewModel, userDao));
-		return "AdherentDashBoard";
+		Long userToCreateId;
+		try {
+			userToCreateId = userSvc.createUser(userViewModel, userDao);
+			logIn(userToCreateId);
+			userViewModel = new UserViewModel();
+			return "Test-AdherentDashBoard";
+		} catch (UserExistsException e) {
+			System.out.println("Exception : " + e.getMessage());
+			return "index";
+		}
 	}
 
 	/**
