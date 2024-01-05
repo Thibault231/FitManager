@@ -3,7 +3,6 @@ package fr.isika.cda.javaee.dao;
 import java.util.List;
 
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 
 public interface IDaoSpace {
 

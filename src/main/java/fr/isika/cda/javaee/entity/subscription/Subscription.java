@@ -5,12 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import fr.isika.cda.javaee.entity.spaces.Administrative;
-import fr.isika.cda.javaee.entity.spaces.Configuration;
-import fr.isika.cda.javaee.entity.spaces.Infos;
-import fr.isika.cda.javaee.entity.spaces.OnlineShop;
-import fr.isika.cda.javaee.entity.spaces.Style;
-
 @Entity
 public class Subscription {
 

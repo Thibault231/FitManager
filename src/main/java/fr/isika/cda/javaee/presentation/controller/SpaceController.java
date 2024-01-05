@@ -1,23 +1,27 @@
 package fr.isika.cda.javaee.presentation.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+
 import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 
-@ManagedBean
-public class SpaceController {
+@Named
+@ViewScoped
+public class SpaceController implements Serializable {
+
+	private static final long serialVersionUID = 8496614779097793938L;
 
 	@Inject
 	private IDaoSpace spaceDao;
 
 	private SpaceViewModel spaceViewModel = new SpaceViewModel();
-	
-	
 
 	@PostConstruct
 	public void init() {
@@ -56,5 +60,4 @@ public class SpaceController {
 		return spaceDao.getSpaceByName(spaceName);
 	}
 
-	
 }

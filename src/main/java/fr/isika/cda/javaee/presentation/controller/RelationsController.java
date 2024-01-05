@@ -16,6 +16,8 @@ import fr.isika.cda.javaee.presentation.viewmodel.RelationViewModel;
 @Named
 @ViewScoped
 public class RelationsController implements Serializable {
+	private static final long serialVersionUID = 8496614779097793938L;
+
 	@Inject
 	private IBookingDao bookingDao;
 	@Inject
