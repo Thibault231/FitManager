@@ -13,7 +13,6 @@ public class AdministrativeDocument {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long AdministrativeDocumentId;
-	private String link;
 	@Column(unique = true, nullable = false)
 	private int registration;
 	@Enumerated(EnumType.STRING)
@@ -37,16 +36,6 @@ public class AdministrativeDocument {
 		this.type = type;
 	}
 
-//	}
-	public String getLink() {
-		return link;
-	}
-
-	public void setLink(String link) {
-		this.link = link;
-
-	}
-
 	public int getRegistration() {
 		return registration;
 	}
@@ -57,9 +46,9 @@ public class AdministrativeDocument {
 
 	@Override
 	public String toString() {
-		return "AdministrativeDocument [AdministrativeDocumentId=" + AdministrativeDocumentId + ", link=" + link
+		return "AdministrativeDocument [AdministrativeDocumentId=" + AdministrativeDocumentId + ", link="
 				+ ", registration=" + registration + ", type=" + type + ", getType()=" + getType()
-				+ ", getAdministrativeDocumentId()=" + getAdministrativeDocumentId() + ", getLink()=" + getLink()
+				+ ", getAdministrativeDocumentId()=" + getAdministrativeDocumentId() + ", getLink()="
 				+ ", getRegistration()=" + getRegistration() + ", getClass()=" + getClass() + ", hashCode()="
 				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}

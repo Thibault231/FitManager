@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+
+	<ui:define name="titleValue">Account Adherent - Fit Manager</ui:define>
+	<ui:define name="content">
+
+		<main
+			class="border d-flex bg-primary-subtle text-emphasis-primary justify-content-center align-items-center"
+			style="height: 100vh; width: 100vw">
+			<div class="w-25">
+				<div class="text-center mb-4">
+					<h2>Fit Manager</h2>
+					<a>Design your fitness</a>
+
+				</div>
+				<h:form>
+					<div>
+						<div class="d-grid gap-2">
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput01"
+									placeholder="Nom" required="true" size="20"
+									value="#{userController.userViewModel.user.profile.civility.name}" />
+								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput02"
+									placeholder="Prénom" required="true" size="20"
+									value="#{userController.userViewModel.user.profile.civility.forename}" />
+								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput03"
+									placeholder="Sexe" size="20"
+									value="#{userController.userViewModel.user.profile.civility.sex}" />
+								<h:outputLabel class="outputLabel" for="floatingInput03">Sexe</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+<!-- 								<p:outputLabel for="floatingInput04" value="Date de naissance" /> -->
+<!-- 								<p:datePicker id="floatingInput04" value="#{userController.userViewModel.user.profile.civility.birthday}" -->
+<!-- 									showIcon="true" /> -->
+								<h:inputText class="form-control" id="floatingInput04"
+									placeholder="Date de naissance" size="20"
+									value="#{userController.userViewModel.user.profile.civility.birthday}">
+									<f:convertDateTime pattern="dd/mm/yyyy" />
+								</h:inputText>
+								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput05"
+									placeholder="Email" required="true" size="20"
+									value="#{userController.userViewModel.user.account.login}" />
+								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
+							</div>
+
+							<div class="form-floating ">
+								<p:password class="form-control" id="floatingInput06"  size="20"
+									placeholder="Mot de passe" required="true" maxlength="12"
+									value="#{userController.userViewModel.user.account.password}">
+									<f:validateLength minimum="5"></f:validateLength>
+								</p:password>
+								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput07"
+									placeholder="Adresse" size="20"
+									value="#{userController.userViewModel.user.profile.adress.street}" />
+								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput08"
+									placeholder="Code postal" size="20"
+									value="#{userController.userViewModel.user.profile.adress.zipCode}" />
+								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput09"
+									placeholder="Ville" size="20"
+									value="#{userController.userViewModel.user.profile.adress.city}" />
+								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+							</div>
+
+
+							<h:commandButton class="btn btn-warning" value="Créer mon compte"
+								action="#{userController.createAdherentAccount()}" />
+
+							<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
+						</div>
+					</div>
+				</h:form>
+			</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>

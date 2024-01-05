@@ -74,11 +74,11 @@ public class UserController implements Serializable {
 			userToCreateId = userSvc.createUser(userViewModel, userDao);
 			logIn(userToCreateId);
 			userViewModel = new UserViewModel();
-			return "Test-CoachDashBoard";
+			return "Test-CoachDashboard";
 
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
-			return "Test-RegisterCoach";
+			return "ManagerDashBoard";
 		}
 	}
 
@@ -89,7 +89,7 @@ public class UserController implements Serializable {
 			userToCreateId = userSvc.createUser(userViewModel, userDao);
 			logIn(userToCreateId);
 			userViewModel = new UserViewModel();
-			return "Test-AdherentDashBoard";
+			return "Test-AdherentDashboard";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
 			return "index";
