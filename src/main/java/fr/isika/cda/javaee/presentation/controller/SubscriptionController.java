@@ -30,7 +30,8 @@ public class SubscriptionController implements Serializable {
 
 //*****************************************************************************
 	public String createSubscription() {
-		subscriptionDao.createSubscription(subscriptionViewModel.getSubscription());
+		Subscription subscriptionToCreate = subscriptionViewModel.getSubscription();
+		subscriptionDao.createSubscription(subscriptionToCreate);
 		return "ManagerDashBoard";
 	}
 
