@@ -7,6 +7,7 @@ public class UserViewModel {
 	private String email;
 	private String password;
 	private User user;
+	private Type type;
 
 	public UserViewModel() {
 		this.user = new User(true);
@@ -35,7 +36,14 @@ public class UserViewModel {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
 
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
 	}
 
 }

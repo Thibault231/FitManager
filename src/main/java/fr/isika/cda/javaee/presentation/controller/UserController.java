@@ -68,6 +68,7 @@ public class UserController implements Serializable {
 
 	public String createCoachAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Coach);
+		this.userViewModel.getUser().getAccount().setPassword("00000");
 		Long userToCreateId;
 		try {
 			userToCreateId = userSvc.createUser(userViewModel, userDao);
@@ -160,18 +161,9 @@ public class UserController implements Serializable {
 				fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
 				return "ManagerDashBoard";
 			} else {
-				User userToLogin = this.userDao.getUserByEmail(userViewModel.getEmail());
-				if (userToLog != null && userToLog.getAccount().getPassword().equals(userViewModel.getPassword())) {
-					fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
-					fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
-					fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
-					return "CoachDashBoard";
-
-				} else {
-					message = "Mot de passe erroné. ";
-					fc.addMessage(null, new FacesMessage(message));
-					return "LoginForm";
-				}
+				message = "Mot de passe erroné. ";
+				fc.addMessage(null, new FacesMessage(message));
+				return "LoginForm";
 			}
 		}
 	}

@@ -56,7 +56,7 @@
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput05"
 									placeholder="Email" required="true" size="20"
-									value="#{userController.userViewModel.user.profile.contact.email}" />
+									value="#{userController.userViewModel.user.account.login}" />
 								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
 							</div>
 
@@ -90,8 +90,8 @@
 							<div class="field">
 								<h:outputLabel for="type" value="Document administratif" />
 								<h:selectOneMenu id="type"
-									value="#{userController.userViewModel.type}">
-									<f:selectItem itemLabel="Selectionnez un type de document"/>
+									value="#{userController.userViewModel.user.account.administrativeDocument.type}">
+									<f:selectItem itemLabel="Selectionnez un type de document" />
 									<f:selectItem itemLabel="Diplôme" itemValue="0" />
 									<f:selectItem itemLabel="Pièce d'identité" itemValue="1" />
 									<f:selectItem itemLabel="Certificat médical" itemValue="2" />
@@ -100,32 +100,17 @@
 								</h:selectOneMenu>
 								<hr />
 							</div>
-							<h:commandButton class="btn btn-warning" value="Créer un compte coach"
-				action="#{userController.createCoachAccount()}" />
+							<h:commandButton class="btn btn-warning"
+								value="Créer un compte coach"
+								action="#{userController.createCoachAccount()}" />
 
-			<h:link class="text-center" outcome="ManagerDashBoard.xhtml">Annuler</h:link>
-			</div>
-			</div>
-			</h:form>
-			<!-- 	            <div class="field col-12 md:col-4"> -->
-				<!-- 					<label id="form:j_idt306" class="ui-outputlabel ui-widget" for="form:button_input"> -->
-				<!-- 						<span class="ui-outputlabel-label">Button</span> -->
-				<!-- 					</label> -->
-				<!-- 					<span id="form:button" class="p-datepicker ui-calendar ui-trigger-calendar"> -->
-				<!-- 					<input id="form:button_input" name="form:button_input" type="text" class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker" aria-labelledby="form:j_idt306" data-p-label="Button"/> -->
-				<!-- 					<button type="button" class="ui-datepicker-trigger ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" tabindex="0"> -->
-				<!-- 						<span class="ui-button-icon-left ui-icon ui-icon-calendar"> -->
-				<!-- 						</span> -->
-				<!-- 						<span class="ui-button-text"> -->
-				<!-- 							ui-button -->
-				<!-- 						</span> -->
-				<!-- 					</button> -->
-				<!-- 					</span> -->
-				<!-- 				</div> -->
+							<h:link class="text-center" outcome="ManagerDashBoard.xhtml">Annuler</h:link>
+						</div>
+					</div>
+				</h:form>
 			</div>
 		</main>
 	</ui:define>
 </ui:composition>
 </html>
-			
-			
+
