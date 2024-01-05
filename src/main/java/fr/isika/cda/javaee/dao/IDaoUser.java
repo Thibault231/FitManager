@@ -32,7 +32,8 @@ public interface IDaoUser {
 	List<User> getAllUsers();
 
 	/**
-	 * Return a user from the database if it exists or null otherwise.
+	 * Return a user from the database, using it's email, if it exists or null
+	 * otherwise.
 	 * 
 	 * @param userToGetEmail (:String)
 	 * @return user to get (:User)
