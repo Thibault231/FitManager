@@ -8,10 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+
 import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.plateform.Machine;
 import fr.isika.cda.javaee.entity.plateform.Room;
+import fr.isika.cda.javaee.entity.relations.Planning;
+
 
 @Entity
 public class Space {
