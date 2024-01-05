@@ -19,7 +19,7 @@ public class Booking {
 	private Long bookingId;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar birthday;
+	private Calendar registrationDate;
 
 	@OneToOne
 	private User coach;
@@ -56,11 +56,11 @@ public class Booking {
 	}
 
 	public Calendar getBirthday() {
-		return birthday;
+		return registrationDate;
 	}
 
 	public void setBirthday(Calendar birthday) {
-		this.birthday = birthday;
+		this.registrationDate = birthday;
 	}
 
 	public ActivityTest getActivity() {
