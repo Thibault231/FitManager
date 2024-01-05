@@ -35,14 +35,6 @@ public class SpaceController {
 		this.spaceViewModel = spaceForm;
 	}
 
-//	public String createSpace() {
-//		Space spaceToCreate = new Space();
-//		spaceToCreate.setName(this.spaceForm.getName());
-//		spaceToCreate.getAdministrative().setSiren(this.spaceForm.getSiren());
-//		spaceDao.createSpace(spaceToCreate);
-//		return "index";
-//	}
-
 	public String deleteSpace(Long spaceToDeleteIdSubscritption) {
 		spaceDao.deleteSpace(spaceToDeleteIdSubscritption);
 		return "index";

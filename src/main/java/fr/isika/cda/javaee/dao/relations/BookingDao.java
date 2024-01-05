@@ -13,24 +13,12 @@ import fr.isika.cda.javaee.entity.relations.Schedulde;
 import fr.isika.cda.javaee.entity.users.User;
 
 @Stateless
-public class RelationsDao implements IRelationsDao {
+public class BookingDao implements IBookingDao {
 
 	@PersistenceContext
 	private EntityManager em;
 
 //*************************************************************
-	@Override
-	public Long createPlanning(Planning planningToCreate) {
-		em.persist(planningToCreate);
-		return planningToCreate.getPlanningId();
-	}
-
-	@Override
-	public Long createSchedulde(Schedulde scheduldeToCreate) {
-		em.persist(scheduldeToCreate);
-		return scheduldeToCreate.getScheduldeId();
-	}
-
 	@Override
 	public Long createBooking(Booking bookingToCreate) {
 		em.persist(bookingToCreate);
@@ -41,16 +29,6 @@ public class RelationsDao implements IRelationsDao {
 	@Override
 	public Booking getBookingingById(Long bookingId) {
 		return em.find(Booking.class, bookingId);
-	}
-
-	@Override
-	public Planning getPlanningById(Long planningId) {
-		return em.find(Planning.class, planningId);
-	}
-
-	@Override
-	public Schedulde getScheduldeById(Long scheduldeId) {
-		return em.find(Schedulde.class, scheduldeId);
 	}
 
 	@Override

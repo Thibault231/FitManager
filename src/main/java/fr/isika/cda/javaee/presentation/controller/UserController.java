@@ -53,8 +53,13 @@ public class UserController {
 	 */
 	public String createManagerAccount() {
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
-		logIn(userSvc.createUser(userViewModel, userDao));
-		return "ManagerDashBoard";
+		Long userToCreateId = userSvc.createUser(userViewModel, userDao);
+		if (userToCreateId != -1) {
+			logIn(userToCreateId);
+			return "ManagerDashBoard";
+		} else {
+			return "RegisterManagerForm";
+		}
 	}
 
 	/**

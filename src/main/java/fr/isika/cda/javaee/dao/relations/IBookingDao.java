@@ -7,41 +7,7 @@ import fr.isika.cda.javaee.entity.relations.Booking;
 import fr.isika.cda.javaee.entity.relations.Planning;
 import fr.isika.cda.javaee.entity.relations.Schedulde;
 
-public interface IRelationsDao {
-
-	/**
-	 * Add a new planning in the database.
-	 * 
-	 * @param planningToCreate (:Planning)
-	 * @return The Id of the created Planning (:Long)
-	 */
-	Long createPlanning(Planning planningToCreate);
-
-	/**
-	 * Return a specific Planning from the database if it exists or null otherwise,
-	 * using it's Id.
-	 * 
-	 * @param planningId (:Long)
-	 * @return the planning to get (:Planning)
-	 */
-	Planning getPlanningById(Long planningId);
-
-	/**
-	 * Add a new Schedulde in the database.
-	 * 
-	 * @param scheduldeToCreate (:Planning)
-	 * @return The Id of the created Schedulde (:Long)
-	 */
-	Long createSchedulde(Schedulde scheduldeToCreate);
-
-	/**
-	 * Return a specific Schedule from the database if it exists or null otherwise,
-	 * using it's Id.
-	 * 
-	 * @param scheduldeId (:Long)
-	 * @return the schedulde to get (:Schedulde)
-	 */
-	Schedulde getScheduldeById(Long scheduldeId);
+public interface IBookingDao {
 
 	/**
 	 * Add a new Booking in the database.
