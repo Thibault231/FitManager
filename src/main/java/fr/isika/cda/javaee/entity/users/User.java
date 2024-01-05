@@ -47,12 +47,13 @@ public class User {
 	 */
 	public User(boolean isActive) {
 		this.setActive(isActive);
-		this.setProfile(new Profile());
 		this.setAccount(new Account());
+		this.getAccount().setAdministrativeDocument(new AdministrativeDocument());
+		this.setProfile(new Profile());
 		this.getProfile().setCivility(new Civility());
 		this.getProfile().setAdress(new Address());
 		this.getProfile().setContact(new Contact());
-		this.getAccount().setAdministrativeDocument(new AdministrativeDocument());
+
 	}
 
 //******************************************************	

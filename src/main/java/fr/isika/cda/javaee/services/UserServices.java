@@ -1,7 +1,6 @@
 package fr.isika.cda.javaee.services;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.User;
@@ -20,7 +19,7 @@ public class UserServices {
 	 */
 	public Long createUser(UserViewModel userViewModel, IDaoUser userDao) throws UserExistsException {
 		User previousManager = userDao.getUserByEmail(userViewModel.getUser().getAccount().getLogin());
-		// N'existe pas
+
 		if (previousManager == null) {
 			User userToCreate = new User(true);
 			userToCreate.setProfile(userViewModel.getUser().getProfile());

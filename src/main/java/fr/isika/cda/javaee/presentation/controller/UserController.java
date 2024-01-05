@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.Role;
-import fr.isika.cda.javaee.entity.users.Type;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
@@ -23,9 +22,6 @@ import fr.isika.cda.javaee.services.UserServices;
 @ViewScoped
 public class UserController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8496614779097793938L;
 
 	@Inject
