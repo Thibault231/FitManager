@@ -15,7 +15,9 @@ public class SpaceController {
 	@Inject
 	private IDaoSpace spaceDao;
 
-	private SpaceViewModel spaceViewModel = new SpaceViewModel();;
+	private SpaceViewModel spaceViewModel = new SpaceViewModel();
+	
+	
 
 	@PostConstruct
 	public void init() {
@@ -54,4 +56,5 @@ public class SpaceController {
 		return spaceDao.getSpaceByName(spaceName);
 	}
 
+	
 }

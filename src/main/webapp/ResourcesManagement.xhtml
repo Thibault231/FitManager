@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui" lang="fr">
+
+    <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+
+        <ui:define name="titleValue">Resources Management - Fit Manager</ui:define>
+        <ui:define name="content">
+
+            <p:tabView>
+                <p:tab title="Activities">
+                    <p class="m-0">
+                        <h:form id="activityCreationForm">
+                            <div>
+                                <h:panelGrid columns="2">
+
+                                    <h:outputLabel class="outputLabel">Nom de l'activité :</h:outputLabel>
+                                    <h:inputText id="nameInput" size="15" value="#{activityController.activityForm.name}" />
+
+                                    <span></span>
+                                    <h:commandButton action="#{activityController.createActivity()}" value="Créer une activité" />
+
+                                </h:panelGrid>
+
+                                <p:dataTable var="activity" value="#{activityController.getAllActivities()}">
+                                    <p:column headerText="Name">
+                                        <h:outputText value="#{activity.name}" />
+                                    </p:column>
+
+                                    <p:column headerText="Action(s)">
+                                        <h:commandButton value="Modifier" />
+                                        <h:commandButton action="#{activityController.deleteActivity(activity.id)}" value="Supprimer" />
+                                    </p:column>
+
+                                </p:dataTable>
+
+                            </div>
+                        </h:form>
+                    </p>
+                </p:tab>
+                <p:tab title="Machines">
+                    <p class="m-0">
+                        <h:form id="machinesCreationForm">
+                            <div>
+                                <h:panelGrid columns="2">
+
+                                    <h:outputLabel class="outputLabel">Nom de la machine :</h:outputLabel>
+                                    <h:inputText id="nameInput" size="15"
+                                        value="#{machineController.machineForm.name}" />
+
+                                    <h:commandButton action="#{machineController.createMachine()}"
+                                        value="Créer une machine" />
+                                </h:panelGrid>
+                            </div>
+                        </h:form>
+                    </p>
+                </p:tab>
+                <p:tab title="Rooms">
+                    <p class="m-0">
+                        <h:form id="roomsCreationForm">
+                            <div>
+                                <h:panelGrid columns="2">
+
+                                    <h:outputLabel class="outputLabel">Nom de la salle :</h:outputLabel>
+                                    <h:inputText id="nameInput" size="15"
+                                        value="#{roomController.roomForm.name}" />
+
+                                    <h:commandButton action="#{roomController.createRoom()}"
+                                        value="Créer une salle" />
+                                </h:panelGrid>
+                            </div>
+                        </h:form>
+                    </p>
+                </p:tab>
+                <p:tab title="Courses">
+                    <p class="m-0">
+                        <h:form id="coursesCreationForm">
+                            <div>
+                                <h:panelGrid columns="2">
+
+                                    <h:outputLabel class="outputLabel">Nom du cours :</h:outputLabel>
+                                    <h:inputText id="nameInput" size="15"
+                                        value="#{courseController.courseForm.name}" />
+
+                                    <h:commandButton action="#{courseController.createCourse()}"
+                                        value="Créer un cours" />
+                                </h:panelGrid>
+                            </div>
+                        </h:form>
+                    </p>
+                </p:tab>
+            </p:tabView>
+
+        </ui:define>
+    </ui:composition>
+</html>

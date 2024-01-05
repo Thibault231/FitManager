@@ -1,11 +1,20 @@
 package fr.isika.cda.javaee.entity.spaces;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+
+import fr.isika.cda.javaee.entity.plateform.Activity;
+import fr.isika.cda.javaee.entity.plateform.Course;
+import fr.isika.cda.javaee.entity.plateform.Machine;
+import fr.isika.cda.javaee.entity.plateform.Room;
 import fr.isika.cda.javaee.entity.relations.Planning;
+
 
 @Entity
 public class Space {
@@ -22,6 +31,19 @@ public class Space {
 
 	@OneToOne
 	private Planning planning;
+	
+	@OneToMany
+	private List<Activity> activities;
+	
+	@OneToMany
+	private List<Course> courses;
+	
+	@OneToMany
+	private List<Machine> machines;
+	
+	@OneToMany
+	private List<Room> rooms;
+	
 
 //**************************************
 	/**
