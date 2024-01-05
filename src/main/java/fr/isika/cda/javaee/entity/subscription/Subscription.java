@@ -26,18 +26,15 @@ public class Subscription {
 	@OneToOne
 	private Price price;
 
+//******************************************************
 	public Subscription() {
-
 	}
 
 	public Subscription(boolean isViewModel) {
-		this.getPrice();
-		this.getSubscriptionName();
-		this.getDescription();
-		this.getEngagement();
-		this.getEngagement();
+		this.setPrice(new Price());
 	}
 
+//******************************************************
 	public Long getSubscriptionId() {
 		return subscriptionId;
 	}
