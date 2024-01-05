@@ -5,26 +5,35 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
+
+
+ 
+       
 	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
 	<ui:define name="content">
-
+	
+	 <!-- NavBAr -->
+ 	<div class="bg-light-subtle d-flex justify-content-around align-items-center w-100 navBar" style="position: fixed;
+  top: 0px; z-index:9999">
+         
 		<c:if test="${'#{sessionScope.login}'}">
 	  <h1>Welcome to Java EE <h:outputText value="#{sessionScope.login}"/> !!!!!!</h1>
 	</c:if>
 	<c:otherwise>
 	 	<h1>Welcome to Java EE !</h1>
 	</c:otherwise>
-	<hr align="center" width="80%" />
 	
-	<h:link outcome="LoginForm.xhtml">Se connecter</h:link><br/>
-	<h:link outcome="ManagerDashBoard.xhtml">Mon compte gestionnaire</h:link><br/>
-	<h:link outcome="RegisterManagerForm.xhtml">Créer un compte Gestionnaire</h:link><br/>
-	<h:link outcome="CreateSpaceForm.xhtml">Créer un espace fitness</h:link><br/>
+	<div class="d-flex w-75 justify-content-evenly ">
+	<h:link outcome="LoginForm.xhtml">Se connecter</h:link>
+	<h:link outcome="ManagerDashBoard.xhtml">Mon compte gestionnaire</h:link>
+	<h:link outcome="RegisterManagerForm.xhtml">Créer un compte Gestionnaire</h:link>
+	<h:link outcome="CreateSpaceForm.xhtml">Créer un espace fitness</h:link>
+	</div>
 
-	</ui:define>
+	
+	 </div>
 	
 	
-	<ui:define name="content" >
 	
 	 <div class="p-5">
 
@@ -122,5 +131,7 @@
         </div>
 	
 	
+
 	</ui:define>
+
 </ui:composition>
