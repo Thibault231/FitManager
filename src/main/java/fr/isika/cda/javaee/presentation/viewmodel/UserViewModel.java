@@ -1,5 +1,6 @@
 package fr.isika.cda.javaee.presentation.viewmodel;
 
+import fr.isika.cda.javaee.entity.users.Type;
 import fr.isika.cda.javaee.entity.users.User;
 
 public class UserViewModel {
@@ -34,6 +35,7 @@ public class UserViewModel {
 
 	public void setPassword(String password) {
 		this.password = password;
+
 	}
 
 }
