@@ -11,4 +11,12 @@ public class ActivityTest {
 	@GeneratedValue
 	private Long activityId;
 
+	public Long getActivityId() {
+		return activityId;
+	}
+
+	public void setActivityId(Long activityId) {
+		this.activityId = activityId;
+	}
+
 }
