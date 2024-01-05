@@ -12,6 +12,7 @@ public class UserViewModel {
 		this.user = new User(true);
 	}
 
+//**********************************
 	public User getUser() {
 		return user;
 	}
@@ -36,7 +37,5 @@ public class UserViewModel {
 		this.password = password;
 
 	}
-
-//**********************************
 
 }
