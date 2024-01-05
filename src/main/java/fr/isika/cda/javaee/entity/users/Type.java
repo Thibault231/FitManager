@@ -4,6 +4,6 @@ import javax.persistence.Entity;
 
 public enum Type {
 
-	Diploma, Id, MedicalCertificate, BankDetails;
+	Diploma, Id, MedicalCertificate, BankDetails, Other
 
 }

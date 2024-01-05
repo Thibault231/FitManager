@@ -37,6 +37,7 @@ public class SpaceController {
 
 	public String deleteSpace(Long spaceToDeleteId) {
 		spaceDao.deleteSpace(spaceToDeleteId);
+
 		return "index";
 	}
 

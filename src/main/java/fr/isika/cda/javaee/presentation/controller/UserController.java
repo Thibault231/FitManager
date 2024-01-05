@@ -1,24 +1,33 @@
 package fr.isika.cda.javaee.presentation.controller;
 
+
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.Role;
+import fr.isika.cda.javaee.entity.users.Type;
 import fr.isika.cda.javaee.entity.users.User;
+import fr.isika.cda.javaee.exceptions.UserExistsException;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
 
-@ManagedBean
-@RequestScoped
-public class UserController {
+@Named
+@ViewScoped
+public class UserController implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8496614779097793938L;
 
 	@Inject
 	private IDaoUser userDao;
@@ -40,7 +49,6 @@ public class UserController {
 
 	public void setUserViewModel(UserViewModel userViewModel) {
 		this.userViewModel = userViewModel;
-
 	}
 
 //***************************************
@@ -48,13 +56,35 @@ public class UserController {
 	 * Get the Creating user form using the UserviewModel, then call the UserService
 	 * to create a new user.<br/>
 	 * <b>Use this method for creating only manager</b>
-	 * 
-	 * @return url (:String)
 	 */
 	public String createManagerAccount() {
+
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
+		Long userToCreateId;
+		try {
+			userToCreateId = userSvc.createUser(userViewModel, userDao);
+			logIn(userToCreateId);
+
+			// reset le view model
+			userViewModel = new UserViewModel();
+
+			return "ManagerDashBoard";
+		} catch (UserExistsException e) {
+			System.out.println("Exception : " + e.getMessage());
+			return "RegisterManagerForm";
+		}
+	}
+
+	public String createCoachAccount() {
+		this.userViewModel.getUser().getAccount().setRole(Role.Coach);
 		logIn(userSvc.createUser(userViewModel, userDao));
-		return "ManagerDashBoard";
+		return "Test-CoachDashBoard";
+	}
+
+	public String createAdherentAccount() {
+		this.userViewModel.getUser().getAccount().setRole(Role.Adherent);
+		logIn(userSvc.createUser(userViewModel, userDao));
+		return "AdherentDashBoard";
 	}
 
 	/**
@@ -123,9 +153,18 @@ public class UserController {
 				fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
 				return "ManagerDashBoard";
 			} else {
-				message = "Mot de passe erroné. ";
-				fc.addMessage(null, new FacesMessage(message));
-				return "LoginForm";
+				User userToLogin = this.userDao.getUserByEmail(userViewModel.getEmail());
+				if (userToLog != null && userToLog.getAccount().getPassword().equals(userViewModel.getPassword())) {
+					fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
+					fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
+					fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
+					return "CoachDashBoard";
+
+				} else {
+					message = "Mot de passe erroné. ";
+					fc.addMessage(null, new FacesMessage(message));
+					return "LoginForm";
+				}
 			}
 		}
 	}

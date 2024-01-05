@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -8,7 +7,7 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
-	<ui:define name="titleValue">Register Manager - Fit Manager</ui:define>
+	<ui:define name="titleValue">Register Coach - Fit Manager</ui:define>
 	<ui:define name="content">
 
 		<main
@@ -46,13 +45,10 @@
 							</div>
 
 							<div class="form-floating">
-<!-- 								<p:outputLabel for="floatingInput04" value="Date de naissance" /> -->
-<!-- 								<p:datePicker id="floatingInput04" value="#{userController.userViewModel.user.profile.civility.birthday}" -->
-<!-- 									showIcon="true" /> -->
 								<h:inputText class="form-control" id="floatingInput04"
 									placeholder="Date de naissance" size="20"
 									value="#{userController.userViewModel.user.profile.civility.birthday}">
-									<f:convertDateTime pattern="dd/mm/yyyy" />
+									<f:convertDateTime pattern="dd-mm-yyyy" />
 								</h:inputText>
 								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 							</div>
@@ -60,17 +56,8 @@
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput05"
 									placeholder="Email" required="true" size="20"
-									value="#{userController.userViewModel.user.account.login}" />
+									value="#{userController.userViewModel.user.profile.contact.email}" />
 								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
-							</div>
-
-							<div class="form-floating ">
-								<p:password class="form-control" id="floatingInput06"  size="20"
-									placeholder="Mot de passe" required="true" maxlength="12"
-									value="#{userController.userViewModel.user.account.password}">
-									<f:validateLength minimum="5"></f:validateLength>
-								</p:password>
-								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
@@ -93,16 +80,34 @@
 									value="#{userController.userViewModel.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 							</div>
+							<div class="form-floating ">
+								<h:inputText class="form-control" id="floatingInput06"
+									placeholder="Numéro matricule" required="true" size="5"
+									value="#{userController.userViewModel.user.account.administrativeDocument.registration}" />
+								<h:outputLabel class="outputLabel" for="floatingInput06">Numéro matricule</h:outputLabel>
+							</div>
 
+							<div class="field">
+								<h:outputLabel for="type" value="Document administratif" />
+								<h:selectOneMenu id="type"
+									value="#{userController.userViewModel.type}">
+									<f:selectItem itemLabel="Selectionnez un type de document"/>
+									<f:selectItem itemLabel="Diplôme" itemValue="0" />
+									<f:selectItem itemLabel="Pièce d'identité" itemValue="1" />
+									<f:selectItem itemLabel="Certificat médical" itemValue="2" />
+									<f:selectItem itemLabel="RIB" itemValue="3" />
+									<f:selectItem itemLabel="Autre" itemValue="4" />
+								</h:selectOneMenu>
+								<hr />
+							</div>
+							<h:commandButton class="btn btn-warning" value="Créer un compte coach"
+				action="#{userController.createCoachAccount()}" />
 
-							<h:commandButton class="btn btn-warning" value="Créer mon compte"
-								action="#{userController.createManagerAccount()}" />
-
-							<h:link class="text-center" outcome="ManagerDashBoard.xhtml">Annuler</h:link>
-						</div>
-					</div>
-				</h:form>
-				<!-- 	            <div class="field col-12 md:col-4"> -->
+			<h:link class="text-center" outcome="ManagerDashBoard.xhtml">Annuler</h:link>
+			</div>
+			</div>
+			</h:form>
+			<!-- 	            <div class="field col-12 md:col-4"> -->
 				<!-- 					<label id="form:j_idt306" class="ui-outputlabel ui-widget" for="form:button_input"> -->
 				<!-- 						<span class="ui-outputlabel-label">Button</span> -->
 				<!-- 					</label> -->
@@ -122,3 +127,5 @@
 	</ui:define>
 </ui:composition>
 </html>
+			
+			

@@ -1,13 +1,12 @@
 package fr.isika.cda.javaee.entity.users;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class AdministrativeDocument {
@@ -15,6 +14,8 @@ public class AdministrativeDocument {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long AdministrativeDocumentId;
 	private String link;
+	@Column(unique = true, nullable = false)
+	private int registration;
 	@Enumerated(EnumType.STRING)
 	private Type type;
 
@@ -43,14 +44,24 @@ public class AdministrativeDocument {
 
 	public void setLink(String link) {
 		this.link = link;
+
+	}
+
+	public int getRegistration() {
+		return registration;
+	}
+
+	public void setRegistration(int registration) {
+		this.registration = registration;
 	}
 
 	@Override
 	public String toString() {
-		return "AdministrativeDocument [AdministrativeDocumentId=" + AdministrativeDocumentId + ", type=" + type
-				+ ", link=" + link + ", getType()=" + getType() + ", getAdministrativeDocumentId()="
-				+ getAdministrativeDocumentId() + ", getLink()=" + getLink() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return "AdministrativeDocument [AdministrativeDocumentId=" + AdministrativeDocumentId + ", link=" + link
+				+ ", registration=" + registration + ", type=" + type + ", getType()=" + getType()
+				+ ", getAdministrativeDocumentId()=" + getAdministrativeDocumentId() + ", getLink()=" + getLink()
+				+ ", getRegistration()=" + getRegistration() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 }

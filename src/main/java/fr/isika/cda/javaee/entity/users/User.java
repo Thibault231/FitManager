@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import fr.isika.cda.javaee.entity.relations.Schedulde;
+
 @Entity
 public class User {
 
@@ -27,9 +29,9 @@ public class User {
 
 //	@OneToOne
 //	private Sell sell;
-//	
-//	@OneToOne
-//	private Schedulde schedulde;
+
+	@OneToOne
+	private Schedulde schedulde;
 
 //******************************************************	
 	/**
@@ -50,6 +52,7 @@ public class User {
 		this.getProfile().setCivility(new Civility());
 		this.getProfile().setAdress(new Address());
 		this.getProfile().setContact(new Contact());
+		this.getAccount().setAdministrativeDocument(new AdministrativeDocument());
 	}
 
 //******************************************************	
@@ -83,6 +86,14 @@ public class User {
 
 	public void setProfile(Profile profile) {
 		this.profile = profile;
+	}
+
+	public Schedulde getSchedulde() {
+		return schedulde;
+	}
+
+	public void setSchedulde(Schedulde schedulde) {
+		this.schedulde = schedulde;
 	}
 
 	@Override
