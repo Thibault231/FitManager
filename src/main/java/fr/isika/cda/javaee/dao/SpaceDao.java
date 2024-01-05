@@ -63,10 +63,4 @@ public class SpaceDao implements IDaoSpace {
 				.setParameter("spaceIdParam", spaceId).getSingleResult();
 	}
 
-	@Override
-	public Long saveSpaceAndRelations(Space space) {
-		// TODO
-		em.persist(space);
-		return space.getSpaceId();
-	}
 }

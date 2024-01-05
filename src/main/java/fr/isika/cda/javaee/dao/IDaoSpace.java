@@ -14,8 +14,6 @@ public interface IDaoSpace {
 	 */
 	Long createSpace(Space spaceToCreate);
 
-	Long saveSpaceAndRelations(Space space);
-
 	boolean deleteSpace(Long SpaceToDeleteIdSubscription);
 
 	Space getSpaceByIdSubscription(Long spaceToGetIdSubscription);
