@@ -1,14 +1,14 @@
-package fr.isika.cda.javaee.entity.spaces;
+package fr.isika.cda.javaee.entity.relations;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Planning {
-	
+public class ActivityTest {
+
 	@Id
 	@GeneratedValue
-	private Long id; 
+	private Long activityId;
 
 }

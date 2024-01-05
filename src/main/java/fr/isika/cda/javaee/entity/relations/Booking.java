@@ -1,7 +1,6 @@
 package fr.isika.cda.javaee.entity.relations;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +26,9 @@ public class Booking {
 
 	@OneToOne
 	private User member;
+
+	@OneToOne
+	private ActivityTest activity;
 
 //***********************************************	
 	public Long getBookingId() {
@@ -61,7 +63,12 @@ public class Booking {
 		this.birthday = birthday;
 	}
 
-//	@OneToOne
-//	private Activity activity;
+	public ActivityTest getActivity() {
+		return activity;
+	}
+
+	public void setActivity(ActivityTest activity) {
+		this.activity = activity;
+	}
 
 }

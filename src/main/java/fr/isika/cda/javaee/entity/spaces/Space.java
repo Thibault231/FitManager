@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import fr.isika.cda.javaee.entity.relations.Planning;
+
 @Entity
 public class Space {
 
