@@ -21,6 +21,7 @@ public class Account {
 	@NotNull
 	private String login;
 	@NotNull
+	@Size(min = 5, max = 12)
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -58,6 +59,14 @@ public class Account {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public AdministrativeDocument getAdministrativeDocument() {
+		return administrativeDocument;
+	}
+
+	public void setAdministrativeDocument(AdministrativeDocument administrativeDocument) {
+		this.administrativeDocument = administrativeDocument;
 	}
 
 }

@@ -4,16 +4,10 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
-import fr.isika.cda.javaee.entity.users.Account;
-import fr.isika.cda.javaee.entity.users.Address;
-import fr.isika.cda.javaee.entity.users.Civility;
-import fr.isika.cda.javaee.entity.users.Contact;
-import fr.isika.cda.javaee.entity.users.Profile;
 import fr.isika.cda.javaee.entity.users.User;
-import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 
 @Stateless
 public class UserDao implements IDaoUser {
@@ -50,22 +44,23 @@ public class UserDao implements IDaoUser {
 
 	@Override
 	public User getUserByEmail(String userToGetEmail) {
-		Account account = (Account) em.createQuery("SELECT u FROM Account u WHERE u.login = :login")
-				.setParameter("login", userToGetEmail).getSingleResult();
-		if (account != null) {
-			User userToGet = (User) em.createQuery("SELECT u FROM User u WHERE u.account = :account")
-					.setParameter("account", account).getSingleResult();
-			return userToGet;
-		} else {
+		// @formatter:off
+		try {
+			User user = em
+					.createQuery("SELECT u FROM User u WHERE u.account.login = :login", User.class)
+					.setParameter("login", userToGetEmail)
+					.getSingleResult();
+			return user;
+		} catch(NoResultException ex) {
 			return null;
 		}
+
+		// @formatter:on
 	}
 
 	@Override
 	public List<User> getAllUsers() {
-		Query queryOne = em.createQuery("SELECT u FROM User u WHERE u.isActive = 1");
-		List<User> usersList = queryOne.getResultList();
-		return usersList;
+		return em.createQuery("SELECT u FROM User u WHERE u.isActive = 1", User.class).getResultList();
 	}
 
 }
