@@ -2,10 +2,7 @@ package fr.isika.cda.javaee.dao.relations;
 
 import java.util.List;
 
-import fr.isika.cda.javaee.entity.relations.ActivityTest;
 import fr.isika.cda.javaee.entity.relations.Booking;
-import fr.isika.cda.javaee.entity.relations.Planning;
-import fr.isika.cda.javaee.entity.relations.Schedulde;
 
 public interface IBookingDao {
 
