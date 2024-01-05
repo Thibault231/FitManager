@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import fr.isika.cda.javaee.dao.relations.IBookingDao;
 import fr.isika.cda.javaee.dao.relations.IPlanningDao;
 import fr.isika.cda.javaee.dao.relations.IScheduldeDao;
-import fr.isika.cda.javaee.presentation.viewmodel.RelationViewmModel;
+import fr.isika.cda.javaee.presentation.viewmodel.RelationViewModel;
 
 @ManagedBean
 @RequestScoped
@@ -17,14 +17,12 @@ public class RelationsController {
 	private IBookingDao bookingDao;
 	@Inject
 	private IPlanningDao planningDao;
-	@Inject
-	private IScheduldeDao scheduldeDao;
 
-	private RelationViewmModel relationViewModel;
+	private RelationViewModel relationViewModel;
 
 	@PostConstruct
 	public void init() {
-		this.relationViewModel = new RelationViewmModel();
+		this.relationViewModel = new RelationViewModel();
 	}
 
 	public String createBooking() {
@@ -32,14 +30,11 @@ public class RelationsController {
 		return "TestRelation";
 	}
 
-	public String createPlanning() {
-		planningDao.createPlanning(relationViewModel.getPlanning());
+	public String getPlanning() {
+		for (int i = 0; i < 6; i++) {
+			planningDao.createPlanning(relationViewModel.getPlanning());
+		}
+		planningDao.getPlanningById(relationViewModel.getSpaceId());
 		return "TestRelation";
 	}
-
-	public String createSchedulde() {
-		scheduldeDao.createSchedulde(relationViewModel.getSchedulde());
-		return "TestRelation";
-	}
-
 }

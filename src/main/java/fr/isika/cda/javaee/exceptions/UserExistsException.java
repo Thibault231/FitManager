@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.services.exceptions;
+package fr.isika.cda.javaee.exceptions;
 
 public class UserExistsException extends Exception {
 

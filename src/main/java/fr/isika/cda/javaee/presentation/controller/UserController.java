@@ -14,9 +14,9 @@ import javax.servlet.http.HttpSession;
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
+import fr.isika.cda.javaee.exceptions.UserExistsException;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
-import fr.isika.cda.javaee.services.exceptions.UserExistsException;
 
 @Named
 @ViewScoped
@@ -61,7 +61,7 @@ public class UserController implements Serializable {
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
 		Long userToCreateId;
 		try {
-			userToCreateId = userSvc.createUser(userViewModel);
+			userToCreateId = userSvc.createUser(userViewModel, userDao);
 			logIn(userToCreateId);
 
 			// reset le view model

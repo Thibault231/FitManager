@@ -12,28 +12,17 @@
 	<ui:define name="content">
 		
 		<h1>Test des relations</h1>
+		
 		<h:form>
 			<div>
+			<h4>Affichage de planning</h4>
 				<h:panelGrid columns="2">
-
-					<h:outputLabel class="outputLabel">Nom de l'espace fitness :</h:outputLabel>
-					<h:inputText id="nameInput" size="15"
-						value="#{spaceController.spaceForm.space.infos.configuration.fitnessName}" />
-
-					<h:outputLabel class="outputLabel">Siret :</h:outputLabel>
-					<h:inputText id="siretInput" size="15"
-						value="#{spaceController.spaceForm.space.infos.administrative.siret}" />
-
-					<h:outputLabel class="outputLabel">Siren :</h:outputLabel>
-					<h:inputText id="sirenInput" size="15"
-						value="#{spaceController.spaceForm.space.infos.administrative.siren}" />
-
-					<h:outputLabel class="outputLabel">Logo :</h:outputLabel>
-					<h:inputText id="logoInput" size="15"
-						value="#{spaceController.spaceForm.space.infos.configuration.logo}" />
-
-					<h:commandButton action="#{spaceController.createSpace()}"
-						value="Créer mon espace" />
+					<h:inputText class="form-control" id="floatingInput01"
+						placeholder="1" required="true" size="20"
+						value="#{}"/>
+					<h:outputLabel class="outputLabel" for="floatingInput01">Id Planning</h:outputLabel>
+					<h:commandButton action="#{relationsController}"
+						value="Afficher planning" />
 				</h:panelGrid>
 			</div>
 		</h:form>
