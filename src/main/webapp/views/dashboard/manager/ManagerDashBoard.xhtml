@@ -436,17 +436,5 @@
 		<!-- Contenu spécifique du footer de la page -->
 		<h:outputText value="Mon Footer" />
 	</ui:define>
-	
-	<script>
-	 const menus = document.getElementById('menus');
-     menus.addEventListener('click',()=>{ menus.classList.toggle("desable"); })
-
-
-    const ctx1 = document.getElementById('ChartBar').getContext('2d');
-    const ctx2 = document.getElementById('Chartline').getContext('2d');
-
-    const Chartbar = chard(ctx1,'bar')
-    const Chartline = chard(ctx2,'line')
-	</script>
 
 </ui:composition>
