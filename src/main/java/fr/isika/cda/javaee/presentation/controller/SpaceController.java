@@ -18,7 +18,10 @@ import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Account;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
+import fr.isika.cda.javaee.exceptions.UserExistsException;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
+import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
+import fr.isika.cda.javaee.services.UserServices;
 
 @Named
 @ViewScoped
@@ -30,6 +33,8 @@ public class SpaceController implements Serializable {
 	private IDaoSpace spaceDao;
 	@Inject
 	private IDaoUser userDao;
+	@Inject
+	private UserServices userSvc;
 
 	private SpaceViewModel spaceViewModel = new SpaceViewModel();
 
@@ -80,6 +85,25 @@ public class SpaceController implements Serializable {
 				fc.addMessage(null, new FacesMessage(message));
 				return "SpaceLoginForm";
 			}
+		}
+	}
+
+	/**
+	 * Get the Creating member form using the UserviewModel, then call the
+	 * UserService to create a new user.<br/>
+	 * <b>Use this method for creating only adherent</b>
+	 * 
+	 * @return url (:String)
+	 */
+	public String createMemberAccount() {
+		this.spaceViewModel.getUser().getAccount().setRole(Role.Adherent);
+		Long userToCreateId;
+		try {
+			userToCreateId = userSvc.createUser(spaceViewModel.getUser());
+			return authenticateOnSpace();
+		} catch (UserExistsException e) {
+			System.out.println("Exception : " + e.getMessage());
+			return "RegisterMemberForm";
 		}
 	}
 

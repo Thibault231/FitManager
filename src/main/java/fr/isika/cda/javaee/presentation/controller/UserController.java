@@ -58,7 +58,7 @@ public class UserController implements Serializable {
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
 		Long userToCreateId;
 		try {
-			userToCreateId = userSvc.createUser(userViewModel, userDao);
+			userToCreateId = userSvc.createUser(userViewModel.getUser());
 			logIn(userToCreateId);
 			userViewModel = new UserViewModel();
 			return "ManagerDashBoard";
@@ -80,7 +80,7 @@ public class UserController implements Serializable {
 		this.userViewModel.getUser().getAccount().setPassword("00000");
 		Long userToCreateId;
 		try {
-			userToCreateId = userSvc.createUser(userViewModel, userDao);
+			userToCreateId = userSvc.createUser(userViewModel.getUser());
 			logIn(userToCreateId);
 			userViewModel = new UserViewModel();
 			return "Test-CoachDashboard";
@@ -88,27 +88,6 @@ public class UserController implements Serializable {
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
 			return "ManagerDashBoard";
-		}
-	}
-
-	/**
-	 * Get the Creating member form using the UserviewModel, then call the
-	 * UserService to create a new user.<br/>
-	 * <b>Use this method for creating only adherent</b>
-	 * 
-	 * @return url (:String)
-	 */
-	public String createAdherentAccount() {
-		this.userViewModel.getUser().getAccount().setRole(Role.Adherent);
-		Long userToCreateId;
-		try {
-			userToCreateId = userSvc.createUser(userViewModel, userDao);
-			logIn(userToCreateId);
-			userViewModel = new UserViewModel();
-			return "Test-AdherentDashboard";
-		} catch (UserExistsException e) {
-			System.out.println("Exception : " + e.getMessage());
-			return "index";
 		}
 	}
 
