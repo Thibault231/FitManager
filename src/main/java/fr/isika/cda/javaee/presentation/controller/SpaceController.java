@@ -98,11 +98,10 @@ public class SpaceController implements Serializable {
 	public String createCoachAccount() {
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Coach);
 		this.spaceViewModel.getUser().getAccount().setPassword("00000");
-		Long userToCreateId;
 		try {
-			userToCreateId = userSvc.createUser(spaceViewModel.getUser());
+			userSvc.createUser(spaceViewModel.getUser());
+			this.spaceViewModel.setUser(new User(true));
 			return "ManagerSpaceDashBoard";
-
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
 			return "RegisterCoachForm";
@@ -118,9 +117,8 @@ public class SpaceController implements Serializable {
 	 */
 	public String createMemberAccount() {
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Adherent);
-		Long userToCreateId;
 		try {
-			userToCreateId = userSvc.createUser(spaceViewModel.getUser());
+			userSvc.createUser(spaceViewModel.getUser());
 			return authenticateOnSpace();
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
