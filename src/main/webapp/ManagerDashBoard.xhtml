@@ -40,6 +40,8 @@
 									outcome="CreateSpaceForm.xhtml"> Espace+ </h:link></li>
 							<li class="nav-item mb-2"><h:link class="dropdown-item"
 									outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link></li>
+							<li class="nav-item mb-2"><h:link class="dropdown-item"
+									outcome="ManagerSpacesList.xhtml">Mes espaces</h:link></li>
 						</ul>
 					</div>
 				</div>
@@ -64,11 +66,11 @@
 								<li><a class="dropdown-item" href="#">Paramètres</a></li>
 								<li><a class="dropdown-item" href="#">Profil</a></li>
 								<li><h:link class="dropdown-item"
-										outcome="Test-RegisterCoach.xhtml">Créer un compte coach</h:link></li>
+										outcome="RegisterCoachForm.xhtml">Créer un compte coach</h:link></li>
 								<li><hr class="dropdown-divider" /></li>
 								<li><h:form>
 										<h:commandLink class="dropdown-item"
-											action="#{userController.logout()}">Se connecter</h:commandLink>
+											action="#{userController.logout()}">Se déconnecter</h:commandLink>
 									</h:form></li>
 							</ul>
 						</div>
