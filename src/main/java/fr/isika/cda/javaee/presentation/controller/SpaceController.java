@@ -2,8 +2,10 @@ package fr.isika.cda.javaee.presentation.controller;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -23,14 +25,10 @@ public class SpaceController implements Serializable {
 
 	private SpaceViewModel spaceViewModel = new SpaceViewModel();
 
+//**********************************************************	
 	@PostConstruct
 	public void init() {
 		this.spaceViewModel = new SpaceViewModel();
-	}
-
-	public String createSpace() {
-		spaceDao.createSpace(spaceViewModel.getSpace());
-		return "AccueilSalle";
 	}
 
 	public SpaceViewModel getSpaceForm() {
@@ -41,22 +39,49 @@ public class SpaceController implements Serializable {
 		this.spaceViewModel = spaceForm;
 	}
 
+//**********************************************************	
+	public String createSpace() {
+		Long spaceId = spaceDao.createSpace(spaceViewModel.getSpace());
+
+		return "ManagerSpacesList";
+	}
+
+	/**
+	 * Get as param a space Id and return this space index view.
+	 * 
+	 * @return formated url (String)
+	 */
+	public String goToSpaceIndex() {
+		// 1 - Récupérer la valeur du param "spaceId"
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		Long spaceId = Long.valueOf(params.get("spaceId"));
+
+		// 2 - aller chercher l'objet Salle par cet id (en bdd)
+		spaceViewModel.setSpace(spaceDao.getSpaceById(spaceId));
+
+		// 3- Renseigne l'id de la salle dans la session.
+		FacesContext fc = FacesContext.getCurrentInstance();
+		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
+
+		return "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+	}
+
 	public String deleteSpace(Long spaceToDeleteId) {
 		spaceDao.deleteSpace(spaceToDeleteId);
 
 		return "index";
 	}
 
-	public List<Space> getAllActiveSpace() {
+	public List<Space> getAllActiveSpaces() {
 		List<Space> spaceList = spaceDao.getAllSpace();
 		return spaceList;
 	}
 
-	public Space getSpace(Long spaceId) {
+	public Space getSpaceById(Long spaceId) {
 		return spaceDao.getSpaceById(spaceId);
 	}
 
-	public Space getSpace(String spaceName) {
+	public Space getSpaceByName(String spaceName) {
 		return spaceDao.getSpaceByName(spaceName);
 	}
 

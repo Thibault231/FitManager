@@ -22,7 +22,7 @@ import fr.isika.cda.javaee.services.UserServices;
 @ViewScoped
 public class UserController implements Serializable {
 
-	private static final long serialVersionUID = 8496614779097793938L;
+	private static final long serialVersionUID = 8496614779097793939L;
 
 	@Inject
 	private IDaoUser userDao;

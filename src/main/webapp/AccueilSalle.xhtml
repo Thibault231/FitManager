@@ -16,18 +16,12 @@
  	<div class="bg-light-subtle d-flex justify-content-around align-items-center w-100 navBar" style="position: fixed;
   top: 0px; z-index:9999">
          
-	  <c:if test="${'#{sessionScope.name}'}">
-	    <h1>Welcome to Java EE <h:outputText value="#{sessionScope.name}"/> !!!!!!</h1>
-	  </c:if>
-	  <c:otherwise>
-	 	<h1>Welcome to Java EE !</h1>
-	  </c:otherwise>
+	    <h1>Salle avec ID: <h:outputText value="#{sessionScope.spaceId}"/> !!!!!!</h1>
 	
 	<div class="d-flex w-75 justify-content-evenly ">
 	<h:link outcome="LoginForm.xhtml">Se connecter</h:link>
-	<h:link outcome="ManagerDashBoard.xhtml">Mon compte gestionnaire</h:link>
-	<h:link outcome="RegisterManagerForm.xhtml">Créer un compte Gestionnaire</h:link>
-	<h:link outcome="CreateSpaceForm.xhtml">Créer un espace fitness</h:link>
+	
+
 	</div>
 
 	
