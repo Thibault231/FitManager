@@ -94,7 +94,8 @@
 									<f:selectItem itemLabel="Selectionnez un type de document" />
 									<f:selectItem itemLabel="Diplôme" itemValue="Diploma" />
 									<f:selectItem itemLabel="Pièce d'identité" itemValue="Id" />
-									<f:selectItem itemLabel="Certificat médical" itemValue="MedicalCertificate" />
+									<f:selectItem itemLabel="Certificat médical"
+										itemValue="MedicalCertificate" />
 									<f:selectItem itemLabel="RIB" itemValue="BankDetails" />
 									<f:selectItem itemLabel="Autre" itemValue="Other" />
 								</h:selectOneMenu>
@@ -104,7 +105,11 @@
 								value="Créer un compte coach"
 								action="#{spaceController.createCoachAccount()}" />
 
-							<h:link class="text-center" outcome="ManagerDashBoard.xhtml">Annuler</h:link>
+							<h:link class="text-center"
+								outcome="ManagerSpaceDashBoard"
+								value="ANNULER"/>
+								
+
 						</div>
 					</div>
 				</h:form>
