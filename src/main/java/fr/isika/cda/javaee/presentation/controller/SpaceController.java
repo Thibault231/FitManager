@@ -89,6 +89,27 @@ public class SpaceController implements Serializable {
 	}
 
 	/**
+	 * Get the Creating coach form using the UserviewModel, then call the
+	 * UserService to create a new user.<br/>
+	 * <b>Use this method for creating only coach</b>
+	 * 
+	 * @return url (:String)
+	 */
+	public String createCoachAccount() {
+		this.spaceViewModel.getUser().getAccount().setRole(Role.Coach);
+		this.spaceViewModel.getUser().getAccount().setPassword("00000");
+		Long userToCreateId;
+		try {
+			userToCreateId = userSvc.createUser(spaceViewModel.getUser());
+			return "ManagerSpaceDashBoard";
+
+		} catch (UserExistsException e) {
+			System.out.println("Exception : " + e.getMessage());
+			return "RegisterCoachForm";
+		}
+	}
+
+	/**
 	 * Get the Creating member form using the UserviewModel, then call the
 	 * UserService to create a new user.<br/>
 	 * <b>Use this method for creating only adherent</b>

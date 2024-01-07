@@ -8,7 +8,7 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
-	<ui:define name="titleValue">Test Relation - Fit Manager</ui:define>
+	<ui:define name="titleValue">Space : Calendar</ui:define>
 	<ui:define name="content">
 		
 		<h1>Test des relations</h1>
@@ -17,10 +17,7 @@
 			<div>
 			<h4>Affichage de planning</h4>
 
-					<h:inputText class="form-control" id="floatingInput01" placeholder="1" required="true" size="20" value="#{relationsController.relationViewModel.spaceId}"/>
-					<h:outputLabel class="outputLabel" for="floatingInput01">Id Planning</h:outputLabel>
-					<h:commandButton action="#{relationsController.printPlanning()}"
-						value="Afficher planning" />
+					
 
 			</div>
 		</h:form>

@@ -69,29 +69,6 @@ public class UserController implements Serializable {
 	}
 
 	/**
-	 * Get the Creating coach form using the UserviewModel, then call the
-	 * UserService to create a new user.<br/>
-	 * <b>Use this method for creating only coach</b>
-	 * 
-	 * @return url (:String)
-	 */
-	public String createCoachAccount() {
-		this.userViewModel.getUser().getAccount().setRole(Role.Coach);
-		this.userViewModel.getUser().getAccount().setPassword("00000");
-		Long userToCreateId;
-		try {
-			userToCreateId = userSvc.createUser(userViewModel.getUser());
-			logIn(userToCreateId);
-			userViewModel = new UserViewModel();
-			return "Test-CoachDashboard";
-
-		} catch (UserExistsException e) {
-			System.out.println("Exception : " + e.getMessage());
-			return "ManagerDashBoard";
-		}
-	}
-
-	/**
 	 * Delete a user from the database using it's Id.
 	 * 
 	 * @param userToDeleteId
