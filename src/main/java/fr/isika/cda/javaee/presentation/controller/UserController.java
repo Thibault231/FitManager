@@ -155,7 +155,8 @@ public class UserController implements Serializable {
 
 	/**
 	 * Authenticate a visitor from a login form and create a session object with
-	 * role and id.
+	 * role and id. <br/>
+	 * <b>Use this method for plateform only</b>
 	 * 
 	 * @return url (:String)
 	 */
