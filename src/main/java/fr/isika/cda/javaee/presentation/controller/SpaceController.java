@@ -105,7 +105,7 @@ public class SpaceController implements Serializable {
 		// 3- Renseigne l'id de la salle dans la session.
 		String viewToReturn = "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 
-		return logoutSpace(spaceId, viewToReturn);
+		return spaceLogOut(spaceId, viewToReturn);
 	}
 
 	public String deleteSpace(Long spaceToDeleteId) {
@@ -128,17 +128,22 @@ public class SpaceController implements Serializable {
 	}
 
 	/**
-	 * Logout a connected user on plateform and reload a session with only spaceId
-	 * parameter. <b> Use this method only for logout from plateform</b>
+	 * Return the view of a user dashboard, using it's role.
 	 * 
-	 * @return url (:String)
+	 * @param userRole (:Role ENUM)
+	 * @return url of the user dashboard (:String)
 	 */
-	public String logoutSpace(Long spaceId, String viewToReturn) {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		session.invalidate();
-		FacesContext fc = FacesContext.getCurrentInstance();
-		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
-		return viewToReturn;
+	public String redirectToRightDashBoard(Role userRole) {
+		if (userRole.equals(Role.Adherent)) {
+			return "Test-AdherentDashboard";
+		} else if (userRole.equals(Role.Coach)) {
+			return "Test-CoachDashboard";
+		} else if (userRole.equals(Role.Gestionnaire)) {
+			return "ManagerSpaceDashBoard";
+		} else {
+			Long spaceId = (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("spaceId");
+			return "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		}
 	}
 
 	/**
@@ -156,22 +161,17 @@ public class SpaceController implements Serializable {
 	}
 
 	/**
-	 * Return the view of a user dashboard, using it's role.
+	 * Logout a connected user on plateform and reload a session with only spaceId
+	 * parameter. <b> Use this method only for logout from plateform</b>
 	 * 
-	 * @param userRole (:Role ENUM)
-	 * @return url of the user dashboard (:String)
+	 * @return url (:String)
 	 */
-	public String redirectToRightDashBoard(Role userRole) {
-		if (userRole.equals(Role.Adherent)) {
-			return "Test-AdherentDashboard";
-		} else if (userRole.equals(Role.Coach)) {
-			return "Test-CoachDashboard";
-		} else if (userRole.equals(Role.Gestionnaire)) {
-			return "ManagerSpaceDashBoard";
-		} else {
-			Long spaceId = (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("spaceId");
-			return "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
-		}
+	public String spaceLogOut(Long spaceId, String viewToReturn) {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.invalidate();
+		FacesContext fc = FacesContext.getCurrentInstance();
+		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
+		return viewToReturn;
 	}
 
 }
