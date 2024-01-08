@@ -65,9 +65,4 @@ public class SpaceDao implements IDaoSpace {
 				.setParameter("spaceIdParam", currentSpaceId).getSingleResult();
 	}
 
-	@Override
-	public List<Space> getManagerSpaces(Long managerId) {
-		return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.userId = :managerIdParam",
-				Space.class).setParameter("managerIdParam", managerId).getResultList();
-	}
 }

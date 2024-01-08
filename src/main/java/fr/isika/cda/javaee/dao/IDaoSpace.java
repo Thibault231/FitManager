@@ -57,15 +57,6 @@ public interface IDaoSpace {
 	List<Space> getAllSpace();
 
 	/**
-	 * Return the list of all Spaces of the plateform linked to a specific manager,
-	 * using the manager's Id.
-	 * 
-	 * @param managerId
-	 * @return the list of spaces to get (:Lis<Space>)
-	 */
-	List<Space> getManagerSpaces(Long managerId);
-
-	/**
 	 * Update a modified Space.
 	 * 
 	 * @param userToUpdate (:User)

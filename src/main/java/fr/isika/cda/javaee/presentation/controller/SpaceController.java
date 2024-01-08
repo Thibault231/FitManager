@@ -145,8 +145,24 @@ public class SpaceController implements Serializable {
 		}
 	}
 
+	/**
+	 * Create a space and link it to it's manager creator.
+	 * 
+	 * @return url (String)
+	 */
 	public String createSpace() {
-		spaceDao.createSpace(spaceViewModel.getSpace());
+		// 1- Get manager
+		User createdUser = userDao.getUserByIdWithLinkedSpaces(SessionUtils.getUserIdFromSession());
+		// 2- Create then get the new space
+		Long createdSpaceId = spaceDao.createSpace(spaceViewModel.getSpace());
+		Space createdSpace = spaceDao.getSpaceWithMembers(createdSpaceId);
+		// 3-Link manager and new space as transient objects
+		createdSpace.getUsers().add(createdUser);
+		createdUser.getLinkedSpaces().add(createdSpace);
+		// 4- Persist manager and space links
+		spaceDao.updateSpace(createdSpace);
+		userDao.updateUser(createdUser);
+
 		return "ManagerSpacesList";
 	}
 
@@ -185,13 +201,27 @@ public class SpaceController implements Serializable {
 		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 
+	/**
+	 * Return the list of all the active spaces created on the plateform by all
+	 * manager.
+	 * 
+	 * @return the list of spaces (: List<Space>)
+	 */
 	public List<Space> getAllActiveSpaces() {
 		List<Space> spaceList = spaceDao.getAllSpace();
 		return spaceList;
 	}
 
+	/**
+	 * Return the list of all the active spaces created by a specific manager. <br/>
+	 * This method use the session parameters and so need the manager to be
+	 * connected.
+	 * 
+	 * @return the list of spaces (: List<Space>)
+	 */
 	public List<Space> getAllActiveSpacesOfManager() {
-		List<Space> spaceList = spaceDao.getManagerSpaces(SessionUtils.getUserIdFromSession());
+		List<Space> spaceList = userDao.getUserByIdWithLinkedSpaces(SessionUtils.getUserIdFromSession())
+				.getLinkedSpaces();
 		return spaceList;
 	}
 
