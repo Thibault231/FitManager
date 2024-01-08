@@ -107,12 +107,9 @@
 								</h:selectOneMenu>
 								<hr />
 								<h:outputLabel id="fileUploadLbl" class="outputLabel">File : </h:outputLabel>
-								<p:fileUpload listener="#{registerUserController.uploadFile}"
+								<p:fileUpload listener="#{spaceController.uploadAdministrativeDocument}"
 									styleClass="w-100" mode="advanced" dragDropSupport="false" />
-								<h:column>
-								<f:facet name="header">Document</f:facet>
-								<h:graphicImage library="documents" name="#{user.filePath}"/>
-								</h:column>
+								
 							</div>
 							<h:commandButton class="btn btn-warning"
 								value="Créer un compte coach"

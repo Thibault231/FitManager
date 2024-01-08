@@ -1,6 +1,8 @@
 package fr.isika.cda.javaee.presentation.controller;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
+
+import fr.isika.cda.javaee.FileUploadUtils;
 import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
@@ -37,12 +43,14 @@ public class SpaceController implements Serializable {
 
 	private SpaceViewModel spaceViewModel = new SpaceViewModel();
 
+	private UploadedFile uploadedFile;
+
 //**********************************************************	
 	@PostConstruct
 	public void init() {
 		this.spaceViewModel = new SpaceViewModel();
 	}
-  
+
 	public SpaceViewModel getSpaceForm() {
 		return spaceViewModel;
 	}
@@ -98,7 +106,7 @@ public class SpaceController implements Serializable {
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Coach);
 		this.spaceViewModel.getUser().getAccount().setPassword("00000");
 		try {
-			userSvc.createUser(spaceViewModel.getUser());
+			userSvc.createUser(spaceViewModel);
 			this.spaceViewModel.setUser(new User(true));
 			return "ManagerSpaceDashBoard";
 		} catch (UserExistsException e) {
@@ -117,7 +125,7 @@ public class SpaceController implements Serializable {
 	public String createMemberAccount() {
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Adherent);
 		try {
-			userSvc.createUser(spaceViewModel.getUser());
+			userSvc.createUser(spaceViewModel);
 			return authenticateOnSpace();
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
@@ -154,6 +162,17 @@ public class SpaceController implements Serializable {
 		spaceDao.deleteSpace(spaceToDeleteId);
 
 		return "index";
+	}
+
+	public void uploadAdministrativeDocument(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+
+		spaceViewModel.setAdministrativeDocPath(fileName);
+
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 
 	public List<Space> getAllActiveSpaces() {
@@ -216,4 +235,11 @@ public class SpaceController implements Serializable {
 		return viewToReturn;
 	}
 
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
 }
