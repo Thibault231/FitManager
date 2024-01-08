@@ -3,10 +3,14 @@ package fr.isika.cda.javaee.initDb;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
+import fr.isika.cda.javaee.entity.users.Role;
+import fr.isika.cda.javaee.entity.users.User;
 
 @Startup
 @Singleton
@@ -16,28 +20,22 @@ public class InitDb {
 	@PersistenceContext
 	EntityManager em;
 
+	@Inject
+	private IDaoUser userDao;
+
 	@PostConstruct
 	public void init() {
 		if (!initialized) {
 			System.out.println("***************************** Initialize DB **********************************");
-			em.persist(new Space(true));
-// em.persist(new GymInstance("1st GYM", "1 st 99999 Town"));
-// em.persist(new GymInstance("2nd GYM", "12 av 99999 Town"));
-// em.persist(new GymInstance("3rd GYM", "12 av 99999 Town"));
-// 
-//
-// em.persist(new Coach(em.find(GymInstance.class, 1L), new Account("coach@test.fr", "test666", new Profile("prenom","nom"))));
-// em.persist(new Coach(em.find(GymInstance.class, 1L), new Account("coach_manager@test.fr", "test666", new Profile("prenom","nom"))));
-// em.persist(new Coach(em.find(GymInstance.class, 1L), new Account("athlete_coach_manager@test.fr", "test666", new Profile("prenom","nom"))));
-// 
-// 
-// em.persist(new Athlete(em.find(GymInstance.class, 1L), new Account("athlete@test.fr", "test666", new Profile("prenom","nom")),100));
-// em.persist(new Athlete(em.find(GymInstance.class, 2L), em.find(Account.class, 3L), 150));
-// 
-//
-// em.persist(new Manager(em.find(GymInstance.class, 1L), new Account("manager@test.fr", "test666", new Profile("prenom","nom"))));
-// em.persist(new Manager(em.find(GymInstance.class, 2L), em.find(Account.class, 2L)));
-// em.persist(new Manager(em.find(GymInstance.class, 3L), em.find(Account.class, 3L)));
+//			em.persist(new Space(true));
+			User userManager = new User(true);
+			userManager.getAccount().setLogin("titou@gmail.com");
+			userManager.getAccount().setPassword("31500");
+			userManager.getAccount().setRole(Role.Gestionnaire);
+			userManager.getProfile().getCivility().setForename("Titou");
+			userManager.getProfile().getCivility().setName("Polo");
+			// userDao.createUser(userManager);
+
 			System.out.println("************************ End of Initializing DB **********************************");
 			initialized = true;
 		}
