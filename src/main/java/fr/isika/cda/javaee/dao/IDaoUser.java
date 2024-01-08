@@ -2,6 +2,7 @@ package fr.isika.cda.javaee.dao;
 
 import java.util.List;
 
+import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
 public interface IDaoUser {
@@ -36,6 +37,17 @@ public interface IDaoUser {
 	 * @return user to get (:User)
 	 */
 	User getUserByEmail(String userToGetEmail);
+
+	/**
+	 * Return a user from the database, using it's id and it's role, if it exists or
+	 * null otherwise.
+	 * 
+	 * @param userLogin (:String)
+	 * @return user to get (:User)
+	 * @param userRole (:Role)
+	 * @return user to get (:User)
+	 */
+	User getUserByLoginAndRole(String userLogin, Role userRole);
 
 	/**
 	 * Hard delete of a user from the Db, using it's id.

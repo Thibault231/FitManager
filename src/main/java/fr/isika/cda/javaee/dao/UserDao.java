@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
 @Stateless
@@ -74,4 +75,20 @@ public class UserDao implements IDaoUser {
 	public void updateUser(User userToUpdate) {
 		em.merge(userToUpdate);
 	}
+
+	@Override
+	public User getUserByLoginAndRole(String userLogin, Role userRole) {
+		// @formatter:off
+		try {
+			User user = em.createQuery(
+				"SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.account.login = :userLoginParam AND u.account.role = :userRole ",
+				User.class).setParameter("userLoginParam", userLogin).setParameter("userRole", userRole)
+				.getSingleResult();
+			return user;
+		} catch(NoResultException ex) {
+			return null;
+		}
+		// @formatter:on
+	}
+
 }

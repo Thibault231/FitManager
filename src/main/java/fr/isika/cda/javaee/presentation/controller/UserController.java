@@ -134,7 +134,7 @@ public class UserController implements Serializable {
 			fc.addMessage(null, new FacesMessage(message));
 			return "LoginForm";
 		} else {
-			User userToLog = this.userDao.getUserByEmail(userViewModel.getEmail());
+			User userToLog = this.userDao.getUserByLoginAndRole(userViewModel.getEmail(), Role.Gestionnaire);
 			if (userToLog != null && userToLog.getAccount().getPassword().equals(userViewModel.getPassword())) {
 				fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
 				fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
@@ -148,13 +148,24 @@ public class UserController implements Serializable {
 		}
 	}
 
+	/**
+	 * Connecte Manager of the plateform, creating a new session.
+	 * 
+	 * @param userId (:Long)
+	 * @return success (:Boolean)
+	 */
 	public boolean logIn(Long userId) {
-		User userToLog = this.userDao.getUserById(userId);
-		FacesContext fc = FacesContext.getCurrentInstance();
-		fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
-		fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
-		fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
-		return true;
+		User userToLog = this.userDao.getUserByIdWithLinkedSpaces(userId);
+		if (userToLog != null) {
+			FacesContext fc = FacesContext.getCurrentInstance();
+			fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
+			fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
+			fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	/**
