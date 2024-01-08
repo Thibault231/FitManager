@@ -95,4 +95,5 @@ public class SpaceDetailsController implements Serializable {
 	public Subscription getSubscription() {
 		return subscription;
 	}
+
 }
