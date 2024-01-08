@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
+import fr.isika.cda.javaee.entity.users.Contact;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
@@ -27,14 +28,24 @@ public class InitDb {
 	public void init() {
 		if (!initialized) {
 			System.out.println("***************************** Initialize DB **********************************");
-//			em.persist(new Space(true));
+			Space spaceOne = new Space(true);
+			em.persist(spaceOne);
+
 			User userManager = new User(true);
 			userManager.getAccount().setLogin("titou@gmail.com");
 			userManager.getAccount().setPassword("31500");
 			userManager.getAccount().setRole(Role.Gestionnaire);
 			userManager.getProfile().getCivility().setForename("Titou");
 			userManager.getProfile().getCivility().setName("Polo");
-			// userDao.createUser(userManager);
+			userDao.createUser(userManager);
+
+			User userCoach = new User(true);
+			userCoach.getAccount().setLogin("nene@gmail.com");
+			userCoach.getAccount().setPassword("31500");
+			userCoach.getAccount().setRole(Role.Coach);
+			userCoach.getProfile().getCivility().setForename("Nene");
+			userCoach.getProfile().getCivility().setName("Sacko");
+			userDao.createUser(userCoach);
 
 			System.out.println("************************ End of Initializing DB **********************************");
 			initialized = true;

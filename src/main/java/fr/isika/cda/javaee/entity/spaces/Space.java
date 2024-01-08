@@ -44,7 +44,7 @@ public class Space {
 
 //**************************************
 	/**
-	 * Empty constructor for controler.
+	 * Empty constructor for controller.
 	 */
 	public Space() {
 

@@ -21,7 +21,8 @@ public class UserDao implements IDaoUser {
 		em.persist(userToCreate.getProfile().getAdress());
 		em.persist(userToCreate.getProfile().getContact());
 		em.persist(userToCreate.getProfile());
-		em.persist(userToCreate.getAccount().getAdministrativeDocument());
+		if (userToCreate.getAccount().getAdministrativeDocument() != null)
+			em.persist(userToCreate.getAccount().getAdministrativeDocument());
 		em.persist(userToCreate.getAccount());
 		em.persist(userToCreate);
 		return userToCreate.getUserId();
