@@ -6,8 +6,6 @@ import javax.inject.Inject;
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
-import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
-import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 
 @Stateless
 public class UserServices {
