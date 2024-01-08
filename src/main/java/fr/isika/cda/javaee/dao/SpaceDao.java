@@ -42,16 +42,25 @@ public class SpaceDao implements IDaoSpace {
 		return em.find(Space.class, spaceToGetId);
 	}
 
-	// FIXME : attention il n'y plus de isActive dans Space !!!!
 	@Override
 	public Space getSpaceByName(String spaceToGetName) {
 		return em.createQuery("SELECT u FROM Space u WHERE u.isActive = 1", Space.class).getSingleResult();
 	}
 
-	// FIXME : attention il n'y plus de isActive dans Space !!!!
 	@Override
 	public List<Space> getAllSpace() {
 		return em.createQuery("SELECT u FROM Space u", Space.class).getResultList();
+
 	}
 
+	@Override
+	public void updateSpace(Space spaceToUpdate) {
+		em.merge(spaceToUpdate);
+	}
+
+	@Override
+	public Space getSpaceWithMembers(Long currentSpaceId) {
+		return em.createQuery("SELECT s FROM Space s LEFT JOIN FETCH s.users WHERE s.id = :spaceIdParam", Space.class)
+				.setParameter("spaceIdParam", currentSpaceId).getSingleResult();
+	}
 }

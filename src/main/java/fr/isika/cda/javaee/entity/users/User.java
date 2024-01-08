@@ -1,5 +1,6 @@
 package fr.isika.cda.javaee.entity.users;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,7 +32,7 @@ public class User {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Profile profile;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "users")
 	private List<Space> linkedSpaces;
 
 	@OneToOne
@@ -57,7 +58,7 @@ public class User {
 		this.getProfile().setCivility(new Civility());
 		this.getProfile().setAdress(new Address());
 		this.getProfile().setContact(new Contact());
-
+		this.linkedSpaces = new ArrayList<Space>();
 	}
 
 //******************************************************	
@@ -107,12 +108,6 @@ public class User {
 
 	public void setLinkedSpaces(List<Space> linkedSpaces) {
 		this.linkedSpaces = linkedSpaces;
-	}
-
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", isActive=" + isActive + ", account=" + account + ", profile=" + profile
-				+ "]";
 	}
 
 }

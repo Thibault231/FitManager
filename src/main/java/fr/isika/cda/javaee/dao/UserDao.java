@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
 @Stateless
@@ -45,6 +44,12 @@ public class UserDao implements IDaoUser {
 	}
 
 	@Override
+	public User getUserByIdWithLinkedSpaces(Long userId) {
+		return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.id = :userIdParam",
+				User.class).setParameter("userIdParam", userId).getSingleResult();
+	}
+
+	@Override
 	public User getUserByEmail(String userToGetEmail) {
 		// @formatter:off
 		try {
@@ -65,4 +70,8 @@ public class UserDao implements IDaoUser {
 		return em.createQuery("SELECT u FROM User u WHERE u.isActive = 1", User.class).getResultList();
 	}
 
+	@Override
+	public void updateUser(User userToUpdate) {
+		em.merge(userToUpdate);
+	}
 }
