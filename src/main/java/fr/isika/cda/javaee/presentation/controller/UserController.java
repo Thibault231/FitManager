@@ -34,7 +34,7 @@ import fr.isika.cda.javaee.services.UserServices;
 @ViewScoped
 public class UserController implements Serializable {
 
-	private static final long serialVersionUID = 8496614779097793939L;
+	private static final long serialVersionUID = 8496614779097793439L;
 
 	@Inject
 	private IDaoUser userDao;
@@ -46,6 +46,7 @@ public class UserController implements Serializable {
 
 	@PostConstruct
 	public void init() {
+		this.userViewModel = new UserViewModel();
 	}
 
 //***************************************

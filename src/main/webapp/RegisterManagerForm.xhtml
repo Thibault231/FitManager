@@ -38,14 +38,11 @@
 								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 							</div>
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput03"
-									placeholder="Sexe" size="20"
-									value="#{userController.userViewModel.user.profile.civility.sex}" />
-								<h:outputLabel class="outputLabel" for="floatingInput03">Sexe</h:outputLabel>
+							<div class="field">
+								<h:outputLabel for="sex" value="Genre" />
 								<h:selectOneMenu id="sex"
 									value="#{userController.userViewModel.user.profile.civility.sex}">
-									<f:selectItem itemLabel=" " />
+									<f:selectItem itemLabel="GENRE" />
 									<f:selectItem itemLabel="Homme" itemValue="Man" />
 									<f:selectItem itemLabel="Femme" itemValue="Woman" />
 									<f:selectItem itemLabel="Autre" itemValue="Other" />

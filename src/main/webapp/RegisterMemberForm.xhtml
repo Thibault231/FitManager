@@ -16,8 +16,10 @@
 			style="height: 100vh; width: 100vw">
 			<div class="w-25">
 				<div class="text-center mb-4">
-					<h2>Fit Manager</h2>
-					<a>Design your fitness</a>
+					<h2>Nom de l'espace</h2>
+					<a>Slogan de l'espace</a>
+					<h3>Création d'un nouveau membre</h3>
+					
 
 				</div>
 				<h:form>
@@ -38,11 +40,15 @@
 								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 							</div>
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput03"
-									placeholder="Sexe" size="20"
-									value="#{spaceController.spaceForm.user.profile.civility.sex}" />
-								<h:outputLabel class="outputLabel" for="floatingInput03">Sexe</h:outputLabel>
+							<div class="field">
+								<h:outputLabel for="sex" value="Genre" />
+								<h:selectOneMenu id="sex"
+									value="#{spaceController.spaceForm.user.profile.civility.sex}">
+									<f:selectItem itemLabel="" />
+									<f:selectItem itemLabel="Homme" itemValue="Man" />
+									<f:selectItem itemLabel="Femme" itemValue="Woman" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
 							</div>
 
 							<div class="form-floating">
@@ -92,6 +98,18 @@
 									placeholder="Ville" size="20"
 									value="#{spaceController.spaceForm.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+							</div>
+							
+							<div class="field">
+								<h:outputLabel for="type" value="Votre Photo de profil" />
+								<hr />
+								<h:outputLabel id="fileUploadLbl" class="outputLabel">File : </h:outputLabel>
+								<p:fileUpload listener="#{registerUserController.uploadFile}"
+									styleClass="w-100" mode="advanced" dragDropSupport="false" />
+								<h:column>
+								<f:facet name="header">Document</f:facet>
+								<h:graphicImage library="documents" name="#{user.filePath}"/>
+								</h:column>
 							</div>
 
 
