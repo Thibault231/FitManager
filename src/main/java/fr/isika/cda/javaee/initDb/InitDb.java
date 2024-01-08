@@ -34,7 +34,7 @@ public class InitDb {
 			userManager.getAccount().setRole(Role.Gestionnaire);
 			userManager.getProfile().getCivility().setForename("Titou");
 			userManager.getProfile().getCivility().setName("Polo");
-			userDao.createUser(userManager);
+			// userDao.createUser(userManager);
 
 			System.out.println("************************ End of Initializing DB **********************************");
 			initialized = true;
