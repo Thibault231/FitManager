@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
 @Stateless
@@ -21,8 +22,7 @@ public class UserDao implements IDaoUser {
 		em.persist(userToCreate.getProfile().getAdress());
 		em.persist(userToCreate.getProfile().getContact());
 		em.persist(userToCreate.getProfile());
-		if (userToCreate.getAccount().getAdministrativeDocument() != null)
-			em.persist(userToCreate.getAccount().getAdministrativeDocument());
+		em.persist(userToCreate.getAccount().getAdministrativeDocument());
 		em.persist(userToCreate.getAccount());
 		em.persist(userToCreate);
 		return userToCreate.getUserId();

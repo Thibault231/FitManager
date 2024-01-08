@@ -106,7 +106,7 @@ public class SpaceController implements Serializable {
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Coach);
 		this.spaceViewModel.getUser().getAccount().setPassword("00000");
 		try {
-			userSvc.createUser(spaceViewModel);
+			userSvc.createUser(spaceViewModel.getUser());
 			this.spaceViewModel.setUser(new User(true));
 			return "ManagerSpaceDashBoard";
 		} catch (UserExistsException e) {
@@ -125,7 +125,7 @@ public class SpaceController implements Serializable {
 	public String createMemberAccount() {
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Adherent);
 		try {
-			userSvc.createUser(spaceViewModel);
+			userSvc.createUser(spaceViewModel.getUser());
 			return authenticateOnSpace();
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
@@ -170,7 +170,7 @@ public class SpaceController implements Serializable {
 		UploadedFile uploadedFile = event.getFile();
 		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
 
-		spaceViewModel.setAdministrativeDocPath(fileName);
+		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
 
 		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
