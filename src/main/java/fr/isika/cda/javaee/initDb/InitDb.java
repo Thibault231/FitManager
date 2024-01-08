@@ -1,5 +1,7 @@
 package fr.isika.cda.javaee.initDb;
 
+import java.time.LocalDateTime;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -9,8 +11,8 @@ import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.entity.users.Contact;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
@@ -24,6 +26,7 @@ public class InitDb {
 
 	@Inject
 	private IDaoUser userDao;
+
 	@Inject
 	private IDaoSpace spaceDao;
 
@@ -31,6 +34,7 @@ public class InitDb {
 	public void init() {
 		if (!initialized) {
 			System.out.println("***************************** Initialize DB **********************************");
+
 			Space spaceOne = new Space(true);
 			spaceOne.getInfos().getConfiguration().setFitnessName("MyFirstSpace");
 			spaceDao.createSpace(spaceOne);
@@ -58,7 +62,28 @@ public class InitDb {
 			userMember.getProfile().getCivility().setForename("Charef");
 			userMember.getProfile().getCivility().setName("Senouci");
 			userDao.createUser(userMember);
-
+			
+			/*
+			 * Création de quelques cours pour la vue allCourses (Calendar)
+			 */
+			Course c = new Course();
+			c.setName("Cours de dance");
+			c.setStartDate(LocalDateTime.now());
+			c.setEndDate(LocalDateTime.now().plusHours(2));
+			c.setDescription("Break");
+			
+			Course c2 = new Course();
+			c2.setName("Cours de muscu");
+			c2.setStartDate(LocalDateTime.now().plusDays(1));
+			c2.setEndDate(LocalDateTime.now().plusDays(1).plusHours(2));
+			c2.setDescription("Muscu");
+			
+			em.persist(c);
+			em.persist(c2);
+			
+			/*
+			 * Fin création des cours			
+			 */
 			System.out.println("************************ End of Initializing DB **********************************");
 			initialized = true;
 		}
