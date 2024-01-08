@@ -1,10 +1,12 @@
 package fr.isika.cda.javaee.entity.spaces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -13,6 +15,7 @@ import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.plateform.Machine;
 import fr.isika.cda.javaee.entity.plateform.Room;
 import fr.isika.cda.javaee.entity.relations.Planning;
+import fr.isika.cda.javaee.entity.users.User;
 
 @Entity
 public class Space {
@@ -42,6 +45,9 @@ public class Space {
 	@OneToMany
 	private List<Room> rooms;
 
+	@ManyToMany
+	private List<User> users;
+
 //**************************************
 	/**
 	 * Empty constructor for controller.
@@ -63,6 +69,7 @@ public class Space {
 		this.infos = new Infos();
 		this.infos.setAdministrative(new Administrative());
 		this.infos.setConfiguration(configuration);
+		this.users = new ArrayList<User>();
 	}
 
 //**************************************
@@ -96,6 +103,14 @@ public class Space {
 
 	public void setOnlineShop(OnlineShop onlineShop) {
 		this.onlineShop = onlineShop;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 }
