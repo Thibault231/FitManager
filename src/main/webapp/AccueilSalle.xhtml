@@ -1,441 +1,470 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml"
-				xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
 
- 
-       
+
+
 	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
 	<ui:define name="content">
-	
-	 <!-- NavBAr -->
- 	<div class="bg-light-subtle d-flex justify-content-around align-items-center w-100 navBar" style="position: fixed;
-  top: 0px; z-index:9999">
-         
-	  <c:if test="${'#{sessionScope.name}'}">
-	    <h1>Welcome to Java EE <h:outputText value="#{sessionScope.name}"/> !!!!!!</h1>
-	  </c:if>
-	  <c:otherwise>
-	 	<h1>Welcome to Java EE !</h1>
-	  </c:otherwise>
-	
-	<div class="d-flex w-75 justify-content-evenly ">
-	<h:link outcome="LoginForm.xhtml">Se connecter</h:link>
-	<h:link outcome="ManagerDashBoard.xhtml">Mon compte gestionnaire</h:link>
-	<h:link outcome="RegisterManagerForm.xhtml">Créer un compte Gestionnaire</h:link>
-	<h:link outcome="CreateSpaceForm.xhtml">Créer un espace fitness</h:link>
-	</div>
 
-	
-	 </div>
-	 
-	    <div class="row mt-5 p-5">
-            <div class="container  text-center">
-                <div class="row gy-5">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
-                        <div class="p-3">
+		<!-- NavBAr -->
+		<div
+			class="bg-light-subtle d-flex justify-content-around align-items-center w-100 navBar"
+			style="position: fixed; top: 0px; z-index: 9999">
 
-                            <h3 class="text-start mb-3 fw-lighter">
-                                reservation à venir
-                            </h3>
+			<h1>
+				Salle avec ID:
+				<h:outputText value="#{sessionScope.spaceId}" />
+				!!!!!!
+			</h1>
+			<p class=" m-1">#{sessionScope.role}</p>
 
-                            <div class="scrollElement">
-                                <table class="table w-100">
+			<div class="d-flex w-75 justify-content-evenly ">
+				<h:link outcome="SpaceLoginForm.xhtml">Se connecter</h:link>
+				<h:link outcome="Test-RegisterAdherent.xhtml">Créer mon compte</h:link>
+				<h:link outcome="Calendar.xhtml">Planning</h:link>
+				<h:form>
+					<h:commandLink class="dropdown-item" action="#{spaceController.simpleSpacelogout()}">
+						Se déconnecter
+					</h:commandLink>
+				</h:form>
 
-                                    <tbody>
-
-                                    <tr class="p-1">
-                                        <div class="alert alert-light" role="alert">
-                                            <div class="d-flex w-100 h-100 align-items-center justify-content-around">
-                                                <a class="fw-light">Mark</a>
-                                                <a>Mark</a>
-                                                <a>Salle pizza</a>
-                                                <a>13h00</a>
-                                                <a>88/88/8888</a>
-                                                <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-
-                                            </div>
-
-                                        </div>
-                                    </tr>
-
-                                    <tr class="p-1">
-                                        <div class="alert alert-light" role="alert">
-                                            <div class="d-flex w-100 h-100 align-items-center justify-content-around">
-                                                <a class="fw-light">Mark</a>
-                                                <a>Mark</a>
-                                                <a>Salle pizza</a>
-                                                <a>13h00</a>
-                                                <a>88/88/8888</a>
-                                                <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-
-                                            </div>
-
-                                        </div>
-                                    </tr>
-
-                                    <tr class="p-1">
-                                        <div class="alert alert-light" role="alert">
-                                            <div class="d-flex w-100 h-100 align-items-center justify-content-around">
-                                                <a class="fw-light">Mark</a>
-                                                <a>Mark</a>
-                                                <a>Salle pizza</a>
-                                                <a>13h00</a>
-                                                <a>88/88/8888</a>
-                                                <div class=" p-2 bg-danger border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-
-                                            </div>
-
-                                        </div>
-                                    </tr>
+			</div>
 
 
-                                    <tr class="p-1">
-                                        <div class="alert alert-light" role="alert">
-                                            <div class="d-flex w-100 h-100 align-items-center justify-content-around">
-                                                <a class="fw-light">Mark</a>
-                                                <a>Mark</a>
-                                                <a>Salle pizza</a>
-                                                <a>13h00</a>
-                                                <a>88/88/8888</a>
-                                                <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
+		</div>
 
-                                            </div>
+		<div class="row mt-5 p-5">
+			<div class="container  text-center">
+				<div class="row gy-5">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
+						<div class="p-3">
 
-                                        </div>
-                                    </tr>
+							<h3 class="text-start mb-3 fw-lighter">reservation à venir</h3>
 
+							<div class="scrollElement">
+								<table class="table w-100">
 
-                                    <tr class="p-1">
-                                        <div class="alert alert-light" role="alert">
-                                            <div class="d-flex w-100 h-100 align-items-center justify-content-around">
-                                                <a class="fw-light">Mark</a>
-                                                <a>Mark</a>
-                                                <a>Salle pizza</a>
-                                                <a>13h00</a>
-                                                <a>88/88/8888</a>
-                                                <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
+									<tbody>
 
-                                            </div>
+										<tr class="p-1">
+											<div class="alert alert-light" role="alert">
+												<div
+													class="d-flex w-100 h-100 align-items-center justify-content-around">
+													<a class="fw-light">Mark</a> <a>Mark</a> <a>Salle pizza</a>
+													<a>13h00</a> <a>88/88/8888</a>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
 
-                                        </div>
-                                    </tr>
+												</div>
 
-                                    <tr class="p-1">
-                                        <div class="alert alert-light" role="alert">
-                                            <div class="d-flex w-100 h-100 align-items-center justify-content-around">
-                                                <a class="fw-light">Mark</a>
-                                                <a>Mark</a>
-                                                <a>Salle pizza</a>
-                                                <a>13h00</a>
-                                                <a>88/88/8888</a>
-                                                <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
+											</div>
+										</tr>
 
-                                            </div>
+										<tr class="p-1">
+											<div class="alert alert-light" role="alert">
+												<div
+													class="d-flex w-100 h-100 align-items-center justify-content-around">
+													<a class="fw-light">Mark</a> <a>Mark</a> <a>Salle pizza</a>
+													<a>13h00</a> <a>88/88/8888</a>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
 
-                                        </div>
-                                    </tr>
+												</div>
 
-                                    <tr class="p-1">
-                                        <div class="alert alert-light" role="alert">
-                                            <div class="d-flex w-100 h-100 align-items-center justify-content-around">
-                                                <a class="fw-light">Mark</a>
-                                                <a>Mark</a>
-                                                <a>Salle pizza</a>
-                                                <a>13h00</a>
-                                                <a>88/88/8888</a>
-                                                <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
+											</div>
+										</tr>
 
-                                            </div>
+										<tr class="p-1">
+											<div class="alert alert-light" role="alert">
+												<div
+													class="d-flex w-100 h-100 align-items-center justify-content-around">
+													<a class="fw-light">Mark</a> <a>Mark</a> <a>Salle pizza</a>
+													<a>13h00</a> <a>88/88/8888</a>
+													<div
+														class=" p-2 bg-danger border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
 
-                                        </div>
-                                    </tr>
+												</div>
 
+											</div>
+										</tr>
 
 
-                                    </tbody>
-                                </table>
-                            </div>
-                            <a class="btn btn-primary mt-5" href="">lol</a>
+										<tr class="p-1">
+											<div class="alert alert-light" role="alert">
+												<div
+													class="d-flex w-100 h-100 align-items-center justify-content-around">
+													<a class="fw-light">Mark</a> <a>Mark</a> <a>Salle pizza</a>
+													<a>13h00</a> <a>88/88/8888</a>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
 
-                        </div>
-                    </div>
+												</div>
 
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
-                        <h3 class="text-start mb-3 fw-lighter">
-                            reservation passées
-                        </h3>
-                        <div class="p-3">
-
-                            <div class="scrollElement">
-                                <table class="table">
-                                    <tbody>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="p-1">
-                                        <th scope="row">
-                                            <a >
-                                                Mark
-                                            </a>
-                                        </th>
-
-                                        <td>Otto</td>
-                                        <td>Body-pump</td>
-                                        <td>88/88/8888</td>
-                                        <td>
-                                            <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                        </td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-
-                            </div>
+											</div>
+										</tr>
 
 
-                        </div>
-                    </div>
+										<tr class="p-1">
+											<div class="alert alert-light" role="alert">
+												<div
+													class="d-flex w-100 h-100 align-items-center justify-content-around">
+													<a class="fw-light">Mark</a> <a>Mark</a> <a>Salle pizza</a>
+													<a>13h00</a> <a>88/88/8888</a>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
 
-                </div>
-                <div class="row gy-5 ">
-                    <div class="col p-4 ">
-                        <h3 class="text-start mb-3 fw-lighter">
-                            Notez vos 3 dernières séances
-                        </h3>
+												</div>
 
+											</div>
+										</tr>
 
-                        <div class="row">
+										<tr class="p-1">
+											<div class="alert alert-light" role="alert">
+												<div
+													class="d-flex w-100 h-100 align-items-center justify-content-around">
+													<a class="fw-light">Mark</a> <a>Mark</a> <a>Salle pizza</a>
+													<a>13h00</a> <a>88/88/8888</a>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
 
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7 col-xxl-7">
-                                <div class="card h-100 mb-4">
-                                    <img src="https://i.pinimg.com/564x/fb/6f/aa/fb6faac7fda14a8b445f6ab6d05f1c07.jpg" class="card-img-top" alt="..." style="height: 32em; object-fit: cover;"/>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-around align-items-center w-100 pt-auto pb-auto">
-                                            <div class="col">
-                                                <p>Musculation</p>
-                                                <p>Lool</p>
-                                                <p>08.08.99.44</p>
-                                                
-                                            </div>
-                                            <div class="col"><p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></div>
-                                            <div class="col ">
-                                                <div class="d-flex justify-content-around align-items-center w-100">
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+												</div>
 
+											</div>
+										</tr>
 
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-5 col-xxl-5 ">
-                                <div class="card mb-4">
-                                    <img src="https://i.pinimg.com/564x/fb/6f/aa/fb6faac7fda14a8b445f6ab6d05f1c07.jpg" class="card-img-top " alt="..." style="height: 12em; object-fit: cover;"/>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-around align-items-center w-100 pt-auto pb-auto">
-                                            <div class="col">
-                                                <p>Musculation</p>
-                                                <p>Lool</p>
-                                                <p>08.08.99.44</p>
+										<tr class="p-1">
+											<div class="alert alert-light" role="alert">
+												<div
+													class="d-flex w-100 h-100 align-items-center justify-content-around">
+													<a class="fw-light">Mark</a> <a>Mark</a> <a>Salle pizza</a>
+													<a>13h00</a> <a>88/88/8888</a>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
 
-                                            </div>
-                                            <div class="col"><p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></div>
-                                            <div class="col ">
-                                                <div class="d-flex justify-content-around align-items-center w-100">
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+												</div>
 
-                                </div>
-                                <div class="card ">
-                                    <img src="https://i.pinimg.com/564x/fb/6f/aa/fb6faac7fda14a8b445f6ab6d05f1c07.jpg" class="card-img-top" alt="..." style="height: 12em; object-fit: cover;"/>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-around align-items-center w-100 pt-auto pb-auto">
-                                            <div class="col">
-                                                <p>Musculation</p>
-                                                <p>Lool</p>
-                                                <p>08.08.99.44</p>
-
-                                            </div>
-                                            <div class="col"><p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></div>
-                                            <div class="col ">
-                                                <div class="d-flex justify-content-around align-items-center w-100">
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                    <div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+											</div>
+										</tr>
 
 
-                <div class="d-flex w-100 justify-content-center gy-5 mt-5 ">
-                    <div class=" card col-sm-12 col-md-12 col-lg-12 col-xl-5 col-xxl-5 border">
 
-                        <div class="d-flex align-items-center justify-content-center">
-                            <h3 class="text-start ml-3 fw-lighter">
-                                Vous avez <br/>
-                                une question?
-                            </h3>
-                            <div class="p-3 bg-primary w-50 m-5 text-start">
-                                <p>Tel:</p>
-                                <p>Mail: </p>
-                            </div>
+									</tbody>
+								</table>
+							</div>
+							<a class="btn btn-primary mt-5" href="">lol</a>
 
-                        </div>
+						</div>
+					</div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-	
-	
-	
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
+						<h3 class="text-start mb-3 fw-lighter">reservation passées</h3>
+						<div class="p-3">
+
+							<div class="scrollElement">
+								<table class="table">
+									<tbody>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+										<tr class="p-1">
+											<th scope="row"><a> Mark </a></th>
+
+											<td>Otto</td>
+											<td>Body-pump</td>
+											<td>88/88/8888</td>
+											<td>
+												<div
+													class=" p-2 bg-warning border border-light rounded-circle "
+													style="height: 10px; width: 10px"></div>
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+
+							</div>
+
+
+						</div>
+					</div>
+
+				</div>
+				<div class="row gy-5 ">
+					<div class="col p-4 ">
+						<h3 class="text-start mb-3 fw-lighter">Notez vos 3 dernières
+							séances</h3>
+
+
+						<div class="row">
+
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-7 col-xxl-7">
+								<div class="card h-100 mb-4">
+									<img
+										src="https://i.pinimg.com/564x/fb/6f/aa/fb6faac7fda14a8b445f6ab6d05f1c07.jpg"
+										class="card-img-top" alt="..."
+										style="height: 32em; object-fit: cover;" />
+									<div class="card-body">
+										<div
+											class="d-flex justify-content-around align-items-center w-100 pt-auto pb-auto">
+											<div class="col">
+												<p>Musculation</p>
+												<p>Lool</p>
+												<p>08.08.99.44</p>
+
+											</div>
+											<div class="col">
+												<p class="card-text">Some quick example text to build on
+													the card title and make up the bulk of the card's content.</p>
+											</div>
+											<div class="col ">
+												<div
+													class="d-flex justify-content-around align-items-center w-100">
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-5 col-xxl-5 ">
+								<div class="card mb-4">
+									<img
+										src="https://i.pinimg.com/564x/fb/6f/aa/fb6faac7fda14a8b445f6ab6d05f1c07.jpg"
+										class="card-img-top " alt="..."
+										style="height: 12em; object-fit: cover;" />
+									<div class="card-body">
+										<div
+											class="d-flex justify-content-around align-items-center w-100 pt-auto pb-auto">
+											<div class="col">
+												<p>Musculation</p>
+												<p>Lool</p>
+												<p>08.08.99.44</p>
+
+											</div>
+											<div class="col">
+												<p class="card-text">Some quick example text to build on
+													the card title and make up the bulk of the card's content.</p>
+											</div>
+											<div class="col ">
+												<div
+													class="d-flex justify-content-around align-items-center w-100">
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="card ">
+									<img
+										src="https://i.pinimg.com/564x/fb/6f/aa/fb6faac7fda14a8b445f6ab6d05f1c07.jpg"
+										class="card-img-top" alt="..."
+										style="height: 12em; object-fit: cover;" />
+									<div class="card-body">
+										<div
+											class="d-flex justify-content-around align-items-center w-100 pt-auto pb-auto">
+											<div class="col">
+												<p>Musculation</p>
+												<p>Lool</p>
+												<p>08.08.99.44</p>
+
+											</div>
+											<div class="col">
+												<p class="card-text">Some quick example text to build on
+													the card title and make up the bulk of the card's content.</p>
+											</div>
+											<div class="col ">
+												<div
+													class="d-flex justify-content-around align-items-center w-100">
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+													<div
+														class=" p-2 bg-warning border border-light rounded-circle "
+														style="height: 10px; width: 10px"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+				<div class="d-flex w-100 justify-content-center gy-5 mt-5 ">
+					<div
+						class=" card col-sm-12 col-md-12 col-lg-12 col-xl-5 col-xxl-5 border">
+
+						<div class="d-flex align-items-center justify-content-center">
+							<h3 class="text-start ml-3 fw-lighter">
+								Vous avez <br /> une question?
+							</h3>
+							<div class="p-3 bg-primary w-50 m-5 text-start">
+								<p>Tel:</p>
+								<p>Mail:</p>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
 	</ui:define>
 
 </ui:composition>
