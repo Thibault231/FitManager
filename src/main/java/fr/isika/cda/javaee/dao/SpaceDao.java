@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.spaces.Space;
+import fr.isika.cda.javaee.presentation.util.SessionUtils;
 
 @Stateless
 public class SpaceDao implements IDaoSpace {
@@ -62,5 +63,11 @@ public class SpaceDao implements IDaoSpace {
 	public Space getSpaceWithMembers(Long currentSpaceId) {
 		return em.createQuery("SELECT s FROM Space s LEFT JOIN FETCH s.users WHERE s.id = :spaceIdParam", Space.class)
 				.setParameter("spaceIdParam", currentSpaceId).getSingleResult();
+	}
+
+	@Override
+	public List<Space> getManagerSpaces(Long managerId) {
+		return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.userId = :managerIdParam",
+				Space.class).setParameter("managerIdParam", managerId).getResultList();
 	}
 }

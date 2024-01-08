@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee;
+package fr.isika.cda.javaee.presentation.util;
 
 import java.io.File;
 import java.io.IOException;
