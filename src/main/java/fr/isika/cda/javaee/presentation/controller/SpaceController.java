@@ -30,7 +30,7 @@ public class SpaceController implements Serializable {
 
 	public String createSpace() {
 		spaceDao.createSpace(spaceViewModel.getSpace());
-		return "AccueilSalle";
+		return "ManagerDashBoard";
 	}
 
 	public SpaceViewModel getSpaceForm() {

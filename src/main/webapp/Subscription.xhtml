@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" lang="fr">
+
+
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+
+	<ui:define name="titleValue">Subscription Details - Fit Manager</ui:define>
+	<ui:define name="content">
+		<h1>Détail de l'abonnnement</h1>
+		<div id="1">
+			
+			<h2>Details for Subscription ID: #{spaceDetailsController.subscription.subscriptionId}</h2>
+			<!-- Ajoutez ici les balises pour afficher les détails de l'abonnement -->
+			
+			<!-- Par exemple, si vous avez des propriétés comme nom, adresse, etc. -->
+			
+			<p>Nom de l'abonnement: #{spaceDetailsController.subscription.subscriptionName}</p>
+			<p>Description: #{spaceDetailsController.subscription.description}</p>
+			<p>Durée d'engagement: #{spaceDetailsController.subscription.engagement}</p>
+			<p>Prix mensuel: #{spaceDetailsController.subscription.price}</p>
+			
+			<!-- Continuez avec d'autres détails de la salle -->
+		</div>
+		
+		<h:link outcome="AccueilPlateforme.xhtml" value="Accueil Plateforme"/>
+		
+	</ui:define>
+</ui:composition>
+</html>

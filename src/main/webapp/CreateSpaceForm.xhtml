@@ -51,6 +51,20 @@
 									value="#{spaceController.spaceForm.space.infos.configuration.logo}"/>
 								<h:outputLabel class="outputLabel" for="floatingInput04">Logo</h:outputLabel>
 							</div>
+							
+							<div class="field">
+								<h:outputLabel for="type" value="Color" />
+								<h:selectOneMenu id="type"
+									value="#{spaceController.}">
+									<f:selectItem itemLabel="Selectionnez un type de document" />
+									<f:selectItem itemLabel="Diplôme" itemValue="Diploma" />
+									<f:selectItem itemLabel="Pièce d'identité" itemValue="Id" />
+									<f:selectItem itemLabel="Certificat médical" itemValue="MedicalCertificate" />
+									<f:selectItem itemLabel="RIB" itemValue="BankDetails" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
+								<hr />
+							</div>
 
 							<h:commandButton class="btn btn-warning"
 								value="Créer un espace fitness"

@@ -1,6 +1,7 @@
 package fr.isika.cda.javaee.presentation.controller;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,9 +10,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.entity.users.Account;
+import fr.isika.cda.javaee.entity.users.Civility;
+import fr.isika.cda.javaee.entity.users.Profile;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
@@ -34,8 +40,24 @@ public class UserController implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		this.userViewModel = new UserViewModel();
 	}
+
+//	@PersistenceContext
+//	private EntityManager em;
+//
+//	@PostConstruct
+//	public void init() {
+//		User gestionnaire1 = new User();
+//		Account accountGestionnaire = new Account();
+//		accountGestionnaire.setLogin("thibault@gmail.com");
+//		accountGestionnaire.setPassword("thibault1");
+//		accountGestionnaire.setRole(Role.Gestionnaire);
+//		gestionnaire1.getAccount().add(accountGestionnaire);
+//		em.persist(gestionnaire1);
+//		
+//		User gestionnaire2 = new user(new Account("thibault@gmail.com", "thibault1", new Role(role.Gestionnaire"),
+//				new Profile(new Civility("Salgues", "Thibault", "masculin")))));
+//	}
 
 //***************************************
 	public UserViewModel getUserViewModel() {
