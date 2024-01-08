@@ -11,12 +11,12 @@ public class Machine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
 
 	public Machine() {
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
