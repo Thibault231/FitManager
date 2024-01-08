@@ -51,6 +51,14 @@ public class InitDb {
 			userCoach.getProfile().getCivility().setName("Sacko");
 			userDao.createUser(userCoach);
 
+			User userMember = new User(true);
+			userMember.getAccount().setLogin("charef@gmail.com");
+			userMember.getAccount().setPassword("31500");
+			userMember.getAccount().setRole(Role.Adherent);
+			userMember.getProfile().getCivility().setForename("Charef");
+			userMember.getProfile().getCivility().setName("Senouci");
+			userDao.createUser(userMember);
+
 			System.out.println("************************ End of Initializing DB **********************************");
 			initialized = true;
 		}
