@@ -13,8 +13,7 @@ public class AdministrativeDocument {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long AdministrativeDocumentId;
-	@Column(unique = true, nullable = false)
-	private int registration;
+
 	@Enumerated(EnumType.STRING)
 	private Type type;
 
@@ -38,14 +37,6 @@ public class AdministrativeDocument {
 		this.type = type;
 	}
 
-	public int getRegistration() {
-		return registration;
-	}
-
-	public void setRegistration(int registration) {
-		this.registration = registration;
-	}
-
 	public String getFilePath() {
 		return filePath;
 	}
@@ -57,9 +48,8 @@ public class AdministrativeDocument {
 	@Override
 	public String toString() {
 		return "AdministrativeDocument [AdministrativeDocumentId=" + AdministrativeDocumentId + ", link="
-				+ ", registration=" + registration + ", type=" + type + ", getType()=" + getType()
 				+ ", getAdministrativeDocumentId()=" + getAdministrativeDocumentId() + ", getLink()="
-				+ ", getRegistration()=" + getRegistration() + ", getClass()=" + getClass() + ", hashCode()="
+				+  ", getClass()=" + getClass() + ", hashCode()="
 				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 

@@ -64,7 +64,7 @@ public class UserController implements Serializable {
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
 		Long userToCreateId;
 		try {
-			userToCreateId = userSvc.createUser(userViewModel);
+			userToCreateId = userSvc.createUser(userViewModel.getUser());
 			logIn(userToCreateId);
 			userViewModel = new UserViewModel();
 			return "ManagerDashBoard";
