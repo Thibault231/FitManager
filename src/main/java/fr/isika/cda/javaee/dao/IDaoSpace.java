@@ -32,6 +32,15 @@ public interface IDaoSpace {
 	Space getSpaceById(Long spaceToGetId);
 
 	/**
+	 * Return a Space, with all it's dependencies, using it's Id, if it exist or
+	 * null otherwise.
+	 * 
+	 * @param spaceToGetId
+	 * @return the space to get (:Space)
+	 */
+	Space getSpaceWithMembers(Long currentSpaceId);
+
+	/**
 	 * Return a Space from the database, using it's FitnessName, if it exist or null
 	 * otherwise.
 	 * 
@@ -53,7 +62,5 @@ public interface IDaoSpace {
 	 * @param userToUpdate (:User)
 	 */
 	void updateSpace(Space spaceToUpdate);
-
-	Space getSpaceWithMembers(Long currentSpaceId);
 
 }

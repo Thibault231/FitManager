@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
-import fr.isika.cda.javaee.FileUploadUtils;
 import fr.isika.cda.javaee.entity.users.User;
+import fr.isika.cda.javaee.presentation.util.FileUploadUtils;
 
 public class UserViewModel {
 	private String email;
