@@ -13,9 +13,15 @@ public class Room {
 	private Long id;
 	private String name;
 
+	public Room(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	public Room() {
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
