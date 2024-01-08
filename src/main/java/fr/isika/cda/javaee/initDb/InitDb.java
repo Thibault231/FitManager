@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Contact;
@@ -23,13 +24,16 @@ public class InitDb {
 
 	@Inject
 	private IDaoUser userDao;
+	@Inject
+	private IDaoSpace spaceDao;
 
 	@PostConstruct
 	public void init() {
 		if (!initialized) {
 			System.out.println("***************************** Initialize DB **********************************");
 			Space spaceOne = new Space(true);
-			em.persist(spaceOne);
+			spaceOne.getInfos().getConfiguration().setFitnessName("MyFirstSpace");
+			spaceDao.createSpace(spaceOne);
 
 			User userManager = new User(true);
 			userManager.getAccount().setLogin("titou@gmail.com");
