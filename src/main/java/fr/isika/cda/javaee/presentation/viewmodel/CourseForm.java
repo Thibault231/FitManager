@@ -1,5 +1,6 @@
 package fr.isika.cda.javaee.presentation.viewmodel;
 
+// TODO : à supprimer si non utilisé !!!!
 public class CourseForm {
 	
 private String name;
