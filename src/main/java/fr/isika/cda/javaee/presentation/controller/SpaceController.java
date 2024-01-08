@@ -18,6 +18,7 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
 import fr.isika.cda.javaee.FileUploadUtils;
+import fr.isika.cda.javaee.SessionUtils;
 import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
@@ -123,9 +124,20 @@ public class SpaceController implements Serializable {
 	 * @return url (:String)
 	 */
 	public String createMemberAccount() {
+		Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
+
+		Space currentSpace = spaceDao.getSpaceWithMembers(currentSpaceId);
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Adherent);
+
 		try {
-			userSvc.createUser(spaceViewModel.getUser());
+			Long createdUserId = userSvc.createUser(spaceViewModel.getUser());
+			User createdUser = userDao.getUserByIdWithLinkedSpaces(createdUserId);
+			currentSpace.getUsers().add(createdUser);
+			createdUser.getLinkedSpaces().add(currentSpace);
+
+			spaceDao.updateSpace(currentSpace);
+			userDao.updateUser(createdUser);
+
 			return authenticateOnSpace();
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
@@ -134,8 +146,7 @@ public class SpaceController implements Serializable {
 	}
 
 	public String createSpace() {
-		Long spaceId = spaceDao.createSpace(spaceViewModel.getSpace());
-
+		spaceDao.createSpace(spaceViewModel.getSpace());
 		return "ManagerSpacesList";
 	}
 
@@ -151,7 +162,6 @@ public class SpaceController implements Serializable {
 
 		// 2 - aller chercher l'objet Salle par cet id (en bdd)
 		spaceViewModel.setSpace(spaceDao.getSpaceById(spaceId));
-
 		// 3- Renseigne l'id de la salle dans la session.
 		String viewToReturn = "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 
@@ -202,7 +212,7 @@ public class SpaceController implements Serializable {
 		} else if (userRole.equals(Role.Gestionnaire)) {
 			return "ManagerSpaceDashBoard";
 		} else {
-			Long spaceId = (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("spaceId");
+			Long spaceId = SessionUtils.getSpaceIdFromSession();
 			return "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 		}
 	}

@@ -47,4 +47,13 @@ public interface IDaoSpace {
 	 */
 	List<Space> getAllSpace();
 
+	/**
+	 * Update a modified Space.
+	 * 
+	 * @param userToUpdate (:User)
+	 */
+	void updateSpace(Space spaceToUpdate);
+
+	Space getSpaceWithMembers(Long currentSpaceId);
+
 }

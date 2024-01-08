@@ -26,6 +26,7 @@ public class UserServices {
 			User userToCreate = new User(true);
 			userToCreate.setProfile(userFromForm.getProfile());
 			userToCreate.setAccount(userFromForm.getAccount());
+			userToCreate.setLinkedSpaces(userFromForm.getLinkedSpaces());
 			userToCreate.getProfile().getContact().setEmail(userFromForm.getAccount().getLogin());
 			return userDao.createUser(userToCreate);
 		}

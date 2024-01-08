@@ -45,4 +45,13 @@ public interface IDaoUser {
 	 */
 	boolean deleteUser(Long userToDeleteId);
 
+	/**
+	 * Update a modified user.
+	 * 
+	 * @param userToUpdate (:User)
+	 */
+	void updateUser(User userToUpdate);
+
+	User getUserByIdWithLinkedSpaces(Long userId);
+
 }

@@ -1,5 +1,8 @@
 package fr.isika.cda.javaee.entity.users;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,9 +10,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import fr.isika.cda.javaee.entity.relations.Schedulde;
+import fr.isika.cda.javaee.entity.spaces.Space;
 
 @Entity
 public class User {
@@ -27,8 +32,8 @@ public class User {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Profile profile;
 
-//	@OneToOne
-//	private Sell sell;
+	@ManyToMany(mappedBy = "users")
+	private List<Space> linkedSpaces;
 
 	@OneToOne
 	private Schedulde schedulde;
@@ -53,7 +58,7 @@ public class User {
 		this.getProfile().setCivility(new Civility());
 		this.getProfile().setAdress(new Address());
 		this.getProfile().setContact(new Contact());
-
+		this.linkedSpaces = new ArrayList<Space>();
 	}
 
 //******************************************************	
@@ -97,10 +102,12 @@ public class User {
 		this.schedulde = schedulde;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", isActive=" + isActive + ", account=" + account + ", profile=" + profile
-				+ "]";
+	public List<Space> getLinkedSpaces() {
+		return linkedSpaces;
+	}
+
+	public void setLinkedSpaces(List<Space> linkedSpaces) {
+		this.linkedSpaces = linkedSpaces;
 	}
 
 }
