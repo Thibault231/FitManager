@@ -12,6 +12,7 @@
 	<ui:define name="header">
 
 
+
 	</ui:define>
 
 	<ui:define name="content">
@@ -39,8 +40,6 @@
 									outcome="CreateSpaceForm.xhtml"> Espace+ </h:link></li>
 							<li class="nav-item mb-2"><h:link class="dropdown-item"
 									outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link></li>
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="ManagerSpacesList.xhtml">Mes espaces</h:link></li>
 						</ul>
 					</div>
 				</div>
@@ -65,13 +64,11 @@
 								<li><a class="dropdown-item" href="#">Paramètres</a></li>
 								<li><a class="dropdown-item" href="#">Profil</a></li>
 								<li><h:link class="dropdown-item"
-										outcome="Test-UsersAccounts.xhtml">Comptes utilisateurs</h:link></li>
-								<li><h:link class="dropdown-item"
 										outcome="Test-RegisterCoach.xhtml">Créer un compte coach</h:link></li>
 								<li><hr class="dropdown-divider" /></li>
 								<li><h:form>
 										<h:commandLink class="dropdown-item"
-											action="#{userController.logout()}">Se déconnecter</h:commandLink>
+											action="#{userController.logout()}">Se connecter</h:commandLink>
 									</h:form></li>
 							</ul>
 						</div>
@@ -439,17 +436,5 @@
 		<!-- Contenu spécifique du footer de la page -->
 		<h:outputText value="Mon Footer" />
 	</ui:define>
-	
-	<script>
-	 const menus = document.getElementById('menus');
-     menus.addEventListener('click',()=>{ menus.classList.toggle("desable"); })
-
-
-    const ctx1 = document.getElementById('ChartBar').getContext('2d');
-    const ctx2 = document.getElementById('Chartline').getContext('2d');
-
-    const Chartbar = chard(ctx1,'bar')
-    const Chartline = chard(ctx2,'line')
-	</script>
 
 </ui:composition>

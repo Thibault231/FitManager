@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
@@ -23,7 +25,8 @@ public class Civility {
 	private String forename;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date birthday;
-	private String sex;
+	@Enumerated(EnumType.STRING)
+	private Sex sex;
 
 	// Getters and setters
 
@@ -59,11 +62,11 @@ public class Civility {
 		this.birthday = birthday;
 	}
 
-	public String getSex() {
+	public Sex getSex() {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
 

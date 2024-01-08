@@ -1,7 +1,9 @@
 package fr.isika.cda.javaee.presentation.controller;
 
 import java.io.Serializable;
-import java.util.Date;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +16,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
+
+import fr.isika.cda.javaee.FileUploadUtils;
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.users.Account;
 import fr.isika.cda.javaee.entity.users.Civility;
@@ -28,7 +34,7 @@ import fr.isika.cda.javaee.services.UserServices;
 @ViewScoped
 public class UserController implements Serializable {
 
-	private static final long serialVersionUID = 8496614779097793938L;
+	private static final long serialVersionUID = 8496614779097793939L;
 
 	@Inject
 	private IDaoUser userDao;
@@ -41,23 +47,6 @@ public class UserController implements Serializable {
 	@PostConstruct
 	public void init() {
 	}
-
-//	@PersistenceContext
-//	private EntityManager em;
-//
-//	@PostConstruct
-//	public void init() {
-//		User gestionnaire1 = new User();
-//		Account accountGestionnaire = new Account();
-//		accountGestionnaire.setLogin("thibault@gmail.com");
-//		accountGestionnaire.setPassword("thibault1");
-//		accountGestionnaire.setRole(Role.Gestionnaire);
-//		gestionnaire1.getAccount().add(accountGestionnaire);
-//		em.persist(gestionnaire1);
-//		
-//		User gestionnaire2 = new user(new Account("thibault@gmail.com", "thibault1", new Role(role.Gestionnaire"),
-//				new Profile(new Civility("Salgues", "Thibault", "masculin")))));
-//	}
 
 //***************************************
 	public UserViewModel getUserViewModel() {
@@ -80,57 +69,13 @@ public class UserController implements Serializable {
 		this.userViewModel.getUser().getAccount().setRole(Role.Gestionnaire);
 		Long userToCreateId;
 		try {
-			userToCreateId = userSvc.createUser(userViewModel, userDao);
+			userToCreateId = userSvc.createUser(userViewModel.getUser());
 			logIn(userToCreateId);
 			userViewModel = new UserViewModel();
 			return "ManagerDashBoard";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
 			return "RegisterManagerForm";
-		}
-	}
-
-	/**
-	 * Get the Creating coach form using the UserviewModel, then call the
-	 * UserService to create a new user.<br/>
-	 * <b>Use this method for creating only coach</b>
-	 * 
-	 * @return url (:String)
-	 */
-	public String createCoachAccount() {
-		this.userViewModel.getUser().getAccount().setRole(Role.Coach);
-		this.userViewModel.getUser().getAccount().setPassword("00000");
-		Long userToCreateId;
-		try {
-			userToCreateId = userSvc.createUser(userViewModel, userDao);
-			logIn(userToCreateId);
-			userViewModel = new UserViewModel();
-			return "Test-CoachDashboard";
-
-		} catch (UserExistsException e) {
-			System.out.println("Exception : " + e.getMessage());
-			return "ManagerDashBoard";
-		}
-	}
-
-	/**
-	 * Get the Creating member form using the UserviewModel, then call the
-	 * UserService to create a new user.<br/>
-	 * <b>Use this method for creating only adherent</b>
-	 * 
-	 * @return url (:String)
-	 */
-	public String createAdherentAccount() {
-		this.userViewModel.getUser().getAccount().setRole(Role.Adherent);
-		Long userToCreateId;
-		try {
-			userToCreateId = userSvc.createUser(userViewModel, userDao);
-			logIn(userToCreateId);
-			userViewModel = new UserViewModel();
-			return "Test-AdherentDashboard";
-		} catch (UserExistsException e) {
-			System.out.println("Exception : " + e.getMessage());
-			return "index";
 		}
 	}
 
@@ -177,7 +122,8 @@ public class UserController implements Serializable {
 
 	/**
 	 * Authenticate a visitor from a login form and create a session object with
-	 * role and id.
+	 * role and id. <br/>
+	 * <b>Use this method for plateform only</b>
 	 * 
 	 * @return url (:String)
 	 */
@@ -227,4 +173,14 @@ public class UserController implements Serializable {
 		return "index";
 	}
 
+	public void uploadFile(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+
+		// form.setFilePath(fileName);
+
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
+	}
 }
