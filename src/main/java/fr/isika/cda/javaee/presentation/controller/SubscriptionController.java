@@ -63,7 +63,9 @@ public class SubscriptionController implements Serializable {
 	}
 
 	public List<Subscription> getAllActiveSubscription() {
-		List<Subscription> subscriptionsList = subscriptionDao.getAllSubscriptions();
+		Long spaceid = SessionUtils.getSpaceIdFromSession();
+		Space currentSpace = spaceDao.getSpaceWithSubscription(spaceid);
+		List<Subscription> subscriptionsList = currentSpace.getSubscriptions();
 		return subscriptionsList;
 	}
 
