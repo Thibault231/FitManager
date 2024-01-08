@@ -25,8 +25,7 @@
 					<a href="/"
 						class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 						<svg class="bi pe-none me-2">	
-						</svg> 
-						<span class="fs-4"> Logo</span>
+						</svg> <span class="fs-4"> Logo</span>
 					</a>
 					<div class=" m-auto h-75">
 						<ul class="nav nav-pills flex-column mb-auto ">
@@ -41,6 +40,9 @@
 									outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link></li>
 							<li class="nav-item mb-2"><h:link class="dropdown-item"
 									outcome="ManagerSpacesList.xhtml">Mes espaces</h:link></li>
+							<li class="nav-item mb-2"><h:link class="dropdown-item"
+									outcome="UpdateUserForm.xhtml"> Gérer mon profil </h:link></li>
+
 						</ul>
 					</div>
 				</div>
@@ -439,7 +441,7 @@
 		<!-- Contenu spécifique du footer de la page -->
 		<h:outputText value="Mon Footer" />
 	</ui:define>
-	
+
 	<script>
 	 const menus = document.getElementById('menus');
      menus.addEventListener('click',()=>{ menus.classList.toggle("desable"); })

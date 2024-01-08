@@ -161,6 +161,7 @@ public class UserController implements Serializable {
 			fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
 			fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
 			fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
+			userViewModel.setUser(userToLog);
 			return true;
 		} else {
 			return false;
@@ -177,6 +178,16 @@ public class UserController implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
 		return "index";
+	}
+
+	/**
+	 * Update the change of a user profile.
+	 * 
+	 * @param dashboard url (:String)
+	 */
+	public String updateUser(User updatedUser) {
+		userDao.updateUser(updatedUser);
+		return "ManagerDashBoard";
 	}
 
 }
