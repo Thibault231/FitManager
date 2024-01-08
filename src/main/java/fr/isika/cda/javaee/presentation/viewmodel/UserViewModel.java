@@ -13,11 +13,12 @@ public class UserViewModel {
 	private String email;
 	private String password;
 	private User user;
-	private UserForm form = new UserForm();
+	private UserForm form;
 	private String filePath;
 
 	public UserViewModel() {
 		this.user = new User(true);
+		this.form = new UserForm();
 	}
 
 //**********************************
