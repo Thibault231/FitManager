@@ -10,8 +10,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.IDaoSubscription;
 import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.subscription.Membership;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 import fr.isika.cda.javaee.entity.users.User;
@@ -29,6 +31,9 @@ public class SubscriptionController implements Serializable {
 
 	@Inject
 	private IDaoUser userDao;
+
+	@Inject
+	private IDaoSpace spaceDao;
 
 	private SubscriptionViewModel subscriptionViewModel = new SubscriptionViewModel();
 
@@ -48,8 +53,12 @@ public class SubscriptionController implements Serializable {
 
 //*****************************************************************************
 	public String createSubscription() {
+		Long spaceid = SessionUtils.getSpaceIdFromSession();
+		Space currentSpace = spaceDao.getSpaceWithSubscription(spaceid);
 		Subscription subscriptionToCreate = subscriptionViewModel.getSubscription();
 		subscriptionDao.createSubscription(subscriptionToCreate);
+		currentSpace.getSubscriptions().add(subscriptionToCreate);
+		spaceDao.updateSpace(currentSpace);
 		return "SpaceAccueilPersonnalisation";
 	}
 
@@ -67,8 +76,8 @@ public class SubscriptionController implements Serializable {
 	}
 
 	/**
-	 * Create a new subscription and link it to the active member, using the session
-	 * parameters. Use this method only if the member is logged.
+	 * Create a link between the active member, using the session parameters. Use
+	 * this method only if the member is logged.
 	 * 
 	 * @return url (:String)
 	 */
