@@ -12,8 +12,45 @@
 
 		<h1>Tableau de bord manager</h1>
 		<p>This is an empty page using the common template</p>
-		<p><h:link outcome="AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}" value="Retour à l'accueil" /></p>
-		<p><h:link outcome="Test-RegisterCoach.xhtml" value="Ajouter un coach" /></p>
+		<p>
+			<h:link
+				outcome="AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
+				value="Retour à l'accueil" />
+		</p>
+		<p>
+			<h:link outcome="Test-RegisterCoach.xhtml" value="Ajouter un coach" />
+		</p>
+
+		<h1 class="text-start mb-3 fw-lighter">Abonnements</h1>
+		<div class="d-flex container mt-5 detailSubscription">
+			<div
+				class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
+				style="background-color: aqua">
+				<div class="card-header">
+					<h:link outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link>
+				</div>
+				<div class="card-body">
+					<p class="card-text">Ajouter un nouvel abonnement</p>
+				</div>
+			</div>
+			<ui:repeat value="#{subscriptionController.allActiveSubscription}"
+				var="subscription">
+				<div
+					class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
+					style="background-color: yellow;">
+					<div class="card-header">
+						<h1>#{subscription.subscriptionName}</h1>
+					</div>
+					<div class="card-body">
+						<p>#{subscription.description}</p>
+						<p>#{subscription.engagement}</p>
+					</div>
+					<div class="card-footer">
+						<p>#{subscription.price.monthlyPrice}</p>
+					</div>
+				</div>
+			</ui:repeat>
+		</div>
 
 	</ui:define>
 </ui:composition>

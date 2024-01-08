@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 
 import fr.isika.cda.javaee.entity.relations.Schedulde;
 import fr.isika.cda.javaee.entity.spaces.Space;
+import fr.isika.cda.javaee.entity.subscription.Subscription;
 
 @Entity
 public class User {
@@ -37,6 +38,8 @@ public class User {
 
 	@OneToOne
 	private Schedulde schedulde;
+
+	private Long currentSubScriptionId;
 
 //******************************************************	
 	/**
@@ -108,6 +111,14 @@ public class User {
 
 	public void setLinkedSpaces(List<Space> linkedSpaces) {
 		this.linkedSpaces = linkedSpaces;
+	}
+
+	public Long getCurrentSubScriptionId() {
+		return currentSubScriptionId;
+	}
+
+	public void setCurrentSubScriptionId(Long currentSubScriptionId) {
+		this.currentSubScriptionId = currentSubScriptionId;
 	}
 
 }

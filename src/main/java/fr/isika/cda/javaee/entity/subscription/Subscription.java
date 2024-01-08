@@ -11,7 +11,7 @@ public class Subscription {
 	@Id
 	@GeneratedValue
 	private Long subscriptionId;
-
+	private Long memberId;
 	private String subscriptionName;
 	private String description;
 	private String engagement;
@@ -24,8 +24,8 @@ public class Subscription {
 	public Subscription() {
 	}
 
-	public Subscription(boolean isViewModel) {
-		this.setPrice(new Price());
+	public Subscription(Boolean isforViewModel) {
+		this.price = new Price();
 	}
 
 //******************************************************
@@ -75,6 +75,14 @@ public class Subscription {
 
 	public void setPrice(Price price) {
 		this.price = price;
+	}
+
+	public Long getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(Long memberId) {
+		this.memberId = memberId;
 	}
 
 }

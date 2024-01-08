@@ -11,16 +11,26 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import fr.isika.cda.javaee.dao.IDaoSubscription;
+import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.entity.subscription.Membership;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
+import fr.isika.cda.javaee.entity.users.User;
+import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.SubscriptionViewModel;
 
 @Named
 @ViewScoped
 public class SubscriptionController implements Serializable {
 
-	private static final long serialVersionUID = 8496614779097793938L;
+	private static final long serialVersionUID = 8496614779097792338L;
 
-	private SubscriptionViewModel subscriptionViewModel = new SubscriptionViewModel();;
+	@Inject
+	private IDaoSubscription subscriptionDao;
+
+	@Inject
+	private IDaoUser userDao;
+
+	private SubscriptionViewModel subscriptionViewModel = new SubscriptionViewModel();
 
 	@PostConstruct
 	public void init() {
@@ -28,12 +38,6 @@ public class SubscriptionController implements Serializable {
 	}
 
 //*****************************************************************************
-	public String createSubscription() {
-		Subscription subscriptionToCreate = subscriptionViewModel.getSubscription();
-		subscriptionDao.createSubscription(subscriptionToCreate);
-		return "SpaceAccueilPersonnalisation";
-	}
-
 	public SubscriptionViewModel getSubscriptionViewModel() {
 		return subscriptionViewModel;
 	}
@@ -42,9 +46,11 @@ public class SubscriptionController implements Serializable {
 		this.subscriptionViewModel = subscriptionViewModel;
 	}
 
-	public String deleteSubscription(Long subscriptionToDeleteId) {
-		subscriptionDao.deleteSubscription(subscriptionToDeleteId);
-		return "ManagerDashBoard";
+//*****************************************************************************
+	public String createSubscription() {
+		Subscription subscriptionToCreate = subscriptionViewModel.getSubscription();
+		subscriptionDao.createSubscription(subscriptionToCreate);
+		return "SpaceAccueilPersonnalisation";
 	}
 
 	public List<Subscription> getAllActiveSubscription() {
@@ -60,10 +66,22 @@ public class SubscriptionController implements Serializable {
 		return subscriptionDao.getSubscriptionByName(subscriptionName);
 	}
 
-	@Inject
-	private IDaoSubscription subscriptionDao;
-
-	private Subscription subscription;
+	/**
+	 * Create a new subscription and link it to the active member, using the session
+	 * parameters. Use this method only if the member is logged.
+	 * 
+	 * @return url (:String)
+	 */
+	public String subscribe(Long id) {
+		// Récupérer l'adhérent courant depuis a session.
+		Long currentUserId = SessionUtils.getUserIdFromSession();
+		User currentUser = userDao.getUserByIdWithLinkedSpaces(currentUserId);
+		// Lier l'adhérent et la souscription
+		currentUser.setCurrentSubScriptionId(id);
+		// persistance des données.
+		userDao.updateUser(currentUser);
+		return "Test-AdherentDashboard";
+	}
 
 	public String showSubscriptionDetails() {
 
@@ -73,23 +91,16 @@ public class SubscriptionController implements Serializable {
 		String subscriptionIdParam = paramSubscription.get("subscriptionId");
 		Long subscriptionId = Long.valueOf(subscriptionIdParam);
 
-		// 2 - aller chercher l'objet Salle par cet id (en bdd)
-		subscription = subscriptionDao.getSubscriptionById(subscriptionId);
+		// 1 -Stocker la souscription dans le viewmodel
+		this.subscriptionViewModel.setSubscription(subscriptionDao.getSubscriptionById(subscriptionId));
 
-		// 3 - afficher la page Salle (Space) avec les données qu'on vient de trouver
-		System.out.println(subscription);
-
-		// 4 - rediriger vers la page du space en question
+		// 3 - rediriger vers la page du space en question
 		return "Subscription.xhtml?faces-redirect=true&amp;subscriptionId=" + subscriptionId;
 	}
 
-	public List<Subscription> getAllSubscriptions() {
-		// String a = Color.getColorsTemplate().get("red");
-		return subscriptionDao.getAllSubscriptions();
-	}
-
-	public Subscription getSubscription() {
-		return subscription;
+	public String deleteSubscription(Long subscriptionToDeleteId) {
+		subscriptionDao.deleteSubscription(subscriptionToDeleteId);
+		return "ManagerDashBoard";
 	}
 
 }
