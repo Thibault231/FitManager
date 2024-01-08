@@ -42,6 +42,13 @@
 									placeholder="Sexe" size="20"
 									value="#{spaceController.spaceForm.user.profile.civility.sex}" />
 								<h:outputLabel class="outputLabel" for="floatingInput03">Sexe</h:outputLabel>
+								<h:selectOneMenu id="sex"
+									value="#{userController.userViewModel.user.profile.civility.sex}">
+									<f:selectItem itemLabel=" " />
+									<f:selectItem itemLabel="Homme" itemValue="Man" />
+									<f:selectItem itemLabel="Femme" itemValue="Woman" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
 							</div>
 
 							<div class="form-floating">
@@ -100,6 +107,13 @@
 									<f:selectItem itemLabel="Autre" itemValue="Other" />
 								</h:selectOneMenu>
 								<hr />
+								<h:outputLabel id="fileUploadLbl" class="outputLabel">File : </h:outputLabel>
+								<p:fileUpload listener="#{registerUserController.uploadFile}"
+									styleClass="w-100" mode="advanced" dragDropSupport="false" />
+								<h:column>
+								<f:facet name="header">Document</f:facet>
+								<h:graphicImage library="documents" name="#{user.filePath}"/>
+								</h:column>
 							</div>
 							<h:commandButton class="btn btn-warning"
 								value="Créer un compte coach"
