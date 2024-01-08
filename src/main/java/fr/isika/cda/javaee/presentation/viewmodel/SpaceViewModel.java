@@ -9,6 +9,8 @@ public class SpaceViewModel {
 	private Space space;
 	private User user;
 
+	private String administrativeDocPath;
+
 	public SpaceViewModel() {
 		this.space = new Space(true);
 		this.user = new User(true);
@@ -39,4 +41,11 @@ public class SpaceViewModel {
 		this.user = user;
 	}
 
+	public String getAdministrativeDocPath() {
+		return administrativeDocPath;
+	}
+
+	public void setAdministrativeDocPath(String administrativeDocPath) {
+		this.administrativeDocPath = administrativeDocPath;
+	}
 }

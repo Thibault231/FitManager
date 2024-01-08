@@ -18,6 +18,8 @@ public class AdministrativeDocument {
 	@Enumerated(EnumType.STRING)
 	private Type type;
 
+	private String filePath;
+
 	// Getters and setters
 
 	public Type getType() {
@@ -42,6 +44,14 @@ public class AdministrativeDocument {
 
 	public void setRegistration(int registration) {
 		this.registration = registration;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 	@Override

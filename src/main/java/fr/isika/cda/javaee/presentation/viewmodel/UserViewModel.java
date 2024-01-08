@@ -14,7 +14,6 @@ public class UserViewModel {
 	private String password;
 	private User user;
 	private UserForm form;
-	private String filePath;
 
 	public UserViewModel() {
 		this.user = new User(true);
@@ -56,31 +55,12 @@ public class UserViewModel {
 
 	}
 
-	public String getFilePath() {
-		return filePath;
-	}
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-
 	@Override
 	public String toString() {
 		return "UserViewModel [email=" + email + ", password=" + password + ", user=" + user + ", form=" + form
-				+ ", filePath=" + filePath + ", getUser()=" + getUser() + ", getEmail()=" + getEmail()
-				+ ", getPassword()=" + getPassword() + ", getForm()=" + getForm() + ", getFilePath()=" + getFilePath()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", getUser()=" + getUser() + ", getEmail()=" + getEmail() + ", getPassword()=" + getPassword()
+				+ ", getForm()=" + getForm() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
 
-	public void uploadFile(FileUploadEvent event) throws Exception {
-		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
-
-		UploadedFile uploadedFile = event.getFile();
-		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
-
-		// form.setFilePath(fileName);
-
-		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
-	}
 }
