@@ -22,7 +22,7 @@
 		<!-- a supprimer une fois intégré avec la création de space dpuis la plateforme -->
 			<h:commandButton action="#{spaceDetailsController.creerSpaceDeTest()}" value="Créer un espace de test" />
 			<br/>
-			
+			<h2> Liste des espaces</h2>
 			<ul>
 				<ui:repeat value="#{spaceDetailsController.getAllSpaces()}" var="space">
 					<li>
@@ -30,6 +30,18 @@
 							
 							<!-- Attention au nom du paramètre car utilisé dans le controller -->
 							<f:param name="spaceId" value="#{space.spaceId}"/>
+						</h:commandLink>
+					</li>
+				</ui:repeat>
+			</ul>
+			<h2> Liste des abonnements</h2>
+			<ul>
+				<ui:repeat value="#{spaceDetailsController.getAllSubscriptions()}" var="subscription">
+					<li>
+						<h:commandLink action="#{spaceDetailsController.showSubscriptionDetails()}" value="#{subscription.subscriptionName}">
+							
+							<!-- Attention au nom du paramètre car utilisé dans le controller -->
+							<f:param name="subscriptionId" value="#{subscription.subscriptionId}"/>
 						</h:commandLink>
 					</li>
 				</ui:repeat>

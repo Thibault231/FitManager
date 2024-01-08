@@ -42,7 +42,7 @@ public class SpaceController implements Serializable {
 	public void init() {
 		this.spaceViewModel = new SpaceViewModel();
 	}
-
+  
 	public SpaceViewModel getSpaceForm() {
 		return spaceViewModel;
 	}

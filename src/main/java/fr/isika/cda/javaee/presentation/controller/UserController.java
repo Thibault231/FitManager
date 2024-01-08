@@ -1,6 +1,7 @@
 package fr.isika.cda.javaee.presentation.controller;
 
 import java.io.Serializable;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -11,6 +12,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.event.FileUploadEvent;
@@ -18,6 +21,9 @@ import org.primefaces.model.file.UploadedFile;
 
 import fr.isika.cda.javaee.FileUploadUtils;
 import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.entity.users.Account;
+import fr.isika.cda.javaee.entity.users.Civility;
+import fr.isika.cda.javaee.entity.users.Profile;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
@@ -40,7 +46,6 @@ public class UserController implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		this.userViewModel = new UserViewModel();
 	}
 
 //***************************************
