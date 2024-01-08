@@ -16,4 +16,6 @@ public interface IDaoSubscription {
 
 	List<Subscription> getAllSubscriptions();
 
+	void updateSubscription(Subscription subscriptionToUpdate);
+
 }

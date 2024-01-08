@@ -3,6 +3,7 @@ package fr.isika.cda.javaee.entity.spaces;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.plateform.Machine;
 import fr.isika.cda.javaee.entity.plateform.Room;
 import fr.isika.cda.javaee.entity.relations.Planning;
+import fr.isika.cda.javaee.entity.subscription.Subscription;
 import fr.isika.cda.javaee.entity.users.User;
 
 @Entity
@@ -45,6 +47,9 @@ public class Space {
 	@OneToMany
 	private List<Room> rooms;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Subscription> subscriptions;
+
 	@ManyToMany
 	private List<User> users;
 
@@ -70,6 +75,7 @@ public class Space {
 		this.infos.setAdministrative(new Administrative());
 		this.infos.setConfiguration(configuration);
 		this.users = new ArrayList<User>();
+		this.subscriptions = new ArrayList<Subscription>();
 	}
 
 //**************************************
@@ -111,6 +117,14 @@ public class Space {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public List<Subscription> getSubscriptions() {
+		return subscriptions;
+	}
+
+	public void setSubscriptions(List<Subscription> subscriptions) {
+		this.subscriptions = subscriptions;
 	}
 
 }

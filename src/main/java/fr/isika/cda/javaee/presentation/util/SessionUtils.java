@@ -16,5 +16,4 @@ public final class SessionUtils {
 		Long spaceId = (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("id");
 		return spaceId;
 	}
-
 }

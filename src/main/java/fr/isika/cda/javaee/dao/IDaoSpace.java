@@ -41,6 +41,15 @@ public interface IDaoSpace {
 	Space getSpaceWithMembers(Long currentSpaceId);
 
 	/**
+	 * Return a Space, with all it's subscriptions dependencies, using it's Id, if
+	 * it exist or null otherwise.
+	 * 
+	 * @param spaceToGetId
+	 * @return the space to get (:Space)
+	 */
+	Space getSpaceWithSubscription(Long currentSpaceId);
+
+	/**
 	 * Return a Space from the database, using it's FitnessName, if it exist or null
 	 * otherwise.
 	 * 
