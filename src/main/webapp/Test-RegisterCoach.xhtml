@@ -15,8 +15,10 @@
 			style="height: 100vh; width: 100vw">
 			<div class="w-25">
 				<div class="text-center mb-4">
-					<h2>Fit Manager</h2>
-					<a>Design your fitness</a>
+					<h2>Nom de l'espace</h2>
+					<h3>Création d'un nouveau coach</h3>
+					<p><b>Attention le mot de passe par défaut sera "00000"</b></p>
+					<a>Slogan de l'espace</a>
 
 				</div>
 				<h:form>
@@ -37,14 +39,11 @@
 								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 							</div>
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput03"
-									placeholder="Sexe" size="20"
-									value="#{spaceController.spaceForm.user.profile.civility.sex}" />
-								<h:outputLabel class="outputLabel" for="floatingInput03">Sexe</h:outputLabel>
+							<div class="field">
+								<h:outputLabel for="sex" value="Genre" />
 								<h:selectOneMenu id="sex"
-									value="#{userController.userViewModel.user.profile.civility.sex}">
-									<f:selectItem itemLabel=" " />
+									value="#{spaceController.spaceForm.user.profile.civility.sex}">
+									<f:selectItem itemLabel="" />
 									<f:selectItem itemLabel="Homme" itemValue="Man" />
 									<f:selectItem itemLabel="Femme" itemValue="Woman" />
 									<f:selectItem itemLabel="Autre" itemValue="Other" />
