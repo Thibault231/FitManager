@@ -12,17 +12,68 @@
 	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
 	<ui:define name="content">
 
-		<div>
-			<h2>ACCEUIL</h2>
+		<!-- NavBAr -->
+		<div
+			class="bg-light-subtle d-flex justify-content-around align-items-center w-100 navBar"
+			style="position: fixed; top: 0px; z-index: 9999">
+			<h1>
+				Salle avec ID:
+				<h:outputText value="#{sessionScope.spaceId}" />
+				!!!!!!
+			</h1>
+			<p class=" m-1">#{sessionScope.role}</p>
+
+			<div class="d-flex w-75 justify-content-evenly ">
+				<h:link outcome="SpaceLoginForm.xhtml">Se connecter</h:link>
+				<h:link outcome="RegisterMemberForm.xhtml">Créer mon compte</h:link>
+				<h:link outcome="Calendar.xhtml">Planning</h:link>
+				<h:form>
+					<h:commandLink class="dropdown-item"
+						action="#{spaceController.simpleSpacelogout()}">
+						Se déconnecter
+					</h:commandLink>
+				</h:form>
+			</div>
 		</div>
-		<div class="logo">
-			<h:graphicImage name="logo2.png" alt="logo" />
-		</div>
-		<h:form>
-			<h:outputLabel class="outputLabel">Logo :</h:outputLabel>
-			<h:inputText id="logoInput" size="15"
-				value="#{spaceController.spaceForm.space.infos.configuration.logo}" />
-		</h:form>
+		<div class="row mt-5 p-5">
+			<div class="container  text-center">
+				<div class="row gy-5">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
+						<div class="p-3">
+							<h1 class="text-start mb-3 fw-lighter">Abonnements</h1>
+							<div class="d-flex container mt-5 detailSubscription">
+								<div class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
+									style="background-color: aqua">
+									<div class="card-header">
+										<h:link outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link>
+									</div>
+									<div class="card-body">
+										<p class="card-text">Ajouter un nouvel abonnement</p>
+									</div>
+									</div>
+									<ui:repeat value="#{subscriptionController.allActiveSubscription}" var="subscription">
+									<div class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
+										style="background-color:yellow;">
+										<div class="card-header">
+											<h1>#{subscription.subscriptionName}</h1>
+										</div>
+										<div class="card-body">
+										<p>#{subscription.description}</p>
+										<p>#{subscription.engagement}</p>
+										</div>
+										<div class="card-footer">
+										<p>#{subscription.price.monthlyPrice}</p>
+										</div>
+									</div>
+									</ui:repeat>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					
 	</ui:define>
 </ui:composition>
 </html>
+
