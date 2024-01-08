@@ -124,7 +124,7 @@ public class SpaceController implements Serializable {
 	 * @return url (:String)
 	 */
 	public String createMemberAccount() {
-		Long currentSpaceId = spaceViewModel.getSpaceId();
+		Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
 
 		Space currentSpace = spaceDao.getSpaceWithMembers(currentSpaceId);
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Adherent);
@@ -162,7 +162,6 @@ public class SpaceController implements Serializable {
 
 		// 2 - aller chercher l'objet Salle par cet id (en bdd)
 		spaceViewModel.setSpace(spaceDao.getSpaceById(spaceId));
-
 		// 3- Renseigne l'id de la salle dans la session.
 		String viewToReturn = "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 
