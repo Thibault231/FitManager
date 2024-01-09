@@ -77,13 +77,26 @@ public class UserController implements Serializable {
 	}
 
 	/**
+	 * Update the change of a user profile.
+	 * 
+	 * @param dashboard url (:String)
+	 */
+	public String updateUser(User updatedUser) {
+		System.out.println("updateUser");
+		userDao.updateUser(updatedUser);
+		return "UpdateUserForm.xhtml?faces-redirect=true";
+	}
+
+	/**
 	 * Delete a user from the database using it's Id.
 	 * 
 	 * @param userToDeleteId
 	 * @return url (:String)
 	 */
-	public String deleteUser(Long userToDeleteId) {
-		userDao.deleteUser(userToDeleteId);
+
+	public String deleteUser(User userToDelete) {
+		System.err.println("Utilisateur à supprimer " + userToDelete);
+		userDao.deleteUser(userToDelete.getUserId());
 		return "UsersAccounts.xhtml?faces-redirect=true";
 	}
 
@@ -189,16 +202,6 @@ public class UserController implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
 		return "index";
-	}
-
-	/**
-	 * Update the change of a user profile.
-	 * 
-	 * @param dashboard url (:String)
-	 */
-	public String updateUser(User updatedUser) {
-		userDao.updateUser(updatedUser);
-		return "UsersAccounts.xhtml?faces-redirect=true";
 	}
 
 }

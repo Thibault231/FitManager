@@ -22,7 +22,7 @@ import fr.isika.cda.javaee.presentation.viewmodel.BookingForm;
 public class BookingController implements Serializable {
 
 	private static final long serialVersionUID = -160397842934902381L;
-	
+
 	@Inject
 	private IBookingDao iBookingDao;
 	
@@ -55,9 +55,6 @@ public class BookingController implements Serializable {
 		
 		//3-On persiste la réservation
 		iBookingDao.createBooking(bookingToCreate);
-		
-		
-		
 		
 		courseController.resetEvent();
 	}

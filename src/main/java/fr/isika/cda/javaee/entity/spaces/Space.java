@@ -50,7 +50,7 @@ public class Space {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Subscription> subscriptions;
 
-	@ManyToMany
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private List<User> users;
 
 //**************************************
