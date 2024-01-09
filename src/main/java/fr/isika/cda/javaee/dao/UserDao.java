@@ -47,18 +47,14 @@ public class UserDao implements IDaoUser {
 
 	@Override
 	public User getUserByEmail(String userToGetEmail) {
-		// @formatter:off
 		try {
-			User user = em
-					.createQuery("SELECT u FROM User u WHERE u.account.login = :login", User.class)
-					.setParameter("login", userToGetEmail)
-					.getSingleResult();
+			User user = em.createQuery("SELECT u FROM User u WHERE u.account.login = :login", User.class)
+					.setParameter("login", userToGetEmail).getSingleResult();
 			return user;
-		} catch(NoResultException ex) {
+		} catch (NoResultException ex) {
 			return null;
 		}
 
-		// @formatter:on
 	}
 
 	@Override
@@ -74,8 +70,12 @@ public class UserDao implements IDaoUser {
 
 	@Override
 	public User getUserByIdWithLinkedSpaces(Long userId) {
-		return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.id = :userIdParam",
-				User.class).setParameter("userIdParam", userId).getSingleResult();
+		try {
+			return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.id = :userIdParam",
+					User.class).setParameter("userIdParam", userId).getSingleResult();
+		} catch (NoResultException ex) {
+			return null;
+		}
 	}
 
 	@Override

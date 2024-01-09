@@ -32,12 +32,13 @@
 						listener="#{courseController.onDateSelect}" update="eventDetails"
 						oncomplete="PF('eventDialog').show();" />
 					<p:ajax event="eventSelect"
-						listener="#{courseController.onEventSelect}"
-						update="eventDetails" oncomplete="PF('eventDialog').show();" />
+						listener="#{courseController.onEventSelect}" update="eventDetails"
+						oncomplete="PF('eventDialog').show();" />
 					<p:ajax event="eventMove"
 						listener="#{courseController.onEventMove}" update="messages" />
 					<p:ajax event="eventResize"
 						listener="#{courseController.onEventResize}" update="messages" />
+
 				</p:schedule>
 			</h:panelGrid>
 
@@ -48,19 +49,17 @@
 					<p:inputText id="title" value="#{courseController.event.title}"
 						required="true" />
 
-					<p:outputLabel for="from" value="From:" />
-					<p:datePicker id="from" value="#{courseController.event.startDate}"
-						pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" />
-
-					<p:outputLabel for="to" value="To:" />
-					<p:datePicker id="to" value="#{courseController.event.endDate}"
-						pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" />
+					
 
 					<p:outputLabel for="description" value="Description:" />
 					<p:inputTextarea id="description"
 						value="#{courseController.event.description}">
 					</p:inputTextarea>
 
+					<p:commandButton value = "Réserver" action = "#(#{bookingController.createBooking()})"
+									 update=":messages" oncomplete="PF('eventDialog').hide();"
+									 rendered="#(adherent)">
+					</p:commandButton>
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>

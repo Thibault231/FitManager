@@ -39,21 +39,31 @@ public class InitDb {
 			spaceOne.getInfos().getConfiguration().setFitnessName("MyFirstSpace");
 			spaceDao.createSpace(spaceOne);
 
+			Space spaceTwo = new Space(true);
+			spaceTwo.getInfos().getConfiguration().setFitnessName("MySecondSpace");
+			spaceDao.createSpace(spaceTwo);
+
 			User userManager = new User(true);
 			userManager.getAccount().setLogin("titou@gmail.com");
 			userManager.getAccount().setPassword("31500");
 			userManager.getAccount().setRole(Role.Gestionnaire);
+			userManager.getLinkedSpaces().add(spaceOne);
 			userManager.getProfile().getCivility().setForename("Titou");
 			userManager.getProfile().getCivility().setName("Polo");
 			userDao.createUser(userManager);
+			spaceOne.getUsers().add(userManager);
+			spaceDao.updateSpace(spaceOne);
 
 			User userCoach = new User(true);
 			userCoach.getAccount().setLogin("nene@gmail.com");
 			userCoach.getAccount().setPassword("31500");
 			userCoach.getAccount().setRole(Role.Coach);
+			userCoach.getLinkedSpaces().add(spaceOne);
 			userCoach.getProfile().getCivility().setForename("Nene");
 			userCoach.getProfile().getCivility().setName("Sacko");
 			userDao.createUser(userCoach);
+			spaceOne.getUsers().add(userCoach);
+			spaceDao.updateSpace(spaceOne);
 
 			User userMember = new User(true);
 			userMember.getAccount().setLogin("charef@gmail.com");
@@ -62,27 +72,40 @@ public class InitDb {
 			userMember.getProfile().getCivility().setForename("Charef");
 			userMember.getProfile().getCivility().setName("Senouci");
 			userDao.createUser(userMember);
-			
+
 			/*
 			 * Création de quelques cours pour la vue allCourses (Calendar)
 			 */
 			Course c = new Course();
 			c.setName("Cours de dance");
+			c.setLinkedSpaceId(7L);
+			c.setCoach(userCoach);
 			c.setStartDate(LocalDateTime.now());
 			c.setEndDate(LocalDateTime.now().plusHours(2));
 			c.setDescription("Break");
-			
+
 			Course c2 = new Course();
 			c2.setName("Cours de muscu");
+			c2.setLinkedSpaceId(7L);
+			c2.setCoach(userCoach);
 			c2.setStartDate(LocalDateTime.now().plusDays(1));
 			c2.setEndDate(LocalDateTime.now().plusDays(1).plusHours(2));
 			c2.setDescription("Muscu");
-			
+
+			Course c3 = new Course();
+			c3.setName("Cours de bodypump");
+			c3.setLinkedSpaceId(14L);
+			c3.setCoach(userCoach);
+			c3.setStartDate(LocalDateTime.now().plusDays(2));
+			c3.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
+			c3.setDescription("Body Pump");
+
 			em.persist(c);
 			em.persist(c2);
-			
+			em.persist(c3);
+
 			/*
-			 * Fin création des cours			
+			 * Fin création des cours
 			 */
 			System.out.println("************************ End of Initializing DB **********************************");
 			initialized = true;
