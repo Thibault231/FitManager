@@ -69,6 +69,13 @@
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
+		
+		<li class="nav-item"><h:form>
+			<h:commandLink class="nav-link"
+			  action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">
+			  MON ESPACE
+			</h:commandLink>
+		</h:form></li>
 
 	</ui:define>
 </ui:composition>

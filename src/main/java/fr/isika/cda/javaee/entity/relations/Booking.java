@@ -1,6 +1,7 @@
 package fr.isika.cda.javaee.entity.relations;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.users.User;
 
 @Entity
@@ -19,16 +21,32 @@ public class Booking {
 	private Long bookingId;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar registrationDate;
+	private Date registrationDate;
 
-	@OneToOne
-	private User coach;
+	private Long spaceId;
 
 	@OneToOne
 	private User member;
 
 	@OneToOne
-	private ActivityTest activity;
+	private Course linkedCourse;
+
+//***********************************************	
+	/**
+	 * Empty constructor for JEE.
+	 */
+	public Booking() {
+	}
+
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param isActive (: boolean)
+	 */
+	public Booking(boolean isForViewModel) {
+		this.linkedCourse = new Course();
+		this.member = new User();
+	}
 
 //***********************************************	
 	public Long getBookingId() {
@@ -39,14 +57,6 @@ public class Booking {
 		this.bookingId = bookingId;
 	}
 
-	public User getCoach() {
-		return coach;
-	}
-
-	public void setCoach(User coach) {
-		this.coach = coach;
-	}
-
 	public User getMember() {
 		return member;
 	}
@@ -55,20 +65,36 @@ public class Booking {
 		this.member = member;
 	}
 
-	public Calendar getBirthday() {
+	public Date getBirthday() {
 		return registrationDate;
 	}
 
-	public void setBirthday(Calendar birthday) {
+	public void setBirthday(Date birthday) {
 		this.registrationDate = birthday;
 	}
 
-	public ActivityTest getActivity() {
-		return activity;
+	public Date getRegistrationDate() {
+		return registrationDate;
 	}
 
-	public void setActivity(ActivityTest activity) {
-		this.activity = activity;
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+	public Course getLinkedCourse() {
+		return linkedCourse;
+	}
+
+	public void setLinkedCourse(Course linkedCourse) {
+		this.linkedCourse = linkedCourse;
+	}
+
+	public Long getSpaceId() {
+		return spaceId;
+	}
+
+	public void setSpaceId(Long spaceId) {
+		this.spaceId = spaceId;
 	}
 
 }
