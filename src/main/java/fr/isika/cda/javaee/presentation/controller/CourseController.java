@@ -32,6 +32,7 @@ import fr.isika.cda.javaee.presentation.util.SessionUtils;
 public class CourseController implements Serializable {
 
 	private static final long serialVersionUID = -160397842934902381L;
+  
 	@Inject
 	private IDaoCourse courseDao;
 
