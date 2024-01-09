@@ -30,6 +30,10 @@ public class ActivityController implements Serializable {
 		// reset le formulaire
 		activityForm = new ActivityForm();
 	}
+	
+	public void updateActivity(Long id) {
+		activityDao.updateActivity(id);
+	}
 
 	public void deleteActivity(Long id) {
 		activityDao.deleteActivity(id);
