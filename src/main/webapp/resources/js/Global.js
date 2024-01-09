@@ -1,14 +1,28 @@
+ 
+          const RGPDWINDOW= document.getElementById('rgpd');
+              const btnRgpdAccept= document.getElementById('rgpdAccept');
+              const btnRgpdUnaccept= document.getElementById('rgpdUnaccept');
+              const rgpdAccept = "rgpdAccept";
 
-        const RGPDWINDOW= document.getElementById('rgpd');
-        const btnRgpdAccept= document.getElementById('rgpdAccept');
-        const btnRgpdUnaccept= document.getElementById('rgpdUnaccept');
-        const rgpdAccept = "rgpdAccept";
 
+              RGPDWINDOW.style.display= 'none';
 
-        RGPDWINDOW.style.display= 'none';
+              
 
         document.addEventListener('DOMContentLoaded', function() {
+			
 
+
+        	const menus = document.getElementById('menus');
+            menus.addEventListener('click',()=>{ menus.classList.toggle("desable"); })
+
+
+           const ctx1 = document.getElementById('ChartBar').getContext('2d');
+           const ctx2 = document.getElementById('Chartline').getContext('2d');
+
+           const Chartbar = chard(ctx1,'bar')
+           const Chartline = chard(ctx2,'line')
+     
 
 
             const existeCle1 = verifierCleLocalStorage(rgpdAccept);
@@ -38,6 +52,39 @@
                 }
             }
 
+
+            function chard (_ctx, type){
+                let resChart = new Chart(_ctx, {
+                     type: type,
+                     data: {
+                         labels: ['January', 'February', 'March', 'April', 'May'],
+                         datasets: [{
+                             label: 'Monthly Sales',
+                             data: [50, 75, 120, 200, 90],
+                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                             borderColor: 'rgb(87,192,75)',
+                             borderWidth: 1
+                         },
+                             {
+                                 label: 'Monthly Sales',
+                                 data: [70, 5, 250, 20, 75],
+                                 backgroundColor: 'red',
+                                 borderColor: 'blue',
+                                 borderWidth: 1
+                             }]
+                     },
+                     options: {
+                         scales: {
+                             y: {
+                                 beginAtZero: true
+                             }
+                         }
+                     }
+                 });
+                 return resChart
+             }
+                 
+
             function verifierCleLocalStorage(cle) {
 
                 if (typeof localStorage !== 'undefined') {
@@ -50,44 +97,12 @@
                     return false;
                 }
             }
-            
-            /*Grahique*/
 
-        function chard (_ctx, type){
-           let resChart = new Chart(_ctx, {
-                type: type,
-                data: {
-                    labels: ['January', 'February', 'March', 'April', 'May'],
-                    datasets: [{
-                        label: 'Monthly Sales',
-                        data: [50, 75, 120, 200, 90],
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgb(87,192,75)',
-                        borderWidth: 1
-                    },
-                        {
-                            label: 'Monthly Sales',
-                            data: [70, 5, 250, 20, 75],
-                            backgroundColor: 'red',
-                            borderColor: 'blue',
-                            borderWidth: 1
-                        }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-            return resChart
-        }
-
-
-
-        const menus = document.getElementById('menus');
-        menus.addEventListener('click',()=>{ menus.classList.toggle("desable"); })
-            
-
+           
         });
+        
+        
+
+      
+
+       
