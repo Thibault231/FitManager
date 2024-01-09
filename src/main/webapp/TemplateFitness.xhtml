@@ -60,13 +60,17 @@
 			style="background-color: #1C3659;">
 			<div class="container-fluid">
 				<ul class="navbar-nav">
-<!-- 					<li class="nav-item"><h:link class="nav-link" outcome="">ACCEUIL</h:link></li> -->
-<!-- 					<li class="nav-item"><h:link class="nav-link" outcome="">NOS OFFRES</h:link></li> -->
-<!-- 					<li class="nav-item"><h:link class="nav-link" outcome="">NOS COACHS</h:link></li> -->
+					<!-- 					<li class="nav-item"><h:link class="nav-link" outcome="">ACCEUIL</h:link></li> -->
+					<!-- 					<li class="nav-item"><h:link class="nav-link" outcome="">NOS OFFRES</h:link></li> -->
+					<!-- 					<li class="nav-item"><h:link class="nav-link" outcome="">NOS COACHS</h:link></li> -->
 					<li class="nav-item"><h:link class="nav-link"
 							outcome="Calendar.xhtml">PLANNING</h:link></li>
 					<li class="nav-item"><h:link class="nav-link"
 							outcome="SpaceLoginForm.xhtml">SE	CONNECTER</h:link></li>
+					<li class="nav-item"><h:form>
+							<h:commandLink class="nav-link"
+								action="#{spaceController.simpleSpacelogout()}">DECONNECTION</h:commandLink>
+					</h:form></li>
 				</ul>
 			</div>
 		</nav>
