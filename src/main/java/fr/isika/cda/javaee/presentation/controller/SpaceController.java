@@ -105,10 +105,20 @@ public class SpaceController implements Serializable {
 	 * @return url (:String)
 	 */
 	public String createCoachAccount() {
+
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Coach);
 		this.spaceViewModel.getUser().getAccount().setPassword("00000");
 		try {
-			userSvc.createUser(spaceViewModel.getUser());
+			Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
+			Space currentSpace = spaceDao.getSpaceWithMembers(currentSpaceId);
+			Long createdUserId = userSvc.createUser(spaceViewModel.getUser());
+			User createdUser = userDao.getUserByIdWithLinkedSpaces(createdUserId);
+			currentSpace.getUsers().add(createdUser);
+			createdUser.getLinkedSpaces().add(currentSpace);
+
+			spaceDao.updateSpace(currentSpace);
+			userDao.updateUser(createdUser);
+
 			this.spaceViewModel.setUser(new User(true));
 			return "ManagerSpaceDashBoard";
 		} catch (UserExistsException e) {

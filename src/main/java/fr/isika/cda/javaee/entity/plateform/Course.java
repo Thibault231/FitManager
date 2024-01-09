@@ -17,6 +17,7 @@ public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	private String name;
 	private String description;
 	private LocalDateTime startDate;
@@ -26,14 +27,15 @@ public class Course {
 	private User coach;
 
 //*****************************************************************
+	public Course() {
+	}
+
 	public Course(Long id, String name) {
 		this.id = id;
 		this.name = name;
 		this.coach = new User();
 	}
 
-	public Course() {
-	}
 //*******************************************************************
 
 	public User getCoach() {
