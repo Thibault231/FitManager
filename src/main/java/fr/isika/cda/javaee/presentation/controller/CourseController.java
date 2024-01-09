@@ -32,7 +32,7 @@ import fr.isika.cda.javaee.presentation.util.SessionUtils;
 public class CourseController implements Serializable {
 
 	private static final long serialVersionUID = -160397842934902381L;
-  
+
 	@Inject
 	private IDaoCourse courseDao;
 
@@ -157,7 +157,7 @@ public class CourseController implements Serializable {
 		// Ajout de l'evt => graphique
 		eventModel.addEvent(event);
 		// Fonctionnel => création du cours
-		Course courseToCreate = new Course();
+		Course courseToCreate = new Course(true);
 		courseToCreate.setName(event.getTitle());
 		courseToCreate.setLinkedSpaceId(SessionUtils.getSpaceIdFromSession());
 		courseToCreate.setStartDate(event.getStartDate());
@@ -169,14 +169,18 @@ public class CourseController implements Serializable {
 	}
 
 	private void updateEvent() {
-		Course c = (Course) event.getData();
-		c.setName(event.getTitle());
-		c.setStartDate(event.getStartDate());
-		c.setEndDate(event.getEndDate());
-		c.setDescription(event.getDescription());
 
+		Course courseToCreate = new Course(true);
+		courseToCreate.setName(event.getTitle());
+		courseToCreate.setLinkedSpaceId(SessionUtils.getSpaceIdFromSession());
+		courseToCreate.setStartDate(event.getStartDate());
+		courseToCreate.setEndDate(event.getEndDate());
+		courseToCreate.setDescription(event.getDescription());
+		User currentCoach = userDao.getUserById(SessionUtils.getUserIdFromSession());
+		courseToCreate.setCoach(currentCoach);
 		eventModel.updateEvent(event);
-		courseDao.update(c);
+		courseDao.save(courseToCreate);
+
 	}
 
 	public void onEventMove(ScheduleEntryMoveEvent event) {
