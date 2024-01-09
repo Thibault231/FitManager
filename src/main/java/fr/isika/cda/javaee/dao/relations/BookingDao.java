@@ -21,7 +21,6 @@ public class BookingDao implements IBookingDao {
 		return bookingToCreate.getBookingId();
 	}
 
-//*************************************************************
 	@Override
 	public Booking getBookingingById(Long bookingId) {
 		return em.find(Booking.class, bookingId);
