@@ -69,9 +69,12 @@ public class InitDb {
 			userMember.getAccount().setLogin("charef@gmail.com");
 			userMember.getAccount().setPassword("31500");
 			userMember.getAccount().setRole(Role.Adherent);
+			userMember.getLinkedSpaces().add(spaceOne);
 			userMember.getProfile().getCivility().setForename("Charef");
 			userMember.getProfile().getCivility().setName("Senouci");
 			userDao.createUser(userMember);
+			spaceOne.getUsers().add(userMember);
+			spaceDao.updateSpace(spaceOne);
 
 			/*
 			 * Création de quelques cours pour la vue allCourses (Calendar)
