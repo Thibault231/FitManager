@@ -23,7 +23,7 @@ public class Course {
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
 	private Long linkedSpaceId;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private User coach;
 
 //*****************************************************************
@@ -36,6 +36,9 @@ public class Course {
 		this.coach = new User();
 	}
 
+	public Course(boolean isForViewModel) {
+		this.coach = new User();
+	}
 //*******************************************************************
 
 	public User getCoach() {
