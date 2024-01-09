@@ -83,21 +83,25 @@
     height: 25em;
     overflow-y: scroll;
 }
+
+.imgAccueil{
+	 
+            height: 80vh;
+            width: 100vw;
+            object-fit: cover;
+}
+
+.navbar{
+	height:60px;
+}
+
+
 	
 .imgIllu{
             height: 35vw; width: 100%
         }
 
-.imgHero{
-            height: 80vh;
-            width: 100vw;
-            object-fit: cover;
-        }
-
-.imgLogo{
-            height: 9em;
-            margin: 1em;
-        }
+       
 
 .rgpd{
             position: fixed;
