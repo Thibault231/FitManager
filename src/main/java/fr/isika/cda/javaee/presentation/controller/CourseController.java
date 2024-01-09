@@ -21,6 +21,7 @@ import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
 import fr.isika.cda.javaee.dao.CourseDao;
+import fr.isika.cda.javaee.dao.IDaoCourse;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 
@@ -30,7 +31,7 @@ public class CourseController implements Serializable {
 
 	private static final long serialVersionUID = -160397842934902381L;
 	@Inject
-	private CourseDao courseDao;
+	private IDaoCourse courseDao;
 
 	@PostConstruct
 	private void init() {
