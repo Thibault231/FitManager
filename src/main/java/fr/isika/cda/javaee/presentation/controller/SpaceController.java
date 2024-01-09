@@ -190,7 +190,7 @@ public class SpaceController implements Serializable {
 		// 2 - aller chercher l'objet Salle par cet id (en bdd)
 		spaceViewModel.setSpace(spaceDao.getSpaceById(spaceId));
 		// 3- Renseigne l'id de la salle dans la session.
-		String viewToReturn = "SpaceAccueilPersonnalisation.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		String viewToReturn = "TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 
 		return spaceLogOut(spaceId, viewToReturn);
 	}
@@ -280,7 +280,7 @@ public class SpaceController implements Serializable {
 			return "ManagerSpaceDashBoard";
 		} else {
 			Long spaceId = SessionUtils.getSpaceIdFromSession();
-			return "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+			return "TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 		}
 	}
 
@@ -295,7 +295,7 @@ public class SpaceController implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
 		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
-		return "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		return "TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 	}
 
 	/**
