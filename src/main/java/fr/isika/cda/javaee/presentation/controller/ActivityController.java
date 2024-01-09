@@ -31,10 +31,7 @@ public class ActivityController implements Serializable {
 		activityForm = new ActivityForm();
 	}
 	
-	public void updateActivity(Long id) {
-		activityDao.updateActivity(id);
-	}
-
+	
 	public void updateActivity(Long id) {
 		Activity existingActivity = activityDao.getActivityById(id);
 		if(existingActivity != null) {
