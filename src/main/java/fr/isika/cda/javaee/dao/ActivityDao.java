@@ -25,6 +25,10 @@ public class ActivityDao {
 	public Activity getActivityById(Long id) {
 		return entityManager.find(Activity.class, id);
 	}
+	
+	public void updateActivity(Activity activity) {
+        entityManager.merge(activity);
+    }
 
 	public List<Activity> getAllActivities() {
 		return entityManager.createQuery("SELECT a FROM Activity a", Activity.class).getResultList();
@@ -33,5 +37,7 @@ public class ActivityDao {
 	public void deleteActivity(Long id) {
 		entityManager.remove(entityManager.find(Activity.class, id));
 	}
+
+	
 	
 }
