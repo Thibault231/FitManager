@@ -5,42 +5,56 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.presentation.viewmodel.CourseForm;
 
 @Stateless
-public class CourseDao {
+public class CourseDao implements IDaoCourse {
 
 	@PersistenceContext
-	private EntityManager entityManager;
+	private EntityManager em;
 
+	@Override
 	public Long createCourse(CourseForm courseForm) {
 		Course course = new Course();
 		course.setName(courseForm.getName());
-		entityManager.persist(course);
+		em.persist(course);
 		return course.getId();
 	}
 
-	public Course getCourseById(Long id) {
-		return entityManager.find(Course.class, id);
+	@Override
+	public Course getCourseById(Long courseId) {
+		return em.find(Course.class, courseId);
 	}
 
-	public List<Course> getAllCourses() {
-		return entityManager.createQuery("SELECT a FROM Course a", Course.class).getResultList();
+	@Override
+	public List<Course> getAllCourses(Long spaceId) {
+		return em.createQuery("SELECT c FROM Course c WHERE c.linkedSpaceId = :spaceIdParam", Course.class)
+				.setParameter("spaceIdParam", spaceId).getResultList();
 	}
 
-	public void deleteCourses(Long id) {
-		entityManager.remove(getCourseById(id));
+	@Override
+	public List<Course> getAllCoachCourses(Long currentSpaceId, Long currentUserId) {
+		return em.createQuery(
+				"SELECT c FROM Course c LEFT JOIN FETCH c.coach u WHERE c.linkedSpaceId = :spaceIdParam AND u.userId = :coachIdParam",
+				Course.class).setParameter("spaceIdParam", currentSpaceId).setParameter("coachIdParam", currentUserId)
+				.getResultList();
 	}
 
-	public Long save(Course c) {
-		entityManager.persist(c);
-		return c.getId();
+	@Override
+	public void deleteCourses(Long courseToDeleteId) {
+		em.remove(getCourseById(courseToDeleteId));
 	}
 
-	public void update(Course c) {
-		entityManager.merge(c);
+	@Override
+	public Long save(Course courseToSave) {
+		em.persist(courseToSave);
+		return courseToSave.getId();
+	}
+
+	@Override
+	public void update(Course courseToUpdate) {
+		em.merge(courseToUpdate);
 	}
 
 }

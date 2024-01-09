@@ -8,7 +8,7 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
-	<ui:define name="titleValue">Space : Calendar</ui:define>
+	<ui:define name="titleValue">Space : All Courses</ui:define>
 	<ui:define name="content">
 
 		<h1>Affichage de planning</h1>
@@ -25,47 +25,42 @@
 			<p:growl id="messages" showDetail="true" />
 
 			<h:panelGrid columnClasses="value">
-				<p:schedule id="schedule" value="#{scheduleJava8View.eventModel}"
+				<p:schedule id="schedule" value="#{courseController.eventModel}"
 					widgetVar="myschedule">
 
 					<p:ajax event="dateSelect"
-						listener="#{scheduleJava8View.onDateSelect}" update="eventDetails"
+						listener="#{courseController.onDateSelect}" update="eventDetails"
 						oncomplete="PF('eventDialog').show();" />
 					<p:ajax event="eventSelect"
-						listener="#{scheduleJava8View.onEventSelect}"
+						listener="#{courseController.onEventSelect}"
 						update="eventDetails" oncomplete="PF('eventDialog').show();" />
 					<p:ajax event="eventMove"
-						listener="#{scheduleJava8View.onEventMove}" update="messages" />
+						listener="#{courseController.onEventMove}" update="messages" />
 					<p:ajax event="eventResize"
-						listener="#{scheduleJava8View.onEventResize}" update="messages" />
-
+						listener="#{courseController.onEventResize}" update="messages" />
 				</p:schedule>
 			</h:panelGrid>
 
-			<p:dialog widgetVar="eventDialog" header="Event Details"
+			<p:dialog widgetVar="eventDialog" header="Course Details"
 				showEffect="clip" hideEffect="clip">
 				<h:panelGrid id="eventDetails" columns="2">
-					<p:outputLabel for="title" value="Titles:" />
-					<p:inputText id="title" value="#{scheduleJava8View.event.title}"
+					<p:outputLabel for="title" value="Name :" />
+					<p:inputText id="title" value="#{courseController.event.title}"
 						required="true" />
 
 					<p:outputLabel for="from" value="From:" />
-					<p:datePicker id="from"
-						value="#{scheduleJava8View.event.startDate}" pattern="dd/MM/yyyy"
-						showTime="true" appendTo="@(body)" />
-
-					<p:outputLabel for="to" value="To:" />
-					<p:datePicker id="to" value="#{scheduleJava8View.event.endDate}"
+					<p:datePicker id="from" value="#{courseController.event.startDate}"
 						pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" />
 
-					<p:outputLabel for="allDay" value="All Day (see #1164):" />
-					<h:selectBooleanCheckbox id="allDay"
-						value="#{scheduleJava8View.event.allDay}" />
+					<p:outputLabel for="to" value="To:" />
+					<p:datePicker id="to" value="#{courseController.event.endDate}"
+						pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" />
 
-					<p:commandButton type="reset" value="Reset" />
-					<p:commandButton id="addButton" value="Save"
-						action="#{scheduleJava8View.addEvent}"
-						oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
+					<p:outputLabel for="description" value="Description:" />
+					<p:inputTextarea id="description"
+						value="#{courseController.event.description}">
+					</p:inputTextarea>
+
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
