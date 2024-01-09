@@ -22,6 +22,7 @@ import org.primefaces.model.ScheduleModel;
 
 import fr.isika.cda.javaee.dao.CourseDao;
 import fr.isika.cda.javaee.entity.plateform.Course;
+import fr.isika.cda.javaee.presentation.util.SessionUtils;
 
 @Named
 @ViewScoped
@@ -39,7 +40,6 @@ public class CourseController implements Serializable {
 	private ScheduleModel eventModel;
 	private ScheduleEvent<?> event = new DefaultScheduleEvent<>();
 	private String serverTimeZone = ZoneId.systemDefault().toString();
-
 	private boolean slotEventOverlap = true;
 	private boolean showWeekNumbers = false;
 	private boolean showHeader = true;
@@ -78,6 +78,50 @@ public class CourseController implements Serializable {
 		loadAllCourses();
 	}
 
+	private void loadAllCourses() {
+		List<Course> courses = getAllCourses();
+		for (Course c : courses) {
+			transformCoursetoEvent(c);
+		}
+	}
+
+	/**
+	 * Get all the courses to come, of the current session space.
+	 * 
+	 * @return the courses list (:List<Course>)
+	 */
+	public List<Course> getAllCourses() {
+		Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
+		return courseDao.getAllCourses(currentSpaceId);
+	}
+
+	private void refreshCoachModel() {
+		eventModel = new DefaultScheduleModel();
+		List<Course> courses = getAllCoachCourses();
+		for (Course c : courses) {
+			transformCoursetoEvent(c);
+		}
+	}
+
+	/**
+	 * Get all the courses to come, linked to a specific coach of the current
+	 * session space.
+	 * 
+	 * @return the courses list (:List<Course>)
+	 */
+	public List<Course> getAllCoachCourses() {
+		Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
+		Long currentUserId = SessionUtils.getUserIdFromSession();
+		return courseDao.getAllCoachCourses(currentSpaceId, currentUserId);
+	}
+
+	private void transformCoursetoEvent(Course course) {
+		DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder().title(course.getName())
+				.startDate(course.getStartDate()).endDate(course.getEndDate()).description(course.getDescription())
+				.borderColor("orange").data(course).build();
+		eventModel.addEvent(event);
+	}
+
 	public void deleteCourse(Long id) {
 		courseDao.deleteCourses(id);
 	}
@@ -89,21 +133,6 @@ public class CourseController implements Serializable {
 	public void onDateSelect(SelectEvent<LocalDateTime> selectEvent) {
 		event = DefaultScheduleEvent.builder().startDate(selectEvent.getObject())
 				.endDate(selectEvent.getObject().plusHours(1)).build();
-	}
-
-	// Plus tard ajouter ici le filtrage par rapport au coach !!
-	private void loadAllCourses() {
-		List<Course> courses = getAllCourses();
-		for (Course c : courses) {
-			transformCoursetoEvent(c);
-		}
-	}
-
-	private void transformCoursetoEvent(Course course) {
-		DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder().title(course.getName())
-				.startDate(course.getStartDate()).endDate(course.getEndDate()).description(course.getDescription())
-				.borderColor("orange").data(course).build();
-		eventModel.addEvent(event);
 	}
 
 	public void addEvent() {
@@ -407,10 +436,6 @@ public class CourseController implements Serializable {
 
 	public void setHeight(String height) {
 		this.height = height;
-	}
-
-	public List<Course> getAllCourses() {
-		return courseDao.getAllCourses();
 	}
 
 	public ScheduleEvent<?> getEvent() {
