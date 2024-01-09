@@ -272,14 +272,14 @@ public class SpaceController implements Serializable {
 	 */
 	public String redirectToRightDashBoard(Role userRole) {
 		if (userRole.equals(Role.Adherent)) {
-			return "Test-AdherentDashboard";
+			return "AdherentDashboard";
 		} else if (userRole.equals(Role.Coach)) {
-			return "Test-CoachDashboard";
+			return "CoachDashboard";
 		} else if (userRole.equals(Role.Gestionnaire)) {
 			return "ManagerSpaceDashBoard";
 		} else {
 			Long spaceId = SessionUtils.getSpaceIdFromSession();
-			return "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+			return "TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 		}
 	}
 
@@ -294,7 +294,7 @@ public class SpaceController implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
 		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
-		return "AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		return "TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 	}
 
 	/**
