@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
@@ -40,14 +41,8 @@ public class UserDao implements IDaoUser {
 	}
 
 	@Override
-	public User getUserById(Long userToGetId) {
-		return em.find(User.class, userToGetId);
-	}
-
-	@Override
-	public User getUserByIdWithLinkedSpaces(Long userId) {
-		return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.id = :userIdParam",
-				User.class).setParameter("userIdParam", userId).getSingleResult();
+	public List<User> getAllUsers() {
+		return em.createQuery("SELECT u FROM User u WHERE u.isActive = 1", User.class).getResultList();
 	}
 
 	@Override
@@ -67,13 +62,14 @@ public class UserDao implements IDaoUser {
 	}
 
 	@Override
-	public List<User> getAllUsers() {
-		return em.createQuery("SELECT u FROM User u WHERE u.isActive = 1", User.class).getResultList();
+	public User getUserById(Long userToGetId) {
+		return em.find(User.class, userToGetId);
 	}
 
 	@Override
-	public void updateUser(User userToUpdate) {
-		em.merge(userToUpdate);
+	public User getUserByIdWithLinkedSpaces(Long userId) {
+		return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.id = :userIdParam",
+				User.class).setParameter("userIdParam", userId).getSingleResult();
 	}
 
 	@Override
@@ -89,6 +85,31 @@ public class UserDao implements IDaoUser {
 			return null;
 		}
 		// @formatter:on
+	}
+
+	@Override
+	public void updateUser(User userToUpdate) {
+		em.merge(userToUpdate);
+	}
+
+	@Override
+	public User getUserBySpaceAndLogin(String userLogin, Long spaceId) {
+		// @formatter:off
+				try {
+					Space linkedSpace = em.createQuery(
+							"SELECT s FROM Space s WHERE s.spaceId = :spaceIdParam", Space.class).setParameter("spaceIdParam", spaceId).getSingleResult();
+					User user = em.createQuery(
+						"SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.account.login = :userLoginParam  ",
+						User.class).setParameter("userLoginParam", userLogin).getSingleResult();
+					if(user.getLinkedSpaces().contains(linkedSpace)) {
+						return user;
+					} else {
+						return null;
+					}
+				} catch(NoResultException ex) {
+					return null;
+				}
+				// @formatter:on
 	}
 
 }
