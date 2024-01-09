@@ -17,18 +17,21 @@
 					<h:form id="activityCreationForm">
 						<div>
 							<button>
-								<h:link class="dropdown-item" outcome="CreateSpaceForm.xhtml">Nouvel espaces</h:link>
+								<h:link class="dropdown-item" outcome="CreateSpaceForm.xhtml">Nouvel espace</h:link>
 							</button>
 
 							<p:dataTable var="space"
 								value="#{spaceController.allActiveSpacesOfManager}">
-								<p:column headerText="Name">
+								<p:column headerText="Nom de l'espace">
 									<h:outputText value="#{space.infos.configuration.fitnessName}" />
 								</p:column>
-								<p:column headerText="Id de l'espace">
+								<p:column headerText="Id">
 									<h:outputText value="#{space.spaceId}" />
 								</p:column>
-								<p:column headerText="Liens">
+								<p:column headerText="Détail">
+								<h:commandLink action="#{spaceDetailsController.showSpaceDetails()}">
+								</h:commandLink></p:column>
+								<p:column headerText="Liens vers l'espace">
 								<h:commandButton value="Lien vers espace"
 									action="#{spaceController.goToSpaceIndex()}">
 									<f:param name="spaceId" value="#{space.spaceId}" />
