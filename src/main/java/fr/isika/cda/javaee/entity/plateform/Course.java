@@ -2,10 +2,14 @@ package fr.isika.cda.javaee.entity.plateform;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import fr.isika.cda.javaee.entity.users.User;
 
 @Entity
 public class Course {
@@ -17,14 +21,27 @@ public class Course {
 	private String description;
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private User coach;
 
+//*****************************************************************
 	public Course(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.coach = new User();
 	}
 
 	public Course() {
+	}
+//*******************************************************************
+
+	public User getCoach() {
+		return coach;
+	}
+
+	public void setCoach(User coach) {
+		this.coach = coach;
 	}
 
 	public Long getId() {
@@ -83,5 +100,5 @@ public class Course {
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 }
