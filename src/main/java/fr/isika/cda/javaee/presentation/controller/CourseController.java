@@ -58,7 +58,7 @@ public class CourseController implements Serializable {
     private String slotLabelInterval;
     private String slotLabelFormat;
     private String scrollTime = "06:00:00";
-    private String minTime = "04:00:00";
+    private String minTime = "01:00:00";
     private String maxTime = "20:00:00";
     private String locale = "fr";
     private String timeZone = "";
