@@ -36,7 +36,7 @@ public class CourseDao implements IDaoCourse {
 	@Override
 	public List<Course> getAllCoachCourses(Long currentSpaceId, Long currentUserId) {
 		return em.createQuery(
-				"SELECT c FROM Course c LEFT JOIN FETCH c.coach u WHERE c.linkedSpaceId = :spaceIdParam u.id = :coachIdParam",
+				"SELECT c FROM Course c LEFT JOIN FETCH c.coach u WHERE c.linkedSpaceId = :spaceIdParam AND u.userId = :coachIdParam",
 				Course.class).setParameter("spaceIdParam", currentSpaceId).setParameter("coachIdParam", currentUserId)
 				.getResultList();
 	}

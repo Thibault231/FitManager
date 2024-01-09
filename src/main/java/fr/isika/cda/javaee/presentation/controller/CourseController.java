@@ -22,7 +22,9 @@ import org.primefaces.model.ScheduleModel;
 
 import fr.isika.cda.javaee.dao.CourseDao;
 import fr.isika.cda.javaee.dao.IDaoCourse;
+import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.plateform.Course;
+import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 
 @Named
@@ -32,6 +34,9 @@ public class CourseController implements Serializable {
 	private static final long serialVersionUID = -160397842934902381L;
 	@Inject
 	private IDaoCourse courseDao;
+
+	@Inject
+	private IDaoUser userDao;
 
 	@PostConstruct
 	private void init() {
@@ -150,15 +155,16 @@ public class CourseController implements Serializable {
 	private void createNewEvent() {
 		// Ajout de l'evt => graphique
 		eventModel.addEvent(event);
-
 		// Fonctionnel => création du cours
-		Course c = new Course();
-		c.setName(event.getTitle());
-		c.setStartDate(event.getStartDate());
-		c.setEndDate(event.getEndDate());
-		c.setDescription(event.getDescription());
-
-		courseDao.save(c);
+		Course courseToCreate = new Course();
+		courseToCreate.setName(event.getTitle());
+		courseToCreate.setLinkedSpaceId(SessionUtils.getSpaceIdFromSession());
+		courseToCreate.setStartDate(event.getStartDate());
+		courseToCreate.setEndDate(event.getEndDate());
+		courseToCreate.setDescription(event.getDescription());
+		User currentCoach = userDao.getUserById(SessionUtils.getUserIdFromSession());
+		courseToCreate.setCoach(currentCoach);
+		courseDao.save(courseToCreate);
 	}
 
 	private void updateEvent() {

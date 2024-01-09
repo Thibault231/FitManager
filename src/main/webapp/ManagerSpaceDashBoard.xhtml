@@ -51,6 +51,24 @@
 				</div>
 			</ui:repeat>
 		</div>
+		
+		<ui:repeat value="#{courseController.allCoachCourses}"
+			var="course">
+			<div
+				class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
+				style="background-color: yellow;">
+				<div class="card-header">
+					<h1>#{course.name}</h1>
+				</div>
+				<div class="card-body">
+					<p>#{course.startDate}</p>
+					<p>#{course.endDate}</p>
+				</div>
+				<div class="card-footer">
+					<p>#{course.description}</p>
+				</div>
+			</div>
+		</ui:repeat>
 
 	</ui:define>
 </ui:composition>
