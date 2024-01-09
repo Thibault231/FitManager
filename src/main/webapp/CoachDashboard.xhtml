@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
 	<ui:define name="titleValue">Fit Manager - Coach dashboard </ui:define>
-	<ui:define name="content">
-
+		<!-- Corp de la page -->
+	<ui:define name="wrapper">
+	
+	
+		<!-- Contenu spécifique du corp de la page -->
+	
 		<h1>Tableau de bord Coach</h1>
 		<p>This is an empty page using the common template</p>
 
@@ -35,7 +38,13 @@
 			</div>
 		</ui:repeat>
 		<h:link	outcome="AddCoursesCalendar.xhtml" value="Ajouter des cours" />
+	
+
+		
 
 	</ui:define>
+
+
+	
+
 </ui:composition>
-</html>
