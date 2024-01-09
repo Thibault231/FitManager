@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.users.User;
 
 @Entity
@@ -22,13 +23,20 @@ public class Booking {
 	private Calendar registrationDate;
 
 	@OneToOne
-	private User coach;
-
-	@OneToOne
 	private User member;
 
 	@OneToOne
-	private ActivityTest activity;
+	private Course linkedCourse;
+
+//***********************************************	
+	public Booking() {
+
+	}
+
+	public Booking(boolean isForViewModel) {
+		this.member = new User();
+		this.linkedCourse = new Course();
+	}
 
 //***********************************************	
 	public Long getBookingId() {
@@ -37,14 +45,6 @@ public class Booking {
 
 	public void setBookingId(Long bookingId) {
 		this.bookingId = bookingId;
-	}
-
-	public User getCoach() {
-		return coach;
-	}
-
-	public void setCoach(User coach) {
-		this.coach = coach;
 	}
 
 	public User getMember() {
@@ -63,12 +63,20 @@ public class Booking {
 		this.registrationDate = birthday;
 	}
 
-	public ActivityTest getActivity() {
-		return activity;
+	public Calendar getRegistrationDate() {
+		return registrationDate;
 	}
 
-	public void setActivity(ActivityTest activity) {
-		this.activity = activity;
+	public void setRegistrationDate(Calendar registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+	public Course getLinkedCourse() {
+		return linkedCourse;
+	}
+
+	public void setLinkedCourse(Course linkedCourse) {
+		this.linkedCourse = linkedCourse;
 	}
 
 }

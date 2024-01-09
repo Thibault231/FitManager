@@ -8,10 +8,10 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
-	<ui:define name="titleValue">Space : All Courses</ui:define>
+	<ui:define name="titleValue">Space : Planning Cours Adhérents</ui:define>
 	<ui:define name="content">
 
-		<h1>Affichage de planning</h1>
+		<h1>Affichage du planning cours Adhérents</h1>
 
 
 		<style type="text/css">
@@ -45,6 +45,7 @@
 			<p:dialog widgetVar="eventDialog" header="Course Details"
 				showEffect="clip" hideEffect="clip">
 				<h:panelGrid id="eventDetails" columns="2">
+				
 					<p:outputLabel for="title" value="Name :" />
 					<p:inputText id="title" value="#{courseController.event.title}"
 						required="true" />
@@ -56,9 +57,8 @@
 						value="#{courseController.event.description}">
 					</p:inputTextarea>
 
-					<p:commandButton value = "Réserver" action = "#(#{bookingController.createBooking()})"
-									 update=":messages" oncomplete="PF('eventDialog').hide();"
-									 rendered="#(adherent)">
+					<p:commandButton value = "Réserver" 
+					action = "#(bookingController.createBooking())">
 					</p:commandButton>
 				</h:panelGrid>
 			</p:dialog>
