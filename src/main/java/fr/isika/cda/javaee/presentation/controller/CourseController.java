@@ -21,136 +21,157 @@ import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
 import fr.isika.cda.javaee.dao.CourseDao;
+import fr.isika.cda.javaee.dao.IDaoCourse;
 import fr.isika.cda.javaee.entity.plateform.Course;
+import fr.isika.cda.javaee.presentation.util.SessionUtils;
 
 @Named
 @ViewScoped
 public class CourseController implements Serializable {
-	
+
 	private static final long serialVersionUID = -160397842934902381L;
-	
-	private ScheduleModel eventModel;
-	private ScheduleEvent<?> event = new DefaultScheduleEvent<>();
-	private String serverTimeZone = ZoneId.systemDefault().toString();
-	
-	private boolean slotEventOverlap = true;
-    private boolean showWeekNumbers = false;
-    private boolean showHeader = true;
-    private boolean draggable = true;
-    private boolean resizable = true;
-    private boolean selectable = false;
-    private boolean showWeekends = true;
-    private boolean tooltip = true;
-    private boolean allDaySlot = false;
-    private boolean rtl = false;
-
-    private double aspectRatio = Double.MIN_VALUE;
-
-    private String leftHeaderTemplate = "précédent,suivant aujourd'hui";
-    private String centerHeaderTemplate = "title";
-    private String rightHeaderTemplate = "dayGridMonth,timeGridWeek,timeGridDay,listYear";
-    private String nextDayThreshold = "09:00:00";
-    private String weekNumberCalculation = "local";
-    private String weekNumberCalculator = "date.getTime()";
-    private String displayEventEnd;
-    private String timeFormat;
-    private String slotDuration = "00:30:00";
-    private String slotLabelInterval;
-    private String slotLabelFormat;
-    private String scrollTime = "06:00:00";
-    private String minTime = "04:00:00";
-    private String maxTime = "20:00:00";
-    private String locale = "fr";
-    private String timeZone = "";
-    private String clientTimeZone = "local";
-    private String columnHeaderFormat = "";
-    private String view = "timeGridWeek";
-    private String height = "auto";
-
 	@Inject
-	private CourseDao courseDao;
-	
+	private IDaoCourse courseDao;
+
 	@PostConstruct
 	private void init() {
 		refreshModel();
 	}
 
+	private ScheduleModel eventModel;
+	private ScheduleEvent<?> event = new DefaultScheduleEvent<>();
+	private String serverTimeZone = ZoneId.systemDefault().toString();
+	private boolean slotEventOverlap = true;
+	private boolean showWeekNumbers = false;
+	private boolean showHeader = true;
+	private boolean draggable = true;
+	private boolean resizable = true;
+	private boolean selectable = false;
+	private boolean showWeekends = true;
+	private boolean tooltip = true;
+	private boolean allDaySlot = false;
+	private boolean rtl = false;
+	private double aspectRatio = Double.MIN_VALUE;
+	private String leftHeaderTemplate = "précédent,suivant aujourd'hui";
+	private String centerHeaderTemplate = "title";
+	private String rightHeaderTemplate = "dayGridMonth,timeGridWeek,timeGridDay,listYear";
+	private String nextDayThreshold = "09:00:00";
+	private String weekNumberCalculation = "local";
+	private String weekNumberCalculator = "date.getTime()";
+	private String displayEventEnd;
+	private String timeFormat;
+	private String slotDuration = "00:30:00";
+	private String slotLabelInterval;
+	private String slotLabelFormat;
+	private String scrollTime = "06:00:00";
+	private String minTime = "04:00:00";
+	private String maxTime = "20:00:00";
+	private String locale = "fr";
+	private String timeZone = "";
+	private String clientTimeZone = "local";
+	private String columnHeaderFormat = "";
+	private String view = "timeGridWeek";
+	private String height = "auto";
+
+//******************************************************************************************
 	private void refreshModel() {
 		eventModel = new DefaultScheduleModel();
 		loadAllCourses();
 	}
-	
+
+	private void loadAllCourses() {
+		List<Course> courses = getAllCourses();
+		for (Course c : courses) {
+			transformCoursetoEvent(c);
+		}
+	}
+
+	/**
+	 * Get all the courses to come, of the current session space.
+	 * 
+	 * @return the courses list (:List<Course>)
+	 */
+	public List<Course> getAllCourses() {
+		Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
+		return courseDao.getAllCourses(currentSpaceId);
+	}
+
+	private void refreshCoachModel() {
+		eventModel = new DefaultScheduleModel();
+		List<Course> courses = getAllCoachCourses();
+		for (Course c : courses) {
+			transformCoursetoEvent(c);
+		}
+	}
+
+	/**
+	 * Get all the courses to come, linked to a specific coach of the current
+	 * session space.
+	 * 
+	 * @return the courses list (:List<Course>)
+	 */
+	public List<Course> getAllCoachCourses() {
+		Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
+		Long currentUserId = SessionUtils.getUserIdFromSession();
+		return courseDao.getAllCoachCourses(currentSpaceId, currentUserId);
+	}
+
+	private void transformCoursetoEvent(Course course) {
+		DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder().title(course.getName())
+				.startDate(course.getStartDate()).endDate(course.getEndDate()).description(course.getDescription())
+				.borderColor("orange").data(course).build();
+		eventModel.addEvent(event);
+	}
+
 	public void deleteCourse(Long id) {
 		courseDao.deleteCourses(id);
 	}
-	
+
 	public void onEventSelect(SelectEvent<ScheduleEvent<Course>> selectEvent) {
 		event = selectEvent.getObject();
 	}
 
 	public void onDateSelect(SelectEvent<LocalDateTime> selectEvent) {
-		event = DefaultScheduleEvent
-				.builder()
-				.startDate(selectEvent.getObject())
-				.endDate(selectEvent.getObject().plusHours(1))
-				.build();
+		event = DefaultScheduleEvent.builder().startDate(selectEvent.getObject())
+				.endDate(selectEvent.getObject().plusHours(1)).build();
 	}
 
-	// Plus tard ajouter ici le filtrage par rapport au coach !!
-	private void loadAllCourses() {
-		List<Course> courses = getAllCourses();
-		for(Course c : courses) {
-			transformCoursetoEvent(c);
-		}
-	}
-	
-	private void transformCoursetoEvent(Course course) {
-		 DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder()
-	                .title(course.getName())
-	                .startDate(course.getStartDate())
-	                .endDate(course.getEndDate())
-	                .description(course.getDescription())
-	                .borderColor("orange")
-	                .data(course)
-	                .build();
-	       eventModel.addEvent(event);
-	}
-	
 	public void addEvent() {
-        if (event.getId() == null) {
-            creerNouvelEvenementAvecNouvelleCourse();
-        } else {
-        	modifierEvenementAvecCoursExistante();
-        }
-        refreshModel();
-        event = new DefaultScheduleEvent<>();
-    }
+		if (event.getId() == null) {
+			createNewEvent();
+		} else {
+			updateEvent();
+		}
+		refreshModel();
+		event = new DefaultScheduleEvent<>();
 
-	private void creerNouvelEvenementAvecNouvelleCourse() {
+	}
+
+	private void createNewEvent() {
 		// Ajout de l'evt => graphique
 		eventModel.addEvent(event);
-		
+
 		// Fonctionnel => création du cours
 		Course c = new Course();
 		c.setName(event.getTitle());
 		c.setStartDate(event.getStartDate());
 		c.setEndDate(event.getEndDate());
 		c.setDescription(event.getDescription());
-		
+
 		courseDao.save(c);
 	}
-	
-	private void modifierEvenementAvecCoursExistante() {
+
+	private void updateEvent() {
 		Course c = (Course) event.getData();
 		c.setName(event.getTitle());
 		c.setStartDate(event.getStartDate());
 		c.setEndDate(event.getEndDate());
 		c.setDescription(event.getDescription());
-		
+
 		eventModel.updateEvent(event);
 		courseDao.update(c);
 	}
-	
+
 	public void onEventMove(ScheduleEntryMoveEvent event) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved",
 				"Delta:" + event.getDeltaAsDuration());
@@ -164,10 +185,12 @@ public class CourseController implements Serializable {
 
 		addMessage(message);
 	}
-	private void addMessage(FacesMessage message) {
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
 
+	private void addMessage(FacesMessage message) {
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+
+//******************************************************************************************
 	public boolean isSlotEventOverlap() {
 		return slotEventOverlap;
 	}
@@ -416,25 +439,26 @@ public class CourseController implements Serializable {
 		this.height = height;
 	}
 
-	public List<Course> getAllCourses() {
-		return courseDao.getAllCourses();
-	}
-	
 	public ScheduleEvent<?> getEvent() {
 		return event;
 	}
+
 	public void setEvent(ScheduleEvent<?> event) {
 		this.event = event;
 	}
+
 	public ScheduleModel getEventModel() {
 		return eventModel;
 	}
+
 	public void setEventModel(ScheduleModel eventModel) {
 		this.eventModel = eventModel;
 	}
+
 	public String getServerTimeZone() {
 		return serverTimeZone;
 	}
+
 	public void setServerTimeZone(String serverTimeZone) {
 		this.serverTimeZone = serverTimeZone;
 	}
