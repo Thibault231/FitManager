@@ -230,6 +230,26 @@ public class SpaceController implements Serializable {
 		return spaceDao.getSpaceById(spaceId);
 	}
 
+	/**
+	 * Get the current space object with it's subscriptions
+	 * 
+	 * @return current space (:Space)
+	 */
+	public Space getCurrentSpaceWithSubscriptions() {
+		Long spaceId = SessionUtils.getSpaceIdFromSession();
+		return spaceDao.getSpaceWithMembers(spaceId);
+	}
+
+	/**
+	 * Get the current space object with it's users
+	 * 
+	 * @return current space (:Space)
+	 */
+	public Space getCurrentSpaceWithUsers() {
+		Long spaceId = SessionUtils.getSpaceIdFromSession();
+		return spaceDao.getSpaceWithMembers(spaceId);
+	}
+
 	public Space getSpaceByName(String spaceName) {
 		return spaceDao.getSpaceByName(spaceName);
 	}
