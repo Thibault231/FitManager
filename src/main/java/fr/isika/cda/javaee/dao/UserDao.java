@@ -67,6 +67,12 @@ public class UserDao implements IDaoUser {
 	}
 
 	@Override
+	public User getUserByRole(Long roleId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public User getUserByIdWithLinkedSpaces(Long userId) {
 		return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.id = :userIdParam",
 				User.class).setParameter("userIdParam", userId).getSingleResult();

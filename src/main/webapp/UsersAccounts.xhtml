@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+	<ui:define name="titleValue">Fit Manager - Users Accounts </ui:define>
+	<ui:define name="content">
+
+		<h1>Comptes Utilisateurs</h1>
+		<br />
+
+		<p:dataTable var="user" value="#{userController.allActiveUser}">
+			<p:column headerText="Nom">
+				<h:outputText value="#{user.profile.civility.name}" />
+			</p:column>
+			<p:column headerText="Prenom">
+				<h:outputText value="#{user.profile.civility.forename}" />
+			</p:column>
+			<p:column headerText="Date de naissance">
+				<h:outputText value="#{user.profile.civility.birthday}" />
+			</p:column>
+			<p:column headerText="Rôle">
+				<h:outputText value="#{user.account.role}" />
+			</p:column>
+			<p:column headerText="Actions">
+				<p:linkButton outcome="UsersAccounts.xhtml" value="Modifier"
+					style="margin-right:20px;"
+					action="#{userController.updateUser()}">
+				</p:linkButton>
+
+				<p:linkButton outcome="UsersAccounts.xhtml" value="Supprimer"
+					style="margin-right:20px;"
+					action="#{userController.deleteUser()}">
+				</p:linkButton>
+			</p:column>
+
+		</p:dataTable>
+		<br />
+
+		<p:linkButton outcome="ManagerDashBoard.xhtml"
+			value="Retour au tableau de bord" style="margin-right:20px;">
+		</p:linkButton>
+
+
+	</ui:define>
+</ui:composition>
+</html>

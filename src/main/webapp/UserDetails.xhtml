@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" lang="fr">
+
+
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+
+	<ui:define name="titleValue">User Details - Fit Manager</ui:define>
+	<ui:define name="content">
+		<h1>Mes informations</h1>
+		<div id="1">
+			
+			<h2>Details for User ID: #{spaceController.getSpaceById()}</h2>
+			<!-- Ajoutez ici les balises pour afficher les détails de la salle -->
+			
+			<!-- Par exemple, si vous avez des propriétés comme nom, adresse, etc. -->
+			
+			<p>Nom: #{user.profile.civility.name}</p>
+			<p>Prenom: #{user.profile.civility.forename}</p>
+			<p>Date de naissance: #{user.profile.civility.birthaday}</p>
+			<p>Email: #{user.profile.birthday}</p>
+			<p>Adresse: #{user.profile.adress.street}</p>
+			<p>Code postal: #{user.profile.adress.zipCode}</p>
+			<p>Ville: #{user.profile.adress.city}</p>
+			<p>Etat abonnement: #{spaceDetailsController.space.infos.administrative.siret}</p>
+			
+		</div>
+		
+		<h:link outcome="AccueilPlateforme.xhtml" value="Accueil Plateforme"/>
+		
+	</ui:define>
+</ui:composition>
+</html>

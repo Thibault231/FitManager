@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -21,6 +22,7 @@ import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
 import fr.isika.cda.javaee.presentation.util.FileUploadUtils;
+import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
 
@@ -82,7 +84,7 @@ public class UserController implements Serializable {
 	 */
 	public String deleteUser(Long userToDeleteId) {
 		userDao.deleteUser(userToDeleteId);
-		return "index";
+		return "UsersAccounts.xhtml?faces-redirect=true";
 	}
 
 	/**
@@ -113,6 +115,15 @@ public class UserController implements Serializable {
 	 */
 	public User getUser(String userEmail) {
 		return userDao.getUserByEmail(userEmail);
+	}
+
+	/**
+	 * Get the current user object and return it.
+	 * 
+	 * @return current user (:User)
+	 */
+	public User getCurrentUserDetails() {
+		return userDao.getUserById(SessionUtils.getUserIdFromSession());
 	}
 
 	/**
@@ -187,7 +198,7 @@ public class UserController implements Serializable {
 	 */
 	public String updateUser(User updatedUser) {
 		userDao.updateUser(updatedUser);
-		return "ManagerDashBoard";
+		return "UsersAccounts.xhtml?faces-redirect=true";
 	}
 
 }
