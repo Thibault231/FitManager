@@ -200,6 +200,10 @@ public class CourseController implements Serializable {
 	private void addMessage(FacesMessage message) {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+	
+	public void resetEvent() {
+		event = new DefaultScheduleEvent();
+	}
 
 //******************************************************************************************
 	public boolean isSlotEventOverlap() {

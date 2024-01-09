@@ -8,10 +8,10 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
-	<ui:define name="titleValue">Space : All Courses</ui:define>
+	<ui:define name="titleValue">Space : Planning Cours Coachs</ui:define>
 	<ui:define name="content">
 
-		<h1>Affichage de planning</h1>
+		<h1>Affichage du planning cours coachs</h1>
 
 
 		<style type="text/css">
@@ -32,8 +32,8 @@
 						listener="#{courseController.onDateSelect}" update="eventDetails"
 						oncomplete="PF('eventDialog').show();" />
 					<p:ajax event="eventSelect"
-						listener="#{courseController.onEventSelect}"
-						update="eventDetails" oncomplete="PF('eventDialog').show();" />
+						listener="#{courseController.onEventSelect}" update="eventDetails"
+						oncomplete="PF('eventDialog').show();" />
 					<p:ajax event="eventMove"
 						listener="#{courseController.onEventMove}" update="messages" />
 					<p:ajax event="eventResize"
@@ -50,18 +50,18 @@
 						required="true" />
 
 					<p:outputLabel for="from" value="From:" />
-					<p:datePicker id="from"
-						value="#{courseController.event.startDate}" pattern="dd/MM/yyyy"
-						showTime="true" appendTo="@(body)" />
+					<p:datePicker id="from" value="#{courseController.event.startDate}"
+						pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" />
 
 					<p:outputLabel for="to" value="To:" />
 					<p:datePicker id="to" value="#{courseController.event.endDate}"
 						pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" />
 
 					<p:outputLabel for="description" value="Description:" />
-					<p:inputTextarea id="description" value="#{courseController.event.description}" >
+					<p:inputTextarea id="description"
+						value="#{courseController.event.description}">
 					</p:inputTextarea>
-					
+
 					<p:commandButton type="reset" value="Reset" />
 					<p:commandButton id="addButton" value="Save"
 						action="#{courseController.addEvent}"

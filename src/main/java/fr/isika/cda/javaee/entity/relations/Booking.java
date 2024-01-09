@@ -22,9 +22,9 @@ public class Booking {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date registrationDate;
-
+  
 	private Long spaceId;
-
+  
 	@OneToOne
 	private User member;
 
@@ -46,6 +46,7 @@ public class Booking {
 	public Booking(boolean isForViewModel) {
 		this.linkedCourse = new Course();
 		this.member = new User();
+
 	}
 
 //***********************************************	
@@ -72,6 +73,7 @@ public class Booking {
 	public void setBirthday(Date birthday) {
 		this.registrationDate = birthday;
 	}
+
 
 	public Date getRegistrationDate() {
 		return registrationDate;

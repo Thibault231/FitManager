@@ -21,13 +21,13 @@
 						<div class="d-grid gap-2">
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput01"
-									placeholder="#{spaceController.spaceForm.user.profile.civility.name}" required="true" size="20"
+									placeholder="#{spaceController.spaceForm.user.profile.civility.name}" size="20"
 									value="#{userController.userViewModel.user.profile.civility.name}" />
 								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput02"
-									placeholder="Prénom" required="true" size="20"
+									placeholder="Prénom" size="20"
 									value="#{userController.userViewModel.user.profile.civility.forename}" />
 								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 							</div>
@@ -51,7 +51,7 @@
 							</div>
 							<div class="form-floating ">
 								<p:password class="form-control" id="floatingInput06"  size="20"
-									placeholder="Mot de passe" required="true" maxlength="12"
+									placeholder="Mot de passe" maxlength="12"
 									value="#{userController.userViewModel.user.account.password}">
 									<f:validateLength minimum="5"></f:validateLength>
 								</p:password>
@@ -79,7 +79,7 @@
 								value="Enregistrer les modifications"
 								action="#{userController.updateUser()}" />
 							<h:link class="text-center"
-								outcome="ManagerSpaceDashBoard"
+								outcome="AdherentDashboard"
 								value="ANNULER"/>	
 						</div>
 					</div>
