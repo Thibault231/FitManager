@@ -27,23 +27,17 @@ public class BookingController implements Serializable {
 	private static final long serialVersionUID = -160397842934902381L;
 
 	@Inject
-	private IBookingDao iBookingDao;
-	
-	@Inject
-	private IDaoUser userDao;
-	
-	@Inject
-	private IDaoCourse courseDao;
+	private IBookingDao bookingDao;
 
 	@Inject
 	private IDaoUser userDao;
 
 	@Inject
 	private IDaoCourse courseDao;
-  
+
 	@Inject
 	private CourseController courseController;
-	
+
 	private BookingForm bookingForm = new BookingForm();
 
 //***********************************************	
@@ -56,22 +50,22 @@ public class BookingController implements Serializable {
 //***********************************************	
 	public void createBooking() {
 		Booking bookingToCreate = new Booking(true);
-		iBookingDao.createBooking(bookingToCreate);
+		bookingDao.createBooking(bookingToCreate);
 	}
-	
+
 	public void reserveCourse() {
-		//1-On récupérer l'adherent et on le lie à la réservation
+		// 1-On récupérer l'adherent et on le lie à la réservation
 		User currentUser = userDao.getUserById(SessionUtils.getUserIdFromSession());
 		Booking bookingToCreate = new Booking(true);
 		bookingToCreate.setMember(currentUser);
-		//2-On récupère le cours et on le lie à la réservation
-		Long courseId =  Long.valueOf(courseController.getEvent().getId());
+		// 2-On récupère le cours et on le lie à la réservation
+		Long courseId = Long.valueOf(courseController.getEvent().getId());
 		Course currentCourse = courseDao.getCourseById(courseId);
 		bookingToCreate.setLinkedCourse(currentCourse);
-		
-		//3-On persiste la réservation
-		iBookingDao.createBooking(bookingToCreate);
-		
+
+		// 3-On persiste la réservation
+		bookingDao.createBooking(bookingToCreate);
+
 		courseController.resetEvent();
 	}
 
