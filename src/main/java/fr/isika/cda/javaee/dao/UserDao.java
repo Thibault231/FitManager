@@ -99,9 +99,13 @@ public class UserDao implements IDaoUser {
 					Space linkedSpace = em.createQuery(
 							"SELECT s FROM Space s WHERE s.spaceId = :spaceIdParam", Space.class).setParameter("spaceIdParam", spaceId).getSingleResult();
 					User user = em.createQuery(
-						"SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.account.login = :userLoginParam AND :linkedSpace IN u.linkedSpaces ",
-						User.class).setParameter("userLoginParam", userLogin).setParameter("linkedSpace", linkedSpace).getSingleResult();
-					return user;
+						"SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.account.login = :userLoginParam  ",
+						User.class).setParameter("userLoginParam", userLogin).getSingleResult();
+					if(user.getLinkedSpaces().contains(linkedSpace)) {
+						return user;
+					} else {
+						return null;
+					}
 				} catch(NoResultException ex) {
 					return null;
 				}

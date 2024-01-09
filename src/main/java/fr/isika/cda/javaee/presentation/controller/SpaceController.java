@@ -82,7 +82,8 @@ public class SpaceController implements Serializable {
 			fc.addMessage(null, new FacesMessage(message));
 			return "SpaceLoginForm";
 		} else {
-			User userToLog = this.userDao.getUserByEmail(userToLogAccount.getLogin());
+			User userToLog = this.userDao.getUserBySpaceAndLogin(userToLogAccount.getLogin(),
+					SessionUtils.getSpaceIdFromSession());
 			if (userToLog != null && userToLog.getAccount().getPassword().equals(userToLogAccount.getPassword())) {
 				fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
 				fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
