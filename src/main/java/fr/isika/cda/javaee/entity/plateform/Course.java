@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
+import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.User;
 
 @Entity
@@ -23,6 +25,7 @@ public class Course {
 	private LocalDateTime endDate;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User coach;
+	private Long linkedSpaceId;
 
 //*****************************************************************
 	public Course(Long id, String name) {
@@ -82,6 +85,14 @@ public class Course {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Long getLinkedSpaceId() {
+		return linkedSpaceId;
+	}
+
+	public void setLinkedSpaceId(Long linkedSpaceId) {
+		this.linkedSpaceId = linkedSpaceId;
 	}
 
 	@Override
