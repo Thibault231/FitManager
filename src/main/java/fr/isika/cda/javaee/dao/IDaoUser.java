@@ -39,6 +39,15 @@ public interface IDaoUser {
 	User getUserByEmail(String userToGetEmail);
 
 	/**
+	 * Return a user from the database with it's spaces dependencies, using it's id
+	 * and it's role, if it exists or null otherwise.
+	 * 
+	 * @param userId (:Id)
+	 * @return user to get (:User)
+	 */
+	User getUserByIdWithLinkedSpaces(Long userId);
+
+	/**
 	 * Return a user from the database, using it's id and it's role, if it exists or
 	 * null otherwise.
 	 * 
@@ -48,6 +57,16 @@ public interface IDaoUser {
 	 * @return user to get (:User)
 	 */
 	User getUserByLoginAndRole(String userLogin, Role userRole);
+
+	/**
+	 * Return a user linked to a specific space, using it's login and the space Id,
+	 * if it exists or null otherwise.
+	 * 
+	 * @param userLogin (:String)
+	 * @param spaceId   (:Long)
+	 * @return user to get (:User)
+	 */
+	User getUserBySpaceAndLogin(String userLogin, Long spaceId);
 
 	/**
 	 * Hard delete of a user from the Db, using it's id.
@@ -63,7 +82,5 @@ public interface IDaoUser {
 	 * @param userToUpdate (:User)
 	 */
 	void updateUser(User userToUpdate);
-
-	User getUserByIdWithLinkedSpaces(Long userId);
 
 }
