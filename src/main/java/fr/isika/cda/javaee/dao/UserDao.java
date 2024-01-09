@@ -1,5 +1,6 @@
 package fr.isika.cda.javaee.dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -31,9 +32,16 @@ public class UserDao implements IDaoUser {
 
 	@Override
 	public boolean deleteUser(Long userToDeleteId) {
-		User userTodelete = em.find(User.class, userToDeleteId);
+		User userTodelete = getUserByIdWithLinkedSpaces(userToDeleteId);
+
 		if (userTodelete != null) {
-			em.remove(userTodelete);
+			if (userTodelete.getLinkedSpaces() != null) {
+				userTodelete.setActive(false);
+				updateUser(userTodelete);
+			} else {
+				em.remove(userTodelete);
+			}
+
 			return true;
 		} else {
 			return false;

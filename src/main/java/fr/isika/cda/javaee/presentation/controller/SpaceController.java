@@ -271,10 +271,11 @@ public class SpaceController implements Serializable {
 	 * @return url of the user dashboard (:String)
 	 */
 	public String redirectToRightDashBoard(Role userRole) {
+		this.spaceViewModel.setUser(userDao.getUserById(SessionUtils.getUserIdFromSession()));
 		if (userRole.equals(Role.Adherent)) {
-			return "Test-AdherentDashboard";
+			return "AdherentDashboard";
 		} else if (userRole.equals(Role.Coach)) {
-			return "Test-CoachDashboard";
+			return "CoachDashboard";
 		} else if (userRole.equals(Role.Gestionnaire)) {
 			return "ManagerSpaceDashBoard";
 		} else {
