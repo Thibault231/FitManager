@@ -83,4 +83,6 @@ public interface IDaoUser {
 	 */
 	void updateUser(User userToUpdate);
 
+	User getUserByRole(Long roleId);
+
 }
