@@ -287,7 +287,7 @@ public class SpaceController implements Serializable {
 		if (userRole.equals(Role.Adherent)) {
 			return "AdherentDashboard?faces-redirect=true";
 		} else if (userRole.equals(Role.Coach)) {
-			return "CoachDashboard";
+			return "CoachDashboard?faces-redirect=true";
 		} else if (userRole.equals(Role.Gestionnaire)) {
 			return "ManagerSpaceDashBoard?faces-redirect=true";
 		} else {
