@@ -1,136 +1,185 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml"
-				xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
 
- 
-       
+
+
 	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
 	<ui:define name="content">
-	
-	 <!-- NavBAr -->
- 	<div class="bg-light-subtle d-flex justify-content-around align-items-center w-100 navBar" style="position: fixed;
-  top: 0px; z-index:9999">
-         
-	  <c:if test="${'#{sessionScope.name}'}">
-	    <h1>Welcome to Java EE <h:outputText value="#{sessionScope.name}"/> !!!!!!</h1>
-	  </c:if>
-	  <c:otherwise>
-	 	<h1>Welcome to Java EE !</h1>
-	  </c:otherwise>
-	
-	<div class="d-flex w-75 justify-content-evenly ">
-	<h:link outcome="LoginForm.xhtml">Se connecter</h:link>
-	<h:link outcome="RegisterManagerForm.xhtml">Créer un compte Gestionnaire</h:link>
-	<h:link outcome="SpacesList.xhtml">Les salles FitManager</h:link>
-	</div>
 
-	
-	 </div>
-	
-	
-	
-	 <div class="p-5">
+		<!-- NavBAr -->
+		<div
+			class="bg-light-subtle d-flex justify-content-around align-items-center w-100 navBar"
+			style="position: fixed; top: 0px; z-index: 9999">
 
-            <!-- section NOTRE PHILOSOPHIE-->
-            <div class="row pt-5 contain-80">
-                <div class="col-lg-6 col-sm-12 mt-auto mb-auto sectionperso">
-                    <h2>NOTRE PHILOSOPHIE</h2>
-                    <p>Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et
-                        tener, quicquid increpuisset, ad salutis suae dispendium existimans factum aut cogitatum,
-                        insontium caedibus fecit victoriam luctuosam.
-                    </p>
+			<c:if test="${'#{sessionScope.name}'}">
+				<h1>
+					Welcome to Java EE
+					<h:outputText value="#{sessionScope.name}" />
+					!!!!!!
+				</h1>
+			</c:if>
+			<c:otherwise>
+				<h1>Welcome to Java EE !</h1>
+			</c:otherwise>
 
-                    <p>Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et
-                        tener, quicquid increpuisset, ad salutis suae dispendium existimans factum aut cogitatum,
-                        insontium caedibus fecit victoriam luctuosam.
-                    </p>
+			<div class="d-flex w-75 justify-content-evenly ">
+				<h:link outcome="LoginForm.xhtml">Se connecter</h:link>
+				<h:link outcome="RegisterManagerForm.xhtml">Créer un compte Gestionnaire</h:link>
+				<h:link outcome="SpacesList.xhtml">Les salles FitManager</h:link>
+			</div>
 
-                    <p>Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et
-                        tener, quicquid increpuisset, ad salutis suae dispendium existimans factum aut cogitatum,
-                        insontium caedibus fecit victoriam luctuosam.
-                    </p>
 
-                    <div class="d-flex justify-content-around w-100 mt-5">
-                        <a href=""> Quibussc@eles.te</a> <a href="" class="btn btn-outline-primary btn-lg">Demo</a>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-sm-12 " >
-                    <div class="dualimgcontainer">
-                        <img src="https://i.pinimg.com/564x/d2/04/13/d204131a139b6b4149df2545d4269d08.jpg" alt=""/>
-                        <img src="https://i.pinimg.com/564x/8d/09/6d/8d096d87d6de058cdd59334d9fc1ab3e.jpg" class="imgdecaler" alt=""/>
-                    </div>
-                </div>
-            </div>
-            <!--end section NOTRE PHILOSOPHIE-->
+		</div>
 
-            <!-- section Nos salles partenaires-->
-            <div class="row mb-5 contain-50">
-                <h2>Nos salles partenaires</h2>
-                <div class="d-flex w-100 justify-content-between flex-wrap">
 
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 13em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 13em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 13em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 13em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 13em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 13em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 13em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 13em; border: solid 2px"></div>
 
-                </div>
-                <div class="d-flex justify-content-around w-100 mt-5 mb-auto">
-                    <a href="" class=" btn btn-outline-primary btn-lg"> Quibussc</a> <a href="" class="btn btn-outline-primary btn-lg">Demo</a>
-                </div>
-            </div>
-            <!--end section Nos salles partenaires-->
+		<div class="p-5">
 
-            <!-- section Commentaires Adhérents-->
-            <div class="row mb-5 contain-50">
-                <h2>Nos salles partenaires</h2>
-                <div class="d-flex w-100 justify-content-between flex-wrap">
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 18em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 18em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 18em; border: solid 2px"></div>
-                    <div class="mb-2 mt-2 bg-success" style="width: 22%; height: 18em; border: solid 2px"></div>
-                </div>
-                <div class="d-flex justify-content-around w-100 mt-5 mb-auto">
-                    <a href="" class=" btn btn-outline-primary btn-lg h-1"> Quibussc</a>
-                    <a href="" class="btn btn-outline-primary btn-lg h-1">Demo</a>
-                </div>
-            </div>
-            <!--end section Commentaires Adhérents-->
+			<!-- section NOTRE PHILOSOPHIE-->
+			<div class="row pt-5 contain-80">
+				<div class="col-lg-6 col-sm-12 mt-auto mb-auto sectionperso">
+					<h2>NOTRE PHILOSOPHIE</h2>
+					<p>Bienvenue chez Fitmanager, l'entreprise qui donne vie à
+						votre entreprise dédiée à votre passion pour le sport et le
+						bien-être global. Depuis notre création, nous nous sommes engagés
+						à inspirer et à guider nos clients vers un mode de vie sain et
+						actif. En tant que leader dans le domaine de la création d'espace
+						web fitness, nous offrons des solutions novatrices pour vous aider
+						à atteindre vos objectifs de remise en forme et à vivre pleinement
+						chaque instant.</p>
 
-            <!-- section Abonnez-vous !!-->
-            <div class="row mb-5">
-                <div class="col-sm-12 col-md-6 ">
-                    <h2>Abonnez-vous !!</h2>
-                    <p>Quibus ita sceleste patratis Paulus cruore perfusus reversusque ad principis castra
-                        multos coopertos paene catenis adduxit in squalorem deiectos atque maestitiam,
-                        quorum adventu intendebantur eculei uncosque parabat carnifex et tormenta.
-                        et ex is proscripti sunt plures actique in exilium alii, non nullos gladii
-                        consumpsere poenales. nec enim quisquam facile meminit sub Constantio, ubi susurro
-                        tenus haec movebantur, quemquam absolutum.
-                        Accedebant enim eius asperitati, ubi inminuta vel laesa amplitudo imperii dicebatur,
-                        et iracundae suspicionum quantitati proximorum cruentae blanditiae exaggerantium incidentia
-                        et dolere inpendio simulantium, si principis periclitetur vita, a cuius salute velut
-                        filo pendere statum orbis terrarum fictis vocibus exclamabant.
-                    </p>
-                </div>
-                <div class="col-sm-12 col-md-6  mt-auto mb-auto">
-                    <div class="mb-2 mt-2 bg-success" style="width: 100%; height: 18em; border: solid 2px">s</div>
-                </div>
-            </div>
-            <!--end section Abonnez-vous !!-->
+					<p>Chez Fitmanager, notre équipe dévouée travaille sans relâche
+						pour créer des expériences uniques et motivantes. Nous proposons
+						une gamme complète de services, de planification d'entraînement
+						personnalisée, de gestion de cours exclusifs dispensés par des
+						experts renommés. Notre plateforme technologique avancée vous
+						permet de suivre les progrès de votre salle de sport, de rester
+						connecté avec une communauté passionnée et de bénéficier d'un
+						soutien continu pour maximiser votre succès.</p>
 
-        </div>
-        
-        
-	
+					<p>La qualité est au cœur de tout ce que nous faisons. Nos
+						serveurs modernes et nos équipements de pointe garantissent
+						une expérience de gestion exceptionnelle. Fitmanager se
+						distingue également par son engagement envers la durabilité, avec
+						des initiatives écoresponsables visant à préserver notre planète
+						tout en favorisant un mode de vie sain.</p>
+
+
+					<div class="d-flex justify-content-around w-100 mt-5">
+						<a href=""> Quibussc@eles.te</a> <a href=""
+							class="btn btn-outline-primary btn-lg">Demo</a>
+					</div>
+				</div>
+				<div class="col-lg-5 col-sm-12 ">
+					<div class="dualimgcontainer">
+						<img
+							src="https://i.pinimg.com/564x/d2/04/13/d204131a139b6b4149df2545d4269d08.jpg"
+							alt="" /> <img
+							src="https://i.pinimg.com/564x/8d/09/6d/8d096d87d6de058cdd59334d9fc1ab3e.jpg"
+							class="imgdecaler" alt="" />
+					</div>
+				</div>
+			</div>
+			<!--end section NOTRE PHILOSOPHIE-->
+			
+			<!-- section Commentaires Adhérents-->
+			<div class="row mb-5 contain-50">
+				<h2>Nos abonnements</h2>
+				<div class="d-flex w-100 justify-content-between flex-wrap">
+					<div class="mb-2 mt-2 bg-success" style="width: 22%; height: 18em; border: solid 2px">
+						<h3> BASIC</h3>
+						<ul> 
+							<li>Bénéficier d'un espace web personnalisable, dédié à votre salle. </li>
+							<li>Accés à un planning hebdomadaire pour vos clients. </li>
+							<li>Un compte gestionnaire pour créer et gérer les activités de votre salle de sport. </li>
+						</ul>	
+					</div>
+					<div class="mb-2 mt-2 bg-success" style="width: 22%; height: 18em; border: solid 2px">
+						<h3>PREMIUM</h3>
+						<ul> 
+							<li>Tous les avantages de l'offre BASIC  </li>
+							<li>Possibilité de créer des comptes pour vos coachs.</li>
+							<li>Création et gestion des cours par les coachs.</li>
+							<li>Accés à un planning annuel.</li>
+						</ul>	
+					</div>
+					<div class="mb-2 mt-2 bg-success" style="width: 22%; height: 18em; border: solid 2px">
+						<h3>CLIMAX</h3>
+						<ul> 
+							<li>Tous les avantages de l'offre PREMIUM  </li>
+							<li>Vos clients peuvent créer leur propre compte.</li>
+							<li>Réservation de cours.</li>
+							<li>Dashboard gestionnaire avec suivi des comptes et des cours. </li>
+						</ul>
+					</div>
+					
+				</div>
+				<div class="d-flex justify-content-around w-100 mt-5 mb-auto">
+					<a href="" class=" btn btn-outline-primary btn-lg h-1">
+						Quibussc</a> <a href="" class="btn btn-outline-primary btn-lg h-1">Demo</a>
+				</div>
+			</div>
+			<!--end section Commentaires Adhérents-->
+
+			<!-- section Nos salles partenaires-->
+			<div class="row mb-5 contain-50">
+				<h2>Nos salles partenaires</h2>
+				<div class="d-flex w-100 justify-content-between flex-wrap">
+
+					<div class="mb-2 mt-2 bg-success"
+						style="width: 22%; height: 13em; border: solid 2px"></div>
+					<div class="mb-2 mt-2 bg-success"
+						style="width: 22%; height: 13em; border: solid 2px"></div>
+					<div class="mb-2 mt-2 bg-success"
+						style="width: 22%; height: 13em; border: solid 2px"></div>
+					<div class="mb-2 mt-2 bg-success"
+						style="width: 22%; height: 13em; border: solid 2px"></div>
+					<div class="mb-2 mt-2 bg-success"
+						style="width: 22%; height: 13em; border: solid 2px"></div>
+					<div class="mb-2 mt-2 bg-success"
+						style="width: 22%; height: 13em; border: solid 2px"></div>
+					<div class="mb-2 mt-2 bg-success"
+						style="width: 22%; height: 13em; border: solid 2px"></div>
+					<div class="mb-2 mt-2 bg-success"
+						style="width: 22%; height: 13em; border: solid 2px"></div>
+
+				</div>
+				<div class="d-flex justify-content-around w-100 mt-5 mb-auto">
+					<a href="" class=" btn btn-outline-primary btn-lg"> Quibussc</a> <a
+						href="" class="btn btn-outline-primary btn-lg">Demo</a>
+				</div>
+			</div>
+			<!--end section Nos salles partenaires-->
+
+			<!-- section Abonnez-vous !!-->
+			<div class="row mb-5">
+				<div class="col-sm-12 col-md-6 ">
+					<h2>Abonnez-vous !!</h2>
+					<p>Rejoignez la famille Fitmanager et découvrez une approche
+						holistique du bien-être qui transcende les frontières du simple
+						site web. Ensemble, nous façonnons un avenir où
+						chacun de vos utilisateurs peut atteindre son potentiel maximal et vivre une
+						vie équilibrée et épanouissante. Bienvenue dans une communauté où
+						votre aventure vers la meilleure version de vous-même commence
+						aujourd'hui avec Fitmanager.</p>
+				</div>
+				<div class="col-sm-12 col-md-6  mt-auto mb-auto">
+					<div class="mb-2 mt-2 bg-success"
+						style="width: 100%; height: 18em; border: solid 2px">s</div>
+				</div>
+			</div>
+			<!--end section Abonnez-vous !!-->
+
+		</div>
+
+
+
 
 	</ui:define>
 
