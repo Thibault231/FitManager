@@ -69,13 +69,9 @@
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
-		
-		<li class="nav-item"><h:form>
-			<h:commandLink class="nav-link"
-			  action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">
-			  MON ESPACE
-			</h:commandLink>
-		</h:form></li>
+		<li class="nav-item">
+		  <h:link class="nav-link" outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
+		</li>
 
 	</ui:define>
 </ui:composition>
