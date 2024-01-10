@@ -56,15 +56,13 @@
 					<p:outputLabel id="to" value="#{scheduleJava8View.event.endDate}"
 						appendTo="@(body)"  disabled="true" />
 
-					
-
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
+		
+		<li class="nav-item">
+			<h:link class="nav-link" outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
+		</li>
 
 	</ui:define>
-
-
-	
-
 </ui:composition>
