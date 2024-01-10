@@ -77,11 +77,11 @@ public class SpaceController implements Serializable {
 		if (userToLogAccount.getLogin().isEmpty()) {
 			message = "Login inexistant !!";
 			fc.addMessage(null, new FacesMessage(message));
-			return "SpaceLoginForm";
+			return "SpaceLoginForm?faces-redirect=true";
 		} else if (userToLogAccount.getPassword().isEmpty()) {
 			message = "vérifiez votre mot de passe ";
 			fc.addMessage(null, new FacesMessage(message));
-			return "SpaceLoginForm";
+			return "SpaceLoginForm?faces-redirect=true";
 		} else {
 			User userToLog = this.userDao.getUserBySpaceAndLogin(userToLogAccount.getLogin(),
 					SessionUtils.getSpaceIdFromSession());
@@ -93,7 +93,7 @@ public class SpaceController implements Serializable {
 			} else {
 				message = "Mot de passe erroné. ";
 				fc.addMessage(null, new FacesMessage(message));
-				return "SpaceLoginForm";
+				return "SpaceLoginForm?faces-redirect=true";
 			}
 		}
 	}
@@ -106,25 +106,28 @@ public class SpaceController implements Serializable {
 	 * @return url (:String)
 	 */
 	public String createCoachAccount() {
-
-		this.spaceViewModel.getUser().getAccount().setRole(Role.Coach);
-		this.spaceViewModel.getUser().getAccount().setPassword("00000");
+		// Injecte le role et le mot de passe par défaut dans le formulaire
+		this.spaceViewModel.getNewUser().getAccount().setRole(Role.Coach);
+		this.spaceViewModel.getNewUser().getAccount().setPassword("00000");
 		try {
+			// Attrappe la salle courante
 			Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
 			Space currentSpace = spaceDao.getSpaceWithMembers(currentSpaceId);
-			Long createdUserId = userSvc.createUser(spaceViewModel.getUser());
+			// Persist le nouveau coach
+			Long createdUserId = userSvc.createUser(spaceViewModel.getNewUser());
+			// Lie le coach et la salle courante
 			User createdUser = userDao.getUserByIdWithLinkedSpaces(createdUserId);
 			currentSpace.getUsers().add(createdUser);
 			createdUser.getLinkedSpaces().add(currentSpace);
-
 			spaceDao.updateSpace(currentSpace);
 			userDao.updateUser(createdUser);
-
-			this.spaceViewModel.setUser(new User(true));
+			// Réinitialise le formulaire du viewmodel
+			this.spaceViewModel.setNewUser(new User(true));
 			return "ManagerSpaceDashBoard";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
-			return "RegisterCoachForm";
+			this.spaceViewModel.setNewUser(new User(true));
+			return "RegisterCoachForm?faces-redirect=true";
 		}
 	}
 
@@ -153,7 +156,7 @@ public class SpaceController implements Serializable {
 			return authenticateOnSpace();
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
-			return "RegisterMemberForm";
+			return "RegisterMemberForm?faces-redirect=true";
 		}
 	}
 
@@ -211,7 +214,7 @@ public class SpaceController implements Serializable {
 	public String deleteSpace(Long spaceToDeleteId) {
 		spaceDao.deleteSpace(spaceToDeleteId);
 
-		return "index";
+		return "index?faces-redirect=true";
 	}
 
 	public void uploadAdministrativeDocument(FileUploadEvent event) throws Exception {
@@ -286,11 +289,11 @@ public class SpaceController implements Serializable {
 	public String redirectToRightDashBoard(Role userRole) {
 		this.spaceViewModel.setUser(userDao.getUserById(SessionUtils.getUserIdFromSession()));
 		if (userRole.equals(Role.Adherent)) {
-			return "AdherentDashboard";
+			return "AdherentDashboard?faces-redirect=true";
 		} else if (userRole.equals(Role.Coach)) {
 			return "CoachDashboard";
 		} else if (userRole.equals(Role.Gestionnaire)) {
-			return "ManagerSpaceDashBoard";
+			return "ManagerSpaceDashBoard?faces-redirect=true";
 		} else {
 			Long spaceId = SessionUtils.getSpaceIdFromSession();
 			return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
@@ -336,9 +339,9 @@ public class SpaceController implements Serializable {
 	public boolean isUserConnected() {
 		return SessionUtils.getUserIdFromSession() != null;
 	}
-	
+
 	public boolean isAdherent() {
-		return SessionUtils.getUserRoleFromSession() != null 
+		return SessionUtils.getUserRoleFromSession() != null
 				&& SessionUtils.getUserRoleFromSession().equals(Role.Adherent);
 	}
 }

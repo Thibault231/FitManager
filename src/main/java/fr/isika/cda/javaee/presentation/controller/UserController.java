@@ -69,10 +69,10 @@ public class UserController implements Serializable {
 			userToCreateId = userSvc.createUser(userViewModel.getUser());
 			logIn(userToCreateId);
 			userViewModel = new UserViewModel();
-			return "ManagerDashBoard";
+			return "ManagerDashBoard?faces-redirect=true";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
-			return "RegisterManagerForm";
+			return "RegisterManagerForm?faces-redirect=true";
 		}
 	}
 
@@ -99,11 +99,28 @@ public class UserController implements Serializable {
 	 * @param userToDeleteId
 	 * @return url (:String)
 	 */
+	public String deleteUser(Long userToDeleteId) {
+		userDao.deleteUser(userToDeleteId);
+		return redirectToRightDashBoard(SessionUtils.getUserRoleFromSession());
+	}
 
-	public String deleteUser(User userToDelete) {
-		System.err.println("Utilisateur à supprimer " + userToDelete);
-		userDao.deleteUser(userToDelete.getUserId());
-		return "UsersAccounts.xhtml?faces-redirect=true";
+	/**
+	 * Return the view of a user dashboard, using it's role.
+	 * 
+	 * @param userRole (:Role ENUM)
+	 * @return url of the user dashboard (:String)
+	 */
+	public String redirectToRightDashBoard(Role userRole) {
+		if (userRole.equals(Role.Adherent)) {
+			return "AdherentDashboard?faces-redirect=true";
+		} else if (userRole.equals(Role.Coach)) {
+			return "CoachDashboard";
+		} else if (userRole.equals(Role.Gestionnaire)) {
+			return "ManagerSpaceDashBoard?faces-redirect=true";
+		} else {
+			Long spaceId = SessionUtils.getSpaceIdFromSession();
+			return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		}
 	}
 
 	/**
@@ -126,7 +143,7 @@ public class UserController implements Serializable {
 		Space currentSpace = spaceDao.getSpaceWithMembers(SessionUtils.getSpaceIdFromSession());
 		List<User> usersList = new ArrayList<User>();
 		for (User user : currentSpace.getUsers()) {
-			if (user.getAccount().getRole().equals(Role.Adherent))
+			if (user.getAccount().getRole().equals(Role.Adherent) && user.isActive())
 				usersList.add(user);
 		}
 		return usersList;
@@ -142,7 +159,7 @@ public class UserController implements Serializable {
 		Space currentSpace = spaceDao.getSpaceWithMembers(SessionUtils.getSpaceIdFromSession());
 		List<User> usersList = new ArrayList<User>();
 		for (User user : currentSpace.getUsers()) {
-			if (user.getAccount().getRole().equals(Role.Coach))
+			if (user.getAccount().getRole().equals(Role.Coach) && user.isActive())
 				usersList.add(user);
 		}
 		return usersList;
@@ -191,12 +208,12 @@ public class UserController implements Serializable {
 		if (userViewModel.getEmail().isEmpty()) {
 			message = "Login inexistant !!";
 			fc.addMessage(null, new FacesMessage(message));
-			return "LoginForm";
+			return "LoginForm?faces-redirect=true";
 			// Password non rempli
 		} else if (userViewModel.getPassword().isEmpty()) {
 			message = "vérifiez votre mot de passe ";
 			fc.addMessage(null, new FacesMessage(message));
-			return "LoginForm";
+			return "LoginForm?faces-redirect=true";
 		} else {
 			// Check User présent sur la plateforme
 			User userToLog = this.userDao.getUserByLoginAndRole(userViewModel.getEmail(), Role.Gestionnaire);
@@ -211,7 +228,7 @@ public class UserController implements Serializable {
 			} else {
 				message = "Mot de passe erroné. ";
 				fc.addMessage(null, new FacesMessage(message));
-				return "LoginForm";
+				return "LoginForm?faces-redirect=true";
 			}
 		}
 	}
@@ -245,7 +262,7 @@ public class UserController implements Serializable {
 	public String logout() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
-		return "index";
+		return "index?faces-redirect=true";
 	}
 
 }

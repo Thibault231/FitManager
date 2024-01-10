@@ -41,7 +41,6 @@ public class UserDao implements IDaoUser {
 			} else {
 				em.remove(userTodelete);
 			}
-
 			return true;
 		} else {
 			return false;
