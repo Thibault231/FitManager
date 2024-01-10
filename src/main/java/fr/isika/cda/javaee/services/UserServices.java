@@ -34,4 +34,13 @@ public class UserServices {
 				String.format("L'uilisateur avec le login (%s) existe déjà", userFromForm.getAccount().getLogin()));
 	}
 
+	public void updateUserOnPlateform(User userToUpdate, Long currentUserId) {
+		User currentUser = userDao.getUserById(currentUserId);
+		if (userToUpdate.getProfile().getCivility().getName() != null) {
+			String newName = userToUpdate.getProfile().getCivility().getName();
+			currentUser.getProfile().getCivility().setName(newName);
+		}
+		userDao.updateUser(currentUser);
+	}
+
 }

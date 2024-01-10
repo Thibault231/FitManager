@@ -21,7 +21,7 @@ import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class UserController implements Serializable {
 
 	private static final long serialVersionUID = 8496614779097793439L;
@@ -75,10 +75,16 @@ public class UserController implements Serializable {
 	 * 
 	 * @param dashboard url (:String)
 	 */
-	public String updateUser(User updatedUser) {
-		System.out.println("updateUser");
-		userDao.updateUser(updatedUser);
-		return "UpdateUserForm.xhtml?faces-redirect=true";
+	public String updateUser() {
+		// mettre à jour le user
+		userSvc.updateUserOnPlateform(userViewModel.getUser(), SessionUtils.getUserIdFromSession());
+		// mettre à jour la session si le nom est changé
+		if (userViewModel.getUser().getProfile().getCivility().getName() != null) {
+			String newName = userViewModel.getUser().getProfile().getCivility().getName();
+			FacesContext fc = FacesContext.getCurrentInstance();
+			fc.getExternalContext().getSessionMap().put("name", newName);
+		}
+		return "ManagerDashBoard.xhtml";
 	}
 
 	/**
@@ -143,20 +149,26 @@ public class UserController implements Serializable {
 	public String authenticate() {
 		String message;
 		FacesContext fc = FacesContext.getCurrentInstance();
+		// Email non rempli
 		if (userViewModel.getEmail().isEmpty()) {
 			message = "Login inexistant !!";
 			fc.addMessage(null, new FacesMessage(message));
 			return "LoginForm";
+			// Password non rempli
 		} else if (userViewModel.getPassword().isEmpty()) {
 			message = "vérifiez votre mot de passe ";
 			fc.addMessage(null, new FacesMessage(message));
 			return "LoginForm";
 		} else {
+			// Check User présent sur la plateforme
 			User userToLog = this.userDao.getUserByLoginAndRole(userViewModel.getEmail(), Role.Gestionnaire);
+			// Vérification de la rectitude des données du formulaire
 			if (userToLog != null && userToLog.getAccount().getPassword().equals(userViewModel.getPassword())) {
 				fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
 				fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
 				fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
+				// chargement du viewmodel avec le user.
+				userViewModel.setUser(userToLog);
 				return "ManagerDashBoard";
 			} else {
 				message = "Mot de passe erroné. ";
