@@ -44,21 +44,19 @@
 				showEffect="clip" hideEffect="clip">
 				<h:panelGrid id="eventDetails" columns="2">
 					<p:outputLabel for="title" value="Titles:" />
-					<p:inputText id="title" value="#{scheduleJava8View.event.title}"
-						required="true" />
+					<p:outputLabel id="title" value="#{scheduleJava8View.event.title}"
+						required="true" disabled="true" />
 
 					<p:outputLabel for="from" value="From:" />
-					<p:datePicker id="from"
-						value="#{scheduleJava8View.event.startDate}" pattern="dd/MM/yyyy"
-						showTime="true" appendTo="@(body)" />
+					<p:outputLabel id="from"
+						value="#{scheduleJava8View.event.startDate}"
+						appendTo="@(body)" />
 
 					<p:outputLabel for="to" value="To:" />
-					<p:datePicker id="to" value="#{scheduleJava8View.event.endDate}"
-						pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" />
+					<p:outputLabel id="to" value="#{scheduleJava8View.event.endDate}"
+						appendTo="@(body)"  disabled="true" />
 
-					<p:outputLabel for="allDay" value="All Day (see #1164):" />
-					<h:selectBooleanCheckbox id="allDay"
-						value="#{scheduleJava8View.event.allDay}" />
+					
 
 				</h:panelGrid>
 			</p:dialog>
