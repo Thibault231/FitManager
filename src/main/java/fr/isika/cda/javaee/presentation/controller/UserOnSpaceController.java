@@ -123,7 +123,7 @@ public class UserOnSpaceController implements Serializable {
 			userDao.updateUser(createdUser);
 			// Réinitialise le formulaire du viewmodel
 			this.spaceViewModel.setNewUser(new User(true));
-			return "ManagerSpaceDashBoard";
+			return "ManagerSpaceDashBoard?faces-redirect=true";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
 			this.spaceViewModel.setNewUser(new User(true));
@@ -158,17 +158,6 @@ public class UserOnSpaceController implements Serializable {
 			System.out.println("Exception : " + e.getMessage());
 			return "RegisterMemberForm?faces-redirect=true";
 		}
-	}
-
-	public void uploadAdministrativeDocument(FileUploadEvent event) throws Exception {
-		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
-
-		UploadedFile uploadedFile = event.getFile();
-		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
-
-		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
-
-		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 
 	/**
@@ -223,9 +212,14 @@ public class UserOnSpaceController implements Serializable {
 		this.uploadedFile = uploadedFile;
 	}
 
-	public String updateUser() {
+	/**
+	 * Update the change of a user profile.
+	 * 
+	 * @param dashboard url (:String)
+	 */
+	public String updateUser(Long userToUpdateid) {
 		// mettre à jour le user
-		userSvc.updateUserOnPlateform(spaceViewModel.getUser(), SessionUtils.getUserIdFromSession());
+		userSvc.updateUserOnPlateform(spaceViewModel.getUser(), userToUpdateid);
 		// mettre à jour la session si le nom est changé
 		if (spaceViewModel.getUser().getProfile().getCivility().getName() != null) {
 			String newName = spaceViewModel.getUser().getProfile().getCivility().getName();
@@ -235,8 +229,18 @@ public class UserOnSpaceController implements Serializable {
 		return redirectToRightDashBoard(SessionUtils.getUserRoleFromSession());
 	}
 
+	public void uploadAdministrativeDocument(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+
+		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
+
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
+	}
+
 	public UploadedFile getUploadedFile() {
 		return uploadedFile;
 	}
-
 }

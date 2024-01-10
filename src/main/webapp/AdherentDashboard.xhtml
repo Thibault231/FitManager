@@ -13,22 +13,24 @@
 		<h1>Tableau de bord Adherent</h1>
 		<h1>Mes informations</h1>
 		<div id="1">
-
-			<p>Nom: #{spaceController.spaceViewModel.user.profile.civility.name}</p>
+			<p>Nom:
+				#{spaceUser.spaceViewModel.user.profile.civility.name}</p>
 			<p>Prenom:
-				#{spaceController.spaceViewModel.user.profile.civility.forename}</p>
+				#{spaceUser.spaceViewModel.user.profile.civility.forename}</p>
 			<p>Date de naissance:
-				#{spaceController.spaceViewModel.user.profile.civility.birthday}</p>
-			<p>Email: #{spaceController.spaceViewModel.user.profile.contact.email}</p>
+				#{spaceUser.spaceViewModel.user.profile.civility.birthday}</p>
+			<p>Email:
+				#{spaceUser.spaceViewModel.user.profile.contact.email}</p>
 			<p>Adresse:
-				#{spaceController.spaceViewModel.user.profile.adress.street}</p>
+				#{spaceUser.spaceViewModel.user.profile.adress.street}</p>
 			<p>Code postal:
-				#{spaceController.spaceViewModel.user.profile.adress.zipCode}</p>
-			<p>Ville: #{spaceController.spaceViewModel.user.profile.adress.city}</p>
+				#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</p>
+			<p>Ville:
+				#{spaceUser.spaceViewModel.user.profile.adress.city}</p>
 		</div>
 		<h:panelGrid columns="1" cellpadding="5">
 			<p:commandButton value="Modifier mon profil" type="button"
-				onclick="PF('popupUpdate').show();" />
+				onclick="PF('UpdateAccount').show();" />
 		</h:panelGrid>
 		<hr/>
 		<p>
@@ -58,7 +60,7 @@
 			value="Retour à l'accueil" />
 
 		
-		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate" modal="true"
+		<p:dialog header="Modification de mon profil " widgetVar="UpdateAccount" modal="true"
 			height="600" resizable="false" showEffect="fade" hideEffect="fade"
 			style="max-width: 1000px; min-width: 700px;">
 			<h:form>
@@ -66,21 +68,20 @@
 					<div class="d-grid gap-2">
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput01"
-								placeholder="#{userController.userViewModel.user.profile.civility.name}"
-								size="20"
-								value="#{userController.userViewModel.user.profile.civility.name}" />
+								placeholder="#{spaceUser.spaceViewModel.user.profile.civility.name}" size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
 							<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
 						</div>
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput02"
-								placeholder="Prénom" size="20"
-								value="#{userController.userViewModel.user.profile.civility.forename}" />
+								placeholder="spaceUser.spaceViewModel.user.profile.civility.forename" size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
 							<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 						</div>
 						<div class="field">
 							<h:outputLabel for="sex" value="Genre" />
 							<h:selectOneMenu id="sex"
-								value="#{userController.userViewModel.user.profile.civility.sex}">
+								value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
 								<f:selectItem itemLabel="" />
 								<f:selectItem itemLabel="Homme" itemValue="Man" />
 								<f:selectItem itemLabel="Femme" itemValue="Woman" />
@@ -89,42 +90,42 @@
 						</div>
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput04"
-								placeholder="Date de naissance" size="20"
-								value="#{userController.userViewModel.user.profile.civility.birthday}">
+								placeholder="spaceUser.spaceViewModel.user.profile.civility.birthday" size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
 								<f:convertDateTime pattern="dd-mm-yyyy" />
 							</h:inputText>
 							<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 						</div>
 						<div class="form-floating ">
 							<h:inputText class="form-control" id="floatingInput06" size="20"
-								placeholder="#{userController.userViewModel.user.account.password}"
+								placeholder="#{spaceUser.spaceViewModel.user.account.password}"
 								maxlength="12"
-								value="#{userController.userViewModel.user.account.password}">
+								value="#{spaceUser.spaceViewModel.user.account.password}">
 								<f:validateLength minimum="5"></f:validateLength>
 							</h:inputText>
 							<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 						</div>
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput07"
-								placeholder="Adresse" size="20"
-								value="#{userController.userViewModel.user.profile.adress.street}" />
+								placeholder="spaceUser.spaceViewModel.user.profile.adress.street" size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
 							<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
 						</div>
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput08"
-								placeholder="Code postal" size="20"
-								value="#{userController.userViewModel.user.profile.adress.zipCode}" />
+								placeholder="spaceUser.spaceViewModel.user.profile.adress.zipCode" size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
 							<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
 						</div>
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput09"
-								placeholder="Ville" size="20"
-								value="#{userController.userViewModel.user.profile.adress.city}" />
+								placeholder="spaceUser.spaceViewModel.user.profile.adress.city" size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
 							<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 						</div>
 						<h:commandButton class="btn btn-warning"
 							value="Enregistrer les modifications"
-							action="#{userController.updateUser()}" />
+							action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
 						<h:link class="text-center" outcome="AdherentDashboard"
 							value="ANNULER" />
 					</div>
