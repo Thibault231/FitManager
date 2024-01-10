@@ -1,6 +1,8 @@
 package fr.isika.cda.javaee.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,6 +18,7 @@ public class SpaceDao implements IDaoSpace {
 
 	@Override
 	public Long createSpace(Space spaceToCreate) {
+//		em.persist(spaceToCreate.getInfos().getConfiguration().getStyle().getColor());
 		em.persist(spaceToCreate.getInfos().getConfiguration().getStyle());
 		em.persist(spaceToCreate.getInfos().getAdministrative());
 		em.persist(spaceToCreate.getInfos().getConfiguration());
@@ -35,6 +38,11 @@ public class SpaceDao implements IDaoSpace {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public Map<String, String> getColorsMap() {
+		return getColorsMap();
 	}
 
 	@Override
