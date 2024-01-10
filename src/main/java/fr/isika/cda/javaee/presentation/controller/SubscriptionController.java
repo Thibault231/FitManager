@@ -59,7 +59,7 @@ public class SubscriptionController implements Serializable {
 		subscriptionDao.createSubscription(subscriptionToCreate);
 		currentSpace.getSubscriptions().add(subscriptionToCreate);
 		spaceDao.updateSpace(currentSpace);
-		return "SpaceAccueilPersonnalisation";
+		return "ManagerSpaceDashBoard";
 	}
 
 	public List<Subscription> getAllActiveSubscription() {
