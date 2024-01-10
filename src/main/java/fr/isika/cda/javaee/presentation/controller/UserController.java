@@ -1,18 +1,20 @@
 package fr.isika.cda.javaee.presentation.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
@@ -28,6 +30,9 @@ public class UserController implements Serializable {
 
 	@Inject
 	private IDaoUser userDao;
+
+	@Inject
+	private IDaoSpace spaceDao;
 
 	@Inject
 	private UserServices userSvc;
@@ -62,11 +67,11 @@ public class UserController implements Serializable {
 		try {
 			userToCreateId = userSvc.createUser(userViewModel.getUser());
 			logIn(userToCreateId);
-			userViewModel = new UserViewModel();
-			return "ManagerDashBoard";
+			return "ManagerDashBoard?faces-redirect=true";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
-			return "RegisterManagerForm";
+			this.setUserViewModel(new UserViewModel());
+			return "RegisterManagerForm?faces-redirect=true";
 		}
 	}
 
@@ -93,11 +98,28 @@ public class UserController implements Serializable {
 	 * @param userToDeleteId
 	 * @return url (:String)
 	 */
+	public String deleteUser(Long userToDeleteId) {
+		userDao.deleteUser(userToDeleteId);
+		return redirectToRightDashBoard(SessionUtils.getUserRoleFromSession());
+	}
 
-	public String deleteUser(User userToDelete) {
-		System.err.println("Utilisateur à supprimer " + userToDelete);
-		userDao.deleteUser(userToDelete.getUserId());
-		return "UsersAccounts.xhtml?faces-redirect=true";
+	/**
+	 * Return the view of a user dashboard, using it's role.
+	 * 
+	 * @param userRole (:Role ENUM)
+	 * @return url of the user dashboard (:String)
+	 */
+	public String redirectToRightDashBoard(Role userRole) {
+		if (userRole.equals(Role.Adherent)) {
+			return "AdherentDashboard?faces-redirect=true";
+		} else if (userRole.equals(Role.Coach)) {
+			return "CoachDashboard";
+		} else if (userRole.equals(Role.Gestionnaire)) {
+			return "ManagerSpaceDashBoard?faces-redirect=true";
+		} else {
+			Long spaceId = SessionUtils.getSpaceIdFromSession();
+			return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		}
 	}
 
 	/**
@@ -107,6 +129,38 @@ public class UserController implements Serializable {
 	 */
 	public List<User> getAllActiveUser() {
 		List<User> usersList = userDao.getAllUsers();
+		return usersList;
+	}
+
+	/**
+	 * Return all the users of the current space, marked as active in the database.
+	 * <b>Use this method for connected user</b>
+	 * 
+	 * @return (:List<User>)
+	 */
+	public List<User> getAllMembersOfCurrentSpace() {
+		Space currentSpace = spaceDao.getSpaceWithMembers(SessionUtils.getSpaceIdFromSession());
+		List<User> usersList = new ArrayList<User>();
+		for (User user : currentSpace.getUsers()) {
+			if (user.getAccount().getRole().equals(Role.Adherent) && user.isActive())
+				usersList.add(user);
+		}
+		return usersList;
+	}
+
+	/**
+	 * Return all the users of the current space, marked as active in the database.
+	 * <b>Use this method for connected user</b>
+	 * 
+	 * @return (:List<User>)
+	 */
+	public List<User> getAllCoachesOfCurrentSpace() {
+		Space currentSpace = spaceDao.getSpaceWithMembers(SessionUtils.getSpaceIdFromSession());
+		List<User> usersList = new ArrayList<User>();
+		for (User user : currentSpace.getUsers()) {
+			if (user.getAccount().getRole().equals(Role.Coach) && user.isActive())
+				usersList.add(user);
+		}
 		return usersList;
 	}
 
@@ -153,12 +207,12 @@ public class UserController implements Serializable {
 		if (userViewModel.getEmail().isEmpty()) {
 			message = "Login inexistant !!";
 			fc.addMessage(null, new FacesMessage(message));
-			return "LoginForm";
+			return "LoginForm?faces-redirect=true";
 			// Password non rempli
 		} else if (userViewModel.getPassword().isEmpty()) {
 			message = "vérifiez votre mot de passe ";
 			fc.addMessage(null, new FacesMessage(message));
-			return "LoginForm";
+			return "LoginForm?faces-redirect=true";
 		} else {
 			// Check User présent sur la plateforme
 			User userToLog = this.userDao.getUserByLoginAndRole(userViewModel.getEmail(), Role.Gestionnaire);
@@ -173,7 +227,7 @@ public class UserController implements Serializable {
 			} else {
 				message = "Mot de passe erroné. ";
 				fc.addMessage(null, new FacesMessage(message));
-				return "LoginForm";
+				return "LoginForm?faces-redirect=true";
 			}
 		}
 	}
@@ -207,7 +261,8 @@ public class UserController implements Serializable {
 	public String logout() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
-		return "index";
+		this.setUserViewModel(new UserViewModel());
+		return "index?faces-redirect=true";
 	}
 
 }

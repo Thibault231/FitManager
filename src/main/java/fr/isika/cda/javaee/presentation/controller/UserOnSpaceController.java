@@ -29,11 +29,11 @@ import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 import fr.isika.cda.javaee.services.UserServices;
 
-@Named
+@Named("spaceUser")
 @SessionScoped
-public class SpaceController implements Serializable {
+public class UserOnSpaceController implements Serializable {
 
-	private static final long serialVersionUID = 8496614779097793938L;
+	private static final long serialVersionUID = 849661469097793938L;
 
 	@Inject
 	private IDaoSpace spaceDao;
@@ -46,7 +46,7 @@ public class SpaceController implements Serializable {
 
 	private UploadedFile uploadedFile;
 
-//**********************************************************	
+	// **********************************************************
 	@PostConstruct
 	public void init() {
 		this.spaceViewModel = new SpaceViewModel();
@@ -60,7 +60,8 @@ public class SpaceController implements Serializable {
 		this.spaceViewModel = spaceViewModel;
 	}
 
-//**********************************************************
+	// **********************************************************
+
 	/**
 	 * Authenticate a visitor from a login form and create a session object with
 	 * role and id. The authenticated visitor is next redirected to it's specific
@@ -159,51 +160,6 @@ public class SpaceController implements Serializable {
 		}
 	}
 
-	/**
-	 * Create a space and link it to it's manager creator.
-	 * 
-	 * @return url (String)
-	 */
-	public String createSpace() {
-		// 1- Get manager
-		User createdUser = userDao.getUserByIdWithLinkedSpaces(SessionUtils.getUserIdFromSession());
-		// 2- Create then get the new space
-		Long createdSpaceId = spaceDao.createSpace(spaceViewModel.getSpace());
-		Space createdSpace = spaceDao.getSpaceWithMembers(createdSpaceId);
-		// 3-Link manager and new space as transient objects
-		createdSpace.getUsers().add(createdUser);
-		createdUser.getLinkedSpaces().add(createdSpace);
-		// 4- Persist manager and space links
-		spaceDao.updateSpace(createdSpace);
-		userDao.updateUser(createdUser);
-
-		return "SpacesList.xhtml?faces-redirect=true";
-	}
-
-	/**
-	 * Get as param a space Id and return this space index view.
-	 * 
-	 * @return formated url (String)
-	 */
-	public String goToSpaceIndex() {
-		// 1 - Récupérer la valeur du param "spaceId"
-		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		Long spaceId = Long.valueOf(params.get("spaceId"));
-
-		// 2 - aller chercher l'objet Salle par cet id (en bdd)
-		spaceViewModel.setSpace(spaceDao.getSpaceById(spaceId));
-		// 3- Renseigne l'id de la salle dans la session.
-		String viewToReturn = "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
-
-		return spaceLogOut(spaceId, viewToReturn);
-	}
-
-	public String deleteSpace(Long spaceToDeleteId) {
-		spaceDao.deleteSpace(spaceToDeleteId);
-
-		return "index?faces-redirect=true";
-	}
-
 	public void uploadAdministrativeDocument(FileUploadEvent event) throws Exception {
 		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
 
@@ -213,67 +169,6 @@ public class SpaceController implements Serializable {
 		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
 
 		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
-	}
-
-	/**
-	 * Return the list of all the active spaces created on the plateform by all
-	 * manager.
-	 * 
-	 * @return the list of spaces (: List<Space>)
-	 */
-	public List<Space> getAllActiveSpaces() {
-		List<Space> spaceList = spaceDao.getAllSpace();
-		return spaceList;
-	}
-
-	/**
-	 * Return the list of all the active spaces created by a specific manager. <br/>
-	 * This method use the session parameters and so need the manager to be
-	 * connected.
-	 * 
-	 * @return the list of spaces (: List<Space>)
-	 */
-	public List<Space> getAllActiveSpacesOfManager() {
-		List<Space> spaceList = userDao.getUserByIdWithLinkedSpaces(SessionUtils.getUserIdFromSession())
-				.getLinkedSpaces();
-		return spaceList;
-	}
-
-	public Space getSpaceById(Long spaceId) {
-		return spaceDao.getSpaceById(spaceId);
-	}
-
-	/**
-	 * Get the current space object with it's subscriptions
-	 * 
-	 * @return current space (:Space)
-	 */
-	public Space getCurrentSpaceWithSubscriptions() {
-		Long spaceId = SessionUtils.getSpaceIdFromSession();
-		return spaceDao.getSpaceWithMembers(spaceId);
-	}
-
-	/**
-	 * Get the current space object with it's users
-	 * 
-	 * @return current space (:Space)
-	 */
-	public Space getCurrentSpaceWithUsers() {
-		Long spaceId = SessionUtils.getSpaceIdFromSession();
-		return spaceDao.getSpaceWithMembers(spaceId);
-	}
-
-	public Space getSpaceByName(String spaceName) {
-		return spaceDao.getSpaceByName(spaceName);
-	}
-
-	public boolean isAdherent() {
-		return SessionUtils.getUserRoleFromSession() != null
-				&& SessionUtils.getUserRoleFromSession().equals(Role.Adherent);
-	}
-
-	public boolean isUserConnected() {
-		return SessionUtils.getUserIdFromSession() != null;
 	}
 
 	/**
@@ -343,4 +238,5 @@ public class SpaceController implements Serializable {
 	public UploadedFile getUploadedFile() {
 		return uploadedFile;
 	}
+
 }

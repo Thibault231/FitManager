@@ -41,7 +41,6 @@ public class UserDao implements IDaoUser {
 			} else {
 				em.remove(userTodelete);
 			}
-
 			return true;
 		} else {
 			return false;
@@ -68,7 +67,15 @@ public class UserDao implements IDaoUser {
 
 	@Override
 	public User getUserById(Long userToGetId) {
-		return em.find(User.class, userToGetId);
+		try {
+			User user = em
+					.createQuery("SELECT u FROM User u WHERE u.userId = :userIdParam AND u.isActive = 1", User.class)
+					.setParameter("userIdParam", userToGetId).getSingleResult();
+			return user;
+		} catch (NoResultException ex) {
+			return null;
+		}
+
 	}
 
 	@Override
