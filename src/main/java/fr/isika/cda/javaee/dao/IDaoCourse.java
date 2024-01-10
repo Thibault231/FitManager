@@ -55,12 +55,12 @@ public interface IDaoCourse {
 	 * @param courseToSave (:Course)
 	 * @return saved course id (:Long)
 	 */
-	public Long save(Course courseToSave);
+	public Long saveCourses(Course courseToSave);
 
 	/**
 	 * Update a course in the DB, using the updated course object.
 	 * 
 	 * @param courseToUpdate (:Long)
 	 */
-	public void update(Course courseToUpdate);
+	public void updateCourses(Course courseToUpdate);
 }

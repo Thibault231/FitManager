@@ -47,13 +47,13 @@ public class CourseDao implements IDaoCourse {
 	}
 
 	@Override
-	public Long save(Course courseToSave) {
+	public Long saveCourses(Course courseToSave) {
 		em.persist(courseToSave);
 		return courseToSave.getId();
 	}
 
 	@Override
-	public void update(Course courseToUpdate) {
+	public void updateCourses(Course courseToUpdate) {
 		em.merge(courseToUpdate);
 	}
 

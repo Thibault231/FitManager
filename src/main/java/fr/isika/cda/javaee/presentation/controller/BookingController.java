@@ -61,7 +61,7 @@ public class BookingController implements Serializable {
 		bookingToCreate.setLinkedCourse(currentCourse);
 		bookingToCreate.setRegistrationDate(new Date());
 		// Persist booking
-		courseDao.save(currentCourse);
+		courseDao.saveCourses(currentCourse);
 		bookingDao.createBooking(bookingToCreate);
 		// Reset event
 		courseController.resetEvent();
@@ -83,8 +83,16 @@ public class BookingController implements Serializable {
 		bookingToCreate.setLinkedCourse(currentCourse);
 		bookingToCreate.setRegistrationDate(new Date());
 		// Persist booking
-		courseDao.save(currentCourse);
+		courseDao.saveCourses(currentCourse);
 		bookingDao.createBooking(bookingToCreate);
+	}
+	
+	public void cancelBooking() {
+		Long bookingIdToCancel = bookingForm.getBookingId();
+		if (bookingIdToCancel != null) {
+			bookingDao.cancelBooking(bookingIdToCancel);
+		}
+		
 	}
 
 	public List<Booking> getAllBookingOfAMember() {
