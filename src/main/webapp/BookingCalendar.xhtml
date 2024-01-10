@@ -22,47 +22,34 @@
 
 
 		<h:form>
-			<p:growl id="messages" showDetail="true" />
+    <p:growl id="messages" showDetail="true" />
 
-			<h:panelGrid columnClasses="value">
-				<p:schedule id="schedule" value="#{courseController.eventModel}"
-					widgetVar="myschedule">
+    <h:panelGrid columnClasses="value">
+        <p:schedule id="schedule" value="#{courseController.eventModel}" widgetVar="myschedule">
+            <p:ajax event="dateSelect" listener="#{courseController.onDateSelect}" update="eventDetails"
+                    oncomplete="PF('eventDialog').show();" />
+            <p:ajax event="eventSelect" listener="#{courseController.onEventSelect}" update="eventDetails"
+                    oncomplete="PF('eventDialog').show();" />
+            <p:ajax event="eventMove" listener="#{courseController.onEventMove}" update="messages" />
+            <p:ajax event="eventResize" listener="#{courseController.onEventResize}" update="messages" />
+        </p:schedule>
+    </h:panelGrid>
 
-					<p:ajax event="dateSelect"
-						listener="#{courseController.onDateSelect}" update="eventDetails"
-						oncomplete="PF('eventDialog').show();" />
-					<p:ajax event="eventSelect"
-						listener="#{courseController.onEventSelect}" update="eventDetails"
-						oncomplete="PF('eventDialog').show();" />
-					<p:ajax event="eventMove"
-						listener="#{courseController.onEventMove}" update="messages" />
-					<p:ajax event="eventResize"
-						listener="#{courseController.onEventResize}" update="messages" />
+    <p:dialog widgetVar="eventDialog" header="Course Details" showEffect="clip" hideEffect="clip">
+        <h:panelGrid id="eventDetails" columns="2">
+            <p:outputLabel for="title" value="Name :" />
+            <p:inputText id="title" value="#{courseController.event.title}" required="true" />
 
-				</p:schedule>
-			</h:panelGrid>
+            <p:outputLabel for="description" value="Description:" />
+            <p:inputTextarea id="description" value="#{courseController.event.description}">
+            </p:inputTextarea>
 
-			<p:dialog widgetVar="eventDialog" header="Course Details"
-				showEffect="clip" hideEffect="clip">
-				<h:panelGrid id="eventDetails" columns="2">
-				
-					<p:outputLabel for="title" value="Name :" />
-					<p:inputText id="title" value="#{courseController.event.title}"
-						required="true" />
 
-					
-
-					<p:outputLabel for="description" value="Description:" />
-					<p:inputTextarea id="description"
-						value="#{courseController.event.description}">
-					</p:inputTextarea>
-
-					<p:commandButton value = "Réserver" 
-					action = "#(bookingController.createBooking())">
-					</p:commandButton>
-				</h:panelGrid>
-			</p:dialog>
-		</h:form>
+            <p:commandButton value="Réserver" action="#{bookingController.createBooking()}" />
+            <p:commandButton value="Annuler ma réservation" action="#{bookingController.cancelBooking()}" />
+        </h:panelGrid>
+    </p:dialog>
+</h:form>
 
 	</ui:define>
 </ui:composition>

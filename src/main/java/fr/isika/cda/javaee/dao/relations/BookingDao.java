@@ -20,6 +20,13 @@ public class BookingDao implements IBookingDao {
 		em.persist(bookingToCreate);
 		return bookingToCreate.getBookingId();
 	}
+	
+	public void cancelBooking(Long bookingId) {
+		Booking booking = getBookingingById(bookingId);
+		if (booking != null) {
+			em.remove(booking);
+		}
+	}
 
 	@Override
 	public Booking getBookingingById(Long bookingId) {
@@ -43,5 +50,7 @@ public class BookingDao implements IBookingDao {
 		return em.createQuery("SELECT b FROM Booking b WHERE b.coach.userId =" + coachId, Booking.class)
 				.getResultList();
 	}
+
+	
 
 }

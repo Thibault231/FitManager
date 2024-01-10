@@ -86,6 +86,14 @@ public class BookingController implements Serializable {
 		courseDao.save(currentCourse);
 		bookingDao.createBooking(bookingToCreate);
 	}
+	
+	public void cancelBooking() {
+		Long bookingIdToCancel = bookingForm.getBookingId();
+		if (bookingIdToCancel != null) {
+			bookingDao.cancelBooking(bookingIdToCancel);
+		}
+		
+	}
 
 	public List<Booking> getAllBookingOfAMember() {
 		return bookingDao.getAllBookingsOfMember(SessionUtils.getUserIdFromSession());

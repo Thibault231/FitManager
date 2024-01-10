@@ -13,6 +13,8 @@ public interface IBookingDao {
 	 * @return The Id of the created Booking (:Long)
 	 */
 	Long createBooking(Booking bookingToCreate);
+	
+	void cancelBooking(Long bookingIdToCancel);
 
 	/**
 	 * Return all the Bookings to come, of the database.
