@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -68,10 +67,10 @@ public class UserController implements Serializable {
 		try {
 			userToCreateId = userSvc.createUser(userViewModel.getUser());
 			logIn(userToCreateId);
-			userViewModel = new UserViewModel();
 			return "ManagerDashBoard?faces-redirect=true";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
+			this.setUserViewModel(new UserViewModel());
 			return "RegisterManagerForm?faces-redirect=true";
 		}
 	}
@@ -262,6 +261,7 @@ public class UserController implements Serializable {
 	public String logout() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
+		this.setUserViewModel(new UserViewModel());
 		return "index?faces-redirect=true";
 	}
 
