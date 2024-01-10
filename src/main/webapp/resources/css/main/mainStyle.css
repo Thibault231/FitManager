@@ -84,6 +84,18 @@
     overflow-y: scroll;
 }
 
+
+.navbar{
+	height:60px;
+}
+
+.imgLogo {
+	height: 55px;
+	margin: 55px;
+}
+
+
+
 .imgAccueil{
 	 
             height: 80vh;
@@ -91,15 +103,38 @@
             object-fit: cover;
 }
 
-.navbar{
-	height:60px;
+.card {
+    overflow: hidden;
+    text-align: center;
+    min-width: 22%;
+    margin: 1px;
 }
 
+.card-header {
+    background-color: #1C3659;
+    text-align: center;
 
-	
-.imgIllu{
-            height: 35vw; width: 100%
-        }
+}
+
+.card-body {
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-footer {
+    background-color: #1C3659;
+    color: white;
+    text-align: center;
+
+}
+
+.imgIllu {
+	height: 35vw;
+	width: 100%
+}
 
        
 
