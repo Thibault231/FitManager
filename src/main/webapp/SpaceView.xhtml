@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" lang="fr">
+
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
+
+	<ui:define name="titleValue">Salle</ui:define>
+	<ui:define name="spaceContent">
+		
+		<!-- cet élement sera remplacé par le contenu des pages, dynamiquement -->
+		<div class="container-fluid p-5">
+
+				<!-- section NOTRE PHILOSOPHIE-->
+				<div class="row pt-5 contain-80">
+					<div class="col-lg-6 col-sm-12 mt-auto mb-auto">
+						<h2 class="text-uppercase">NOTRE SALLE</h2>
+						<p>Utque aegrum corpus quassari etiam levibus solet offensis,
+							ita animus eius angustus et tener, quicquid increpuisset, ad
+							salutis suae dispendium existimans factum aut cogitatum,
+							insontium caedibus fecit victoriam luctuosam.</p>
+
+					</div>
+					<div class="col-lg-6 col-sm-12 ">
+						<h:graphicImage library="images" name="Image10.jpg"
+							styleClass="imgIllu" />
+					</div>
+				</div>
+			</div>
+			
+			<div class="row mb-5 contain-50">
+				<h2 class="text-uppercase">ABONNEMENT</h2>
+				<div>
+<!-- 					<button> -->
+<!-- 						<h:link class="dropdown-item" outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link> -->
+<!-- 					</button> -->
+				</div>
+				
+			</div>
+		
+		<div class="card text-center" style="width: 20rem;">
+		
+			<div id="1">
+			
+			<h2>Details for Space ID: #{spaceController.spaceViewModel.spaceId}</h2>
+			<!-- Ajoutez ici les balises pour afficher les détails de la salle -->
+			
+			<!-- Par exemple, si vous avez des propriétés comme nom, adresse, etc. -->
+			
+			<p>Nom de la salle: #{spaceController.spaceViewModel.space.infos.configuration.fitnessName}</p>
+			<p>Siret: #{spaceController.spaceViewModel.space.infos.administrative.siret}</p>
+			
+			<!-- Continuez avec d'autres détails de la salle -->
+		</div>
+		
+<!-- 	    <h:form style="margin: 0 auto;"> -->
+<!-- 	        <h:panelGrid columns="1" cellpadding="7" styleClass="mb-3"> -->
+<!-- 	            <p:outputLabel for="color" value="Sélectionner une couleur pour le menu"/> -->
+<!-- 	            <p:selectOneMenu id="color" value="#{conf.confViewModel.configuration.style.navbarColor}" style="width:12rem"> -->
+<!-- 	                <p:ajax listener="#{conf.colorForConfiguration}" update="color"/> -->
+<!-- 	                <f:selectItem itemLabel="Couleur disponible" itemValue="" noSelectionOption="true"/> -->
+<!-- 	            	<f:selectItems value="#{conf.colorForConfiguration}"/> -->
+<!-- 	            </p:selectOneMenu> -->
+<!-- 	        </h:panelGrid> -->
+<!-- 	        <p:commandButton value="Valider" action="#{conf.updateSpace()}" icon="pi pi-check"/> -->
+<!-- 	    </h:form> -->
+		</div>
+
+		<main class="w-100">
+			<div class=" row p-4 justify-content-around align-items-stretch navBar"
+				style="height: 5vh; position: fixed; top: 0px"></div>
+
+			<!-- section Nos salles partenaires-->
+<!-- 			<div class="row pt-5 contain-50"> -->
+<!-- 				<h2 class="text-uppercase">Nos salles partenaires</h2> -->
+<!-- 				<div class="d-flex w-100 justify-content-between"> -->
+
+<!-- 					<table class="table table-dark table-borderless text-center"> -->
+<!-- 						<thead> -->
+<!-- 							<tr> -->
+<!-- 								<th scope="col"></th> -->
+<!-- 								<th scope="col">Lundi</th> -->
+<!-- 								<th scope="col">Mardi</th> -->
+<!-- 								<th scope="col">Mercredi</th> -->
+<!-- 								<th scope="col">jeudi</th> -->
+<!-- 								<th scope="col">vendredi</th> -->
+<!-- 								<th scope="col">samedi</th> -->
+<!-- 							</tr> -->
+<!-- 						</thead> -->
+<!-- 						<tbody> -->
+<!-- 							<tr> -->
+<!-- 								<th scope="row p-auto"> -->
+<!-- 									<div href="" class="Intituledelement ">Matin</div> -->
+<!-- 								</th> -->
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<th scope="row"> -->
+<!-- 									<div href="" class="Intituledelement mt-auto mb-auto">Soir</div> -->
+<!-- 								</th> -->
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Natation</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Pull-dance</p> -->
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+<!-- 									<div class="alert alert-light" role="alert"> -->
+<!-- 										<p class="fw-light">Heure</p> -->
+<!-- 										<p class="fw-bolder">Yoga</p> -->
+
+<!-- 									</div> -->
+
+<!-- 								</td> -->
+<!-- 								<td></td> -->
+
+<!-- 							</tr> -->
+<!-- 						</tbody> -->
+<!-- 					</table> -->
+
+<!-- 				</div> -->
+
+<!-- 			</div> -->
+			<!--end section Nos salles partenaires-->
+			<div class="row p-4 justify-content-around align-items-stretch">
+				<div class="col">
+					<img
+						src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png"
+						class="imgLogo" alt="" />
+				</div>
+
+				<div class="col">
+					<ul class="list-group list-group-flush">
+						<li>An item</li>
+						<li>A second item</li>
+						<li>A third item</li>
+						<li>A fourth item</li>
+						<li>And a fifth one</li>
+					</ul>
+				</div>
+				<div class="col">
+					<ul class="list-group list-group-flush">
+						<li>An item</li>
+						<li>A second item</li>
+						<li>A third item</li>
+						<li>A fourth item</li>
+						<li>And a fifth one</li>
+					</ul>
+				</div>
+				<div class="col">
+					<ul class="list-group list-group-flush">
+						<li>An item</li>
+						<li>A second item</li>
+						<li>A third item</li>
+						<li>A fourth item</li>
+						<li>And a fifth one</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+
+		<script>
+
+    </script>
+	</ui:define>
+</ui:composition>
+</html>

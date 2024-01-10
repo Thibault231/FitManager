@@ -169,7 +169,7 @@ public class UserController implements Serializable {
 				fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
 				// chargement du viewmodel avec le user.
 				userViewModel.setUser(userToLog);
-				return "ManagerDashBoard";
+				return "ManagerDashBoard.xhtml?faces-redirect=true";
 			} else {
 				message = "Mot de passe erroné. ";
 				fc.addMessage(null, new FacesMessage(message));

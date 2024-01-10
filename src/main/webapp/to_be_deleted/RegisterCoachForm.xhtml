@@ -26,28 +26,28 @@
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput01"
 									placeholder="Nom" required="true" size="20"
-									value="#{spaceController.spaceForm.user.profile.civility.name}" />
+									value="#{spaceController.spaceViewModel.user.profile.civility.name}" />
 								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput02"
 									placeholder="Prénom" required="true" size="20"
-									value="#{spaceController.spaceForm.user.profile.civility.forename}" />
+									value="#{spaceController.spaceViewModel.user.profile.civility.forename}" />
 								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput03"
 									placeholder="Sexe" size="20"
-									value="#{spaceController.spaceForm.user.profile.civility.sex}" />
+									value="#{spaceController.spaceViewModel.user.profile.civility.sex}" />
 								<h:outputLabel class="outputLabel" for="floatingInput03">Sexe</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput04"
 									placeholder="Date de naissance" size="20"
-									value="#{spaceController.spaceForm.user.profile.civility.birthday}">
+									value="#{spaceController.spaceViewModel.user.profile.civility.birthday}">
 									<f:convertDateTime pattern="dd-mm-yyyy" />
 								</h:inputText>
 								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
@@ -56,21 +56,21 @@
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput05"
 									placeholder="Email" required="true" size="20"
-									value="#{spaceController.spaceForm.user.account.login}" />
+									value="#{spaceController.spaceViewModel.user.account.login}" />
 								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput07"
 									placeholder="Adresse" size="20"
-									value="#{spaceController.spaceForm.user.profile.adress.street}" />
+									value="#{spaceController.spaceViewModel.user.profile.adress.street}" />
 								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput08"
 									placeholder="Code postal" size="20"
-									value="#{spaceController.spaceForm.user.profile.adress.zipCode}" />
+									value="#{spaceController.spaceViewModel.user.profile.adress.zipCode}" />
 								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
 							</div>
 

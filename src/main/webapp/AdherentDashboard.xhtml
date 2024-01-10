@@ -6,22 +6,58 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
 	<ui:define name="titleValue">Fit Manager - Adherent dashboard </ui:define>
-	<ui:define name="content">
+	<ui:define name="spaceContent">
 
 		<h1>Tableau de bord Adherent</h1>
-		<p>This is an empty page using the common template</p>
+		<h1>Mes informations</h1>
+		<div id="1">
 
-		<h:link
-			outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
-			value="Retour à l'accueil" />
-
+			<p>Nom: #{spaceController.spaceViewModel.user.profile.civility.name}</p>
+			<p>Prenom:
+				#{spaceController.spaceViewModel.user.profile.civility.forename}</p>
+			<p>Date de naissance:
+				#{spaceController.spaceViewModel.user.profile.civility.birthday}</p>
+			<p>Email: #{spaceController.spaceViewModel.user.profile.contact.email}</p>
+			<p>Adresse:
+				#{spaceController.spaceViewModel.user.profile.adress.street}</p>
+			<p>Code postal:
+				#{spaceController.spaceViewModel.user.profile.adress.zipCode}</p>
+			<p>Ville: #{spaceController.spaceViewModel.user.profile.adress.city}</p>
+		</div>
 		<h:panelGrid columns="1" cellpadding="5">
 			<p:commandButton value="Modifier mon profil" type="button"
 				onclick="PF('popupUpdate').show();" />
 		</h:panelGrid>
+		<hr/>
+		<p>
+			<h:link outcome="SubscribeForm.xhtml"
+				value="Souscrire à un abonnement" />
+		</p>
+		<hr/>
+		<ui:repeat value="#{bookingController.allBookingOfAMember}"
+			var="booking">
+			<div class="card text-bg-white detail"
+				style="background-color: yellow;">
+				<div class="card-header">
+					<h1>#{booking.linkedCourse.name}</h1>
+				</div>
+				<div class="card-body">
+					<p>#{booking.registrationDate.toString()}</p>
+					<p>#{booking.linkedCourse.startDate}</p>
+				</div>
+			</div>
+		</ui:repeat>
+		<h:form>
+			<h:button value="Réserver un cours" outcome="BookingCalendar.xhtml" />
+		</h:form>
+		<hr/>
+		<h:link
+			outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
+			value="Retour à l'accueil" />
 
+		
 		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate" modal="true"
 			height="600" resizable="false" showEffect="fade" hideEffect="fade"
 			style="max-width: 1000px; min-width: 700px;">
@@ -96,49 +132,6 @@
 			</h:form>
 		</p:dialog>
 
-		<p>
-			<h:link outcome="SubscribeForm.xhtml"
-				value="Souscrire à un abonnement" />
-		</p>
-
-
-		<ui:repeat value="#{bookingController.allBookingOfAMember}"
-			var="booking">
-			<div class="card text-bg-white detail"
-				style="background-color: yellow;">
-				<div class="card-header">
-					<h1>#{booking.linkedCourse.name}</h1>
-				</div>
-				<div class="card-body">
-					<p>#{booking.registrationDate.toString()}</p>
-					<p>#{booking.linkedCourse.startDate}</p>
-				</div>
-			</div>
-		</ui:repeat>
-
-		<h:form>
-			<h:button value="Réserver un cours" outcome="BookingCalendar.xhtml" />
-		</h:form>
-
-		<h1>Mes informations</h1>
-		<div id="1">
-
-			<h2>Details for User ID: #{sessionScope.name}</h2>
-			<!-- Ajoutez ici les balises pour afficher les détails de la salle -->
-
-			<!-- Par exemple, si vous avez des propriétés comme nom, adresse, etc. -->
-			<p>Nom: #{spaceController.spaceForm.user.profile.civility.name}</p>
-			<p>Prenom:
-				#{spaceController.spaceForm.user.profile.civility.forename}</p>
-			<p>Date de naissance:
-				#{spaceController.spaceForm.user.profile.civility.birthday}</p>
-			<p>Email: #{spaceController.spaceForm.user.profile.contact.email}</p>
-			<p>Adresse:
-				#{spaceController.spaceForm.user.profile.adress.street}</p>
-			<p>Code postal:
-				#{spaceController.spaceForm.user.profile.adress.zipCode}</p>
-			<p>Ville: #{spaceController.spaceForm.user.profile.adress.city}</p>
-		</div>
 
 	</ui:define>
 </ui:composition>

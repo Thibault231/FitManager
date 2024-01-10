@@ -1,24 +1,52 @@
 
-<ui:composition template="./root.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<title>FitManager Template</title>
+	<h:outputStylesheet library="css" name="main/mainStyle.css" />
+</h:head>
 
-	<ui:define name="content">
-			<div>
-				<div id="content" class="w-100">
+<h:body>
+
+
+	<!-- Header commun à toutes les pages -->
+	<ui:insert name="header">
+		<ui:include src="mainHeader.xhtml" />
+	</ui:insert>
+
+	<!-- Contenu des pages de l'application -->
+	<ui:insert name="content">
+		<!-- cet élement sera remplacé par le contenu des pages, dynamiquement --> 
+	</ui:insert>
+	
+	<!-- Footer commun à toutes les pages -->
+	<ui:insert name="footer" >
+		<ui:include src="mainFooter.xhtml" />
+	</ui:insert>
+
+
+<!-- 	<ui:define name="content"> -->
+<!-- 			<div> -->
+<!-- 				<div id="content" class="w-100"> -->
 		
-				<!-- Contenu du header --> 
-				<ui:insert name="header" />
-				<!-- Contenu de la page -->	
-				<div class="row w-100 pt-5">
-					<ui:insert name="wrapper"/>
-				</div>
-				<div id="footer">
-				<!-- Contenu du footer -->
-					<ui:insert name="footer" />
-				</div>   	
-			</div> 
-		</div>  
-	</ui:define>
-</ui:composition>
+<!-- 				Contenu du header  -->
+<!-- 				<ui:insert name="header" /> -->
+<!-- 				Contenu de la page	 -->
+<!-- 				<div class="row w-100 pt-5"> -->
+<!-- 					<ui:insert name="content"/> -->
+<!-- 				</div> -->
+<!-- 				<div id="footer"> -->
+<!-- 				Contenu du footer -->
+<!-- 					<ui:insert name="footer" /> -->
+<!-- 				</div>   	 -->
+<!-- 			</div>  -->
+<!-- 		</div>   -->
+<!-- 	</ui:define> -->
+</h:body>
+
+</html>

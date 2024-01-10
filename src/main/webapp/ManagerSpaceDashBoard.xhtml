@@ -6,91 +6,196 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
 	<ui:define name="titleValue">Space : Manager dashboard </ui:define>
-	<ui:define name="content">
+	<ui:define name="spaceContent">
 
 		<h1>Tableau de bord manager</h1>
-		<p>This is an empty page using the common template</p>
-		<p>
-			<h:link
-				outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
-				value="Retour à l'accueil" />
-		</p>
-		<p>
-			<h:link outcome="RegisterCoach.xhtml" value="Ajouter un coach" />
-		</p>
-		<p>
-			<h:link outcome="UsersAccounts.xhtml" value="Compte utilisateurs" />
-		</p>
-
-		<h1 class="text-start mb-3 fw-lighter">Abonnements</h1>
-		<div class="d-flex container mt-5 detailSubscription">
-			<div
-				class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
-				style="background-color: aqua">
-				<div class="card-header">
-					<h:link outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link>
-				</div>
-				<div class="card-body">
-					<p class="card-text">Ajouter un nouvel abonnement</p>
-				</div>
-			</div>
-			<ui:repeat value="#{subscriptionController.allActiveSubscription}"
-				var="subscription">
-				<div
-					class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
-					style="background-color: yellow;">
-					<div class="card-header">
-						<h1>#{subscription.subscriptionName}</h1>
-					</div>
-					<div class="card-body">
-						<p>#{subscription.description}</p>
-						<p>#{subscription.engagement}</p>
-					</div>
-					<div class="card-footer">
-						<p>#{subscription.price.monthlyPrice}</p>
-					</div>
-				</div>
-			</ui:repeat>
-		</div>
-		
-		<ui:repeat value="#{courseController.allCoachCourses}"
-			var="course">
-			<div
-				class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
-				style="background-color: yellow;">
-				<div class="card-header">
-					<h1>#{course.name}</h1>
-				</div>
-				<div class="card-body">
-					<p>#{course.startDate}</p>
-					<p>#{course.endDate}</p>
-				</div>
-				<div class="card-footer">
-					<p>#{course.description}</p>
-				</div>
-			</div>
-		</ui:repeat>
-		
 		<h1>Mes informations</h1>
 		<div id="1">
-			
-			<h2>Details for User ID: #{sessionScope.name}</h2>
-			<!-- Ajoutez ici les balises pour afficher les détails de la salle -->
-			
-			<!-- Par exemple, si vous avez des propriétés comme nom, adresse, etc. -->
-			
-			<p>Nom: #{spaceController.spaceViewModel.user.profile.civility.name}</p>
-			<p>Prenom: #{spaceController.spaceViewModel.user.profile.civility.forename}</p>
-			<p>Date de naissance: #{spaceController.spaceViewModel.user.profile.civility.birthday}</p>
-			<p>Email: #{spaceController.spaceViewModel.user.profile.contact.email}</p>
-			<p>Adresse: #{spaceController.spaceViewModel.user.profile.adress.street}</p>
-			<p>Code postal: #{spaceController.spaceViewModel.user.profile.adress.zipCode}</p>
-			<p>Ville: #{spaceController.spaceViewModel.user.profile.adress.city}</p>
-			
-			
+			<p>Nom:
+				#{spaceController.spaceViewModel.user.profile.civility.name}</p>
+			<p>Prenom:
+				#{spaceController.spaceViewModel.user.profile.civility.forename}</p>
+			<p>Date de naissance:
+				#{spaceController.spaceViewModel.user.profile.civility.birthday}</p>
+			<p>Email:
+				#{spaceController.spaceViewModel.user.profile.contact.email}</p>
+			<p>Adresse:
+				#{spaceController.spaceViewModel.user.profile.adress.street}</p>
+			<p>Code postal:
+				#{spaceController.spaceViewModel.user.profile.adress.zipCode}</p>
+			<p>Ville:
+				#{spaceController.spaceViewModel.user.profile.adress.city}</p>
 		</div>
+		<hr />
+
+		<p:tabView>
+            <f:facet name="actions">
+                Global actions
+            </f:facet>
+            <p:tab title="Utilisateurs" >
+                <h:panelGrid columns="1" cellpadding="5">
+                	<p:commandButton value="Ajouter un coach" action="RegisterCoach.xhtml?faces-redirect=true"/>
+	                <p:dataTable var="user" value="#{userController.allActiveUser}">
+						<p:column headerText="Nom">
+							<h:outputText value="#{user.profile.civility.name}" />
+						</p:column>
+						<p:column headerText="Prenom">
+							<h:outputText value="#{user.profile.civility.forename}" />
+						</p:column>
+						<p:column headerText="Date de naissance">
+							<h:outputText value="#{user.profile.civility.birthday}" />
+						</p:column>
+						<p:column headerText="Rôle">
+							<h:outputText value="#{user.account.role}" />
+						</p:column>
+						<p:column headerText="Actions">
+							<h:form>
+								<p:commandButton value="Modifier" style="margin-right:20px;"
+									action="#{userController.updateUser()}">
+								</p:commandButton>
+			
+								<p:commandButton type="Button" outcome="UsersAccounts.xhtml"
+									value="Supprimer" style="margin-right:20px;"
+									action="#{userController.deleteUser(user)}">
+			
+								</p:commandButton>
+			
+							</h:form>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+            </p:tab>
+            
+            <p:tab title="Coachs">
+	            <h:panelGrid columns="1" cellpadding="5">
+                	<p:commandButton value="Ajouter un coach" action="RegisterCoach.xhtml?faces-redirect=true"/>
+					<p:dataTable var="user" value="#{userController.allActiveUser}">
+						<p:column headerText="Nom">
+						</p:column>
+						<p:column headerText="Prenom">
+						</p:column>
+						<p:column headerText="Date de naissance">
+						</p:column>
+						<p:column headerText="Rôle">
+						</p:column>
+						<p:column headerText="Actions">
+							<h:form>
+								<p:commandButton value="Modifier" style="margin-right:20px;"
+									action="#{userController.updateUser()}">
+								</p:commandButton>
+								<p:commandButton type="Button" outcome="UsersAccounts.xhtml"
+									value="Supprimer" style="margin-right:20px;"
+									action="#{userController.deleteUser(user)}">
+								</p:commandButton>
+							</h:form>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+            </p:tab>
+            
+            <p:tab title="Abonnements">
+	        	<h:panelGrid columns="1" cellpadding="5">
+					<p:commandButton value="Ajouter un abonnement" type="button" onclick="PF('popupUpdate').show();" />
+				</h:panelGrid>
+				<div class="d-flex container mt-5 detailSubscription">
+					<ui:repeat value="#{subscriptionController.allActiveSubscription}"
+						var="subscription">
+						<div
+							class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
+							style="background-color: yellow;">
+							<div class="card-header">
+								<h1>#{subscription.subscriptionName}</h1>
+							</div>
+							<div class="card-body">
+								<p>#{subscription.description}</p>
+								<p>#{subscription.engagement}</p>
+							</div>
+							<div class="card-footer">
+								<p>#{subscription.price.monthlyPrice}</p>
+							</div>
+						</div>
+					</ui:repeat>
+				</div>
+            </p:tab>
+            <p:tab title="Cours">
+	        	<h:panelGrid columns="1" cellpadding="5">
+					<p:commandButton value="Ajouter un cours" />
+				</h:panelGrid>
+					
+				<ui:repeat value="#{courseController.allCoachCourses}" var="course"> -->
+					<div
+						class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
+						style="background-color: yellow;">
+						<div class="card-header">
+							<h1>#{course.name}</h1>
+						</div>
+						<div class="card-body">
+							<p>#{course.startDate}</p>
+							<p>#{course.endDate}</p>
+						</div>
+						<div class="card-footer">
+							<p>#{course.description}</p>
+						</div>
+					</div>
+				</ui:repeat>
+            </p:tab>
+            
+		</p:tabView>
+
+<!-- 		<ui:repeat value="#{userController.allActiveUser}" var="user"> -->
+<!-- 			<h:panelGroup rendered="#{user.account.role eq 'Coach'}"> -->
+<!-- 				<p>Nom: #{user.profile.civility.name}, Prenom: #{user.profile.civility.forename}, Date de naissance: #{user.profile.civility.birthday}, Role: #{user.account.role}</p> -->
+<!-- 			</h:panelGroup> -->
+<!-- 		</ui:repeat> -->
+		
+		<hr />
+
+		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate"
+			modal="true" height="600" resizable="false" showEffect="fade"
+			hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="Nom de l'abonnement" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="Description" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput03"
+								placeholder="Engagement" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
+							<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="Prix Mensuel" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
+							<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
+						</div>
+
+						<h:commandButton class="btn btn-warning"
+							value="Créer un abonnement"
+							action="#{subscriptionController.createSubscription()}" />
+
+						<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
 
 	</ui:define>
 </ui:composition>

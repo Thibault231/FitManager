@@ -1,30 +1,31 @@
-
-<ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
+
 
 	<ui:define name="titleValue">Fit Manager - Coach dashboard </ui:define>
-		<!-- Corp de la page -->
+	<!-- Corp de la page -->
 	<ui:define name="wrapper">
-	
-	
+
+
 		<!-- Contenu spécifique du corp de la page -->
-	
+
 		<h1>Tableau de bord Coach</h1>
-		
-		
+
+
 		<h:panelGrid columns="1" cellpadding="5">
 			<p:commandButton value="Modifier mon profil" type="button"
 				onclick="PF('popupUpdate').show();" />
 		</h:panelGrid>
 
-		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate" modal="true"
-			height="600" resizable="false" showEffect="fade" hideEffect="fade"
-			style="max-width: 1000px; min-width: 700px;">
+		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate"
+			modal="true" height="600" resizable="false" showEffect="fade"
+			hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
 			<h:form>
 				<div>
 					<div class="d-grid gap-2">
@@ -95,7 +96,7 @@
 				</div>
 			</h:form>
 		</p:dialog>
-	
+
 		<h1>Mes informations</h1>
 		<div id="1">
 
@@ -104,46 +105,45 @@
 
 			<!-- Par exemple, si vous avez des propriétés comme nom, adresse, etc. -->
 
-			<p>Nom: #{spaceController.spaceViewModel.user.profile.civility.name}</p>
+			<p>Nom:
+				#{spaceController.spaceViewModel.user.profile.civility.name}</p>
 			<p>Prenom:
 				#{spaceController.spaceViewModel.user.profile.civility.forename}</p>
 			<p>Date de naissance:
 				#{spaceController.spaceViewModel.user.profile.civility.birthday}</p>
-			<p>Email: #{spaceController.spaceViewModel.user.profile.contact.email}</p>
+			<p>Email:
+				#{spaceController.spaceViewModel.user.profile.contact.email}</p>
 			<p>Adresse:
 				#{spaceController.spaceViewModel.user.profile.adress.street}</p>
 			<p>Code postal:
 				#{spaceController.spaceViewModel.user.profile.adress.zipCode}</p>
-			<p>Ville: #{spaceController.spaceViewModel.user.profile.adress.city}</p>
+			<p>Ville:
+				#{spaceController.spaceViewModel.user.profile.adress.city}</p>
 
 
 		</div>
-    
-    
-    <div>
-		<ui:repeat value="#{courseController.allCoachCourses}"
-			var="course">
-			<div
-				class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
-				style="background-color: yellow;">
-				<div class="card-header">
-					<h1>#{course.name}</h1>
-				</div>
-				<div class="card-body">
-					<p>#{course.startDate}</p>
-					<p>#{course.endDate}</p>
-				</div>
-				<div class="card-footer">
-					<p>#{course.description}</p>
-				</div>
-			</div>
-		</ui:repeat>
-		<h:link	outcome="AddCoursesCalendar.xhtml" value="Ajouter des cours" />
-</div>
 
-<h:link
-			outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
-			value="Retour à l'accueil" />
-  
+
+		<div>
+			<ui:repeat value="#{courseController.allCoachCourses}" var="course">
+				<div
+					class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
+					style="background-color: yellow;">
+					<div class="card-header">
+						<h1>#{course.name}</h1>
+					</div>
+					<div class="card-body">
+						<p>#{course.startDate}</p>
+						<p>#{course.endDate}</p>
+					</div>
+					<div class="card-footer">
+						<p>#{course.description}</p>
+					</div>
+				</div>
+			</ui:repeat>
+			<h:link outcome="AddCoursesCalendar.xhtml" value="Ajouter des cours" />
+		</div>
+
 	</ui:define>
 </ui:composition>
+</html>

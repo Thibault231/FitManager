@@ -123,7 +123,9 @@ public class CourseController implements Serializable {
 	}
 
 	private void transformCoursetoEvent(Course course) {
-		DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder().title(course.getName())
+		DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder()
+				.id(String.valueOf(course.getId()))
+				.title(course.getName())
 				.startDate(course.getStartDate()).endDate(course.getEndDate()).description(course.getDescription())
 				.borderColor("orange").data(course).build();
 		eventModel.addEvent(event);

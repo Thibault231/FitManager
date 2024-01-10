@@ -6,110 +6,35 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" lang="fr">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
 
 	<ui:define name="titleValue">Resources Management - Fit Manager</ui:define>
 	<ui:define name="content">
-		<head>
-<style>
-.imgPartenaire {
-	width: 30%;
-	height: 30em;
-	margin-bottom: 2em;
-	object-fit: cover;
-}
-
-.imgHero {
-	height: 80vh;
-	width: 100vw;
-	object-fit: cover;
-}
-
-.rgpd {
-	position: fixed;
-	top: 0px;
-	right: 0px;
-	background-color: rgba(0, 0, 0, 0.32);
-	width: 100vw;
-	height: 100vh;
-	align-items: center;
-	justify-content: center;
-}
-
-.tatifCard {
-	min-width: 22%;
-}
-
-.Intituledelement {
-	padding-right: 2em;
-	transform: rotate(270deg);
-}
-</style>
-		</head>
-		<nav class="navbar navbar-expand-lg navbar-dark static-top"
-			style="background-color: #1C3659">
-<!-- 			{#{conf.confViewModel.configuration.style.navbarColor};"> -->
-			<div class="container-fluid">
-				<a class="navbar-brand"> <h:graphicImage library="images"
-						name="Logo.png" styleClass="imgLogo" />
-				</a>
-				<ul class="navbar-nav ms-auto">
-					<!-- <li class="nav-item"><h:link class="nav-link" outcome="">NOS OFFRES</h:link></li> -->
-					<!-- <li class="nav-item"><h:link class="nav-link" outcome="">NOS COACHS</h:link></li> -->
-					<li class="nav-item"><h:link class="nav-link"
-							outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link></li>
-					<li class="nav-item"><h:link class="nav-link"
-							outcome="Calendar.xhtml">PLANNING</h:link></li>
-					<li class="nav-item"><h:form>
-							<h:commandLink class="nav-link"
-								action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">MON ESPACE</h:commandLink>
-						</h:form></li>
-					<li class="nav-item"><h:link class="nav-link"
-							outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link></li>
-					<li class="nav-item"><h:form>
-							<h:commandLink class="nav-link"
-								action="#{spaceController.simpleSpacelogout()}">DECONNEXION</h:commandLink>
-						</h:form></li>
-				</ul>
-			</div>
-		</nav>
 		
 		<div class="card text-center" style="width: 20rem;">
-    <h:form style="margin: 0 auto;">
-        <h:panelGrid columns="1" cellpadding="7" styleClass="mb-3">
-            <p:outputLabel for="color" value="Sélectionner une couleur pour le menu"/>
-            <p:selectOneMenu id="color" value="#{conf.confViewModel.configuration.style.navbarColor}" style="width:12rem">
-                <p:ajax listener="#{conf.colorForConfiguration}" update="color"/>
-                <f:selectItem itemLabel="Couleur disponible" itemValue="" noSelectionOption="true"/>
-            	<f:selectItems value="#{conf.colorForConfiguration}"/>
-            </p:selectOneMenu>
-        </h:panelGrid>
-        <p:commandButton value="Valider" action="#{conf.updateSpace()}" icon="pi pi-check"/>
-    </h:form>
-</div>
+<!-- 	    <h:form style="margin: 0 auto;"> -->
+<!-- 	        <h:panelGrid columns="1" cellpadding="7" styleClass="mb-3"> -->
+<!-- 	            <p:outputLabel for="color" value="Sélectionner une couleur pour le menu"/> -->
+<!-- 	            <p:selectOneMenu id="color" value="#{conf.confViewModel.configuration.style.navbarColor}" style="width:12rem"> -->
+<!-- 	                <p:ajax listener="#{conf.colorForConfiguration}" update="color"/> -->
+<!-- 	                <f:selectItem itemLabel="Couleur disponible" itemValue="" noSelectionOption="true"/> -->
+<!-- 	            	<f:selectItems value="#{conf.colorForConfiguration}"/> -->
+<!-- 	            </p:selectOneMenu> -->
+<!-- 	        </h:panelGrid> -->
+<!-- 	        <p:commandButton value="Valider" action="#{conf.updateSpace()}" icon="pi pi-check"/> -->
+<!-- 	    </h:form> -->
+		</div>
 
 		<main class="w-100">
 			<div
 				class=" row p-4 justify-content-around align-items-stretch navBar"
 				style="height: 5vh; position: fixed; top: 0px"></div>
-<!-- 			<h:graphicImage library="images" name="Image2.jpg" -->
-<!-- 				styleClass="imgAccueil" /> -->
 			<div class="container-fluid p-5">
 
 				<!-- section NOTRE PHILOSOPHIE-->
 				<div class="row pt-5 contain-80">
 					<div class="col-lg-6 col-sm-12 mt-auto mb-auto">
-						<h2 class="text-uppercase">NOTRE PHILOSOPHIE</h2>
-						<p>Utque aegrum corpus quassari etiam levibus solet offensis,
-							ita animus eius angustus et tener, quicquid increpuisset, ad
-							salutis suae dispendium existimans factum aut cogitatum,
-							insontium caedibus fecit victoriam luctuosam.</p>
-
-						<p>Utque aegrum corpus quassari etiam levibus solet offensis,
-							ita animus eius angustus et tener, quicquid increpuisset, ad
-							salutis suae dispendium existimans factum aut cogitatum,
-							insontium caedibus fecit victoriam luctuosam.</p>
-
+						<h2 class="text-uppercase">NOTRE SALLE</h2>
 						<p>Utque aegrum corpus quassari etiam levibus solet offensis,
 							ita animus eius angustus et tener, quicquid increpuisset, ad
 							salutis suae dispendium existimans factum aut cogitatum,
@@ -405,8 +330,6 @@
 
 			</div>
 			<!--end section Nos salles partenaires-->
-
-
 			<div class="row p-4 justify-content-around align-items-stretch">
 				<div class="col">
 					<img
@@ -447,7 +370,6 @@
 		<script>
 
     </script>
-
 	</ui:define>
 </ui:composition>
 </html>

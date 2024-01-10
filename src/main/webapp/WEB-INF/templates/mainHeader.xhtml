@@ -19,35 +19,53 @@
 <h:body>
 	<div class="header">
 		<div class="logoContainer">
-			<p:graphicImage library="images" name="Basic-Fit_logo.png" width="50px" height="50px"/>
+			<p:graphicImage library="images" name="plateform/logoCT.png" width="50px" height="50px"
+				class="img_index" />
 		</div>
 		
-		<!-- On commence par la barre de menu -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">FitManager</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-		            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		            <span class="navbar-toggler-icon"></span>
-			</button>
-			 <div class="collapse navbar-collapse" id="navbarNav">
-		        <ul class="navbar-nav ml-auto">
-		            <!-- Il faudra remplacer les liens par les URL réelles de l'app  -->
-		            <li class="nav-item">
-		                <a class="nav-link" href="#">Mon Compte</a>
-		            </li>
-		            <li class="nav-item">
-		                <a class="nav-link" href="#">Logout</a>
-		            </li>
-		            <li class="nav-item">
-		                <a class="nav-link" href="#">Login</a>
-		            </li>
-		            <li class="nav-item">
-		                <a class="nav-link" href="#">Créer mon Compte</a>
-		            </li>
-		        </ul>
-		    </div>
-		</nav>
-		
 	</div>
+	
+		<!-- NavBAr -->
+	<nav class="navbar navbar-expand-lg navbar-dark static-top"
+		style="background-color: #1C3659;">
+		<div class="container-fluid">
+			<p class="index_slogan">Design Your </p>
+			
+			<h:form>
+			<div class="container-fluid">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<h:link class="nav-link" outcome="index.xhtml">ACCUEIL</h:link>
+					</li>
+					<li class="nav-item">
+						<h:link class="nav-link" outcome="SpacesList.xhtml">SALLES</h:link>
+					</li>
+					
+					<ui:fragment rendered="#{not spaceController.isUserConnected()}">
+						<li class="nav-item">
+							<h:link class="nav-link" outcome="RegisterManagerForm.xhtml">CREER COMPTE</h:link>
+						</li>
+						<li class="nav-item">
+							<h:link class="nav-link" outcome="LoginForm.xhtml">SE CONNECTER</h:link>
+						</li>
+					</ui:fragment>
+					
+					<ui:fragment rendered="#{spaceController.isUserConnected()}">
+						<li class="nav-item">
+							<h:link class="nav-link" outcome="ManagerDashBoard.xhtml">MON ESPACE</h:link>
+						</li>
+						<li class="nav-item">
+							<h:commandLink class="nav-link" action="#{userController.logout()}">DECONNEXION</h:commandLink>
+						</li>
+					</ui:fragment>
+				</ul>
+			</div>
+			</h:form>
+		</div>
+	</nav>
+<!-- 	<div class="plateform_logo"> -->
+<!-- 	</div> -->
+	
+	
 </h:body>
 </html>

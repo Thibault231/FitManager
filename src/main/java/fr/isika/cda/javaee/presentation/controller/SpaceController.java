@@ -175,7 +175,7 @@ public class SpaceController implements Serializable {
 		spaceDao.updateSpace(createdSpace);
 		userDao.updateUser(createdUser);
 
-		return "ManagerSpacesList";
+		return "SpacesList.xhtml?faces-redirect=true";
 	}
 
 	public String updateUser() {
@@ -203,7 +203,7 @@ public class SpaceController implements Serializable {
 		// 2 - aller chercher l'objet Salle par cet id (en bdd)
 		spaceViewModel.setSpace(spaceDao.getSpaceById(spaceId));
 		// 3- Renseigne l'id de la salle dans la session.
-		String viewToReturn = "TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		String viewToReturn = "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 
 		return spaceLogOut(spaceId, viewToReturn);
 	}
@@ -293,7 +293,7 @@ public class SpaceController implements Serializable {
 			return "ManagerSpaceDashBoard";
 		} else {
 			Long spaceId = SessionUtils.getSpaceIdFromSession();
-			return "TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+			return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 		}
 	}
 
@@ -308,7 +308,7 @@ public class SpaceController implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		session.invalidate();
 		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
-		return "TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 	}
 
 	/**
@@ -333,4 +333,12 @@ public class SpaceController implements Serializable {
 		this.uploadedFile = uploadedFile;
 	}
 
+	public boolean isUserConnected() {
+		return SessionUtils.getUserIdFromSession() != null;
+	}
+	
+	public boolean isAdherent() {
+		return SessionUtils.getUserRoleFromSession() != null 
+				&& SessionUtils.getUserRoleFromSession().equals(Role.Adherent);
+	}
 }

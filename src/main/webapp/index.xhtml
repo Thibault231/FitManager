@@ -1,53 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" lang="fr">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
 	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
 	<ui:define name="content">
-
-		<!-- NavBAr -->
-	<nav class="navbar navbar-expand-lg navbar-dark static-top"
-		style="background-color: #1C3659;">
-		<div class="container-fluid">
-			<p class="index_slogan">Design Your Fitness</p>
-			
-			<h:form>
-			<div class="container-fluid">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="index.xhtml">ACCUEIL</h:link>
-					</li>
-					<li class="nav-item">
-						<h:link class="nav-link"
-							outcome="ManagerDashBoard.xhtml">MON ESPACE</h:link></li>
-					<li class="nav-item">
-						<h:link class="nav-link"
-							outcome="LoginForm.xhtml">SE CONNECTER</h:link>
-					</li>
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="RegisterManagerForm.xhtml">CREER COMPTE</h:link>
-					</li>
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="SpacesList.xhtml">SALLES</h:link>
-					</li>
-					<li class="nav-item">
-						<h:commandLink class="nav-link" action="#{userController.logout()}">DECONNEXION</h:commandLink>
-					</li>
-				</ul>
-			</div>
-			</h:form>
-		</div>
-	</nav>
-	<div class="plateform_logo">
-		<h:graphicImage library="images" name="/plateform/logoCT.png" class="img_index"/>
-		<h1>FIT MANAGER</h1>
-	</div>
-	
 		<div class="p-5">
-
 			<!-- section NOTRE PHILOSOPHIE-->
 			<div class="row pt-5 contain-80">
 				<div class="col-lg-6 col-sm-12 mt-auto mb-auto sectionperso">
@@ -142,33 +104,49 @@
 			<!-- section Nos salles partenaires-->
 			<div class="row mb-5 contain-50">
 				<h2>Nos salles partenaires</h2>
-				<div class="d-flex w-100 justify-content-between flex-wrap">
-
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/kingFitLogo.jpg" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/muscleYouLogo.jpg" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/XperienceZumbaLogo.jpg" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/calypsoLogo.jpg" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/basicFitLogo.png" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/spartanLogo.jpg" class="img_index_content" />
-					</div>
-				</div>
+				<h:form>
+				<ui:repeat var="space" value="#{spaceController.allActiveSpaces}">
+								
+						<div class="mb-2 mt-2 "
+							style="width: 22%; height: 13em; text-align: center">
+							<h:outputText value="#{space.spaceId}" />
+							<h:outputText value="#{space.infos.configuration.fitnessName}" />
+							<h:graphicImage library="images" name="#{space.infos.configuration.logo}" class="img_index_content" />
+							<h:commandButton value="Lien vers espace" action="#{spaceController.goToSpaceIndex()}">
+								<f:param name="spaceId" value="#{space.spaceId}" />
+							</h:commandButton>								
+						</div>
+								
+				</ui:repeat>
+				</h:form>
+				
+<!-- 				<div class="d-flex w-100 justify-content-between flex-wrap"> -->
+			
+<!-- 					<div class="mb-2 mt-2 " -->
+<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+<!-- 						<h:graphicImage library="images" name="/plateform/kingFitLogo.jpg" class="img_index_content" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="mb-2 mt-2 " -->
+<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+<!-- 						<h:graphicImage library="images" name="/plateform/muscleYouLogo.jpg" class="img_index_content" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="mb-2 mt-2 " -->
+<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+<!-- 						<h:graphicImage library="images" name="/plateform/XperienceZumbaLogo.jpg" class="img_index_content" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="mb-2 mt-2 " -->
+<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+<!-- 						<h:graphicImage library="images" name="/plateform/calypsoLogo.jpg" class="img_index_content" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="mb-2 mt-2 " -->
+<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+<!-- 						<h:graphicImage library="images" name="/plateform/basicFitLogo.png" class="img_index_content" /> -->
+<!-- 					</div> -->
+<!-- 					<div class="mb-2 mt-2 " -->
+<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+<!-- 						<h:graphicImage library="images" name="/plateform/spartanLogo.jpg" class="img_index_content" /> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 			</div>
 			<!--end section Nos salles partenaires-->
 
@@ -196,12 +174,7 @@
 			</div>
 
 			<!--end section Abonnez-vous !!-->
-
 		</div>
-
-
-
-
 	</ui:define>
-
 </ui:composition>
+</html>

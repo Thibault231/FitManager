@@ -1,7 +1,6 @@
 package fr.isika.cda.javaee.presentation.controller;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import javax.inject.Named;
 
 import fr.isika.cda.javaee.dao.IDaoCourse;
 import fr.isika.cda.javaee.dao.IDaoUser;
-import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.relations.IBookingDao;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.relations.Booking;
@@ -61,7 +59,7 @@ public class BookingController implements Serializable {
 		bookingToCreate.setLinkedCourse(currentCourse);
 		bookingToCreate.setRegistrationDate(new Date());
 		// Persist booking
-		courseDao.saveCourses(currentCourse);
+//		courseDao.saveCourses(currentCourse);
 		bookingDao.createBooking(bookingToCreate);
 		// Reset event
 		courseController.resetEvent();

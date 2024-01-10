@@ -6,20 +6,17 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" lang="fr">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
 
 	<ui:define name="titleValue">Space : Planning Cours Coachs</ui:define>
-	<ui:define name="content">
-
+	<ui:define name="spaceContent">
 		<h1>Affichage du planning cours coachs</h1>
 
-
 		<style type="text/css">
-.value {
-	width: 1000px;
-}
-</style>
-
+		.value {
+			width: 1000px;
+		}
+		</style>
 
 		<h:form>
 			<p:growl id="messages" showDetail="true" />
@@ -72,10 +69,6 @@
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
-		<li class="nav-item">
-		  <h:link class="nav-link" outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
-		</li>
-
 	</ui:define>
 </ui:composition>
 </html>

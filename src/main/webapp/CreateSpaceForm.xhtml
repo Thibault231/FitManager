@@ -1,14 +1,17 @@
-<ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
 
 	
 	<ui:define name="titleValue">Create SpaceForm</ui:define>
 		<!-- Corp de la page -->
-	<ui:define name="wrapper">
+	<ui:define name="content">
 	<div class="w-25">
 				<div class="text-center mb-4">
 					<h2>Fit Manager</h2>
@@ -50,7 +53,7 @@
 								value="Créer un espace fitness"
 								action="#{spaceController.createSpace()}" />
 
-							<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
+							<h:link class="text-center" outcome="SpacesList.xhtml">Annuler</h:link>
 						</div>
 					</div>
 				</h:form>
@@ -63,3 +66,4 @@
 	
 
 </ui:composition>
+</html>

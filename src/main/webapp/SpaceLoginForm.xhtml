@@ -6,48 +6,43 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" lang="fr">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
 
-
-	
 	<ui:define name="titleValue">Login - Fit Manager</ui:define>
-		<!-- Corp de la page -->
-	<ui:define name="content">
-	<div class="w-25">
-				<div class="text-center mb-4">
-					<h2>Le nom de l'espace à intégrer</h2>
-					<a>Design ce que tu peux</a>
+	<!-- Corp de la page -->
+	<ui:define name="spaceContent">
+		<div class="w-25">
+			<div class="text-center mb-4">
+				<h2>Le nom de l'espace à intégrer</h2>
+				<a>Design ce que tu peux</a>
 
-				</div>
-				<h:form>
-					<div>
-						<div class="d-grid gap-2">
-
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput01"
-									placeholder="Utilisateur" size="20"
-									value="#{spaceController.spaceViewModel.user.account.login}" />
-								<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
-							</div>
-
-							<div class="form-floating ">
-								<h:inputSecret class="form-control" id="floatingInput02"
-									placeholder="Mot de passe" size="5"
-									value="#{spaceController.spaceViewModel.user.account.password}" />
-								<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
-							</div>
-
-							<h:commandButton class="btn btn-warning" value="Me connecter"
-								action="#{spaceController.authenticateOnSpace()}" />
-
-							<h:link class="text-center" outcome="index.xhtml">MOT DE PASSE OUBLIER?</h:link>
-						</div>
-					</div>
-				</h:form>
-				<li class="nav-item">
-				  <h:link class="nav-link" outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
-				</li>
 			</div>
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="Utilisateur" size="20"
+								value="#{spaceController.spaceViewModel.user.account.login}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
+						</div>
+
+						<div class="form-floating ">
+							<h:inputSecret class="form-control" id="floatingInput02"
+								placeholder="Mot de passe" size="5"
+								value="#{spaceController.spaceViewModel.user.account.password}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
+						</div>
+
+						<h:commandButton class="btn btn-warning" value="Me connecter"
+							action="#{spaceController.authenticateOnSpace()}" />
+
+						<h:link class="text-center" outcome="index.xhtml">MOT DE PASSE OUBLIER?</h:link>
+					</div>
+				</div>
+			</h:form>
+		</div>
 	</ui:define>
 
 </ui:composition>

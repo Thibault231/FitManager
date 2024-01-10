@@ -1,0 +1,239 @@
+@charset "ISO-8859-1";
+
+:root {
+	--blanc: #ffffff;
+	--bleuFonce: #06375A;
+	--bleuClair: #1B5680;
+	--orange: #F5B37D;
+	--rouge: #D52056;
+}
+
+*{
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.important {
+	font-weight: 800;
+}
+
+
+
+
+.menus {
+    width: 0px;
+    transition: all 1s ease-out;
+  
+}
+
+.desable{
+	transition: all 1s ease-out;
+    flex: 0 0 auto;
+    width: 15%;
+}
+
+
+.container{
+    width: 85%;
+}
+
+.contain_80{
+    height: 80vh;
+}
+
+.contain_50{
+    height: 50vh;
+}
+.dualimgcontainer{
+    display: flex;
+    width: 100%;
+    height: 21em;
+    margin-top: 2em;
+    justify-content: space-around;
+}
+
+.dualimgcontainer> img{
+    height: 20em;
+    width: 43%;
+}
+
+.imgdecaler{
+    right: -32%;
+    top: -52%;
+}
+
+.navBar{
+    height: 4em;
+    position: "fixed";
+    top:0;
+}
+
+.sectionperso{
+	height: 30em
+	}
+
+.imgPartenaire{
+	width: 30%;
+	height: 30em;
+	margin-bottom: 2em;
+	object-fit: cover;
+	}
+	
+	
+.scrollElement{
+    height: 25em;
+    overflow-y: scroll;
+}
+* {
+   scrollbar-width: thin;
+   scrollbar-color: var(--bleuFonce);
+ }
+
+ *::-webkit-scrollbar {
+   width: 13px;
+ }
+
+ *::-webkit-scrollbar-track {
+   background: var(--blanc);
+ }
+
+ *::-webkit-scrollbar-thumb {
+   background-color:  var(--bleuFonce);
+   border-radius: 14px;
+   border: 3px double var(--blanc);
+ }
+
+
+.navbar{
+	height:60px;
+}
+
+.imgLogo {
+	height: 55px;
+	margin: 55px;
+}
+
+
+
+.imgAccueil{
+	 
+            height: 80vh;
+            width: 100vw;
+            object-fit: cover;
+}
+
+.card {
+    overflow: hidden;
+    text-align: center;
+    min-width: 22%;
+    margin: 1px;
+}
+
+.card-header {
+    background-color: #1C3659;
+    text-align: center;
+
+}
+
+.card-body {
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-footer {
+    background-color: #1C3659;
+    color: white;
+    text-align: center;
+
+}
+
+.imgIllu {
+	height: 35vw;
+	width: 100%
+}
+
+       
+
+.rgpd{
+            position: fixed;
+            top: 0px; right: 0px;
+            background-color: rgba(0,0,0,0.32);
+            width: 100vw; height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+.tatifCard{
+            min-width: 22%;
+
+        }
+
+.Intituledelement {
+
+           padding-right: 2em;
+           transform: rotate(270deg);
+        }
+
+
+
+@media screen and (min-width: 1400px){
+    .dualimgcontainer{
+        position: absolute;
+        height: 21em;
+        display: block;
+         width: inherit;
+        height:inherit;
+         margin-top:inherit;
+    }
+
+  /*  .dualimgcontainer> img{
+        position: relative;
+        height: 21em;
+        width: 34%;
+    }*/
+    
+    .desable{
+	transition: all 1s ease-out;
+    flex: 0 0 auto;
+    width: 10%;
+}
+
+    .contain{
+        height: 80vh;
+    }
+
+}
+
+/* **********************************************  A replacer**************** Désolé Loic, je ne savais pas où les mettre */
+.img_index{
+	max-width: 50%;
+	max-height: 50%;
+}
+
+.img_index_content{
+	max-width: 100%;
+	max-height: 100%;
+	border: solid 2px
+}
+
+.index_navbar{
+	position: fixed;
+	top: 0px;
+	z-index: 9999;
+	background-color: var(--bleuFonce);
+}
+
+.index_slogan{
+	font-size : 1.25rem;
+	margin-left: 2%;
+	margin-right: 5%;
+	color: var(--orange);
+	text-align: center;
+}
+
+.plateform_logo{
+	display: inline-block;
+}
+

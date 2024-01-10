@@ -1,25 +1,22 @@
-
-<ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui" lang="fr">
 
+
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
 	<ui:define name="menus">
 
 	</ui:define>
+	
 	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
-	<ui:define name="header">
-
-
-	</ui:define>
 
 	<ui:define name="content">
-
 		<div class="d-flex">
-
 			<div id="menus" class=" menus desable">
 				<div
 					class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sticky-top"
@@ -31,19 +28,13 @@
 					</a>
 					<div class=" m-auto h-75">
 						<ul class="nav nav-pills flex-column mb-auto ">
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="index.xhtml"> Accueil </h:link></li>
-							<li class="nav-item mb-2"><a> Mon profil </a></li>
-							<li class="nav-item mb-2"></li>
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="ManagerSpacesList.xhtml">Mes espaces</h:link></li>
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="CreateSpaceForm.xhtml"> Créer un espace </h:link></li>
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="ManagerSubscriptionList.xhtml">Mes abonnements</h:link></li>
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link></li>
-							<li class="nav-item mb-2"><a> Tableau de bord </a></li>
+							<li class="nav-item mb-2">
+								<h:link class="dropdown-item" outcome="SpacesList.xhtml">Mes espaces</h:link>
+							</li>
+							<li class="nav-item mb-2">
+								<h:link class="dropdown-item" outcome="CreateSpaceForm.xhtml">Créer un espace</h:link>
+							</li>
+
 							<h:panelGrid columns="1" cellpadding="5">
 								<p:commandButton value="Modifier mon profil" type="button"
 									onclick="PF('popupUpdate').show();" />
@@ -57,8 +48,6 @@
 				<h2>Bienvenue #{sessionScope.name}</h2>
 
 				<div class="d-flex w-100 justify-content-end pt-1">
-
-
 					<div class="d-flex justify-content-around">
 						<a class=" m-1">#{sessionScope.role}</a>
 						<div class="dropdown">
@@ -69,19 +58,14 @@
 								class="rounded-circle me-2"></img> <strong>mdo</strong>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-								<li><h:link class="dropdown-item"
-										outcome="CreateSpaceForm.xhtml">Nouveau projet...</h:link></li>
-								<li><a class="dropdown-item" href="#">Paramètres</a></li>
-								<li><a class="dropdown-item" href="#">Profil</a></li>
-								<li><h:link class="dropdown-item"
-										outcome="UsersAccounts.xhtml">Comptes utilisateurs</h:link></li>
-								<li><h:link class="dropdown-item"
-										outcome="RegisterCoach.xhtml">Créer un compte coach</h:link></li>
+								<li><h:link class="dropdown-item" outcome="CreateSpaceForm.xhtml">Nouvel Espace Salle</h:link></li>
+								
 								<li><hr class="dropdown-divider" /></li>
-								<li><h:form>
-										<h:commandLink class="dropdown-item"
-											action="#{userController.logout()}">Se déconnecter</h:commandLink>
-									</h:form></li>
+								<li>
+									<h:form>
+										<h:commandLink class="dropdown-item" action="#{userController.logout()}">Se déconnecter</h:commandLink>
+									</h:form>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -141,22 +125,22 @@
 
 				</div>
 
-				<div class="row mb-4">
-					<div class="container text-center">
-						<div class="row gy-5">
-							<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-								<div class="card p-3">
-									<canvas id="ChartBar" class="w-100 h-50 p-auto"></canvas>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-lg-6 ">
-								<div class="card p-3">
-									<canvas id="Chartline" class="w-100 h-50 p-auto"></canvas>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+<!-- 				<div class="row mb-4"> -->
+<!-- 					<div class="container text-center"> -->
+<!-- 						<div class="row gy-5"> -->
+<!-- 							<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6"> -->
+<!-- 								<div class="card p-3"> -->
+<!-- 									<canvas id="ChartBar" class="w-100 h-50 p-auto"></canvas> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="col-xs-12 col-sm-12 col-lg-6 "> -->
+<!-- 								<div class="card p-3"> -->
+<!-- 									<canvas id="Chartline" class="w-100 h-50 p-auto"></canvas> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 
 				<div class="row">
 					<div class="container  text-center">
@@ -193,91 +177,6 @@
 														style="height: 10px; width: 10px"></div>
 												</td>
 											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-danger border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-success border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-danger border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-success border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-success border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-success border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-
 
 										</tbody>
 									</table>
@@ -324,108 +223,7 @@
 														style="height: 10px; width: 10px"></div>
 												</td>
 											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
+											
 										</tbody>
 									</table>
 								</div>
@@ -515,13 +313,7 @@
 			</h:form>
 		</p:dialog>
 
-
 	</ui:define>
-	<ui:define name="footer">
-		<!-- Contenu spécifique du footer de la page -->
-		<h:outputText value="Mon Footer" />
-	</ui:define>
-
-
 
 </ui:composition>
+</html>
