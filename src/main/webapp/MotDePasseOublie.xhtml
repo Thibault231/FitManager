@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" lang="fr">
+
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+
+    <ui:define name="titleValue">Mot de passe oublié - Fit Manager</ui:define>
+    <ui:define name="content">
+
+        <main class="border d-flex bg-primary-subtle text-emphasis-primary justify-content-center align-items-center" style="height: 100vh; width: 100vw">
+            <div class="w-25">
+                <div class="text-center mb-4">
+                    <h2>Fit Manager</h2>
+                    <a>Design your fitness</a>
+                </div>
+
+                <h:form>
+    <div>
+        <div class="d-grid gap-2">
+            <div class="form-floating">
+                <h:inputText class="form-control" id="floatingInputEmail"
+                             placeholder="Email" size="20"
+                             value="#{passwordResetController.email}">
+                    <f:validateRegex pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" />
+                </h:inputText>
+                <h:message for="floatingInputEmail" style="color: red" />
+                <h:outputLabel class="outputLabel" for="floatingInputEmail">Email</h:outputLabel>
+            </div>
+
+            <h:commandButton class="btn btn-primary" value="Réinitialiser le mot de passe"
+                             action="#{passwordResetController.sendPasswordResetEmail()}" />
+        </div>
+    </div>
+</h:form>
+            </div>
+        </main>
+    </ui:define>
+</ui:composition>
+</html>
