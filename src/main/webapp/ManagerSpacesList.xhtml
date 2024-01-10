@@ -29,15 +29,13 @@
 									<h:outputText value="#{space.spaceId}" />
 								</p:column>
 								<p:column headerText="Détail">
-									<h:commandLink
-										action="#{spaceDetailsController.showSpaceDetails()}">
-									</h:commandLink>
-								</p:column>
+								<h:commandLink action="#{spaceDetailsController.showSpaceDetails()}">
+								</h:commandLink></p:column>
 								<p:column headerText="Liens vers l'espace">
-									<h:commandButton value="Lien vers espace"
-										action="#{spaceController.goToSpaceIndex()}">
-										<f:param name="spaceId" value="#{space.spaceId}" />
-									</h:commandButton>
+								<h:commandButton value="Lien vers espace"
+									action="#{spaceController.goToSpaceIndex()}">
+									<f:param name="spaceId" value="#{space.spaceId}" />
+								</h:commandButton>
 								</p:column>
 							</p:dataTable>
 
@@ -46,7 +44,7 @@
 				</p>
 			</p:tab>
 		</p:tabView>
-
+		
 	</ui:define>
 </ui:composition>
 </html>

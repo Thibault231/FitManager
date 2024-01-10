@@ -60,10 +60,6 @@
 					<h:selectBooleanCheckbox id="allDay"
 						value="#{scheduleJava8View.event.allDay}" />
 
-					<p:commandButton type="reset" value="Reset" />
-					<p:commandButton id="addButton" value="Save"
-						action="#{scheduleJava8View.addEvent}"
-						oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
