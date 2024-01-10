@@ -165,7 +165,7 @@ public class CourseController implements Serializable {
 		courseToCreate.setDescription(event.getDescription());
 		User currentCoach = userDao.getUserById(SessionUtils.getUserIdFromSession());
 		courseToCreate.setCoach(currentCoach);
-		courseDao.save(courseToCreate);
+		courseDao.saveCourses(courseToCreate);
 	}
 
 	private void updateEvent() {
@@ -179,7 +179,7 @@ public class CourseController implements Serializable {
 		User currentCoach = userDao.getUserById(SessionUtils.getUserIdFromSession());
 		courseToCreate.setCoach(currentCoach);
 		eventModel.updateEvent(event);
-		courseDao.save(courseToCreate);
+		courseDao.saveCourses(courseToCreate);
 
 	}
 
