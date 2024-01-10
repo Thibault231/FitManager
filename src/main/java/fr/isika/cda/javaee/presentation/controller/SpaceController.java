@@ -3,6 +3,7 @@ package fr.isika.cda.javaee.presentation.controller;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,12 +53,12 @@ public class SpaceController implements Serializable {
 		this.spaceViewModel = new SpaceViewModel();
 	}
 
-	public SpaceViewModel getSpaceForm() {
+	public SpaceViewModel getSpaceViewModel() {
 		return spaceViewModel;
 	}
 
-	public void setSpaceForm(SpaceViewModel spaceForm) {
-		this.spaceViewModel = spaceForm;
+	public void setSpaceViewModel(SpaceViewModel spaceViewModel) {
+		this.spaceViewModel = spaceViewModel;
 	}
 
 //**********************************************************
@@ -331,4 +332,5 @@ public class SpaceController implements Serializable {
 	public void setUploadedFile(UploadedFile uploadedFile) {
 		this.uploadedFile = uploadedFile;
 	}
+
 }

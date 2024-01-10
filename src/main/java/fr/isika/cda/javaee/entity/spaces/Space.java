@@ -35,6 +35,9 @@ public class Space {
 	@OneToOne
 	private Planning planning;
 
+	@OneToOne
+	Style style;
+
 	@OneToMany
 	private List<Activity> activities;
 
@@ -125,6 +128,14 @@ public class Space {
 
 	public void setSubscriptions(List<Subscription> subscriptions) {
 		this.subscriptions = subscriptions;
+	}
+
+	public Style getStyle() {
+		return style;
+	}
+
+	public void setStyle(Style style) {
+		this.style = style;
 	}
 
 }

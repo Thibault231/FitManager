@@ -3,38 +3,39 @@ package fr.isika.cda.javaee.entity.spaces;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Style {
 
 	@Id
 	@GeneratedValue
-	private Long id;
-	private String backgroundColor;
-	private String navBarColor;
+	private long id;
 
-	public Long getId() {
+	private String navbarColor;
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public String getBackgroundColor() {
-		return backgroundColor;
+	public String getNavbarColor() {
+		return navbarColor;
 	}
 
-	public void setBackgroundColor(String backgroundColor) {
-		this.backgroundColor = backgroundColor;
+	public void setNavbarColor(String navbarColor) {
+		this.navbarColor = navbarColor;
 	}
 
-	public String getNavBarColor() {
-		return navBarColor;
-	}
-
-	public void setNavBarColor(String navBarColor) {
-		this.navBarColor = navBarColor;
-	}
+//	public Color getColor() {
+//		return color;
+//	}
+//
+//	public void setColor(Color color) {
+//		this.color = color;
+//	}
 
 }

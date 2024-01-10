@@ -47,7 +47,8 @@
 </style>
 		</head>
 		<nav class="navbar navbar-expand-lg navbar-dark static-top"
-			style="background-color: #1C3659;">
+			style="background-color: #1C3659">
+<!-- 			{#{conf.confViewModel.configuration.style.navbarColor};"> -->
 			<div class="container-fluid">
 				<a class="navbar-brand"> <h:graphicImage library="images"
 						name="Logo.png" styleClass="imgLogo" />
@@ -72,13 +73,27 @@
 				</ul>
 			</div>
 		</nav>
+		
+		<div class="card text-center" style="width: 20rem;">
+    <h:form style="margin: 0 auto;">
+        <h:panelGrid columns="1" cellpadding="7" styleClass="mb-3">
+            <p:outputLabel for="color" value="Sélectionner une couleur pour le menu"/>
+            <p:selectOneMenu id="color" value="#{conf.confViewModel.configuration.style.navbarColor}" style="width:12rem">
+                <p:ajax listener="#{conf.colorForConfiguration}" update="color"/>
+                <f:selectItem itemLabel="Couleur disponible" itemValue="" noSelectionOption="true"/>
+            	<f:selectItems value="#{conf.colorForConfiguration}"/>
+            </p:selectOneMenu>
+        </h:panelGrid>
+        <p:commandButton value="Valider" action="#{conf.updateSpace()}" icon="pi pi-check"/>
+    </h:form>
+</div>
 
 		<main class="w-100">
 			<div
 				class=" row p-4 justify-content-around align-items-stretch navBar"
 				style="height: 5vh; position: fixed; top: 0px"></div>
-			<h:graphicImage library="images" name="Image2.jpg"
-				styleClass="imgAccueil" />
+<!-- 			<h:graphicImage library="images" name="Image2.jpg" -->
+<!-- 				styleClass="imgAccueil" /> -->
 			<div class="container-fluid p-5">
 
 				<!-- section NOTRE PHILOSOPHIE-->
@@ -124,39 +139,7 @@
 
 				</div>
 			</div>
-			<!--end section Nos salles partenaires-->
-
-
-
-
-			<!-- 					<div class="col-12"> -->
-			<!-- 						<div class="row justify-content-between "> -->
-			<!-- 									<ui:repeat -->
-			<!-- 										value="#{subscriptionController.allActiveSubscription}" -->
-			<!-- 										var="subscription"> -->
-			<!-- 										<div class="mb-2 mt-2 col-sm-12 col-lg card text-bg-white"> -->
-			<!-- 											<div class="d-flex flex-column mb-3 justify-content-between text-center align-content-between h-100"> -->
-			<!-- 												<div class="p-2 card-header" style="background-color: #1C3659"> -->
-			<!-- 													<p class="fs-1">#{subscription.subscriptionName}</p> -->
-			<!-- 												</div> -->
-			<!-- 												<div class="p-2  card-body"> -->
-			<!-- 													<div class="p-2"> -->
-			<!-- 														<p class="fw-normal">#{subscription.description}</p> -->
-			<!-- 													</div> -->
-			<!-- 													<div class="p-2"> -->
-			<!-- 														<p class="fw-normal">#{subscription.engagement}</p> -->
-			<!-- 													</div> -->
-			<!-- 													<div class="p-2  card-footer"> -->
-			<!-- 														<p class="fw-bold">#{subscription.price.monthlyPrice}</p> -->
-			<!-- 													</div> -->
-			<!-- 												</div> -->
-			<!-- 											</div> -->
-			<!-- 										</div> -->
-			<!-- 									</ui:repeat> -->
-			<!-- 								</div> -->
-			<!-- 							</div> -->
-			<!-- 						</div> -->
-			<!-- section Commentaires Adhérents-->
+			
 			<div class="row mb-5 contain-50">
 				<h2 class="text-uppercase">ABONNEMENT</h2>
 				<div>
@@ -170,8 +153,6 @@
 					<div class="row justify-content-around flex-wrap">
 						<ui:repeat value="#{subscriptionController.allActiveSubscription}"
 							var="subscription">
-<!-- 							<div -->
-<!-- 								class="d-flex flex-column justify-content-between col-sm-4 card text-bg-white mb-4 reset-margin mx-0 detail h-100"> -->
 								  <div class="col-sm-3 position-relative card text-bg-white mb-3 detail">
 								<div class="card-header" style="background-color: #1C3659;">
 									<h1>#{subscription.subscriptionName}</h1>

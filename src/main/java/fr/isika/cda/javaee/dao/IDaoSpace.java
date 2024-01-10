@@ -1,6 +1,7 @@
 package fr.isika.cda.javaee.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import fr.isika.cda.javaee.entity.spaces.Space;
 
@@ -71,5 +72,7 @@ public interface IDaoSpace {
 	 * @param userToUpdate (:User)
 	 */
 	void updateSpace(Space spaceToUpdate);
+
+	Map<String, String> getColorsMap();
 
 }
