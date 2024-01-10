@@ -1,8 +1,10 @@
 
 <ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 
 	<ui:define name="menus">
@@ -17,8 +19,7 @@
 	<ui:define name="content">
 
 		<div class="d-flex">
-		
-		
+
 			<div id="menus" class=" menus desable">
 				<div
 					class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sticky-top"
@@ -38,11 +39,15 @@
 									outcome="ManagerSpacesList.xhtml">Mes espaces</h:link></li>
 							<li class="nav-item mb-2"><h:link class="dropdown-item"
 									outcome="CreateSpaceForm.xhtml"> Créer un espace </h:link></li>
-									<li class="nav-item mb-2"><h:link class="dropdown-item"
+							<li class="nav-item mb-2"><h:link class="dropdown-item"
 									outcome="ManagerSubscriptionList.xhtml">Mes abonnements</h:link></li>
 							<li class="nav-item mb-2"><h:link class="dropdown-item"
 									outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link></li>
 							<li class="nav-item mb-2"><a> Tableau de bord </a></li>
+							<h:panelGrid columns="1" cellpadding="5">
+								<p:commandButton value="Modifier mon profil" type="button"
+									onclick="PF('popupUpdate').show();" />
+							</h:panelGrid>
 						</ul>
 					</div>
 				</div>
@@ -50,7 +55,9 @@
 
 			<div class="col p-5">
 				<h2>Bienvenue #{sessionScope.name}</h2>
+
 				<div class="d-flex w-100 justify-content-end pt-1">
+
 
 					<div class="d-flex justify-content-around">
 						<a class=" m-1">#{sessionScope.role}</a>
@@ -434,14 +441,87 @@
 
 		</div>
 
+		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate" modal="true"
+			height="600" resizable="false" showEffect="fade" hideEffect="fade"
+			style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="#{userController.userViewModel.user.profile.civility.name}"
+								size="20"
+								value="#{userController.userViewModel.user.profile.civility.name}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="Prénom" size="20"
+								value="#{userController.userViewModel.user.profile.civility.forename}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
+						</div>
+						<div class="field">
+							<h:outputLabel for="sex" value="Genre" />
+							<h:selectOneMenu id="sex"
+								value="#{userController.userViewModel.user.profile.civility.sex}">
+								<f:selectItem itemLabel="" />
+								<f:selectItem itemLabel="Homme" itemValue="Man" />
+								<f:selectItem itemLabel="Femme" itemValue="Woman" />
+								<f:selectItem itemLabel="Autre" itemValue="Other" />
+							</h:selectOneMenu>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="Date de naissance" size="20"
+								value="#{userController.userViewModel.user.profile.civility.birthday}">
+								<f:convertDateTime pattern="dd-mm-yyyy" />
+							</h:inputText>
+							<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+						</div>
+						<div class="form-floating ">
+							<h:inputText class="form-control" id="floatingInput06" size="20"
+								placeholder="#{userController.userViewModel.user.account.password}"
+								maxlength="12"
+								value="#{userController.userViewModel.user.account.password}">
+								<f:validateLength minimum="5"></f:validateLength>
+							</h:inputText>
+							<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput07"
+								placeholder="Adresse" size="20"
+								value="#{userController.userViewModel.user.profile.adress.street}" />
+							<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput08"
+								placeholder="Code postal" size="20"
+								value="#{userController.userViewModel.user.profile.adress.zipCode}" />
+							<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput09"
+								placeholder="Ville" size="20"
+								value="#{userController.userViewModel.user.profile.adress.city}" />
+							<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+						</div>
+						<h:commandButton class="btn btn-warning"
+							value="Enregistrer les modifications"
+							action="#{userController.updateUser()}" />
+						<h:link class="text-center" outcome="ManagerDashBoard"
+							value="ANNULER" />
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
+
 
 	</ui:define>
-
 	<ui:define name="footer">
 		<!-- Contenu spécifique du footer de la page -->
 		<h:outputText value="Mon Footer" />
 	</ui:define>
 
-	
+
 
 </ui:composition>

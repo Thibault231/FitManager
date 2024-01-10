@@ -44,6 +44,48 @@
 			</p:column>
 		</p:dataTable>
 		<br />
+		
+		<h1>Liste des Coachs</h1>
+		
+		<p:dataTable var="user" value="#{userController.allActiveUser}">
+		<p:column headerText="Nom">
+				
+		</p:column>
+				
+		<p:column headerText="Prenom">
+				
+			</p:column>
+			<p:column headerText="Date de naissance">
+				
+			</p:column>
+			<p:column headerText="Rôle">
+				
+			</p:column>
+			<p:column headerText="Actions">
+				<h:form>
+					<p:commandButton value="Modifier" style="margin-right:20px;"
+						action="#{userController.updateUser()}">
+					</p:commandButton>
+
+					<p:commandButton type="Button" outcome="UsersAccounts.xhtml"
+						value="Supprimer" style="margin-right:20px;"
+						action="#{userController.deleteUser(user)}">
+
+					</p:commandButton>
+
+				</h:form>
+
+
+			</p:column>
+		</p:dataTable>
+		
+		
+			<ui:repeat value="#{userController.allActiveUser}" var="user">
+				<h:panelGroup rendered="#{user.account.role eq 'Coach'}">
+					<p>Nom: #{user.profile.civility.name}, Prenom: #{user.profile.civility.forename}, Date de naissance: #{user.profile.civility.birthday}, Role: #{user.account.role}</p>
+				</h:panelGroup>
+			</ui:repeat>
+		
 
 		<p:linkButton outcome="ManagerDashBoard.xhtml"
 			value="Retour au tableau de bord" style="margin-right:20px;">
