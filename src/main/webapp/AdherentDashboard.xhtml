@@ -13,18 +13,99 @@
 		<h1>Tableau de bord Adherent</h1>
 		<p>This is an empty page using the common template</p>
 
-		<h:link	outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"	value="Retour à l'accueil" />
-     <p>
-       <h:link outcome="UpdateUserForm.xhtml" value="Modifier mon profil" />
-    </p>
-		 <p>
+		<h:link
+			outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
+			value="Retour à l'accueil" />
+
+		<h:panelGrid columns="1" cellpadding="5">
+			<p:commandButton value="Modifier mon profil" type="button"
+				onclick="PF('popupUpdate').show();" />
+		</h:panelGrid>
+
+		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate" modal="true"
+			height="600" resizable="false" showEffect="fade" hideEffect="fade"
+			style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="#{userController.userViewModel.user.profile.civility.name}"
+								size="20"
+								value="#{userController.userViewModel.user.profile.civility.name}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="Prénom" size="20"
+								value="#{userController.userViewModel.user.profile.civility.forename}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
+						</div>
+						<div class="field">
+							<h:outputLabel for="sex" value="Genre" />
+							<h:selectOneMenu id="sex"
+								value="#{userController.userViewModel.user.profile.civility.sex}">
+								<f:selectItem itemLabel="" />
+								<f:selectItem itemLabel="Homme" itemValue="Man" />
+								<f:selectItem itemLabel="Femme" itemValue="Woman" />
+								<f:selectItem itemLabel="Autre" itemValue="Other" />
+							</h:selectOneMenu>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="Date de naissance" size="20"
+								value="#{userController.userViewModel.user.profile.civility.birthday}">
+								<f:convertDateTime pattern="dd-mm-yyyy" />
+							</h:inputText>
+							<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+						</div>
+						<div class="form-floating ">
+							<h:inputText class="form-control" id="floatingInput06" size="20"
+								placeholder="#{userController.userViewModel.user.account.password}"
+								maxlength="12"
+								value="#{userController.userViewModel.user.account.password}">
+								<f:validateLength minimum="5"></f:validateLength>
+							</h:inputText>
+							<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput07"
+								placeholder="Adresse" size="20"
+								value="#{userController.userViewModel.user.profile.adress.street}" />
+							<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput08"
+								placeholder="Code postal" size="20"
+								value="#{userController.userViewModel.user.profile.adress.zipCode}" />
+							<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput09"
+								placeholder="Ville" size="20"
+								value="#{userController.userViewModel.user.profile.adress.city}" />
+							<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+						</div>
+						<h:commandButton class="btn btn-warning"
+							value="Enregistrer les modifications"
+							action="#{userController.updateUser()}" />
+						<h:link class="text-center" outcome="AdherentDashboard"
+							value="ANNULER" />
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
+
+		<p>
 			<h:link outcome="SubscribeForm.xhtml"
 				value="Souscrire à un abonnement" />
-		 </p>
+		</p>
 
 
-		<ui:repeat value="#{bookingController.allBookingOfAMember}" var="booking">
-			<div class="card text-bg-white detail"	style="background-color: yellow;">
+		<ui:repeat value="#{bookingController.allBookingOfAMember}"
+			var="booking">
+			<div class="card text-bg-white detail"
+				style="background-color: yellow;">
 				<div class="card-header">
 					<h1>#{booking.linkedCourse.name}</h1>
 				</div>
@@ -34,34 +115,31 @@
 				</div>
 			</div>
 		</ui:repeat>
-		<h:form>
-			<h:commandButton value="Réserver un cours"
-				action="#{bookingController.createBookingLinkedToMember()}" />
-      </h:form>
 
 		<h:form>
-			<h:button value="Réserver" outcome="BookingCalendar.xhtml"/>
+			<h:button value="Réserver un cours" outcome="BookingCalendar.xhtml" />
 		</h:form>
-		
+
 		<h1>Mes informations</h1>
 		<div id="1">
-			
+
 			<h2>Details for User ID: #{sessionScope.name}</h2>
 			<!-- Ajoutez ici les balises pour afficher les détails de la salle -->
-			
+
 			<!-- Par exemple, si vous avez des propriétés comme nom, adresse, etc. -->
-			
-			<p>Nom: #{spaceController.spaceViewModel.user.profile.civility.name}</p>
-			<p>Prenom: #{spaceController.spaceViewModel.user.profile.civility.forename}</p>
-			<p>Date de naissance: #{spaceController.spaceViewModel.user.profile.civility.birthday}</p>
-			<p>Email: #{spaceController.spaceViewModel.user.profile.contact.email}</p>
-			<p>Adresse: #{spaceController.spaceViewModel.user.profile.adress.street}</p>
-			<p>Code postal: #{spaceController.spaceViewModel.user.profile.adress.zipCode}</p>
-			<p>Ville: #{spaceController.spaceViewModel.user.profile.adress.city}</p>
-			
-			
+			<p>Nom: #{spaceController.spaceForm.user.profile.civility.name}</p>
+			<p>Prenom:
+				#{spaceController.spaceForm.user.profile.civility.forename}</p>
+			<p>Date de naissance:
+				#{spaceController.spaceForm.user.profile.civility.birthday}</p>
+			<p>Email: #{spaceController.spaceForm.user.profile.contact.email}</p>
+			<p>Adresse:
+				#{spaceController.spaceForm.user.profile.adress.street}</p>
+			<p>Code postal:
+				#{spaceController.spaceForm.user.profile.adress.zipCode}</p>
+			<p>Ville: #{spaceController.spaceForm.user.profile.adress.city}</p>
 		</div>
-		
+
 	</ui:define>
 </ui:composition>
 </html>

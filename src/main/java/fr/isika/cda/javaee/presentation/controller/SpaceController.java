@@ -178,6 +178,18 @@ public class SpaceController implements Serializable {
 		return "ManagerSpacesList";
 	}
 
+	public String updateUser() {
+		// mettre à jour le user
+		userSvc.updateUserOnPlateform(spaceViewModel.getUser(), SessionUtils.getUserIdFromSession());
+		// mettre à jour la session si le nom est changé
+		if (spaceViewModel.getUser().getProfile().getCivility().getName() != null) {
+			String newName = spaceViewModel.getUser().getProfile().getCivility().getName();
+			FacesContext fc = FacesContext.getCurrentInstance();
+			fc.getExternalContext().getSessionMap().put("name", newName);
+		}
+		return redirectToRightDashBoard(SessionUtils.getUserRoleFromSession());
+	}
+
 	/**
 	 * Get as param a space Id and return this space index view.
 	 * 
