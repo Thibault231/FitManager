@@ -36,8 +36,7 @@
             </f:facet>
             <p:tab title="Utilisateurs" >
                 <h:panelGrid columns="1" cellpadding="5">
-                	<p:commandButton value="Ajouter un coach" action="RegisterCoach.xhtml?faces-redirect=true"/>
-	                <p:dataTable var="user" value="#{userController.allActiveUser}">
+	                <p:dataTable var="user" value="#{userController.allMembersOfCurrentSpace}">
 						<p:column headerText="Nom">
 							<h:outputText value="#{user.profile.civility.name}" />
 						</p:column>
@@ -70,25 +69,32 @@
             
             <p:tab title="Coachs">
 	            <h:panelGrid columns="1" cellpadding="5">
-                	<p:commandButton value="Ajouter un coach" action="RegisterCoach.xhtml?faces-redirect=true"/>
-					<p:dataTable var="user" value="#{userController.allActiveUser}">
+                	<p:commandButton value="Ajouter un coach" type="button" onclick="PF('createCoach').show();"/>
+	                <p:dataTable var="user" value="#{userController.allCoachesOfCurrentSpace}">
 						<p:column headerText="Nom">
+							<h:outputText value="#{user.profile.civility.name}" />
 						</p:column>
 						<p:column headerText="Prenom">
+							<h:outputText value="#{user.profile.civility.forename}" />
 						</p:column>
 						<p:column headerText="Date de naissance">
+							<h:outputText value="#{user.profile.civility.birthday}" />
 						</p:column>
 						<p:column headerText="Rôle">
+							<h:outputText value="#{user.account.role}" />
 						</p:column>
 						<p:column headerText="Actions">
 							<h:form>
 								<p:commandButton value="Modifier" style="margin-right:20px;"
 									action="#{userController.updateUser()}">
 								</p:commandButton>
+			
 								<p:commandButton type="Button" outcome="UsersAccounts.xhtml"
 									value="Supprimer" style="margin-right:20px;"
 									action="#{userController.deleteUser(user)}">
+			
 								</p:commandButton>
+			
 							</h:form>
 						</p:column>
 					</p:dataTable>
@@ -119,8 +125,9 @@
 					</ui:repeat>
 				</div>
             </p:tab>
-            <p:tab title="Cours">
-	        	<h:panelGrid columns="1" cellpadding="5">
+            
+	        <p:tab title="Cours">
+		       	<h:panelGrid columns="1" cellpadding="5">
 					<p:commandButton value="Ajouter un cours" />
 				</h:panelGrid>
 					
@@ -140,15 +147,9 @@
 						</div>
 					</div>
 				</ui:repeat>
-            </p:tab>
-            
+		     </p:tab>   
 		</p:tabView>
 
-<!-- 		<ui:repeat value="#{userController.allActiveUser}" var="user"> -->
-<!-- 			<h:panelGroup rendered="#{user.account.role eq 'Coach'}"> -->
-<!-- 				<p>Nom: #{user.profile.civility.name}, Prenom: #{user.profile.civility.forename}, Date de naissance: #{user.profile.civility.birthday}, Role: #{user.account.role}</p> -->
-<!-- 			</h:panelGroup> -->
-<!-- 		</ui:repeat> -->
 		
 		<hr />
 
@@ -195,6 +196,106 @@
 					</div>
 				</div>
 			</h:form>
+		</p:dialog>
+		
+		<p:dialog header="Modification de mon profil " widgetVar="createCoach"
+			modal="true" height="600" resizable="false" showEffect="fade"
+			hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+					<div>
+						<div class="d-grid gap-2">
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput01"
+									placeholder="Nom" required="true" size="20"
+									value="#{spaceController.spaceViewModel.user.profile.civility.name}" />
+								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput02"
+									placeholder="Prénom" required="true" size="20"
+									value="#{spaceController.spaceViewModel.user.profile.civility.forename}" />
+								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
+							</div>
+
+							<div class="field">
+								<h:outputLabel for="sex" value="Genre" />
+								<h:selectOneMenu id="sex"
+									value="#{spaceController.spaceViewModel.user.profile.civility.sex}">
+									<f:selectItem itemLabel="" />
+									<f:selectItem itemLabel="Homme" itemValue="Man" />
+									<f:selectItem itemLabel="Femme" itemValue="Woman" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput04"
+									placeholder="Date de naissance" size="20"
+									value="#{spaceController.spaceViewModel.user.profile.civility.birthday}">
+									<f:convertDateTime pattern="dd-mm-yyyy" />
+								</h:inputText>
+								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput05"
+									placeholder="Email" required="true" size="20"
+									value="#{spaceController.spaceViewModel.user.account.login}" />
+								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput07"
+									placeholder="Adresse" size="20"
+									value="#{spaceController.spaceViewModel.user.profile.adress.street}" />
+								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput08"
+									placeholder="Code postal" size="20"
+									value="#{spaceController.spaceViewModel.user.profile.adress.zipCode}" />
+								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput09"
+									placeholder="Ville" size="20"
+									value="#{spaceController.spaceViewModel.user.profile.adress.city}" />
+								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+							</div>
+
+							<div class="field">
+								<h:outputLabel for="type" value="Document administratif" />
+								<h:selectOneMenu id="type"
+									value="#{spaceController.spaceViewModel.user.account.administrativeDocument.type}">
+									<f:selectItem itemLabel="Selectionnez un type de document" />
+									<f:selectItem itemLabel="Diplôme" itemValue="Diploma" />
+									<f:selectItem itemLabel="Pièce d'identité" itemValue="Id" />
+									<f:selectItem itemLabel="Certificat médical"
+										itemValue="MedicalCertificate" />
+									<f:selectItem itemLabel="RIB" itemValue="BankDetails" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
+								<hr />
+								<h:outputLabel id="fileUploadLbl" class="outputLabel">File : </h:outputLabel>
+								<p:fileUpload listener="#{spaceController.uploadAdministrativeDocument}"
+									styleClass="w-100" mode="advanced" dragDropSupport="false" />
+								
+							</div>
+							<h:commandButton class="btn btn-warning"
+								value="Créer un compte coach"
+								action="#{spaceController.createCoachAccount()}" />
+
+							<h:link class="text-center"
+								outcome="ManagerSpaceDashBoard"
+								value="ANNULER"/>
+						</div>
+					</div>
+				</h:form>
+			
 		</p:dialog>
 
 	</ui:define>

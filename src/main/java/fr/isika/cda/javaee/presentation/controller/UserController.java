@@ -1,6 +1,7 @@
 package fr.isika.cda.javaee.presentation.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +13,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
@@ -28,6 +31,9 @@ public class UserController implements Serializable {
 
 	@Inject
 	private IDaoUser userDao;
+
+	@Inject
+	private IDaoSpace spaceDao;
 
 	@Inject
 	private UserServices userSvc;
@@ -107,6 +113,38 @@ public class UserController implements Serializable {
 	 */
 	public List<User> getAllActiveUser() {
 		List<User> usersList = userDao.getAllUsers();
+		return usersList;
+	}
+
+	/**
+	 * Return all the users of the current space, marked as active in the database.
+	 * <b>Use this method for connected user</b>
+	 * 
+	 * @return (:List<User>)
+	 */
+	public List<User> getAllMembersOfCurrentSpace() {
+		Space currentSpace = spaceDao.getSpaceWithMembers(SessionUtils.getSpaceIdFromSession());
+		List<User> usersList = new ArrayList<User>();
+		for (User user : currentSpace.getUsers()) {
+			if (user.getAccount().getRole().equals(Role.Adherent))
+				usersList.add(user);
+		}
+		return usersList;
+	}
+
+	/**
+	 * Return all the users of the current space, marked as active in the database.
+	 * <b>Use this method for connected user</b>
+	 * 
+	 * @return (:List<User>)
+	 */
+	public List<User> getAllCoachesOfCurrentSpace() {
+		Space currentSpace = spaceDao.getSpaceWithMembers(SessionUtils.getSpaceIdFromSession());
+		List<User> usersList = new ArrayList<User>();
+		for (User user : currentSpace.getUsers()) {
+			if (user.getAccount().getRole().equals(Role.Coach))
+				usersList.add(user);
+		}
 		return usersList;
 	}
 
