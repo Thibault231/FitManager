@@ -1,9 +1,10 @@
 
 <ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 
 	<ui:define name="titleValue">Fit Manager - Coach dashboard </ui:define>
@@ -14,6 +15,86 @@
 		<!-- Contenu spécifique du corp de la page -->
 	
 		<h1>Tableau de bord Coach</h1>
+		
+		
+		<h:panelGrid columns="1" cellpadding="5">
+			<p:commandButton value="Modifier mon profil" type="button"
+				onclick="PF('popupUpdate').show();" />
+		</h:panelGrid>
+
+		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate" modal="true"
+			height="600" resizable="false" showEffect="fade" hideEffect="fade"
+			style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="#{userController.userViewModel.user.profile.civility.name}"
+								size="20"
+								value="#{userController.userViewModel.user.profile.civility.name}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="Prénom" size="20"
+								value="#{userController.userViewModel.user.profile.civility.forename}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
+						</div>
+						<div class="field">
+							<h:outputLabel for="sex" value="Genre" />
+							<h:selectOneMenu id="sex"
+								value="#{userController.userViewModel.user.profile.civility.sex}">
+								<f:selectItem itemLabel="" />
+								<f:selectItem itemLabel="Homme" itemValue="Man" />
+								<f:selectItem itemLabel="Femme" itemValue="Woman" />
+								<f:selectItem itemLabel="Autre" itemValue="Other" />
+							</h:selectOneMenu>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="Date de naissance" size="20"
+								value="#{userController.userViewModel.user.profile.civility.birthday}">
+								<f:convertDateTime pattern="dd-mm-yyyy" />
+							</h:inputText>
+							<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+						</div>
+						<div class="form-floating ">
+							<h:inputText class="form-control" id="floatingInput06" size="20"
+								placeholder="#{userController.userViewModel.user.account.password}"
+								maxlength="12"
+								value="#{userController.userViewModel.user.account.password}">
+								<f:validateLength minimum="5"></f:validateLength>
+							</h:inputText>
+							<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput07"
+								placeholder="Adresse" size="20"
+								value="#{userController.userViewModel.user.profile.adress.street}" />
+							<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput08"
+								placeholder="Code postal" size="20"
+								value="#{userController.userViewModel.user.profile.adress.zipCode}" />
+							<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput09"
+								placeholder="Ville" size="20"
+								value="#{userController.userViewModel.user.profile.adress.city}" />
+							<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+						</div>
+						<h:commandButton class="btn btn-warning"
+							value="Enregistrer les modifications"
+							action="#{userController.updateUser()}" />
+						<h:link class="text-center" outcome="CoachDashboard"
+							value="ANNULER" />
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
 	
 		<h1>Mes informations</h1>
 		<div id="1">
