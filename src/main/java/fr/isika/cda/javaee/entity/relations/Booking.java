@@ -1,6 +1,7 @@
 package fr.isika.cda.javaee.entity.relations;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +21,10 @@ public class Booking {
 	private Long bookingId;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar registrationDate;
-
+	private Date registrationDate;
+  
+	private Long spaceId;
+  
 	@OneToOne
 	private User member;
 
@@ -29,13 +32,21 @@ public class Booking {
 	private Course linkedCourse;
 
 //***********************************************	
+	/**
+	 * Empty constructor for JEE.
+	 */
 	public Booking() {
-
 	}
 
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param isActive (: boolean)
+	 */
 	public Booking(boolean isForViewModel) {
-		this.member = new User();
 		this.linkedCourse = new Course();
+		this.member = new User();
+
 	}
 
 //***********************************************	
@@ -55,19 +66,20 @@ public class Booking {
 		this.member = member;
 	}
 
-	public Calendar getBirthday() {
+	public Date getBirthday() {
 		return registrationDate;
 	}
 
-	public void setBirthday(Calendar birthday) {
+	public void setBirthday(Date birthday) {
 		this.registrationDate = birthday;
 	}
 
-	public Calendar getRegistrationDate() {
+
+	public Date getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(Calendar registrationDate) {
+	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
@@ -77,6 +89,14 @@ public class Booking {
 
 	public void setLinkedCourse(Course linkedCourse) {
 		this.linkedCourse = linkedCourse;
+	}
+
+	public Long getSpaceId() {
+		return spaceId;
+	}
+
+	public void setSpaceId(Long spaceId) {
+		this.spaceId = spaceId;
 	}
 
 }

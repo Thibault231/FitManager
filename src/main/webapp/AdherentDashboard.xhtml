@@ -13,16 +13,31 @@
 		<h1>Tableau de bord Adherent</h1>
 		<p>This is an empty page using the common template</p>
 
-		<p><h:link outcome="UpdateUserForm.xhtml" value="Modifier mon profil" /></p>
-    
-		<h:link
-			outcome="AccueilSalle.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
-			value="Retour à l'accueil" />
-
-		<p>
+		<h:link	outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"	value="Retour à l'accueil" />
+     <p>
+       <h:link outcome="UpdateUserForm.xhtml" value="Modifier mon profil" />
+    </p>
+		 <p>
 			<h:link outcome="SubscribeForm.xhtml"
 				value="Souscrire à un abonnement" />
-		</p>
+		 </p>
+
+
+		<ui:repeat value="#{bookingController.allBookingOfAMember}" var="booking">
+			<div class="card text-bg-white detail"	style="background-color: yellow;">
+				<div class="card-header">
+					<h1>#{booking.linkedCourse.name}</h1>
+				</div>
+				<div class="card-body">
+					<p>#{booking.registrationDate.toString()}</p>
+					<p>#{booking.linkedCourse.startDate}</p>
+				</div>
+			</div>
+		</ui:repeat>
+		<h:form>
+			<h:commandButton value="Réserver un cours"
+				action="#{bookingController.createBookingLinkedToMember()}" />
+      </h:form>
 
 		<h:form>
 			<h:button value="Réserver" outcome="BookingCalendar.xhtml"/>

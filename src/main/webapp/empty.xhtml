@@ -1,20 +1,61 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-	<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
-		<ui:define name="titleValue">Vide - Fit Manager</ui:define>
-		<ui:define name="content">
-		
-			<h1>Welcome !</h1>
+
+	
+	<ui:define name="titleValue">Vide - Fit Manager</ui:define>
+		<!-- Corp de la page -->
+	<ui:define name="wrapper">
+	<div class="w-25">
+				<div class="text-center mb-4">
+					<h1>Welcome !</h1>
 			<p>This is an empty page using the common template</p>
-			
-			<h:link outcome="index" value="Retour à l'accueil"/>
-			
-		</ui:define>
-			
-	</ui:composition>
-</html>
+				</div>
+				<h:form>
+					<div>
+						<div class="d-grid gap-2">
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput01"
+									placeholder="Nom de l'espace fitness" required="true" size="20"
+									value="#{spaceController.spaceForm.space.infos.configuration.fitnessName}" />
+								<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'espace fitness</h:outputLabel>
+							</div>
+							
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput02"
+									placeholder="SIRET" required="true" size="20"
+									value="#{spaceController.spaceForm.space.infos.administrative.siret}"/>
+								<h:outputLabel class="outputLabel" for="floatingInput02">SIRET</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput03"
+									placeholder="SIREN" required="true" size="20"
+									value="#{spaceController.spaceForm.space.infos.administrative.siren}"/>
+								<h:outputLabel class="outputLabel" for="floatingInput03">SIREN</h:outputLabel>
+							</div>
+							
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput04"
+									placeholder="Logo" required="true" size="20"
+									value="#{spaceController.spaceForm.space.infos.configuration.logo}"/>
+								<h:outputLabel class="outputLabel" for="floatingInput04">Logo</h:outputLabel>
+							</div>
+							
+							<h:commandButton class="btn btn-warning"
+								value="Créer un espace fitness"
+								action="#{spaceController.createSpace()}" />
+
+							<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
+						</div>
+					</div>
+				</h:form>
+			</div>
+	
+	</ui:define>
+
+</ui:composition>
