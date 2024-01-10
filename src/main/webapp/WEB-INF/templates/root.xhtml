@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+<h:head>
+	<title>
+		<ui:insert name="titleValue"></ui:insert>
+	</title>
+	<h:outputStylesheet library="css" name="main/mainStyle.css" />
+	
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></link>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+</h:head>
+
+<h:body>
+
+ <main>
+	 <div>
+ 	<ui:insert name="content"/>	
+		
+    </div>
+  
+     <div id="rgpd" class="rgpd">
+            <div class="card w-50 p-5 ">
+                <div class="card-hearder">
+                    Le respect de votre vie privée est notre priorité
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-9 col-sm-12">
+                            Pour améliorer votre expérience, La Fitmanager et ses partenaires utilisent des cookies (ou technologies similaires). Les finalités des cookies sont les suivantes :
+
+                            <ul>
+                                <li>Mesure d’audience : établir des statistiques complémentaires sur l’utilisation de nos sites et suivre la navigation.</li>
+                                <li>Analyse et personnalisation : analyser les parcours clients et personnaliser en temps réel nos sites et communications en fonction de votre navigation.</li>
+                                <li>Publicité : permettre de vous adresser des publicités en lien avec vos centres d’intérêts sur notre site et en dehors.</li>
+                            </ul>
+
+                            En cliquant sur "J'accepte" vous acceptez tous les cookies. Le bouton "Continuer sans accepter" vous permet d'indiquer votre refus et seuls les cookies nécessaires au fonctionnement du site seront déposés.
+                            Vous pouvez modifier vos choix à tout moment ou obtenir plus d'informations via notre politique de cookies.
+
+                        </div>
+                        <div class="col-lg-3 col-sm-12 pt-5 pb-auto">
+                            <div class="d-grid gap-2">
+                                <a id="rgpdAccept" class="btn btn-warning" href=""> accepter</a>
+                                <a id="rgpdUnaccept" class="btn btn-link" href=""> continuer sans accepter</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    
+ </main>
+ 
+ <h:outputScript library="js" name="Global.js" />
+    
+</h:body>
+
+
+</html>

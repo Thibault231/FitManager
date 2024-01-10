@@ -1,22 +1,45 @@
-<!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
 	<ui:define name="titleValue">Fit Manager - Coach dashboard </ui:define>
-	<ui:define name="content">
-
+		<!-- Corp de la page -->
+	<ui:define name="wrapper">
+	
+	
+		<!-- Contenu spécifique du corp de la page -->
+	
 		<h1>Tableau de bord Coach</h1>
-		<p>This is an empty page using the common template</p>
+	
+		<h1>Mes informations</h1>
+		<div id="1">
 
-		<h:link
-			outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
-			value="Retour à l'accueil" />
+			<h2>Details for User ID: #{sessionScope.name}</h2>
+			<!-- Ajoutez ici les balises pour afficher les détails de la salle -->
 
+			<!-- Par exemple, si vous avez des propriétés comme nom, adresse, etc. -->
+
+			<p>Nom: #{spaceController.spaceForm.user.profile.civility.name}</p>
+			<p>Prenom:
+				#{spaceController.spaceForm.user.profile.civility.forename}</p>
+			<p>Date de naissance:
+				#{spaceController.spaceForm.user.profile.civility.birthday}</p>
+			<p>Email: #{spaceController.spaceForm.user.profile.contact.email}</p>
+			<p>Adresse:
+				#{spaceController.spaceForm.user.profile.adress.street}</p>
+			<p>Code postal:
+				#{spaceController.spaceForm.user.profile.adress.zipCode}</p>
+			<p>Ville: #{spaceController.spaceForm.user.profile.adress.city}</p>
+
+
+		</div>
+    
+    
+    <div>
 		<ui:repeat value="#{courseController.allCoachCourses}"
 			var="course">
 			<div
@@ -35,7 +58,11 @@
 			</div>
 		</ui:repeat>
 		<h:link	outcome="AddCoursesCalendar.xhtml" value="Ajouter des cours" />
+</div>
 
+<h:link
+			outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
+			value="Retour à l'accueil" />
+  
 	</ui:define>
 </ui:composition>
-</html>

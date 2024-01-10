@@ -86,6 +86,7 @@ public class InitDb {
 			c.setStartDate(LocalDateTime.now());
 			c.setEndDate(LocalDateTime.now().plusHours(2));
 			c.setDescription("Break");
+			em.persist(c);
 
 			Course c2 = new Course();
 			c2.setName("Cours de muscu");
@@ -94,6 +95,7 @@ public class InitDb {
 			c2.setStartDate(LocalDateTime.now().plusDays(1));
 			c2.setEndDate(LocalDateTime.now().plusDays(1).plusHours(2));
 			c2.setDescription("Muscu");
+			em.persist(c2);
 
 			Course c3 = new Course();
 			c3.setName("Cours de bodypump");
@@ -102,9 +104,6 @@ public class InitDb {
 			c3.setStartDate(LocalDateTime.now().plusDays(2));
 			c3.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
 			c3.setDescription("Body Pump");
-
-			em.persist(c);
-			em.persist(c2);
 			em.persist(c3);
 
 			/*

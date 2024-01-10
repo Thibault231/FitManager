@@ -51,7 +51,7 @@ public class User {
 	/**
 	 * Constructor for UserControler and UserService
 	 * 
-	 * @param isActive
+	 * @param isActive (: boolean)
 	 */
 	public User(boolean isActive) {
 		this.setActive(isActive);

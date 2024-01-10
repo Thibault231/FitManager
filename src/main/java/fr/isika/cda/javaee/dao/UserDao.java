@@ -1,5 +1,6 @@
 package fr.isika.cda.javaee.dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -31,9 +32,16 @@ public class UserDao implements IDaoUser {
 
 	@Override
 	public boolean deleteUser(Long userToDeleteId) {
-		User userTodelete = em.find(User.class, userToDeleteId);
+		User userTodelete = getUserByIdWithLinkedSpaces(userToDeleteId);
+
 		if (userTodelete != null) {
-			em.remove(userTodelete);
+			if (userTodelete.getLinkedSpaces() != null) {
+				userTodelete.setActive(false);
+				updateUser(userTodelete);
+			} else {
+				em.remove(userTodelete);
+			}
+
 			return true;
 		} else {
 			return false;
@@ -48,7 +56,8 @@ public class UserDao implements IDaoUser {
 	@Override
 	public User getUserByEmail(String userToGetEmail) {
 		try {
-			User user = em.createQuery("SELECT u FROM User u WHERE u.account.login = :login", User.class)
+			User user = em
+					.createQuery("SELECT u FROM User u WHERE u.account.login = :login AND u.isActive = 1", User.class)
 					.setParameter("login", userToGetEmail).getSingleResult();
 			return user;
 		} catch (NoResultException ex) {
@@ -71,7 +80,8 @@ public class UserDao implements IDaoUser {
 	@Override
 	public User getUserByIdWithLinkedSpaces(Long userId) {
 		try {
-			return em.createQuery("SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.id = :userIdParam",
+			return em.createQuery(
+					"SELECT u FROM User u LEFT JOIN FETCH u.linkedSpaces WHERE u.id = :userIdParam AND u.isActive = 1",
 					User.class).setParameter("userIdParam", userId).getSingleResult();
 		} catch (NoResultException ex) {
 			return null;

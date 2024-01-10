@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -30,7 +30,7 @@ import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 import fr.isika.cda.javaee.services.UserServices;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class SpaceController implements Serializable {
 
 	private static final long serialVersionUID = 8496614779097793938L;
@@ -271,6 +271,7 @@ public class SpaceController implements Serializable {
 	 * @return url of the user dashboard (:String)
 	 */
 	public String redirectToRightDashBoard(Role userRole) {
+		this.spaceViewModel.setUser(userDao.getUserById(SessionUtils.getUserIdFromSession()));
 		if (userRole.equals(Role.Adherent)) {
 			return "AdherentDashboard";
 		} else if (userRole.equals(Role.Coach)) {

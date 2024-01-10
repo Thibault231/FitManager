@@ -56,14 +56,17 @@
 }
 </style>
 		</head>
-		<nav class="navbar navbar-expand-sm navbar-dark"
+		<nav class="navbar navbar-expand-lg navbar-dark static-top"
 			style="background-color: #1C3659;">
 			<div class="container-fluid">
-				<ul class="navbar-nav">
+<!-- 			<a class="navbar-brand"> -->
+<!-- 				<h:graphicImage library="images" name="LogoBis.png" styleClass="imgLogo"/> -->
+<!-- 				</a> -->
+				<ul class="navbar-nav ms-auto">
 					<!-- <li class="nav-item"><h:link class="nav-link" outcome="">NOS OFFRES</h:link></li> -->
 					<!-- <li class="nav-item"><h:link class="nav-link" outcome="">NOS COACHS</h:link></li> -->
 					<li class="nav-item"><h:link class="nav-link"
-							outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCEUIL</h:link></li>
+							outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link></li>
 					<li class="nav-item"><h:link class="nav-link"
 							outcome="Calendar.xhtml">PLANNING</h:link></li>
 					<li class="nav-item"><h:form>
@@ -71,10 +74,10 @@
 								action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">MON ESPACE</h:commandLink>
 						</h:form></li>
 					<li class="nav-item"><h:link class="nav-link"
-							outcome="SpaceLoginForm.xhtml">SE	CONNECTER</h:link></li>
+							outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link></li>
 					<li class="nav-item"><h:form>
 							<h:commandLink class="nav-link"
-								action="#{spaceController.simpleSpacelogout()}">DECONNECTION</h:commandLink>
+								action="#{spaceController.simpleSpacelogout()}">DECONNEXION</h:commandLink>
 						</h:form></li>
 				</ul>
 			</div>
@@ -84,7 +87,7 @@
 			<div
 				class=" row p-4 justify-content-around align-items-stretch navBar"
 				style="height: 5vh; position: fixed; top: 0px"></div>
-			<img src="resources/images/logo2.png" class="imgAccueil" />
+			<h:graphicImage library="images" name="Image2.jpg" styleClass="imgAccueil" />
 			<div class="container-fluid p-5">
 
 				<!-- section NOTRE PHILOSOPHIE-->
@@ -108,9 +111,7 @@
 
 					</div>
 					<div class="col-lg-6 col-sm-12 ">
-						<img
-							src="https://i.pinimg.com/564x/d2/04/13/d204131a139b6b4149df2545d4269d08.jpg"
-							alt="" class="imgIllu"></img>
+						<h:graphicImage library="images" name="Image10.jpg" styleClass="imgIllu"/>
 					</div>
 				</div>
 				<!--end section NOTRE PHILOSOPHIE-->
@@ -132,14 +133,17 @@
 				</div>
 				<!--end section Nos salles partenaires-->
 
-				<!-- section Commentaires Adhérents-->
-				<div class="row mb-5 contain-50">
-					<h2 class="text-uppercase">ABONNEMENTS</h2>
-					<div class="col-12">
+			
 
 						<!-- section Commentaires Adhérents-->
 						<div class="row mb-5 contain-50">
-							<h2 class="text-uppercase">ABONNEMENTS</h2>
+							<h2 class="text-uppercase">ABONNEMENT</h2>
+							<div>
+							<button>
+								<h:link class="dropdown-item"
+									outcome="CreateSubscriptionForm.xhtml">Nouvel abonnement</h:link>
+							</button>
+							</div>
 							<div class="col-12">
 								<div class="row justify-content-between ">
 
@@ -169,8 +173,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
+					
 				<div class="mb-2 mt-2  tatifCard col-sm-12 col-lg   ">
 					<div
 						class="bg-success d-flex flex-column mb-3 justify-content-between text-center align-content-between h-100">

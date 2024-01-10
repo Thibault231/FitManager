@@ -27,17 +27,21 @@
 				<h:outputText value="#{user.account.role}" />
 			</p:column>
 			<p:column headerText="Actions">
-				<p:linkButton outcome="UsersAccounts.xhtml" value="Modifier"
-					style="margin-right:20px;"
-					action="#{userController.updateUser()}">
-				</p:linkButton>
+				<h:form>
+					<p:commandButton value="Modifier" style="margin-right:20px;"
+						action="#{userController.updateUser()}">
+					</p:commandButton>
 
-				<p:linkButton outcome="UsersAccounts.xhtml" value="Supprimer"
-					style="margin-right:20px;"
-					action="#{userController.deleteUser()}">
-				</p:linkButton>
+					<p:commandButton type="Button" outcome="UsersAccounts.xhtml"
+						value="Supprimer" style="margin-right:20px;"
+						action="#{userController.deleteUser(user)}">
+
+					</p:commandButton>
+
+				</h:form>
+
+
 			</p:column>
-
 		</p:dataTable>
 		<br />
 
