@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" lang="fr">
+
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+	<ui:define name="titleValue">Spaces list : Fit Manager</ui:define>
+	<!-- Corp de la page -->
+	<ui:define name="content">
+
+		<p:tabView>
+			<p:tab title="Activities">
+				<p class="m-0">
+					<h:form id="activityCreationForm">
+						<div>
+
+							<p:dataTable var="space"
+								value="#{spaceController.allActiveSpacesOfManager}">
+								<p:column headerText="Name">
+									<h:outputText value="#{space.infos.configuration.fitnessName}" />
+								</p:column>
+								<p:column headerText="Id de l'espace">
+									<h:outputText value="#{space.spaceId}" />
+								</p:column>
+								<p:column headerText="Liens vers l'espace">
+									<h:commandButton value="Lien vers espace"
+										action="#{spaceController.goToSpaceIndex()}">
+										<f:param name="spaceId" value="#{space.spaceId}" />
+									</h:commandButton>
+								</p:column>
+							</p:dataTable>
+
+						</div>
+					</h:form>
+				</p>
+			</p:tab>
+		</p:tabView>
+
+	</ui:define>
+</ui:composition>
+</html>

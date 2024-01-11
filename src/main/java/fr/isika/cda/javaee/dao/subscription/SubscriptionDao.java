@@ -28,10 +28,10 @@ public class SubscriptionDao implements IDaoSubscription {
 	}
 
 	@Override
-	public boolean deleteSubscription(Long SubscriptionToDeleteId) {
-		Subscription subscriptionToDelete = em.find(Subscription.class, SubscriptionToDeleteId);
+	public boolean deleteSubscription(Long subscriptionToDeleteId) {
+		Subscription subscriptionToDelete = getSubscriptionById(subscriptionToDeleteId);
 		if (subscriptionToDelete != null) {
-			em.remove(SubscriptionToDeleteId);
+			em.remove(subscriptionToDelete);
 			return true;
 		} else {
 			return false;
@@ -40,7 +40,7 @@ public class SubscriptionDao implements IDaoSubscription {
 
 	@Override
 	public Subscription getSubscriptionById(Long SubscriptionToGetId) {
-		return em.createQuery("SELECT u FROM Subscription u WHERE u.subscriptionName = :subscriptionIdParam",
+		return em.createQuery("SELECT u FROM Subscription u WHERE u.subscriptionId = :subscriptionIdParam",
 				Subscription.class).setParameter("subscriptionIdParam", SubscriptionToGetId).getSingleResult();
 	}
 

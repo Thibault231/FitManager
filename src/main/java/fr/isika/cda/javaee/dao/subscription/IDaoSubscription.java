@@ -14,7 +14,7 @@ public interface IDaoSubscription {
 
 	Long createSubscription(Subscription subscriptionToCreate);
 
-	boolean deleteSubscription(Long SubscriptionToDeleteSubscriptionId);
+	boolean deleteSubscription(Long subscriptionToDeleteId);
 
 	Subscription getSubscriptionById(Long SubscriptionToGetId);
 

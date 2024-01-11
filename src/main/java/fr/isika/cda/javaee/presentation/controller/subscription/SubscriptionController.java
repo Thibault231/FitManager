@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -26,7 +26,7 @@ import fr.isika.cda.javaee.presentation.viewmodel.SubscriptionViewModel;
  *
  */
 @Named
-@ViewScoped
+@SessionScoped
 public class SubscriptionController implements Serializable {
 
 	private static final long serialVersionUID = 8496614779097792338L;
@@ -82,6 +82,16 @@ public class SubscriptionController implements Serializable {
 		return subscriptionDao.getSubscriptionByName(subscriptionName);
 	}
 
+	public Subscription getCurrentMemberSubscription() {
+		User currentUser = userDao.getUserById(SessionUtils.getUserIdFromSession());
+		return subscriptionDao.getSubscriptionById(currentUser.getCurrentSubScriptionId());
+	}
+
+	/**
+	 * Check if a member has a subscription in the current space.
+	 * 
+	 * @return (:Boolean)
+	 */
 	public boolean hasSubscription() {
 		return userDao.getUserById(SessionUtils.getUserIdFromSession()).getCurrentSubScriptionId() != null;
 	}
@@ -118,9 +128,28 @@ public class SubscriptionController implements Serializable {
 		return "Subscription.xhtml?faces-redirect=true&amp;subscriptionId=" + subscriptionId;
 	}
 
+	/**
+	 * Delete a subscription from the current space, using the subscription's id.
+	 * 
+	 * @param subscriptionToDeleteId
+	 * @return user's dashboard url (:String)
+	 */
 	public String deleteSubscription(Long subscriptionToDeleteId) {
-		subscriptionDao.deleteSubscription(subscriptionToDeleteId);
-		return "ManagerDashBoard";
+		Space currentSpace = spaceDao.getSpaceWithSubscription(SessionUtils.getSpaceIdFromSession());
+		for (int i = 0; i < currentSpace.getSubscriptions().size(); i++) {
+			Subscription sub = currentSpace.getSubscriptions().get(i);
+			if (sub.getSubscriptionId() == subscriptionToDeleteId) {
+				currentSpace.getSubscriptions().remove(sub);
+			}
+		}
+		spaceDao.updateSpace(currentSpace);
+		// subscriptionDao.deleteSubscription(subscriptionToDeleteId);
+		return SessionUtils.redirectToDashBoard();
+	}
+
+	public String updateSuscription() {
+		subscriptionDao.updateSubscription(this.subscriptionViewModel.getSubscription());
+		return SessionUtils.redirectToDashBoard();
 	}
 
 }

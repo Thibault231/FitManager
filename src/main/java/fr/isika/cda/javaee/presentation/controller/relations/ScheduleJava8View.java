@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.schedule.ScheduleEntryMoveEvent;
@@ -28,6 +28,8 @@ import org.primefaces.model.ScheduleModel;
 @Named
 @ViewScoped
 public class ScheduleJava8View implements Serializable {
+
+	private static final long serialVersionUID = -1603972934902381L;
 
 	private ScheduleModel eventModel;
 

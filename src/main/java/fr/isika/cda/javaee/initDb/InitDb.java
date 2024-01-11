@@ -10,9 +10,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
+import fr.isika.cda.javaee.dao.subscription.IDaoSubscription;
 import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.spaces.Space;
+import fr.isika.cda.javaee.entity.subscription.Subscription;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
@@ -36,6 +38,9 @@ public class InitDb {
 
 	@Inject
 	private IDaoSpace spaceDao;
+
+	@Inject
+	private IDaoSubscription subDao;
 
 	@PostConstruct
 	public void init() {
@@ -81,6 +86,18 @@ public class InitDb {
 			userMember.getProfile().getCivility().setName("Senouci");
 			userDao.createUser(userMember);
 			spaceOne.getUsers().add(userMember);
+			spaceDao.updateSpace(spaceOne);
+
+			/*
+			 * Création de quelquessouscriptions pour la vue allCourses (Calendar)
+			 */
+			Subscription subscriptionOne = new Subscription(true);
+			subscriptionOne.getPrice().setMonthlyPrice(100F);
+			subscriptionOne.setSubscriptionName("BASIC");
+			subscriptionOne.setDescription("Accés libre aux machines.\nAccès au sone.\n Cours payant à l'unité.");
+			subscriptionOne.setEngagement("Annuel");
+			subDao.createSubscription(subscriptionOne);
+			spaceOne.getSubscriptions().add(subscriptionOne);
 			spaceDao.updateSpace(spaceOne);
 
 			/*
