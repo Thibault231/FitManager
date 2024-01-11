@@ -33,25 +33,32 @@
 				onclick="PF('UpdateAccount').show();" />
 		</h:panelGrid>
 		<hr />
-
+<p:tabView>
 		<p:tab title="Cours">
 		<h:panelGrid columns="1" cellpadding="5">
 			<p:dataTable value="#{courseController.allCoachCourses}" var="course">
 			    <p:column headerText="Dénomination">
 					<h:outputText value="#{course.name}" />
 				</p:column>
-			    <p:column headerText="Dénomination">
+			    <p:column headerText="Date et horaire">
 					<h:outputText value="#{course.startDate}" />
 				</p:column>
 			    <p:column headerText="Dénomination">
 					<h:outputText value="#{course.endDate}" />
 				</p:column>
-			    <p:column headerText="Dénomination">
+			    <p:column headerText="Description">
 					<h:outputText value="#{course.description}" />
+				</p:column>
+				<p:column headerText="Actions">
+				<h:form>
+					<p:commandButton value="Supprimer" action="#{courseController.deleteCourse(course.id)}">
+					</p:commandButton>
+				</h:form>
 				</p:column>
 			</p:dataTable>
 		</h:panelGrid>
 		</p:tab>
+		</p:tabView>
 		<h:panelGrid columns="1" cellpadding="5">
 		<h:link outcome="AddCoursesCalendar.xhtml" value="Ajouter des cours" />
 		</h:panelGrid>

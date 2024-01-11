@@ -59,7 +59,6 @@
 						value="#{courseController.event.description}">
 					</p:inputTextarea>
 
-					<p:commandButton type="reset" value="Reset" />
 					<p:commandButton id="addButton" value="Save"
 						action="#{courseController.addEvent}"
 						oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />

@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import fr.isika.cda.javaee.entity.plateform.Course;
+import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.viewmodel.CourseForm;
 
 @Stateless
@@ -24,7 +25,8 @@ public class CourseDao implements IDaoCourse {
 
 	@Override
 	public Course getCourseById(Long courseId) {
-		return em.find(Course.class, courseId);
+		return em.createQuery("SELECT c FROM Course c WHERE c.id = :courseIdParam", Course.class)
+				.setParameter("courseIdParam", courseId).getSingleResult();
 	}
 
 	@Override

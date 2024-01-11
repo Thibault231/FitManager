@@ -129,8 +129,10 @@ public class CourseController implements Serializable {
 		eventModel.addEvent(event);
 	}
 
-	public void deleteCourse(Long id) {
-		courseDao.deleteCourses(id);
+	public String deleteCourse(Long courseToDeleteId) {
+		courseDao.deleteCourses(courseToDeleteId);
+		return "CoachDashboard?faces-redirect=true";
+
 	}
 
 	public void onEventSelect(SelectEvent<ScheduleEvent<Course>> selectEvent) {
