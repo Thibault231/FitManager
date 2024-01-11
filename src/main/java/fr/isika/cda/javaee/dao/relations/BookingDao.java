@@ -35,7 +35,7 @@ public class BookingDao implements IBookingDao {
 	@Override
 	public Booking getBookingingById(Long bookingId) {
 		return em.createQuery("SELECT b FROM Booking b WHERE b.bookingId = :bookingIdParam", Booking.class)
-				.setParameter("bookinIdParam", bookingId).getSingleResult();
+				.setParameter("bookingIdParam", bookingId).getSingleResult();
 	}
 
 	@Override
