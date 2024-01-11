@@ -2,6 +2,12 @@ package fr.isika.cda.javaee.presentation.viewmodel;
 
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 
+/**
+ * SubscriptionViewModel for Subscription controller
+ * 
+ * @author Nene
+ *
+ */
 public class SubscriptionViewModel {
 
 	private Long subscriptionId;
