@@ -1,30 +1,22 @@
 package fr.isika.cda.javaee.presentation.controller.spaces;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
 import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
 import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.entity.users.Account;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
-import fr.isika.cda.javaee.exceptions.UserExistsException;
-import fr.isika.cda.javaee.presentation.util.FileUploadUtils;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 import fr.isika.cda.javaee.services.UserServices;

@@ -7,11 +7,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import fr.isika.cda.javaee.dao.plateform.ActivityDao;
 import fr.isika.cda.javaee.dao.spaces.RoomDao;
-import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.entity.plateform.Room;
-import fr.isika.cda.javaee.presentation.viewmodel.ActivityForm;
 import fr.isika.cda.javaee.presentation.viewmodel.RoomForm;
 
 /**

@@ -25,7 +25,6 @@
 
 			<h:form>
 				<p:growl id="messages" showDetail="true" />
-
 				<h:panelGrid columnClasses="value">
 					<p:schedule id="schedule" value="#{scheduleJava8View.eventModel}"
 						widgetVar="myschedule">
@@ -40,9 +39,9 @@
 							listener="#{scheduleJava8View.onEventMove}" update="messages" />
 						<p:ajax event="eventResize"
 							listener="#{scheduleJava8View.onEventResize}" update="messages" />
-
 					</p:schedule>
 				</h:panelGrid>
+
 
 				<p:dialog widgetVar="eventDialog" header="Event Details"
 					showEffect="clip" hideEffect="clip">
@@ -50,15 +49,12 @@
 						<p:outputLabel for="title" value="Titles:" />
 						<p:outputLabel id="title" value="#{scheduleJava8View.event.title}"
 							required="true" disabled="true" />
-
 						<p:outputLabel for="from" value="From:" />
 						<p:outputLabel id="from"
 							value="#{scheduleJava8View.event.startDate}" appendTo="@(body)" />
-
 						<p:outputLabel for="to" value="To:" />
 						<p:outputLabel id="to" value="#{scheduleJava8View.event.endDate}"
 							appendTo="@(body)" disabled="true" />
-
 					</h:panelGrid>
 				</p:dialog>
 			</h:form>
