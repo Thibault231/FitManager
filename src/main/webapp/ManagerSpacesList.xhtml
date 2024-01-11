@@ -7,37 +7,37 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 	<ui:define name="titleValue">Spaces list : Fit Manager</ui:define>
-	<!-- Corp de la page -->
+	<!-- Corps de la page -->
 	<ui:define name="content">
 
 		<p:tabView>
 			<p:tab title="Activities">
 				<p class="m-0">
-					<h:form id="activityCreationForm">
-						<div>
-							<p:dataTable var="space"
-								value="#{spaceController.allActiveSpacesOfManager}">
-								<p:column headerText="Logo">
-								<div class="logoContainer">
-										<p:graphicImage library="images" name="logo/#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index" />
-								</div>
-								</p:column>
-								<p:column headerText="Nom">
-									<h:outputText value="#{space.infos.configuration.fitnessName}" />
-								</p:column>
-								<p:column headerText="Adresse">
-									<h:outputText value="#{space.infos.administrative.address}" />
-								</p:column>
-								<p:column headerText="Liens vers l'espace">
-									<h:commandButton class="plateform_Button" value="Lien vers espace"
-										action="#{spaceController.goToSpaceIndex()}">
-										<f:param name="spaceId" value="#{space.spaceId}" />
-									</h:commandButton>
-								</p:column>
-							</p:dataTable>
+				<h:form id="activityCreationForm">
+					<div>
+						<p:dataTable var="space"
+							value="#{spaceController.allActiveSpacesOfManager}">
+							<p:column headerText="Logo">
+							<div class="logoContainer">
+									<p:graphicImage library="images" name="logo/#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index" />
+							</div>
+							</p:column>
+							<p:column headerText="Nom">
+								<h:outputText value="#{space.infos.configuration.fitnessName}" />
+							</p:column>
+							<p:column headerText="Adresse">
+								<h:outputText value="#{space.infos.administrative.address}" />
+							</p:column>
+							<p:column headerText="Liens vers l'espace">
+								<h:commandButton class="plateform_Button" value="Lien vers espace"
+									action="#{spaceController.goToSpaceIndex()}">
+									<f:param name="spaceId" value="#{space.spaceId}" />
+								</h:commandButton>
+							</p:column>
+						</p:dataTable>
 
-						</div>
-					</h:form>
+					</div>
+				 </h:form>
 				</p>
 			</p:tab>
 		</p:tabView>

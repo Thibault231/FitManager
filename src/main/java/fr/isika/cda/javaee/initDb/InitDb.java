@@ -121,7 +121,7 @@ public class InitDb {
 			spaceDao.updateSpace(spaceOne);
 
 			/*
-			 * Création de quelquessouscriptions pour la vue allCourses (Calendar)
+			 * Création de quelques souscriptions pour la vue allCourses (Calendar)
 			 */
 			Subscription subscriptionOne = new Subscription(true);
 			subscriptionOne.getPrice().setMonthlyPrice(100F);
