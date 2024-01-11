@@ -4,7 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import fr.isika.cda.javaee.entity.relations.ActivityTest;
+import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.entity.relations.Planning;
 
 @Stateless
@@ -16,7 +16,7 @@ public class PlanningDao implements IPlanningDao {
 //*************************************************************
 	@Override
 	public Long createPlanning(Planning planningToCreate) {
-		for (ActivityTest activityTest : planningToCreate.getActivitiesList()) {
+		for (Activity activityTest : planningToCreate.getActivitiesList()) {
 			em.persist(activityTest);
 		}
 		em.persist(planningToCreate);

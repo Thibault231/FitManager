@@ -9,7 +9,7 @@ import javax.inject.Named;
 
 import fr.isika.cda.javaee.dao.relations.IBookingDao;
 import fr.isika.cda.javaee.dao.relations.IPlanningDao;
-import fr.isika.cda.javaee.entity.relations.ActivityTest;
+import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.entity.relations.Planning;
 import fr.isika.cda.javaee.presentation.viewmodel.RelationViewModel;
 
@@ -47,8 +47,8 @@ public class RelationsController implements Serializable {
 
 	public String printPlanning() {
 		Planning planing = new Planning();
-		planing.getActivitiesList().add(new ActivityTest());
-		planing.getActivitiesList().add(new ActivityTest());
+		planing.getActivitiesList().add(new Activity());
+		planing.getActivitiesList().add(new Activity());
 		planningDao.createPlanning(planing);
 		relationViewModel.setPlanning(planningDao.getPlanningById(relationViewModel.getSpaceId()));
 		return "TestRelation";

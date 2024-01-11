@@ -5,6 +5,12 @@ import java.util.Map;
 
 import fr.isika.cda.javaee.entity.spaces.Space;
 
+/**
+ * Manage the persistence of Space objects.
+ * 
+ * @author Alex Charef Nene Thibault
+ *
+ */
 public interface IDaoSpace {
 
 	/**

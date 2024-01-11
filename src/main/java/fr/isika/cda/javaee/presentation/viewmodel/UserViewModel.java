@@ -1,23 +1,20 @@
 package fr.isika.cda.javaee.presentation.viewmodel;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.file.UploadedFile;
-
 import fr.isika.cda.javaee.entity.users.User;
-import fr.isika.cda.javaee.presentation.util.FileUploadUtils;
 
+/**
+ * UserViewModel for User controller
+ * 
+ * @author Thibault
+ *
+ */
 public class UserViewModel {
 	private String email;
 	private String password;
 	private User user;
-	private UserForm form;
 
 	public UserViewModel() {
 		this.user = new User(true);
-		this.form = new UserForm();
 	}
 
 //**********************************
@@ -46,21 +43,11 @@ public class UserViewModel {
 
 	}
 
-	public UserForm getForm() {
-		return form;
-	}
-
-	public void setForm(UserForm form) {
-		this.form = form;
-
-	}
-
 	@Override
 	public String toString() {
-		return "UserViewModel [email=" + email + ", password=" + password + ", user=" + user + ", form=" + form
-				+ ", getUser()=" + getUser() + ", getEmail()=" + getEmail() + ", getPassword()=" + getPassword()
-				+ ", getForm()=" + getForm() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+		return "UserViewModel [email=" + email + ", password=" + password + ", user=" + user + ", getUser()="
+				+ getUser() + ", getEmail()=" + getEmail() + ", getPassword()=" + getPassword() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 }

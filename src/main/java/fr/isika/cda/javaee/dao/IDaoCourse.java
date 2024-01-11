@@ -3,17 +3,14 @@ package fr.isika.cda.javaee.dao;
 import java.util.List;
 
 import fr.isika.cda.javaee.entity.plateform.Course;
-import fr.isika.cda.javaee.presentation.viewmodel.CourseForm;
 
+/**
+ * Manage the persistence of Course objects.
+ * 
+ * @author Thibault Charef
+ *
+ */
 public interface IDaoCourse {
-	/**
-	 * Create a new course in the database, using a view model object.
-	 * 
-	 * @param courseForm
-	 * @return
-	 */
-	public Long createCourse(CourseForm courseForm);
-
 	/**
 	 * Get a specifc course from the database, using it's Id. Return the course if
 	 * it exists, null otherwise.

@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Any musculation tool of the fitness space.
+ * 
+ * @author Charef
+ *
+ */
 @Entity
 public class Machine {
 

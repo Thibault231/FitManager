@@ -7,6 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * All personal datas of a user, including Civility, Address and Contact.
+ * 
+ * @author Alex Thibault
+ *
+ */
 @Entity
 public class Profile {
 	@Id

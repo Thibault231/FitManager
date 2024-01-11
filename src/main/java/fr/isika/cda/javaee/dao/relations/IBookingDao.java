@@ -4,6 +4,12 @@ import java.util.List;
 
 import fr.isika.cda.javaee.entity.relations.Booking;
 
+/**
+ * Manage the persistence of Booking objects.
+ * 
+ * @author Thibault Charef
+ *
+ */
 public interface IBookingDao {
 
 	/**

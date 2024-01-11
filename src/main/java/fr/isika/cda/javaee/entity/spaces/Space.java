@@ -30,9 +30,6 @@ public class Space {
 	private Infos infos;
 
 	@OneToOne
-	private OnlineShop onlineShop;
-
-	@OneToOne
 	private Planning planning;
 
 	@OneToOne
@@ -72,7 +69,6 @@ public class Space {
 	public Space(boolean isViewModel) {
 		Configuration configuration = new Configuration();
 		configuration.setStyle(new Style());
-		this.onlineShop = new OnlineShop();
 		this.planning = new Planning();
 		this.infos = new Infos();
 		this.infos.setAdministrative(new Administrative());
@@ -104,14 +100,6 @@ public class Space {
 
 	public void setInfos(Infos infos) {
 		this.infos = infos;
-	}
-
-	public OnlineShop getOnlineShop() {
-		return onlineShop;
-	}
-
-	public void setOnlineShop(OnlineShop onlineShop) {
-		this.onlineShop = onlineShop;
 	}
 
 	public List<User> getUsers() {

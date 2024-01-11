@@ -14,7 +14,6 @@ import fr.isika.cda.javaee.dao.IDaoSpace;
 import fr.isika.cda.javaee.dao.IDaoSubscription;
 import fr.isika.cda.javaee.dao.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.entity.subscription.Membership;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;

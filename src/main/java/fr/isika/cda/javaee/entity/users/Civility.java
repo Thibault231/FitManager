@@ -12,6 +12,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Personal datas of a user.
+ * 
+ * @author Alex Thibault
+ *
+ */
 @Entity
 public class Civility {
 	@Id

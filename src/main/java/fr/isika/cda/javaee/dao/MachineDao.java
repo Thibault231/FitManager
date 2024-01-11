@@ -9,6 +9,12 @@ import javax.persistence.PersistenceContext;
 import fr.isika.cda.javaee.entity.plateform.Machine;
 import fr.isika.cda.javaee.presentation.viewmodel.MachineForm;
 
+/**
+ * Manage the persistence of Machine objects in MySQL DB.
+ * 
+ * @author Charef
+ *
+ */
 @Stateless
 public class MachineDao {
 

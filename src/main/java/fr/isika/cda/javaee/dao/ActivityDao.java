@@ -9,6 +9,12 @@ import javax.persistence.PersistenceContext;
 import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.presentation.viewmodel.ActivityForm;
 
+/**
+ * Manage the persistence of Activity objects in MySQL DB.
+ * 
+ * @author Charef
+ *
+ */
 @Stateless
 public class ActivityDao {
 
@@ -25,10 +31,10 @@ public class ActivityDao {
 	public Activity getActivityById(Long id) {
 		return entityManager.find(Activity.class, id);
 	}
-	
+
 	public void updateActivity(Activity activity) {
-        entityManager.merge(activity);
-    }
+		entityManager.merge(activity);
+	}
 
 	public List<Activity> getAllActivities() {
 		return entityManager.createQuery("SELECT a FROM Activity a", Activity.class).getResultList();
@@ -38,6 +44,4 @@ public class ActivityDao {
 		entityManager.remove(entityManager.find(Activity.class, id));
 	}
 
-	
-	
 }

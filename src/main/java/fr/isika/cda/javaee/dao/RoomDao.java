@@ -6,11 +6,15 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.entity.plateform.Room;
-import fr.isika.cda.javaee.presentation.viewmodel.ActivityForm;
 import fr.isika.cda.javaee.presentation.viewmodel.RoomForm;
 
+/**
+ * Manage the persistence of Room objects in MySQL DB.
+ * 
+ * @author Charef
+ *
+ */
 @Stateless
 public class RoomDao {
 	@PersistenceContext
