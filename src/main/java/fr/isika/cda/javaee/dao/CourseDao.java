@@ -53,7 +53,7 @@ public class CourseDao implements IDaoCourse {
 	}
 
 	@Override
-	public void updateCourses(Course courseToUpdate) {
+	public void updateCourse(Course courseToUpdate) {
 		em.merge(courseToUpdate);
 	}
 

@@ -123,11 +123,9 @@ public class CourseController implements Serializable {
 	}
 
 	private void transformCoursetoEvent(Course course) {
-		DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder()
-				.id(String.valueOf(course.getId()))
-				.title(course.getName())
-				.startDate(course.getStartDate()).endDate(course.getEndDate()).description(course.getDescription())
-				.borderColor("orange").data(course).build();
+		DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder().id(String.valueOf(course.getId()))
+				.title(course.getName()).startDate(course.getStartDate()).endDate(course.getEndDate())
+				.description(course.getDescription()).borderColor("orange").data(course).build();
 		eventModel.addEvent(event);
 	}
 
@@ -171,17 +169,16 @@ public class CourseController implements Serializable {
 	}
 
 	private void updateEvent() {
-
-		Course courseToCreate = new Course(true);
-		courseToCreate.setName(event.getTitle());
-		courseToCreate.setLinkedSpaceId(SessionUtils.getSpaceIdFromSession());
-		courseToCreate.setStartDate(event.getStartDate());
-		courseToCreate.setEndDate(event.getEndDate());
-		courseToCreate.setDescription(event.getDescription());
+		Course courseToUpdate = courseDao.getCourseById((Long.valueOf(event.getId())));
+		courseToUpdate.setName(event.getTitle());
+		courseToUpdate.setLinkedSpaceId(SessionUtils.getSpaceIdFromSession());
+		courseToUpdate.setStartDate(event.getStartDate());
+		courseToUpdate.setEndDate(event.getEndDate());
+		courseToUpdate.setDescription(event.getDescription());
 		User currentCoach = userDao.getUserById(SessionUtils.getUserIdFromSession());
-		courseToCreate.setCoach(currentCoach);
+		courseToUpdate.setCoach(currentCoach);
 		eventModel.updateEvent(event);
-		courseDao.saveCourses(courseToCreate);
+		courseDao.updateCourse(courseToUpdate);
 
 	}
 
@@ -202,7 +199,7 @@ public class CourseController implements Serializable {
 	private void addMessage(FacesMessage message) {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
-	
+
 	public void resetEvent() {
 		event = new DefaultScheduleEvent();
 	}

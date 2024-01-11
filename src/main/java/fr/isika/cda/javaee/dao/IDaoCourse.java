@@ -62,5 +62,5 @@ public interface IDaoCourse {
 	 * 
 	 * @param courseToUpdate (:Long)
 	 */
-	public void updateCourses(Course courseToUpdate);
+	public void updateCourse(Course courseToUpdate);
 }
