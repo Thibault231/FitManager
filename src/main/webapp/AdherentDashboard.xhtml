@@ -47,7 +47,7 @@
 		<hr/>
 		<h2>Mes réservations</h2>
 	<p:tabView>	
-	<p:tab title="Cours">
+	<p:tab title="CMes réservations">
        	<h:panelGrid columns="1" cellpadding="5">
 		<p:link value="Réserver un cours" outcome="BookingCalendar.xhtml" type="button" />
 		
@@ -63,8 +63,7 @@
 				</p:column>
 				<p:column headerText="Action">
 					<h:form>
-					<p:commandButton type="Button"
-						value="Supprimer" style="margin-right:20px;"
+					<p:commandButton type="Button" value="Supprimer" style="margin-right:20px;"
 						action="#{bookingController.cancelBooking(booking.bookingId)}">
 					</p:commandButton>
 					 </h:form>

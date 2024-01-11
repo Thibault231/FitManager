@@ -45,7 +45,6 @@ public class Booking {
 	public Booking(boolean isForViewModel) {
 		this.linkedCourse = new Course();
 		this.member = new User();
-
 	}
 
 //***********************************************	

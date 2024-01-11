@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.relations.Booking;
@@ -23,7 +24,12 @@ public class BookingDao implements IBookingDao {
 
 	@Override
 	public void cancelBooking(Long bookingToCancelId) {
-		em.remove(getBookingingById(bookingToCancelId));
+		try {
+			Booking bookingToDelete = getBookingingById(bookingToCancelId);
+			em.remove(bookingToDelete);
+		} catch (NoResultException ex) {
+			System.out.println(ex);
+		}
 	}
 
 	@Override
