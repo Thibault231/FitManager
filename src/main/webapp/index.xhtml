@@ -13,8 +13,9 @@
 			<!-- section NOTRE PHILOSOPHIE-->
 			<div class="row pt-5 contain-80">
 				<div class="col-lg-6 col-sm-12 mt-auto mb-auto sectionperso">
-					<h2>NOTRE PHILOSOPHIE</h2>
-					<div class="scrollElement">
+					<h2 class="titre2">NOTRE PHILOSOPHIE</h2>
+					<div style="height: 25em;">
+						<div class="scrollElement">
 						<p>Bienvenue chez Fitmanager, l'entreprise qui donne vie à
 							votre entreprise dédiée à votre passion pour le sport et le
 							bien-être global. Depuis notre création, nous nous sommes engagés
@@ -40,12 +41,14 @@
 							également par son engagement envers la durabilité, avec des
 							initiatives écoresponsables visant à préserver notre planète tout
 							en favorisant un mode de vie sain.</p>
-							
-						<div class="d-flex justify-content-around w-100 mt-5">
+											
+					</div>
+					<div class="bando d-flex w-100 justify-content-end ">
 							<a href="" class="btn btn-outline-primary btn-lg">Demo</a>
 						</div>
+						
 					</div>
-
+					
 				</div>
 				<div class="col-lg-5 col-sm-12 ">
 					<div class="dualimgcontainer">
@@ -60,11 +63,10 @@
 			<!--end section NOTRE PHILOSOPHIE-->
 
 			<!-- section Commentaires Adhérents-->
-			<div class="row mb-5 contain-50">
-				<h2>Nos abonnements</h2>
-				<div class="d-flex w-100 justify-content-between flex-wrap">
-					<div class="mb-2 mt-2 bg-success"
-						style="width: 22%; height: 18em; border: solid 2px">
+			<div class="row mb-5 contain-50 pt-5">
+				<h2 class="titre2">Nos abonnements</h2>
+				<div class="d-flex w-75 justify-content-between flex-wrap">
+					<div class="mb-2 mt-2 cardAbonnement">
 						<h3>BASIC</h3>
 						<ul>
 							<li>Bénéficier d'un espace web personnalisable, dédié à
@@ -74,8 +76,7 @@
 								de votre salle de sport.</li>
 						</ul>
 					</div>
-					<div class="mb-2 mt-2 bg-success"
-						style="width: 22%; height: 18em; border: solid 2px">
+					<div class="mb-2 mt-2 cardAbonnement">
 						<h3>PREMIUM</h3>
 						<ul>
 							<li>Tous les avantages de l'offre BASIC</li>
@@ -84,8 +85,7 @@
 							<li>Accés à un planning annuel.</li>
 						</ul>
 					</div>
-					<div class="mb-2 mt-2 bg-success"
-						style="width: 22%; height: 18em; border: solid 2px">
+					<div class="mb-2 mt-2 cardAbonnement">
 						<h3>CLIMAX</h3>
 						<ul>
 							<li>Tous les avantages de l'offre PREMIUM</li>
@@ -102,15 +102,16 @@
 			<!--end section Commentaires Adhérents-->
 
 			<!-- section Nos salles partenaires-->
-			<div class="row mb-5 contain-50">
-				<h2>Nos salles partenaires</h2>
+			<div class="row mb-5 contain-50 pt-5">
+	
+				<h2 class="titre2">Nos salles partenaires</h2>
+					
 				<h:form>
+				<div class="d-flex w-100 flex-wrap g-2">
 				<ui:repeat var="space" value="#{spaceController.allActiveSpaces}">
 								
-						<div class="mb-2 mt-2 "
-							style="width: 22%; height: 13em; text-align: center">
-							<h:outputText value="#{space.spaceId}" />
-							<h:outputText value="#{space.infos.configuration.fitnessName}" />
+						<div class="mb-2 mt-2 cardAbonnement  ">
+						
 							<h:graphicImage library="images" name="#{space.infos.configuration.logo}" class="img_index_content" />
 							<h:commandButton value="Lien vers espace" action="#{spaceController.goToSpaceIndex()}">
 								<f:param name="spaceId" value="#{space.spaceId}" />
@@ -118,6 +119,7 @@
 						</div>
 								
 				</ui:repeat>
+				</div>
 				</h:form>
 				
 <!-- 				<div class="d-flex w-100 justify-content-between flex-wrap"> -->
@@ -153,7 +155,7 @@
 			<!-- section Abonnez-vous !!-->
 			<div class="row mb-5">
 				<div class="col-sm-12 col-md-6 ">
-					<h2>Abonnez-vous !!</h2>
+					<h2 class="titre2">Abonnez-vous !!</h2>
 					<p>Rejoignez la famille Fitmanager et découvrez une approche
 						holistique du bien-être qui transcende les frontières du simple
 						site web. Ensemble, nous façonnons un avenir où chacun de vos
