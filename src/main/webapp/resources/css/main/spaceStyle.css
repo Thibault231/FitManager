@@ -121,16 +121,18 @@
             object-fit: cover;
 }
 
-.card {
+
+
+
+
+.surface-card {
     overflow: hidden;
     text-align: center;
-    min-width: 22%;
-    margin: 1px;
-    width: 50vw;
+    width: 20vw;
 }
 
 .card-header {
-    background-color: #1C3659;
+    background-color: #2596be;
     text-align: center;
 
 }
@@ -168,10 +170,6 @@
             justify-content: center;
         }
 
-.tatifCard{
-            min-width: 22%;
-
-        }
 
 .Intituledelement {
 

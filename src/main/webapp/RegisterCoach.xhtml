@@ -99,13 +99,19 @@
 									<f:selectItem itemLabel="Autre" itemValue="Other" />
 								</h:selectOneMenu>
 								<hr />
+					
+								<h:form>
 								<h:outputLabel id="fileUploadLbl" class="outputLabel">File : </h:outputLabel>
-								<p:fileUpload listener="#{spaceController.uploadAdministrativeDocument}"
-									styleClass="w-100" mode="advanced" dragDropSupport="false" />
+								<p:fileUpload listener="#{spaceUser.uploadAdministrativeDocument()}"
+									styleClass="w-100" mode="advanced" dragDropSupport="false" />								
+								</h:form>
+
+								<p:graphicImage library="documents"
+									name="#{spaceController.spaceViewModel.newUser}" />
 							</div>
 							<h:commandButton class="btn btn-warning"
 								value="Créer un compte coach"
-								action="#{spaceController.createCoachAccount()}" />
+								action="#{spaceUser.createCoachAccount()}" />
 
 							<h:link class="text-center"
 								outcome="ManagerSpaceDashBoard"
