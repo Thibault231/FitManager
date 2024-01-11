@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.entity.relations;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -22,9 +21,9 @@ public class Booking {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date registrationDate;
-  
+
 	private Long spaceId;
-  
+
 	@OneToOne
 	private User member;
 
@@ -73,7 +72,6 @@ public class Booking {
 	public void setBirthday(Date birthday) {
 		this.registrationDate = birthday;
 	}
-
 
 	public Date getRegistrationDate() {
 		return registrationDate;

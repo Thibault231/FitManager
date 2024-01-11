@@ -16,7 +16,6 @@ import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.relations.Booking;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
-import fr.isika.cda.javaee.presentation.viewmodel.BookingForm;
 
 @Named
 @ViewScoped
@@ -36,17 +35,10 @@ public class BookingController implements Serializable {
 	@Inject
 	private CourseController courseController;
 
-	private BookingForm bookingForm = new BookingForm();
-
 //***********************************************	
 
-	@PostConstruct
-	public void init() {
-		this.bookingForm = new BookingForm();
-	}
-
 //***********************************************	
-	public void createBooking() {
+	public String createBooking() {
 		// Get the current user object
 		User currentUser = userDao.getUserById(SessionUtils.getUserIdFromSession());
 		// Get the current course object
@@ -63,12 +55,13 @@ public class BookingController implements Serializable {
 		bookingDao.createBooking(bookingToCreate);
 		// Reset event
 		courseController.resetEvent();
+		return "BookingCalendar.xhtml?faces-redirect=true";
 	}
 
 	/**
 	 * Create a new booking and link through it a course and a member.
 	 */
-	public void createBookingLinkedToMember() {
+	public String createBookingLinkedToMember() {
 		// Get the current user object
 		User currentUser = userDao.getUserById(SessionUtils.getUserIdFromSession());
 		// Get the current course object
@@ -83,14 +76,12 @@ public class BookingController implements Serializable {
 		// Persist booking
 		courseDao.saveCourses(currentCourse);
 		bookingDao.createBooking(bookingToCreate);
+		return "BookingCalendar.xhtml?faces-redirect=true";
 	}
-	
-	public void cancelBooking() {
-		Long bookingIdToCancel = bookingForm.getBookingId();
-		if (bookingIdToCancel != null) {
-			bookingDao.cancelBooking(bookingIdToCancel);
-		}
-		
+
+	public String cancelBooking(Long bookingToCancelId) {
+		bookingDao.cancelBooking(bookingToCancelId);
+		return "AdherentDashboard?faces-redirect=true";
 	}
 
 	public List<Booking> getAllBookingOfAMember() {

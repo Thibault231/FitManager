@@ -20,17 +20,16 @@ public class BookingDao implements IBookingDao {
 		em.persist(bookingToCreate);
 		return bookingToCreate.getBookingId();
 	}
-	
-	public void cancelBooking(Long bookingId) {
-		Booking booking = getBookingingById(bookingId);
-		if (booking != null) {
-			em.remove(booking);
-		}
+
+	@Override
+	public void cancelBooking(Long bookingToCancelId) {
+		em.remove(getBookingingById(bookingToCancelId));
 	}
 
 	@Override
 	public Booking getBookingingById(Long bookingId) {
-		return em.find(Booking.class, bookingId);
+		return em.createQuery("SELECT b FROM Booking b WHERE b.bookingId = :bookingIdParam", Booking.class)
+				.setParameter("bookinIdParam", bookingId).getSingleResult();
 	}
 
 	@Override
@@ -50,7 +49,5 @@ public class BookingDao implements IBookingDao {
 		return em.createQuery("SELECT b FROM Booking b WHERE b.coach.userId =" + coachId, Booking.class)
 				.getResultList();
 	}
-
-	
 
 }
