@@ -193,11 +193,9 @@ public class SpaceController implements Serializable {
 	 * @return url of the index space's page (:String)
 	 */
 	public String simpleSpacelogout() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		Long spaceId = (Long) fc.getExternalContext().getSessionMap().get("spaceId");
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		session.invalidate();
-		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
+		Long spaceId = SessionUtils.getSpaceIdFromSession();
+		SessionUtils.invalidateSession();
+		SessionUtils.putSpaceIdInSession(spaceId);
 		return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 	}
 
@@ -208,10 +206,8 @@ public class SpaceController implements Serializable {
 	 * @return url (:String)
 	 */
 	public String spaceLogOut(Long spaceId, String viewToReturn) {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		session.invalidate();
-		FacesContext fc = FacesContext.getCurrentInstance();
-		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
+		SessionUtils.invalidateSession();
+		SessionUtils.putSpaceIdInSession(spaceId);
 		return viewToReturn;
 	}
 

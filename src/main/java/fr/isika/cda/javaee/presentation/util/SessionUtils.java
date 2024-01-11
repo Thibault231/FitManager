@@ -1,6 +1,7 @@
 package fr.isika.cda.javaee.presentation.util;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.entity.users.Role;
 
@@ -22,5 +23,15 @@ public final class SessionUtils {
 	public static Role getUserRoleFromSession() {
 		Role userRole = (Role) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("role");
 		return userRole;
+	}
+
+	public static void invalidateSession() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.invalidate();
+	}
+
+	public static void putSpaceIdInSession(Long spaceId) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
 	}
 }

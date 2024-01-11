@@ -180,34 +180,6 @@ public class UserOnSpaceController implements Serializable {
 		}
 	}
 
-	/**
-	 * Logout a connected user on the space and return the space index view.
-	 * 
-	 * @return url of the index space's page (:String)
-	 */
-	public String simpleSpacelogout() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		Long spaceId = (Long) fc.getExternalContext().getSessionMap().get("spaceId");
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		session.invalidate();
-		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
-		return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
-	}
-
-	/**
-	 * Logout a connected user on plateform and reload a session with only spaceId
-	 * parameter. <b> Use this method only for logout from plateform</b>
-	 * 
-	 * @return url (:String)
-	 */
-	public String spaceLogOut(Long spaceId, String viewToReturn) {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		session.invalidate();
-		FacesContext fc = FacesContext.getCurrentInstance();
-		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
-		return viewToReturn;
-	}
-
 	public void setUploadedFile(UploadedFile uploadedFile) {
 		this.uploadedFile = uploadedFile;
 	}

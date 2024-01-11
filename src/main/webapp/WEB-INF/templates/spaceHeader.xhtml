@@ -67,15 +67,26 @@
 	<nav class="navbar navbar-expand-lg static-top">
 		<div class="container-fluid">
 			<ul class="navbar-nav ms-auto">
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="RegisterAdherent.xhtml">S'INSCRIRE A LA SALLE</h:link>
-					</li>
+				<li class="nav-item">
+					<h:link class="nav-link" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
+				</li>
 				<li class="nav-item">
 					<h:link class="nav-link" outcome="Calendar.xhtml">PLANNING</h:link>
 				</li>
-				<li class="nav-item">
-					<h:link class="nav-link" outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link>
-				</li>
+				<ui:fragment rendered="#{not spaceController.isUserConnected()}">
+					<li class="nav-item">
+						<h:link class="nav-link" outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link>
+					</li>
+					<li class="nav-item">
+						<h:link class="nav-link" outcome="RegisterAdherent.xhtml">S'INSCRIRE A LA SALLE</h:link>
+					</li>
+				</ui:fragment>
+				<ui:fragment rendered="#{spaceController.isUserConnected()}">
+					
+					<li class="nav-item">
+						<h:commandLink class="nav-link" action="#{spaceController.simpleSpacelogout()}">DECONNEXION</h:commandLink>
+					</li>
+				</ui:fragment>
 			</ul>
 		</div>
 	</nav>
