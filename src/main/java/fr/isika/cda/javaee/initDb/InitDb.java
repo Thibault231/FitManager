@@ -165,6 +165,7 @@ public class InitDb {
 			/*
 			 * Fin création des cours
 			 */
+
 			System.out.println("************************ End of Initializing DB **********************************");
 			initialized = true;
 		}
