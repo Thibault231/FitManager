@@ -126,6 +126,7 @@
     text-align: center;
     min-width: 22%;
     margin: 1px;
+    width: 50vw;
 }
 
 .card-header {
@@ -140,6 +141,7 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    
 }
 
 .card-footer {
@@ -150,8 +152,9 @@
 }
 
 .imgIllu {
-	height: 35vw;
-	width: 100%
+	height: 25vw;
+	width: 95%;
+	margin-left:50px;
 }
 
        
