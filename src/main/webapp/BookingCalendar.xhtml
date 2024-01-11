@@ -10,54 +10,57 @@
 
 	<ui:define name="titleValue">Space : Planning Cours Adhérents</ui:define>
 	<ui:define name="spaceContent">
+		<div class="d-flex p-2 flex-column w-100 border align-items-center">
 
-		<h1>Affichage du planning cours Adhérents</h1>
+			<div class="jumbotron">
+				<h1 class="display-4">Planning des cours</h1>
+			</div>
 
 
-		<style type="text/css">
+			<style type="text/css">
 .value {
 	width: 1000px;
 }
 </style>
 
 
-		<h:form>
-			<p:growl id="messages" showDetail="true" />
+			<h:form>
+				<p:growl id="messages" showDetail="true" />
 
-			<h:panelGrid columnClasses="value">
-				<p:schedule id="schedule" value="#{courseController.eventModel}"
-					widgetVar="myschedule">
-					<p:ajax event="dateSelect"
-						listener="#{courseController.onDateSelect}" update="eventDetails"
-						oncomplete="PF('eventDialog').show();" />
-					<p:ajax event="eventSelect"
-						listener="#{courseController.onEventSelect}" update="eventDetails"
-						oncomplete="PF('eventDialog').show();" />
-					<p:ajax event="eventMove"
-						listener="#{courseController.onEventMove}" update="messages" />
-					<p:ajax event="eventResize"
-						listener="#{courseController.onEventResize}" update="messages" />
-				</p:schedule>
-			</h:panelGrid>
-
-			<p:dialog widgetVar="eventDialog" header="Course Details"
-				showEffect="clip" hideEffect="clip">
-				<h:panelGrid id="eventDetails" columns="2">
-					<p:outputLabel for="title" value="Name :" />
-					<p:inputText id="title" value="#{courseController.event.title}"
-						disabled="true" required="true" />
-
-					<p:outputLabel for="description" value="Description:" />
-					<p:inputTextarea id="description"
-						disabled="true" value="#{courseController.event.description}">
-					</p:inputTextarea>
-
-					<p:commandButton value="Réserver"
-						action="#{bookingController.createBooking()}" />
+				<h:panelGrid columnClasses="value">
+					<p:schedule id="schedule" value="#{courseController.eventModel}"
+						widgetVar="myschedule">
+						<p:ajax event="dateSelect"
+							listener="#{courseController.onDateSelect}" update="eventDetails"
+							oncomplete="PF('eventDialog').show();" />
+						<p:ajax event="eventSelect"
+							listener="#{courseController.onEventSelect}"
+							update="eventDetails" oncomplete="PF('eventDialog').show();" />
+						<p:ajax event="eventMove"
+							listener="#{courseController.onEventMove}" update="messages" />
+						<p:ajax event="eventResize"
+							listener="#{courseController.onEventResize}" update="messages" />
+					</p:schedule>
 				</h:panelGrid>
-			</p:dialog>
-		</h:form>
 
+				<p:dialog widgetVar="eventDialog" header="Course Details"
+					showEffect="clip" hideEffect="clip">
+					<h:panelGrid id="eventDetails" columns="2">
+						<p:outputLabel for="title" value="Name :" />
+						<p:inputText id="title" value="#{courseController.event.title}"
+							disabled="true" required="true" />
+
+						<p:outputLabel for="description" value="Description:" />
+						<p:inputTextarea id="description" disabled="true"
+							value="#{courseController.event.description}">
+						</p:inputTextarea>
+
+						<p:commandButton value="Réserver" styleClass="btn btn-primary"
+							action="#{bookingController.createBooking()}" />
+					</h:panelGrid>
+				</p:dialog>
+			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
