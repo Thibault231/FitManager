@@ -88,7 +88,7 @@ public class InitDb {
 			 */
 			Course c = new Course();
 			c.setName("Cours de dance");
-			c.setLinkedSpaceId(7L);
+			c.setLinkedSpaceId(6L);
 			c.setCoach(userCoach);
 			c.setStartDate(LocalDateTime.now());
 			c.setEndDate(LocalDateTime.now().plusHours(2));
@@ -97,7 +97,7 @@ public class InitDb {
 
 			Course c2 = new Course();
 			c2.setName("Cours de muscu");
-			c2.setLinkedSpaceId(7L);
+			c2.setLinkedSpaceId(6L);
 			c2.setCoach(userCoach);
 			c2.setStartDate(LocalDateTime.now().plusDays(1));
 			c2.setEndDate(LocalDateTime.now().plusDays(1).plusHours(2));
