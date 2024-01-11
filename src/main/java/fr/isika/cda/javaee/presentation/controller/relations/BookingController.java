@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.presentation.controller;
+package fr.isika.cda.javaee.presentation.controller.relations;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,14 +9,21 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import fr.isika.cda.javaee.dao.IDaoCourse;
-import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.dao.plateform.IDaoCourse;
 import fr.isika.cda.javaee.dao.relations.IBookingDao;
+import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.relations.Booking;
 import fr.isika.cda.javaee.entity.users.User;
+import fr.isika.cda.javaee.presentation.controller.plateform.CourseController;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 
+/**
+ * Manage Booking objects in views.
+ * 
+ * @author Alex Charef Nene Thibault
+ *
+ */
 @Named
 @ViewScoped
 public class BookingController implements Serializable {

@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.presentation.controller;
+package fr.isika.cda.javaee.presentation.controller.subscription;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,15 +10,21 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import fr.isika.cda.javaee.dao.IDaoSpace;
-import fr.isika.cda.javaee.dao.IDaoSubscription;
-import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
+import fr.isika.cda.javaee.dao.subscription.IDaoSubscription;
+import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.SubscriptionViewModel;
 
+/**
+ * Manage Subscription objects in views.
+ * 
+ * @author Nene Thibault
+ *
+ */
 @Named
 @ViewScoped
 public class SubscriptionController implements Serializable {

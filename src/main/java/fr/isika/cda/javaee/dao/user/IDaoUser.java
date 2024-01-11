@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.dao;
+package fr.isika.cda.javaee.dao.user;
 
 import java.util.List;
 

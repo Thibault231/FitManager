@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.presentation.controller;
+package fr.isika.cda.javaee.presentation.controller.plateform;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -20,13 +20,19 @@ import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
-import fr.isika.cda.javaee.dao.CourseDao;
-import fr.isika.cda.javaee.dao.IDaoCourse;
-import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.dao.plateform.CourseDao;
+import fr.isika.cda.javaee.dao.plateform.IDaoCourse;
+import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 
+/**
+ * Manage Course objects in views.
+ * 
+ * @author Alex Charef Nene Thibault
+ *
+ */
 @Named
 @ViewScoped
 public class CourseController implements Serializable {

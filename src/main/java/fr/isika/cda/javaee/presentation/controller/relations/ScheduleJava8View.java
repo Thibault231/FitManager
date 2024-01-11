@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.presentation.controller;
+package fr.isika.cda.javaee.presentation.controller.relations;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -19,6 +19,12 @@ import org.primefaces.model.LazyScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
+/**
+ * Manage Calendar and it's event objects in views.
+ * 
+ * @author Charef Thibault
+ *
+ */
 @Named
 @ViewScoped
 public class ScheduleJava8View implements Serializable {
