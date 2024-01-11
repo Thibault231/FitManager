@@ -10,6 +10,12 @@ import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.ApplicationEntity;
 
+/**
+ * Manage the persistence of Application objects in MySQL DB.
+ * 
+ * @author Thibault Charef
+ *
+ */
 @Stateless
 @Startup
 public class ApplicationDao {
@@ -22,20 +28,17 @@ public class ApplicationDao {
 		ApplicationEntity app = new ApplicationEntity();
 		app.setName("Isika CDA Final Project (JavaEE)");
 		app.setDescription("Webapp with JavaEE technology (JSF, JPA, EJBs) / 3-tiers architecture / MVC pattern.");
-		
+
 		entityManager.persist(app);
 	}
-	
+
 	public List<ApplicationEntity> all() {
-		return entityManager
-				.createQuery("SELECT app FROM ApplicationEntity app", ApplicationEntity.class)
+		return entityManager.createQuery("SELECT app FROM ApplicationEntity app", ApplicationEntity.class)
 				.getResultList();
 	}
-	
+
 	public ApplicationEntity last() {
-		return all().stream()
-				.sorted((o1, o2) -> o1.getCreationDate().compareTo(o2.getCreationDate()))
-				.findFirst()
+		return all().stream().sorted((o1, o2) -> o1.getCreationDate().compareTo(o2.getCreationDate())).findFirst()
 				.get();
 	}
 }

@@ -8,6 +8,12 @@ import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 
+/**
+ * Manage the persistence of Subscription objects in MySQL DB.
+ * 
+ * @author Charef Thibault
+ *
+ */
 @Stateless
 public class SubscriptionDao implements IDaoSubscription {
 

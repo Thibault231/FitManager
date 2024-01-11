@@ -5,23 +5,14 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import fr.isika.cda.javaee.entity.plateform.Course;
-import fr.isika.cda.javaee.entity.users.User;
-import fr.isika.cda.javaee.presentation.viewmodel.CourseForm;
 
 @Stateless
 public class CourseDao implements IDaoCourse {
 
 	@PersistenceContext
 	private EntityManager em;
-
-	@Override
-	public Long createCourse(CourseForm courseForm) {
-		Course course = new Course();
-		course.setName(courseForm.getName());
-		em.persist(course);
-		return course.getId();
-	}
 
 	@Override
 	public Course getCourseById(Long courseId) {

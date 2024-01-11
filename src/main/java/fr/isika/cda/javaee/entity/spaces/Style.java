@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * Customizable data of a Space, type of font and colors.
+ * 
+ * @author Nene
+ *
+ */
 @Entity
 public class Style {
 

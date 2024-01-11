@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Room of the fitness space where an activity take place.
+ * 
+ * @author Charef
+ *
+ */
 @Entity
 public class Room {
 

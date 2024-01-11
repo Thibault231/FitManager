@@ -1,7 +1,13 @@
 package fr.isika.cda.javaee.presentation.viewmodel;
 
+/**
+ * MachineViewModel for Machine controller
+ * 
+ * @author Charef
+ *
+ */
 public class MachineForm {
-	
+
 	private String name;
 
 	public String getName() {
@@ -11,6 +17,5 @@ public class MachineForm {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
 }

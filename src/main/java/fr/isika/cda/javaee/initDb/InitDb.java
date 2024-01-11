@@ -16,6 +16,13 @@ import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
+/**
+ * Put Training set of object in the DB at the initialization of the
+ * application.
+ * 
+ * @author Thibault
+ *
+ */
 @Startup
 @Singleton
 public class InitDb {

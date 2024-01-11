@@ -5,6 +5,12 @@ import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.javaee.entity.users.Role;
 
+/**
+ * Common methods for all controllers related to session.
+ * 
+ * @author Thibault
+ *
+ */
 public final class SessionUtils {
 
 	private SessionUtils() {

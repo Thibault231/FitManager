@@ -4,6 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Administrativez data of a Space
+ * 
+ * @author Nene
+ *
+ */
 @Entity
 public class Administrative {
 

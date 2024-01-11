@@ -11,6 +11,12 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Login and administrative datas of a user.
+ * 
+ * @author Alex Thibault
+ *
+ */
 @Entity
 public class Account {
 

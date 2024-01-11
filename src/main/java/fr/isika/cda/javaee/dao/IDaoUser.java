@@ -5,6 +5,12 @@ import java.util.List;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
+/**
+ * Manage the persistence of User objects.
+ * 
+ * @author Alex CharefNene Thibault
+ *
+ */
 public interface IDaoUser {
 	/**
 	 * Add a new user in the database.

@@ -13,6 +13,12 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.model.file.UploadedFile;
 
+/**
+ * Common methods for all controllers related to maaging files.
+ * 
+ * @author Alex
+ *
+ */
 public class FileUploadUtils {
 
 	private static final Logger LOGGER = Logger.getLogger(FileUploadUtils.class.getSimpleName());

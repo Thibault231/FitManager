@@ -9,6 +9,12 @@ import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.relations.Booking;
 
+/**
+ * Manage the persistence of Booking objects in MySQL DB.
+ * 
+ * @author Thibault Charef
+ *
+ */
 @Stateless
 public class BookingDao implements IBookingDao {
 

@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.dao;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -12,6 +11,12 @@ import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
+/**
+ * Manage the persistence of User objects in MySQL DB.
+ * 
+ * @author Alex Charef Nene Thibault
+ *
+ */
 @Stateless
 public class UserDao implements IDaoUser {
 

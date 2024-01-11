@@ -7,6 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+/**
+ * Object keeping all lessons of a user.
+ * 
+ * @author Thibault
+ *
+ */
 @Entity
 public class Schedulde {
 

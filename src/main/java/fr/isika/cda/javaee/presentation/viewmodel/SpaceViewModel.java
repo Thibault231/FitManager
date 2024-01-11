@@ -3,6 +3,12 @@ package fr.isika.cda.javaee.presentation.viewmodel;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.User;
 
+/**
+ * SpaceViewModel for Space controller
+ * 
+ * @author Thibault
+ *
+ */
 public class SpaceViewModel {
 
 	private Long spaceId;

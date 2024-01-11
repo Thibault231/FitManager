@@ -4,6 +4,12 @@ import fr.isika.cda.javaee.entity.relations.Booking;
 import fr.isika.cda.javaee.entity.relations.Planning;
 import fr.isika.cda.javaee.entity.relations.Schedulde;
 
+/**
+ * RelationViewModel for Booking and Planning controller
+ * 
+ * @author Thibault
+ *
+ */
 public class RelationViewModel {
 	private Booking booking;
 	private Planning planning;

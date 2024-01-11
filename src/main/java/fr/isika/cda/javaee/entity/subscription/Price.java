@@ -4,6 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Price of any salable service or product of the fitness space.
+ * 
+ * @author Alex
+ *
+ */
 @Entity
 public class Price {
 

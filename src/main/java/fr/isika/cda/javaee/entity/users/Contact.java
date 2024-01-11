@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Contact datas of a user.
+ * 
+ * @author Alex Thibault
+ *
+ */
 @Entity
 public class Contact {
 

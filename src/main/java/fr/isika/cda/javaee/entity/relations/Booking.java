@@ -12,6 +12,12 @@ import javax.persistence.TemporalType;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.users.User;
 
+/**
+ * Booking of a lessons space by a member of the fitness.
+ * 
+ * @author Charef
+ *
+ */
 @Entity
 public class Booking {
 

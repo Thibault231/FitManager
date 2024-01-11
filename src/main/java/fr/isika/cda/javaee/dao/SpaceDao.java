@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +9,12 @@ import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.spaces.Space;
 
+/**
+ * Manage the persistence of Activity objects in MySQL DB.
+ * 
+ * @author Alex Charef Nene Thibault
+ *
+ */
 @Stateless
 public class SpaceDao implements IDaoSpace {
 
@@ -19,12 +24,11 @@ public class SpaceDao implements IDaoSpace {
 	@Override
 	public Long createSpace(Space spaceToCreate) {
 //		em.persist(spaceToCreate.getInfos().getConfiguration().getStyle().getColor());
-		if(spaceToCreate.getInfos().getConfiguration().getStyle() != null) {
+		if (spaceToCreate.getInfos().getConfiguration().getStyle() != null) {
 			em.persist(spaceToCreate.getInfos().getConfiguration().getStyle());
 		}
 		em.persist(spaceToCreate.getInfos().getAdministrative());
 		em.persist(spaceToCreate.getInfos().getConfiguration());
-		em.persist(spaceToCreate.getOnlineShop());
 		em.persist(spaceToCreate.getPlanning());
 		em.persist(spaceToCreate.getInfos());
 		em.persist(spaceToCreate);

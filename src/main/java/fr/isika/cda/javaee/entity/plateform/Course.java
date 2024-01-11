@@ -10,6 +10,12 @@ import javax.persistence.ManyToOne;
 
 import fr.isika.cda.javaee.entity.users.User;
 
+/**
+ * Booking lesson's activity.
+ * 
+ * @author Charef Thibault
+ *
+ */
 @Entity
 public class Course {
 
