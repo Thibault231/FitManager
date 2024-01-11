@@ -22,6 +22,7 @@ public class Configuration {
 	private String fitnessName;
 
 	private String logo;
+	private String slogan;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Style style;
@@ -57,6 +58,14 @@ public class Configuration {
 
 	public void setLogo(String logo) {
 		this.logo = logo;
+	}
+
+	public String getSlogan() {
+		return slogan;
+	}
+
+	public void setSlogan(String slogan) {
+		this.slogan = slogan;
 	}
 
 }

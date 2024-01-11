@@ -5,11 +5,17 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.users.Sex;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
 
+/**
+ * Service for user management between userDao and Controllers
+ * 
+ * @author Thibault
+ *
+ */
 @Stateless
 public class UserServices {
 	@Inject

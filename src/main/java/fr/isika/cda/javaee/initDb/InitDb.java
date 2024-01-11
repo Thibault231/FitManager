@@ -9,10 +9,12 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import fr.isika.cda.javaee.dao.IDaoSpace;
-import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
+import fr.isika.cda.javaee.dao.subscription.IDaoSubscription;
+import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.spaces.Space;
+import fr.isika.cda.javaee.entity.subscription.Subscription;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
@@ -37,19 +39,54 @@ public class InitDb {
 	@Inject
 	private IDaoSpace spaceDao;
 
+	@Inject
+	private IDaoSubscription subDao;
+
 	@PostConstruct
 	public void init() {
 		if (!initialized) {
 			System.out.println("***************************** Initialize DB **********************************");
-
+			/*
+			 * Création de quelques espaces pour la vue allCourses (Calendar)
+			 */
 			Space spaceOne = new Space(true);
-			spaceOne.getInfos().getConfiguration().setFitnessName("MyFirstSpace");
+			spaceOne.getInfos().getConfiguration().setFitnessName("Calypso");
+			spaceOne.getInfos().getConfiguration().setLogo("calypsoLogo.jpg");
+			spaceOne.getInfos().getConfiguration().setSlogan("Water&Fitness");
+			spaceOne.getInfos().getAdministrative().setAddress("20 rue du Taure TOULOUSE");
 			spaceDao.createSpace(spaceOne);
 
 			Space spaceTwo = new Space(true);
-			spaceTwo.getInfos().getConfiguration().setFitnessName("MySecondSpace");
+			spaceTwo.getInfos().getConfiguration().setFitnessName("KingFit");
+			spaceTwo.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
+			spaceTwo.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
+			spaceTwo.getInfos().getAdministrative().setAddress("20 rue du Taure TOULOUSE");
 			spaceDao.createSpace(spaceTwo);
 
+			Space spaceThree = new Space(true);
+			spaceThree.getInfos().getConfiguration().setFitnessName("Water&Fitness");
+			spaceThree.getInfos().getConfiguration().setLogo("muscleYouLogo.jpg");
+			spaceThree.getInfos().getConfiguration().setSlogan("Water&Fitness");
+			spaceThree.getInfos().getAdministrative().setAddress("25 rue des marais SAINT-GRATIEN");
+			spaceDao.createSpace(spaceThree);
+
+			Space spaceFor = new Space(true);
+			spaceFor.getInfos().getConfiguration().setFitnessName("Spartan");
+			spaceFor.getInfos().getConfiguration().setLogo("spartanLogo.jpg");
+			spaceFor.getInfos().getConfiguration().setSlogan("Stronger than you");
+			spaceFor.getInfos().getAdministrative().setAddress("17 rue l'éventail LE MANS");
+			spaceDao.createSpace(spaceFor);
+
+			Space spaceFive = new Space(true);
+			spaceFive.getInfos().getConfiguration().setFitnessName("XperienceZumbas");
+			spaceFive.getInfos().getConfiguration().setLogo("XperienceZumbaLogo.jpg");
+			spaceFive.getInfos().getConfiguration().setSlogan("ZumbasYouR");
+			spaceFive.getInfos().getAdministrative().setAddress("200 route des Banderilles PAU");
+			spaceDao.createSpace(spaceFive);
+
+			/*
+			 * Création de quelques utilisateurs pour la vue allCourses (Calendar)
+			 */
 			User userManager = new User(true);
 			userManager.getAccount().setLogin("titou@gmail.com");
 			userManager.getAccount().setPassword("31500");
@@ -81,6 +118,18 @@ public class InitDb {
 			userMember.getProfile().getCivility().setName("Senouci");
 			userDao.createUser(userMember);
 			spaceOne.getUsers().add(userMember);
+			spaceDao.updateSpace(spaceOne);
+
+			/*
+			 * Création de quelquessouscriptions pour la vue allCourses (Calendar)
+			 */
+			Subscription subscriptionOne = new Subscription(true);
+			subscriptionOne.getPrice().setMonthlyPrice(100F);
+			subscriptionOne.setSubscriptionName("BASIC");
+			subscriptionOne.setDescription("Accés libre aux machines.\nAccès au sone.\n Cours payant à l'unité.");
+			subscriptionOne.setEngagement("Annuel");
+			subDao.createSubscription(subscriptionOne);
+			spaceOne.getSubscriptions().add(subscriptionOne);
 			spaceDao.updateSpace(spaceOne);
 
 			/*

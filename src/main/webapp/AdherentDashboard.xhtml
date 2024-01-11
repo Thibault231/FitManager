@@ -37,8 +37,8 @@
 		<hr/>
 		<h2>Mon abonnement actuel</h2>
 		<ui:fragment rendered="#{subscriptionController.hasSubscription()}">
-		<h3>#{subscriptionController.getsubscriptionById(spaceUser.spaceViewModel.user.currentSubScriptionId).subscriptionName}</h3>
-		<p>#{subscriptionController.getsubscriptionById(spaceUser.spaceViewModel.user.currentSubScriptionId).description}</p>
+		<h3>#{subscriptionController.currentMemberSubscription.subscriptionName}</h3>
+		<p>#{subscriptionController.currentMemberSubscription.description}</p>
 		</ui:fragment>
 		<p>
 			<h:link outcome="SubscribeForm.xhtml"

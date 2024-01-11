@@ -23,29 +23,23 @@
 						<div class="d-grid gap-2">
 
 							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput01"
-									placeholder="Nom" required="true" size="20"
-									value="#{userController.userViewModel.user.profile.civility.name}" />
+								<h:inputText class="form-control" id="floatingInput01"	placeholder="Nom" required="true" size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
 
 								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput02"
-									placeholder="Prénom" required="true" size="20"
-									value="#{userController.userViewModel.user.profile.civility.forename}" />
-
+								<h:inputText class="form-control" id="floatingInput02" placeholder="Prénom" required="true" size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
 								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput03"
-									placeholder="Sexe" size="20"
-
-									value="#{userController.userViewModel.user.profile.civility.sex}" />
+								<h:inputText class="form-control" id="floatingInput03" placeholder="Sexe" size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.sex}" />
 								<h:outputLabel class="outputLabel" for="floatingInput03">Sexe</h:outputLabel>
-								<h:selectOneMenu id="sex"
-									value="#{userController.userViewModel.user.profile.civility.sex}">
+								<h:selectOneMenu id="sex" value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
 									<f:selectItem itemLabel=" " />
 									<f:selectItem itemLabel="Homme" itemValue="Man" />
 									<f:selectItem itemLabel="Femme" itemValue="Woman" />
@@ -54,32 +48,22 @@
 							</div>
 
 							<div class="form-floating">
-<!-- 								<p:outputLabel for="floatingInput04" value="Date de naissance" /> -->
-<!-- 								<p:datePicker id="floatingInput04" value="#{userController.userViewModel.user.profile.civility.birthday}" -->
-<!-- 									showIcon="true" /> -->
-								<h:inputText class="form-control" id="floatingInput04"
-									placeholder="Date de naissance" size="20"
-
-									value="#{userController.userViewModel.user.profile.civility.birthday}">
+								<h:inputText class="form-control" id="floatingInput04" placeholder="Date de naissance" size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
 									<f:convertDateTime pattern="dd/mm/yyyy" />
 								</h:inputText>
 								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput05"
-									placeholder="Email" required="true" size="20"
-
-									value="#{userController.userViewModel.user.account.login}" />
-
+								<h:inputText class="form-control" id="floatingInput05" placeholder="Email" required="true" size="20"
+									value="#{spaceUser.spaceViewModel.user.account.login}" />
 								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
 							</div>
 
 							<div class="form-floating ">
-								<p:password class="form-control" id="floatingInput06"  size="20"
-									placeholder="Mot de passe" required="true" maxlength="12"
-									value="#{userController.userViewModel.user.account.password}">
-
+								<p:password class="form-control" id="floatingInput06"  size="20" placeholder="Mot de passe" required="true" maxlength="12"
+									value="#{spaceUser.spaceViewModel.user.account.password}">
 									<f:validateLength minimum="5"></f:validateLength>
 								</p:password>
 								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
@@ -88,32 +72,25 @@
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput07"
 									placeholder="Adresse" size="20"
-									value="#{userController.userViewModel.user.profile.adress.street}" />
-
+									value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
 								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput08"
-									placeholder="Code postal" size="20"
-									value="#{userController.userViewModel.user.profile.adress.zipCode}" />
-
+								<h:inputText class="form-control" id="floatingInput08"	placeholder="Code postal" size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
 								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
 							</div>
 
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput09"
-
-									value="#{userController.userViewModel.user.profile.adress.city}" />
-
+									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 							</div>
 
 
 							<h:commandButton class="btn btn-warning" value="Créer mon compte"
-								action="#{userController.createAdherentAccount()}" />
-
-
+								action="#{spaceUser.createMemberAccount()}" />
 							<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
 						</div>
 					</div>
