@@ -24,19 +24,19 @@
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput01"
 								placeholder="Utilisateur" size="20"
-								value="#{spaceController.spaceViewModel.user.account.login}" />
+								value="#{spaceUser.spaceViewModel.user.account.login}" />
 							<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
 						</div>
 
 						<div class="form-floating ">
 							<h:inputSecret class="form-control" id="floatingInput02"
 								placeholder="Mot de passe" size="5"
-								value="#{spaceController.spaceViewModel.user.account.password}" />
+								value="#{spaceUser.spaceViewModel.user.account.password}" />
 							<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
 						</div>
 
 						<h:commandButton class="btn btn-warning" value="Me connecter"
-							action="#{spaceController.authenticateOnSpace()}" />
+							action="#{spaceUser.authenticateOnSpace()}" />
 
 						<h:link class="text-center" outcome="index.xhtml">MOT DE PASSE OUBLIER?</h:link>
 					</div>

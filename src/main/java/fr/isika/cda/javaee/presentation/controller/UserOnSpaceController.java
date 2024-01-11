@@ -123,7 +123,7 @@ public class UserOnSpaceController implements Serializable {
 			userDao.updateUser(createdUser);
 			// Réinitialise le formulaire du viewmodel
 			this.spaceViewModel.setNewUser(new User(true));
-			return "ManagerSpaceDashBoard";
+			return "ManagerSpaceDashBoard?faces-redirect=true";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
 			this.spaceViewModel.setNewUser(new User(true));
@@ -160,17 +160,6 @@ public class UserOnSpaceController implements Serializable {
 		}
 	}
 
-	public void uploadAdministrativeDocument(FileUploadEvent event) throws Exception {
-		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
-
-		UploadedFile uploadedFile = event.getFile();
-		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
-
-		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
-
-		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
-	}
-
 	/**
 	 * Return the view of a user dashboard, using it's role.
 	 * 
@@ -191,41 +180,18 @@ public class UserOnSpaceController implements Serializable {
 		}
 	}
 
-	/**
-	 * Logout a connected user on the space and return the space index view.
-	 * 
-	 * @return url of the index space's page (:String)
-	 */
-	public String simpleSpacelogout() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		Long spaceId = (Long) fc.getExternalContext().getSessionMap().get("spaceId");
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		session.invalidate();
-		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
-		return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
-	}
-
-	/**
-	 * Logout a connected user on plateform and reload a session with only spaceId
-	 * parameter. <b> Use this method only for logout from plateform</b>
-	 * 
-	 * @return url (:String)
-	 */
-	public String spaceLogOut(Long spaceId, String viewToReturn) {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		session.invalidate();
-		FacesContext fc = FacesContext.getCurrentInstance();
-		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
-		return viewToReturn;
-	}
-
 	public void setUploadedFile(UploadedFile uploadedFile) {
 		this.uploadedFile = uploadedFile;
 	}
 
-	public String updateUser() {
+	/**
+	 * Update the change of a user profile.
+	 * 
+	 * @param dashboard url (:String)
+	 */
+	public String updateUser(Long userToUpdateid) {
 		// mettre à jour le user
-		userSvc.updateUserOnPlateform(spaceViewModel.getUser(), SessionUtils.getUserIdFromSession());
+		userSvc.updateUserOnPlateform(spaceViewModel.getUser(), userToUpdateid);
 		// mettre à jour la session si le nom est changé
 		if (spaceViewModel.getUser().getProfile().getCivility().getName() != null) {
 			String newName = spaceViewModel.getUser().getProfile().getCivility().getName();
@@ -235,8 +201,18 @@ public class UserOnSpaceController implements Serializable {
 		return redirectToRightDashBoard(SessionUtils.getUserRoleFromSession());
 	}
 
+	public void uploadAdministrativeDocument(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+
+		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
+
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
+	}
+
 	public UploadedFile getUploadedFile() {
 		return uploadedFile;
 	}
-
 }
