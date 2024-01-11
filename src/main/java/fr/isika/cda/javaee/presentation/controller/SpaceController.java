@@ -208,6 +208,7 @@ public class SpaceController implements Serializable {
 	public String spaceLogOut(Long spaceId, String viewToReturn) {
 		SessionUtils.invalidateSession();
 		SessionUtils.putSpaceIdInSession(spaceId);
+		this.setSpaceViewModel(new SpaceViewModel());
 		return viewToReturn;
 	}
 
