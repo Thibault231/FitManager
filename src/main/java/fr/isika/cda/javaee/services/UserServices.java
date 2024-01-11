@@ -10,6 +10,12 @@ import fr.isika.cda.javaee.entity.users.Sex;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
 
+/**
+ * Service for user management between userDao and Controllers
+ * 
+ * @author Thibault
+ *
+ */
 @Stateless
 public class UserServices {
 	@Inject
