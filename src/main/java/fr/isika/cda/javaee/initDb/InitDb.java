@@ -124,12 +124,26 @@ public class InitDb {
 			 * Création de quelques souscriptions pour la vue allCourses (Calendar)
 			 */
 			Subscription subscriptionOne = new Subscription(true);
-			subscriptionOne.getPrice().setMonthlyPrice(100F);
+			subscriptionOne.getPrice().setMonthlyPrice((float) 29.99);
 			subscriptionOne.setSubscriptionName("BASIC");
-			subscriptionOne.setDescription("Accés libre aux machines.\nAccès au sone.\n Cours payant à l'unité.");
-			subscriptionOne.setEngagement("Annuel");
+			subscriptionOne
+					.setDescription("Accès illimité à la salle de sport\n" + "Participation aux cours collectifs\n"
+							+ "Utilisation de machines performantes\n" + "Accès aux vestiaires et aux douches");
+			subscriptionOne.setEngagement("Engagement 12 mois");
 			subDao.createSubscription(subscriptionOne);
 			spaceOne.getSubscriptions().add(subscriptionOne);
+			spaceDao.updateSpace(spaceOne);
+
+			Subscription subscriptionTwo = new Subscription(true);
+			subscriptionTwo.getPrice().setMonthlyPrice((float) 39.99);
+			subscriptionTwo.setSubscriptionName("CONFORT");
+			subscriptionTwo
+					.setDescription("Accès illimité à la salle de sport\n" + "Participation aux cours collectifs\n"
+							+ "Utilisation de machines performantes\n" + "Accès aux vestiaires et aux douches\n"
+							+ "Cours individuels avec des coachs\n" + "Accès à toutes les salles du réseau");
+			subscriptionTwo.setEngagement("Engagement 12 mois");
+			subDao.createSubscription(subscriptionTwo);
+			spaceOne.getSubscriptions().add(subscriptionTwo);
 			spaceDao.updateSpace(spaceOne);
 
 			/*
