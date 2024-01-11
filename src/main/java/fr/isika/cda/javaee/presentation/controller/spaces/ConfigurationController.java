@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.presentation.controller;
+package fr.isika.cda.javaee.presentation.controller.spaces;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -10,11 +10,17 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import fr.isika.cda.javaee.dao.IDaoSpace;
+import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.ConfigurationViewModel;
 
+/**
+ * Manage Configuration objects in views.
+ * 
+ * @author Alex Charef Nene Thibault
+ *
+ */
 @Named("conf")
 @ViewScoped
 public class ConfigurationController implements Serializable {

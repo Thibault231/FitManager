@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.presentation.controller;
+package fr.isika.cda.javaee.presentation.controller.relations;
 
 import java.io.Serializable;
 
@@ -13,6 +13,12 @@ import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.entity.relations.Planning;
 import fr.isika.cda.javaee.presentation.viewmodel.RelationViewModel;
 
+/**
+ * Manage Booking and Planning objects in views.
+ * 
+ * @author Thibault
+ *
+ */
 @Named
 @ViewScoped
 public class RelationsController implements Serializable {

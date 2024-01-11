@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.presentation.controller;
+package fr.isika.cda.javaee.presentation.controller.plateform;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,10 +7,16 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import fr.isika.cda.javaee.dao.ActivityDao;
+import fr.isika.cda.javaee.dao.plateform.ActivityDao;
 import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.presentation.viewmodel.ActivityForm;
 
+/**
+ * Manage Activity objects in views.
+ * 
+ * @author Alex Charef Nene Thibault
+ *
+ */
 @Named
 @ViewScoped
 public class ActivityController implements Serializable {
@@ -30,17 +36,16 @@ public class ActivityController implements Serializable {
 		// reset le formulaire
 		activityForm = new ActivityForm();
 	}
-	
-	
+
 	public void updateActivity(Long id) {
 		Activity existingActivity = activityDao.getActivityById(id);
-		if(existingActivity != null) {
+		if (existingActivity != null) {
 			existingActivity.setName(activityForm.getName());
 			activityDao.updateActivity(existingActivity);
-			activityForm= new ActivityForm();
+			activityForm = new ActivityForm();
 		}
 	}
-	
+
 	public void deleteActivity(Long id) {
 		activityDao.deleteActivity(id);
 	}

@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.presentation.controller;
+package fr.isika.cda.javaee.presentation.controller.spaces;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,11 +9,17 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import fr.isika.cda.javaee.dao.IDaoSpace;
-import fr.isika.cda.javaee.dao.IDaoSubscription;
+import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
+import fr.isika.cda.javaee.dao.subscription.IDaoSubscription;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 
+/**
+ * Manage Space objects in views.
+ * 
+ * @author Alex Charef Nene Thibault
+ *
+ */
 @Named
 @SessionScoped
 public class SpaceDetailsController implements Serializable {

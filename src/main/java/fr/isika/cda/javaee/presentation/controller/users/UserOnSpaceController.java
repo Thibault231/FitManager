@@ -1,4 +1,4 @@
-package fr.isika.cda.javaee.presentation.controller;
+package fr.isika.cda.javaee.presentation.controller.users;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
-import fr.isika.cda.javaee.dao.IDaoSpace;
-import fr.isika.cda.javaee.dao.IDaoUser;
+import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
+import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Account;
 import fr.isika.cda.javaee.entity.users.Role;
@@ -29,6 +29,12 @@ import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 import fr.isika.cda.javaee.services.UserServices;
 
+/**
+ * Manage User objects in space's views.
+ * 
+ * @author Alex Charef Nene Thibault
+ *
+ */
 @Named("spaceUser")
 @SessionScoped
 public class UserOnSpaceController implements Serializable {
