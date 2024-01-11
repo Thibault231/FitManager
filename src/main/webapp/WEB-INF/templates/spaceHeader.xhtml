@@ -7,52 +7,47 @@
 <h:head>
 	<meta charset="UTF-8"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-	<h:outputStylesheet library="css" name="main/spaceHeader.css" />
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-		crossorigin="anonymous" />
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-		crossorigin="anonymous"></script>
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"	crossorigin="anonymous" />
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js">
 	</script>
+	<h:outputStylesheet library="css" name="main/spaceHeader.css" />
 
 	<style>
-.imgPartenaire {
-	width: 30%;
-	height: 30em;
-	margin-bottom: 2em;
-	object-fit: cover;
-}
+		.imgPartenaire {
+			width: 30%;
+			height: 30em;
+			margin-bottom: 2em;
+			object-fit: cover;
+		}
 
-.imgHero {
-	height: 80vh;
-	width: 100vw;
-	object-fit: cover;
-}
-
-.rgpd {
-	position: fixed;
-	top: 0px;
-	right: 0px;
-	background-color: rgba(0, 0, 0, 0.32);
-	width: 100vw;
-	height: 100vh;
-	align-items: center;
-	justify-content: center;
-}
-
-.tatifCard {
-	min-width: 22%;
-}
-
-.Intituledelement {
-	padding-right: 2em;
-	transform: rotate(270deg);
-}
+		.imgHero {
+			height: 80vh;
+			width: 100vw;
+			object-fit: cover;
+		}
+		
+		.rgpd {
+			position: fixed;
+			top: 0px;
+			right: 0px;
+			background-color: rgba(0, 0, 0, 0.32);
+			width: 100vw;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.tatifCard {
+			min-width: 22%;
+		}
+		
+		.Intituledelement {
+			padding-right: 2em;
+			transform: rotate(270deg);
+		}
 </style>
 </h:head>
 
@@ -64,21 +59,39 @@
 	</div>
 
 	<!-- NavBAr -->
+	<h:form>	
 	<nav class="navbar navbar-expand-lg static-top">
+	
 		<div class="container-fluid">
+		
 			<ul class="navbar-nav ms-auto">
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="RegisterAdherent.xhtml">S'INSCRIRE A LA SALLE</h:link>
-					</li>
+				<li class="nav-item">
+					<h:link class="nav-link" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
+				</li>
 				<li class="nav-item">
 					<h:link class="nav-link" outcome="Calendar.xhtml">PLANNING</h:link>
 				</li>
-				<li class="nav-item">
-					<h:link class="nav-link" outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link>
-				</li>
+				<ui:fragment rendered="#{not spaceController.isUserConnected()}">
+					<li class="nav-item">
+						<h:link class="nav-link" outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link>
+					</li>
+					<li class="nav-item">
+						<h:link class="nav-link" outcome="RegisterAdherent.xhtml">S'INSCRIRE A LA SALLE</h:link>
+					</li>
+				</ui:fragment>
+				<ui:fragment rendered="#{spaceController.isUserConnected()}">
+					<li class="nav-item">
+						<h:commandLink class="nav-link" action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">MON ESPACE</h:commandLink>
+					</li>
+					<li class="nav-item">
+						<h:commandLink class="nav-link" action="#{spaceController.simpleSpacelogout()}">DECONNEXION</h:commandLink>
+					</li>
+				</ui:fragment>
 			</ul>
 		</div>
+		
 	</nav>
+	</h:form>
 
 </h:body>
 </html>

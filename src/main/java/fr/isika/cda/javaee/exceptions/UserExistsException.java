@@ -1,10 +1,13 @@
 package fr.isika.cda.javaee.exceptions;
 
+/**
+ * Exception for getter methods in UserDoa
+ * 
+ * @author Mohammed Thibault
+ *
+ */
 public class UserExistsException extends Exception {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2468689081834647355L;
 
 	public UserExistsException() {

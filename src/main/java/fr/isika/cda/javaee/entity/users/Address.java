@@ -4,6 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Adress of any entity of the fitness space.
+ * 
+ * @author Alex
+ *
+ */
 @Entity
 public class Address {
 	@Id

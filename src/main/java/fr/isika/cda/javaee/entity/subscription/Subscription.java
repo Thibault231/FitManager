@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * Subscription offer of a fitness space.
+ * 
+ * @author Alex
+ *
+ */
 @Entity
 public class Subscription {
 

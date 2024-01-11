@@ -29,24 +29,18 @@
 					<div class=" m-auto h-75">
 						<ul class="nav nav-pills flex-column mb-auto ">
 							<li class="nav-item mb-2">
-								<h:link class="dropdown-item" outcome="SpacesList.xhtml">Mes espaces</h:link>
+								<h:link class="dropdown-item" outcome="ManagerSpacesList.xhtml">Mes espaces</h:link>
 							</li>
 							<li class="nav-item mb-2">
 								<h:link class="dropdown-item" outcome="CreateSpaceForm.xhtml">Créer un espace</h:link>
 							</li>
-
-							<h:panelGrid columns="1" cellpadding="5">
-								<p:commandButton value="Modifier mon profil" type="button"
-									onclick="PF('popupUpdate').show();" />
-							</h:panelGrid>
 						</ul>
 					</div>
 				</div>
 			</div>
 
 			<div class="col p-5">
-				<h2>Bienvenue #{sessionScope.name}</h2>
-
+				<h1>Bienvenue #{sessionScope.name}</h1>
 				<div class="d-flex w-100 justify-content-end pt-1">
 					<div class="d-flex justify-content-around">
 						<a class=" m-1">#{sessionScope.role}</a>
@@ -80,10 +74,10 @@
 								<div class="card p-3">
 									<div
 										class="d-flex justify-content-around align-items-center w-100">
-										<h4>8888888888</h4>
+										<h4>300 000€</h4>
 										<div>
 											<p class="fs-6">Chiffre d’affaire</p>
-											<p class="fs-6">88/88/8888 - 88/88/8888</p>
+											<p class="fs-6">17/01/2023 - 17/01/2024</p>
 										</div>
 									</div>
 								</div>
@@ -97,12 +91,11 @@
 							<div
 								class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 mb-4  ">
 								<div class="card p-3 h-100">
-									<div
-										class="d-flex justify-content-around align-items-center w-100">
-										<h4>88888</h4>
+									<div class="d-flex justify-content-around align-items-center w-100">
+										<h4>BASIC</h4>
 										<div>
 											<p class="fs-6">Fin de contrats</p>
-											<p class="fs-6">8888 - 8888</p>
+											<p class="fs-6">18 - janvier - 2025</p>
 										</div>
 									</div>
 								</div>
@@ -112,35 +105,40 @@
 								<div class="card p-3 h-100 ">
 									<div
 										class="d-flex justify-content-around align-items-center w-100">
-										<h4>88888</h4>
+										<h4>BASIC</h4>
 										<div>
 											<p class="fs-6">Résiliation</p>
-											<p class="fs-6">8888 - 8888</p>
+											<p class="fs-6">18- mai - 2024</p>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 
-<!-- 				<div class="row mb-4"> -->
-<!-- 					<div class="container text-center"> -->
-<!-- 						<div class="row gy-5"> -->
-<!-- 							<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6"> -->
-<!-- 								<div class="card p-3"> -->
-<!-- 									<canvas id="ChartBar" class="w-100 h-50 p-auto"></canvas> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 							<div class="col-xs-12 col-sm-12 col-lg-6 "> -->
-<!-- 								<div class="card p-3"> -->
-<!-- 									<canvas id="Chartline" class="w-100 h-50 p-auto"></canvas> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
+				<h2>Mes informations</h2>
+				<div id="1">
+					<p>Nom:
+						#{userController.userViewModel.user.profile.civility.name}</p>
+					<p>Prenom:
+						#{userController.userViewModel.user.profile.civility.forename}</p>
+					<p>Date de naissance:
+						#{userController.userViewModel.user.profile.civility.birthday}</p>
+					<p>Email:
+						#{userController.userViewModel.user.profile.contact.email}</p>
+					<p>Adresse:
+						#{userController.userViewModel.user.profile.adress.street}</p>
+					<p>Code postal:
+						#{userController.userViewModel.user.profile.adress.zipCode}</p>
+					<p>Ville:
+						#{userController.userViewModel.user.profile.adress.city}</p>
+				</div>
+				<h:panelGrid columns="1" cellpadding="5">
+					<p:commandButton value="Modifier mon profil" type="button"
+						onclick="PF('UpdateAccount').show();" />
+				</h:panelGrid>
+
 
 				<div class="row">
 					<div class="container  text-center">
@@ -239,7 +237,7 @@
 
 		</div>
 
-		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate" modal="true"
+		<p:dialog header="Modification de mon profil " widgetVar="UpdateAccount" modal="true"
 			height="600" resizable="false" showEffect="fade" hideEffect="fade"
 			style="max-width: 1000px; min-width: 700px;">
 			<h:form>

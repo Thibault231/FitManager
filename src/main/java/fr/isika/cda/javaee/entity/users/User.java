@@ -17,6 +17,12 @@ import fr.isika.cda.javaee.entity.relations.Schedulde;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 
+/**
+ * Person of a fitness space, regardless it's role.
+ * 
+ * @author Thibault
+ *
+ */
 @Entity
 public class User {
 

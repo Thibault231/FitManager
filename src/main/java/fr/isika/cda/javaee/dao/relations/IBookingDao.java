@@ -4,6 +4,12 @@ import java.util.List;
 
 import fr.isika.cda.javaee.entity.relations.Booking;
 
+/**
+ * Manage the persistence of Booking objects.
+ * 
+ * @author Thibault Charef
+ *
+ */
 public interface IBookingDao {
 
 	/**
@@ -13,8 +19,8 @@ public interface IBookingDao {
 	 * @return The Id of the created Booking (:Long)
 	 */
 	Long createBooking(Booking bookingToCreate);
-	
-	void cancelBooking(Long bookingIdToCancel);
+
+	void cancelBooking(Long bookingToCancelId);
 
 	/**
 	 * Return all the Bookings to come, of the database.

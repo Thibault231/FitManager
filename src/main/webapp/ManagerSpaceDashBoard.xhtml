@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui" lang="fr">
 
 <ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
 	<ui:define name="titleValue">Space : Manager dashboard </ui:define>
@@ -13,31 +14,32 @@
 		<h1>Tableau de bord manager</h1>
 		<h1>Mes informations</h1>
 		<div id="1">
-			<p>Nom:
-				#{spaceController.spaceViewModel.user.profile.civility.name}</p>
+			<p>Nom: #{spaceUser.spaceViewModel.user.profile.civility.name}</p>
 			<p>Prenom:
-				#{spaceController.spaceViewModel.user.profile.civility.forename}</p>
+				#{spaceUser.spaceViewModel.user.profile.civility.forename}</p>
 			<p>Date de naissance:
-				#{spaceController.spaceViewModel.user.profile.civility.birthday}</p>
-			<p>Email:
-				#{spaceController.spaceViewModel.user.profile.contact.email}</p>
+				#{spaceUser.spaceViewModel.user.profile.civility.birthday}</p>
+			<p>Email: #{spaceUser.spaceViewModel.user.profile.contact.email}</p>
 			<p>Adresse:
-				#{spaceController.spaceViewModel.user.profile.adress.street}</p>
+				#{spaceUser.spaceViewModel.user.profile.adress.street}</p>
 			<p>Code postal:
-				#{spaceController.spaceViewModel.user.profile.adress.zipCode}</p>
-			<p>Ville:
-				#{spaceController.spaceViewModel.user.profile.adress.city}</p>
+				#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</p>
+			<p>Ville: #{spaceUser.spaceViewModel.user.profile.adress.city}</p>
 		</div>
+		<h:panelGrid columns="1" cellpadding="5">
+			<p:commandButton value="Modifier mon profil" type="button"
+				onclick="PF('UpdateAccount').show();" />
+		</h:panelGrid>
 		<hr />
 
 		<p:tabView>
-            <f:facet name="actions">
+			<f:facet name="actions">
                 Global actions
             </f:facet>
-            <p:tab title="Utilisateurs" >
-                <h:panelGrid columns="1" cellpadding="5">
-                	<p:commandButton value="Ajouter un coach" action="RegisterCoach.xhtml?faces-redirect=true"/>
-	                <p:dataTable var="user" value="#{userController.allActiveUser}">
+			<p:tab title="Adherents">
+				<h:panelGrid columns="1" cellpadding="5">
+					<p:dataTable var="user"
+						value="#{userController.allMembersOfCurrentSpace}">
 						<p:column headerText="Nom">
 							<h:outputText value="#{user.profile.civility.name}" />
 						</p:column>
@@ -50,45 +52,64 @@
 						<p:column headerText="Rôle">
 							<h:outputText value="#{user.account.role}" />
 						</p:column>
-						<p:column headerText="Actions">
+						<p:column headerText="Action">
 							<h:form>
-								<p:commandButton value="Modifier" style="margin-right:20px;"
-									action="#{userController.updateUser()}">
-								</p:commandButton>
-			
-								<p:commandButton type="Button" outcome="UsersAccounts.xhtml"
-									value="Supprimer" style="margin-right:20px;"
-									action="#{userController.deleteUser(user)}">
-			
-								</p:commandButton>
-			
+								<p:commandButton type="button" value="Supprimer"
+									onclick="PF('confirmationVar').show();" />
+
+								<p:confirmDialog id="confirmationDialog"
+									widgetVar="confirmationVar" header="Confirmation"
+									message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+									severity="alert">
+
+									<p:commandButton value="Annuler" type="button"
+										onclick="PF('confirmationVar').hide()" />
+
+									<p:commandButton value="Oui"
+										oncomplete="PF('confirmationVar').hide()"
+										action="#{userController.deleteUser(user.userId)}" />
+								</p:confirmDialog>
 							</h:form>
 						</p:column>
 					</p:dataTable>
 				</h:panelGrid>
-            </p:tab>
-            
-            <p:tab title="Coachs">
-	            <h:panelGrid columns="1" cellpadding="5">
-                	<p:commandButton value="Ajouter un coach" action="RegisterCoach.xhtml?faces-redirect=true"/>
-					<p:dataTable var="user" value="#{userController.allActiveUser}">
+			</p:tab>
+
+			<p:tab title="Coachs">
+				<h:panelGrid columns="1" cellpadding="5">
+					<p:commandButton value="Ajouter un coach" type="button"
+						onclick="PF('createCoach').show();" />
+					<p:dataTable var="user"
+						value="#{userController.allCoachesOfCurrentSpace}">
 						<p:column headerText="Nom">
+							<h:outputText value="#{user.profile.civility.name}" />
 						</p:column>
 						<p:column headerText="Prenom">
+							<h:outputText value="#{user.profile.civility.forename}" />
 						</p:column>
 						<p:column headerText="Date de naissance">
+							<h:outputText value="#{user.profile.civility.birthday}" />
 						</p:column>
 						<p:column headerText="Rôle">
+							<h:outputText value="#{user.account.role}" />
 						</p:column>
-						<p:column headerText="Actions">
+						<p:column headerText="Action">
 							<h:form>
-								<p:commandButton value="Modifier" style="margin-right:20px;"
-									action="#{userController.updateUser()}">
-								</p:commandButton>
-								<p:commandButton type="Button" outcome="UsersAccounts.xhtml"
-									value="Supprimer" style="margin-right:20px;"
-									action="#{userController.deleteUser(user)}">
-								</p:commandButton>
+								<p:commandButton type="button" value="Supprimer"
+									onclick="PF('confirmationVar').show();" />
+
+								<p:confirmDialog id="confirmationDialog"
+									widgetVar="confirmationVar" header="Confirmation"
+									message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+									severity="alert">
+
+									<p:commandButton value="Annuler" type="button"
+										onclick="PF('confirmationVar').hide()" />
+
+									<p:commandButton value="Oui"
+										oncomplete="PF('confirmationVar').hide()"
+										action="#{userController.deleteUser(user.userId)}" />
+								</p:confirmDialog>
 							</h:form>
 						</p:column>
 					</p:dataTable>
@@ -96,34 +117,38 @@
             </p:tab>
             
             <p:tab title="Abonnements">
-	        	<h:panelGrid columns="1" cellpadding="5">
-					<p:commandButton value="Ajouter un abonnement" type="button" onclick="PF('popupUpdate').show();" />
+				<h:form>
+				<h:panelGrid columns="1" cellpadding="5">
+					<p:commandButton value="Ajouter un abonnement" type="button" onclick="PF('CreateSubscription').show();" />
+	                <p:dataTable value="#{subscriptionController.allActiveSubscription}" var="subscription">
+						<p:column headerText="Dénomination">
+							<h:outputText value="#{subscription.subscriptionName}"/>
+						</p:column>
+						<p:column headerText="Descrition" >
+							<h:outputText value="#{subscription.description}"/>
+						</p:column>
+						<p:column headerText="Type d'engagement" >
+							<h:outputText value="#{subscription.engagement}"/>
+						</p:column>
+						<p:column headerText="Prix mensuel" >
+							<h:outputText value="#{subscription.price.monthlyPrice}"/>
+						</p:column>
+						<p:column headerText="Actions" >
+							<p:commandButton value="Modifier" style="margin-right:20px;" type="button" onclick="PF('subscription.subscriptionId').show();"/>
+							<p:commandButton value="Supprimer" style="margin-right:20px;"
+								action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}">
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
 				</h:panelGrid>
-				<div class="d-flex container mt-5 detailSubscription">
-					<ui:repeat value="#{subscriptionController.allActiveSubscription}"
-						var="subscription">
-						<div
-							class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
-							style="background-color: yellow;">
-							<div class="card-header">
-								<h1>#{subscription.subscriptionName}</h1>
-							</div>
-							<div class="card-body">
-								<p>#{subscription.description}</p>
-								<p>#{subscription.engagement}</p>
-							</div>
-							<div class="card-footer">
-								<p>#{subscription.price.monthlyPrice}</p>
-							</div>
-						</div>
-					</ui:repeat>
-				</div>
+				</h:form>
             </p:tab>
-            <p:tab title="Cours">
-	        	<h:panelGrid columns="1" cellpadding="5">
+            
+	        <p:tab title="Cours">
+		       	<h:panelGrid columns="1" cellpadding="5">
 					<p:commandButton value="Ajouter un cours" />
 				</h:panelGrid>
-					
+
 				<ui:repeat value="#{courseController.allCoachCourses}" var="course"> -->
 					<div
 						class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
@@ -137,24 +162,18 @@
 						</div>
 						<div class="card-footer">
 							<p>#{course.description}</p>
+							
 						</div>
 					</div>
 				</ui:repeat>
-            </p:tab>
-            
+			</p:tab>
 		</p:tabView>
-
-<!-- 		<ui:repeat value="#{userController.allActiveUser}" var="user"> -->
-<!-- 			<h:panelGroup rendered="#{user.account.role eq 'Coach'}"> -->
-<!-- 				<p>Nom: #{user.profile.civility.name}, Prenom: #{user.profile.civility.forename}, Date de naissance: #{user.profile.civility.birthday}, Role: #{user.account.role}</p> -->
-<!-- 			</h:panelGroup> -->
-<!-- 		</ui:repeat> -->
-		
 		<hr />
 
-		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate"
-			modal="true" height="600" resizable="false" showEffect="fade"
-			hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
+		<p:dialog header="Creation d'abonnement "
+			widgetVar="CreateSubscription" modal="true" height="600"
+			resizable="false" showEffect="fade" hideEffect="fade"
+			style="max-width: 1000px; min-width: 700px;">
 			<h:form>
 				<div>
 					<div class="d-grid gap-2">
@@ -192,6 +211,184 @@
 							action="#{subscriptionController.createSubscription()}" />
 
 						<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
+
+		<p:dialog header="Creation de coach " widgetVar="createCoach"
+			modal="true" height="600" resizable="false" showEffect="fade"
+			hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+						<div class="form-floating">
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="Nom" required="true" size="20"
+								value="#{spaceUser.spaceViewModel.newUser.profile.civility.name}" />
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="Prénom" required="true" size="20"
+								value="#{spaceUser.spaceViewModel.newUser.profile.civility.forename}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
+						</div>
+
+						<div class="field">
+							<h:outputLabel for="sex" value="Genre" />
+							<h:selectOneMenu id="sex"
+								value="#{spaceUser.spaceViewModel.newUser.profile.civility.sex}">
+								<f:selectItem itemLabel="" />
+								<f:selectItem itemLabel="Homme" itemValue="Man" />
+								<f:selectItem itemLabel="Femme" itemValue="Woman" />
+								<f:selectItem itemLabel="Autre" itemValue="Other" />
+							</h:selectOneMenu>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="Date de naissance" size="20"
+								value="#{spaceUser.spaceViewModel.newUser.profile.civility.birthday}">
+								<f:convertDateTime pattern="dd-mm-yyyy" />
+							</h:inputText>
+							<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput05"
+								placeholder="Email" required="true" size="20"
+								value="#{spaceUser.spaceViewModel.newUser.account.login}" />
+							<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput07"
+								placeholder="Adresse" size="20"
+								value="#{spaceUser.spaceViewModel.newUser.profile.adress.street}" />
+							<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput08"
+								placeholder="Code postal" size="20"
+								value="#{spaceUser.spaceViewModel.newUser.profile.adress.zipCode}" />
+							<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput09"
+								placeholder="Ville" size="20"
+								value="#{spaceUser.spaceViewModel.newUser.profile.adress.city}" />
+							<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+						</div>
+
+						<div class="field">
+							<h:outputLabel for="type" value="Document administratif" />
+							<h:selectOneMenu id="type"
+								value="#{spaceUser.spaceViewModel.newUser.account.administrativeDocument.type}">
+								<f:selectItem itemLabel="Selectionnez un type de document" />
+								<f:selectItem itemLabel="Diplôme" itemValue="Diploma" />
+								<f:selectItem itemLabel="Pièce d'identité" itemValue="Id" />
+								<f:selectItem itemLabel="Certificat médical"
+									itemValue="MedicalCertificate" />
+								<f:selectItem itemLabel="RIB" itemValue="BankDetails" />
+								<f:selectItem itemLabel="Autre" itemValue="Other" />
+							</h:selectOneMenu>
+							<hr />
+							<h:outputLabel id="fileUploadLbl" class="outputLabel">File : </h:outputLabel>
+							<p:fileUpload
+								listener="#{spaceUser.uploadAdministrativeDocument}"
+								styleClass="w-100" mode="advanced" dragDropSupport="false" />
+
+						</div>
+						<h:commandButton class="btn btn-warning"
+							value="Créer un compte coach"
+							action="#{spaceUser.createCoachAccount()}" />
+
+						<h:link class="text-center" outcome="ManagerSpaceDashBoard"
+							value="ANNULER" />
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
+
+		<p:dialog header="Modification de mon profil "
+			widgetVar="UpdateAccount" modal="true" height="600" resizable="false"
+			showEffect="fade" hideEffect="fade"
+			style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="#{spaceUser.spaceViewModel.user.profile.civility.name}"
+								size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="spaceUser.spaceViewModel.user.profile.civility.forename"
+								size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
+						</div>
+						<div class="field">
+							<h:outputLabel for="sex" value="Genre" />
+							<h:selectOneMenu id="sex"
+								value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
+								<f:selectItem itemLabel="" />
+								<f:selectItem itemLabel="Homme" itemValue="Man" />
+								<f:selectItem itemLabel="Femme" itemValue="Woman" />
+								<f:selectItem itemLabel="Autre" itemValue="Other" />
+							</h:selectOneMenu>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="spaceUser.spaceViewModel.user.profile.civility.birthday"
+								size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
+								<f:convertDateTime pattern="dd-mm-yyyy" />
+							</h:inputText>
+							<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+						</div>
+						<div class="form-floating ">
+							<h:inputText class="form-control" id="floatingInput06" size="20"
+								placeholder="#{spaceUser.spaceViewModel.user.account.password}"
+								maxlength="12"
+								value="#{spaceUser.spaceViewModel.user.account.password}">
+								<f:validateLength minimum="5"></f:validateLength>
+							</h:inputText>
+							<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput07"
+								placeholder="spaceUser.spaceViewModel.user.profile.adress.street"
+								size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
+							<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput08"
+								placeholder="spaceUser.spaceViewModel.user.profile.adress.zipCode"
+								size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
+							<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+						</div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput09"
+								placeholder="spaceUser.spaceViewModel.user.profile.adress.city"
+								size="20"
+								value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
+							<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+						</div>
+						<h:commandButton class="btn btn-warning"
+							value="Enregistrer les modifications"
+							action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
+						<h:link class="text-center" outcome="AdherentDashboard"
+							value="ANNULER" />
 					</div>
 				</div>
 			</h:form>

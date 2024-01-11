@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * All lessons, courses or other fitness activities.
+ * 
+ * @author Charef
+ *
+ */
 @Entity
 public class Activity {
 

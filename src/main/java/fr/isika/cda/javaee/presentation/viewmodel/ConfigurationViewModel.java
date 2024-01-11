@@ -4,6 +4,12 @@ import fr.isika.cda.javaee.entity.spaces.Configuration;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.spaces.Style;
 
+/**
+ * ConfigurationViewModel for Configuration controller
+ * 
+ * @author Thibault
+ *
+ */
 public class ConfigurationViewModel {
 
 	private Configuration configuration;

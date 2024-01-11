@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" lang="fr">
+	xmlns:p="http://primefaces.org/ui" 
+	lang="fr">
 
 <ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
-
 	<ui:define name="titleValue">Salle</ui:define>
 	<ui:define name="spaceContent">
 		
 		<!-- cet élement sera remplacé par le contenu des pages, dynamiquement -->
-		<div class="container-fluid p-5">
+		<div class="container-fluid p-5 justify-space-beetwen">
 
 				<!-- section NOTRE PHILOSOPHIE-->
 				<div class="row pt-5 contain-80">
-					<div class="col-lg-6 col-sm-12 mt-auto mb-auto">
+					<div class="col-lg-6 col-sm-12 mt-auto mb-auto mb-5">
 						<h2 class="text-uppercase">NOTRE SALLE</h2>
-						<p>Utque aegrum corpus quassari etiam levibus solet offensis,
-							ita animus eius angustus et tener, quicquid increpuisset, ad
-							salutis suae dispendium existimans factum aut cogitatum,
-							insontium caedibus fecit victoriam luctuosam.</p>
+						<p>Bienvenue à notre salle de sport, l'endroit où le bien-être, la forme physique et la motivation se rencontrent 
+						pour créer une expérience exceptionnelle. Chez nous, chaque visite est une invitation à repousser vos limites, 
+						à atteindre vos objectifs et à embrasser un style de vie actif et sain.</p>
+						
+						<p> Notre salle de sport est bien plus qu'un simple espace d'entraînement, c'est une communauté dynamique où les passionnés de fitness 
+						de tous niveaux se réunissent pour partager leur énergie positive et leur détermination. Que vous soyez un débutant cherchant 
+						à adopter un mode de vie plus actif ou un athlète chevronné cherchant à relever de nouveaux défis, notre salle de sport offre 
+						des équipements de pointe et des programmes diversifiés pour répondre à tous les besoins.</p>
+						
+						<p>Nos installations sont équipées des dernières technologies en matière d'entraînement, des équipements cardiovasculaires aux machines de musculation, 
+						en passant par des zones dédiées aux cours collectifs stimulants. Notre équipe de coachs expérimentés et motivés est là pour vous guider 
+						à chaque étape de votre parcours fitness, vous fournissant des conseils personnalisés et des programmes adaptés à vos objectifs spécifiques.</p>
+						
+						<p>Rejoignez-nous pour découvrir une salle de sport où le fitness devient une passion, où chaque goutte de sueur devient une victoire personnelle, 
+						et où vous vous sentirez inspiré à chaque séance. Ensemble, nous construisons un chemin vers une vie plus saine, plus forte et plus épanouissante.</p>
+						
+						<p>Bienvenue dans notre communauté fitness, où votre succès devient notre succès.</p>
 
 					</div>
 					<div class="col-lg-6 col-sm-12 ">
@@ -30,16 +44,116 @@
 					</div>
 				</div>
 			</div>
-			
+			<div class="container-fluid p-5 justify-space-beetwen">
 			<div class="row mb-5 contain-50">
-				<h2 class="text-uppercase">ABONNEMENT</h2>
-				<div>
-<!-- 					<button> -->
-<!-- 						<h:link class="dropdown-item" outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link> -->
-<!-- 					</button> -->
-				</div>
+			
+				<h2 class="text-uppercase">NOS ABONNEMENTS</h2>
 				
+					<p:tab title="Abonnements">
+	        	<h:panelGrid columns="1" cellpadding="5">
+					<p:commandButton value="Ajouter un abonnement" type="button" onclick="PF('popupUpdate').show();" />
+				</h:panelGrid>
+				
+							<div class="card mb-5" style="border-radius: 50px; padding: 2em" >
+        <div class="text-900 font-bold text-5xl  text-center" style="margin-top: 20px">
+            <H3>Libérez votre potentiel avec nos Abonnements Sportifs</H3>
+        </div>
+				<div class="d-flex justify-content-between mt-5 w-100 border">
+					<ui:repeat value="#{subscriptionController.allActiveSubscription}"
+						var="subscription">
+						<div class="shadow-2 h-full flex flex-column surface-card" style="border-radius: 6px margin-top:0px;">
+							<div class="card-header" style="background-color: #f5cb42">
+								<h1>#{subscription.subscriptionName}</h1>
+							</div>
+							
+							<div class="card-body">
+							<p class="back">
+    <i class="ri-checkbox-circle-line back"></i>
+    Meal reservation Basic
+</p>
+								<p>#{subscription.description}</p>
+								<p>#{subscription.engagement}</p>
+							</div>
+							<div class="card-footer">
+								<p>#{subscription.price.monthlyPrice}</p>
+							</div>
+						</div>
+					</ui:repeat>
+				</div>
+				</div>
+            </p:tab>
 			</div>
+			
+<!-- 					<div class="card mb-5" style="border-radius: 50px"> -->
+<!--         <div class="text-900 font-bold text-5xl mb-3 text-center" style="margin-top: 20px"> -->
+<!--             <H3>Libérez votre potentiel avec nos Abonnements Sportifs</H3> -->
+<!--         </div> -->
+<!-- 				<div class="d-flex container mt-5"> -->
+<!-- 					<ui:repeat value="#{subscriptionController.allActiveSubscription}" -->
+<!-- 						var="subscription"> -->
+<!-- 						<div class="shadow-2 p-5 h-full flex flex-column surface-card" style="border-radius: 6px margin-top:0px;"> -->
+<!-- 							<div class="card-header"> -->
+<!-- 								<h1>#{subscription.subscriptionName}</h1> -->
+<!-- 							</div> -->
+							
+<!-- 							<div class="card-body"> -->
+<!-- 								<p>#{subscription.description}</p> -->
+<!-- 								<p>#{subscription.engagement}</p> -->
+<!-- 							</div> -->
+<!-- 							<div class="card-footer"> -->
+<!-- 								<p>#{subscription.price.monthlyPrice}</p> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</ui:repeat> -->
+<!-- 				</div> -->
+<!-- 				</div> -->
+<!--             </p:tab> -->
+<!-- 			</div> -->
+			
+					<p:dialog header="Ajouter un abonnement" widgetVar="popupUpdate"
+			modal="true" height="600" resizable="false" showEffect="fade"
+			hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="Nom de l'abonnement" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="Description" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput03"
+								placeholder="Engagement" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
+							<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="Prix Mensuel" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
+							<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
+						</div>
+
+						<h:commandButton class="btn btn-warning"
+							value="Créer un abonnement"
+							action="#{subscriptionController.createSubscription()}" />
+
+						<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
 		
 		<div class="card text-center" style="width: 20rem;">
 		
@@ -68,7 +182,7 @@
 <!-- 	        <p:commandButton value="Valider" action="#{conf.updateSpace()}" icon="pi pi-check"/> -->
 <!-- 	    </h:form> -->
 		</div>
-
+</div>
 		<main class="w-100">
 			<div class=" row p-4 justify-content-around align-items-stretch navBar"
 				style="height: 5vh; position: fixed; top: 0px"></div>
@@ -334,6 +448,7 @@
 					</ul>
 				</div>
 			</div>
+		
 		</main>
 
 		<script>
