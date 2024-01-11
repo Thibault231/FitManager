@@ -10,9 +10,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
+import fr.isika.cda.javaee.dao.subscription.IDaoSubscription;
+import fr.isika.cda.javaee.dao.subscription.SubscriptionDao;
 import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.spaces.Space;
+import fr.isika.cda.javaee.entity.subscription.Subscription;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 
@@ -36,6 +39,9 @@ public class InitDb {
 
 	@Inject
 	private IDaoSpace spaceDao;
+
+	@Inject
+	private IDaoSubscription subDao;
 
 	@PostConstruct
 	public void init() {
@@ -84,6 +90,21 @@ public class InitDb {
 			spaceDao.updateSpace(spaceOne);
 
 			/*
+			 * Création de quelquessouscriptions pour la vue allCourses (Calendar)
+			 */
+			Subscription subscriptionOne = new Subscription(true);
+			subscriptionOne.setSubscriptionName("BASIC");
+			subscriptionOne.setDescription(
+					"Accès illimité à la salle de sport moderne\n" + "Participation à des cours collectifs dynamiques\n"
+							+ "Utilisation des équipements de base pour des séances d'entraînement efficaces\n"
+							+ "Accès aux vestiaires et aux douches");
+			subscriptionOne.setEngagement("12 mois");
+			subscriptionOne.getPrice().setMonthlyPrice(100);
+			subDao.createSubscription(subscriptionOne);
+			spaceOne.getSubscriptions().add(subscriptionOne);
+			spaceDao.updateSpace(spaceOne);
+
+			/*
 			 * Création de quelques cours pour la vue allCourses (Calendar)
 			 */
 			Course c = new Course();
@@ -116,6 +137,7 @@ public class InitDb {
 			/*
 			 * Fin création des cours
 			 */
+
 			System.out.println("************************ End of Initializing DB **********************************");
 			initialized = true;
 		}
