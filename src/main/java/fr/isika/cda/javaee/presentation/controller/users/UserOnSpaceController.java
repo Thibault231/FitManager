@@ -63,6 +63,14 @@ public class UserOnSpaceController implements Serializable {
 		this.spaceViewModel = spaceViewModel;
 	}
 
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
 	// **********************************************************
 
 	/**
@@ -183,10 +191,6 @@ public class UserOnSpaceController implements Serializable {
 		}
 	}
 
-	public void setUploadedFile(UploadedFile uploadedFile) {
-		this.uploadedFile = uploadedFile;
-	}
-
 	/**
 	 * Update the change of a user profile.
 	 * 
@@ -204,18 +208,32 @@ public class UserOnSpaceController implements Serializable {
 		return redirectToRightDashBoard(SessionUtils.getUserRoleFromSession());
 	}
 
+	/**
+	 * Upload administrative document for User-coach, then rename and stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
 	public void uploadAdministrativeDocument(FileUploadEvent event) throws Exception {
 		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
-
 		UploadedFile uploadedFile = event.getFile();
 		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
-
 		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
-
 		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 
-	public UploadedFile getUploadedFile() {
-		return uploadedFile;
+	/**
+	 * Upload logo picture for Space objects, then rename and stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
+	public void uploadSpaceLogo(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = "logo/" + String.join("_", timestamp, uploadedFile.getFileName());
+		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
+
 }
