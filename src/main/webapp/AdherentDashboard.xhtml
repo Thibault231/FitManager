@@ -35,33 +35,45 @@
 				onclick="PF('UpdateAccount').show();" />
 		</h:panelGrid>
 		<hr/>
+		<h2>Mon abonnement actuel</h2>
+		<ui:fragment rendered="#{subscriptionController.hasSubscription()}">
+		<h3>#{subscriptionController.getsubscriptionById(spaceUser.spaceViewModel.user.currentSubScriptionId).subscriptionName}</h3>
+		<p>#{subscriptionController.getsubscriptionById(spaceUser.spaceViewModel.user.currentSubScriptionId).description}</p>
+		</ui:fragment>
 		<p>
 			<h:link outcome="SubscribeForm.xhtml"
 				value="Souscrire à un abonnement" />
 		</p>
 		<hr/>
-		<ui:repeat value="#{bookingController.allBookingOfAMember}"
-			var="booking">
-			<div class="card text-bg-white detail"
-				style="background-color: yellow;">
-				<div class="card-header">
-					<h1>#{booking.linkedCourse.name}</h1>
-				</div>
-				<div class="card-body">
-					<p>#{booking.registrationDate.toString()}</p>
-					<p>#{booking.linkedCourse.startDate}</p>
-				</div>
-			</div>
-		</ui:repeat>
-		<h:form>
-			<h:button value="Réserver un cours" outcome="BookingCalendar.xhtml" />
-		</h:form>
-		<hr/>
-		<h:link
-			outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"
-			value="Retour à l'accueil" />
-
+		<h2>Mes réservations</h2>
+	<p:tabView>	
+	<p:tab title="Mes réservations">
+       	<h:panelGrid columns="1" cellpadding="5">
+		<p:link value="Réserver un cours" outcome="BookingCalendar.xhtml" type="button" />
 		
+		<p:dataTable var="booking" value="#{bookingController.allBookingOfAMember}">
+				<p:column headerText="Activité">
+					<h:outputText value="#{booking.linkedCourse.name}"/>
+				</p:column>
+				<p:column headerText="Date de réservation">
+					<h:outputText value="#{booking.registrationDate.toString()}"/>
+				</p:column>
+				<p:column headerText="Date et Horaire du cours">
+					<h:outputText value="#{booking.linkedCourse.startDate.toString()}"/>
+				</p:column>
+				<p:column headerText="Action">
+					<h:form>
+					<p:commandButton type="Button" value="Supprimer" style="margin-right:20px;"
+						action="#{bookingController.cancelBooking(booking.bookingId)}">
+					</p:commandButton>
+					 </h:form>
+				</p:column>
+			</p:dataTable> 
+			</h:panelGrid>
+		  </p:tab>
+		</p:tabView>  
+		<hr/>
+	
 		<p:dialog header="Modification de mon profil " widgetVar="UpdateAccount" modal="true"
 			height="600" resizable="false" showEffect="fade" hideEffect="fade"
 			style="max-width: 1000px; min-width: 700px;">

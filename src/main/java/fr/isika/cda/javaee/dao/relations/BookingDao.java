@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.relations.Booking;
@@ -20,17 +21,21 @@ public class BookingDao implements IBookingDao {
 		em.persist(bookingToCreate);
 		return bookingToCreate.getBookingId();
 	}
-	
-	public void cancelBooking(Long bookingId) {
-		Booking booking = getBookingingById(bookingId);
-		if (booking != null) {
-			em.remove(booking);
+
+	@Override
+	public void cancelBooking(Long bookingToCancelId) {
+		try {
+			Booking bookingToDelete = getBookingingById(bookingToCancelId);
+			em.remove(bookingToDelete);
+		} catch (NoResultException ex) {
+			System.out.println(ex);
 		}
 	}
 
 	@Override
 	public Booking getBookingingById(Long bookingId) {
-		return em.find(Booking.class, bookingId);
+		return em.createQuery("SELECT b FROM Booking b WHERE b.bookingId = :bookingIdParam", Booking.class)
+				.setParameter("bookingIdParam", bookingId).getSingleResult();
 	}
 
 	@Override
@@ -50,7 +55,5 @@ public class BookingDao implements IBookingDao {
 		return em.createQuery("SELECT b FROM Booking b WHERE b.coach.userId =" + coachId, Booking.class)
 				.getResultList();
 	}
-
-	
 
 }

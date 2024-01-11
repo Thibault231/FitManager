@@ -45,18 +45,15 @@
 				<h:panelGrid id="eventDetails" columns="2">
 					<p:outputLabel for="title" value="Name :" />
 					<p:inputText id="title" value="#{courseController.event.title}"
-						required="true" />
+						disabled="true" required="true" />
 
 					<p:outputLabel for="description" value="Description:" />
 					<p:inputTextarea id="description"
-						value="#{courseController.event.description}">
+						disabled="true" value="#{courseController.event.description}">
 					</p:inputTextarea>
-
 
 					<p:commandButton value="Réserver"
 						action="#{bookingController.createBooking()}" />
-					<p:commandButton value="Annuler ma réservation"
-						action="#{bookingController.cancelBooking()}" />
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>

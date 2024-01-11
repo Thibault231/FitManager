@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import fr.isika.cda.javaee.entity.subscription.Membership;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 
 @Stateless
@@ -35,13 +34,16 @@ public class SubscriptionDao implements IDaoSubscription {
 
 	@Override
 	public Subscription getSubscriptionById(Long SubscriptionToGetId) {
-		return em.find(Subscription.class, SubscriptionToGetId);
+		return em.createQuery("SELECT u FROM Subscription u WHERE u.subscriptionName = :subscriptionIdParam",
+				Subscription.class).setParameter("subscriptionIdParam", SubscriptionToGetId).getSingleResult();
 	}
 
 	@Override
 	public Subscription getSubscriptionByName(String SubscriptionToGetName) {
-		return em.createQuery("SELECT u FROM Subscription u WHERE u.isActive = 1", Subscription.class)
-				.getSingleResult();
+		return em
+				.createQuery("SELECT u FROM Subscription u WHERE u.subscriptionName = :subscriptionNameParam",
+						Subscription.class)
+				.setParameter("subscriptionNameParam", SubscriptionToGetName).getSingleResult();
 	}
 
 	@Override

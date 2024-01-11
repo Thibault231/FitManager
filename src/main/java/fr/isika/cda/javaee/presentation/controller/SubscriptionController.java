@@ -69,12 +69,16 @@ public class SubscriptionController implements Serializable {
 		return subscriptionsList;
 	}
 
-	public Subscription getsubscription(Long subscritptionId) {
+	public Subscription getsubscriptionById(Long subscritptionId) {
 		return subscriptionDao.getSubscriptionById(subscritptionId);
 	}
 
-	public Subscription getSubscription(String subscriptionName) {
+	public Subscription getSubscriptionByName(String subscriptionName) {
 		return subscriptionDao.getSubscriptionByName(subscriptionName);
+	}
+
+	public boolean hasSubscription() {
+		return userDao.getUserById(SessionUtils.getUserIdFromSession()).getCurrentSubScriptionId() != null;
 	}
 
 	/**
@@ -91,7 +95,7 @@ public class SubscriptionController implements Serializable {
 		currentUser.setCurrentSubScriptionId(id);
 		// persistance des données.
 		userDao.updateUser(currentUser);
-		return "Test-AdherentDashboard";
+		return "AdherentDashboard?faces-redirect=true";
 	}
 
 	public String showSubscriptionDetails() {
