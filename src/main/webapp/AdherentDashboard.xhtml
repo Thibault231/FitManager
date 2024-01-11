@@ -35,6 +35,11 @@
 				onclick="PF('UpdateAccount').show();" />
 		</h:panelGrid>
 		<hr/>
+		<h2>Mon abonnement actuel</h2>
+		<ui:fragment rendered="#{subscriptionController.hasSubscription()}">
+		<h3>#{subscriptionController.getsubscriptionById(spaceUser.spaceViewModel.user.currentSubScriptionId).subscriptionName}</h3>
+		<p>#{subscriptionController.getsubscriptionById(spaceUser.spaceViewModel.user.currentSubScriptionId).description}</p>
+		</ui:fragment>
 		<p>
 			<h:link outcome="SubscribeForm.xhtml"
 				value="Souscrire à un abonnement" />
