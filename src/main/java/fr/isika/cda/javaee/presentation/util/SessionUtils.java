@@ -40,4 +40,18 @@ public final class SessionUtils {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		fc.getExternalContext().getSessionMap().put("spaceId", spaceId);
 	}
+
+	public static String redirectToDashBoard() {
+		Role userRole = getUserRoleFromSession();
+		if (userRole.equals(Role.Adherent)) {
+			return "AdherentDashboard?faces-redirect=true";
+		} else if (userRole.equals(Role.Coach)) {
+			return "CoachDashboard?faces-redirect=true";
+		} else if (userRole.equals(Role.Gestionnaire)) {
+			return "ManagerSpaceDashBoard?faces-redirect=true";
+		} else {
+			Long spaceId = SessionUtils.getSpaceIdFromSession();
+			return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		}
+	}
 }

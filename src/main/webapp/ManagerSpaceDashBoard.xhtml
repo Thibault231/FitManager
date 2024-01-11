@@ -85,10 +85,6 @@
 						</p:column>
 						<p:column headerText="Actions">
 							<h:form>
-								<p:commandButton value="Modifier" style="margin-right:20px;"
-									action="#{userController.updateUser()}">
-								</p:commandButton>
-			
 								<p:commandButton type="Button" outcome="UsersAccounts.xhtml"
 									value="Supprimer" style="margin-right:20px;"
 									action="#{userController.deleteUser(user.userId)}">
@@ -100,28 +96,31 @@
             </p:tab>
             
             <p:tab title="Abonnements">
-	        	<h:panelGrid columns="1" cellpadding="5">
+				<h:form>
+				<h:panelGrid columns="1" cellpadding="5">
 					<p:commandButton value="Ajouter un abonnement" type="button" onclick="PF('CreateSubscription').show();" />
+	                <p:dataTable value="#{subscriptionController.allActiveSubscription}" var="subscription">
+						<p:column headerText="Dénomination">
+							<h:outputText value="#{subscription.subscriptionName}"/>
+						</p:column>
+						<p:column headerText="Descrition" >
+							<h:outputText value="#{subscription.description}"/>
+						</p:column>
+						<p:column headerText="Type d'engagement" >
+							<h:outputText value="#{subscription.engagement}"/>
+						</p:column>
+						<p:column headerText="Prix mensuel" >
+							<h:outputText value="#{subscription.price.monthlyPrice}"/>
+						</p:column>
+						<p:column headerText="Actions" >
+							<p:commandButton value="Modifier" style="margin-right:20px;" type="button" onclick="PF('subscription.subscriptionId').show();"/>
+							<p:commandButton value="Supprimer" style="margin-right:20px;"
+								action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}">
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
 				</h:panelGrid>
-				<div class="d-flex container mt-5 detailSubscription">
-					<ui:repeat value="#{subscriptionController.allActiveSubscription}"
-						var="subscription">
-						<div
-							class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
-							style="background-color: yellow;">
-							<div class="card-header">
-								<h1>#{subscription.subscriptionName}</h1>
-							</div>
-							<div class="card-body">
-								<p>#{subscription.description}</p>
-								<p>#{subscription.engagement}</p>
-							</div>
-							<div class="card-footer">
-								<p>#{subscription.price.monthlyPrice}</p>
-							</div>
-						</div>
-					</ui:repeat>
-				</div>
+				</h:form>
             </p:tab>
             
 	        <p:tab title="Cours">
@@ -193,6 +192,7 @@
 				</div>
 			</h:form>
 		</p:dialog>
+		
 		
 		<p:dialog header="Creation de coach " widgetVar="createCoach"
 			modal="true" height="600" resizable="false" showEffect="fade"

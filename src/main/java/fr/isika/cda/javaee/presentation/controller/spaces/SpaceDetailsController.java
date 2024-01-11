@@ -65,7 +65,7 @@ public class SpaceDetailsController implements Serializable {
 		Space s = new Space(true);
 		s.getInfos().getConfiguration().setFitnessName("SpaceTest");
 		s.getInfos().getAdministrative().setSiret("10000");
-		s.getInfos().getAdministrative().setSiren("236-10000");
+		s.getInfos().getAdministrative().setAddress("236-10000");
 		spaceDao.createSpace(s);
 	}
 

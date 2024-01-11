@@ -15,9 +15,8 @@
 				<p class="m-0">
 					<h:form id="activityCreationForm">
 						<div>
-
 							<p:dataTable var="space"
-								value="#{spaceController.allActiveSpaces}">
+								value="#{spaceController.allActiveSpacesOfManager}">
 								<p:column headerText="Logo">
 								<div class="logoContainer">
 										<p:graphicImage library="images" name="logo/#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index" />

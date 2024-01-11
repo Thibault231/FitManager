@@ -20,7 +20,6 @@ import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
-import fr.isika.cda.javaee.dao.plateform.CourseDao;
 import fr.isika.cda.javaee.dao.plateform.IDaoCourse;
 import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.plateform.Course;

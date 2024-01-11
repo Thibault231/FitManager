@@ -40,17 +40,17 @@
 				</p:schedule>
 			</h:panelGrid>
 
-			<p:dialog widgetVar="eventDialog" header="Course Details"
+			<p:dialog widgetVar="eventDialog" header="Cours disponible sur ce créneau:"
 				showEffect="clip" hideEffect="clip">
 				<h:panelGrid id="eventDetails" columns="2">
 					<p:outputLabel for="title" value="Name :" />
-					<p:inputText id="title" value="#{courseController.event.title}"
+					<p:outputLabel id="title" value="#{courseController.event.title}"
 						disabled="true" required="true" />
 
 					<p:outputLabel for="description" value="Description:" />
-					<p:inputTextarea id="description"
+					<p:outputLabel id="description"
 						disabled="true" value="#{courseController.event.description}">
-					</p:inputTextarea>
+					</p:outputLabel>
 
 					<p:commandButton value="Réserver"
 						action="#{bookingController.createBooking()}" />
