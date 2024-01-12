@@ -10,390 +10,426 @@
 <ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
 	<ui:define name="titleValue">Space : Manager dashboard </ui:define>
 	<ui:define name="spaceContent">
+		<div class="container">
 
-		<h1>Tableau de bord manager</h1>
-		<h1>Mes informations</h1>
-		<div id="1">
-			<p>Nom: #{spaceUser.spaceViewModel.user.profile.civility.name}</p>
-			<p>Prenom:
-				#{spaceUser.spaceViewModel.user.profile.civility.forename}</p>
-			<p>Date de naissance:
-				#{spaceUser.spaceViewModel.user.profile.civility.birthday}</p>
-			<p>Email: #{spaceUser.spaceViewModel.user.profile.contact.email}</p>
-			<p>Adresse:
-				#{spaceUser.spaceViewModel.user.profile.adress.street}</p>
-			<p>Code postal:
-				#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</p>
-			<p>Ville: #{spaceUser.spaceViewModel.user.profile.adress.city}</p>
-		</div>
-		<h:panelGrid columns="1" cellpadding="5">
-			<p:commandButton value="Modifier mon profil" type="button"
-				onclick="PF('UpdateAccount').show();" />
-		</h:panelGrid>
-		<hr />
+			<h2 class="mb-5">Mon tableau de bord Manager</h2>
+			<div class="row">
+				<div class="col-4">
+				<div class="d-flex justify-content-center align-items-center w-100 h-100 ">
+				<img src="resources/images/Image2.jpg" style="max-width:12em; height:12em"/>
+				</div>
+				</div>
+				<div id="1" class="col-6">
+					<h2>Mes informations</h2>
+					<div class="card p-2"
+						style="background-color:#6C969D; color: white;">
+						<p>Nom: #{spaceUser.spaceViewModel.user.profile.civility.name}</p>
+						<p>Prenom:
+							#{spaceUser.spaceViewModel.user.profile.civility.forename}</p>
+						<p>Date de naissance:
+							#{spaceUser.spaceViewModel.user.profile.civility.birthday}</p>
+						<p>Email:
+							#{spaceUser.spaceViewModel.user.profile.contact.email}</p>
+						<p>Adresse:
+							#{spaceUser.spaceViewModel.user.profile.adress.street}</p>
+						<p>Code postal:
+							#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</p>
+						<p>Ville: #{spaceUser.spaceViewModel.user.profile.adress.city}</p>
+						<div class="d-flex w-100 justify-content-center">
+						<h:panelGrid columns="1" cellpadding="5">
+							<p:commandButton value="Modifier mon profil" type="button"
+								onclick="PF('UpdateAccount').show();" />
+						</h:panelGrid>
+						</div>
 
-		<p:tabView>
-			<f:facet name="actions">
+					</div>
+				</div>
+			</div>
+
+			<hr />
+
+			<p:tabView>
+				<f:facet name="actions">
                 Global actions
             </f:facet>
-			<p:tab title="Adherents">
-				<h:panelGrid columns="1" cellpadding="5">
-					<p:dataTable var="user"
-						value="#{userController.allMembersOfCurrentSpace}">
-						<p:column headerText="Nom">
-							<h:outputText value="#{user.profile.civility.name}" />
-						</p:column>
-						<p:column headerText="Prenom">
-							<h:outputText value="#{user.profile.civility.forename}" />
-						</p:column>
-						<p:column headerText="Date de naissance">
-							<h:outputText value="#{user.profile.civility.birthday}" />
-						</p:column>
-						<p:column headerText="Rôle">
-							<h:outputText value="#{user.account.role}" />
-						</p:column>
-						<p:column headerText="Action">
-							<h:form>
-								<p:commandButton type="button" value="Supprimer"
-									onclick="PF('confirmationVar').show();" />
+				<p:tab title="Adherents">
+					<h:panelGrid columns="1" cellpadding="5">
+						<p:dataTable var="user"
+							value="#{userController.allMembersOfCurrentSpace}">
+							<p:column headerText="Nom">
+								<h:outputText value="#{user.profile.civility.name}" />
+							</p:column>
+							<p:column headerText="Prenom">
+								<h:outputText value="#{user.profile.civility.forename}" />
+							</p:column>
+							<p:column headerText="Date de naissance">
+								<h:outputText value="#{user.profile.civility.birthday}" />
+							</p:column>
+							<p:column headerText="Rôle">
+								<h:outputText value="#{user.account.role}" />
+							</p:column>
+							<p:column headerText="Action">
+								<h:form>
+									<p:commandButton type="button" value="Supprimer"
+										onclick="PF('confirmationVar').show();" />
 
-								<p:confirmDialog id="confirmationDialog"
-									widgetVar="confirmationVar" header="Confirmation"
-									message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
-									severity="alert">
+									<p:confirmDialog id="confirmationDialog"
+										widgetVar="confirmationVar" header="Confirmation"
+										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+										severity="alert">
 
-									<p:commandButton value="Annuler" type="button"
-										onclick="PF('confirmationVar').hide()" />
+										<p:commandButton value="Annuler" type="button"
+											onclick="PF('confirmationVar').hide()" />
 
-									<p:commandButton value="Oui"
-										oncomplete="PF('confirmationVar').hide()"
-										action="#{userController.deleteUser(user.userId)}" />
-								</p:confirmDialog>
-							</h:form>
-						</p:column>
-					</p:dataTable>
-				</h:panelGrid>
-			</p:tab>
+										<p:commandButton value="Oui"
+											oncomplete="PF('confirmationVar').hide()"
+											action="#{userController.deleteUser(user.userId)}" />
+									</p:confirmDialog>
+								</h:form>
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+				</p:tab>
 
-			<p:tab title="Coachs">
-				<h:panelGrid columns="1" cellpadding="5">
-					<p:commandButton value="Ajouter un coach" type="button"
-						onclick="PF('createCoach').show();" />
-					<p:dataTable var="user"
-						value="#{userController.allCoachesOfCurrentSpace}">
-						<p:column headerText="Nom">
-							<h:outputText value="#{user.profile.civility.name}" />
-						</p:column>
-						<p:column headerText="Prenom">
-							<h:outputText value="#{user.profile.civility.forename}" />
-						</p:column>
-						<p:column headerText="Date de naissance">
-							<h:outputText value="#{user.profile.civility.birthday}" />
-						</p:column>
-						<p:column headerText="Rôle">
-							<h:outputText value="#{user.account.role}" />
-						</p:column>
-						<p:column headerText="Action">
-							<h:form>
-								<p:commandButton type="button" value="Supprimer"
-									onclick="PF('confirmationVar').show();" />
+				<p:tab title="Coachs">
+					<h:panelGrid columns="1" cellpadding="5">
+						<p:commandButton value="Ajouter un coach" type="button"
+							onclick="PF('createCoach').show();" />
+						<p:dataTable var="user"
+							value="#{userController.allCoachesOfCurrentSpace}">
+							<p:column headerText="Nom">
+								<h:outputText value="#{user.profile.civility.name}" />
+							</p:column>
+							<p:column headerText="Prenom">
+								<h:outputText value="#{user.profile.civility.forename}" />
+							</p:column>
+							<p:column headerText="Date de naissance">
+								<h:outputText value="#{user.profile.civility.birthday}" />
+							</p:column>
+							<p:column headerText="Rôle">
+								<h:outputText value="#{user.account.role}" />
+							</p:column>
+							<p:column headerText="Action">
 
-								<p:confirmDialog id="confirmationDialog"
-									widgetVar="confirmationVar" header="Confirmation"
-									message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
-									severity="alert">
+								<h:form>
+									<p:commandButton type="button" value="Supprimer"
+										onclick="PF('confirmationVar').show();" />
 
-									<p:commandButton value="Annuler" type="button"
-										onclick="PF('confirmationVar').hide()" />
+									<p:confirmDialog id="confirmationDialog"
+										widgetVar="confirmationVar" header="Confirmation"
+										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+										severity="alert">
 
-									<p:commandButton value="Oui"
-										oncomplete="PF('confirmationVar').hide()"
-										action="#{userController.deleteUser(user.userId)}" />
-								</p:confirmDialog>
-							</h:form>
-						</p:column>
-					</p:dataTable>
-				</h:panelGrid>
-            </p:tab>
-            
-            <p:tab title="Abonnements">
-				<h:form>
-				<h:panelGrid columns="1" cellpadding="5">
-					<p:commandButton value="Ajouter un abonnement" type="button" onclick="PF('CreateSubscription').show();" />
-	                <p:dataTable value="#{subscriptionController.allActiveSubscription}" var="subscription">
-						<p:column headerText="Dénomination">
-							<h:outputText value="#{subscription.subscriptionName}"/>
-						</p:column>
-						<p:column headerText="Descrition" >
-							<h:outputText value="#{subscription.description}"/>
-						</p:column>
-						<p:column headerText="Type d'engagement" >
-							<h:outputText value="#{subscription.engagement}"/>
-						</p:column>
-						<p:column headerText="Prix mensuel" >
-							<h:outputText value="#{subscription.price.monthlyPrice}"/>
-						</p:column>
-						<p:column headerText="Actions" >
-							<p:commandButton value="Modifier" style="margin-right:20px;" type="button" onclick="PF('subscription.subscriptionId').show();"/>
-							<p:commandButton value="Supprimer" style="margin-right:20px;"
-								action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}">
-							</p:commandButton>
-						</p:column>
-					</p:dataTable>
-				</h:panelGrid>
-				</h:form>
-            </p:tab>
-            
-	        <p:tab title="Cours">
-		       	<h:panelGrid columns="1" cellpadding="5">
-					<p:commandButton value="Ajouter un cours" />
-				</h:panelGrid>
+										<p:commandButton value="Annuler" type="button"
+											onclick="PF('confirmationVar').hide()" />
 
-				<ui:repeat value="#{courseController.allCoachCourses}" var="course"> -->
+										<p:commandButton value="Oui"
+											oncomplete="PF('confirmationVar').hide()"
+											action="#{userController.deleteUser(user.userId)}" />
+									</p:confirmDialog>
+								</h:form>
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+				</p:tab>
+
+				<p:tab title="Abonnements">
+					<h:form>
+						<h:panelGrid columns="1" cellpadding="5">
+							<p:commandButton value="Ajouter un abonnement" type="button"
+								onclick="PF('CreateSubscription').show();" />
+							<p:dataTable
+								value="#{subscriptionController.allActiveSubscription}"
+								var="subscription">
+								<p:column headerText="Dénomination">
+									<h:outputText value="#{subscription.subscriptionName}" />
+								</p:column>
+								<p:column headerText="Descrition">
+									<h:outputText value="#{subscription.description}" />
+								</p:column>
+								<p:column headerText="Type d'engagement">
+									<h:outputText value="#{subscription.engagement}" />
+								</p:column>
+								<p:column headerText="Prix mensuel">
+									<h:outputText value="#{subscription.price.monthlyPrice}" />
+								</p:column>
+								<p:column headerText="Actions">
+									<p:commandButton value="Modifier" style="margin-right:20px;"
+										type="button"
+										onclick="PF('subscription.subscriptionId').show();" /> 
+										<h:form>
+										<p:commandButton type="button" value="Supprimer"
+											onclick="PF('confirmationVar').show();" />
+
+										<p:confirmDialog id="confirmationDialog"
+											widgetVar="confirmationVar" header="Confirmation"
+											message="Êtes-vous sûr de vouloir supprimer cet abonnement?"
+											severity="alert">
+
+											<p:commandButton value="Annuler" type="button"
+												onclick="PF('confirmationVar').hide()" />
+
+											<p:commandButton value="Oui"
+												oncomplete="PF('confirmationVar').hide()"
+												action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
+										</p:confirmDialog>								
+									</h:form>
+								</p:column>
+							</p:dataTable>
+						</h:panelGrid>
+					</h:form>
+				</p:tab>
+
+				<p:tab title="Cours">
+					<h:panelGrid columns="1" cellpadding="5">
+						<p:commandButton value="Ajouter un cours" />
+					</h:panelGrid>
+
+					<ui:repeat value="#{courseController.allCoachCourses}" var="course"> -->
 					<div
-						class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
-						style="background-color: yellow;">
-						<div class="card-header">
-							<h1>#{course.name}</h1>
+							class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
+							style="background-color: yellow;">
+							<div class="card-header">
+								<h1>#{course.name}</h1>
+							</div>
+							<div class="card-body">
+								<p>#{course.startDate}</p>
+								<p>#{course.endDate}</p>
+							</div>
+							<div class="card-footer">
+								<p>#{course.description}</p>
+
+							</div>
 						</div>
-						<div class="card-body">
-							<p>#{course.startDate}</p>
-							<p>#{course.endDate}</p>
-						</div>
-						<div class="card-footer">
-							<p>#{course.description}</p>
-							
+					</ui:repeat>
+				</p:tab>
+			</p:tabView>
+			<hr />
+
+			<p:dialog header="Creation d'abonnement "
+				widgetVar="CreateSubscription" modal="true" height="600"
+				resizable="false" showEffect="fade" hideEffect="fade"
+				style="max-width: 1000px; min-width: 700px;">
+				<h:form>
+					<div>
+						<div class="d-grid gap-2">
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput01"
+									placeholder="Nom de l'abonnement" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
+								<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput02"
+									placeholder="Description" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
+								<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput03"
+									placeholder="Engagement" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
+								<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput04"
+									placeholder="Prix Mensuel" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
+								<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
+							</div>
+
+							<h:commandButton class="btn btn-warning"
+								value="Créer un abonnement"
+								action="#{subscriptionController.createSubscription()}" />
+
+							<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
 						</div>
 					</div>
-				</ui:repeat>
-			</p:tab>
-		</p:tabView>
-		<hr />
+				</h:form>
+			</p:dialog>
 
-		<p:dialog header="Creation d'abonnement "
-			widgetVar="CreateSubscription" modal="true" height="600"
-			resizable="false" showEffect="fade" hideEffect="fade"
-			style="max-width: 1000px; min-width: 700px;">
-			<h:form>
-				<div>
-					<div class="d-grid gap-2">
+			<p:dialog header="Creation de coach " widgetVar="createCoach"
+				modal="true" height="600" resizable="false" showEffect="fade"
+				hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
+				<h:form>
+					<div>
+						<div class="d-grid gap-2">
+							<div class="form-floating">
+								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+								<h:inputText class="form-control" id="floatingInput01"
+									placeholder="Nom" required="true" size="20"
+									value="#{spaceUser.spaceViewModel.newUser.profile.civility.name}" />
+							</div>
 
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput01"
-								placeholder="Nom de l'abonnement" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
-							<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput02"
+									placeholder="Prénom" required="true" size="20"
+									value="#{spaceUser.spaceViewModel.newUser.profile.civility.forename}" />
+								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
+							</div>
+
+							<div class="field">
+								<h:outputLabel for="sex" value="Genre" />
+								<h:selectOneMenu id="sex"
+									value="#{spaceUser.spaceViewModel.newUser.profile.civility.sex}">
+									<f:selectItem itemLabel="" />
+									<f:selectItem itemLabel="Homme" itemValue="Man" />
+									<f:selectItem itemLabel="Femme" itemValue="Woman" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput04"
+									placeholder="Date de naissance" size="20"
+									value="#{spaceUser.spaceViewModel.newUser.profile.civility.birthday}">
+									<f:convertDateTime pattern="dd-mm-yyyy" />
+								</h:inputText>
+								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput05"
+									placeholder="Email" required="true" size="20"
+									value="#{spaceUser.spaceViewModel.newUser.account.login}" />
+								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput07"
+									placeholder="Adresse" size="20"
+									value="#{spaceUser.spaceViewModel.newUser.profile.adress.street}" />
+								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput08"
+									placeholder="Code postal" size="20"
+									value="#{spaceUser.spaceViewModel.newUser.profile.adress.zipCode}" />
+								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+							</div>
+
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput09"
+									placeholder="Ville" size="20"
+									value="#{spaceUser.spaceViewModel.newUser.profile.adress.city}" />
+								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+							</div>
+
+							<div class="field">
+								<h:outputLabel for="type" value="Document administratif" />
+								<h:selectOneMenu id="type"
+									value="#{spaceUser.spaceViewModel.newUser.account.administrativeDocument.type}">
+									<f:selectItem itemLabel="Selectionnez un type de document" />
+									<f:selectItem itemLabel="Diplôme" itemValue="Diploma" />
+									<f:selectItem itemLabel="Pièce d'identité" itemValue="Id" />
+									<f:selectItem itemLabel="Certificat médical"
+										itemValue="MedicalCertificate" />
+									<f:selectItem itemLabel="RIB" itemValue="BankDetails" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
+								<hr />
+								<h:outputLabel id="fileUploadLbl" class="outputLabel">File : </h:outputLabel>
+								<p:fileUpload
+									listener="#{spaceUser.uploadAdministrativeDocument}"
+									styleClass="w-100" mode="advanced" dragDropSupport="false" />
+
+							</div>
+							<h:commandButton class="btn btn-warning"
+								value="Créer un compte coach"
+								action="#{spaceUser.createCoachAccount()}" />
+
+							<h:link class="text-center" outcome="ManagerSpaceDashBoard"
+								value="ANNULER" />
 						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput02"
-								placeholder="Description" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
-							<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput03"
-								placeholder="Engagement" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
-							<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput04"
-								placeholder="Prix Mensuel" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
-							<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
-						</div>
-
-						<h:commandButton class="btn btn-warning"
-							value="Créer un abonnement"
-							action="#{subscriptionController.createSubscription()}" />
-
-						<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
 					</div>
-				</div>
-			</h:form>
-		</p:dialog>
+				</h:form>
+			</p:dialog>
 
-		<p:dialog header="Creation de coach " widgetVar="createCoach"
-			modal="true" height="600" resizable="false" showEffect="fade"
-			hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
-			<h:form>
-				<div>
-					<div class="d-grid gap-2">
-						<div class="form-floating">
-							<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
-							<h:inputText class="form-control" id="floatingInput01"
-								placeholder="Nom" required="true" size="20"
-								value="#{spaceUser.spaceViewModel.newUser.profile.civility.name}" />
+			<p:dialog header="Modification de mon profil "
+				widgetVar="UpdateAccount" modal="true" height="600"
+				resizable="false" showEffect="fade" hideEffect="fade"
+				style="max-width: 1000px; min-width: 700px;">
+				<h:form>
+					<div>
+						<div class="d-grid gap-2">
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput01"
+									placeholder="#{spaceUser.spaceViewModel.user.profile.civility.name}"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
+								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+							</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput02"
+									placeholder="spaceUser.spaceViewModel.user.profile.civility.forename"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
+								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
+							</div>
+							<div class="field">
+								<h:outputLabel for="sex" value="Genre" />
+								<h:selectOneMenu id="sex"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
+									<f:selectItem itemLabel="" />
+									<f:selectItem itemLabel="Homme" itemValue="Man" />
+									<f:selectItem itemLabel="Femme" itemValue="Woman" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
+							</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput04"
+									placeholder="spaceUser.spaceViewModel.user.profile.civility.birthday"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
+									<f:convertDateTime pattern="dd-mm-yyyy" />
+								</h:inputText>
+								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+							</div>
+							<div class="form-floating ">
+								<h:inputText class="form-control" id="floatingInput06" size="20"
+									placeholder="#{spaceUser.spaceViewModel.user.account.password}"
+									maxlength="12"
+									value="#{spaceUser.spaceViewModel.user.account.password}">
+									<f:validateLength minimum="5"></f:validateLength>
+								</h:inputText>
+								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
+							</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput07"
+									placeholder="spaceUser.spaceViewModel.user.profile.adress.street"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
+								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+							</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput08"
+									placeholder="spaceUser.spaceViewModel.user.profile.adress.zipCode"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
+								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+							</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput09"
+									placeholder="spaceUser.spaceViewModel.user.profile.adress.city"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
+								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+							</div>
+							<h:commandButton class="btn btn-warning"
+								value="Enregistrer les modifications"
+								action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
+							<h:link class="text-center" outcome="AdherentDashboard"
+								value="ANNULER" />
 						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput02"
-								placeholder="Prénom" required="true" size="20"
-								value="#{spaceUser.spaceViewModel.newUser.profile.civility.forename}" />
-							<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
-						</div>
-
-						<div class="field">
-							<h:outputLabel for="sex" value="Genre" />
-							<h:selectOneMenu id="sex"
-								value="#{spaceUser.spaceViewModel.newUser.profile.civility.sex}">
-								<f:selectItem itemLabel="" />
-								<f:selectItem itemLabel="Homme" itemValue="Man" />
-								<f:selectItem itemLabel="Femme" itemValue="Woman" />
-								<f:selectItem itemLabel="Autre" itemValue="Other" />
-							</h:selectOneMenu>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput04"
-								placeholder="Date de naissance" size="20"
-								value="#{spaceUser.spaceViewModel.newUser.profile.civility.birthday}">
-								<f:convertDateTime pattern="dd-mm-yyyy" />
-							</h:inputText>
-							<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput05"
-								placeholder="Email" required="true" size="20"
-								value="#{spaceUser.spaceViewModel.newUser.account.login}" />
-							<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput07"
-								placeholder="Adresse" size="20"
-								value="#{spaceUser.spaceViewModel.newUser.profile.adress.street}" />
-							<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput08"
-								placeholder="Code postal" size="20"
-								value="#{spaceUser.spaceViewModel.newUser.profile.adress.zipCode}" />
-							<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput09"
-								placeholder="Ville" size="20"
-								value="#{spaceUser.spaceViewModel.newUser.profile.adress.city}" />
-							<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
-						</div>
-
-						<div class="field">
-							<h:outputLabel for="type" value="Document administratif" />
-							<h:selectOneMenu id="type"
-								value="#{spaceUser.spaceViewModel.newUser.account.administrativeDocument.type}">
-								<f:selectItem itemLabel="Selectionnez un type de document" />
-								<f:selectItem itemLabel="Diplôme" itemValue="Diploma" />
-								<f:selectItem itemLabel="Pièce d'identité" itemValue="Id" />
-								<f:selectItem itemLabel="Certificat médical"
-									itemValue="MedicalCertificate" />
-								<f:selectItem itemLabel="RIB" itemValue="BankDetails" />
-								<f:selectItem itemLabel="Autre" itemValue="Other" />
-							</h:selectOneMenu>
-							<hr />
-							<h:outputLabel id="fileUploadLbl" class="outputLabel">File : </h:outputLabel>
-							<p:fileUpload
-								listener="#{spaceUser.uploadAdministrativeDocument}"
-								styleClass="w-100" mode="advanced" dragDropSupport="false" />
-
-						</div>
-						<h:commandButton class="btn btn-warning"
-							value="Créer un compte coach"
-							action="#{spaceUser.createCoachAccount()}" />
-
-						<h:link class="text-center" outcome="ManagerSpaceDashBoard"
-							value="ANNULER" />
 					</div>
-				</div>
-			</h:form>
-		</p:dialog>
-
-		<p:dialog header="Modification de mon profil "
-			widgetVar="UpdateAccount" modal="true" height="600" resizable="false"
-			showEffect="fade" hideEffect="fade"
-			style="max-width: 1000px; min-width: 700px;">
-			<h:form>
-				<div>
-					<div class="d-grid gap-2">
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput01"
-								placeholder="#{spaceUser.spaceViewModel.user.profile.civility.name}"
-								size="20"
-								value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
-							<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
-						</div>
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput02"
-								placeholder="spaceUser.spaceViewModel.user.profile.civility.forename"
-								size="20"
-								value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
-							<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
-						</div>
-						<div class="field">
-							<h:outputLabel for="sex" value="Genre" />
-							<h:selectOneMenu id="sex"
-								value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
-								<f:selectItem itemLabel="" />
-								<f:selectItem itemLabel="Homme" itemValue="Man" />
-								<f:selectItem itemLabel="Femme" itemValue="Woman" />
-								<f:selectItem itemLabel="Autre" itemValue="Other" />
-							</h:selectOneMenu>
-						</div>
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput04"
-								placeholder="spaceUser.spaceViewModel.user.profile.civility.birthday"
-								size="20"
-								value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
-								<f:convertDateTime pattern="dd-mm-yyyy" />
-							</h:inputText>
-							<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
-						</div>
-						<div class="form-floating ">
-							<h:inputText class="form-control" id="floatingInput06" size="20"
-								placeholder="#{spaceUser.spaceViewModel.user.account.password}"
-								maxlength="12"
-								value="#{spaceUser.spaceViewModel.user.account.password}">
-								<f:validateLength minimum="5"></f:validateLength>
-							</h:inputText>
-							<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
-						</div>
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput07"
-								placeholder="spaceUser.spaceViewModel.user.profile.adress.street"
-								size="20"
-								value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
-							<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
-						</div>
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput08"
-								placeholder="spaceUser.spaceViewModel.user.profile.adress.zipCode"
-								size="20"
-								value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
-							<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
-						</div>
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput09"
-								placeholder="spaceUser.spaceViewModel.user.profile.adress.city"
-								size="20"
-								value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
-							<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
-						</div>
-						<h:commandButton class="btn btn-warning"
-							value="Enregistrer les modifications"
-							action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
-						<h:link class="text-center" outcome="AdherentDashboard"
-							value="ANNULER" />
-					</div>
-				</div>
-			</h:form>
-		</p:dialog>
-
+				</h:form>
+			</p:dialog>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
