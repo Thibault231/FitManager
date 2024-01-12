@@ -18,35 +18,21 @@
 	<ui:insert name="header">
 		<ui:include src="mainHeader.xhtml" />
 	</ui:insert>
-
+	
+	<div style="min-height:86vh; overflow:hidden">
+	
 	<!-- Contenu des pages de l'application -->
 	<ui:insert name="content">
 		<!-- cet élement sera remplacé par le contenu des pages, dynamiquement --> 
 	</ui:insert>
 	
+	</div>
+	
+	
 	<!-- Footer commun à toutes les pages -->
 	<ui:insert name="footer" >
 		<ui:include src="mainFooter.xhtml" />
 	</ui:insert>
-
-
-<!-- 	<ui:define name="content"> -->
-<!-- 			<div> -->
-<!-- 				<div id="content" class="w-100"> -->
-		
-<!-- 				Contenu du header  -->
-<!-- 				<ui:insert name="header" /> -->
-<!-- 				Contenu de la page	 -->
-<!-- 				<div class="row w-100 pt-5"> -->
-<!-- 					<ui:insert name="content"/> -->
-<!-- 				</div> -->
-<!-- 				<div id="footer"> -->
-<!-- 				Contenu du footer -->
-<!-- 					<ui:insert name="footer" /> -->
-<!-- 				</div>   	 -->
-<!-- 			</div>  -->
-<!-- 		</div>   -->
-<!-- 	</ui:define> -->
 </h:body>
 
 </html>

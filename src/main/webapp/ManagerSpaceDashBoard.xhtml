@@ -11,44 +11,50 @@
 	<ui:define name="titleValue">Space : Manager dashboard </ui:define>
 	<ui:define name="spaceContent">
 		<div class="container">
-
 			<h2 class="mb-5">Mon tableau de bord Manager</h2>
 			<div class="row">
-				<div class="col-4">
-				<div class="d-flex justify-content-center align-items-center w-100 h-100 ">
-				<img src="resources/images/Image2.jpg" style="max-width:12em; height:12em"/>
-				</div>
-				</div>
 				<div id="1" class="col-6">
-					<h2>Mes informations</h2>
-					<div class="card p-2"
-						style="background-color:#6C969D; color: white;">
-						<p>Nom: #{spaceUser.spaceViewModel.user.profile.civility.name}</p>
-						<p>Prenom:
-							#{spaceUser.spaceViewModel.user.profile.civility.forename}</p>
-						<p>Date de naissance:
-							#{spaceUser.spaceViewModel.user.profile.civility.birthday}</p>
-						<p>Email:
-							#{spaceUser.spaceViewModel.user.profile.contact.email}</p>
-						<p>Adresse:
-							#{spaceUser.spaceViewModel.user.profile.adress.street}</p>
-						<p>Code postal:
-							#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</p>
-						<p>Ville: #{spaceUser.spaceViewModel.user.profile.adress.city}</p>
-						<div class="d-flex w-100 justify-content-center">
-						<h:panelGrid columns="1" cellpadding="5">
-							<p:commandButton value="Modifier mon profil" type="button"
-								onclick="PF('UpdateAccount').show();" />
-						</h:panelGrid>
+				
+					<div class="row">
+						<div class="col-4">
+							<div class="d-flex justify-content-center align-items-center w-100 h-100 ">
+								<img src="resources/images/Image2.jpg" style="max-width:12em; height:12em"/>
+							</div>
 						</div>
-
+						<div id="1" class="col-6">
+						<h2>Mes informations</h2>
+							<div class="card p-2"
+								style="background-color:#6C969D; color: white;">
+								<p>Nom: #{spaceUser.spaceViewModel.user.profile.civility.name}</p>
+								<p>Prenom:
+								#{spaceUser.spaceViewModel.user.profile.civility.forename}</p>
+								<p>Date de naissance:
+								#{spaceUser.spaceViewModel.user.profile.civility.birthday}</p>
+								<p>Email:
+									#{spaceUser.spaceViewModel.user.profile.contact.email}</p>
+								<p>Adresse:
+								#{spaceUser.spaceViewModel.user.profile.adress.street}</p>
+									<p>Code postal:
+								#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</p>
+								<p>Ville: #{spaceUser.spaceViewModel.user.profile.adress.city}</p>
+								<div class="d-flex w-100 justify-content-center">
+								<h:panelGrid columns="1" cellpadding="5">
+								<p:commandButton value="Modifier mon profil" type="button"
+									onclick="PF('UpdateAccount').show();" />
+								</h:panelGrid>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<hr />
-
-			<p:tabView>
+			<div class="col-6 ">
+	
+				<div class="col-12 mt-auto mb-auto sectionperso">
+				
+					<div style="height: 65vw;">
+						<div class="scrollElement" style="height: 45%;">
+							<p:tabView>
 				<f:facet name="actions">
                 Global actions
             </f:facet>
@@ -407,6 +413,15 @@
 					action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
 			</p:confirmDialog>				
 
+					</div>
+					<div class="bando d-flex w-100 justify-content-end ">				
+					</div>		
+				</div>
+			</div>
+		</div>	
+	</div>
+			
+		
 		</div>
 	</ui:define>
 </ui:composition>

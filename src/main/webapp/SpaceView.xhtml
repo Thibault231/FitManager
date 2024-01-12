@@ -12,72 +12,7 @@
 	<ui:define name="spaceContent">
 
 		<!-- cet élement sera remplacé par le contenu des pages, dynamiquement -->
-
-
-		<div class="container-fluid p-5 justify-space-beetwen">
-			<div class="row pt-5 contain-80">
-				<h2 class="text-uppercase">NOTRE PHILOSOPHIE</h2>
-				<div class="col-lg-6 col-sm-12 mt-auto mb-auto mb-5 space-welcome-text" style="white-space:pre-line;">
-
-					#{spaceController.currentSpaceWithSubscriptions.infos.configuration.welcomeText}
-
-				</div>
-				<div class="col-lg-6 col-sm-12 ">
-					<h:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.mainPicture}"
-						styleClass="imgIllu" />
-				</div>
-			</div>
-		</div>
-		<div class="container-fluid p-5 justify-space-beetwen">
-			<div class="row mb-5 contain-50">
-
-				<h2 class="text-uppercase">NOS ABONNEMENTS</h2>
-
-				<p:tab title="Abonnements">
-					<h:panelGrid columns="1" cellpadding="5">
-						<p:commandButton value="Ajouter un abonnement" type="button"
-							styleClass="ui-button-raised ui-button custom-white-text" 
-							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; "
-							onclick="PF('popupUpdate').show();" />
-					</h:panelGrid>
-					<p></p>
-					<div class="card mb-5 shadow-4"
-						style="border-radius: 50px; padding: 1em">
-						<div class="text-900 font-bold text-5xl  text-center"
-							style="margin-top: 5px">
-							<H3>Nos abonnements exclusifs pour libérer votre potentiel !</H3>
-						</div>
-						<div class="d-flex mt-3 h-full"	style="gap: 50px; justify-content: center;">
-							<ui:repeat	value="#{subscriptionController.allActiveSubscription}"	var="subscription">
-								<div class="shadow-2 h-full flex flex-column surface-card"	style="border-radius: 1px margin-top:0px; border-color: black;">
-									<div class="card-header" style="color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; ">
-										<h2>
-											<b>#{subscription.subscriptionName}</b>
-										</h2>
-										<h3>#{subscription.price.monthlyPrice}&#x20AC; par mois</h3>
-									</div>
-
-									<div class="card-body d-flex align-items-center">
-										<p>#{subscription.description}</p>
-									</div>
-									<div class="card-footer">
-										<h:form>
-											<h:commandButton
-												action="#{subscriptionController.subscribe(subscription.subscriptionId)}"
-												class="btn" role="button" data-bs-toggle="button" style="color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; " value="S'ABONNER" />
-										</h:form>
-									</div>
-								</div>
-							</ui:repeat>
-						</div>
-
-					</div>
-					<div>
-						<h2 class="text-uppercase text-center">NOTRE SALLE</h2>
-					</div>
-					<p></p>
-
-					<div id="carouselExampleAutoplaying" class="carousel slide"
+					<div id="carouselExampleAutoplaying" class="carousel slide sliderPlus"
 						data-bs-ride="carousel">
 						<div class="carousel-inner">
 							<div class="carousel-item active">
@@ -104,6 +39,78 @@
 							<span class="visually-hidden">Next</span>
 						</button>
 					</div>
+
+
+		<div class="container-lg p-5 justify-space-beetwen">
+			<div class="row pt-5 contain-80">
+				<h2 class="text-uppercase">NOTRE PHILOSOPHIE</h2>
+				<div class="col-lg-6 col-sm-12 mt-auto mb-auto mb-5 space-welcome-text" style="white-space:pre-line;">
+
+					#{spaceController.currentSpaceWithSubscriptions.infos.configuration.welcomeText}
+
+				</div>
+				<div class="col-lg-6 col-sm-12 ">
+					<h:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.mainPicture}"
+						styleClass="imgIllu" />
+				</div>
+			</div>
+		</div>
+		<div class="container p-5 justify-space-beetwen">
+			<div class="row mb-5 contain-50">
+
+				<h2 class="text-uppercase">NOS ABONNEMENTS</h2>
+
+				<p:tab title="Abonnements">
+				
+					<div class=" mb-5 shadow-4" style="border-radius: 50px; padding: 10px">
+						<div class="d-flex w-100">
+							<div class="text-900 font-bold text-5xl text-center d-flex w-100" style="margin-top: 5px">
+								<div class="col-1">
+									<a href="#" onclick="PF('popupUpdate').show();" class="ui-button-raised"  
+									style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; border-radius:border-radius: 50px;">
+  										<h:graphicImage library="images" name="/svgs/solid/circle-plus.svg" styleClass="iconsNavigation"/>
+									</a>
+								</div>
+								<div class="col-10">
+									<H3>Nos abonnements exclusifs pour libérer votre potentiel !</H3>
+								</div>
+									
+							</div >
+						</div>
+						
+						<div class="row"	style="gap: 50px; justify-content: center;">
+							<ui:repeat	value="#{subscriptionController.allActiveSubscription}"	var="subscription">
+								<div class=" col-lg-4 shadow-2 flex flex-column surface-card p-1" style="border-radius: 1px margin-top:0px; border-color: black;">
+									<div class="card-header w-100 p-1" style="color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; ">
+										<h2>
+											<b>#{subscription.subscriptionName}</b>
+										</h2>
+										<h3>#{subscription.price.monthlyPrice}&#x20AC; par mois</h3>
+									</div>
+
+									<div class="card-body d-flex align-items-center">
+										<p>#{subscription.description}</p>
+									</div>
+									<div class="card-footer">
+										<h:form>
+											<h:commandButton
+												action="#{subscriptionController.subscribe(subscription.subscriptionId)}"
+												class="btn" role="button" data-bs-toggle="button" style="color: white; 
+												background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; " 
+												value="S'ABONNER" />
+										</h:form>
+									</div>
+								</div>
+							</ui:repeat>
+						</div>
+
+					</div>
+					<div>
+						<h2 class="text-uppercase text-center"></h2>
+					</div>
+					<p></p>
+
+					
 				</p:tab>
 			</div>
 
@@ -151,29 +158,7 @@
 					</div>
 				</h:form>
 			</p:dialog>
-
-			<p:accordionPanel widgetVar="Infos">
-				<p:tab title="Informations générales de votre salle">
-					<p class="m-0" />
-			<p>Nom de la salle:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</p>
-					<p>Siret:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.siret}</p>
-					<p>Adresse:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.address}</p>
-					<p>Notre slogan:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</p>
-				</p:tab>
-				</p:accordionPanel>
 		</div>
-
-		<!-- 	    <h:form style="margin: 0 auto;"> -->
-		<!-- 	        <h:panelGrid columns="1" cellpadding="7" styleClass="mb-3"> -->
-		<!-- 	            <p:outputLabel for="color" value="Sélectionner une couleur pour le menu"/> -->
-		<!-- 	            <p:selectOneMenu id="color" value="#{conf.confViewModel.configuration.style.navbarColor}" style="width:12rem"> -->
-		<!-- 	                <p:ajax listener="#{conf.colorForConfiguration}" update="color"/> -->
-		<!-- 	                <f:selectItem itemLabel="Couleur disponible" itemValue="" noSelectionOption="true"/> -->
-		<!-- 	            	<f:selectItems value="#{conf.colorForConfiguration}"/> -->
-		<!-- 	            </p:selectOneMenu> -->
-		<!-- 	        </h:panelGrid> -->
-		<!-- 	        <p:commandButton value="Valider" action="#{conf.updateSpace()}" icon="pi pi-check"/> -->
-		<!-- 	    </h:form> -->
 
 		<main class="w-100">
 			<div

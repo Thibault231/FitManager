@@ -11,8 +11,13 @@
 <h:body>
 	<div class="spaceFooter" id="SpaceFooter" style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.secondColor};">
 		
-		<div class="autre socialMedia">
-			<p style="color: white;">This is a space footer</p>
+		<div class="autre socialMedia d-flex w-100">
+	
+			<p>#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName} #{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</p>
+			<p></p>
+			<p>Siret:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.siret}</p>
+			<p>Adresse: #{spaceController.currentSpaceWithSubscriptions.infos.administrative.address}</p>
+					
 		</div>
 		
 		<div class="socialMedia">

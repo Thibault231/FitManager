@@ -15,85 +15,66 @@
 	<h:outputStylesheet library="css" name="main/spaceHeader.css" />
 
 	<style>
-		.imgPartenaire {
-			width: 30%;
-			height: 30em;
-			margin-bottom: 2em;
-			object-fit: cover;
-		}
-
-		.imgHero {
-			height: 80vh;
-			width: 100vw;
-			object-fit: cover;
-		}
-		
-		.rgpd {
-			position: fixed;
-			top: 0px;
-			right: 0px;
-			background-color: rgba(0, 0, 0, 0.32);
-			width: 100vw;
-			height: 100vh;
-			align-items: center;
-			justify-content: center;
-		}
-		
-		.tatifCard {
-			min-width: 22%;
-		}
-		
-		.Intituledelement {
-			padding-right: 2em;
-			transform: rotate(270deg);
-		}
+	
 </style>
 </h:head>
 
 <h:body>
-	<div class="spaceHeader" style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.secondColor};">
-		<div class="logoContainer">
-			<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.logo}" width="50px" height="50px" class="img_index" />
+	<div class="spaceHeader d-flex align-items-center p-5" >
+		
+		<div style="font-style:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.font}" class="d-flex w-100 align-items-center ">	
 		</div>
-		<div style="font-style:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.font}" class="d-flex">
-			<h1>#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</h1>
-			<h4>#{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</h4>
-		</div>
+		
+	
+			<p class="no-wrap-last-words">#{spaceController.currentSpaceWithSubscriptions.infos.administrative.address}</p>
 	</div>
 
 	<!-- NavBAr -->
-	<h:form>	
-	<nav class="navbar navbar-expand-lg static-top">
+	<h:form>
 	
-		<div class="container-fluid">
-		
-			<ul class="navbar-nav ms-auto">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.secondColor};">
+    <div class="container-fluid">
+    	<div class="logoContainer">
+				<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.logo}" 
+				width="50px" height="50px" class="img_index" />
+			</div>
+    	<div class="d-flex w-75 flex-column text-dark">
+			<h:link class="nav-link text-dark" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"><h1 class="fs-5">#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</h1></h:link>
+			<h:link class="nav-link text-dark" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"><h4 class="fs-6">#{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</h4></h:link>
+		</div>	
+     
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ms-auto text-dark">
+				
 				<li class="nav-item">
-					<h:link class="nav-link" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
-				</li>
-				<li class="nav-item">
-					<h:link class="nav-link" outcome="Calendar.xhtml">PLANNING</h:link>
+					<h:link class="nav-link text-dark" outcome="Calendar.xhtml">PLANNING</h:link>
 				</li>
 				<ui:fragment rendered="#{not spaceController.isUserConnected()}">
 					<li class="nav-item">
-						<h:link class="nav-link" outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link>
+						<h:link class="nav-link text-dark" outcome="RegisterAdherent.xhtml">S'INSCRIRE A LA SALLE</h:link>
 					</li>
 					<li class="nav-item">
-						<h:link class="nav-link" outcome="RegisterAdherent.xhtml">S'INSCRIRE A LA SALLE</h:link>
+						
+								<h:link class="nav-link text-dark" outcome="SpaceLoginForm.xhtml"><h:graphicImage library="images" name="/svgs/solid/circle-user.svg" styleClass="iconsNavigation"/></h:link>
 					</li>
 				</ui:fragment>
 				<ui:fragment rendered="#{spaceController.isUserConnected()}">
 					<li class="nav-item">
-						<h:commandLink class="nav-link" action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">MON ESPACE</h:commandLink>
+						<h:commandLink class="nav-link text-dark" action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">MON ESPACE</h:commandLink>
 					</li>
 					<li class="nav-item">
-						<h:commandLink class="nav-link" action="#{spaceController.simpleSpacelogout()}">DECONNEXION</h:commandLink>
+						<h:commandLink class="nav-link text-dark" action="#{spaceController.simpleSpacelogout()}">DECONNEXION</h:commandLink>
 					</li>
 				</ui:fragment>
 			</ul>
-		</div>
-		
-	</nav>
+        
+      </div>
+    </div>
+  </nav>
+
 	</h:form>
 
 </h:body>
