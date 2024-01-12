@@ -112,7 +112,8 @@
 								
 						<div class="mb-2 mt-2 cardAbonnement  ">
 						
-							<h:graphicImage library="images" name="#{space.infos.configuration.logo}" class="img_index_content" />
+							<p:graphicImage library="documents" name="#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index" />
+							
 							<h:commandButton value="Lien vers espace" action="#{spaceController.goToSpaceIndex()}">
 								<f:param name="spaceId" value="#{space.spaceId}" />
 							</h:commandButton>								
@@ -120,6 +121,7 @@
 								
 				</ui:repeat>
 				</div>
+				
 				</h:form>
 				
 <!-- 				<div class="d-flex w-100 justify-content-between flex-wrap"> -->

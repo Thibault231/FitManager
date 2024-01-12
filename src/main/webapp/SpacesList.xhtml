@@ -9,6 +9,59 @@
 	<ui:define name="titleValue">Spaces list : Fit Manager</ui:define>
 	<!-- Corp de la page -->
 	<ui:define name="content">
+	<div class="d-flex">
+		
+
+			<div class="col p-5">
+				<h1> <span> Bienvenue</span> #{sessionScope.name} </h1>
+				<div class="d-flex w-100 justify-content-end pt-1">
+					<div class="d-flex justify-content-around">
+						<a class=" m-1">#{sessionScope.role}</a>
+						<div class="dropdown">
+							<a href="#"
+								class="d-flex align-items-center text-white text-decoration-none dropdown-toggle "
+								data-bs-toggle="dropdown" aria-expanded="false"> <img
+								src="https://github.com/mdo.png" alt="" width="32" height="32"
+								class="rounded-circle me-2"></img> <strong>mdo</strong>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+								<li>
+									<div class=" p-2 ">
+											<h2>Informations</h2>
+										<div id="1">
+											<p>Nom: #{userController.userViewModel.user.profile.civility.name}</p>
+											<p>Prenom: #{userController.userViewModel.user.profile.civility.forename}</p>					
+											<p>Date de naissance: #{userController.userViewModel.user.profile.civility.birthday}</p>
+											<p>Email: #{userController.userViewModel.user.profile.contact.email}</p>
+											<p>Adresse: #{userController.userViewModel.user.profile.adress.street}</p>
+											<p>Code postal: #{userController.userViewModel.user.profile.adress.zipCode}</p>
+											<p>Ville: #{userController.userViewModel.user.profile.adress.city}</p>
+										</div>
+									</div>				
+								</li>
+
+								<li>
+									<h:panelGrid columns="1" cellpadding="5">
+									<p:commandButton value="Modifier mon profil" type="button" onclick="PF('UpdateAccount').show();" />
+									</h:panelGrid>
+								</li>
+								
+								
+								
+								<li><hr class="dropdown-divider" /></li>
+								<li>
+									<h:form>
+										<h:commandLink class="dropdown-item" action="#{userController.logout()}">Se déconnecter</h:commandLink>
+									</h:form>
+								</li>
+								
+								
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+	
 
 		<p:tabView>
 			<p:tab title="Activities">
@@ -42,6 +95,9 @@
 				</p>
 			</p:tab>
 		</p:tabView>
+		
+		</div>
+	</div>
 
 	</ui:define>
 </ui:composition>
