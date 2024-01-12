@@ -179,16 +179,8 @@ public class UserOnSpaceController implements Serializable {
 	 */
 	public String redirectToRightDashBoard(Role userRole) {
 		this.spaceViewModel.setUser(userDao.getUserById(SessionUtils.getUserIdFromSession()));
-		if (userRole.equals(Role.Adherent)) {
-			return "AdherentDashboard?faces-redirect=true";
-		} else if (userRole.equals(Role.Coach)) {
-			return "CoachDashboard?faces-redirect=true";
-		} else if (userRole.equals(Role.Gestionnaire)) {
-			return "ManagerSpaceDashBoard?faces-redirect=true";
-		} else {
-			Long spaceId = SessionUtils.getSpaceIdFromSession();
-			return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
-		}
+		this.spaceViewModel.setSpace(spaceDao.getSpaceWithSubscription(SessionUtils.getSpaceIdFromSession()));
+		return SessionUtils.redirectToDashBoard();
 	}
 
 	/**

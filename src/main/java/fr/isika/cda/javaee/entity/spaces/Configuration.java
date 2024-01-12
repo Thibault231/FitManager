@@ -20,16 +20,16 @@ public class Configuration {
 	@Id
 	@GeneratedValue
 	private Long id;
-
 	private String fitnessName;
-
 	private String logo;
 	private String slogan;
 	private String mainText;
 	private String mainPicture = DefaultConfig.DEFAULT_MAIN_PICTURE;
+	private String carrouselOne = DefaultConfig.DEFAULT_CARROUSEL_ONE;
+	private String carrouselTwo = DefaultConfig.DEFAULT_CARROUSEL_TWO;
+	private String carrouselThree = DefaultConfig.DEFAULT_CARROUSEL_THREE;
 	@Lob
 	private String welcomeText = DefaultConfig.DEFAULT_WELCOME_TEXT;
-
 	@OneToOne
 	private Style style;
 
@@ -107,6 +107,30 @@ public class Configuration {
 
 	public void setWelcomeText(String welcomeText) {
 		this.welcomeText = welcomeText;
+	}
+
+	public String getCarrouselOne() {
+		return carrouselOne;
+	}
+
+	public void setCarrouselOne(String carrouselOne) {
+		this.carrouselOne = carrouselOne;
+	}
+
+	public String getCarrouselTwo() {
+		return carrouselTwo;
+	}
+
+	public void setCarrouselTwo(String carrouselTwo) {
+		this.carrouselTwo = carrouselTwo;
+	}
+
+	public String getCarrouselThree() {
+		return carrouselThree;
+	}
+
+	public void setCarrouselThree(String carrouselThree) {
+		this.carrouselThree = carrouselThree;
 	}
 
 }

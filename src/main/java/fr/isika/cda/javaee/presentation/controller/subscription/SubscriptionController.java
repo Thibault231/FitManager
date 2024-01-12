@@ -57,14 +57,37 @@ public class SubscriptionController implements Serializable {
 	}
 
 //*****************************************************************************
-	public String createSubscription() {
+	/**
+	 * Create a new subscription and return on manager's dashboard.
+	 * 
+	 * @return url (:String)
+	 */
+	public String createSubscriptionInDashboard() {
+		createSubscription();
+		return "ManagerSpaceDashBoard";
+	}
+
+	/**
+	 * Create a new subscription and return on the index page of the space.
+	 * 
+	 * @return url (:String)
+	 */
+	public String CreateSubscriptionInIndex() {
+		createSubscription();
+		Long spaceId = SessionUtils.getSpaceIdFromSession();
+		return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+	}
+
+	/**
+	 * Create a new subscription from a form and persist it.
+	 */
+	private void createSubscription() {
 		Long spaceid = SessionUtils.getSpaceIdFromSession();
 		Space currentSpace = spaceDao.getSpaceWithSubscription(spaceid);
 		Subscription subscriptionToCreate = subscriptionViewModel.getSubscription();
 		subscriptionDao.createSubscription(subscriptionToCreate);
 		currentSpace.getSubscriptions().add(subscriptionToCreate);
 		spaceDao.updateSpace(currentSpace);
-		return "ManagerSpaceDashBoard";
 	}
 
 	public List<Subscription> getAllActiveSubscription() {
@@ -113,6 +136,12 @@ public class SubscriptionController implements Serializable {
 		return "AdherentDashboard?faces-redirect=true";
 	}
 
+	/**
+	 * Get all attributes of all dependencies of a space and stock them in the
+	 * viewmodel to be printed in a form.
+	 * 
+	 * @return url (:String)
+	 */
 	public String showSubscriptionDetails() {
 
 		// 1 - Récupérer la valeur du param "spaceId"
@@ -147,6 +176,12 @@ public class SubscriptionController implements Serializable {
 		return SessionUtils.redirectToDashBoard();
 	}
 
+	/**
+	 * Get the update-subscription form and transfer it to service for update and
+	 * persistence.
+	 * 
+	 * @return url (:String)
+	 */
 	public String updateSuscription() {
 		subscriptionDao.updateSubscription(this.subscriptionViewModel.getSubscription());
 		return SessionUtils.redirectToDashBoard();
