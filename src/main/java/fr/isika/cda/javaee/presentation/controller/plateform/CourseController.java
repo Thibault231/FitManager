@@ -136,7 +136,7 @@ public class CourseController implements Serializable {
 
 	public String deleteCourse(Long courseToDeleteId) {
 		courseDao.deleteCourses(courseToDeleteId);
-		return "CoachDashboard?faces-redirect=true";
+		return SessionUtils.redirectToDashBoard();
 
 	}
 

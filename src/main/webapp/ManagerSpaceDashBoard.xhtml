@@ -128,12 +128,12 @@
 									<h:outputText value="#{subscription.price.monthlyPrice}" />
 								</p:column>
 								<p:column headerText="Actions">
-								    <h:form >
+									<h:form>
 								    <div class="d-flex">
 										<p:commandButton value="Modifier" style="margin-right:20px;" type="button"	onclick="PF('subscription.subscriptionId').show();" /> 
 										<p:commandButton type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" />	
-									</div>						
-									</h:form>
+									</div>	
+									</h:form>					
 								</p:column>
 							</p:dataTable>
 						</h:panelGrid>
@@ -141,27 +141,32 @@
 				</p:tab>
 
 				<p:tab title="Cours">
-					<h:panelGrid columns="1" cellpadding="5">
-						<p:commandButton value="Ajouter un cours" />
-					</h:panelGrid>
-
-					<ui:repeat value="#{courseController.allCoachCourses}" var="course"> -->
-					<div
-							class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
-							style="background-color: yellow;">
-							<div class="card-header">
-								<h1>#{course.name}</h1>
-							</div>
-							<div class="card-body">
-								<p>#{course.startDate}</p>
-								<p>#{course.endDate}</p>
-							</div>
-							<div class="card-footer">
-								<p>#{course.description}</p>
-
-							</div>
-						</div>
-					</ui:repeat>
+						<h:panelGrid columns="1" cellpadding="5">
+							<p:commandButton value="Ajouter un cours" type="button" />
+							<p:dataTable value="#{courseController.allCourses}" var="course">
+					
+							<p:column headerText="Dénomination">
+								<h:outputText value="#{course.name}"/>
+							</p:column>
+							<p:column headerText="Début du cours">
+								<h:outputText value="#{course.startDate}"/>
+							</p:column>
+							<p:column headerText="Fin de cours">
+								<h:outputText value="#{course.endDate}"/>
+							</p:column>
+							<p:column headerText="Description">
+								<h:outputText value="#{course.description}"/>
+							</p:column>
+							<p:column headerText="Actions">
+								<h:form>
+							    <div class="d-flex">
+									<p:commandLink  type="button" value="Supprimer" action="#{courseController.deleteCourse(course.id)}"></p:commandLink>
+								</div>	
+								</h:form>					
+	
+							</p:column>
+							</p:dataTable>
+						</h:panelGrid>
 				</p:tab>
 			</p:tabView>
 			<hr />
