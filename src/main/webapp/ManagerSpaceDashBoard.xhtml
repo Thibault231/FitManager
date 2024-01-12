@@ -71,20 +71,7 @@
 							<p:column headerText="Action">
 								<h:form>
 									<p:commandButton type="button" value="Supprimer"
-										onclick="PF('confirmationVar').show();" />
-
-									<p:confirmDialog id="confirmationDialog"
-										widgetVar="confirmationVar" header="Confirmation"
-										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
-										severity="alert">
-
-										<p:commandButton value="Annuler" type="button"
-											onclick="PF('confirmationVar').hide()" />
-
-										<p:commandButton value="Oui"
-											oncomplete="PF('confirmationVar').hide()"
-											action="#{userController.deleteUser(user.userId)}" />
-									</p:confirmDialog>
+										onclick="PF('confirmationVarUser').show();" />
 								</h:form>
 							</p:column>
 						</p:dataTable>
@@ -113,20 +100,7 @@
 
 								<h:form>
 									<p:commandButton type="button" value="Supprimer"
-										onclick="PF('confirmationVar').show();" />
-
-									<p:confirmDialog id="confirmationDialog"
-										widgetVar="confirmationVar" header="Confirmation"
-										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
-										severity="alert">
-
-										<p:commandButton value="Annuler" type="button"
-											onclick="PF('confirmationVar').hide()" />
-
-										<p:commandButton value="Oui"
-											oncomplete="PF('confirmationVar').hide()"
-											action="#{userController.deleteUser(user.userId)}" />
-									</p:confirmDialog>
+										onclick="PF('confirmationVarUser').show();" />
 								</h:form>
 							</p:column>
 						</p:dataTable>
@@ -154,25 +128,11 @@
 									<h:outputText value="#{subscription.price.monthlyPrice}" />
 								</p:column>
 								<p:column headerText="Actions">
-									<p:commandButton value="Modifier" style="margin-right:20px;"
-										type="button"
-										onclick="PF('subscription.subscriptionId').show();" /> 
-										<h:form>
-										<p:commandButton type="button" value="Supprimer"
-											onclick="PF('confirmationVar').show();" />
-
-										<p:confirmDialog id="confirmationDialog"
-											widgetVar="confirmationVar" header="Confirmation"
-											message="Êtes-vous sûr de vouloir supprimer cet abonnement?"
-											severity="alert">
-
-											<p:commandButton value="Annuler" type="button"
-												onclick="PF('confirmationVar').hide()" />
-
-											<p:commandButton value="Oui"
-												oncomplete="PF('confirmationVar').hide()"
-												action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
-										</p:confirmDialog>								
+								    <h:form >
+								    <div class="d-flex">
+										<p:commandButton value="Modifier" style="margin-right:20px;" type="button"	onclick="PF('subscription.subscriptionId').show();" /> 
+										<p:commandButton type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" />	
+									</div>						
 									</h:form>
 								</p:column>
 							</p:dataTable>
@@ -429,6 +389,21 @@
 					</div>
 				</h:form>
 			</p:dialog>
+			
+			<p:confirmDialog id="confirmationDialogUser" widgetVar="confirmationVarUser" header="Confirmation"
+				message="Êtes-vous sûr de vouloir supprimer cet utilisateur?" severity="alert">
+				<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarUser').hide()" />
+				<p:commandButton value="Oui" oncomplete="PF('confirmationVarUser').hide()"	action="#{userController.deleteUser(user.userId)}" />
+			</p:confirmDialog>
+
+			<p:confirmDialog id="confirmationDialogSub" widgetVar="confirmationVarSub" header="Confirmation"
+				message="Êtes-vous sûr de vouloir supprimer cet abonnement?" severity="alert">
+				<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarSub').hide()" />
+				<p:commandButton value="Oui"
+					oncomplete="PF('confirmationVarSub').hide()"
+					action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
+			</p:confirmDialog>				
+
 		</div>
 	</ui:define>
 </ui:composition>
