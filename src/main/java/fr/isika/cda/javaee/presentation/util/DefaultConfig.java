@@ -9,9 +9,9 @@ package fr.isika.cda.javaee.presentation.util;
 public class DefaultConfig {
 	public static final String DEFAULT_MAIN_PICTURE = "Image10.jpg";
 	public static final String DEFAULT_MAIN_COLOR = "#FFC107;";
-	public static final String DEFAULT_SECOND_COLOR = "#0dcaf0";
-	public static final String DEFAULT_THIRD_COLOR = "gray";
-	public static final String DEFAULT_FONT = "Nunito";
+	public static final String DEFAULT_SECOND_COLOR = "#FFC107;";
+	public static final String DEFAULT_THIRD_COLOR = "#FFC107;";
+	public static final String DEFAULT_FONT = "Impact";
 	public static final String DEFAULT_WELCOME_TEXT = "Bienvenue à notre salle de sport, l'endroit où le bien-être, la forme physique et la motivation se rencontrent pour créer une expérience exceptionnelle."
 			+ " Chez nous, chaque visite est une invitation à repousser vos limites, à atteindre vos objectifs et à embrasser un style de vie actif et sain."
 			+ "\n\nNotre salle de sport est bien plus qu'un simple"

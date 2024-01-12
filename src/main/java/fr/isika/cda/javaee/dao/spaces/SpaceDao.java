@@ -9,7 +9,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.entity.users.User;
 
 /**
  * Manage the persistence of Activity objects in MySQL DB.
