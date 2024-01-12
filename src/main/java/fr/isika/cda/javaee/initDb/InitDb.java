@@ -24,7 +24,7 @@ import fr.isika.cda.javaee.entity.users.User;
  * Put Training set of object in the DB at the initialization of the
  * application.
  * 
- * @author Thibault
+ * @author Alex Charef Thibault
  *
  */
 @Startup
