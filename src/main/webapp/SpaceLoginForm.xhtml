@@ -11,6 +11,9 @@
 	<ui:define name="titleValue">Login - Fit Manager</ui:define>
 	<!-- Corp de la page -->
 	<ui:define name="spaceContent">
+	<main
+			class="border d-flex  text-emphasis-primary justify-content-center align-items-center"
+			style="height: 100vh; width: 100vw">
 		<div class="w-25">
 			<div class="text-center mb-4">
 				<h2>Le nom de l'espace à intégrer</h2>
@@ -38,11 +41,12 @@
 						<h:commandButton class="btn btn-warning" value="Me connecter"
 							action="#{spaceUser.authenticateOnSpace()}" />
 
-						<h:link class="text-center" outcome="index.xhtml">MOT DE PASSE OUBLIER?</h:link>
+						<h:link class="text-center" outcome="index.xhtml">Mot de passe oublié?</h:link>
 					</div>
 				</div>
 			</h:form>
 		</div>
+		</main>
 	</ui:define>
 
 </ui:composition>

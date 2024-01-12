@@ -62,6 +62,10 @@ public class SpaceController implements Serializable {
 		this.spaceViewModel = spaceViewModel;
 	}
 
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
 //**********************************************************
 	/**
 	 * Create a space and link it to it's manager creator.
@@ -83,31 +87,19 @@ public class SpaceController implements Serializable {
 		spaceDao.updateSpace(createdSpace);
 		userDao.updateUser(createdUser);
 
-		return "SpacesList.xhtml?faces-redirect=true";
+		return "ManagerSpacesList.xhtml?faces-redirect=true";
 	}
 
 	/**
-	 * Get as param a space Id and return this space index view.
+	 * Smooth delete a space from the database.
 	 * 
-	 * @return formated url (String)
+	 * @param spaceToDeleteId (:Long)
+	 * @return url of the manager dashboard (:String)
 	 */
-	public String goToSpaceIndex() {
-		// 1 - Récupérer la valeur du param "spaceId"
-		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		Long spaceId = Long.valueOf(params.get("spaceId"));
-
-		// 2 - aller chercher l'objet Salle par cet id (en bdd)
-		spaceViewModel.setSpace(spaceDao.getSpaceById(spaceId));
-		// 3- Renseigne l'id de la salle dans la session.
-		String viewToReturn = "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
-
-		return spaceLogOut(spaceId, viewToReturn);
-	}
-
 	public String deleteSpace(Long spaceToDeleteId) {
 		spaceDao.deleteSpace(spaceToDeleteId);
 
-		return "index?faces-redirect=true";
+		return "ManagerDashBoard.xtml?faces-redirect=true";
 	}
 
 	/**
@@ -134,6 +126,11 @@ public class SpaceController implements Serializable {
 		return spaceList;
 	}
 
+	/**
+	 * Get the current simple space object, usig it's Id
+	 * 
+	 * @return current space (:Space)
+	 */
 	public Space getSpaceById(Long spaceId) {
 		return spaceDao.getSpaceById(spaceId);
 	}
@@ -158,15 +155,25 @@ public class SpaceController implements Serializable {
 		return spaceDao.getSpaceWithMembers(spaceId);
 	}
 
-	public Space getSpaceByName(String spaceName) {
-		return spaceDao.getSpaceByName(spaceName);
+	/**
+	 * Get as param a space Id and return this space index view.
+	 * 
+	 * @return formated url (String)
+	 */
+	public String goToSpaceIndex() {
+		// Récupérer la valeur du param "spaceId"
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		Long spaceId = Long.valueOf(params.get("spaceId"));
+
+		String viewToReturn = "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+		return spaceLogOut(spaceId, viewToReturn);
 	}
 
-	public boolean isAdherent() {
-		return SessionUtils.getUserRoleFromSession() != null
-				&& SessionUtils.getUserRoleFromSession().equals(Role.Adherent);
-	}
-
+	/**
+	 * Check if a user is connected. Method used for conditional display in views.
+	 * 
+	 * @return (:boolean)
+	 */
 	public boolean isUserConnected() {
 		return SessionUtils.getUserIdFromSession() != null;
 	}
@@ -192,6 +199,20 @@ public class SpaceController implements Serializable {
 	}
 
 	/**
+	 * Logout a connected user on plateform and reload a session with only spaceId
+	 * parameter. <b> Use this method only for logout from plateform</b>
+	 * 
+	 * @return url (:String)
+	 */
+	public String spaceLogOut(Long spaceId, String viewToReturn) {
+		SessionUtils.invalidateSession();
+		SessionUtils.putSpaceIdInSession(spaceId);
+		this.spaceViewModel.setSpaceId(spaceId);
+		this.spaceViewModel.setSpace(spaceDao.getSpaceById(spaceId));
+		return viewToReturn;
+	}
+
+	/**
 	 * Logout a connected user on the space and return the space index view.
 	 * 
 	 * @return url of the index space's page (:String)
@@ -201,23 +222,6 @@ public class SpaceController implements Serializable {
 		SessionUtils.invalidateSession();
 		SessionUtils.putSpaceIdInSession(spaceId);
 		return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
-	}
-
-	/**
-	 * Logout a connected user on plateform and reload a session with only spaceId
-	 * parameter. <b> Use this method only for logout from plateform</b>
-	 * 
-	 * @return url (:String)
-	 */
-	public String spaceLogOut(Long spaceId, String viewToReturn) {
-		SessionUtils.invalidateSession();
-		SessionUtils.putSpaceIdInSession(spaceId);
-		this.setSpaceViewModel(new SpaceViewModel());
-		return viewToReturn;
-	}
-
-	public void setUploadedFile(UploadedFile uploadedFile) {
-		this.uploadedFile = uploadedFile;
 	}
 
 	/**
@@ -231,6 +235,20 @@ public class SpaceController implements Serializable {
 		UploadedFile uploadedFile = event.getFile();
 		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
 		spaceViewModel.getSpace().getInfos().getConfiguration().setLogo(fileName);
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
+	}
+
+	/**
+	 * Upload main image picture for Space objects, then rename and stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
+	public void uploadSpaceMainPicture(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+		spaceViewModel.getSpace().getInfos().getConfiguration().setMainPicture(fileName);
 		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 

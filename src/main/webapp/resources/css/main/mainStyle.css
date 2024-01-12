@@ -56,10 +56,21 @@
 
 
 .dualimgcontainer> img{
-	object-fit: cover;
-    height: 20em;
-    width: 43%;
+	float: left;
+    object-fit: cover;
+    height: 19em;
 }
+
+.dualimgcontainer :nth-child(2){
+	margin-left: -10em;
+    margin-top: 2em;
+    width: 23em;
+}
+
+.dualimgcontainer :nth-child(1){
+    width: 23em;
+}
+
 
 
 .imgdecaler{
@@ -186,12 +197,13 @@
 
 @media screen and (min-width: 1400px){
     .dualimgcontainer{
-        position: absolute;
-        height: 21em;
-        display: block;
-         width: inherit;
-        height:inherit;
-         margin-top:inherit;
+           position: absolute;
+    height: 21em;
+    display: block;
+    width: inherit;
+    height: inherit;
+    margin-top: inherit;
+    margin: 4vw auto auto 5vw;
     }
 
   /*  .dualimgcontainer> img{
@@ -249,7 +261,7 @@
 	margin:2em auto;
 	margin-top: 2em;
     display: flex;
-    width: 22%;
+    width: 31%;
     /* height: 18em; */
     flex-direction: column;
     align-items: center;
@@ -297,6 +309,3 @@
 	position:relative;
 	top:1px;
 }
-
-
-
