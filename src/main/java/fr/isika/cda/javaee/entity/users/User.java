@@ -47,6 +47,8 @@ public class User {
 
 	private Long currentSubScriptionId;
 
+	private String profilePicture;
+
 //******************************************************	
 	/**
 	 * Empty constructor for JEE.
@@ -125,6 +127,15 @@ public class User {
 
 	public void setCurrentSubScriptionId(Long currentSubScriptionId) {
 		this.currentSubScriptionId = currentSubScriptionId;
+
+	}
+
+	public String getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(String profilePicture) {
+		this.profilePicture = profilePicture;
 	}
 
 }
