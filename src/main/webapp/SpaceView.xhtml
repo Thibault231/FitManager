@@ -17,43 +17,13 @@
 		<div class="container-fluid p-5 justify-space-beetwen">
 			<div class="row pt-5 contain-80">
 				<h2 class="text-uppercase">NOTRE PHILOSOPHIE</h2>
-				<div class="col-lg-6 col-sm-12 mt-auto mb-auto mb-5">
+				<div class="col-lg-6 col-sm-12 mt-auto mb-auto mb-5 space-welcome-text" style="white-space:pre-line;">
 
-					<p>Bienvenue à notre salle de sport, l'endroit où le bien-être,
-						la forme physique et la motivation se rencontrent pour créer une
-						expérience exceptionnelle. Chez nous, chaque visite est une
-						invitation à repousser vos limites, à atteindre vos objectifs et à
-						embrasser un style de vie actif et sain.</p>
-
-					<p>Notre salle de sport est bien plus qu'un simple espace
-						d'entraînement, c'est une communauté dynamique où les passionnés
-						de fitness de tous niveaux se réunissent pour partager leur
-						énergie positive et leur détermination. Que vous soyez un débutant
-						cherchant à adopter un mode de vie plus actif ou un athlète
-						chevronné cherchant à relever de nouveaux défis, notre salle de
-						sport offre des équipements de pointe et des programmes
-						diversifiés pour répondre à tous les besoins.</p>
-
-					<p>Nos installations sont équipées des dernières technologies
-						en matière d'entraînement, des équipements cardiovasculaires aux
-						machines de musculation, en passant par des zones dédiées aux
-						cours collectifs stimulants. Notre équipe de coachs expérimentés
-						et motivés est là pour vous guider à chaque étape de votre
-						parcours fitness, vous fournissant des conseils personnalisés et
-						des programmes adaptés à vos objectifs spécifiques.</p>
-
-					<p>Rejoignez-nous pour découvrir une salle de sport où le
-						fitness devient une passion, où chaque goutte de sueur devient une
-						victoire personnelle, et où vous vous sentirez inspiré à chaque
-						séance. Ensemble, nous construisons un chemin vers une vie plus
-						saine, plus forte et plus épanouissante.</p>
-
-					<p>Bienvenue dans notre communauté fitness, où votre succès
-						devient notre succès.</p>
+					#{spaceController.currentSpaceWithSubscriptions.infos.configuration.welcomeText}
 
 				</div>
 				<div class="col-lg-6 col-sm-12 ">
-					<h:graphicImage library="images" name="Image10.jpg"
+					<h:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.mainPicture}"
 						styleClass="imgIllu" />
 				</div>
 			</div>
@@ -66,7 +36,8 @@
 				<p:tab title="Abonnements">
 					<h:panelGrid columns="1" cellpadding="5">
 						<p:commandButton value="Ajouter un abonnement" type="button"
-							styleClass="ui-button-raised ui-button-warning custom-white-text"
+							styleClass="ui-button-raised ui-button custom-white-text" 
+							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; "
 							onclick="PF('popupUpdate').show();" />
 					</h:panelGrid>
 					<p></p>
@@ -76,14 +47,10 @@
 							style="margin-top: 5px">
 							<H3>Nos abonnements exclusifs pour libérer votre potentiel !</H3>
 						</div>
-						<div class="d-flex mt-3 h-full"
-							style="gap: 50px; justify-content: center;">
-							<ui:repeat
-								value="#{subscriptionController.allActiveSubscription}"
-								var="subscription">
-								<div class="shadow-2 h-full flex flex-column surface-card"
-									style="border-radius: 1px margin-top:0px; border-color: black;">
-									<div class="card-header bg-warning" style="color: white">
+						<div class="d-flex mt-3 h-full"	style="gap: 50px; justify-content: center;">
+							<ui:repeat	value="#{subscriptionController.allActiveSubscription}"	var="subscription">
+								<div class="shadow-2 h-full flex flex-column surface-card"	style="border-radius: 1px margin-top:0px; border-color: black;">
+									<div class="card-header" style="color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; ">
 										<h2>
 											<b>#{subscription.subscriptionName}</b>
 										</h2>
@@ -97,8 +64,7 @@
 										<h:form>
 											<h:commandButton
 												action="#{subscriptionController.subscribe(subscription.subscriptionId)}"
-												class="btn bg-warning" role="button" data-bs-toggle="button"
-												style="color: white" value="S'ABONNER" />
+												class="btn" role="button" data-bs-toggle="button" style="color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; " value="S'ABONNER" />
 										</h:form>
 									</div>
 								</div>
@@ -140,32 +106,6 @@
 					</div>
 				</p:tab>
 			</div>
-
-			<!-- 					<div class="card mb-5" style="border-radius: 50px"> -->
-			<!--         <div class="text-900 font-bold text-5xl mb-3 text-center" style="margin-top: 20px"> -->
-			<!--             <H3>Libérez votre potentiel avec nos Abonnements Sportifs</H3> -->
-			<!--         </div> -->
-			<!-- 				<div class="d-flex container mt-5"> -->
-			<!-- 					<ui:repeat value="#{subscriptionController.allActiveSubscription}" -->
-			<!-- 						var="subscription"> -->
-			<!-- 						<div class="shadow-2 p-5 h-full flex flex-column surface-card" style="border-radius: 6px margin-top:0px;"> -->
-			<!-- 							<div class="card-header"> -->
-			<!-- 								<h1>#{subscription.subscriptionName}</h1> -->
-			<!-- 							</div> -->
-
-			<!-- 							<div class="card-body"> -->
-			<!-- 								<p>#{subscription.description}</p> -->
-			<!-- 								<p>#{subscription.engagement}</p> -->
-			<!-- 							</div> -->
-			<!-- 							<div class="card-footer"> -->
-			<!-- 								<p>#{subscription.price.monthlyPrice}</p> -->
-			<!-- 							</div> -->
-			<!-- 						</div> -->
-			<!-- 					</ui:repeat> -->
-			<!-- 				</div> -->
-			<!-- 				</div> -->
-			<!--             </p:tab> -->
-			<!-- 			</div> -->
 
 			<p:dialog header="Ajouter un abonnement" widgetVar="popupUpdate"
 				modal="true" height="600" resizable="false" showEffect="fade"
@@ -215,10 +155,10 @@
 			<p:accordionPanel widgetVar="Infos">
 				<p:tab title="Informations générales de votre salle">
 					<p class="m-0" />
-			<p>Nom de la salle:#{spaceController.spaceViewModel.space.infos.configuration.fitnessName}</p>
-					<p>Siret:#{spaceController.spaceViewModel.space.infos.administrative.siret}</p>
-					<p>Adresse:#{spaceController.spaceViewModel.space.infos.administrative.address}</p>
-					<p>Numéro de client:#{spaceController.spaceViewModel.space.spaceId}</p>
+			<p>Nom de la salle:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</p>
+					<p>Siret:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.siret}</p>
+					<p>Adresse:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.address}</p>
+					<p>Notre slogan:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</p>
 				</p:tab>
 				</p:accordionPanel>
 		</div>

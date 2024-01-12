@@ -2,7 +2,6 @@
 
 /* variables définies dans le mainStyle.css */
 .socialMedia {
-	background-color: gray;
 	height: 5vh;
 	display: flex;
 	gap: 100px;

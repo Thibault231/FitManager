@@ -3,7 +3,10 @@ package fr.isika.cda.javaee.entity.spaces;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
+
+import fr.isika.cda.javaee.presentation.util.DefaultConfig;
 
 /**
  * Customizable data of a Space, type of text and pictures.
@@ -23,7 +26,9 @@ public class Configuration {
 	private String logo;
 	private String slogan;
 	private String mainText;
-	private String mainPicture;
+	private String mainPicture = DefaultConfig.DEFAULT_MAIN_PICTURE;
+	@Lob
+	private String welcomeText = DefaultConfig.DEFAULT_WELCOME_TEXT;
 
 	@OneToOne
 	private Style style;
@@ -94,6 +99,14 @@ public class Configuration {
 
 	public void setMainPicture(String mainPicture) {
 		this.mainPicture = mainPicture;
+	}
+
+	public String getWelcomeText() {
+		return welcomeText;
+	}
+
+	public void setWelcomeText(String welcomeText) {
+		this.welcomeText = welcomeText;
 	}
 
 }
