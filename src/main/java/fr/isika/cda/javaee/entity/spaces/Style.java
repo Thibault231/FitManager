@@ -18,8 +18,20 @@ public class Style {
 	@GeneratedValue
 	private long id;
 
-	private String navbarColor;
+	private String mainColor = "#F5B37D";
 
+	private String secondColor = "#D52056";
+
+	private String thirdcolor = "gray";
+
+	private String font;
+
+//*******************************************
+
+	public Style() {
+	}
+
+//*******************************************
 	public long getId() {
 		return id;
 	}
@@ -28,12 +40,36 @@ public class Style {
 		this.id = id;
 	}
 
-	public String getNavbarColor() {
-		return navbarColor;
+	public String getMainColor() {
+		return mainColor;
 	}
 
-	public void setNavbarColor(String navbarColor) {
-		this.navbarColor = navbarColor;
+	public void setMainColor(String mainColor) {
+		this.mainColor = mainColor;
+	}
+
+	public String getSecondColor() {
+		return secondColor;
+	}
+
+	public void setSecondColor(String secondColor) {
+		this.secondColor = secondColor;
+	}
+
+	public String getThirdcolor() {
+		return thirdcolor;
+	}
+
+	public void setThirdcolor(String thirdcolor) {
+		this.thirdcolor = thirdcolor;
+	}
+
+	public String getFont() {
+		return font;
+	}
+
+	public void setFont(String font) {
+		this.font = font;
 	}
 
 }

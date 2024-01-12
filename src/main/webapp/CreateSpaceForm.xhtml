@@ -8,58 +8,73 @@
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
 
-	
+
 	<ui:define name="titleValue">Create SpaceForm</ui:define>
-		<!-- Corp de la page -->
+	<!-- Corp de la page -->
 	<ui:define name="content">
-	<div class="w-25">
-				<div class="text-center mb-4">
-					<h2>Fit Manager</h2>
-					<a>Design your fitness</a>
-				</div>
-				<h:form>
-					<div>
-						<div class="d-grid gap-2">
-
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput01"
-									placeholder="Nom de l'espace fitness" required="true" size="20"
-									value="#{spaceController.spaceViewModel.space.infos.configuration.fitnessName}" />
-								<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'espace fitness</h:outputLabel>
-							</div>
-							
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput02"
-									placeholder="SIRET" required="true" size="20"
-									value="#{spaceController.spaceViewModel.space.infos.administrative.siret}"/>
-								<h:outputLabel class="outputLabel" for="floatingInput02">SIRET</h:outputLabel>
-							</div>
-
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput03"
-									placeholder="SIREN" required="true" size="20"
-									value="#{spaceController.spaceViewModel.space.infos.administrative.address}"/>
-								<h:outputLabel class="outputLabel" for="floatingInput03">SIREN</h:outputLabel>
-							</div>
-							
-							<p:fileUpload listener="#{spaceController.uploadSpaceLogo}"
-									styleClass="w-100" mode="advanced" dragDropSupport="false" />
-							
-							<h:commandButton class="btn btn-warning"
-								value="Créer un espace fitness"
-								action="#{spaceController.createSpace()}" />
-
-							<h:link class="text-center" outcome="SpacesList.xhtml">Annuler</h:link>
-						</div>
-					</div>
-				</h:form>
+		<div class="w-25">
+			<div class="text-center mb-4">
+				<h2>Fit Manager</h2>
+				<a>Design your fitness</a>
 			</div>
-	
-	
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="NOM DE VOTRE ESPACE" required="true" size="20"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.fitnessName}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">NOM DE VOTRE ESPACE</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="VOTRE SLOGAN" required="true" size="20"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.slogan}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">VOTRE SLOGAN</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput03"
+								placeholder="VOTRE COULEUR PRINCIPALE" size="20"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.style.mainColor}" />
+							<h:outputLabel class="outputLabel" for="floatingInput03">VOTRE COULEUR PRINCIPALE</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="VOTRE COULEUR SECONDAIRE" size="20"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.style.secondColor}" />
+							<h:outputLabel class="outputLabel" for="floatingInput04">VOTRE COULEUR SECONDAIRE</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput05"
+								placeholder="SIRET" size="20"
+								value="#{spaceController.spaceViewModel.space.infos.administrative.siret}" />
+							<h:outputLabel class="outputLabel" for="floatingInput05">SIRET</h:outputLabel>
+						</div>
+
+						<h:outputLabel class="outputLabel" for="floatingInput06">VOTRE LOGO</h:outputLabel>
+						<p:fileUpload listener="#{spaceController.uploadSpaceLogo}"
+							styleClass="w-100" id="floatingInput06" mode="advanced"
+							dragDropSupport="false" />
+
+
+						<h:commandButton class="btn btn-warning"
+							value="Créer un espace fitness"
+							action="#{spaceController.createSpace()}" />
+
+						<h:link class="text-center" outcome="SpacesList.xhtml">Annuler</h:link>
+					</div>
+				</div>
+			</h:form>
+		</div>
 	</ui:define>
 
 
-	
+
 
 </ui:composition>
 </html>
