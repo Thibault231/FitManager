@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import fr.isika.cda.javaee.presentation.util.DefaultConfig;
+
 /**
  * Customizable data of a Space, type of font and colors.
  * 
@@ -18,13 +20,13 @@ public class Style {
 	@GeneratedValue
 	private long id;
 
-	private String mainColor = "#FFC107;";
+	private String mainColor = DefaultConfig.DEFAULT_MAIN_COLOR;
 
-	private String secondColor = "#0dcaf0";
+	private String secondColor = DefaultConfig.DEFAULT_SECOND_COLOR;
 
-	private String thirdcolor = "gray";
+	private String thirdcolor = DefaultConfig.DEFAULT_THIRD_COLOR;
 
-	private String font;
+	private String font = DefaultConfig.DEFAULT_FONT;
 
 //*******************************************
 

@@ -53,7 +53,7 @@
 
 				</div>
 				<div class="col-lg-6 col-sm-12 ">
-					<h:graphicImage library="images" name="Image10.jpg"
+					<h:graphicImage library="images" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.mainPicture}"
 						styleClass="imgIllu" />
 				</div>
 			</div>
@@ -66,7 +66,8 @@
 				<p:tab title="Abonnements">
 					<h:panelGrid columns="1" cellpadding="5">
 						<p:commandButton value="Ajouter un abonnement" type="button"
-							styleClass="ui-button-raised ui-button-warning custom-white-text"
+							styleClass="ui-button-raised ui-button custom-white-text" 
+							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; "
 							onclick="PF('popupUpdate').show();" />
 					</h:panelGrid>
 					<p></p>
@@ -76,14 +77,10 @@
 							style="margin-top: 5px">
 							<H3>Nos abonnements exclusifs pour libérer votre potentiel !</H3>
 						</div>
-						<div class="d-flex mt-3 h-full"
-							style="gap: 50px; justify-content: center;">
-							<ui:repeat
-								value="#{subscriptionController.allActiveSubscription}"
-								var="subscription">
-								<div class="shadow-2 h-full flex flex-column surface-card"
-									style="border-radius: 1px margin-top:0px; border-color: black;">
-									<div class="card-header bg-warning" style="color: white">
+						<div class="d-flex mt-3 h-full"	style="gap: 50px; justify-content: center;">
+							<ui:repeat	value="#{subscriptionController.allActiveSubscription}"	var="subscription">
+								<div class="shadow-2 h-full flex flex-column surface-card"	style="border-radius: 1px margin-top:0px; border-color: black;">
+									<div class="card-header" style="color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; ">
 										<h2>
 											<b>#{subscription.subscriptionName}</b>
 										</h2>
@@ -97,8 +94,7 @@
 										<h:form>
 											<h:commandButton
 												action="#{subscriptionController.subscribe(subscription.subscriptionId)}"
-												class="btn bg-warning" role="button" data-bs-toggle="button"
-												style="color: white" value="S'ABONNER" />
+												class="btn" role="button" data-bs-toggle="button" style="color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; " value="S'ABONNER" />
 										</h:form>
 									</div>
 								</div>
