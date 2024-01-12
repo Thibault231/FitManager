@@ -84,10 +84,15 @@
 				</ui:fragment>
 				<ui:fragment rendered="#{spaceController.isUserConnected()}">
 					<li class="nav-item">
-						<h:commandLink class="nav-link" action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">MON ESPACE</h:commandLink>
+						<h:commandLink class="nav-link" action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">MON COMPTE</h:commandLink>
 					</li>
 					<li class="nav-item">
 						<h:commandLink class="nav-link" action="#{spaceController.simpleSpacelogout()}">DECONNEXION</h:commandLink>
+					</li>
+				</ui:fragment>
+				<ui:fragment rendered="#{true}">
+					<li class="nav-item">
+						<h:commandLink  class="nav-link" action="#{spaceController.goToUpdateSpaceForm()}" value="MODIFIER MON ESPACE" />
 					</li>
 				</ui:fragment>
 			</ul>

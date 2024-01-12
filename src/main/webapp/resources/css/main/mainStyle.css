@@ -309,3 +309,19 @@
 	position:relative;
 	top:1px;
 }
+
+.manager-form{
+	display: flex;
+	flex-direction: row;
+	gap: 10%;
+	margin-top: 5%;
+	justify-content: space-around;
+	padding : 2rem;
+	
+}
+
+.manager-form-cadre{
+	-webkit-box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52); 
+	box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52);
+	
+}
