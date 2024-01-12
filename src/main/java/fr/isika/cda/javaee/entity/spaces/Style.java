@@ -18,9 +18,9 @@ public class Style {
 	@GeneratedValue
 	private long id;
 
-	private String mainColor = "#F5B37D";
+	private String mainColor = "#FFC107;";
 
-	private String secondColor = "#D52056";
+	private String secondColor = "#0dcaf0";
 
 	private String thirdcolor = "gray";
 

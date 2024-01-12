@@ -5,9 +5,11 @@ import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.javaee.entity.spaces.Space;
+import fr.isika.cda.javaee.entity.users.User;
 
 /**
  * Manage the persistence of Activity objects in MySQL DB.
@@ -50,7 +52,15 @@ public class SpaceDao implements IDaoSpace {
 
 	@Override
 	public Space getSpaceById(Long spaceToGetId) {
-		return em.find(Space.class, spaceToGetId);
+		try {
+			Space spaceToGet = em
+					.createQuery("SELECT s FROM Space s JOIN FETCH s.subscriptions WHERE s.spaceId = :spaceIdParam",
+							Space.class)
+					.setParameter("spaceIdParam", spaceToGetId).getSingleResult();
+			return spaceToGet;
+		} catch (NoResultException ex) {
+			return null;
+		}
 	}
 
 	@Override

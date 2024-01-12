@@ -126,4 +126,11 @@ public class Space {
 		this.style = style;
 	}
 
+	@Override
+	public String toString() {
+		return "Space [spaceId=" + spaceId + ", infos=" + infos + ", planning=" + planning + ", style=" + style
+				+ ", activities=" + activities + ", courses=" + courses + ", machines=" + machines + ", rooms=" + rooms
+				+ ", subscriptions=" + subscriptions + ", users=" + users + "]";
+	}
+
 }

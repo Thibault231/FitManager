@@ -2,7 +2,6 @@
 
 .spaceHeader {
 	/* variables définies dans le mainStyle.css */
-	background-color: gray;
 	height: 15vh;
 	width: 100%;
 	gap: 60px;
