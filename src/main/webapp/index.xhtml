@@ -111,7 +111,9 @@
 								
 						<div class="mb-2 mt-2 cardAbonnement  ">
 						
-							<h:graphicImage library="documents" name="#{space.infos.configuration.logo}" class="img_index_content" />
+
+							<p:graphicImage library="documents" name="#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index" />
+							
 							<h:commandButton value="Lien vers espace" action="#{spaceController.goToSpaceIndex()}">
 								<f:param name="spaceId" value="#{space.spaceId}" />
 							</h:commandButton>								
@@ -119,35 +121,8 @@
 								
 				</ui:repeat>
 				</div>
-				</h:form>
 				
-<!-- 				<div class="d-flex w-100 justify-content-between flex-wrap"> -->
-			
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/kingFitLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/muscleYouLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/XperienceZumbaLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/calypsoLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/basicFitLogo.png" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/spartanLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
+				</h:form>
 			</div>
 			<!--end section Nos salles partenaires-->
 
