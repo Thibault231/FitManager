@@ -16,45 +16,46 @@
 					<h2 class="titre2">NOTRE PHILOSOPHIE</h2>
 					<div style="height: 25em;">
 						<div class="scrollElement">
-						<p>Bienvenue chez Fitmanager, l'entreprise qui donne vie à
-							votre entreprise dédiée à votre passion pour le sport et le
-							bien-être global. Depuis notre création, nous nous sommes engagés
-							à inspirer et à guider nos clients vers un mode de vie sain et
-							actif. En tant que leader dans le domaine de la création d'espace
-							web fitness, nous offrons des solutions novatrices pour vous
-							aider à atteindre vos objectifs de remise en forme et à vivre
-							pleinement chaque instant.</p>
+							<p>Bienvenue chez Fitmanager, l'entreprise qui donne vie à
+								votre entreprise dédiée à votre passion pour le sport et le
+								bien-être global. Depuis notre création, nous nous sommes
+								engagés à inspirer et à guider nos clients vers un mode de vie
+								sain et actif. En tant que leader dans le domaine de la création
+								d'espace web fitness, nous offrons des solutions novatrices pour
+								vous aider à atteindre vos objectifs de remise en forme et à
+								vivre pleinement chaque instant.</p>
 
-						<p>Chez Fitmanager, notre équipe dévouée travaille sans
-							relâche pour créer des expériences uniques et motivantes. Nous
-							proposons une gamme complète de services, de planification
-							d'entraînement personnalisée, de gestion de cours exclusifs
-							dispensés par des experts renommés. Notre plateforme
-							technologique avancée vous permet de suivre les progrès de votre
-							salle de sport, de rester connecté avec une communauté passionnée
-							et de bénéficier d'un soutien continu pour maximiser votre
-							succès.</p>
+							<p>Chez Fitmanager, notre équipe dévouée travaille sans
+								relâche pour créer des expériences uniques et motivantes. Nous
+								proposons une gamme complète de services, de planification
+								d'entraînement personnalisée, de gestion de cours exclusifs
+								dispensés par des experts renommés. Notre plateforme
+								technologique avancée vous permet de suivre les progrès de votre
+								salle de sport, de rester connecté avec une communauté
+								passionnée et de bénéficier d'un soutien continu pour maximiser
+								votre succès.</p>
 
-						<p>La qualité est au cœur de tout ce que nous faisons. Nos
-							serveurs modernes et nos équipements de pointe garantissent une
-							expérience de gestion exceptionnelle. Fitmanager se distingue
-							également par son engagement envers la durabilité, avec des
-							initiatives écoresponsables visant à préserver notre planète tout
-							en favorisant un mode de vie sain.</p>
-											
-					</div>
-					<div class="bando d-flex w-100 justify-content-end ">
+							<p>La qualité est au cœur de tout ce que nous faisons. Nos
+								serveurs modernes et nos équipements de pointe garantissent une
+								expérience de gestion exceptionnelle. Fitmanager se distingue
+								également par son engagement envers la durabilité, avec des
+								initiatives écoresponsables visant à préserver notre planète
+								tout en favorisant un mode de vie sain.</p>
+
+						</div>
+						<div class="bando d-flex w-100 justify-content-end ">
 							<a href="" class="btn btn-outline-primary btn-lg">Demo</a>
 						</div>
-						
+
 					</div>
-					
+
 				</div>
 				<div class="col-lg-5 col-sm-12 ">
 					<div class="dualimgcontainer">
 						<img
 							src="https://i.pinimg.com/564x/d2/04/13/d204131a139b6b4149df2545d4269d08.jpg"
-							alt="" /> <img
+							alt="" /> 
+							<img
 							src="https://i.pinimg.com/564x/8d/09/6d/8d096d87d6de058cdd59334d9fc1ab3e.jpg"
 							class="imgdecaler" alt="" />
 					</div>
@@ -103,52 +104,55 @@
 
 			<!-- section Nos salles partenaires-->
 			<div class="row mb-5 contain-50 pt-5">
-	
+
 				<h2 class="titre2">Nos salles partenaires</h2>
-					
+
 				<h:form>
-				<div class="d-flex w-100 flex-wrap g-2">
-				<ui:repeat var="space" value="#{spaceController.allActiveSpaces}">
-								
-						<div class="mb-2 mt-2 cardAbonnement  ">
-						
-							<h:graphicImage library="images" name="#{space.infos.configuration.logo}" class="img_index_content" />
-							<h:commandButton value="Lien vers espace" action="#{spaceController.goToSpaceIndex()}">
-								<f:param name="spaceId" value="#{space.spaceId}" />
-							</h:commandButton>								
-						</div>
-								
-				</ui:repeat>
-				</div>
+					<div class="d-flex w-100 flex-wrap g-2">
+						<ui:repeat var="space" value="#{spaceController.allActiveSpaces}">
+
+							<div class="mb-2 mt-2 cardAbonnement  ">
+
+								<h:graphicImage library="images"
+									name="#{space.infos.configuration.logo}"
+									class="img_index_content" />
+								<h:commandButton value="Lien vers espace"
+									action="#{spaceController.goToSpaceIndex()}">
+									<f:param name="spaceId" value="#{space.spaceId}" />
+								</h:commandButton>
+							</div>
+
+						</ui:repeat>
+					</div>
 				</h:form>
-				
-<!-- 				<div class="d-flex w-100 justify-content-between flex-wrap"> -->
-			
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/kingFitLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/muscleYouLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/XperienceZumbaLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/calypsoLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/basicFitLogo.png" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-2 mt-2 " -->
-<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
-<!-- 						<h:graphicImage library="images" name="/plateform/spartanLogo.jpg" class="img_index_content" /> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
+
+				<!-- 				<div class="d-flex w-100 justify-content-between flex-wrap"> -->
+
+				<!-- 					<div class="mb-2 mt-2 " -->
+				<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+				<!-- 						<h:graphicImage library="images" name="/plateform/kingFitLogo.jpg" class="img_index_content" /> -->
+				<!-- 					</div> -->
+				<!-- 					<div class="mb-2 mt-2 " -->
+				<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+				<!-- 						<h:graphicImage library="images" name="/plateform/muscleYouLogo.jpg" class="img_index_content" /> -->
+				<!-- 					</div> -->
+				<!-- 					<div class="mb-2 mt-2 " -->
+				<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+				<!-- 						<h:graphicImage library="images" name="/plateform/XperienceZumbaLogo.jpg" class="img_index_content" /> -->
+				<!-- 					</div> -->
+				<!-- 					<div class="mb-2 mt-2 " -->
+				<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+				<!-- 						<h:graphicImage library="images" name="/plateform/calypsoLogo.jpg" class="img_index_content" /> -->
+				<!-- 					</div> -->
+				<!-- 					<div class="mb-2 mt-2 " -->
+				<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+				<!-- 						<h:graphicImage library="images" name="/plateform/basicFitLogo.png" class="img_index_content" /> -->
+				<!-- 					</div> -->
+				<!-- 					<div class="mb-2 mt-2 " -->
+				<!-- 						style="width: 22%; height: 13em; text-align: center"> -->
+				<!-- 						<h:graphicImage library="images" name="/plateform/spartanLogo.jpg" class="img_index_content" /> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
 			</div>
 			<!--end section Nos salles partenaires-->
 
@@ -170,7 +174,8 @@
 				<div class="col-sm-12 col-md-6  mt-auto mb-auto">
 					<div class="mb-2 mt-2"
 						style="width: 100%; height: 18em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/joinUs.jpg" class="img_index_content"/>
+						<h:graphicImage library="images" name="/plateform/joinUs.jpg"
+							class="img_index_content" />
 					</div>
 				</div>
 			</div>

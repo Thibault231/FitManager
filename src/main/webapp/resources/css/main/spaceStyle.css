@@ -1,110 +1,107 @@
 @charset "ISO-8859-1";
 
-:root {
-	--blanc: #ffffff;
-	--bleuFonce: #06375A;
-	--bleuClair: #1B5680;
-	--orange: #F5B37D;
-	--rouge: #D52056;
+:root { -
+	-blanc: #ffffff; -
+	-bleuFonce: #06375A; -
+	-bleuClair: #1B5680; -
+	-orange: #F5B37D; -
+	-rouge: #D52056;
 }
 
-*{
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+* {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+		sans-serif;
 }
 
 .important {
 	font-weight: 800;
 }
 
-
-
-
 .menus {
-    width: 0px;
-    transition: all 1s ease-out;
-  
-}
-
-.desable{
+	width: 0px;
 	transition: all 1s ease-out;
-    flex: 0 0 auto;
-    width: 15%;
 }
 
-
-.container{
-    width: 85%;
+.desable {
+	transition: all 1s ease-out;
+	flex: 0 0 auto;
+	width: 15%;
 }
 
-.contain_80{
-    height: 80vh;
+.container {
+	width: 85%;
 }
 
-.contain_50{
-    height: 50vh;
-}
-.dualimgcontainer{
-    display: flex;
-    width: 100%;
-    height: 21em;
-    margin-top: 2em;
-    justify-content: space-around;
+.contain_80 {
+	height: 80vh;
 }
 
-.dualimgcontainer> img{
-    height: 20em;
-    width: 43%;
+.contain_50 {
+	height: 50vh;
 }
 
-.imgdecaler{
-    right: -32%;
-    top: -52%;
+.dualimgcontainer {
+	display: flex;
+	width: 100%;
+	height: 21em;
+	margin-top: 2em;
+	justify-content: space-around;
 }
 
-.navBar{
-    height: 4em;
-    position: "fixed";
-    top:0;
+.dualimgcontainer>img {
+	height: 20em;
+	width: 43%;
 }
 
-.sectionperso{
+.imgdecaler {
+	right: -32%;
+	top: -52%;
+}
+
+.navBar {
+	height: 4em;
+	position: "fixed";
+	top: 0;
+}
+
+.sectionperso {
 	height: 30em
-	}
+}
 
-.imgPartenaire{
+.imgPartenaire {
 	width: 30%;
 	height: 30em;
 	margin-bottom: 2em;
 	object-fit: cover;
-	}
-	
-	
-.scrollElement{
-    height: 25em;
-    overflow-y: scroll;
 }
+
+.scrollElement {
+	height: 25em;
+	overflow-y: scroll;
+}
+
 * {
-   scrollbar-width: thin;
-   scrollbar-color: var(--bleuFonce);
- }
+	scrollbar-width: thin;
+	scrollbar-color: var(- -bleuFonce);
+}
 
- *::-webkit-scrollbar {
-   width: 13px;
- }
+*::-webkit-scrollbar {
+	width: 13px;
+}
 
- *::-webkit-scrollbar-track {
-   background: var(--blanc);
- }
+*::-webkit-scrollbar-track {
+	background: var(- -blanc);
+}
 
- *::-webkit-scrollbar-thumb {
-   background-color:  var(--bleuFonce);
-   border-radius: 14px;
-   border: 3px double var(--blanc);
- }
+*::-webkit-scrollbar-thumb {
+	background-color: var(- -bleuFonce);
+	border-radius: 14px;
+	border: 3px double var(- -blanc);
+}
 
-
-.navbar{
-	height:60px;
+.navbar {
+	height: 60px;
 }
 
 .imgLogo {
@@ -112,144 +109,134 @@
 	margin: 55px;
 }
 
-
-
-.imgAccueil{
-	 
-            height: 80vh;
-            width: 100vw;
-            object-fit: cover;
+.imgAccueil {
+	height: 80vh;
+	width: 100vw;
+	object-fit: cover;
 }
 
-
-
-
 .surface-card {
-    overflow: hidden;
-    text-align: center;
-    width: 15vw;
-    border-color: black;
-   
-   
+	overflow: hidden;
+	text-align: center;
+	width: 15vw;
+	border-color: black;
 }
 
 .custom-white-text {
-        color: white !important;
-    }
+	color: white !important;
+}
 
-.btn{
+.btn {
 	align-items: center;
 }
 
 .card-header {
-    background-color: #2596be;
-    text-align: center;
-     height: 100px;
-
+	background-color: #2596be;
+	text-align: center;
+	height: 100px;
 }
 
 .card-body {
-    color: white;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-     height: 250px;
+	color: white;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	height: 250px;
 }
 
 .card-footer {
-    background-color: #1C3659;
-    color: white;
-    text-align: center;
-     align-items: center;
-height: 60px;
+	background-color: #1C3659;
+	color: white;
+	text-align: center;
+	align-items: center;
+	height: 60px;
 }
 
 .imgIllu {
 	height: 25vw;
 	width: 95%;
-	margin-left:50px;
+	margin-left: 50px;
 }
 
 .custom-carousel-image {
-    width: 70%; /* ou la largeur que vous souhaitez */
-    margin: auto; /* centre l'image horizontalement si nécessaire */
+	width: 70%; /* ou la largeur que vous souhaitez */
+	margin: auto; /* centre l'image horizontalement si nécessaire */
 }
-       
 
-.rgpd{
-            position: fixed;
-            top: 0px; right: 0px;
-            background-color: rgba(0,0,0,0.32);
-            width: 100vw; height: 100vh;
-            align-items: center;
-            justify-content: center;
-        }
-
+.rgpd {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	background-color: rgba(0, 0, 0, 0.32);
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+}
 
 .Intituledelement {
+	padding-right: 2em;
+	transform: rotate(270deg);
+}
 
-           padding-right: 2em;
-           transform: rotate(270deg);
-        }
+@media screen and (min-width: 1400px) {
+	.dualimgcontainer {
+		position: absolute;
+		height: 21em;
+		display: block;
+		width: inherit;
+		height: inherit;
+		margin-top: inherit;
+	}
 
-
-
-@media screen and (min-width: 1400px){
-    .dualimgcontainer{
-        position: absolute;
-        height: 21em;
-        display: block;
-         width: inherit;
-        height:inherit;
-         margin-top:inherit;
-    }
-
-  /*  .dualimgcontainer> img{
+	/*  .dualimgcontainer> img{
         position: relative;
         height: 21em;
         width: 34%;
     }*/
-    
-    .desable{
-	transition: all 1s ease-out;
-    flex: 0 0 auto;
-    width: 10%;
-}
-
-    .contain{
-        height: 80vh;
-    }
-
+	.desable {
+		transition: all 1s ease-out;
+		flex: 0 0 auto;
+		width: 10%;
+	}
+	.contain {
+		height: 80vh;
+	}
 }
 
 /* **********************************************  A replacer**************** Désolé Loic, je ne savais pas où les mettre */
-.img_index{
+.img_index {
 	max-width: 50%;
 	max-height: 50%;
 }
 
-.img_index_content{
+.img_index_content {
 	max-width: 100%;
 	max-height: 100%;
 	border: solid 2px
 }
 
-.index_navbar{
+.index_navbar {
 	position: fixed;
 	top: 0px;
 	z-index: 9999;
-	background-color: var(--bleuFonce);
+	background-color: var(- -bleuFonce);
 }
 
-.index_slogan{
-	font-size : 1.25rem;
+.index_slogan {
+	font-size: 1.25rem;
 	margin-left: 2%;
 	margin-right: 5%;
-	color: var(--orange);
+	color: var(- -orange);
 	text-align: center;
 }
 
-.plateform_logo{
+.plateform_logo {
 	display: inline-block;
 }
 
+.Styleimg {
+	width: 10em;
+	height: 50em;
+	margin-left: 10em;
+}
