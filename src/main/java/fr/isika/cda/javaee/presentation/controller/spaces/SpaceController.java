@@ -1,6 +1,8 @@
 package fr.isika.cda.javaee.presentation.controller.spaces;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
 import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
@@ -17,6 +20,7 @@ import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
+import fr.isika.cda.javaee.presentation.util.FileUploadUtils;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
 import fr.isika.cda.javaee.services.UserServices;
@@ -65,6 +69,8 @@ public class SpaceController implements Serializable {
 	 * @return url (String)
 	 */
 	public String createSpace() {
+		System.out.println("***********************************************!!!!!!!!!!!!!!!!!!!!!");
+		System.err.println(spaceViewModel);
 		// 1- Get manager
 		User createdUser = userDao.getUserByIdWithLinkedSpaces(SessionUtils.getUserIdFromSession());
 		// 2- Create then get the new space
@@ -212,6 +218,20 @@ public class SpaceController implements Serializable {
 
 	public void setUploadedFile(UploadedFile uploadedFile) {
 		this.uploadedFile = uploadedFile;
+	}
+
+	/**
+	 * Upload logo picture for Space objects, then rename and stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
+	public void uploadSpaceLogo(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+		spaceViewModel.getSpace().getInfos().getConfiguration().setLogo(fileName);
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 
 }

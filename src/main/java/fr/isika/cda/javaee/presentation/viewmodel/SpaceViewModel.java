@@ -54,4 +54,11 @@ public class SpaceViewModel {
 	public void setNewUser(User newUser) {
 		this.newUser = newUser;
 	}
+
+	@Override
+	public String toString() {
+		return "SpaceViewModel [spaceId=" + spaceId + ", space=" + space + ", user=" + user + ", newUser=" + newUser
+				+ "]";
+	}
+
 }

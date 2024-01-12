@@ -222,18 +222,4 @@ public class UserOnSpaceController implements Serializable {
 		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 
-	/**
-	 * Upload logo picture for Space objects, then rename and stock it.
-	 * 
-	 * @param event (:FileUploadEvent)
-	 * @throws Exception
-	 */
-	public void uploadSpaceLogo(FileUploadEvent event) throws Exception {
-		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
-		UploadedFile uploadedFile = event.getFile();
-		String fileName = "logo/" + String.join("_", timestamp, uploadedFile.getFileName());
-		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
-		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
-	}
-
 }

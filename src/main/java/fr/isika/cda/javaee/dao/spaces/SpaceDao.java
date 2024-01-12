@@ -23,10 +23,7 @@ public class SpaceDao implements IDaoSpace {
 
 	@Override
 	public Long createSpace(Space spaceToCreate) {
-//		em.persist(spaceToCreate.getInfos().getConfiguration().getStyle().getColor());
-		if (spaceToCreate.getInfos().getConfiguration().getStyle() != null) {
-			em.persist(spaceToCreate.getInfos().getConfiguration().getStyle());
-		}
+		em.persist(spaceToCreate.getInfos().getConfiguration().getStyle());
 		em.persist(spaceToCreate.getInfos().getAdministrative());
 		em.persist(spaceToCreate.getInfos().getConfiguration());
 		em.persist(spaceToCreate.getPlanning());

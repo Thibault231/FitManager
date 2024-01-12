@@ -36,12 +36,4 @@ public class Style {
 		this.navbarColor = navbarColor;
 	}
 
-//	public Color getColor() {
-//		return color;
-//	}
-//
-//	public void setColor(Color color) {
-//		this.color = color;
-//	}
-
 }

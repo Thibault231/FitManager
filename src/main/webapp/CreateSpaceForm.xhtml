@@ -42,14 +42,7 @@
 								<h:outputLabel class="outputLabel" for="floatingInput03">SIREN</h:outputLabel>
 							</div>
 							
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput04"
-									placeholder="Logo" required="true" size="20"
-									value="#{spaceController.spaceViewModel.space.infos.configuration.logo}"/>
-								<h:outputLabel class="outputLabel" for="floatingInput04">Logo</h:outputLabel>
-							</div>
-							
-							<p:fileUpload listener="#{spaceController.uploadedFile}"
+							<p:fileUpload listener="#{spaceController.uploadSpaceLogo}"
 									styleClass="w-100" mode="advanced" dragDropSupport="false" />
 							
 							<h:commandButton class="btn btn-warning"

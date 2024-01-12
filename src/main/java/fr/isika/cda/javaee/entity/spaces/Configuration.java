@@ -24,7 +24,7 @@ public class Configuration {
 	private String logo;
 	private String slogan;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Style style;
 
 //*******************************************
