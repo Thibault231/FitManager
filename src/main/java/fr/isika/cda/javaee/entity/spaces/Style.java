@@ -3,7 +3,6 @@ package fr.isika.cda.javaee.entity.spaces;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 import fr.isika.cda.javaee.presentation.util.DefaultConfig;
 
