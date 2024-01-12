@@ -110,8 +110,8 @@ public class InitDb {
 			Space spaceNine = new Space(true);
 			spaceNine.getInfos().getConfiguration().setFitnessName("XperienceZumbas");
 			spaceNine.getInfos().getConfiguration().setLogo("Gym.jpg");
-			spaceNine.getInfos().getConfiguration().setSlogan("DÃ©passez vos limites, atteignez vos objectifs");
-			spaceNine.getInfos().getAdministrative().setAddress("22 Rue de la RÃ©publique, 69002 Lyon");
+			spaceNine.getInfos().getConfiguration().setSlogan("Dépassez vos limites, atteignez vos objectifs");
+			spaceNine.getInfos().getAdministrative().setAddress("22 Rue de la République, 69002 Lyon");
 			spaceDao.createSpace(spaceNine);
 
 			Space spaceTen = new Space(true);
