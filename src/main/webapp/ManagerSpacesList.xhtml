@@ -96,6 +96,13 @@
 							<p:column headerText="Nom">
 								<h:outputText value="#{space.infos.configuration.fitnessName}" />
 							</p:column>
+							<p:column headerText="Mes Couleurs">
+							<div class="d-flex">
+								<div style="width: 2rem; height: 2rem; background-color:#{space.infos.configuration.style.mainColor};"></div>
+								<div style="width: 2rem; height: 2rem; background-color:#{space.infos.configuration.style.secondColor};"></div>
+								<div style="width: 2rem; height: 2rem; background-color:#{space.infos.configuration.style.thirdcolor};"></div>
+							</div>
+							</p:column>
 							<p:column headerText="Adresse">
 								<h:outputText value="#{space.infos.administrative.address}" />
 							</p:column>

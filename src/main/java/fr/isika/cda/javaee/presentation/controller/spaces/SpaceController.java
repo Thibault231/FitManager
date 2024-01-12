@@ -83,7 +83,7 @@ public class SpaceController implements Serializable {
 		spaceDao.updateSpace(createdSpace);
 		userDao.updateUser(createdUser);
 
-		return "SpacesList.xhtml?faces-redirect=true";
+		return "ManagerSpacesList.xhtml?faces-redirect=true";
 	}
 
 	/**
@@ -231,6 +231,20 @@ public class SpaceController implements Serializable {
 		UploadedFile uploadedFile = event.getFile();
 		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
 		spaceViewModel.getSpace().getInfos().getConfiguration().setLogo(fileName);
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
+	}
+
+	/**
+	 * Upload main image picture for Space objects, then rename and stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
+	public void uploadSpaceMainPicture(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+		spaceViewModel.getSpace().getInfos().getConfiguration().setMainPicture(fileName);
 		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 
