@@ -13,7 +13,7 @@
 		<div class="d-flex p-2 flex-column w-100 border align-items-center">
 
 			<div class="jumbotron">
-				<h1 class="display-4">Planning</h1>
+				<h1 class="display-4">Agenda de vos cours</h1>
 			</div>
 
 			<style type="text/css">
@@ -22,6 +22,7 @@
 }
 </style>
 
+		<div class="calendar-cadre">
 			<h:form>
 				<p:growl id="messages" showDetail="true" />
 
@@ -44,7 +45,7 @@
 
 				<p:dialog widgetVar="eventDialog" header="Cours disponible sur ce créneau : "
 					showEffect="clip" hideEffect="clip">
-					<h:panelGrid id="eventDetails" columns="2">
+					<h:panelGrid id="eventDetails" columns="2" style="background-color:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor};" >
 						<p:outputLabel for="title" value="Name :" />
 						<p:inputText id="title" value="#{courseController.event.title}"
 							required="true" />
@@ -74,6 +75,7 @@
 					</h:panelGrid>
 				</p:dialog>
 			</h:form>
+		</div>
 		</div>
 	</ui:define>
 </ui:composition>

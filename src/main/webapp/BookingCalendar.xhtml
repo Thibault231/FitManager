@@ -22,6 +22,7 @@
 	width: 1000px;
 }
 </style>
+		<div class="calendar-cadre">
 			<h:form>
 				<p:growl id="messages" showDetail="true" />
 
@@ -43,7 +44,7 @@
 
 				<p:dialog widgetVar="eventDialog" header="Course Details"
 					showEffect="clip" hideEffect="clip">
-					<h:panelGrid id="eventDetails" columns="2">
+					<h:panelGrid id="eventDetails" columns="2"style="background-color:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor};" >
 						<p:outputLabel for="title" value="Name :" />
 						<p:inputText id="title" value="#{courseController.event.title}"
 							disabled="true" required="true" />
@@ -58,6 +59,7 @@
 					</h:panelGrid>
 				</p:dialog>
 			</h:form>
+		</div>
 		</div>
 	</ui:define>
 </ui:composition>
