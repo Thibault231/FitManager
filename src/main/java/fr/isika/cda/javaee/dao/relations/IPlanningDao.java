@@ -1,15 +1,15 @@
 package fr.isika.cda.javaee.dao.relations;
 
-/**
-* Manage the persistence of Planning objects.
-* 
-* @author Thibault Charef
-*
-*/
 import javax.ejb.Local;
 
 import fr.isika.cda.javaee.entity.relations.Planning;
 
+/**
+ * Manage the persistence of Planning objects.
+ * 
+ * @author Thibault Charef
+ *
+ */
 @Local
 public interface IPlanningDao {
 	/**

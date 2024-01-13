@@ -19,6 +19,7 @@ public class Price {
 
 	private float monthlyPrice;
 
+//*******************************************************************	
 	public Long getPriceId() {
 		return priceId;
 	}

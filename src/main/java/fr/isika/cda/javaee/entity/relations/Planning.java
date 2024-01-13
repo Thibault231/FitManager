@@ -26,6 +26,23 @@ public class Planning {
 	@OneToMany
 	private List<Activity> activitiesList = new ArrayList<Activity>();
 
+//*******************************************************************
+	/**
+	 * Empty constructor for JEE.
+	 */
+	public Planning() {
+	}
+
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param isActive (: boolean)
+	 */
+	public Planning(boolean isForViewModel) {
+		this.activitiesList = new ArrayList<Activity>();
+	}
+
+//*******************************************************************
 	public Long getPlanningId() {
 		return planningId;
 	}

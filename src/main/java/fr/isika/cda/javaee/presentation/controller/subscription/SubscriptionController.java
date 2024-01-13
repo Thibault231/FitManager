@@ -57,16 +57,43 @@ public class SubscriptionController implements Serializable {
 	}
 
 //*****************************************************************************
-	public String createSubscription() {
+	/**
+	 * Create a new subscription and return on manager's dashboard.
+	 * 
+	 * @return url (:String)
+	 */
+	public String createSubscriptionInDashboard() {
+		createSubscription();
+		return "ManagerSpaceDashBoard";
+	}
+
+	/**
+	 * Create a new subscription and return on the index page of the space.
+	 * 
+	 * @return url (:String)
+	 */
+	public String CreateSubscriptionInIndex() {
+		createSubscription();
+		Long spaceId = SessionUtils.getSpaceIdFromSession();
+		return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+	}
+
+	/**
+	 * Create a new subscription from a form and persist it.
+	 */
+	private void createSubscription() {
 		Long spaceid = SessionUtils.getSpaceIdFromSession();
 		Space currentSpace = spaceDao.getSpaceWithSubscription(spaceid);
 		Subscription subscriptionToCreate = subscriptionViewModel.getSubscription();
 		subscriptionDao.createSubscription(subscriptionToCreate);
 		currentSpace.getSubscriptions().add(subscriptionToCreate);
 		spaceDao.updateSpace(currentSpace);
-		return "ManagerSpaceDashBoard";
 	}
 
+	/**
+	 * 
+	 * @return a list of subcriptions (:List<Subscription>)
+	 */
 	public List<Subscription> getAllActiveSubscription() {
 		Long spaceid = SessionUtils.getSpaceIdFromSession();
 		Space currentSpace = spaceDao.getSpaceWithSubscription(spaceid);
@@ -74,14 +101,33 @@ public class SubscriptionController implements Serializable {
 		return subscriptionsList;
 	}
 
+	/**
+	 * Return a subscription of the current space, using it's Id.
+	 * 
+	 * @param subscritptionId (:Long)
+	 * @return the subscription to get (:Subscription)
+	 */
 	public Subscription getsubscriptionById(Long subscritptionId) {
 		return subscriptionDao.getSubscriptionById(subscritptionId);
 	}
 
+	/**
+	 * Return a subscription of the current space, using it's name.
+	 * 
+	 * @param subscriptionName (:String)
+	 * @return the subscription to get (:Subscription)
+	 */
 	public Subscription getSubscriptionByName(String subscriptionName) {
 		return subscriptionDao.getSubscriptionByName(subscriptionName);
 	}
 
+	/**
+	 * Return the subscription of the current member, using it's id from the
+	 * session.<br/>
+	 * <b>Use this method with connected member only<b>
+	 * 
+	 * @return the subscription to get (:Subscription)
+	 */
 	public Subscription getCurrentMemberSubscription() {
 		User currentUser = userDao.getUserById(SessionUtils.getUserIdFromSession());
 		return subscriptionDao.getSubscriptionById(currentUser.getCurrentSubScriptionId());
@@ -113,6 +159,12 @@ public class SubscriptionController implements Serializable {
 		return "AdherentDashboard?faces-redirect=true";
 	}
 
+	/**
+	 * Get all attributes of all dependencies of a space and stock them in the
+	 * viewmodel to be printed in a form.
+	 * 
+	 * @return url (:String)
+	 */
 	public String showSubscriptionDetails() {
 
 		// 1 - Récupérer la valeur du param "spaceId"
@@ -147,6 +199,12 @@ public class SubscriptionController implements Serializable {
 		return SessionUtils.redirectToDashBoard();
 	}
 
+	/**
+	 * Get the update-subscription form and transfer it to service for update and
+	 * persistence.
+	 * 
+	 * @return url (:String)
+	 */
 	public String updateSuscription() {
 		subscriptionDao.updateSubscription(this.subscriptionViewModel.getSubscription());
 		return SessionUtils.redirectToDashBoard();

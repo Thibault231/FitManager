@@ -90,6 +90,11 @@
 						<h:commandLink class="nav-link" action="#{spaceController.simpleSpacelogout()}">SE DECONNECTER</h:commandLink>
 					</li>
 				</ui:fragment>
+				<ui:fragment rendered="#{spaceController.managerOfTheSpaceConnected}">
+					<li class="nav-item">
+						<h:commandLink  class="nav-link" action="#{spaceController.goToUpdateSpaceForm()}" value="MODIFIER MON ESPACE" />
+					</li>
+				</ui:fragment>
 			</ul>
 <!-- 		</div> -->
 		

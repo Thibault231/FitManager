@@ -16,11 +16,12 @@ import fr.isika.cda.javaee.presentation.viewmodel.ActivityForm;
  *
  */
 @Stateless
-public class ActivityDao {
+public class ActivityDao implements IDaoActivity {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	@Override
 	public Long createACtivity(ActivityForm activityForm) {
 		Activity activity = new Activity();
 		activity.setName(activityForm.getName());
@@ -28,18 +29,22 @@ public class ActivityDao {
 		return activity.getId();
 	}
 
+	@Override
 	public Activity getActivityById(Long id) {
 		return entityManager.find(Activity.class, id);
 	}
 
+	@Override
 	public void updateActivity(Activity activity) {
 		entityManager.merge(activity);
 	}
 
+	@Override
 	public List<Activity> getAllActivities() {
 		return entityManager.createQuery("SELECT a FROM Activity a", Activity.class).getResultList();
 	}
 
+	@Override
 	public void deleteActivity(Long id) {
 		entityManager.remove(entityManager.find(Activity.class, id));
 	}

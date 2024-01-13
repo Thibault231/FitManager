@@ -47,11 +47,18 @@ public class ConfigurationController implements Serializable {
 		this.confViewModel = confViewModel;
 	}
 
+//**********************************************************
 	@PostConstruct
 	private void init() {
 		confViewModel = new ConfigurationViewModel();
 	}
 
+//**********************************************************
+	/**
+	 * Return a list of colors for space personalization.
+	 * 
+	 * @return a map of color (: Map<String, String>)
+	 */
 	public Map<String, String> getColorForConfiguration() {
 		Map<String, String> colorsMap = new HashMap<>();
 		colorsMap.put("red", "##be2e14");
@@ -61,6 +68,11 @@ public class ConfigurationController implements Serializable {
 		return colorsMap;
 	}
 
+	/**
+	 * Update the configuration dependency of a space, specificly.
+	 * 
+	 * @return url (:String)
+	 */
 	public String updateSpace() {
 		// Construire l'objet de l'espace actuel
 		Space currentSpace = spaceDao.getSpaceById(SessionUtils.getSpaceIdFromSession());
@@ -74,5 +86,4 @@ public class ConfigurationController implements Serializable {
 		Long spaceId = SessionUtils.getSpaceIdFromSession();
 		return "TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 	}
-
 }

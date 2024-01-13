@@ -79,6 +79,11 @@ public interface IDaoSpace {
 	 */
 	void updateSpace(Space spaceToUpdate);
 
+	/**
+	 * Get all colors for personalizing spaces.
+	 * 
+	 * @return a map of colors with their code (:Map<String, String>)
+	 */
 	Map<String, String> getColorsMap();
 
 }

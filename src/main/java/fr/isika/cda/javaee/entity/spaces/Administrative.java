@@ -21,6 +21,7 @@ public class Administrative {
 
 	private String address;
 
+//**************************************************************
 	public Long getId() {
 		return id;
 	}

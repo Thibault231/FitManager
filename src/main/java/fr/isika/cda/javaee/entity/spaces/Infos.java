@@ -24,6 +24,7 @@ public class Infos {
 	@OneToOne
 	Configuration configuration;
 
+//**************************************************************************
 	public Long getId() {
 		return id;
 	}
