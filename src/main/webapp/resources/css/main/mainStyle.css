@@ -267,10 +267,20 @@
     align-items: center;
     padding: 1em;
     
-    box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
-	-webkit-box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
+    box-shadow: 10px 10px 19px -7px rgb(131,127,127);
+	-webkit-box-shadow: 10px 10px 19px -7px rgb(131, 127, 127);
 	-moz-box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
 		
+}
+
+.cardAbonnementSpace{
+	background-color:white;
+	padding: 1em;
+	border-radius: 20px;
+	
+	box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127);
+	-webkit-box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127);
+	-moz-box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127);
 }
 
 .cardAbonnement>h3{

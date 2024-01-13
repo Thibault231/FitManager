@@ -15,11 +15,11 @@
 
 
 		<div class="container-fluid p-5 justify-space-beetwen">
-			<div class="row pt-5 contain-80">
-				<h2 class="text-uppercase">NOTRE PHILOSOPHIE</h2>
+			<div class="row pt-5 mt-3 contain-80">
+			
 				<div class="col-lg-6 col-sm-12 mt-auto mb-auto mb-5 space-welcome-text" style="white-space:pre-line;">
-
-					#{spaceController.currentSpaceWithSubscriptions.infos.configuration.welcomeText}
+<h2 class="text-uppercase">NOTRE PHILOSOPHIE</h2>
+					<p>#{spaceController.currentSpaceWithSubscriptions.infos.configuration.welcomeText}</p>
 
 				</div>
 				<div class="col-lg-6 col-sm-12 ">
@@ -41,16 +41,20 @@
 							onclick="PF('popupUpdate').show();" />
 					</h:panelGrid>
 					<p></p>
-					<div class="card mb-5 shadow-4"
-						style="border-radius: 50px; padding: 1em">
-						<div class="text-900 font-bold text-5xl  text-center"
-							style="margin-top: 5px">
+					
+					
+					<div class="mb-5 shadow-4 mb-2 mt-4 card-AbonnementSpace"
+						style="border-radius: 20px; padding: 1em; margin-top: 20px; margin-top: 20px; box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127); background-color:white;">
+						<p></p>
+						<div class="text-900 font-bold text-5xl  text-center">
 							<H3>Nos abonnements exclusifs pour libérer votre potentiel !</H3>
 						</div>
-						<div class="d-flex mt-3 h-full"	style="gap: 50px; justify-content: center;">
+						<div class="d-flex mt-4 mb-4 h-full"	style="gap: 50px; justify-content: center;">
 							<ui:repeat	value="#{subscriptionController.allActiveSubscription}"	var="subscription">
-								<div class="shadow-2 h-full flex flex-column surface-card"	style="border-radius: 1px margin-top:0px; border-color: black;">
-									<div class="card-header" style="color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; ">
+								<div class="shadow-2 h-full flex flex-column surface-card"	style="margin-top:0px; border-radius: 10px; padding: 1em; box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127); background-color:white;">
+									
+									<div class="card-header" style="padding-top: 20px; margin-top:15px; border-radius: 10px; color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; ">
+										
 										<h2>
 											<b>#{subscription.subscriptionName}</b>
 										</h2>
@@ -72,6 +76,8 @@
 						</div>
 
 					</div>
+					<p></p>
+					<p></p>
 					<div>
 						<h2 class="text-uppercase text-center">NOTRE SALLE</h2>
 					</div>
@@ -155,10 +161,10 @@
 			<p:accordionPanel widgetVar="Infos">
 				<p:tab title="Informations générales de votre salle">
 					<p class="m-0" />
-			<p>Nom de la salle:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</p>
-					<p>Siret:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.siret}</p>
-					<p>Adresse:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.address}</p>
-					<p>Notre slogan:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</p>
+			<p>Nom de la salle: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</p>
+					<p>Siret: #{spaceController.currentSpaceWithSubscriptions.infos.administrative.siret}</p>
+					<p>Adresse: #{spaceController.currentSpaceWithSubscriptions.infos.administrative.address}</p>
+					<p>Notre slogan: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</p>
 				</p:tab>
 				</p:accordionPanel>
 		</div>
