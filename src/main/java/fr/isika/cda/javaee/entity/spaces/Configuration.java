@@ -33,18 +33,25 @@ public class Configuration {
 	@OneToOne
 	private Style style;
 
-//*******************************************
-
+//*******************************************************************	
+	/**
+	 * Empty constructor for JEE.
+	 */
 	public Configuration() {
 
 	}
 
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param isForViewModel (:boolean)
+	 */
 	public Configuration(boolean isForViewModel) {
 		this.style = new Style();
 
 	}
 
-//*******************************************
+//*******************************************************************	
 	public Long getId() {
 		return id;
 	}

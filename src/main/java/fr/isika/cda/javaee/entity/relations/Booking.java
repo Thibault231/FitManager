@@ -36,7 +36,7 @@ public class Booking {
 	@OneToOne
 	private Course linkedCourse;
 
-//***********************************************	
+//*******************************************************************	
 	/**
 	 * Empty constructor for JEE.
 	 */
@@ -53,7 +53,7 @@ public class Booking {
 		this.member = new User();
 	}
 
-//***********************************************	
+//*******************************************************************	
 	public Long getBookingId() {
 		return bookingId;
 	}

@@ -90,6 +90,10 @@ public class SubscriptionController implements Serializable {
 		spaceDao.updateSpace(currentSpace);
 	}
 
+	/**
+	 * 
+	 * @return a list of subcriptions (:List<Subscription>)
+	 */
 	public List<Subscription> getAllActiveSubscription() {
 		Long spaceid = SessionUtils.getSpaceIdFromSession();
 		Space currentSpace = spaceDao.getSpaceWithSubscription(spaceid);
@@ -97,14 +101,33 @@ public class SubscriptionController implements Serializable {
 		return subscriptionsList;
 	}
 
+	/**
+	 * Return a subscription of the current space, using it's Id.
+	 * 
+	 * @param subscritptionId (:Long)
+	 * @return the subscription to get (:Subscription)
+	 */
 	public Subscription getsubscriptionById(Long subscritptionId) {
 		return subscriptionDao.getSubscriptionById(subscritptionId);
 	}
 
+	/**
+	 * Return a subscription of the current space, using it's name.
+	 * 
+	 * @param subscriptionName (:String)
+	 * @return the subscription to get (:Subscription)
+	 */
 	public Subscription getSubscriptionByName(String subscriptionName) {
 		return subscriptionDao.getSubscriptionByName(subscriptionName);
 	}
 
+	/**
+	 * Return the subscription of the current member, using it's id from the
+	 * session.<br/>
+	 * <b>Use this method with connected member only<b>
+	 * 
+	 * @return the subscription to get (:Subscription)
+	 */
 	public Subscription getCurrentMemberSubscription() {
 		User currentUser = userDao.getUserById(SessionUtils.getUserIdFromSession());
 		return subscriptionDao.getSubscriptionById(currentUser.getCurrentSubScriptionId());

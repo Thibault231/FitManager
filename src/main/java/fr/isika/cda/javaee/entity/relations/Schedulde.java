@@ -1,5 +1,6 @@
 package fr.isika.cda.javaee.entity.relations;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,6 +23,24 @@ public class Schedulde {
 
 	@OneToMany
 	private List<Booking> bookingsList;
+
+//*******************************************************************	
+	/**
+	 * Empty constructor for JEE.
+	 */
+	public Schedulde() {
+	}
+
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param isActive (: boolean)
+	 */
+	public Schedulde(boolean isForViewModel) {
+		this.bookingsList = new ArrayList<Booking>();
+	}
+
+//*******************************************************************	
 
 	public Long getScheduldeId() {
 		return scheduldeId;

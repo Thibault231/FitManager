@@ -78,7 +78,7 @@ public interface IDaoUser {
 	 * Hard delete of a user from the Db, using it's id.
 	 * 
 	 * @param userToDeleteId (:Id)
-	 * @return
+	 * @return (:boolean)
 	 */
 	boolean deleteUser(Long userToDeleteId);
 
@@ -89,6 +89,13 @@ public interface IDaoUser {
 	 */
 	void updateUser(User userToUpdate);
 
+	/**
+	 * Return a user linked to a specific space, using it's role, if it exists or
+	 * null otherwise. <b>This method is use for the manager only</b>
+	 * 
+	 * @param roleId
+	 * @return user to get (:User)
+	 */
 	User getUserByRole(Long roleId);
 
 }

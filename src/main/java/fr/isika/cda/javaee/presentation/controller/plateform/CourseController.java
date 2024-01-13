@@ -85,36 +85,6 @@ public class CourseController implements Serializable {
 	private String height = "auto";
 
 //******************************************************************************************
-	private void refreshModel() {
-		eventModel = new DefaultScheduleModel();
-		loadAllCourses();
-	}
-
-	private void loadAllCourses() {
-		List<Course> courses = getAllCourses();
-		for (Course c : courses) {
-			transformCoursetoEvent(c);
-		}
-	}
-
-	/**
-	 * Get all the courses to come, of the current session space.
-	 * 
-	 * @return the courses list (:List<Course>)
-	 */
-	public List<Course> getAllCourses() {
-		Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
-		return courseDao.getAllCourses(currentSpaceId);
-	}
-
-	private void refreshCoachModel() {
-		eventModel = new DefaultScheduleModel();
-		List<Course> courses = getAllCoachCourses();
-		for (Course c : courses) {
-			transformCoursetoEvent(c);
-		}
-	}
-
 	/**
 	 * Get all the courses to come, linked to a specific coach of the current
 	 * session space.
@@ -127,11 +97,14 @@ public class CourseController implements Serializable {
 		return courseDao.getAllCoachCourses(currentSpaceId, currentUserId);
 	}
 
-	private void transformCoursetoEvent(Course course) {
-		DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder().id(String.valueOf(course.getId()))
-				.title(course.getName()).startDate(course.getStartDate()).endDate(course.getEndDate())
-				.description(course.getDescription()).borderColor("orange").data(course).build();
-		eventModel.addEvent(event);
+	/**
+	 * Get all the courses to come, of the current session space.
+	 * 
+	 * @return the courses list (:List<Course>)
+	 */
+	public List<Course> getAllCourses() {
+		Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
+		return courseDao.getAllCourses(currentSpaceId);
 	}
 
 	public String deleteCourse(Long courseToDeleteId) {
@@ -158,6 +131,50 @@ public class CourseController implements Serializable {
 		refreshModel();
 		event = new DefaultScheduleEvent<>();
 
+	}
+
+	public void onEventMove(ScheduleEntryMoveEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved",
+				"Delta:" + event.getDeltaAsDuration());
+
+		addMessage(message);
+	}
+
+	public void onEventResize(ScheduleEntryResizeEvent event) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized",
+				"Start-Delta:" + event.getDeltaStartAsDuration() + ", End-Delta: " + event.getDeltaEndAsDuration());
+
+		addMessage(message);
+	}
+
+	public void resetEvent() {
+		event = new DefaultScheduleEvent();
+	}
+
+//******************************************************************************************	
+	/**
+	 * Load courses for ScheduldeEvent and call the transformCoursetoEvent method.
+	 */
+	private void loadAllCourses() {
+		List<Course> courses = getAllCourses();
+		for (Course c : courses) {
+			transformCoursetoEvent(c);
+		}
+	}
+
+	/**
+	 * Refresh EventModel with a new object then call loadAllCourses method.
+	 */
+	private void refreshModel() {
+		eventModel = new DefaultScheduleModel();
+		loadAllCourses();
+	}
+
+	private void transformCoursetoEvent(Course course) {
+		DefaultScheduleEvent<?> event = DefaultScheduleEvent.builder().id(String.valueOf(course.getId()))
+				.title(course.getName()).startDate(course.getStartDate()).endDate(course.getEndDate())
+				.description(course.getDescription()).borderColor("orange").data(course).build();
+		eventModel.addEvent(event);
 	}
 
 	private void createNewEvent() {
@@ -189,26 +206,8 @@ public class CourseController implements Serializable {
 
 	}
 
-	public void onEventMove(ScheduleEntryMoveEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved",
-				"Delta:" + event.getDeltaAsDuration());
-
-		addMessage(message);
-	}
-
-	public void onEventResize(ScheduleEntryResizeEvent event) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized",
-				"Start-Delta:" + event.getDeltaStartAsDuration() + ", End-Delta: " + event.getDeltaEndAsDuration());
-
-		addMessage(message);
-	}
-
 	private void addMessage(FacesMessage message) {
 		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-
-	public void resetEvent() {
-		event = new DefaultScheduleEvent();
 	}
 
 //******************************************************************************************

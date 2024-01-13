@@ -22,7 +22,7 @@ import org.primefaces.model.ScheduleModel;
 /**
  * Manage Calendar and it's event objects in views.
  * 
- * @author Charef Thibault
+ * @author Charef Thibault (Imported class from PrimeFaces)
  *
  */
 @Named
@@ -52,6 +52,7 @@ public class ScheduleJava8View implements Serializable {
 	private String clientTimeZone = "local";
 	private String columnHeaderFormat = "";
 
+//**********************************************************
 	@PostConstruct
 	public void init() {
 		eventModel = new DefaultScheduleModel();
@@ -90,6 +91,7 @@ public class ScheduleJava8View implements Serializable {
 		};
 	}
 
+//**********************************************************
 	public LocalDateTime getRandomDateTime(LocalDateTime base) {
 		LocalDateTime dateTime = base.withMinute(0).withSecond(0).withNano(0);
 		return dateTime.plusDays(((int) (Math.random() * 30)));

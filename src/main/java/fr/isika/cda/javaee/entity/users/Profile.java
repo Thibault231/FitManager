@@ -21,12 +21,14 @@ public class Profile {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Civility civility;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address adress;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Contact contact;
 
-	// Getter and setter
+//*******************************************************************	
 	public Long getProfileId() {
 		return profileId;
 	}
