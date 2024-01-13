@@ -28,7 +28,6 @@ public class Account {
 	private String login;
 
 	@NotNull
-	@Size(min = 5, max = 12)
 	private String password;
 
 	@Enumerated(EnumType.STRING)

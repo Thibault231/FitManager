@@ -9,6 +9,7 @@ import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.users.Sex;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
+import fr.isika.cda.javaee.presentation.util.Crypto;
 
 /**
  * Service for user management between userDao and Controllers
@@ -21,6 +22,13 @@ public class UserServices {
 	@Inject
 	private IDaoUser userDao;
 
+	public boolean comparePassword(String formPassword, String referencePassword) {
+		String decryptedReference = Crypto.DecryptDataInWords(referencePassword);
+		if (decryptedReference.equals(formPassword))
+			return true;
+		return false;
+	}
+
 	/**
 	 * Create a new user object if it not already exist in the database then fill it
 	 * from a form and call the userDao for persistence.
@@ -32,11 +40,16 @@ public class UserServices {
 		User previousManager = userDao.getUserByEmail(userFromForm.getAccount().getLogin());
 
 		if (previousManager == null) {
+			// copy datas from the form
 			User userToCreate = new User(true);
 			userToCreate.setProfile(userFromForm.getProfile());
 			userToCreate.setAccount(userFromForm.getAccount());
 			userToCreate.setLinkedSpaces(userFromForm.getLinkedSpaces());
 			userToCreate.getProfile().getContact().setEmail(userFromForm.getAccount().getLogin());
+
+			// encrypt password
+			userToCreate.getAccount()
+					.setPassword(Crypto.EncryptDataInNumbers(userFromForm.getAccount().getPassword(), 12));
 			return userDao.createUser(userToCreate);
 		}
 		throw new UserExistsException(
@@ -90,7 +103,6 @@ public class UserServices {
 			currentUser.getProfile().getAdress().setStreet(newStreet);
 		}
 		userDao.updateUser(userToUpdate);
-
 	}
 
 }
