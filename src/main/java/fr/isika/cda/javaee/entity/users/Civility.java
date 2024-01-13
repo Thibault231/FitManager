@@ -37,6 +37,7 @@ public class Civility {
 
 	@Enumerated(EnumType.STRING)
 	private Sex sex;
+	private String ProfilePicture;
 
 //*******************************************************************	
 
@@ -78,6 +79,14 @@ public class Civility {
 
 	public void setSex(Sex sex) {
 		this.sex = sex;
+
 	}
 
+	public String getProfilePicture() {
+		return ProfilePicture;
+	}
+
+	public void setProfilePicture(String profilePicture) {
+		ProfilePicture = profilePicture;
+	}
 }
