@@ -10,15 +10,12 @@
 	<ui:define name="titleValue">Space : Calendar</ui:define>
 	<!-- Contenu spécifique du corp de la page -->
 	<ui:define name="spaceContent">
-		<div class="d-flex p-2 flex-column w-100 border align-items-center calendar-bg">
-		<div class="d-flex flex-row">
-			<div class="calendar-logo">
-				<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.logo}"  />
+		<div class="d-flex p-2 flex-column w-100 align-items-center calendar-bg">
+			<div class="d-flex flex-row">
+				<div class="jumbotron">
+					<h1 class="display-4">Planning mensuel des cours</h1>
+				</div>
 			</div>
-			<div class="jumbotron">
-				<h1 class="display-4">Planning mensuel des cours</h1>
-			</div>
-		</div>
 
 			<style type="text/css">
 .value {
