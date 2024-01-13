@@ -33,6 +33,7 @@ public class Civility {
 	private Date birthday;
 	@Enumerated(EnumType.STRING)
 	private Sex sex;
+	private String ProfilePicture;
 
 	// Getters and setters
 
@@ -74,13 +75,23 @@ public class Civility {
 
 	public void setSex(Sex sex) {
 		this.sex = sex;
+
+	}
+
+	public String getProfilePicture() {
+		return ProfilePicture;
+	}
+
+	public void setProfilePicture(String profilePicture) {
+		ProfilePicture = profilePicture;
 	}
 
 	@Override
 	public String toString() {
 		return "Civility [civilityId=" + civilityId + ", name=" + name + ", forename=" + forename + ", birthday="
-				+ birthday + ", sex=" + sex + ", getName()=" + getName() + ", getCivilityId()=" + getCivilityId()
-				+ ", getForename()=" + getForename() + ", getBirthday()=" + getBirthday() + ", getSex()=" + getSex()
+				+ birthday + ", sex=" + sex + ", ProfilePicture=" + ProfilePicture + ", getName()=" + getName()
+				+ ", getCivilityId()=" + getCivilityId() + ", getForename()=" + getForename() + ", getBirthday()="
+				+ getBirthday() + ", getSex()=" + getSex() + ", getProfilePicture()=" + getProfilePicture()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
