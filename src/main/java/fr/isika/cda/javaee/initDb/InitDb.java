@@ -53,18 +53,19 @@ public class InitDb {
 			 * Création de quelques espaces pour la vue allCourses (Calendar)
 			 */
 			Space spaceOne = new Space(true);
-			spaceOne.getInfos().getConfiguration().setFitnessName("Calypso");
-			spaceOne.getInfos().getConfiguration().setLogo("calypsoLogo.jpg");
-			spaceOne.getInfos().getConfiguration().setSlogan("Water&Fitness");
+			spaceOne.getInfos().getConfiguration().setFitnessName("KingFit");
+			spaceOne.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
+			spaceOne.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
 			spaceOne.getInfos().getAdministrative().setAddress("20 rue du Taure,31500 Toulouse");
+			spaceOne.getInfos().getConfiguration().getStyle().setMainColor(DefaultConfig.DEFAULT_MAIN_COLOR);
 			spaceOne.getInfos().getConfiguration().getStyle().setSecondColor("red");
 			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("grey");
 			spaceDao.createSpace(spaceOne);
 
 			Space spaceTwo = new Space(true);
-			spaceTwo.getInfos().getConfiguration().setFitnessName("KingFit");
-			spaceTwo.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
-			spaceTwo.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
+			spaceTwo.getInfos().getConfiguration().setFitnessName("Calypso");
+			spaceTwo.getInfos().getConfiguration().setLogo("calypsoLogo.jpg");
+			spaceTwo.getInfos().getConfiguration().setSlogan("WaterAndFitNess");
 			spaceTwo.getInfos().getAdministrative().setAddress("15 Rue Sainte-Catherine, 33000 Bordeaux");
 			spaceDao.createSpace(spaceTwo);
 
@@ -195,18 +196,18 @@ public class InitDb {
 //			 * Création de quelques Coachs pour la vue allCourses (Calendar)
 //			 */
 //
-//			User userCoach = new User(true);
-//			userCoach.getAccount().setLogin("nene@gmail.com");
-//			userCoach.getAccount().setPassword(DefaultConfig.DEFAULT_PASSWORD);
-//			userCoach.getAccount().setRole(Role.Coach);
-//			userCoach.getLinkedSpaces().add(spaceOne);
-//			userCoach.getProfile().getCivility().setForename("Nene");
-//			userCoach.getProfile().getCivility().setName("Sacko");
-//			userCoach.getProfile().getCivility().setBirthday(new Date());
-//			userManager.getProfile().getCivility().setProfilePicture("coach2.jpg");
-//			userDao.createUser(userCoach);
-//			spaceOne.getUsers().add(userCoach);
-//			spaceDao.updateSpace(spaceOne);
+			User userCoach = new User(true);
+			userCoach.getAccount().setLogin("nene@gmail.com");
+			userCoach.getAccount().setPassword(DefaultConfig.DEFAULT_PASSWORD);
+			userCoach.getAccount().setRole(Role.Coach);
+			userCoach.getLinkedSpaces().add(spaceOne);
+			userCoach.getProfile().getCivility().setForename("Nene");
+			userCoach.getProfile().getCivility().setName("Sacko");
+			userCoach.getProfile().getCivility().setBirthday(new Date());
+			userManager.getProfile().getCivility().setProfilePicture("coach2.jpg");
+			userDao.createUser(userCoach);
+			spaceOne.getUsers().add(userCoach);
+			spaceDao.updateSpace(spaceOne);
 //
 //			User userCoach1 = new User(true);
 //			userCoach1.getAccount().setLogin("Mathieu.gauthier@example.com");
@@ -403,27 +404,27 @@ public class InitDb {
 //			spaceFive.getUsers().add(userCoach15);
 //			spaceDao.updateSpace(spaceFive);
 //
-//			/*
-//			 * CrÃ©ation de quelques Adhérents pour la vue allCourses (Calendar)
-//			 */
-//
-//			User userMember = new User(true);
-//			userMember.getAccount().setLogin("charef@gmail.com");
-//			userMember.getAccount().setPassword(DefaultConfig.DEFAULT_PASSWORD);
-//			userMember.getAccount().setRole(Role.Adherent);
-//			userMember.getLinkedSpaces().add(spaceFive);
-//			userMember.getProfile().getCivility().setForename("Charef");
-//			userMember.getProfile().getCivility().setName("Senouci");
-//			userMember.getProfile().getCivility().setBirthday(new Date());
-//			userMember.getProfile().getCivility().setSex(Sex.Homme);
-//			userMember.getProfile().getAdress().setStreet("18 rue du commandant zizou");
-//			userMember.getProfile().getAdress().setZipCode(31500);
-//			userMember.getProfile().getAdress().setStreet("Toulouse");
-//			userMember.getProfile().getContact().setPhoneNumber("0618462597");
-//			userManager.getProfile().getCivility().setProfilePicture("ad6.jpg");
-//			userDao.createUser(userMember);
-//			spaceFive.getUsers().add(userMember);
-//			spaceDao.updateSpace(spaceFive);
+			/*
+			 * CrÃ©ation de quelques Adhérents pour la vue allCourses (Calendar)
+			 */
+
+			User userMember = new User(true);
+			userMember.getAccount().setLogin("charef@gmail.com");
+			userMember.getAccount().setPassword(DefaultConfig.DEFAULT_PASSWORD);
+			userMember.getAccount().setRole(Role.Adherent);
+			userMember.getLinkedSpaces().add(spaceFive);
+			userMember.getProfile().getCivility().setForename("Charef");
+			userMember.getProfile().getCivility().setName("Senouci");
+			userMember.getProfile().getCivility().setBirthday(new Date());
+			userMember.getProfile().getCivility().setSex(Sex.Homme);
+			userMember.getProfile().getAdress().setStreet("18 rue du commandant zizou");
+			userMember.getProfile().getAdress().setZipCode(31500);
+			userMember.getProfile().getAdress().setStreet("Toulouse");
+			userMember.getProfile().getContact().setPhoneNumber("0618462597");
+			userManager.getProfile().getCivility().setProfilePicture("ad6.jpg");
+			userDao.createUser(userMember);
+			spaceFive.getUsers().add(userMember);
+			spaceDao.updateSpace(spaceFive);
 //
 //			User userMember1 = new User(true);
 //			userMember1.getAccount().setLogin("alexandre.dubois@email.com");
@@ -983,79 +984,79 @@ public class InitDb {
 //			spaceOne.getUsers().add(userMember31);
 //			spaceDao.updateSpace(spaceOne);
 //
-//			/*
-//			 * Crétion de quelques souscriptions pour la vue allCourses (Calendar)
-//			 */
-//			Subscription subscriptionOne = new Subscription(true);
-//			subscriptionOne.getPrice().setMonthlyPrice((float) 29.99);
-//			subscriptionOne.setSubscriptionName("BASIC");
-//			subscriptionOne
-//					.setDescription("Acces illimité à la salle de sport\n" + "Participation aux cours collectifs\n"
-//							+ "Utilisation de machines performantes\n" + "Accès aux vestiaires et aux douches");
-//			subscriptionOne.setEngagement("Engagement 12 mois");
-//			subDao.createSubscription(subscriptionOne);
-//			spaceOne.getSubscriptions().add(subscriptionOne);
-//			spaceDao.updateSpace(spaceOne);
-//
-//			Subscription subscriptionTwo = new Subscription(true);
-//			subscriptionTwo.getPrice().setMonthlyPrice((float) 39.99);
-//			subscriptionTwo.setSubscriptionName("CONFORT");
-//			subscriptionTwo
-//					.setDescription("Accès illimité à la salle de sport\n" + "Participation aux cours collectifs\n"
-//							+ "Utilisation de machines performantes\n" + "Accès aux vestiaires et aux douches\n"
-//							+ "Cours individuels avec des coachs\n" + "Accès à toutes les salles du réseau");
-//			subscriptionTwo.setEngagement("Engagement 12 mois");
-//			subDao.createSubscription(subscriptionTwo);
-//			spaceOne.getSubscriptions().add(subscriptionTwo);
-//			spaceDao.updateSpace(spaceOne);
-//
-//			/*
-//			 * Creation de quelques cours pour la vue allCourses (Calendar)
-//			 */
-//			Course c = new Course();
-//			c.setName("Cours de dance");
-//			c.setLinkedSpaceId(6L);
-//			c.setCoach(userCoach15);
-//			c.setStartDate(LocalDateTime.now());
-//			c.setEndDate(LocalDateTime.now().plusHours(2));
-//			c.setDescription("Break");
-//			em.persist(c);
-//
-//			Course c2 = new Course();
-//			c2.setName("Cours de muscu");
-//			c2.setLinkedSpaceId(6L);
-//			c2.setCoach(userCoach15);
-//			c2.setStartDate(LocalDateTime.now().plusDays(1));
-//			c2.setEndDate(LocalDateTime.now().plusDays(1).plusHours(2));
-//			c2.setDescription("Muscu");
-//			em.persist(c2);
-//
-//			Course c3 = new Course();
-//			c3.setName("Cours de bodypump");
-//			c3.setLinkedSpaceId(14L);
-//			c3.setCoach(userCoach15);
-//			c3.setStartDate(LocalDateTime.now().plusDays(2));
-//			c3.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
-//			c3.setDescription("Body Pump");
-//			em.persist(c3);
-//
-//			Course c4 = new Course();
-//			c4.setName("Cours de kickboxing");
-//			c4.setLinkedSpaceId(6L);
-//			c4.setCoach(userCoach15);
-//			c4.setStartDate(LocalDateTime.now());
-//			c4.setEndDate(LocalDateTime.now().plusHours(2));
-//			c4.setDescription("kickboxing");
-//			em.persist(c4);
-//
-//			Course c5 = new Course();
-//			c5.setName("Cours de yoga");
-//			c5.setLinkedSpaceId(14L);
-//			c5.setCoach(userCoach15);
-//			c5.setStartDate(LocalDateTime.now().plusDays(2));
-//			c5.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
-//			c5.setDescription("yoga");
-//			em.persist(c5);
+			/*
+			 * Crétion de quelques souscriptions pour la vue allCourses (Calendar)
+			 */
+			Subscription subscriptionOne = new Subscription(true);
+			subscriptionOne.getPrice().setMonthlyPrice((float) 29.99);
+			subscriptionOne.setSubscriptionName("BASIC");
+			subscriptionOne
+					.setDescription("Acces illimité à la salle de sport\n" + "Participation aux cours collectifs\n"
+							+ "Utilisation de machines performantes\n" + "Accès aux vestiaires et aux douches");
+			subscriptionOne.setEngagement("Engagement 12 mois");
+			subDao.createSubscription(subscriptionOne);
+			spaceOne.getSubscriptions().add(subscriptionOne);
+			spaceDao.updateSpace(spaceOne);
+
+			Subscription subscriptionTwo = new Subscription(true);
+			subscriptionTwo.getPrice().setMonthlyPrice((float) 39.99);
+			subscriptionTwo.setSubscriptionName("CONFORT");
+			subscriptionTwo
+					.setDescription("Accès illimité à la salle de sport\n" + "Participation aux cours collectifs\n"
+							+ "Utilisation de machines performantes\n" + "Accès aux vestiaires et aux douches\n"
+							+ "Cours individuels avec des coachs\n" + "Accès à toutes les salles du réseau");
+			subscriptionTwo.setEngagement("Engagement 12 mois");
+			subDao.createSubscription(subscriptionTwo);
+			spaceOne.getSubscriptions().add(subscriptionTwo);
+			spaceDao.updateSpace(spaceOne);
+
+			/*
+			 * Creation de quelques cours pour la vue allCourses (Calendar)
+			 */
+			Course c = new Course();
+			c.setName("Cours de dance");
+			c.setLinkedSpaceId(6L);
+			c.setCoach(userCoach);
+			c.setStartDate(LocalDateTime.now());
+			c.setEndDate(LocalDateTime.now().plusHours(2));
+			c.setDescription("Break");
+			em.persist(c);
+
+			Course c2 = new Course();
+			c2.setName("Cours de muscu");
+			c2.setLinkedSpaceId(6L);
+			c2.setCoach(userCoach);
+			c2.setStartDate(LocalDateTime.now().plusDays(1));
+			c2.setEndDate(LocalDateTime.now().plusDays(1).plusHours(2));
+			c2.setDescription("Muscu");
+			em.persist(c2);
+
+			Course c3 = new Course();
+			c3.setName("Cours de bodypump");
+			c3.setLinkedSpaceId(14L);
+			c3.setCoach(userCoach);
+			c3.setStartDate(LocalDateTime.now().plusDays(2));
+			c3.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
+			c3.setDescription("Body Pump");
+			em.persist(c3);
+
+			Course c4 = new Course();
+			c4.setName("Cours de kickboxing");
+			c4.setLinkedSpaceId(6L);
+			c4.setCoach(userCoach);
+			c4.setStartDate(LocalDateTime.now());
+			c4.setEndDate(LocalDateTime.now().plusHours(2));
+			c4.setDescription("kickboxing");
+			em.persist(c4);
+
+			Course c5 = new Course();
+			c5.setName("Cours de yoga");
+			c5.setLinkedSpaceId(14L);
+			c5.setCoach(userCoach);
+			c5.setStartDate(LocalDateTime.now().plusDays(2));
+			c5.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
+			c5.setDescription("yoga");
+			em.persist(c5);
 
 			/*
 			 * Fin création des cours
