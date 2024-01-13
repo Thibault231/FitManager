@@ -1,11 +1,8 @@
 package fr.isika.cda.javaee.presentation.util;
 
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
-import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Role;
 
 /**

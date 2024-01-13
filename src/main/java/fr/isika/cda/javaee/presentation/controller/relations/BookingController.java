@@ -41,9 +41,24 @@ public class BookingController implements Serializable {
 	@Inject
 	private CourseController courseController;
 
-//***********************************************	
+//***********************************************
+	/**
+	 * Hard delete a booking in the DB, using it's Id attibute.
+	 * 
+	 * @param bookingToCancelId
+	 * @return url (:String)
+	 */
+	public String cancelBooking(Long bookingToCancelId) {
+		bookingDao.cancelBooking(bookingToCancelId);
+		return "AdherentDashboard?faces-redirect=true";
+	}
 
-//***********************************************	
+	/**
+	 * Create a new Booking and link it to the right course and the right member.
+	 * <b>This method is for Members only</b>
+	 * 
+	 * @return url (:String)
+	 */
 	public String createBooking() {
 		// Get the current user object
 		User currentUser = userDao.getUserById(SessionUtils.getUserIdFromSession());
@@ -57,7 +72,7 @@ public class BookingController implements Serializable {
 		bookingToCreate.setLinkedCourse(currentCourse);
 		bookingToCreate.setRegistrationDate(new Date());
 		// Persist booking
-//		courseDao.saveCourses(currentCourse);
+		// courseDao.saveCourses(currentCourse);
 		bookingDao.createBooking(bookingToCreate);
 		// Reset event
 		courseController.resetEvent();
@@ -85,11 +100,12 @@ public class BookingController implements Serializable {
 		return "BookingCalendar.xhtml?faces-redirect=true";
 	}
 
-	public String cancelBooking(Long bookingToCancelId) {
-		bookingDao.cancelBooking(bookingToCancelId);
-		return "AdherentDashboard?faces-redirect=true";
-	}
-
+	/**
+	 * Get all the bookings of the current member. <b>This method should be used
+	 * with a connected member</b>
+	 * 
+	 * @return list of member's bookings (:List<Booking>)
+	 */
 	public List<Booking> getAllBookingOfAMember() {
 		return bookingDao.getAllBookingsOfMember(SessionUtils.getUserIdFromSession());
 	}

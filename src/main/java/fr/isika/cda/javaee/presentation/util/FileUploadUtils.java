@@ -16,13 +16,21 @@ import org.primefaces.model.file.UploadedFile;
 /**
  * Common methods for all controllers related to maaging files.
  * 
- * @author Alex
+ * @author Alex (Imported class)
  *
  */
 public class FileUploadUtils {
 
 	private static final Logger LOGGER = Logger.getLogger(FileUploadUtils.class.getSimpleName());
 
+//******************************************************************
+	/**
+	 * Use or create the right folder to upload files inside, then upload the given
+	 * file inside.
+	 * 
+	 * @param uploadedFile (:UploadedFile)
+	 * @param fileName     (:String)
+	 */
 	public static void uploadFileToApp(UploadedFile uploadedFile, final String fileName) {
 
 		// => webapp/resources/....

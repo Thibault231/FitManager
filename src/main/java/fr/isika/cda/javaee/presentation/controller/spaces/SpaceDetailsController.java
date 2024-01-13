@@ -24,18 +24,36 @@ import fr.isika.cda.javaee.entity.subscription.Subscription;
 @SessionScoped
 public class SpaceDetailsController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6047443524460470252L;
 
 	@Inject
 	private IDaoSpace spaceDao;
 
+	@Inject
+	private IDaoSubscription subscriptionDao;
+
+	private Subscription subscription;
+
 	private Space space;
 
-	public String showSpaceDetails() {
+//**********************************************************
+	public Space getSpace() {
+		return space;
+	}
 
+	public Subscription getSubscription() {
+		return subscription;
+	}
+
+//**********************************************************	
+	/**
+	 * Show all details of the current spaces object with all it's dependencies'
+	 * attributes.</br>
+	 * <b> Use this method for space only </b>
+	 * 
+	 * @return url (String)
+	 */
+	public String showSpaceDetails() {
 		// 1 - Récupérer la valeur du param "spaceId"
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String spaceIdParam = params.get("spaceId");
@@ -51,29 +69,21 @@ public class SpaceDetailsController implements Serializable {
 		return "Space.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
 	}
 
+	/**
+	 * Return all the spaces of the plateform.
+	 * 
+	 * @return a list of spaces (:List<Space>)
+	 */
 	public List<Space> getAllSpaces() {
-		// String a = Color.getColorsTemplate().get("red");
 		return spaceDao.getAllSpace();
 	}
 
-	public Space getSpace() {
-		return space;
-	}
-
-	// A supprimer plus tard mais c'est pour créer un space de test
-	public void creerSpaceDeTest() {
-		Space s = new Space(true);
-		s.getInfos().getConfiguration().setFitnessName("SpaceTest");
-		s.getInfos().getAdministrative().setSiret("10000");
-		s.getInfos().getAdministrative().setAddress("236-10000");
-		spaceDao.createSpace(s);
-	}
-
-	@Inject
-	private IDaoSubscription subscriptionDao;
-
-	private Subscription subscription;
-
+	/**
+	 * Return all the attributes of the current space's subscriptions.</br>
+	 * <b> Use this method for space only </b>
+	 * 
+	 * @return url (String)
+	 */
 	public String showSubscriptionDetails() {
 
 		// 1 - Récupérer la valeur du param "spaceId"
@@ -92,13 +102,15 @@ public class SpaceDetailsController implements Serializable {
 		return "Subscription.xhtml?faces-redirect=true&amp;subscriptionId=" + subscriptionId;
 	}
 
+	/**
+	 * Return all the subscriptions of the current space.</br>
+	 * <b> Use this method for space only </b>
+	 * 
+	 * @return list of subscriptions (:List<Subscription>)
+	 */
 	public List<Subscription> getAllSubscriptions() {
 		// String a = Color.getColorsTemplate().get("red");
 		return subscriptionDao.getAllSubscriptions();
-	}
-
-	public Subscription getSubscription() {
-		return subscription;
 	}
 
 }
