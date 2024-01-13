@@ -1,11 +1,11 @@
 @charset "ISO-8859-1";
 
-:root { -
-	-blanc: #ffffff; -
-	-bleuFonce: #06375A; -
-	-bleuClair: #1B5680; -
-	-orange: #F5B37D; -
-	-rouge: #D52056;
+:root {
+	--blanc: #ffffff;
+	--bleuFonce: #06375A;
+	--bleuClair: #1B5680;
+	--orange: #F5B37D;
+	--rouge: #D52056;
 }
 
 * {
@@ -239,4 +239,18 @@
 	width: 10em;
 	height: 50em;
 	margin-left: 10em;
+}
+
+.calendar-cadre {
+	-webkit-box-shadow: -3px 6px 24px 5px rgba(0, 0, 0, 0.52);
+	box-shadow: -3px 6px 24px 5px rgba(0, 0, 0, 0.52);
+	margin: 5%;
+}
+
+.calendar-bg {
+	background-color: #fafeff;
+}
+
+.calendar-logo{
+	height: 5%;
 }
