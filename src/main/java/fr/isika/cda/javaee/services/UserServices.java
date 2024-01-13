@@ -43,6 +43,12 @@ public class UserServices {
 				String.format("L'uilisateur avec le login (%s) existe déjà", userFromForm.getAccount().getLogin()));
 	}
 
+	/**
+	 * Update all attributes of a user given by a controller's form and persit them.
+	 * 
+	 * @param userToUpdate  (:User)
+	 * @param currentUserId (:Long)
+	 */
 	public void updateUserOnPlateform(User userToUpdate, Long currentUserId) {
 		User currentUser = userDao.getUserById(currentUserId);
 		if (userToUpdate.getProfile().getCivility().getName() != null) {
