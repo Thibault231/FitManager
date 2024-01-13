@@ -1037,6 +1037,24 @@ public class InitDb {
 			c3.setDescription("Body Pump");
 			em.persist(c3);
 
+			Course c4 = new Course();
+			c4.setName("Cours de kickboxing");
+			c4.setLinkedSpaceId(6L);
+			c4.setCoach(userCoach15);
+			c4.setStartDate(LocalDateTime.now());
+			c4.setEndDate(LocalDateTime.now().plusHours(2));
+			c4.setDescription("kickboxing");
+			em.persist(c4);
+
+			Course c5 = new Course();
+			c5.setName("Cours de yoga");
+			c5.setLinkedSpaceId(14L);
+			c5.setCoach(userCoach15);
+			c5.setStartDate(LocalDateTime.now().plusDays(2));
+			c5.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
+			c5.setDescription("yoga");
+			em.persist(c5);
+
 			/*
 			 * Fin création des cours
 			 */
