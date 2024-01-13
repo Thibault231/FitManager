@@ -105,7 +105,6 @@ public class UserController implements Serializable {
 				message = "Mot de passe erroné. ";
 				fc.addMessage(null, new FacesMessage(message));
 				return "LoginForm?faces-redirect=true";
-
 			} else {
 				message = "Utilisateur non trouvé";
 				fc.addMessage(null, new FacesMessage(message));

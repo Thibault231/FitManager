@@ -22,6 +22,14 @@ public class UserServices {
 	@Inject
 	private IDaoUser userDao;
 
+	/**
+	 * Compare the unencrypted password given by the user login form to the
+	 * encrypted password in the DB.
+	 * 
+	 * @param formPassword      (:String)
+	 * @param referencePassword (:String)
+	 * @return (:boolean)
+	 */
 	public boolean comparePassword(String formPassword, String referencePassword) {
 		String decryptedReference = Crypto.DecryptDataInWords(referencePassword);
 		if (decryptedReference.equals(formPassword))
