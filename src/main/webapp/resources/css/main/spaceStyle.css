@@ -120,7 +120,11 @@
 	text-align: center;
 	width: 15vw;
 	border-color: black;
+	
 }
+
+
+
 
 .custom-white-text {
 	color: white !important;
@@ -133,7 +137,8 @@
 .card-header {
 	background-color: #2596be;
 	text-align: center;
-	height: 100px;
+	height: 130px;
+	padding-top:20px;
 }
 
 .card-body {

@@ -13,42 +13,50 @@
 	<ui:define name="content">
 
 		<div>
-		<main
-			class="border d-flex  text-emphasis-primary justify-content-center align-items-center"
-			style="height: 100vh; width: 100vw">
-			<div class="w-25">
-				<div class="text-center mb-4">
+			<main
+				class="border d-flex  text-emphasis-primary justify-content-center align-items-center"
+				style="height: 100vh; width: 100vw">
+				<div class="w-25" style="justify-content: center">
+				<div class= "mb-5 shadow-4 mb-2 mt-2 login-card"
+						style="margin-top: 200px; border-radius: 10px; padding: 1em;
+						height:450px; width: 480px; justify-content: center;
+						box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white;">
+				
+					<div class="text-center mb-4" style="margin-top: 60px">
 
-					<h2>Fit Manager</h2>
-					<a>Design your fitness</a>
+						<h2>Fit Manager</h2>
+						<a>Design your fitness</a>
 
-				</div>
-				<h:form>
-					<div>
-						<div class="d-grid gap-2">
+					</div>
+					
+						<h:form>
+							<div>
+								<div class="d-grid gap-2">
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput01"
-									placeholder="Utilisateur" size="20"
-									value="#{userController.userViewModel.email}" />
-								<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
+									<div class="form-floating">
+										<h:inputText class="form-control" id="floatingInput01"
+											placeholder="Utilisateur" size="20"
+											value="#{userController.userViewModel.email}" />
+										<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
+									</div>
+
+									<div class="form-floating ">
+										<h:inputSecret class="form-control" id="floatingInput02"
+											placeholder="Mot de passe" size="5"
+											value="#{userController.userViewModel.password}" />
+										<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
+									</div>
+
+									<h:commandButton class="btn btn-warning" value="Me connecter"
+										action="#{userController.authenticate()}" />
+										<h:link class="text-center" outcome="index.xhtml">Mot de passe oublié ?</h:link>
+
+								</div>
 							</div>
-
-							<div class="form-floating ">
-								<h:inputSecret class="form-control" id="floatingInput02"
-									placeholder="Mot de passe" size="5"
-									value="#{userController.userViewModel.password}" />
-								<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
-							</div>
-
-							<h:commandButton class="btn btn-warning" value="Me connecter"
-								action="#{userController.authenticate()}" />
-
+						</h:form>
 						</div>
 					</div>
-				</h:form>
-			</div>
-		</main>
+			</main>
 		</div>
 	</ui:define>
 </ui:composition>
