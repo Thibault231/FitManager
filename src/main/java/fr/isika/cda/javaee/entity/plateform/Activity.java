@@ -19,15 +19,26 @@ public class Activity {
 	private Long id;
 	private String name;
 
+//*******************************************************
+	/**
+	 * Empty constructor for JEE.
+	 */
+	public Activity() {
+
+	}
+
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param id   (:Long)
+	 * @param name (:String)
+	 */
 	public Activity(Long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public Activity() {
-	}
-
+//*******************************************************
 	public Long getId() {
 		return id;
 	}

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import fr.isika.cda.javaee.dao.plateform.ActivityDao;
+import fr.isika.cda.javaee.dao.plateform.IDaoActivity;
 import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.presentation.viewmodel.ActivityForm;
 
@@ -27,7 +28,7 @@ public class ActivityController implements Serializable {
 	private static final long serialVersionUID = -160397842934902381L;
 
 	@Inject
-	private ActivityDao activityDao;
+	private IDaoActivity activityDao;
 
 	private ActivityForm activityForm = new ActivityForm();
 

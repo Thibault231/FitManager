@@ -23,18 +23,22 @@ public class Civility {
 	@Id
 	@GeneratedValue
 	private Long civilityId;
+
 	@NotNull(message = "Le nom est requis")
 	@Column(length = 50)
 	private String name;
+
 	@NotNull(message = "Le prénom est requis")
 	@Column(length = 50)
 	private String forename;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date birthday;
+
 	@Enumerated(EnumType.STRING)
 	private Sex sex;
 
-	// Getters and setters
+//*******************************************************************	
 
 	public String getName() {
 		return name;
@@ -74,15 +78,6 @@ public class Civility {
 
 	public void setSex(Sex sex) {
 		this.sex = sex;
-	}
-
-	@Override
-	public String toString() {
-		return "Civility [civilityId=" + civilityId + ", name=" + name + ", forename=" + forename + ", birthday="
-				+ birthday + ", sex=" + sex + ", getName()=" + getName() + ", getCivilityId()=" + getCivilityId()
-				+ ", getForename()=" + getForename() + ", getBirthday()=" + getBirthday() + ", getSex()=" + getSex()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
 	}
 
 }

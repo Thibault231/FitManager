@@ -24,8 +24,7 @@ public class AdministrativeDocument {
 
 	private String filePath;
 
-	// Getters and setters
-
+//*******************************************************************	
 	public Type getType() {
 		return type;
 	}
@@ -48,13 +47,6 @@ public class AdministrativeDocument {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
-	}
-
-	@Override
-	public String toString() {
-		return "AdministrativeDocument [AdministrativeDocumentId=" + AdministrativeDocumentId + ", link="
-				+ ", getAdministrativeDocumentId()=" + getAdministrativeDocumentId() + ", getLink()=" + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 }

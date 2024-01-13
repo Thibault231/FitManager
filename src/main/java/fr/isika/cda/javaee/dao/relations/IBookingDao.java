@@ -20,6 +20,11 @@ public interface IBookingDao {
 	 */
 	Long createBooking(Booking bookingToCreate);
 
+	/**
+	 * Hard delete a Booking object from the DB, using the booking id.
+	 * 
+	 * @param bookingToCancelId (:Long)
+	 */
 	void cancelBooking(Long bookingToCancelId);
 
 	/**

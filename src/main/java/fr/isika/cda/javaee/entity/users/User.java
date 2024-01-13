@@ -15,7 +15,6 @@ import javax.persistence.OneToOne;
 
 import fr.isika.cda.javaee.entity.relations.Schedulde;
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.entity.subscription.Subscription;
 
 /**
  * Person of a fitness space, regardless it's role.
@@ -49,7 +48,7 @@ public class User {
 
 	private String profilePicture;
 
-//******************************************************	
+//*******************************************************************		
 	/**
 	 * Empty constructor for JEE.
 	 */
@@ -72,7 +71,7 @@ public class User {
 		this.linkedSpaces = new ArrayList<Space>();
 	}
 
-//******************************************************	
+//*******************************************************************		
 	public Long getUserId() {
 		return userId;
 	}

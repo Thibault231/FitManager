@@ -12,7 +12,7 @@ import fr.isika.cda.javaee.entity.plateform.Course;
  */
 public interface IDaoCourse {
 	/**
-	 * Get a specifc course from the database, using it's Id. Return the course if
+	 * Get a specific course from the database, using it's Id. Return the course if
 	 * it exists, null otherwise.
 	 * 
 	 * @param courseId (:Long)
