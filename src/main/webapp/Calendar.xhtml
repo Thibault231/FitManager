@@ -10,18 +10,22 @@
 	<ui:define name="titleValue">Space : Calendar</ui:define>
 	<!-- Contenu spécifique du corp de la page -->
 	<ui:define name="spaceContent">
-		<div class="d-flex p-2 flex-column w-100 border align-items-center">
-
-			<div class="jumbotron">
-				<h1 class="display-4">Planning</h1>
+		<div class="d-flex p-2 flex-column w-100 border align-items-center calendar-bg">
+		<div class="d-flex flex-row">
+			<div class="calendar-logo">
+				<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.logo}"  />
 			</div>
-
+			<div class="jumbotron">
+				<h1 class="display-4">Planning mensuel des cours</h1>
+			</div>
+		</div>
 
 			<style type="text/css">
 .value {
 	width: 1000px;
 }
 </style>
+		<div class="calendar-cadre">
 			<h:form>
 				<p:growl id="messages" showDetail="true" />
 				<h:panelGrid columnClasses="value">
@@ -44,7 +48,7 @@
 
 				<p:dialog widgetVar="eventDialog" header="Event Details"
 					showEffect="clip" hideEffect="clip">
-					<h:panelGrid id="eventDetails" columns="2">
+					<h:panelGrid id="eventDetails" columns="2" style="background-color:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor};" >
 						<p:outputLabel for="title" value="Titles:" />
 						<p:outputLabel id="title" value="#{scheduleJava8View.event.title}"
 							required="true" disabled="true" />
@@ -58,6 +62,7 @@
 				</p:dialog>
 			</h:form>
 		</div>
+	</div>
 	</ui:define>
 </ui:composition>
 </html>
