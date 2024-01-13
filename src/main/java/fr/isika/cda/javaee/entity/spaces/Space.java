@@ -13,8 +13,6 @@ import javax.persistence.OneToOne;
 
 import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.entity.plateform.Course;
-import fr.isika.cda.javaee.entity.plateform.Machine;
-import fr.isika.cda.javaee.entity.plateform.Room;
 import fr.isika.cda.javaee.entity.relations.Planning;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 import fr.isika.cda.javaee.entity.users.User;
@@ -41,19 +39,13 @@ public class Space {
 	@OneToMany
 	private List<Course> courses;
 
-	@OneToMany
-	private List<Machine> machines;
-
-	@OneToMany
-	private List<Room> rooms;
-
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Subscription> subscriptions;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private List<User> users;
 
-//**************************************
+//*******************************************************************	
 	/**
 	 * Empty constructor for controller.
 	 */
@@ -77,7 +69,7 @@ public class Space {
 		this.subscriptions = new ArrayList<Subscription>();
 	}
 
-//**************************************
+//*******************************************************************	
 	public Long getSpaceId() {
 		return spaceId;
 	}
@@ -129,8 +121,8 @@ public class Space {
 	@Override
 	public String toString() {
 		return "Space [spaceId=" + spaceId + ", infos=" + infos + ", planning=" + planning + ", style=" + style
-				+ ", activities=" + activities + ", courses=" + courses + ", machines=" + machines + ", rooms=" + rooms
-				+ ", subscriptions=" + subscriptions + ", users=" + users + "]";
+				+ ", activities=" + activities + ", courses=" + courses + ", subscriptions=" + subscriptions
+				+ ", users=" + users + "]";
 	}
 
 }

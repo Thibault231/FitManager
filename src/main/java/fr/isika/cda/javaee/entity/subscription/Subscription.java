@@ -17,24 +17,37 @@ public class Subscription {
 	@Id
 	@GeneratedValue
 	private Long subscriptionId;
+
 	private Long memberId;
+
 	private String subscriptionName;
+
 	private String description;
+
 	private String engagement;
+
 	private String promotion;
 
 	@OneToOne
 	private Price price;
 
-//******************************************************
+//*******************************************************************	
+	/**
+	 * Empty constructor for JEE.
+	 */
 	public Subscription() {
 	}
 
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param isforViewModel (: boolean)
+	 */
 	public Subscription(Boolean isforViewModel) {
 		this.price = new Price();
 	}
 
-//******************************************************
+// *******************************************************************
 	public Long getSubscriptionId() {
 		return subscriptionId;
 	}
