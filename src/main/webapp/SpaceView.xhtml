@@ -12,8 +12,14 @@
 	<ui:define name="spaceContent">
 
 		<!-- cet élement sera remplacé par le contenu des pages, dynamiquement -->
-
-
+		
+		<ui:fragment rendered="#{spaceController.managerOfTheSpaceConnected}">
+			<h:panelGrid columns="1" cellpadding="5">
+				<p:commandButton value="Modifier le style de la page" type="button" styleClass="ui-button-raised ui-button custom-white-text" 
+					style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; "
+					onclick="PF('popupUpdateStyle').show();" />
+			</h:panelGrid>
+		</ui:fragment>
 		<div class="container-fluid p-5 justify-space-beetwen">
 			<div class="row pt-5 contain-80">
 				<h2 class="text-uppercase">NOTRE PHILOSOPHIE</h2>
@@ -30,16 +36,16 @@
 		</div>
 		<div class="container-fluid p-5 justify-space-beetwen">
 			<div class="row mb-5 contain-50">
-
 				<h2 class="text-uppercase">NOS ABONNEMENTS</h2>
 
 				<p:tab title="Abonnements">
+				<ui:fragment rendered="#{spaceController.managerOfTheSpaceConnected}">
 					<h:panelGrid columns="1" cellpadding="5">
-						<p:commandButton value="Ajouter un abonnement" type="button"
-							styleClass="ui-button-raised ui-button custom-white-text" 
+						<p:commandButton value="Ajouter un abonnement" type="button" styleClass="ui-button-raised ui-button custom-white-text" 
 							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; "
 							onclick="PF('popupUpdate').show();" />
 					</h:panelGrid>
+				</ui:fragment>
 					<p></p>
 					<div class="card mb-5 shadow-4"
 						style="border-radius: 50px; padding: 1em">
@@ -81,15 +87,15 @@
 						data-bs-ride="carousel">
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<h:graphicImage library="images" name="Img1.jpg"
+								<h:graphicImage library="documents" name="#{spaceController.spaceViewModel.space.infos.configuration.carrouselOne}"
 									class="d-block custom-carousel-image" />
 							</div>
 							<div class="carousel-item">
-								<h:graphicImage library="images" name="Img2.jpg"
+								<h:graphicImage library="documents" name="#{spaceController.spaceViewModel.space.infos.configuration.carrouselTwo}"
 									class="d-block custom-carousel-image" />
 							</div>
 							<div class="carousel-item">
-								<h:graphicImage library="images" name="Img3.jpg"
+								<h:graphicImage library="documents" name="#{spaceController.spaceViewModel.space.infos.configuration.carrouselThree}"
 									class="d-block custom-carousel-image" />
 							</div>
 						</div>
@@ -106,7 +112,22 @@
 					</div>
 				</p:tab>
 			</div>
-
+			
+			<p:accordionPanel widgetVar="Infos">
+				<p:tab title="Informations générales de votre salle">
+					<p class="m-0" />
+					<p>Nom de la salle:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</p>
+					<p>Notre slogan:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</p>
+					<p>Adresse:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.address}</p>
+					<p>Siret:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.siret}</p>
+					<p>Contactez nous au : 06-02-02-02-02</p>	
+					<p>Email: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}@gmail.com</p>	
+				</p:tab>
+			</p:accordionPanel>
+		</div>
+		
+		
+		
 			<p:dialog header="Ajouter un abonnement" widgetVar="popupUpdate"
 				modal="true" height="600" resizable="false" showEffect="fade"
 				hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
@@ -144,7 +165,7 @@
 
 							<h:commandButton class="btn btn-warning"
 								value="Créer un abonnement"
-								action="#{subscriptionController.createSubscription()}" />
+								action="#{subscriptionController.CreateSubscriptionInIndex()}" />
 
 							<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
 						</div>
@@ -152,40 +173,79 @@
 				</h:form>
 			</p:dialog>
 
-			<p:accordionPanel widgetVar="Infos">
-				<p:tab title="Informations générales de votre salle">
-					<p class="m-0" />
-			<p>Nom de la salle:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</p>
-					<p>Siret:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.siret}</p>
-					<p>Adresse:#{spaceController.currentSpaceWithSubscriptions.infos.administrative.address}</p>
-					<p>Notre slogan:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</p>
-				</p:tab>
-				</p:accordionPanel>
-		</div>
+		<p:dialog header="Modifier le style" widgetVar="popupUpdateStyle" modal="true" height="600" resizable="false" showEffect="fade"
+				hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+					<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput03"
+								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.style.mainColor}" size="20" required="true"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.style.mainColor}" />
+							<h:outputLabel class="outputLabel" for="floatingInput03">COULEUR PRINCIPALE</h:outputLabel>
+						</div>
 
-		<!-- 	    <h:form style="margin: 0 auto;"> -->
-		<!-- 	        <h:panelGrid columns="1" cellpadding="7" styleClass="mb-3"> -->
-		<!-- 	            <p:outputLabel for="color" value="Sélectionner une couleur pour le menu"/> -->
-		<!-- 	            <p:selectOneMenu id="color" value="#{conf.confViewModel.configuration.style.navbarColor}" style="width:12rem"> -->
-		<!-- 	                <p:ajax listener="#{conf.colorForConfiguration}" update="color"/> -->
-		<!-- 	                <f:selectItem itemLabel="Couleur disponible" itemValue="" noSelectionOption="true"/> -->
-		<!-- 	            	<f:selectItems value="#{conf.colorForConfiguration}"/> -->
-		<!-- 	            </p:selectOneMenu> -->
-		<!-- 	        </h:panelGrid> -->
-		<!-- 	        <p:commandButton value="Valider" action="#{conf.updateSpace()}" icon="pi pi-check"/> -->
-		<!-- 	    </h:form> -->
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.style.secondColor}" size="20" required="true"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.style.secondColor}" />
+							<h:outputLabel class="outputLabel" for="floatingInput04">COULEUR SECONDAIRE</h:outputLabel>
+						</div>
+						
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput12"
+								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.style.thirdcolor}" size="20" required="true"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.style.thirdcolor}" />
+							<h:outputLabel class="outputLabel" for="floatingInput12">COULEUR TERTIAIRE</h:outputLabel>
+						</div>
 
-		<main class="w-100">
-			<div
-				class=" row p-4 justify-content-around align-items-stretch navBar"
-				style="height: 5vh; position: fixed; top: 0px"></div>
+						<div class="form-floating">
+							<h:inputTextarea class="form-control" id="floatingInput05"
+								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.welcomeText}" size="20"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.welcomeText}" />
+							<h:outputLabel class="outputLabel" for="floatingInput05">TEXT ACCUEIL</h:outputLabel>
+						</div>
+
+						<h:outputLabel class="outputLabel" for="floatingInput06">VOTRE LOGO</h:outputLabel>
+						<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.logo}" width="50px" height="50px" class="img_index" />
+						<p:fileUpload listener="#{spaceController.uploadSpaceLogo}"
+							styleClass="w-100" id="floatingInput06" mode="advanced"
+							dragDropSupport="false" />
+							
+						<h:outputLabel class="outputLabel" for="floatingInput07">VOTRE IMAGE ACCUEIL</h:outputLabel>
+						<h:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.mainPicture}" width="50px" height="50px" class="img_index"/>
+						<p:fileUpload listener="#{spaceController.uploadSpaceMainPicture}"
+							styleClass="w-100" id="floatingInput07" mode="advanced"
+							dragDropSupport="false" />
+							
+						<h:outputLabel class="outputLabel" for="floatingInput09">IMAGE DE VOTRE SALLE 1</h:outputLabel>
+						<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.carrouselOne}" width="50px" height="50px" class="img_index" />
+						<p:fileUpload listener="#{spaceController.uploadSpaceFirstPicture}"
+							styleClass="w-100" id="floatingInput09" mode="advanced"
+							dragDropSupport="false" />
+							
+						<h:outputLabel class="outputLabel" for="floatingInput10">IMAGE DE VOTRE SALLE 2</h:outputLabel>
+						<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.carrouselTwo}" width="50px" height="50px" class="img_index" />
+						<p:fileUpload listener="#{spaceController.uploadSpaceSecondPicture}"
+							styleClass="w-100" id="floatingInput10" mode="advanced"
+							dragDropSupport="false" />
+							
+						<h:outputLabel class="outputLabel" for="floatingInput11">IMAGE DE VOTRE SALLE 3</h:outputLabel>
+						<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.carrouselThree}" width="50px" height="50px" class="img_index" />
+						<p:fileUpload listener="#{spaceController.uploadSpaceThirdPicture}"
+							styleClass="w-100" id="floatingInput11" mode="advanced"
+							dragDropSupport="false" />
 
 
-		</main>
+						<h:commandButton class="btn btn-warning"
+							value="Modifier mon espace fitness"
+							action="#{spaceController.upDateSpaceOnIndex()}" />
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
 
-		<script>
 
-    </script>
 	</ui:define>
 </ui:composition>
 </html>

@@ -190,7 +190,7 @@ public class InitDb {
 			spaceDao.updateSpace(spaceOne);
 
 			/*
-			 * CrÃ©ation de quelques Coachs pour la vue allCourses (Calendar)
+			 * Création de quelques Coachs pour la vue allCourses (Calendar)
 			 */
 
 			User userCoach = new User(true);
@@ -982,7 +982,7 @@ public class InitDb {
 			spaceDao.updateSpace(spaceOne);
 
 			/*
-			 * CrÃ©ation de quelques souscriptions pour la vue allCourses (Calendar)
+			 * Crétion de quelques souscriptions pour la vue allCourses (Calendar)
 			 */
 			Subscription subscriptionOne = new Subscription(true);
 			subscriptionOne.getPrice().setMonthlyPrice((float) 29.99);

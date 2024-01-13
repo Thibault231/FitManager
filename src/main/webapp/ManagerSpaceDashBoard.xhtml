@@ -30,6 +30,8 @@
 							#{spaceUser.spaceViewModel.user.profile.civility.birthday}</p>
 						<p>Email:
 							#{spaceUser.spaceViewModel.user.profile.contact.email}</p>
+							<p>Téléphone:
+							#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}</p>
 						<p>Adresse:
 							#{spaceUser.spaceViewModel.user.profile.adress.street}</p>
 						<p>Code postal:
@@ -207,7 +209,7 @@
 
 							<h:commandButton class="btn btn-warning"
 								value="Créer un abonnement"
-								action="#{subscriptionController.createSubscription()}" />
+								action="#{subscriptionController.createSubscriptionInDashboard()}" />
 
 							<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
 						</div>

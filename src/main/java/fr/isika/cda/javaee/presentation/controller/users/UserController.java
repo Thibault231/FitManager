@@ -1,6 +1,8 @@
 package fr.isika.cda.javaee.presentation.controller.users;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +14,16 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
+
 import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
 import fr.isika.cda.javaee.dao.user.IDaoUser;
 import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
+import fr.isika.cda.javaee.presentation.util.FileUploadUtils;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
 import fr.isika.cda.javaee.services.UserServices;
@@ -269,6 +275,20 @@ public class UserController implements Serializable {
 		session.invalidate();
 		this.setUserViewModel(new UserViewModel());
 		return "index?faces-redirect=true";
+	}
+
+	/**
+	 * Upload administrative document for User-coach, then rename and stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
+	public void uploadAdministrativeDocument(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+		userViewModel.getUser().setProfilePicture(fileName);
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 
 }

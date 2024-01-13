@@ -23,6 +23,7 @@ import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.presentation.util.FileUploadUtils;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
+import fr.isika.cda.javaee.services.SpaceServices;
 import fr.isika.cda.javaee.services.UserServices;
 
 /**
@@ -43,6 +44,8 @@ public class SpaceController implements Serializable {
 	private IDaoUser userDao;
 	@Inject
 	private UserServices userSvc;
+	@Inject
+	private SpaceServices spaceSvc;
 
 	private SpaceViewModel spaceViewModel = new SpaceViewModel();
 
@@ -170,12 +173,43 @@ public class SpaceController implements Serializable {
 	}
 
 	/**
+	 * Reedirect to the update-space form with the current space in the viewmodel of
+	 * the controller.
+	 * 
+	 * @return url (String)
+	 */
+	public String goToUpdateSpaceForm() {
+		spaceViewModel.setSpace(spaceDao.getSpaceById(SessionUtils.getSpaceIdFromSession()));
+		return "UpdateSpaceForm.xhtml?faces-redirect=true";
+	}
+
+	/**
 	 * Check if a user is connected. Method used for conditional display in views.
 	 * 
 	 * @return (:boolean)
 	 */
 	public boolean isUserConnected() {
 		return SessionUtils.getUserIdFromSession() != null;
+	}
+
+	/**
+	 * Check if a user is connected as the manager of the space. Method used for
+	 * conditional display in views.
+	 * 
+	 * @return (:boolean)
+	 */
+	public boolean isManagerOfTheSpaceConnected() {
+		Space currentSpace = spaceDao.getSpaceWithMembers(SessionUtils.getSpaceIdFromSession());
+		User currentUser = userDao.getUserById(SessionUtils.getUserIdFromSession());
+		if (currentSpace != null && currentUser != null) {
+			if (SessionUtils.getUserRoleFromSession().equals(Role.Gestionnaire)) {
+				for (User user : currentSpace.getUsers()) {
+					if (user.getUserId() == SessionUtils.getUserIdFromSession())
+						return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -222,6 +256,74 @@ public class SpaceController implements Serializable {
 		SessionUtils.invalidateSession();
 		SessionUtils.putSpaceIdInSession(spaceId);
 		return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+	}
+
+	/**
+	 * Update all parameter of the current space, from an update-form in the manager
+	 * dashboard and persist it.
+	 * 
+	 * @return url of the manager dashboard(:String)
+	 */
+	public String upDateSpaceOnDashBoard() {
+		spaceSvc.updateUserOnPlateform(spaceViewModel.getSpace());
+		return "ManagerSpaceDashBoard?faces-redirect=true";
+	}
+
+	/**
+	 * Update the style only of the current space, from an update-form in the index
+	 * space page and persist it.
+	 * 
+	 * @return url of the space index(:String)
+	 */
+	public String upDateSpaceOnIndex() {
+		spaceSvc.updateUserOnIndex(spaceViewModel.getSpace());
+		Long spaceId = SessionUtils.getSpaceIdFromSession();
+		return "SpaceView.xhtml?faces-redirect=true&amp;spaceId=" + spaceId;
+	}
+
+	/**
+	 * Upload first picture of the carrousel for Space objects, then rename and
+	 * stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
+	public void uploadSpaceFirstPicture(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+		spaceViewModel.getSpace().getInfos().getConfiguration().setCarrouselOne(fileName);
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
+	}
+
+	/**
+	 * Upload second picture of the carrousel for Space objects, then rename and
+	 * stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
+	public void uploadSpaceSecondPicture(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+		spaceViewModel.getSpace().getInfos().getConfiguration().setCarrouselTwo(fileName);
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
+	}
+
+	/**
+	 * Upload third picture of the carrousel for Space objects, then rename and
+	 * stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
+	public void uploadSpaceThirdPicture(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+		spaceViewModel.getSpace().getInfos().getConfiguration().setCarrouselThree(fileName);
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 
 	/**
