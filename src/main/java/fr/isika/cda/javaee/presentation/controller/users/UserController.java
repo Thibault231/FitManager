@@ -67,6 +67,53 @@ public class UserController implements Serializable {
 
 //***************************************
 	/**
+	 * Authenticate a visitor from a login form and create a session object with
+	 * role and id. <br/>
+	 * <b>Use this method for plateform only</b>
+	 * 
+	 * @return url (:String)
+	 */
+	public String authenticate() {
+		String message;
+		FacesContext fc = FacesContext.getCurrentInstance();
+		// Email non rempli
+		if (userViewModel.getEmail().isEmpty()) {
+			message = "Login inexistant !!";
+			fc.addMessage(null, new FacesMessage(message));
+			return "LoginForm?faces-redirect=true";
+			// Password non rempli
+		} else if (userViewModel.getPassword().isEmpty()) {
+			message = "vérifiez votre mot de passe ";
+			fc.addMessage(null, new FacesMessage(message));
+			return "LoginForm?faces-redirect=true";
+		} else {
+			// Check User présent sur la plateforme
+			User userToLog = this.userDao.getUserByLoginAndRole(userViewModel.getEmail(), Role.Gestionnaire);
+
+			// Vérification de la rectitude des données du formulaire
+			if (userToLog != null) {
+				boolean isWrigthPassword = userSvc.comparePassword(userViewModel.getPassword(),
+						userToLog.getAccount().getPassword());
+				if (isWrigthPassword) {
+					fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
+					fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
+					fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
+					// chargement du viewmodel avec le user.
+					userViewModel.setUser(userToLog);
+					return "ManagerDashBoard.xhtml?faces-redirect=true";
+				}
+				message = "Mot de passe erroné. ";
+				fc.addMessage(null, new FacesMessage(message));
+				return "LoginForm?faces-redirect=true";
+			} else {
+				message = "Utilisateur non trouvé";
+				fc.addMessage(null, new FacesMessage(message));
+				return "LoginForm?faces-redirect=true";
+			}
+		}
+	}
+
+	/**
 	 * Get the Creating manager form using the UserviewModel, then call the
 	 * UserService to create a new user.<br/>
 	 * <b>Use this method for creating only manager</b>
@@ -81,7 +128,6 @@ public class UserController implements Serializable {
 			logIn(userToCreateId);
 			return "ManagerDashBoard?faces-redirect=true";
 		} catch (UserExistsException e) {
-			System.out.println("Exception : " + e.getMessage());
 			this.setUserViewModel(new UserViewModel());
 			return "RegisterManagerForm?faces-redirect=true";
 		}
@@ -203,45 +249,6 @@ public class UserController implements Serializable {
 	 */
 	public User getCurrentUserDetails() {
 		return userDao.getUserById(SessionUtils.getUserIdFromSession());
-	}
-
-	/**
-	 * Authenticate a visitor from a login form and create a session object with
-	 * role and id. <br/>
-	 * <b>Use this method for plateform only</b>
-	 * 
-	 * @return url (:String)
-	 */
-	public String authenticate() {
-		String message;
-		FacesContext fc = FacesContext.getCurrentInstance();
-		// Email non rempli
-		if (userViewModel.getEmail().isEmpty()) {
-			message = "Login inexistant !!";
-			fc.addMessage(null, new FacesMessage(message));
-			return "LoginForm?faces-redirect=true";
-			// Password non rempli
-		} else if (userViewModel.getPassword().isEmpty()) {
-			message = "vérifiez votre mot de passe ";
-			fc.addMessage(null, new FacesMessage(message));
-			return "LoginForm?faces-redirect=true";
-		} else {
-			// Check User présent sur la plateforme
-			User userToLog = this.userDao.getUserByLoginAndRole(userViewModel.getEmail(), Role.Gestionnaire);
-			// Vérification de la rectitude des données du formulaire
-			if (userToLog != null && userToLog.getAccount().getPassword().equals(userViewModel.getPassword())) {
-				fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
-				fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
-				fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
-				// chargement du viewmodel avec le user.
-				userViewModel.setUser(userToLog);
-				return "ManagerDashBoard.xhtml?faces-redirect=true";
-			} else {
-				message = "Mot de passe erroné. ";
-				fc.addMessage(null, new FacesMessage(message));
-				return "LoginForm?faces-redirect=true";
-			}
-		}
 	}
 
 	/**

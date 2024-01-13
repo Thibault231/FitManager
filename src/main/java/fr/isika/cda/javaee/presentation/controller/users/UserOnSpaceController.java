@@ -85,26 +85,37 @@ public class UserOnSpaceController implements Serializable {
 		String message;
 		FacesContext fc = FacesContext.getCurrentInstance();
 		Account userToLogAccount = spaceViewModel.getUser().getAccount();
+		// Email non rempli
 		if (userToLogAccount.getLogin().isEmpty()) {
 			message = "Login inexistant !!";
 			fc.addMessage(null, new FacesMessage(message));
 			return "SpaceLoginForm?faces-redirect=true";
+			// Password non rempli
 		} else if (userToLogAccount.getPassword().isEmpty()) {
 			message = "vérifiez votre mot de passe ";
 			fc.addMessage(null, new FacesMessage(message));
 			return "SpaceLoginForm?faces-redirect=true";
 		} else {
+			// Check User présent sur la plateforme
 			User userToLog = this.userDao.getUserBySpaceAndLogin(userToLogAccount.getLogin(),
 					SessionUtils.getSpaceIdFromSession());
-			if (userToLog != null && userToLog.getAccount().getPassword().equals(userToLogAccount.getPassword())) {
-				fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
-				fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
-				fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
-				return redirectToRightDashBoard(userToLog.getAccount().getRole());
-			} else {
+			// Vérification de la rectitude des données du formulaire
+			if (userToLog != null) {
+				boolean isWrigthPassword = userSvc.comparePassword(userToLogAccount.getPassword(),
+						userToLog.getAccount().getPassword());
+				if (isWrigthPassword) {
+					fc.getExternalContext().getSessionMap().put("role", userToLog.getAccount().getRole());
+					fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
+					fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
+					return redirectToRightDashBoard(userToLog.getAccount().getRole());
+				}
 				message = "Mot de passe erroné. ";
 				fc.addMessage(null, new FacesMessage(message));
-				return "SpaceLoginForm?faces-redirect=true";
+				return "LoginForm?faces-redirect=true";
+			} else {
+				message = "Utilisateur non trouvé";
+				fc.addMessage(null, new FacesMessage(message));
+				return "LoginForm?faces-redirect=true";
 			}
 		}
 	}
