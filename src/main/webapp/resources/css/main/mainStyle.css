@@ -56,27 +56,24 @@
 
 
 .dualimgcontainer> img{
-	float: left;
+	padding: 14em auto;
+    float: inline-start;
     object-fit: cover;
-    height: 19em;
+    height: 20em;
+    width: 43%;
 }
-
-.dualimgcontainer :nth-child(2){
-	margin-left: -10em;
-    margin-top: 2em;
-    width: 23em;
-}
-
-.dualimgcontainer :nth-child(1){
-    width: 23em;
-}
-
 
 
 .imgdecaler{
     right: -32%;
     top: -52%;
 }
+
+.imgdecaler2{
+       margin: 3em 2em 0 -18em;
+}
+
+
 
 .navBar{
     height: 4em;
@@ -97,7 +94,7 @@
 	
 	
 .scrollElement{
-    height: 20em;
+    height: 16em;
     overflow-y: scroll;
 }
 * {
@@ -133,9 +130,9 @@
 
 .imgAccueil{
 	 
-            height: 80vh;
-            width: 100vw;
-            object-fit: cover;
+    height: 80vh;
+    width: 100vw;
+    object-fit: cover;
 }
 
 .card {
@@ -192,35 +189,60 @@
            padding-right: 2em;
            transform: rotate(270deg);
         }
+        
+        .subtitle{
+
+        float: left;
+    /* display: contents; */
+    position: absolute;
+    /* margin: 1em; */
+    top: 65vw;
+    background-color: black;
+    padding: 3px 15px;
+    left: 8vw;
+    font-size: 1vw;
+
+}
 
 
 
 @media screen and (min-width: 1400px){
     .dualimgcontainer{
-           position: absolute;
-    height: 21em;
-    display: block;
-    width: inherit;
-    height: inherit;
-    margin-top: inherit;
-    margin: 4vw auto auto 5vw;
+        position: absolute;
+        height: 21em;
+        display: block;
+         width: inherit;
+        height:inherit;
+         margin-top:inherit;
     }
 
-  /*  .dualimgcontainer> img{
-        position: relative;
-        height: 21em;
-        width: 34%;
-    }*/
+ 
+	.imgdecaler2{
+   		margin: -16em 9em;
+	}
     
     .desable{
-	transition: all 1s ease-out;
-    flex: 0 0 auto;
-    width: 10%;
-}
+		transition: all 1s ease-out;
+		flex: 0 0 auto;
+    	width: 10%;
+	}
 
     .contain{
         height: 80vh;
     }
+    
+    .subtitle{
+
+        float: left;
+    /* display: contents; */
+    	position: absolute;
+    /* margin: 1em; */
+    	top: 11.5vw;
+    	background-color: black;
+   	 	padding: 3px 15px;
+    	left: 46vw;
+    	font-size: 1vw;
+	}
 
 }
 
@@ -261,26 +283,16 @@
 	margin:2em auto;
 	margin-top: 2em;
     display: flex;
-    width: 31%;
+    width: 22%;
     /* height: 18em; */
     flex-direction: column;
     align-items: center;
     padding: 1em;
     
-    box-shadow: 10px 10px 19px -7px rgb(131,127,127);
-	-webkit-box-shadow: 10px 10px 19px -7px rgb(131, 127, 127);
+    box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
+	-webkit-box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
 	-moz-box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
 		
-}
-
-.cardAbonnementSpace{
-	background-color:white;
-	padding: 1em;
-	border-radius: 20px;
-	
-	box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127);
-	-webkit-box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127);
-	-moz-box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127);
 }
 
 .cardAbonnement>h3{
@@ -289,11 +301,14 @@
 }
 
 .titre2{
-	color:var(--orange);
-	margin:1em 0
-	
-	
+	color: var(--orange);
+    font-size: 5vw;
+    text-transform: uppercase;
+
+    
 }
+
+
 
 .plateform_Button {
 	box-shadow:inset 0px 1px 0px 0px #bee2f9;
@@ -318,16 +333,6 @@
 .plateform_Button:active {
 	position:relative;
 	top:1px;
-}
-
-.manager-form{
-	display: flex;
-	flex-direction: row;
-	gap: 10%;
-	margin-top: 5%;
-	justify-content: space-around;
-	padding : 2rem;
-	
 }
 
 .manager-form-cadre{
