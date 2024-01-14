@@ -172,20 +172,19 @@
 								styleClass="ui-button-raised ui-button custom-white-text"
 								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
 							<h:form>
-							<p:dataTable value="#{courseController.allCourses}" var="course" widgetVar="coachesTable">
+							<p:dataTable value="#{courseController.allCourses}" var="course" widgetVar="subsTable">
 						
 							<f:facet name="header">
 				                <div class="flex align-items-center justify-content-between">
 				                    <div>
-				                    <p:inputText id="globalFilter" onkeyup="PF('coachesTable').filter()" style="width:10rem"
+				                    <p:inputText id="globalFilter" onkeyup="PF('subsTable').filter()" style="width:10rem"
 				                                 placeholder="Enter keyword" />
 				                    <p:commandButton value="Rechercher générale" update="@form" styleClass="ml-2"  action="true"
 				                    style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>
 				                    </div>
 				                </div>
 				            </f:facet>
-				           
-					
+				           	
 							<p:column headerText="Dénomination" filterBy="#{course.name}">
 								<h:outputText value="#{course.name}"/>
 							</p:column>

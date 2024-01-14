@@ -97,28 +97,38 @@
 					<h:panelGrid columns="1" cellpadding="5">
 						<p:link value="Réserver un cours" outcome="BookingCalendar.xhtml"
 							type="button" />
-
-						<p:dataTable var="booking"
-							value="#{bookingController.allBookingOfAMember}">
-							<p:column headerText="Activité">
+						<h:form>
+						<p:dataTable var="booking" value="#{bookingController.allBookingOfAMember}"  widgetVar="bookingsTable">
+						
+							<f:facet name="header">
+				                <div class="flex align-items-center justify-content-between">
+				                    <div>
+				                    <p:inputText id="globalFilter" onkeyup="PF('bookingsTable').filter()" style="width:10rem"
+				                                 placeholder="Enter keyword" />
+				                    <p:commandButton value="Rechercher générale" update="@form" styleClass="ml-2"  action="true"
+				                    style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>
+				                    </div>
+				                </div>
+				            </f:facet>
+				           
+							<p:column headerText="Activité" filterBy="#{booking.linkedCourse.name}">
 								<h:outputText value="#{booking.linkedCourse.name}" />
 							</p:column>
-							<p:column headerText="Date de réservation">
+							<p:column headerText="Date de réservation" filterBy="#{booking.registrationDate.toString()}">
 								<h:outputText value="#{booking.registrationDate.toString()}" />
 							</p:column>
-							<p:column headerText="Date et Horaire du cours">
+							<p:column headerText="Date et Horaire du cours" filterBy="#{booking.linkedCourse.startDate.toString()}">
 								<h:outputText
 									value="#{booking.linkedCourse.startDate.toString()}" />
 							</p:column>
 							<p:column headerText="Action">
-								<h:form>
 									<p:commandButton type="Button" value="Supprimer"
 										style="margin-right:20px; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 										action="#{bookingController.cancelBooking(booking.bookingId)}">
 									</p:commandButton>
-								</h:form>
 							</p:column>
 						</p:dataTable>
+						</h:form>
 					</h:panelGrid>
 				</p:tab>
 			</p:tabView>
