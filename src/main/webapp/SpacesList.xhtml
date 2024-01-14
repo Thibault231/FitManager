@@ -67,17 +67,27 @@
 					<h:form id="activityCreationForm">
 						<div>
 
-							<p:dataTable var="space"
-								value="#{spaceController.allActiveSpaces}">
+							<p:dataTable var="space" value="#{spaceController.allActiveSpaces}"  widgetVar="spacesTable">
+								<f:facet name="header">
+					                <div class="flex align-items-center justify-content-between">
+					                    <div>
+					                    <p:inputText id="globalFilter" onkeyup="PF('spacesTable').filter()" style="width:10rem"
+					                                 placeholder="Enter keyword" />
+					                    <p:commandButton value="Rechercher générale" update="@form" styleClass="ml-2"  action="true"
+					                    	style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>
+					                    </div>
+					                </div>
+					            </f:facet>
+							
 								<p:column headerText="Logo">
 								<div class="logoContainer">
 										<p:graphicImage library="documents" name="#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index" />
 								</div>
 								</p:column>
-								<p:column headerText="Nom">
+								<p:column headerText="Nom" filterBy="#{space.infos.configuration.fitnessName}">
 									<h:outputText value="#{space.infos.configuration.fitnessName}" />
 								</p:column>
-								<p:column headerText="Adresse">
+								<p:column headerText="Adresse" filterBy="#{space.infos.administrative.address}">
 									<h:outputText value="#{space.infos.administrative.address}" />
 								</p:column>
 								<p:column headerText="Liens vers l'espace">
