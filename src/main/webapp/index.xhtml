@@ -11,7 +11,7 @@
 	<ui:define name="content">
 		<div class="container">
 			<!-- section NOTRE PHILOSOPHIE-->
-			<div class="row pt-5 contain-80 contain-ad">
+			<div id="philosophie" class="row pt-5 contain-80 contain-ad">
 				
 				<div class="col-lg-5 col-sm-12 ">
 					<div class="dualimgcontainer d-none d-xl-block">
@@ -64,7 +64,7 @@
 			<!--end section NOTRE PHILOSOPHIE-->
 
 			<!-- section Commentaires Adhérents-->
-			<div class="row mb-5 contain-50 pt-5">
+			<div id="abonnement" class="row mb-5 contain-50 pt-5">
 			
 				<div class="col-lg-4 col-sm-12 " >
 					
@@ -86,20 +86,18 @@
 							<p>Un compte gestionnaire pour créer et gérer les activités
 								de votre salle de sport.</p>
 						
-								<h:link class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" 
-											outcome="RegisterManagerForm.xhtml">Demo</h:link>
+							<h:link class="plateform_Button" outcome="RegisterManagerForm.xhtml">Demo</h:link>
 						
 					</div>
 					<div class="mb-2 mt-2 col-sm-12 col-lg-3 cardAbonnement">
 						<h3 class="tarifTitre">PREMIUM</h3>
 						
 							<p>Tous les avantages de l'offre BASIC</p>
-							<p>Possibilité de créer des comptes pour vos coachs.</p>
-							<p>Création et gestion des cours par les coachs.</p>
+							<p>Créer des comptes pour vos coachs.</p>
+							<p>Gestion des cours par les coachs.</p>
 							<p>Accés à un planning annuel.</p>
 						
-								<h:link class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" 
-											outcome="RegisterManagerForm.xhtml">Demo</h:link>
+							<h:link class="plateform_Button" outcome="RegisterManagerForm.xhtml">Demo</h:link>
 						
 					</div>
 					<div class="mb-2 mt-2 col-sm-12 col-lg-3 cardAbonnement">
@@ -111,8 +109,7 @@
 							<p>Dashboard gestionnaire avec suivi des comptes et des
 								cours.</p>
 								
-								<h:link class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" 
-											outcome="RegisterManagerForm.xhtml">Demo</h:link>
+							<h:link class="plateform_Button" outcome="RegisterManagerForm.xhtml">Demo</h:link>
 						
 					</div>
 					
@@ -125,13 +122,16 @@
 			<!--end section Commentaires Adhérents-->
 
 			<!-- section Nos salles partenaires-->
-			<div class="row mb-5 pt-5 containerLogo">
+			<div id="partenaires" class="row mb-5 pt-5 containerLogo">
 			
-		
-			<h2 class="titre3 bigFont">Nos partenaires</h2>
-					
-				<h:form>
-				<div class="d-flex w-100 flex-wrap g-2">
+			<div class="col-6">
+				<h2 class="titre3 bigFont">Nos partenaires</h2>
+	
+			</div>
+			
+			<div class="col-6">
+			<h:form>
+				<div class="d-flex w-100 flex-wrap justify-content-center g-2">
 				<ui:repeat var="space" value="#{spaceController.allActiveSpaces}">
 								
 						<div class="mb-2 mt-2">
@@ -146,6 +146,13 @@
 				</ui:repeat>
 			</div>
 		</h:form>
+			
+			
+			</div>
+		
+			
+					
+				
 		
 		<div class="col-4">
 			 
@@ -155,7 +162,7 @@
 			<!--end section Nos salles partenaires-->
 
 			<!-- section Abonnez-vous !!-->
-			<div class="row mb-5">
+			<div id="abonnezVous" class="row mb-5">
 			<div class="col-sm-12 col-md-12  mt-auto mb-auto">
 					<div class="mt-2"
 						style="width: 100%; height: 18em; text-align: center; margin-bottom: -16em;">

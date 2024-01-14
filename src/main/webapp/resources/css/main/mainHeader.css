@@ -22,3 +22,11 @@
 	border-radius: 50px;
 }
 
+
+.navigationContenaire{
+	    position: sticky;
+    top: 0px;
+    z-index: 99999;
+   background-color: #1C3659;
+    backdrop-filter: blur(2px);
+}

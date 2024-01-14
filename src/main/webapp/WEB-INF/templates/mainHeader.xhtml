@@ -17,31 +17,46 @@
 
 <h:body>
 <nav class="navbar navbar-expand-lg " aria-label="Thirteenth navbar example" style="background-color: #1C3659;">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+     
+      <div class="container-fluid text-light">
+        <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" 
+        aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon text-light"></span>
         </button>
 
-        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+        <div class="collapse navbar-collapse d-lg-flex " id="navbarsExample11" style="background-color: #1C3659; padding: 0 0 0 1em">
           <div class="logoContainer d-flex lg-flex-column align-items-center">
-			<p:graphicImage library="images" name="plateform/logoCT.png" width="50px" height="50px"
-				class="img_index" />
-				<p class="index_slogan">Design Your </p>
-		</div>
+			<p:graphicImage library="images" name="plateform/logoCT.png" width="50px" height="50px" class="img_index" />
+			<p class="index_slogan">Design Your </p>
+		  </div>
           <ul class="navbar-nav col-lg-6 justify-content-lg-center">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page"><h:link class="nav-link" outcome="index.xhtml">ACCUEIL</h:link></a>
+            	<a><h:link class="nav-link text-light" outcome="index.xhtml">ACCUEIL</h:link></a>
             </li>
+              <li class="nav-item">
+					<a class="nav-link active text-light" aria-current="page" href="#philosophie">PHILOSOPHIE</a>
+				</li>
+				
+				 <li class="nav-item">
+					<a class="nav-link text-light" href="#abonnement">ABONNEMENTS</a>
+				</li>
+				 <li class="nav-item">
+					<a class="nav-link text-light" href="#partenaires">PARTENAIRES</a>
+				</li>
+				
+				
+          
             <li class="nav-item">
-              <a class="nav-link"><h:link class="nav-link" outcome="SpacesList.xhtml">SALLES</h:link></a>
+              <a><h:link class="nav-link text-light" outcome="SpacesList.xhtml">SALLES</h:link></a>
             </li>
+            
            
            
           </ul>
           <div class="d-lg-flex col-lg-3 justify-content-lg-around">
           
          
-          <div class="nav-item dropdown">
+          <div class="nav-item dropdown  ">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">COMPTE</a>
               <ul class="dropdown-menu">
                  <ui:fragment rendered="#{not spaceController.isUserConnected()}">

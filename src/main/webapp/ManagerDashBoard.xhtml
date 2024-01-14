@@ -17,6 +17,9 @@
 
 	<ui:define name="content">
 		<div class="d-flex">
+		
+		
+		
 			<div id="menus" class=" menus desable">
 				<div
 					class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sticky-top"
@@ -26,16 +29,21 @@
 							<li class="nav-item mb-2">
 								<h:link class="dropdown-item" outcome="ManagerSpacesList.xhtml">Mes espaces</h:link>
 							</li>
+							
+							
 							<li class="nav-item mb-2">
-								<p:commandButton value="creation de salle" type="button" onclick="PF('createSpace').show();" />
+								<a class="" value="creation de salle" type="button" onclick="PF('createSpace').show();" >creation de salle</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
+			
+			
+			
 
 			<div class="col p-5">
-				<h1> <span> Bienvenue</span> #{sessionScope.name} </h1>
+				<h1> <span id="flashWelcom"> Bienvenue</span> #{sessionScope.name} </h1>
 				<div class="d-flex w-100 justify-content-end pt-1">
 					<div class="d-flex justify-content-around">
 						<a class=" m-1">#{sessionScope.role}</a>
