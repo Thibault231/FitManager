@@ -6,6 +6,7 @@
 	--bleuClair: #1B5680;
 	--orange: #F5B37D;
 	--rouge: #D52056;
+	--Primarytheme: #1c3659ad:
 }
 
 *{
@@ -52,6 +53,7 @@
     height: 21em;
     margin-top: 2em;
     justify-content: space-around;
+    margin: 9em 2em auto;
 }
 
 
@@ -62,8 +64,8 @@
 }
 
 .dualimgcontainer :nth-child(2){
-	margin-left: -10em;
-    margin-top: 2em;
+	margin-left: -20em;
+    margin-top: 6em;
     width: 23em;
 }
 
@@ -99,6 +101,7 @@
 .scrollElement{
     height: 20em;
     overflow-y: scroll;
+   
 }
 * {
    scrollbar-width: thin;
@@ -197,13 +200,9 @@
 
 @media screen and (min-width: 1400px){
     .dualimgcontainer{
-           position: absolute;
+   
     height: 21em;
-    display: block;
-    width: inherit;
-    height: inherit;
-    margin-top: inherit;
-    margin: 4vw auto auto 5vw;
+   
     }
 
   /*  .dualimgcontainer> img{
@@ -255,13 +254,20 @@
 .plateform_logo{
 	display: inline-block;
 }
+.mainform{
+	height: 85vh; 
+	width: 100vw
+}
 
 .cardAbonnement{
-	background-color:white;
+
+	  background-color: #ffffffad;
+	  backdrop-filter: blur(2px);
 	margin:2em auto;
 	margin-top: 2em;
     display: flex;
-    width: 31%;
+    width: 33%;
+    backdrop-filter: blur(2px);
     /* height: 18em; */
     flex-direction: column;
     align-items: center;
@@ -273,39 +279,88 @@
 		
 }
 
+
+.cardAbonnement:hover {
+	
+	backdrop-filter: blur(2px);
+    background-color: #1c3659ad;
+    color: white;
+	font-weight: 700;
+	
+}
+
+.contain-ad{
+	padding-bottom: 16em;
+    height: 53em;
+}
+
 .cardAbonnement>h3{
-    margin-bottom: 1em;
-		
+    margin-bottom: 1em;	
+}
+
+.containerLogos{
+	
+	background-color:var(--orange);
+	
+}
+
+.tarifTitre{
+	    color: #1c3659;
+    	font-weight: 900;
+}
+
+
+.cardAbonnement:hover .tarifTitre{
+	    color:var(--orange);
+    	font-weight: 900;
 }
 
 .titre2{
+	
 	color:var(--orange);
 	margin:1em 0
-	
+}
+
+.bigFont{
+	text-transform: uppercase;
+	font-size: 5rem;
+}
+
+.titre3{
+	color:var(--bleuFonce);
+	margin:1em 0
+}
+
+.blured{	
+	backdrop-filter: blur(2px);
+    background-color: #1c3659ad;
+    color: white;
+}
+
+.containerLogo{
+	background-color: var(--orange);
 	
 }
 
 
 
 .plateform_Button {
-	box-shadow:inset 0px 1px 0px 0px #bee2f9;
-	background:linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
-	background-color:#63b8ee;
-	border-radius:6px;
-	border:1px solid #3866a3;
-	display:inline-block;
-	cursor:pointer;
-	color:#14396a;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:14px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #7cacde;
+	background: rgb(2,0,36);
+    background: linear-gradient(10deg, rgba(2,0,36,1) 0%, rgba(37,65,103,1) 100%);
+    border-radius: 6px;
+    display: inline-block;
+    cursor: pointer;
+    color: var(--orange);
+    font-family: Arial;
+    font-size: 21px;
+  
+    padding: 14px 24px;
+    text-decoration: none;
+ 
 }
 .plateform_Button:hover {
-	background:linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
-	background-color:#468ccf;
+	background-color:#001ecc;
+	color:white
 }
 .plateform_Button:active {
 	position:relative;

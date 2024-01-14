@@ -16,48 +16,52 @@
 </h:head>
 
 <h:body>
-		<!-- NavBAr -->
-	<nav class="navbar navbar-expand-lg navbar-dark static-top"	style="background-color: #1C3659;">
-		<div class="container-fluid">
-		<div class="logoContainer d-flex lg-flex-column align-items-center">
+<nav class="navbar navbar-expand-lg " aria-label="Thirteenth navbar example" style="background-color: #1C3659;">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+          <div class="logoContainer d-flex lg-flex-column align-items-center">
 			<p:graphicImage library="images" name="plateform/logoCT.png" width="50px" height="50px"
 				class="img_index" />
 				<p class="index_slogan">Design Your </p>
 		</div>
-			<h:form>
-			<div class="container-fluid">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="index.xhtml">ACCUEIL</h:link>
-					</li>
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="SpacesList.xhtml">SALLES</h:link>
-					</li>
-					
-					<ui:fragment rendered="#{not spaceController.isUserConnected()}">
-						<li class="nav-item">
-							<h:link class="nav-link" outcome="RegisterManagerForm.xhtml">CREER COMPTE</h:link>
-						</li>
-						<li class="nav-item">
-							<h:link class="nav-link" outcome="LoginForm.xhtml">SE CONNECTER</h:link>
-						</li>
-					</ui:fragment>
-					
-					<ui:fragment rendered="#{spaceController.isUserConnected()}">
-						<li class="nav-item">
-							<h:link class="nav-link" outcome="ManagerDashBoard.xhtml">MON ESPACE</h:link>
-						</li>
-						<li class="nav-item">
-							<h:commandLink class="nav-link" action="#{userController.logout()}">DECONNEXION</h:commandLink>
-						</li>
-					</ui:fragment>
-				</ul>
-			</div>
-			</h:form>
-		</div>
-	</nav>
-<!-- 	<div class="plateform_logo"> -->
-<!-- 	</div> -->
+          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"><h:link class="nav-link" outcome="index.xhtml">ACCUEIL</h:link></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"><h:link class="nav-link" outcome="SpacesList.xhtml">SALLES</h:link></a>
+            </li>
+           
+           
+          </ul>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-around">
+          
+         
+          <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">COMPTE</a>
+              <ul class="dropdown-menu">
+                 <ui:fragment rendered="#{not spaceController.isUserConnected()}">
+                <li><h:link class="dropdown-item" outcome="RegisterManagerForm.xhtml">CREER COMPTE</h:link></li>
+                <li><h:link class="dropdown-item" outcome="LoginForm.xhtml">SE CONNECTER</h:link></li>
+                </ui:fragment>
+                		<ui:fragment rendered="#{spaceController.isUserConnected()}">
+                
+                   <li><h:link class="dropdown-item" outcome="ManagerDashBoard.xhtml">MON ESPACE</h:link></li>
+                <li><h:link class="dropdown-item" action="#{userController.logout()}">DECONNEXION</h:link></li>
+                </ui:fragment>
+              </ul>
+            </div>
+         
+         
+         
+          </div>
+        </div>
+      </div>
+    </nav>
 	
 	
 </h:body>

@@ -11,11 +11,21 @@
 	<ui:define name="content">
 		<div class="container">
 			<!-- section NOTRE PHILOSOPHIE-->
-			<div class="row pt-5 contain-80">
-				<div class="col-lg-6 col-sm-12 mt-auto mb-auto sectionperso">
-					<h2 class="titre2">NOTRE PHILOSOPHIE</h2>
+			<div class="row pt-5 contain-80 contain-ad">
+				
+				<div class="col-lg-5 col-sm-12 ">
+					<div class="dualimgcontainer d-none d-xl-block">
+						<img
+							src="https://i.pinimg.com/564x/d2/04/13/d204131a139b6b4149df2545d4269d08.jpg"
+							alt="" /> <img
+							src="https://i.pinimg.com/564x/8d/09/6d/8d096d87d6de058cdd59334d9fc1ab3e.jpg"
+							class="imgdecaler" alt="" />
+					</div>
+				</div>
+				<div class="col-lg-7 col-sm-12 mt-auto mb-auto sectionperso">
+					<h2 class="titre2 bigFont">NOTRE PHILOSOPHIE</h2>
 					<div style="height: 25em;">
-						<div class="scrollElement">
+						<div class="scrollElement mb-5">
 						<p>Bienvenue chez Fitmanager, l'entreprise qui donne vie à
 							votre entreprise dédiée à votre passion pour le sport et le
 							bien-être global. Depuis notre création, nous nous sommes engagés
@@ -44,20 +54,11 @@
 											
 					</div>
 					<div class="bando d-flex w-100 justify-content-end ">
-							<a href="" class="btn btn-outline-primary btn-lg">Demo</a>
+					<h:link class="plateform_Button" outcome="RegisterManagerForm.xhtml">demander une demo</h:link>
 						</div>
 						
 					</div>
 					
-				</div>
-				<div class="col-lg-5 col-sm-12 ">
-					<div class="dualimgcontainer">
-						<img
-							src="https://i.pinimg.com/564x/d2/04/13/d204131a139b6b4149df2545d4269d08.jpg"
-							alt="" /> <img
-							src="https://i.pinimg.com/564x/8d/09/6d/8d096d87d6de058cdd59334d9fc1ab3e.jpg"
-							class="imgdecaler" alt="" />
-					</div>
 				</div>
 			</div>
 			<!--end section NOTRE PHILOSOPHIE-->
@@ -66,41 +67,53 @@
 			<div class="row mb-5 contain-50 pt-5">
 			
 				<div class="col-lg-4 col-sm-12 " >
-					<h2 class="titre2">Nos abonnements</h2>
+					
 					<h:graphicImage library="images" name="/plateform/pngegg-3.png" style="width: 25vw;"/>
 				</div>
 				
 			<div class="col-lg-8 col-sm-12 " >		
 				<div class="d-flex h-100 w-100 justify-content-between flex-wrap  align-items-center">
 					<div class="row">
+					<h2 class="titre2 bigFont">Nos abonnements</h2>
 					<div class="mb-2 mt-2 col-sm-12 col-lg-3 cardAbonnement">
-						<h3>BASIC</h3>
-						<ul>
-							<li>Bénéficier d'un espace web personnalisable, dédié à
-								votre salle.</li>
-							<li>Accés à un planning hebdomadaire pour vos clients.</li>
-							<li>Un compte gestionnaire pour créer et gérer les activités
-								de votre salle de sport.</li>
-						</ul>
+						<h3 class="tarifTitre">BASIC</h3>
+						
+						
+						<p>Bénéficier d'un espace web personnalisable, dédié à
+								votre salle.</p>
+							
+							<p>Accés à un planning hebdomadaire pour vos clients.</p>
+							<p>Un compte gestionnaire pour créer et gérer les activités
+								de votre salle de sport.</p>
+						
+								<h:link class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" 
+											outcome="RegisterManagerForm.xhtml">Demo</h:link>
+						
 					</div>
 					<div class="mb-2 mt-2 col-sm-12 col-lg-3 cardAbonnement">
-						<h3>PREMIUM</h3>
-						<ul>
-							<li>Tous les avantages de l'offre BASIC</li>
-							<li>Possibilité de créer des comptes pour vos coachs.</li>
-							<li>Création et gestion des cours par les coachs.</li>
-							<li>Accés à un planning annuel.</li>
-						</ul>
+						<h3 class="tarifTitre">PREMIUM</h3>
+						
+							<p>Tous les avantages de l'offre BASIC</p>
+							<p>Possibilité de créer des comptes pour vos coachs.</p>
+							<p>Création et gestion des cours par les coachs.</p>
+							<p>Accés à un planning annuel.</p>
+						
+								<h:link class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" 
+											outcome="RegisterManagerForm.xhtml">Demo</h:link>
+						
 					</div>
 					<div class="mb-2 mt-2 col-sm-12 col-lg-3 cardAbonnement">
-						<h3>CLIMAX</h3>
-						<ul>
-							<li>Tous les avantages de l'offre PREMIUM</li>
-							<li>Vos clients peuvent créer leur propre compte.</li>
-							<li>Réservation de cours.</li>
-							<li>Dashboard gestionnaire avec suivi des comptes et des
-								cours.</li>
-						</ul>
+						<h3 class="tarifTitre">CLIMAX</h3>
+						
+							<p>Tous les avantages de l'offre PREMIUM</p>
+							<p>Vos clients peuvent créer leur propre compte.</p>
+							<p>Réservation de cours.</p>
+							<p>Dashboard gestionnaire avec suivi des comptes et des
+								cours.</p>
+								
+								<h:link class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" 
+											outcome="RegisterManagerForm.xhtml">Demo</h:link>
+						
 					</div>
 					
 					</div>
@@ -112,20 +125,20 @@
 			<!--end section Commentaires Adhérents-->
 
 			<!-- section Nos salles partenaires-->
-			<div class="row mb-5 contain-50 pt-5">
+			<div class="row mb-5 pt-5 containerLogo">
 			
-			<div class="col">
-			<h2 class="titre2">Nos partenaires</h2>
+		
+			<h2 class="titre3 bigFont">Nos partenaires</h2>
 					
 				<h:form>
 				<div class="d-flex w-100 flex-wrap g-2">
 				<ui:repeat var="space" value="#{spaceController.allActiveSpaces}">
 								
-						<div class="mb-2 mt-2 cardAbonnement  ">
+						<div class="mb-2 mt-2">
 
-							<p:graphicImage library="documents" name="#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index" />
+							<p:graphicImage library="documents" name="#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index m-2" />
 							
-							<h:commandButton value="Lien vers espace" action="#{spaceController.goToSpaceIndex()}">
+							<h:commandButton value="#{space.spaceId}" action="#{spaceController.goToSpaceIndex()}">
 								<f:param name="spaceId" value="#{space.spaceId}" />
 							</h:commandButton>								
 						</div>
@@ -133,7 +146,7 @@
 				</ui:repeat>
 			</div>
 		</h:form>
-		</div>
+		
 		<div class="col-4">
 			 
 			</div>
@@ -149,8 +162,8 @@
 						<h:graphicImage library="images" name="/plateform/joinUs.jpg" class="" style="width:clamp(482px 38vw 1032px);"/>
 					</div>
 				</div>
-				<div class="col-sm-12 col-md-6 mb-5 p-5 bg-light">
-					<h2 class="titre2">Abonnez-vous !!</h2>
+				<div class="col-sm-12 col-md-6 mb-5 p-5 blured" >
+					<h2 class="titre2">Abonnez-vous !</h2>
 					
 					<p>Rejoignez la famille Fitmanager et découvrez une approche
 						holistique du bien-être qui transcende les frontières du simple
@@ -161,7 +174,7 @@
 						aujourd'hui avec Fitmanager.</p>
 						
 					<div class="d-flex justify-content-around w-100 mt-5">
-						<a href="" class="btn btn-outline-primary btn-lg">S'ABONNER</a>
+						<h:link class="btn btn-outline-light btn-lg" outcome="RegisterManagerForm.xhtml">S'ABONNER</h:link>
 					</div>
 				</div>
 				
