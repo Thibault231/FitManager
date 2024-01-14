@@ -423,8 +423,8 @@ public class InitDb {
 			userMember.getProfile().getContact().setPhoneNumber("0618462597");
 			userManager.getProfile().getCivility().setProfilePicture("ad6.jpg");
 			userDao.createUser(userMember);
-			spaceFive.getUsers().add(userMember);
-			spaceDao.updateSpace(spaceFive);
+			spaceOne.getUsers().add(userMember);
+			spaceDao.updateSpace(spaceOne);
 //
 //			User userMember1 = new User(true);
 //			userMember1.getAccount().setLogin("alexandre.dubois@email.com");
