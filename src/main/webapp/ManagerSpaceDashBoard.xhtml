@@ -40,6 +40,8 @@
 						<div class="d-flex w-100 justify-content-center">
 						<h:panelGrid columns="1" cellpadding="5">
 							<p:commandButton value="Modifier mon profil" type="button"
+								styleClass="ui-button-raised ui-button custom-white-text"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 								onclick="PF('UpdateAccount').show();" />
 						</h:panelGrid>
 						</div>
@@ -72,9 +74,8 @@
 							</p:column>
 							<p:column headerText="Action">
 								<h:form>
-									<p:commandButton type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();"
-										styleClass="ui-button-raised ui-button custom-white-text"
-										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+									<p:commandLink value="Supprimer" onclick="PF('confirmationVarUser').show();"
+										style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>
 								</h:form>
 							</p:column>
 						</p:dataTable>
@@ -103,7 +104,7 @@
 							<p:column headerText="Action">
 
 								<h:form>
-									<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();" />
+									<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>
 								</h:form>
 							</p:column>
 						</p:dataTable>
@@ -134,8 +135,8 @@
 								<p:column headerText="Actions">
 									<h:form>
 								    <div class="d-flex">
-										<p:commandButton value="Modifier" style="margin-right:20px;" type="button"	onclick="PF('UpdateSubscription').show();" /> 
-										<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" />	
+										<p:commandLink value="Modifier" type="button" onclick="PF('UpdateSubscription').show();" style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
+										<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
 									</div>	
 									</h:form>					
 								</p:column>
@@ -166,7 +167,8 @@
 							<p:column headerText="Actions">
 								<h:form>
 							    <div class="d-flex">
-									<p:commandLink  type="button" value="Supprimer" action="#{courseController.deleteCourse(course.id)}"></p:commandLink>
+									<p:commandLink  type="button" value="Supprimer" action="#{courseController.deleteCourse(course.id)}" 
+									style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"></p:commandLink>
 								</div>	
 								</h:form>					
 	
