@@ -56,11 +56,31 @@ public class InitDb {
 			spaceOne.getInfos().getConfiguration().setFitnessName("KingFit");
 			spaceOne.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
 			spaceOne.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
-			spaceOne.getInfos().getAdministrative().setAddress("20 rue du Taure,31500 Toulouse");
+			spaceOne.getInfos().getAdministrative().setAddress("TOULOUSE 20 rue du Taure,31500 ");
 			spaceOne.getInfos().getConfiguration().getStyle().setMainColor("#255929");
 			spaceOne.getInfos().getConfiguration().getStyle().setSecondColor("#F28B30");
 			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("#1C4AA6");
 			spaceDao.createSpace(spaceOne);
+
+			Space spaceOneBis = new Space(true);
+			spaceOneBis.getInfos().getConfiguration().setFitnessName("KingFit");
+			spaceOneBis.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
+			spaceOneBis.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
+			spaceOneBis.getInfos().getAdministrative().setAddress("PARIS 100 rue des Chiffons ,75500 ");
+			spaceOneBis.getInfos().getConfiguration().getStyle().setMainColor("#255929");
+			spaceOneBis.getInfos().getConfiguration().getStyle().setSecondColor("#F28B30");
+			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("#1C4AA6");
+			spaceDao.createSpace(spaceOneBis);
+
+			Space spaceOneTer = new Space(true);
+			spaceOneTer.getInfos().getConfiguration().setFitnessName("KingFit");
+			spaceOneTer.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
+			spaceOneTer.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
+			spaceOneTer.getInfos().getAdministrative().setAddress("LYON 10 avenue de la République ,69000 ");
+			spaceOneTer.getInfos().getConfiguration().getStyle().setMainColor("#255929");
+			spaceOneTer.getInfos().getConfiguration().getStyle().setSecondColor("#F28B30");
+			spaceOneTer.getInfos().getConfiguration().getStyle().setThirdcolor("#1C4AA6");
+			spaceDao.createSpace(spaceOneTer);
 
 			Space spaceTwo = new Space(true);
 			spaceTwo.getInfos().getConfiguration().setFitnessName("Calypso");
@@ -169,18 +189,22 @@ public class InitDb {
 			userManager.getAccount().setPassword(DefaultConfig.DEFAULT_PASSWORD);
 			userManager.getAccount().setRole(Role.Gestionnaire);
 			userManager.getLinkedSpaces().add(spaceOne);
-			userManager.getLinkedSpaces().add(spaceFive);
-			userManager.getProfile().getCivility().setForename("Titou");
-			userManager.getProfile().getCivility().setName("Polo");
+			userManager.getLinkedSpaces().add(spaceOneBis);
+			userManager.getLinkedSpaces().add(spaceOneTer);
+			userManager.getProfile().getCivility().setForename("Marc");
+			userManager.getProfile().getCivility().setName("Argenteur");
 			userManager.getProfile().getContact().setPhoneNumber("0756229072");
 			userManager.getProfile().getAdress().setStreet("29 rue beaurepaire");
 			userManager.getProfile().getAdress().setZipCode(31500);
-			userManager.getProfile().getAdress().setStreet("Toulouse");
+			userManager.getProfile().getAdress().setStreet("Balma");
 			userManager.getProfile().getCivility().setProfilePicture("coach1.jpg");
 			userDao.createUser(userManager);
 			spaceOne.getUsers().add(userManager);
+			spaceOneBis.getUsers().add(userManager);
+			spaceOneTer.getUsers().add(userManager);
 			spaceDao.updateSpace(spaceOne);
-			spaceDao.updateSpace(spaceFive);
+			spaceDao.updateSpace(spaceOneBis);
+			spaceDao.updateSpace(spaceOneTer);
 
 //			User userManager1 = new User(true);
 //			userManager1.getAccount().setLogin("alex@gmail.com");
