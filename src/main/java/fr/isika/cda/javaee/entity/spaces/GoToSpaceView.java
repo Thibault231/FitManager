@@ -4,15 +4,17 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
+ * Bean to catch user demand on access to a specific space
+ * 
+ * @author Thibault
  *
- * Bean qui définie une variable java correspondant au paramètre. (Utilisation
- * d'annotations Lombok pour éviter de déclarer explécitement les getter/setter
  */
 @Named
 @RequestScoped
 public class GoToSpaceView {
 	private Long no;
 
+//************************************************
 	public Long getNo() {
 		return no;
 	}
