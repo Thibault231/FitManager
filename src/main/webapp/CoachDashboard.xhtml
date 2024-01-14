@@ -43,6 +43,7 @@
 						<div class="d-flex w-100 justify-content-center">
 							<h:panelGrid columns="1" cellpadding="5">
 								<p:commandButton value="Modifier mon profil" type="button"
+									style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 									onclick="PF('UpdateAccount').show();" />
 							</h:panelGrid>
 						</div>
@@ -54,28 +55,41 @@
 			<p:tabView>
 				<p:tab title="Cours">
 					<h:panelGrid columns="1" cellpadding="5">
-						<p:dataTable value="#{courseController.allCoachCourses}"
-							var="course">
-							<p:column headerText="Dénomination">
-								<h:outputText value="#{course.name}" />
+						<h:form>
+						<p:dataTable value="#{courseController.allCoachCourses}" var="course"  widgetVar="coursesTable">
+						
+							<f:facet name="header">
+				                <div class="flex align-items-center justify-content-between">
+				                    <div>
+				                    <p:inputText id="globalFilter" onkeyup="PF('coursesTable').filter()" style="width:10rem"
+				                                 placeholder="Enter keyword" />
+				                    <p:commandButton value="Rechercher générale" update="@form"  action="true"
+				                   		styleClass="ui-button-raised ui-button custom-white-text"
+										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+				                    </div>
+				                </div>
+				            </f:facet>
+				           
+							<p:column headerText="Dénomination" filterBy="#{course.name}">
+								<h:outputText value="#{course.name}"/>
 							</p:column>
-							<p:column headerText="Date et horaire">
-								<h:outputText value="#{course.startDate}" />
+							<p:column headerText="Début du cours" filterBy="#{course.startDate}">
+								<h:outputText value="#{course.startDate}"/>
 							</p:column>
-							<p:column headerText="Dénomination">
-								<h:outputText value="#{course.endDate}" />
+							<p:column headerText="Fin de cours" filterBy="#{course.endDate}">
+								<h:outputText value="#{course.endDate}"/>
 							</p:column>
 							<p:column headerText="Description">
-								<h:outputText value="#{course.description}" />
+								<h:outputText value="#{course.description}"/>
 							</p:column>
 							<p:column headerText="Actions">
-								<h:form>
 									<p:commandButton value="Supprimer"
+										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 										action="#{courseController.deleteCourse(course.id)}">
-									</p:commandButton>
-								</h:form>
+									</p:commandButton>		
 							</p:column>
 						</p:dataTable>
+						</h:form>
 					</h:panelGrid>
 				</p:tab>
 			</p:tabView>

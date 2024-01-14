@@ -57,9 +57,9 @@ public class InitDb {
 			spaceOne.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
 			spaceOne.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
 			spaceOne.getInfos().getAdministrative().setAddress("20 rue du Taure,31500 Toulouse");
-			spaceOne.getInfos().getConfiguration().getStyle().setMainColor(DefaultConfig.DEFAULT_MAIN_COLOR);
-			spaceOne.getInfos().getConfiguration().getStyle().setSecondColor("red");
-			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("grey");
+			spaceOne.getInfos().getConfiguration().getStyle().setMainColor("#255929");
+			spaceOne.getInfos().getConfiguration().getStyle().setSecondColor("#F28B30");
+			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("#1C4AA6");
 			spaceDao.createSpace(spaceOne);
 
 			Space spaceTwo = new Space(true);
@@ -169,13 +169,14 @@ public class InitDb {
 			userManager.getAccount().setPassword(DefaultConfig.DEFAULT_PASSWORD);
 			userManager.getAccount().setRole(Role.Gestionnaire);
 			userManager.getLinkedSpaces().add(spaceOne);
-			// userManager.getLinkedSpaces().add(spaceFive);
+			userManager.getLinkedSpaces().add(spaceFive);
 			userManager.getProfile().getCivility().setForename("Titou");
 			userManager.getProfile().getCivility().setName("Polo");
 			userManager.getProfile().getContact().setPhoneNumber("0756229072");
 			userManager.getProfile().getAdress().setStreet("29 rue beaurepaire");
 			userManager.getProfile().getAdress().setZipCode(31500);
 			userManager.getProfile().getAdress().setStreet("Toulouse");
+			userManager.getProfile().getCivility().setProfilePicture("coach1.jpg");
 			userDao.createUser(userManager);
 			spaceOne.getUsers().add(userManager);
 			spaceDao.updateSpace(spaceOne);

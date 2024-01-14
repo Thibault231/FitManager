@@ -44,7 +44,7 @@
 							<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
 						</div>
 
-						<h:commandButton class="btn btn-warning" value="Me connecter"
+						<h:commandButton class="btn btn-warning" value="Me connecter" style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 							action="#{spaceUser.authenticateOnSpace()}" />
 
 						<h:link class="text-center" outcome="index.xhtml">Mot de passe oublié ?</h:link>

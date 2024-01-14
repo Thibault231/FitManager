@@ -37,9 +37,6 @@
 							</div>
 
 							<div class="form-floating">
-								<!-- 								<h:inputText class="form-control" id="floatingInput03" placeholder="Sexe" size="20" -->
-								<!-- 									value="#{spaceUser.spaceViewModel.user.profile.civility.sex}" /> -->
-								<!-- 								<h:outputLabel class="outputLabel" for="floatingInput03">Sexe</h:outputLabel> -->
 								<h:selectOneMenu id="sex"
 									value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
 									<f:selectItem itemLabel="Sexe" />
@@ -100,6 +97,7 @@
 							</div>
 
 							<h:commandButton class="btn btn-warning"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 								value="Créer mon compte"
 								action="#{spaceUser.createMemberAccount()}" />
 							<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>

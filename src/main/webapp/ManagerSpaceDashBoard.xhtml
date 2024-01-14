@@ -40,6 +40,8 @@
 						<div class="d-flex w-100 justify-content-center">
 						<h:panelGrid columns="1" cellpadding="5">
 							<p:commandButton value="Modifier mon profil" type="button"
+								styleClass="ui-button-raised ui-button custom-white-text"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 								onclick="PF('UpdateAccount').show();" />
 						</h:panelGrid>
 						</div>
@@ -56,12 +58,25 @@
             </f:facet>
 				<p:tab title="Adherents">
 					<h:panelGrid columns="1" cellpadding="5">
-						<p:dataTable var="user"
-							value="#{userController.allMembersOfCurrentSpace}">
-							<p:column headerText="Nom">
+					<h:form>
+						<p:dataTable var="user"	value="#{userController.allMembersOfCurrentSpace}" widgetVar="membersTable">
+						
+							<f:facet name="header">
+				                <div class="flex align-items-center justify-content-between">
+				                    <div>
+				                    <p:inputText id="globalFilter" onkeyup="PF('membersTable').filter()" style="width:10rem"
+				                                 placeholder="Enter keyword" />
+				                    <p:commandButton value="Rechercher générale" update="@form" action="true"
+				                    	styleClass="ui-button-raised ui-button custom-white-text"
+										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+				                    </div>
+				                </div>
+				            </f:facet>
+				            
+							<p:column headerText="Nom" filterBy="#{user.profile.civility.forename}">
 								<h:outputText value="#{user.profile.civility.name}" />
 							</p:column>
-							<p:column headerText="Prenom">
+							<p:column headerText="Prenom" filterBy="#{user.profile.civility.forename}">
 								<h:outputText value="#{user.profile.civility.forename}" />
 							</p:column>
 							<p:column headerText="Date de naissance">
@@ -71,24 +86,38 @@
 								<h:outputText value="#{user.account.role}" />
 							</p:column>
 							<p:column headerText="Action">
-								<h:form>
-									<p:commandButton type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();" />
-								</h:form>
+									<p:commandLink value="Supprimer" onclick="PF('confirmationVarUser').show();"
+										style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
 							</p:column>
 						</p:dataTable>
+						</h:form>
 					</h:panelGrid>
 				</p:tab>
 
 				<p:tab title="Coachs">
 					<h:panelGrid columns="1" cellpadding="5">
-						<p:commandButton value="Ajouter un coach" type="button"
-							onclick="PF('createCoach').show();" />
-						<p:dataTable var="user"
-							value="#{userController.allCoachesOfCurrentSpace}">
-							<p:column headerText="Nom">
+						<p:commandButton value="Ajouter un coach" type="button" onclick="PF('createCoach').show();" 
+							styleClass="ui-button-raised ui-button custom-white-text"
+							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+						<h:form>
+						<p:dataTable var="user"	value="#{userController.allCoachesOfCurrentSpace}" widgetVar="coachesTable">
+						
+							<f:facet name="header">
+				                <div class="flex align-items-center justify-content-between">
+				                    <div>
+				                    <p:inputText id="globalFilter" onkeyup="PF('coachesTable').filter()" style="width:10rem"
+				                                 placeholder="Enter keyword" />
+				                    <p:commandButton value="Rechercher générale" update="@form" action="true"
+				                    styleClass="ui-button-raised ui-button custom-white-text"
+										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+				                    </div>
+				                </div>
+				            </f:facet>
+				            
+							<p:column headerText="Nom"  filterBy="#{user.profile.civility.name}">
 								<h:outputText value="#{user.profile.civility.name}" />
 							</p:column>
-							<p:column headerText="Prenom">
+							<p:column headerText="Prenom"  filterBy="#{user.profile.civility.forename}">
 								<h:outputText value="#{user.profile.civility.forename}" />
 							</p:column>
 							<p:column headerText="Date de naissance">
@@ -98,20 +127,19 @@
 								<h:outputText value="#{user.account.role}" />
 							</p:column>
 							<p:column headerText="Action">
-
-								<h:form>
-									<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();" />
-								</h:form>
+									<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
 							</p:column>
 						</p:dataTable>
+						</h:form>
 					</h:panelGrid>
 				</p:tab>
 
 				<p:tab title="Abonnements">
 					<h:form>
 						<h:panelGrid columns="1" cellpadding="5">
-							<p:commandButton value="Ajouter un abonnement" type="button"
-								onclick="PF('CreateSubscription').show();" />
+							<p:commandButton value="Ajouter un abonnement" type="button" onclick="PF('CreateSubscription').show();"
+								styleClass="ui-button-raised ui-button custom-white-text"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
 							<p:dataTable
 								value="#{subscriptionController.allActiveSubscription}"
 								var="subscription">
@@ -130,8 +158,8 @@
 								<p:column headerText="Actions">
 									<h:form>
 								    <div class="d-flex">
-										<p:commandButton value="Modifier" style="margin-right:20px;" type="button"	onclick="PF('UpdateSubscription').show();" /> 
-										<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" />	
+										<p:commandLink value="Modifier" type="button" onclick="PF('UpdateSubscription').show();" style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
+										<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
 									</div>	
 									</h:form>					
 								</p:column>
@@ -142,30 +170,46 @@
 
 				<p:tab title="Cours">
 						<h:panelGrid columns="1" cellpadding="5">
-							<p:commandButton value="Ajouter un cours" type="button" />
-							<p:dataTable value="#{courseController.allCourses}" var="course">
-					
-							<p:column headerText="Dénomination">
+							<p:commandButton value="Ajouter un cours" type="button"
+								styleClass="ui-button-raised ui-button custom-white-text"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+							<h:form>
+							<p:dataTable value="#{courseController.allCourses}" var="course" widgetVar="subsTable">
+						
+							<f:facet name="header">
+				                <div class="flex align-items-center justify-content-between">
+				                    <div>
+				                    <p:inputText id="globalFilter" onkeyup="PF('subsTable').filter()" style="width:10rem"
+				                                 placeholder="Enter keyword" />
+				                    <p:commandButton value="Rechercher générale" update="@form" action="true"
+				                    	styleClass="ui-button-raised ui-button custom-white-text"
+										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+				                    </div>
+				                </div>
+				            </f:facet>
+				           	
+							<p:column headerText="Dénomination" filterBy="#{course.name}">
 								<h:outputText value="#{course.name}"/>
 							</p:column>
-							<p:column headerText="Début du cours">
+							<p:column headerText="Début du cours" filterBy="#{course.startDate}">
 								<h:outputText value="#{course.startDate}"/>
 							</p:column>
-							<p:column headerText="Fin de cours">
+							<p:column headerText="Fin de cours" filterBy="#{course.endDate}">
 								<h:outputText value="#{course.endDate}"/>
 							</p:column>
 							<p:column headerText="Description">
 								<h:outputText value="#{course.description}"/>
 							</p:column>
 							<p:column headerText="Actions">
-								<h:form>
 							    <div class="d-flex">
-									<p:commandLink  type="button" value="Supprimer" action="#{courseController.deleteCourse(course.id)}"></p:commandLink>
+									<p:commandLink  type="button" value="Supprimer" action="#{courseController.deleteCourse(course.id)}" 
+									style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"></p:commandLink>
 								</div>	
-								</h:form>					
+												
 	
 							</p:column>
 							</p:dataTable>
+							</h:form>	
 						</h:panelGrid>
 				</p:tab>
 			</p:tabView>

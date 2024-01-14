@@ -104,6 +104,7 @@
 							<p:fileUpload listener="#{spaceUser.uploadAdministrativeDocument()}" styleClass="w-100" mode="advanced" dragDropSupport="false" />								
 							
 							<h:commandButton class="btn btn-warning"
+							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 								value="Créer un compte coach"
 								action="#{spaceUser.createCoachAccount()}" />
 
