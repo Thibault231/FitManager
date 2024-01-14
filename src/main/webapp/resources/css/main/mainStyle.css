@@ -335,5 +335,24 @@
 	top:1px;
 }
 
+.manager-form-cadre{
+	-webkit-box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52); 
+	box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52);
+	width: 1000px;
+	
+}
 
-
+.redirect_box{
+	-webkit-box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52); 
+	box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52);
+	text-align: center;
+	height: 200px;
+	width: 20%;
+	-webkit-border-radius: 16px 16px 16px 16px;
+	-moz-border-radius: 16px 16px 16px 16px;
+	border-radius: 16px 16px 16px 16px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 40%;
+	padding:1%
+}
