@@ -43,6 +43,7 @@
 						<div class="d-flex w-100 justify-content-center">
 							<h:panelGrid columns="1" cellpadding="5">
 								<p:commandButton value="Modifier mon profil" type="button"
+									style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 									onclick="PF('UpdateAccount').show();" />
 							</h:panelGrid>
 						</div>
@@ -71,6 +72,7 @@
 							<p:column headerText="Actions">
 								<h:form>
 									<p:commandButton value="Supprimer"
+										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 										action="#{courseController.deleteCourse(course.id)}">
 									</p:commandButton>
 								</h:form>

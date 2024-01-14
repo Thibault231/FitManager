@@ -84,8 +84,12 @@
 				<p>#{subscriptionController.currentMemberSubscription.description}</p>
 			</ui:fragment>
 			<p>
-				<h:link outcome="SubscribeForm.xhtml"
-					value="Souscrire à un abonnement" />
+				<h:form>
+					<h:commandButton outcome="SubscribeForm.xhtml"
+						styleClass="ui-button-raised ui-button custom-white-text"
+						style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
+						value="Souscrire à un abonnement" />
+				</h:form>
 			</p>
 			<hr />
 			<p:tabView>
@@ -109,7 +113,7 @@
 							<p:column headerText="Action">
 								<h:form>
 									<p:commandButton type="Button" value="Supprimer"
-										style="margin-right:20px;"
+										style="margin-right:20px; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 										action="#{bookingController.cancelBooking(booking.bookingId)}">
 									</p:commandButton>
 								</h:form>
@@ -191,6 +195,7 @@
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 							</div>
 							<h:commandButton class="btn btn-warning"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 								value="Enregistrer les modifications"
 								action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
 							<h:link class="text-center" outcome="AdherentDashboard"

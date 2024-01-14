@@ -72,7 +72,9 @@
 							</p:column>
 							<p:column headerText="Action">
 								<h:form>
-									<p:commandButton type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();" />
+									<p:commandButton type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();"
+										styleClass="ui-button-raised ui-button custom-white-text"
+										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
 								</h:form>
 							</p:column>
 						</p:dataTable>
@@ -81,8 +83,9 @@
 
 				<p:tab title="Coachs">
 					<h:panelGrid columns="1" cellpadding="5">
-						<p:commandButton value="Ajouter un coach" type="button"
-							onclick="PF('createCoach').show();" />
+						<p:commandButton value="Ajouter un coach" type="button" onclick="PF('createCoach').show();" 
+							styleClass="ui-button-raised ui-button custom-white-text"
+							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
 						<p:dataTable var="user"
 							value="#{userController.allCoachesOfCurrentSpace}">
 							<p:column headerText="Nom">
@@ -110,8 +113,9 @@
 				<p:tab title="Abonnements">
 					<h:form>
 						<h:panelGrid columns="1" cellpadding="5">
-							<p:commandButton value="Ajouter un abonnement" type="button"
-								onclick="PF('CreateSubscription').show();" />
+							<p:commandButton value="Ajouter un abonnement" type="button" onclick="PF('CreateSubscription').show();"
+								styleClass="ui-button-raised ui-button custom-white-text"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
 							<p:dataTable
 								value="#{subscriptionController.allActiveSubscription}"
 								var="subscription">
@@ -142,7 +146,9 @@
 
 				<p:tab title="Cours">
 						<h:panelGrid columns="1" cellpadding="5">
-							<p:commandButton value="Ajouter un cours" type="button" />
+							<p:commandButton value="Ajouter un cours" type="button"
+								styleClass="ui-button-raised ui-button custom-white-text"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
 							<p:dataTable value="#{courseController.allCourses}" var="course">
 					
 							<p:column headerText="Dénomination">
