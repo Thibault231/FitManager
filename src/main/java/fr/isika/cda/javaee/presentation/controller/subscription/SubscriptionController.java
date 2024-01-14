@@ -195,7 +195,7 @@ public class SubscriptionController implements Serializable {
 			}
 		}
 		spaceDao.updateSpace(currentSpace);
-		// subscriptionDao.deleteSubscription(subscriptionToDeleteId);
+		subscriptionDao.deleteSubscription(subscriptionToDeleteId);
 		return SessionUtils.redirectToDashBoard();
 	}
 
