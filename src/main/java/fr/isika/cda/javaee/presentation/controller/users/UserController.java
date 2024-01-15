@@ -9,6 +9,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -80,12 +81,12 @@ public class UserController implements Serializable {
 		// Email non rempli
 		if (userViewModel.getEmail().isEmpty()) {
 			message = "Login inexistant !!";
-			fc.addMessage(null, new FacesMessage(message));
+			fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, ""));
 			return "LoginForm?faces-redirect=true";
 			// Password non rempli
 		} else if (userViewModel.getPassword().isEmpty()) {
 			message = "vérifiez votre mot de passe ";
-			fc.addMessage(null, new FacesMessage(message));
+			fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, message, ""));
 			return "LoginForm?faces-redirect=true";
 		} else {
 			// Check User présent sur la plateforme

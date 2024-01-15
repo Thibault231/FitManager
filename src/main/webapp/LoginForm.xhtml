@@ -29,24 +29,28 @@
 
 					</div>
 					
-						<h:form>
+						<h:form id="loginForm">
 							<div>
 								<div class="d-grid gap-2">
 
 									<div class="form-floating">
 										<h:inputText class="form-control" id="floatingInput01"
-											placeholder="Utilisateur" size="20"
+											placeholder="Utilisateur" size="20" required="true"
+											requiredMessage="La saisie du LOGIN est obligatoire !"
 											value="#{userController.userViewModel.email}" />
+										<h:message  for="floatingInput01" styleClass="errorBlock" />
 										<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
 									</div>
 
 									<div class="form-floating ">
 										<h:inputSecret class="form-control" id="floatingInput02"
-											placeholder="Mot de passe" size="5"
+											placeholder="Mot de passe" size="5" required="true"
+											requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
 											value="#{userController.userViewModel.password}" />
+										 <h:message  for="floatingInput02" styleClass="errorBlock" />
 										<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
 									</div>
-
+	
 									<h:commandButton class="btn btn-warning" value="Me connecter"
 										action="#{userController.authenticate()}" />
 										<h:link class="text-center" outcome="index.xhtml">Mot de passe oublié ?</h:link>

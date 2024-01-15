@@ -33,14 +33,18 @@
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput01"
 								placeholder="Utilisateur" size="20"
+								requiredMessage="La saisie du LOGIN est obligatoire !"
 								value="#{spaceUser.spaceViewModel.user.account.login}" />
+							<h:message  for="floatingInput01" styleClass="errorBlock" />
 							<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
 						</div>
 
 						<div class="form-floating ">
 							<h:inputSecret class="form-control" id="floatingInput02"
 								placeholder="Mot de passe" size="5"
+								requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
 								value="#{spaceUser.spaceViewModel.user.account.password}" />
+							<h:message  for="floatingInput02" styleClass="errorBlock" />
 							<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
 						</div>
 
