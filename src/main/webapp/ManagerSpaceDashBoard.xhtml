@@ -22,76 +22,73 @@
 
 				<div class="row g-0" style="height: 100%">
 					<div class="col-md-4">
-						<p:graphicImage library="documents" name="#{spaceUser.spaceViewModel.user.profile.civility.profilePicture}" class="rounded-bottom float-start" style="max-width: 100%; height: 100%" />
+						<p:graphicImage library="documents"
+							name="#{spaceUser.spaceViewModel.user.profile.civility.profilePicture}"
+							class="rounded-bottom float-start"
+							style="max-width: 100%; height: 100%" />
 					</div>
 					<div class="col-md-8" style="height: 100%">
 						<div class="card-body2" style="padding: 20px">
 							<div class="input-group mb-3 " style="width: 100%">
 
-								<span
-									class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Nom</b></span> <span
-									class="input-group-text"
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Nom</b></span>
+								<span class="input-group-text"
 									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.civility.name}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span
-									class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Prénom</b></span> <span
-									class="input-group-text"
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Prénom</b></span>
+								<span class="input-group-text"
 									style="width: 80%; background-color: white">
 									#{spaceUser.spaceViewModel.user.profile.civility.forename}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span
-									class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b> Date de naissance</b></span> <span
-									class="input-group-text" style="width: 80%; background-color: white">
-									<h:outputText value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
-									        <f:convertDateTime timeZone="#{referenceData.timezone}" pattern="dd MMM yyyy" />
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>
+										Date de naissance</b></span> <span class="input-group-text"
+									style="width: 80%; background-color: white"> <h:outputText
+										value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
+										<f:convertDateTime timeZone="#{referenceData.timezone}"
+											pattern="dd MMM yyyy" />
 									</h:outputText>
-									</span>
+								</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span
-									class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span> <span
-									class="input-group-text"
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span>
+								<span class="input-group-text"
 									style="width: 80%; background-color: white">
 									#{spaceUser.spaceViewModel.user.profile.contact.email}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span
-									class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Téléphone</b></span> <span
-									class="input-group-text"
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Téléphone</b></span>
+								<span class="input-group-text"
 									style="width: 80%; background-color: white">
 									#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span
-									class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Adresse</b></span> <span
-									class="input-group-text"
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Adresse</b></span>
+								<span class="input-group-text"
 									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.street}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span
-									class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Code postal</b></span> <span
-									class="input-group-text"
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Code
+										postal</b></span> <span class="input-group-text"
 									style="width: 80%; background-color: white">
 									#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span
-									class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Ville</b></span> <span
-									class="input-group-text"
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Ville</b></span>
+								<span class="input-group-text"
 									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.city}</span>
 							</div>
 							<div>
-										<p:commandButton value="Modifier mon profil" type="button"
+								<p:commandButton value="Modifier mon profil" type="button"
 									styleClass="ui-button"
 									style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor};"
 									onclick="PF('UpdateAccount').show();" />
@@ -110,93 +107,120 @@
             </f:facet>
 				<p:tab title="Adherents">
 					<h:panelGrid columns="1" cellpadding="5">
-					<h:form>
-						<p:dataTable var="user"	value="#{userController.allMembersOfCurrentSpace}" widgetVar="membersTable">
-						
-							<f:facet name="header">
-				                <div class="flex align-items-center justify-content-between">
-				                    <div>
-				                    <p:inputText id="globalFilter" onkeyup="PF('membersTable').filter()" style="width:10rem"
-				                                 placeholder="Enter keyword" />
-				                    <p:commandButton value="Rechercher générale" update="@form" action="true"
-				                    	styleClass="ui-button-raised ui-button custom-white-text"
-										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
-				                    </div>
-				                </div>
-				            </f:facet>
-				            
-							<p:column headerText="Nom" filterBy="#{user.profile.civility.forename}">
-								<h:outputText value="#{user.profile.civility.name}" />
-							</p:column>
-							<p:column headerText="Prenom" filterBy="#{user.profile.civility.forename}">
-								<h:outputText value="#{user.profile.civility.forename}" />
-							</p:column>
-							<p:column headerText="Date de naissance">
-								<h:outputText value="#{user.profile.civility.birthday}" >
-							        <f:convertDateTime timeZone="#{referenceData.timezone}"
-							            pattern="dd MMM yyyy" />
-							    </h:outputText>
-							</p:column>
-							<p:column headerText="Rôle">
-								<h:outputText value="#{user.account.role}" />
-							</p:column>
-							<p:column headerText="Action">
-									<p:commandLink value="Supprimer" onclick="PF('confirmationVarMember').show();"
-										style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>
-									<p:confirmDialog id="confirmationDialogUser" widgetVar="confirmationVarMember" header="Confirmation"
-										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?" severity="alert">
-										<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarUser').hide()" />
-										<p:commandButton value="Oui" oncomplete="PF('confirmationVarUser').hide()"	action="#{userController.deleteUser(user.userId)}" />
-									</p:confirmDialog>	
-							</p:column>
-						</p:dataTable>
+						<h:form>
+							<p:dataTable var="user"
+								value="#{userController.allMembersOfCurrentSpace}"
+								widgetVar="membersTable">
+
+								<f:facet name="header">
+									<div class="flex align-items-center justify-content-between">
+										<div>
+											<p:inputText id="globalFilter"
+												onkeyup="PF('membersTable').filter()" style="width:10rem"
+												placeholder="Enter keyword" />
+											<p:commandButton value="Rechercher générale" update="@form"
+												action="true"
+												styleClass="ui-button-raised ui-button custom-white-text"
+												style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" />
+										</div>
+									</div>
+								</f:facet>
+
+								<p:column headerText="Nom"
+									filterBy="#{user.profile.civility.forename}">
+									<h:outputText value="#{user.profile.civility.name}" />
+								</p:column>
+								<p:column headerText="Prenom"
+									filterBy="#{user.profile.civility.forename}">
+									<h:outputText value="#{user.profile.civility.forename}" />
+								</p:column>
+								<p:column headerText="Date de naissance">
+									<h:outputText value="#{user.profile.civility.birthday}">
+										<f:convertDateTime timeZone="#{referenceData.timezone}"
+											pattern="dd MMM yyyy" />
+									</h:outputText>
+								</p:column>
+								<p:column headerText="Rôle">
+									<h:outputText value="#{user.account.role}" />
+								</p:column>
+								<p:column headerText="Action">
+									<p:commandLink value="Supprimer"
+										onclick="PF('confirmationVarMember').show();"
+										style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}" />
+									<p:confirmDialog id="confirmationDialogUser"
+										widgetVar="confirmationVarMember" header="Confirmation"
+										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+										severity="alert">
+										<p:commandButton value="Annuler" type="button"
+											onclick="PF('confirmationVarUser').hide()" />
+										<p:commandButton value="Oui"
+											oncomplete="PF('confirmationVarUser').hide()"
+											action="#{userController.deleteUser(user.userId)}" />
+									</p:confirmDialog>
+								</p:column>
+							</p:dataTable>
 						</h:form>
 					</h:panelGrid>
 				</p:tab>
 
 				<p:tab title="Coachs">
 					<h:panelGrid columns="1" cellpadding="5">
-						<p:commandButton value="Ajouter un coach" type="button" onclick="PF('createCoach').show();" 
+						<p:commandButton value="Ajouter un coach" type="button"
+							onclick="PF('createCoach').show();"
 							styleClass="ui-button-raised ui-button custom-white-text"
-							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" />
 						<h:form>
-						<p:dataTable var="user"	value="#{userController.allCoachesOfCurrentSpace}" widgetVar="coachesTable">
-						
-							<f:facet name="header">
-				                <div class="flex align-items-center justify-content-between">
-				                    <div>
-				                    <p:inputText id="globalFilter" onkeyup="PF('coachesTable').filter()" style="width:10rem"
-				                                 placeholder="Enter keyword" />
-				                    <p:commandButton value="Rechercher générale" update="@form" action="true"
-				                    styleClass="ui-button-raised ui-button custom-white-text"
-										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
-				                    </div>
-				                </div>
-				            </f:facet>
-				            
-							<p:column headerText="Nom"  filterBy="#{user.profile.civility.name}">
-								<h:outputText value="#{user.profile.civility.name}" />
-							</p:column>
-							<p:column headerText="Prenom"  filterBy="#{user.profile.civility.forename}">
-								<h:outputText value="#{user.profile.civility.forename}" />
-							</p:column>
-							<p:column headerText="Date de naissance">
-								<h:outputText value="#{user.profile.civility.birthday}" >
-							        <f:convertDateTime timeZone="#{referenceData.timezone}" pattern="dd MMM yyyy" />
-							        </h:outputText>
-							</p:column>
-							<p:column headerText="Rôle">
-								<h:outputText value="#{user.account.role}" />
-							</p:column>
-							<p:column headerText="Action">
-									<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
-									<p:confirmDialog id="confirmationDialogUser" widgetVar="confirmationVarUser" header="Confirmation"
-										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?" severity="alert">
-										<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarUser').hide()" />
-										<p:commandButton value="Oui" oncomplete="PF('confirmationVarUser').hide()"	action="#{userController.deleteUser(user.userId)}" />
+							<p:dataTable var="user"
+								value="#{userController.allCoachesOfCurrentSpace}"
+								widgetVar="coachesTable">
+
+								<f:facet name="header">
+									<div class="flex align-items-center justify-content-between">
+										<div>
+											<p:inputText id="globalFilter"
+												onkeyup="PF('coachesTable').filter()" style="width:10rem"
+												placeholder="Enter keyword" />
+											<p:commandButton value="Rechercher générale" update="@form"
+												action="true"
+												styleClass="ui-button-raised ui-button custom-white-text"
+												style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" />
+										</div>
+									</div>
+								</f:facet>
+
+								<p:column headerText="Nom"
+									filterBy="#{user.profile.civility.name}">
+									<h:outputText value="#{user.profile.civility.name}" />
+								</p:column>
+								<p:column headerText="Prenom"
+									filterBy="#{user.profile.civility.forename}">
+									<h:outputText value="#{user.profile.civility.forename}" />
+								</p:column>
+								<p:column headerText="Date de naissance">
+									<h:outputText value="#{user.profile.civility.birthday}">
+										<f:convertDateTime timeZone="#{referenceData.timezone}"
+											pattern="dd MMM yyyy" />
+									</h:outputText>
+								</p:column>
+								<p:column headerText="Rôle">
+									<h:outputText value="#{user.account.role}" />
+								</p:column>
+								<p:column headerText="Action">
+									<p:commandLink type="button" value="Supprimer"
+										onclick="PF('confirmationVarUser').show();"
+										style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}" />
+									<p:confirmDialog id="confirmationDialogUser"
+										widgetVar="confirmationVarUser" header="Confirmation"
+										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+										severity="alert">
+										<p:commandButton value="Annuler" type="button"
+											onclick="PF('confirmationVarUser').hide()" />
+										<p:commandButton value="Oui"
+											oncomplete="PF('confirmationVarUser').hide()"
+											action="#{userController.deleteUser(user.userId)}" />
 									</p:confirmDialog>
-							</p:column>
-						</p:dataTable>
+								</p:column>
+							</p:dataTable>
 						</h:form>
 					</h:panelGrid>
 				</p:tab>
@@ -204,9 +228,10 @@
 				<p:tab title="Abonnements">
 					<h:form>
 						<h:panelGrid columns="1" cellpadding="5">
-							<p:commandButton value="Ajouter un abonnement" type="button" onclick="PF('CreateSubscription').show();"
+							<p:commandButton value="Ajouter un abonnement" type="button"
+								onclick="PF('CreateSubscription').show();"
 								styleClass="ui-button-raised ui-button custom-white-text"
-								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" />
 							<p:dataTable
 								value="#{subscriptionController.allActiveSubscription}"
 								var="subscription">
@@ -223,19 +248,26 @@
 									<h:outputText value="#{subscription.price.monthlyPrice}" />
 								</p:column>
 								<p:column headerText="Actions">
-									
-								    <div class="d-flex">
-										<p:commandLink value="Modifier" type="button" onclick="PF('UpdateSubscription').show();" style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
-										<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
-										<p:confirmDialog id="confirmationDialogSub" widgetVar="confirmationVarSub" header="Confirmation"
-											message="Êtes-vous sûr de vouloir supprimer cet abonnement?" severity="alert">
-											<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarSub').hide()" />
+
+									<div class="d-flex">
+										<p:commandLink value="Modifier" type="button"
+											onclick="PF('UpdateSubscription').show();"
+											style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}" />
+										<p:commandLink type="button" value="Supprimer"
+											onclick="PF('confirmationVarSub').show();"
+											style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}" />
+										<p:confirmDialog id="confirmationDialogSub"
+											widgetVar="confirmationVarSub" header="Confirmation"
+											message="Êtes-vous sûr de vouloir supprimer cet abonnement?"
+											severity="alert">
+											<p:commandButton value="Annuler" type="button"
+												onclick="PF('confirmationVarSub').hide()" />
 											<p:commandButton value="Oui"
 												oncomplete="PF('confirmationVarSub').hide()"
 												action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
 										</p:confirmDialog>
 
-									</div>						
+									</div>
 								</p:column>
 							</p:dataTable>
 						</h:panelGrid>
@@ -243,48 +275,63 @@
 				</p:tab>
 
 				<p:tab title="Cours">
-						<h:panelGrid columns="1" cellpadding="5">
-							<p:commandButton value="Ajouter un cours" type="button"
-								styleClass="ui-button-raised ui-button custom-white-text"
-								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
-							<h:form>
-							<p:dataTable value="#{courseController.allCourses}" var="course" widgetVar="subsTable">
-						
-							<f:facet name="header">
-				                <div class="flex align-items-center justify-content-between">
-				                    <div>
-				                    <p:inputText id="globalFilter" onkeyup="PF('subsTable').filter()" style="width:10rem"
-				                                 placeholder="Enter keyword" />
-				                    <p:commandButton value="Rechercher générale" update="@form" action="true"
-				                    	styleClass="ui-button-raised ui-button custom-white-text"
-										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
-				                    </div>
-				                </div>
-				            </f:facet>
-				           	
-							<p:column headerText="Dénomination" filterBy="#{course.name}">
-								<h:outputText value="#{course.name}"/>
-							</p:column>
-							<p:column headerText="Début du cours" filterBy="#{course.startDate}">
-								<h:outputText value="#{course.startDate}"/>
-							</p:column>
-							<p:column headerText="Fin de cours" filterBy="#{course.endDate}">
-								<h:outputText value="#{course.endDate}"/>
-							</p:column>
-							<p:column headerText="Description">
-								<h:outputText value="#{course.description}"/>
-							</p:column>
-							<p:column headerText="Actions">
-							    <div class="d-flex">
-									<p:commandLink  type="button" value="Supprimer" action="#{courseController.deleteCourse(course.id)}" 
-									style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"></p:commandLink>
-								</div>	
-												
-	
-							</p:column>
+					<h:panelGrid columns="1" cellpadding="5">
+<!-- 						<p:commandButton value="Ajouter un cours" type="button" -->
+<!-- 							styleClass="ui-button-raised ui-button custom-white-text" -->
+<!-- 							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" /> -->
+						<h:form>
+							<p:dataTable value="#{courseController.allCourses}" var="course"
+								widgetVar="subsTable">
+
+								<f:facet name="header">
+									<div class="flex align-items-center justify-content-between">
+										<div>
+											<p:inputText id="globalFilter"
+												onkeyup="PF('subsTable').filter()" style="width:10rem"
+												placeholder="Enter keyword" />
+											<p:commandButton value="Rechercher générale" update="@form"
+												action="true"
+												styleClass="ui-button-raised ui-button custom-white-text"
+												style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" />
+										</div>
+									</div>
+								</f:facet>
+
+								<p:column headerText="Dénomination" filterBy="#{course.name}">
+									<h:outputText value="#{course.name}" />
+								</p:column>
+								<p:column headerText="Début du cours"
+									filterBy="#{course.startDate}">
+									<h:outputText value="#{course.startDate}" />
+								</p:column>
+								<p:column headerText="Fin de cours" filterBy="#{course.endDate}">
+									<h:outputText value="#{course.endDate}" />
+								</p:column>
+								<p:column headerText="Description">
+									<h:outputText value="#{course.description}" />
+								</p:column>
+								<p:column headerText="Actions">
+									<div class="d-flex">
+										<p:commandLink type="button" value="Supprimer"
+											onclick="PF('confirmationVarSub').show();"
+											style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}" />
+										<p:confirmDialog id="confirmationDialogSub"
+											widgetVar="confirmationVarSub" header="Confirmation"
+											message="Êtes-vous sûr de vouloir supprimer ce cours?"
+											severity="alert">
+											<p:commandButton value="Annuler" type="button"
+												onclick="PF('confirmationVarSub').hide()" />
+											<p:commandButton value="Oui"
+												oncomplete="PF('confirmationVarSub').hide()"
+												action="#{courseController.deleteCourse(course.id)}" />
+										</p:confirmDialog>
+									</div>
+
+
+								</p:column>
 							</p:dataTable>
-							</h:form>	
-						</h:panelGrid>
+						</h:form>
+					</h:panelGrid>
 				</p:tab>
 			</p:tabView>
 			<hr />
@@ -512,50 +559,54 @@
 					</div>
 				</h:form>
 			</p:dialog>
-			
+
 			<p:dialog header="Modification d'abonnement "
-											widgetVar="UpdateSubscription" modal="true" height="600"
-											resizable="false" showEffect="fade" hideEffect="fade"
-											style="max-width: 1000px; min-width: 700px;">
-											<h:form>
-												<div>
-													<div class="form-floating">
-														<h:inputText class="form-control" id="floatingInput01"
-															placeholder="#{subscription.subscriptionName}" required="true" size="20"
-															value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
-														<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
-													</div>
-							
-													<div class="form-floating">
-														<h:inputText class="form-control" id="floatingInput02"
-															placeholder="#{subscription.description}" required="true" size="20"
-															value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
-														<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
-													</div>
-							
-													<div class="form-floating">
-														<h:inputText class="form-control" id="floatingInput03"
-															placeholder="#{subscription.engagement}" required="true" size="20"
-															value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
-														<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
-													</div>
-							
-													<div class="form-floating">
-														<h:inputText class="form-control" id="floatingInput04"
-															placeholder="#{subscription.price.monthlyPrice}" required="true" size="20"
-															value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
-														<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
-													</div>
-							
-													<h:commandButton class="btn btn-warning"
-														value="Modifier abonnement"
-														action="#{subscriptionController.updateSuscription()}" />
-													<h:link class="text-center" outcome="AdherentDashboard"
-														value="ANNULER" />
-												</div>
-											</h:form>
-										</p:dialog>
-				
+				widgetVar="UpdateSubscription" modal="true" height="600"
+				resizable="false" showEffect="fade" hideEffect="fade"
+				style="max-width: 1000px; min-width: 700px;">
+				<h:form>
+					<div>
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="#{subscription.subscriptionName}" required="true"
+								size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="#{subscription.description}" required="true"
+								size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput03"
+								placeholder="#{subscription.engagement}" required="true"
+								size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
+							<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="#{subscription.price.monthlyPrice}" required="true"
+								size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
+							<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
+						</div>
+
+						<h:commandButton class="btn btn-warning"
+							value="Modifier abonnement"
+							action="#{subscriptionController.updateSuscription()}" />
+						<h:link class="text-center" outcome="AdherentDashboard"
+							value="ANNULER" />
+					</div>
+				</h:form>
+			</p:dialog>
+
 		</div>
 	</ui:define>
 </ui:composition>

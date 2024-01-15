@@ -9,7 +9,7 @@
 	lang="fr">
 
 <ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
-	<ui:define name="titleValue">Fit Manager - Adherent dashboard </ui:define>
+	<ui:define name="titleValue">Fit Manager - Coach dashboard </ui:define>
 	<ui:define name="spaceContent">
 
 		<div class="container">
@@ -139,10 +139,15 @@
 								<h:outputText value="#{course.description}"/>
 							</p:column>
 							<p:column headerText="Actions">
-									<p:commandButton value="Supprimer"
-										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
-										action="#{courseController.deleteCourse(course.id)}">
-									</p:commandButton>		
+							
+							<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>	
+										<p:confirmDialog id="confirmationDialogSub" widgetVar="confirmationVarSub" header="Confirmation"
+											message="Êtes-vous sûr de vouloir supprimer ce cours?" severity="alert">
+											<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarSub').hide()" />
+											<p:commandButton value="Oui"
+												oncomplete="PF('confirmationVarSub').hide()"
+												action="#{courseController.deleteCourse(course.id)}" />
+										</p:confirmDialog>									
 							</p:column>
 						</p:dataTable>
 						</h:form>
@@ -185,16 +190,18 @@
 									<f:selectItem itemLabel="Autre" itemValue="Other" />
 								</h:selectOneMenu>
 							</div>
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput04"
-									placeholder="spaceUser.spaceViewModel.user.profile.civility.birthday"
-									size="20"
-									value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
-									<f:convertDateTime pattern="dd MMM , yyyy" />
-								</h:inputText>
-								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
-							</div>
-							<div class="form-floating ">
+							
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+									<div>
+										<p:calendar id="floatingInput04"
+											value="#{userController.userViewModel.user.profile.civility.birthday}"
+											showOn="button" navigator="true" yearRange="c-100:c+10"
+											locale="fr" />
+									</div>
+								</div>
+
+								<div class="form-floating ">
 								<h:inputText class="form-control" id="floatingInput06" size="20"
 									placeholder="#{spaceUser.spaceViewModel.user.account.password}"
 									maxlength="12"
@@ -227,7 +234,7 @@
 							<h:commandButton class="btn btn-warning"
 								value="Enregistrer les modifications"
 								action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
-							<h:link class="text-center" outcome="AdherentDashboard"
+							<h:link class="text-center" outcome="CoachDashboard"
 								value="ANNULER" />
 						</div>
 					</div>

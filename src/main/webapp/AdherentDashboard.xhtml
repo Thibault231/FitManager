@@ -23,49 +23,66 @@
 
 				<div class="row g-0" style="height: 100%">
 					<div class="col-md-4">
-						<p:graphicImage library="documents" name="#{spaceUser.spaceViewModel.user.profile.civility.profilePicture}" class="rounded-bottom float-start" style="max-width: 100%; height: 100%" />
+						<p:graphicImage library="documents"
+							name="#{spaceUser.spaceViewModel.user.profile.civility.profilePicture}"
+							class="rounded-bottom float-start"
+							style="max-width: 100%; height: 100%" />
 					</div>
 					<div class="col-md-8" style="height: 100%">
 						<div class="card-body2" style="padding: 20px">
 							<div class="input-group mb-3 " style="width: 100%">
 
-								<span class="input-group-text p-2" style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Nom</b></span>
-								<span
-									class="input-group-text" style="width: 80%; background-color:white">#{spaceUser.spaceViewModel.user.profile.civility.name}</span>
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Nom</b></span>
+								<span class="input-group-text"
+									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.civility.name}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2" style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Prénom</b></span>
-								<span class="input-group-text" style="width: 80%; background-color:white">#{spaceUser.spaceViewModel.user.profile.civility.forename}</span>
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Prénom</b></span>
+								<span class="input-group-text"
+									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.civility.forename}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2" style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>
-								Date de naissance</b></span>
-									<span class="input-group-text" style="width: 80%; background-color:white">
-										<h:outputText value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
-										        <f:convertDateTime timeZone="#{referenceData.timezone}"
-										            pattern="dd MMM yyyy" />
-										</h:outputText>
-									</span>
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>
+										Date de naissance</b></span> <span class="input-group-text"
+									style="width: 80%; background-color: white"> <h:outputText
+										value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
+										<f:convertDateTime timeZone="#{referenceData.timezone}"
+											pattern="dd MMM yyyy" />
+									</h:outputText>
+								</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2" style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span> <span
-									class="input-group-text" style="width: 80%; background-color:white">#{spaceUser.spaceViewModel.user.profile.contact.email}</span>
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span>
+								<span class="input-group-text"
+									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.contact.email}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2" style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Téléphone</b></span>
-								<span class="input-group-text" style="width: 80%; background-color:white">#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}</span>
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Téléphone</b></span>
+								<span class="input-group-text"
+									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2" style="width: 20%;background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white" ><b>Adresse</b></span>
-								<span class="input-group-text" style="width: 80%; background-color:white">#{spaceUser.spaceViewModel.user.profile.adress.street}</span>
+								<span class="input-group-text p-2"
+									style="width: 20%;background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Adresse</b></span>
+								<span class="input-group-text"
+									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.street}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2" style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Code
-									postal</b></span> <span class="input-group-text" style="width: 80%; background-color:white">#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</span>
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Code
+										postal</b></span> <span class="input-group-text"
+									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2" style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Ville</b></span> <span
-									class="input-group-text" style="width: 80%; background-color:white">#{spaceUser.spaceViewModel.user.profile.adress.city}</span>
+								<span class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Ville</b></span>
+								<span class="input-group-text"
+									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.city}</span>
 							</div>
 							<div>
 								<p:commandButton value="Modifier mon profil" type="button"
@@ -88,51 +105,70 @@
 				<h5>Votre abonnement comprend:</h5>
 				<p>#{subscriptionController.currentMemberSubscription.description}</p>
 			</ui:fragment>
-				
-					<h:link outcome="SubscribeForm?faces-redirect=true" 
-						styleClass="ui-button-raised ui-button custom-white-text" 
-						style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" 
-						value="Souscrire à un abonnement" />
-				
+
+			<h:link outcome="SubscribeForm?faces-redirect=true"
+				styleClass="ui-button-raised ui-button custom-white-text"
+				style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
+				value="Souscrire à un abonnement" />
 			<hr />
 			<p:tabView>
 				<p:tab title="Mes réservations">
 					<h:panelGrid columns="1" cellpadding="5">
-						<ui:fragment rendered="#{subscriptionController.hasSubscription()}">
+						<ui:fragment
+							rendered="#{subscriptionController.hasSubscription()}">
 							<p:link value="Réserver un cours" outcome="BookingCalendar.xhtml"
 								type="button" />
 						</ui:fragment>
 						<h:form>
-						<p:dataTable var="booking" value="#{bookingController.allBookingOfAMember}"  widgetVar="bookingsTable">
-						
-							<f:facet name="header">
-				                <div class="flex align-items-center justify-content-between">
-				                    <div>
-				                    <p:inputText id="globalFilter" onkeyup="PF('bookingsTable').filter()" style="width:10rem" />
-				                    <p:commandButton value="Rechercher générale" update="@form" action="true"
-				                    	styleClass="ui-button-raised ui-button custom-white-text"
-										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
-				                    </div>
-				                </div>
-				            </f:facet>
-				           
-							<p:column headerText="Activité" filterBy="#{booking.linkedCourse.name}">
-								<h:outputText value="#{booking.linkedCourse.name}" />
-							</p:column>
-							<p:column headerText="Date de réservation" filterBy="#{booking.registrationDate.toString()}">
-								<h:outputText value="#{booking.registrationDate.toString()}" />
-							</p:column>
-							<p:column headerText="Date et Horaire du cours" filterBy="#{booking.linkedCourse.startDate.toString()}">
-								<h:outputText
-									value="#{booking.linkedCourse.startDate.toString()}" />
-							</p:column>
-							<p:column headerText="Action">
-									<p:commandButton type="Button" value="Supprimer"
-										style="margin-right:20px; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
-										action="#{bookingController.cancelBooking(booking.bookingId)}">
-									</p:commandButton>
-							</p:column>
-						</p:dataTable>
+							<p:dataTable var="booking"
+								value="#{bookingController.allBookingOfAMember}"
+								widgetVar="bookingsTable">
+
+								<f:facet name="header">
+									<div class="flex align-items-center justify-content-between">
+										<div>
+											<p:inputText id="globalFilter"
+												onkeyup="PF('bookingsTable').filter()" style="width:10rem" />
+											<p:commandButton value="Rechercher générale" update="@form"
+												action="true"
+												styleClass="ui-button-raised ui-button custom-white-text"
+												style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" />
+										</div>
+									</div>
+								</f:facet>
+
+								<p:column headerText="Activité"
+									filterBy="#{booking.linkedCourse.name}">
+									<h:outputText value="#{booking.linkedCourse.name}" />
+								</p:column>
+								<p:column headerText="Date de réservation"
+									filterBy="#{booking.registrationDate.toString()}">
+									<h:outputText value="#{booking.registrationDate.toString()}" />
+								</p:column>
+								<p:column headerText="Date et Horaire du cours"
+									filterBy="#{booking.linkedCourse.startDate.toString()}">
+									<h:outputText
+										value="#{booking.linkedCourse.startDate.toString()}" />
+								</p:column>
+								<p:column headerText="Action">
+									<div class="d-flex">
+										<p:commandButton type="Button" value="Supprimer"
+											onclick="PF('confirmationVarSub').show();"
+											style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" />
+										<p:confirmDialog id="confirmationDialogSub"
+											widgetVar="confirmationVarSub" header="Confirmation"
+											message="Êtes-vous sûr de vouloir supprimer cette reservation?"
+											severity="alert">
+											<p:commandButton value="Annuler" type="button"
+												onclick="PF('confirmationVarSub').hide()" />
+											<p:commandButton value="Oui"
+												oncomplete="PF('confirmationVarSub').hide()"
+												action="#{bookingController.cancelBooking(booking.bookingId)}" />
+										</p:confirmDialog>
+									</div>
+
+								</p:column>
+							</p:dataTable>
 						</h:form>
 					</h:panelGrid>
 				</p:tab>
