@@ -86,9 +86,6 @@ public class UserServices {
 		if (previousUser == null) {
 			// copy datas from the form
 			User userToCreate = new User(true);
-			if (userFromForm.getProfilePicture() != null) {
-				userToCreate.setProfilePicture(userFromForm.getProfilePicture());
-			}
 			userToCreate.setProfilePicture(userFromForm.getProfilePicture());
 			userToCreate.setProfile(userFromForm.getProfile());
 			userToCreate.setAccount(userFromForm.getAccount());
