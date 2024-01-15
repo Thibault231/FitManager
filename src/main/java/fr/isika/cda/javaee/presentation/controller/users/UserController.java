@@ -144,6 +144,7 @@ public class UserController implements Serializable {
 	public String updateUser() {
 		// mettre à jour le user
 		userSvc.updateUserOnPlateform(userViewModel.getUser(), SessionUtils.getUserIdFromSession());
+
 		// mettre à jour la session si le nom est changé
 		if (userViewModel.getUser().getProfile().getCivility().getName() != null) {
 			String newName = userViewModel.getUser().getProfile().getCivility().getName();
