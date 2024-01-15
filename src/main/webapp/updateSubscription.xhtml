@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
+
+	<ui:define name="titleValue">Update Subscription - Fit Manager</ui:define>
+	<ui:define name="spaceContent">
+
+		<main	class="border d-flex bg-primary-subtle text-emphasis-primary justify-content-center align-items-center"	style="height: 100vh; width: 100vw">
+			<div class="w-25">
+				<div class="text-center mb-4">
+					<h3>Mise à jour de l'abonnement</h3>
+				</div>
+				<h:form>
+				<div>
+					<div class="d-grid gap-2">
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="#{subscriptionController.subscriptionViewModel.subscription.description}" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput03"
+								placeholder="#{subscriptionController.subscriptionViewModel.subscription.engagement}" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
+							<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" required="true" size="20"
+								value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
+							<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
+						</div>
+
+						<h:commandButton class="btn btn-warning"
+						style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
+							value="Créer un abonnement"
+							action="#{subscriptionController.updateSuscription()}" />
+
+						<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
+					</div>
+				</div>
+			</h:form>
+			</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>
+

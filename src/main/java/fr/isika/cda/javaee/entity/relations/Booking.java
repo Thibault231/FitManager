@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.entity.relations;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -13,6 +12,12 @@ import javax.persistence.TemporalType;
 import fr.isika.cda.javaee.entity.plateform.Course;
 import fr.isika.cda.javaee.entity.users.User;
 
+/**
+ * Booking of a lessons space by a member of the fitness.
+ * 
+ * @author Charef
+ *
+ */
 @Entity
 public class Booking {
 
@@ -22,16 +27,16 @@ public class Booking {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date registrationDate;
-  
+
 	private Long spaceId;
-  
+
 	@OneToOne
 	private User member;
 
 	@OneToOne
 	private Course linkedCourse;
 
-//***********************************************	
+//*******************************************************************	
 	/**
 	 * Empty constructor for JEE.
 	 */
@@ -46,10 +51,9 @@ public class Booking {
 	public Booking(boolean isForViewModel) {
 		this.linkedCourse = new Course();
 		this.member = new User();
-
 	}
 
-//***********************************************	
+//*******************************************************************	
 	public Long getBookingId() {
 		return bookingId;
 	}
@@ -73,7 +77,6 @@ public class Booking {
 	public void setBirthday(Date birthday) {
 		this.registrationDate = birthday;
 	}
-
 
 	public Date getRegistrationDate() {
 		return registrationDate;

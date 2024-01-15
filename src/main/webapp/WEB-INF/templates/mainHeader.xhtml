@@ -12,42 +12,59 @@
 	    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	
 	<h:outputStylesheet library="css" name="main/mainHeader.css" />
 </h:head>
 
-<h:body>
-	<div class="header">
-		<div class="logoContainer">
-			<p:graphicImage library="images" name="Basic-Fit_logo.png" width="50px" height="50px"/>
+<h:body style="margin: 70px 0 10px 0;">
+
+
+  <nav class="navbar navbar-expand-lg fixed-top " style="background-color:#1C3659; height:7em">
+  <div class="container-fluid">
+    <div class="logoContainer d-flex lg-flex-column align-items-center">
+			<p:graphicImage library="images" name="plateform/logoCT.png" width="50px" height="50px"
+				class="img_index" />
+				<p class="index_slogan">Design Your Fitness</p>
 		</div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link"><h:link class="nav-link" > </h:link></a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link"><h:link class="nav-link"> </h:link></a>
+        </li>
+      </ul>
+     <span class="navbar-text d-flex w-5 flex-wrap">
+  
+             <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page"><h:link class="nav-link text-light" outcome="index.xhtml">ACCUEIL</h:link></a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link"><h:link class="nav-link text-light" outcome="SpacesList.xhtml">NOS SALLES</h:link></a>
+        </li>
+        
+      	<ui:fragment rendered="#{not spaceController.isUserConnected()}">
+			<li><a class="nav-link text-light" ><h:link class="nav-link text-light" outcome="RegisterManagerForm.xhtml">CREER UN COMPTE</h:link></a></li>
+            <li><a class="nav-link"><h:link class="nav-link text-light" outcome="LoginForm.xhtml">SE CONNECTER</h:link></a></li>
+		</ui:fragment>
 		
-		<!-- On commence par la barre de menu -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">FitManager</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-		            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		            <span class="navbar-toggler-icon"></span>
-			</button>
-			 <div class="collapse navbar-collapse" id="navbarNav">
-		        <ul class="navbar-nav ml-auto">
-		            <!-- Il faudra remplacer les liens par les URL réelles de l'app  -->
-		            <li class="nav-item">
-		                <a class="nav-link" href="#">Mon Compte</a>
-		            </li>
-		            <li class="nav-item">
-		                <a class="nav-link" href="#">Logout</a>
-		            </li>
-		            <li class="nav-item">
-		                <a class="nav-link" href="#">Login</a>
-		            </li>
-		            <li class="nav-item">
-		                <a class="nav-link" href="#">Créer mon Compte</a>
-		            </li>
-		        </ul>
-		    </div>
-		</nav>
-		
-	</div>
+		<ui:fragment rendered="#{spaceController.isUserConnected()}">
+			<li><a class="nav-link" href="#"><h:link class="nav-link text-light" outcome="ManagerDashBoard.xhtml">MON COMPTE</h:link></a></li>
+			<h:form>
+            <li><a class="nav-link"><h:commandLink class="nav-link text-light" action="#{userController.logout()}">SE DECONNECTER</h:commandLink></a></li>
+            </h:form>
+		</ui:fragment>
+				
+				
+      </ul>
+      </span>
+    </div>
+  </div>
+</nav>
+	
 </h:body>
 </html>

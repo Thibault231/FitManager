@@ -7,6 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * All personal datas of a user, including Civility, Address and Contact.
+ * 
+ * @author Alex Thibault
+ *
+ */
 @Entity
 public class Profile {
 	@Id
@@ -15,12 +21,14 @@ public class Profile {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Civility civility;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address adress;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Contact contact;
 
-	// Getter and setter
+//*******************************************************************	
 	public Long getProfileId() {
 		return profileId;
 	}

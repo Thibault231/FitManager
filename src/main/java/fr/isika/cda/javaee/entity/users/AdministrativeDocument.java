@@ -1,6 +1,5 @@
 package fr.isika.cda.javaee.entity.users;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,6 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Administrative file of a coach.
+ * 
+ * @author Alex
+ *
+ */
 @Entity
 public class AdministrativeDocument {
 	@Id
@@ -19,8 +24,7 @@ public class AdministrativeDocument {
 
 	private String filePath;
 
-	// Getters and setters
-
+//*******************************************************************	
 	public Type getType() {
 		return type;
 	}
@@ -43,14 +47,6 @@ public class AdministrativeDocument {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
-	}
-
-	@Override
-	public String toString() {
-		return "AdministrativeDocument [AdministrativeDocumentId=" + AdministrativeDocumentId + ", link="
-				+ ", getAdministrativeDocumentId()=" + getAdministrativeDocumentId() + ", getLink()="
-				+  ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 }

@@ -1,34 +1,54 @@
 package fr.isika.cda.javaee.entity.subscription;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * Subscription offer of a fitness space.
+ * 
+ * @author Alex
+ *
+ */
 @Entity
 public class Subscription {
 
 	@Id
 	@GeneratedValue
 	private Long subscriptionId;
+
 	private Long memberId;
+
 	private String subscriptionName;
+
 	private String description;
+
 	private String engagement;
+
 	private String promotion;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Price price;
 
-//******************************************************
+//*******************************************************************	
+	/**
+	 * Empty constructor for JEE.
+	 */
 	public Subscription() {
 	}
 
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param isforViewModel (: boolean)
+	 */
 	public Subscription(Boolean isforViewModel) {
 		this.price = new Price();
 	}
 
-//******************************************************
+// *******************************************************************
 	public Long getSubscriptionId() {
 		return subscriptionId;
 	}

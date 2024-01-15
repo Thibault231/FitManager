@@ -1,181 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" lang="fr">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 
 	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
 	<ui:define name="content">
-
-		<!-- NavBAr -->
-	<nav class="navbar navbar-expand-lg navbar-dark static-top"
-		style="background-color: #1C3659;">
-		<div class="container-fluid">
-			<p class="index_slogan">Design Your Fitness</p>
-			
-			<h:form>
-			<div class="container-fluid">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="index.xhtml">ACCUEIL</h:link>
-					</li>
-					<li class="nav-item">
-						<h:link class="nav-link"
-							outcome="ManagerDashBoard.xhtml">MON ESPACE</h:link></li>
-					<li class="nav-item">
-						<h:link class="nav-link"
-							outcome="LoginForm.xhtml">SE CONNECTER</h:link>
-					</li>
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="RegisterManagerForm.xhtml">CREER COMPTE</h:link>
-					</li>
-					<li class="nav-item">
-						<h:link class="nav-link" outcome="SpacesList.xhtml">SALLES</h:link>
-					</li>
-					<li class="nav-item">
-						<h:commandLink class="nav-link" action="#{userController.logout()}">DECONNEXION</h:commandLink>
-					</li>
-				</ul>
-			</div>
-			</h:form>
-		</div>
-	</nav>
-	<div class="plateform_logo">
-		<h:graphicImage library="images" name="/plateform/logoCT.png" class="img_index"/>
-		<h1>FIT MANAGER</h1>
-	</div>
-	
-		<div class="p-5">
-
+		<div class="container">
 			<!-- section NOTRE PHILOSOPHIE-->
 			<div class="row pt-5 contain-80">
-				<div class="col-lg-6 col-sm-12 mt-auto mb-auto sectionperso">
-					<h2>NOTRE PHILOSOPHIE</h2>
-					<div class="scrollElement">
-						<p>Bienvenue chez Fitmanager, l'entreprise qui donne vie à
-							votre entreprise dédiée à votre passion pour le sport et le
-							bien-être global. Depuis notre création, nous nous sommes engagés
-							à inspirer et à guider nos clients vers un mode de vie sain et
-							actif. En tant que leader dans le domaine de la création d'espace
-							web fitness, nous offrons des solutions novatrices pour vous
-							aider à atteindre vos objectifs de remise en forme et à vivre
-							pleinement chaque instant.</p>
-
-						<p>Chez Fitmanager, notre équipe dévouée travaille sans
-							relâche pour créer des expériences uniques et motivantes. Nous
-							proposons une gamme complète de services, de planification
-							d'entraînement personnalisée, de gestion de cours exclusifs
-							dispensés par des experts renommés. Notre plateforme
-							technologique avancée vous permet de suivre les progrès de votre
-							salle de sport, de rester connecté avec une communauté passionnée
-							et de bénéficier d'un soutien continu pour maximiser votre
-							succès.</p>
-
-						<p>La qualité est au cœur de tout ce que nous faisons. Nos
-							serveurs modernes et nos équipements de pointe garantissent une
-							expérience de gestion exceptionnelle. Fitmanager se distingue
-							également par son engagement envers la durabilité, avec des
-							initiatives écoresponsables visant à préserver notre planète tout
-							en favorisant un mode de vie sain.</p>
-							
-						<div class="d-flex justify-content-around w-100 mt-5">
-							<a href="" class="btn btn-outline-primary btn-lg">Demo</a>
-						</div>
-					</div>
-
-				</div>
+			
 				<div class="col-lg-5 col-sm-12 ">
 					<div class="dualimgcontainer">
 						<img
 							src="https://i.pinimg.com/564x/d2/04/13/d204131a139b6b4149df2545d4269d08.jpg"
-							alt="" /> <img
+							alt="" /> 
+							<img
 							src="https://i.pinimg.com/564x/8d/09/6d/8d096d87d6de058cdd59334d9fc1ab3e.jpg"
-							class="imgdecaler" alt="" />
+							class="imgdecaler2" alt="" />
 					</div>
 				</div>
+			
+			
+				<div class="col-lg-6 col-sm-12 mt-auto mb-auto sectionperso">
+					<h2 class="titre2">NOTRE <span class="subtitle"> l'entreprise qui donne vie à votre entreprise </span> PHILOSOPHIE</h2>
+					<div style="height: 25em;">
+						<div class="scrollElement">
+							<p>Bienvenue chez Fitmanager, l'entreprise qui donne vie à
+								votre entreprise dédiée à votre passion pour le sport et le
+								bien-être global. Depuis notre création, nous nous sommes
+								engagés à inspirer et à guider nos clients vers un mode de vie
+								sain et actif. En tant que leader dans le domaine de la création
+								d'espace web fitness, nous offrons des solutions novatrices pour
+								vous aider à atteindre vos objectifs de remise en forme et à
+								vivre pleinement chaque instant.</p>
+
+							<p>Chez Fitmanager, notre équipe dévouée travaille sans
+								relâche pour créer des expériences uniques et motivantes. Nous
+								proposons une gamme complète de services, de planification
+								d'entraînement personnalisée, de gestion de cours exclusifs
+								dispensés par des experts renommés. Notre plateforme
+								technologique avancée vous permet de suivre les progrès de votre
+								salle de sport, de rester connecté avec une communauté
+								passionnée et de bénéficier d'un soutien continu pour maximiser
+								votre succès.</p>
+
+							<p>La qualité est au cœur de tout ce que nous faisons. Nos
+								serveurs modernes et nos équipements de pointe garantissent une
+								expérience de gestion exceptionnelle. Fitmanager se distingue
+								également par son engagement envers la durabilité, avec des
+								initiatives écoresponsables visant à préserver notre planète
+								tout en favorisant un mode de vie sain.</p>
+
+						</div>
+						<div class="bando d-flex w-100 justify-content-end mt-3 ">
+							<h:link class="btn btn-primary btn-lg" outcome="RegisterManagerForm.xhtml">CREER UN COMPTE</h:link>
+						</div>
+
+					</div>
+
+				</div>
+				
 			</div>
 			<!--end section NOTRE PHILOSOPHIE-->
 
 			<!-- section Commentaires Adhérents-->
-			<div class="row mb-5 contain-50">
-				<h2>Nos abonnements</h2>
-				<div class="d-flex w-100 justify-content-between flex-wrap">
-					<div class="mb-2 mt-2 bg-success"
-						style="width: 22%; height: 18em; border: solid 2px">
+			<div class="row mb-5  pt-5">
+			
+			<div class="col-lg-8 col-sm-12 " >	
+			
+				<div class="d-flex justify-content-between flex-wrap  align-items-center">
+				
+					<div class="row">
+					<div class="col-12"><h2 class="titre2">Nos abonnements</h2>	</div>
+					
+					<div class="mb-2 mt-2 col-sm-12 col-lg-3 cardAbonnement">
 						<h3>BASIC</h3>
-						<ul>
-							<li>Bénéficier d'un espace web personnalisable, dédié à
-								votre salle.</li>
-							<li>Accés à un planning hebdomadaire pour vos clients.</li>
-							<li>Un compte gestionnaire pour créer et gérer les activités
-								de votre salle de sport.</li>
-						</ul>
+						
+							<p>Bénéficier d'un espace web personnalisable, dédié à
+								votre salle.</p>
+							<p>Accés à un planning hebdomadaire pour vos clients.</p>
+							<p>Un compte gestionnaire pour créer et gérer les activités
+								de votre salle de sport.</p>
+								
+								<h:link class="btn btn-primary mt-auto" outcome="RegisterManagerForm.xhtml">S'ABONNER</h:link>
+						
 					</div>
-					<div class="mb-2 mt-2 bg-success"
-						style="width: 22%; height: 18em; border: solid 2px">
+					<div class="mb-2 mt-2 col-sm-12 col-lg-3 cardAbonnement">
 						<h3>PREMIUM</h3>
-						<ul>
-							<li>Tous les avantages de l'offre BASIC</li>
-							<li>Possibilité de créer des comptes pour vos coachs.</li>
-							<li>Création et gestion des cours par les coachs.</li>
-							<li>Accés à un planning annuel.</li>
-						</ul>
+					
+							<p>Tous les avantages de l'offre BASIC</p>
+							<p>Possibilité de créer des comptes pour vos coachs.</p>
+							<p>Création et gestion des cours par les coachs.</p>
+							<p>Accés à un planning annuel.</p>
+							
+							<h:link class="btn btn-primary mt-auto" outcome="RegisterManagerForm.xhtml">S'ABONNER</h:link>
+						
 					</div>
-					<div class="mb-2 mt-2 bg-success"
-						style="width: 22%; height: 18em; border: solid 2px">
+					<div class="mb-2 mt-2 col-sm-12 col-lg-3 cardAbonnement">
 						<h3>CLIMAX</h3>
-						<ul>
-							<li>Tous les avantages de l'offre PREMIUM</li>
-							<li>Vos clients peuvent créer leur propre compte.</li>
-							<li>Réservation de cours.</li>
-							<li>Dashboard gestionnaire avec suivi des comptes et des
-								cours.</li>
-						</ul>
+				
+							<p>Tous les avantages de l'offre PREMIUM</p>
+							<p>Vos clients peuvent créer leur propre compte.</p>
+							<p>Réservation de cours.</p>
+							<p>Dashboard gestionnaire avec suivi des comptes et des cours.</p>
+							
+							<h:link class="btn btn-primary mt-auto" outcome="RegisterManagerForm.xhtml">S'ABONNER</h:link>
+						
 					</div>
-
+					
+					</div>
+					
 				</div>
-
+				
+					<div class="clippy">
+			
+				<div style="position: absolute"></div>
+			
+			</div>
+			</div>
+			
+				 	<div class="col-lg-4 col-sm-12 " >
+					
+					<h:graphicImage library="images" name="/plateform/pngegg-3.png" style="width: 25vw; margin-top: 3em;"/>
+					
+				
+				</div>
 			</div>
 			<!--end section Commentaires Adhérents-->
-
+</div>
 			<!-- section Nos salles partenaires-->
-			<div class="row mb-5 contain-50">
-				<h2>Nos salles partenaires</h2>
-				<div class="d-flex w-100 justify-content-between flex-wrap">
-
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/kingFitLogo.jpg" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/muscleYouLogo.jpg" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/XperienceZumbaLogo.jpg" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/calypsoLogo.jpg" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/basicFitLogo.png" class="img_index_content" />
-					</div>
-					<div class="mb-2 mt-2 "
-						style="width: 22%; height: 13em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/spartanLogo.jpg" class="img_index_content" />
-					</div>
-				</div>
+			<div class="row mb-5 contain-50 p-4 bg-orangeTheme">
+			
+			<div class="col-5">
+			<h2 class="titre2 titre3">Nos partenaires</h2>
+					
+				
+		</div>
+		<div class="col">
+		<h:form>
+				<div class="row">
+				<ui:repeat var="space" value="#{spaceController.allActiveSpaces}">
+						<div class=" col-2 ">
+							<p:commandLink action="#{spaceController.goToSpaceIndex()}">
+							<f:param name="spaceId" value="#{space.spaceId}" />
+							<p:graphicImage library="documents" name="#{space.infos.configuration.logo}" class="img_index"/>
+							</p:commandLink>						
+						</div>		
+				</ui:repeat>
+			</div>
+		</h:form>
+			 
+			</div>
 			</div>
 			<!--end section Nos salles partenaires-->
-
+<div class="container">
 			<!-- section Abonnez-vous !!-->
 			<div class="row mb-5">
-				<div class="col-sm-12 col-md-6 ">
-					<h2>Abonnez-vous !!</h2>
+			<div class="col-sm-12 col-md-12  mt-auto mb-auto">
+					<div class="mt-2"
+						style="width: 100%; height: 100%; text-align: center; margin-bottom: -16em;">
+						<h:graphicImage library="images" name="/plateform/joinUs.jpg" class="" style="width: 38vw;"/>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-6 mb-5 p-5 bg-bleuLight">
+					<h2 class="">Abonnez-vous !!</h2>
 					<p>Rejoignez la famille Fitmanager et découvrez une approche
 						holistique du bien-être qui transcende les frontières du simple
 						site web. Ensemble, nous façonnons un avenir où chacun de vos
@@ -184,24 +176,17 @@
 						votre aventure vers la meilleure version de vous-même commence
 						aujourd'hui avec Fitmanager.</p>
 					<div class="d-flex justify-content-around w-100 mt-5">
-						<a href="" class="btn btn-outline-primary btn-lg">S'ABONNER</a>
+						
+						<h:link class="btn btn-outline-light btn-lg mt-auto" outcome="RegisterManagerForm.xhtml">S'ABONNER</h:link>
 					</div>
 				</div>
-				<div class="col-sm-12 col-md-6  mt-auto mb-auto">
-					<div class="mb-2 mt-2"
-						style="width: 100%; height: 18em; text-align: center">
-						<h:graphicImage library="images" name="/plateform/joinUs.jpg" class="img_index_content"/>
-					</div>
-				</div>
+
+				
+
 			</div>
 
 			<!--end section Abonnez-vous !!-->
-
 		</div>
-
-
-
-
 	</ui:define>
-
 </ui:composition>
+</html>

@@ -6,48 +6,60 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" lang="fr">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
 
-
-	
 	<ui:define name="titleValue">Login - Fit Manager</ui:define>
-		<!-- Corp de la page -->
-	<ui:define name="content">
-	<div class="w-25">
-				<div class="text-center mb-4">
-					<h2>Le nom de l'espace à intégrer</h2>
-					<a>Design ce que tu peux</a>
+	<!-- Corp de la page -->
+	<ui:define name="spaceContent">
+	<main
+			class="border d-flex  text-emphasis-primary justify-content-center align-items-center"
+			style="height: 100vh; width: 100vw">
+		<div class="w-25">
+		<div class= "mb-5 shadow-4 mb-2 mt-2 login-card"
+						style="margin-top: 200px; border-radius: 10px; padding: 1em;
+						height:450px; width: 480px; justify-content: center;
+						box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white;">
+				
+			<div class="text-center mb-4" style="margin-top: 60px">
 
-				</div>
-				<h:form>
-					<div>
-						<div class="d-grid gap-2">
+						<h3>BIENVENUE CHEZ</h3>
+						<h3>#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</h3>
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput01"
-									placeholder="Utilisateur" size="20"
-									value="#{spaceController.spaceViewModel.user.account.login}" />
-								<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
-							</div>
-
-							<div class="form-floating ">
-								<h:inputSecret class="form-control" id="floatingInput02"
-									placeholder="Mot de passe" size="5"
-									value="#{spaceController.spaceViewModel.user.account.password}" />
-								<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
-							</div>
-
-							<h:commandButton class="btn btn-warning" value="Me connecter"
-								action="#{spaceController.authenticateOnSpace()}" />
-
-							<h:link class="text-center" outcome="index.xhtml">MOT DE PASSE OUBLIER?</h:link>
-						</div>
 					</div>
-				</h:form>
-				<li class="nav-item">
-				  <h:link class="nav-link" outcome="TemplateFitness.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
-				</li>
-			</div>
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="Utilisateur" size="20" required="true"
+								requiredMessage="La saisie du LOGIN est obligatoire !"
+								value="#{spaceUser.spaceViewModel.user.account.login}" />
+							<h:message  for="floatingInput01" styleClass="errorBlock" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
+							<h:message for="floatingInput01" styleClass="errorBlock" />
+						</div>
+
+						<div class="form-floating ">
+							<h:inputSecret class="form-control" id="floatingInput02"
+								placeholder="Mot de passe" size="5" required="true"
+								requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
+								value="#{spaceUser.spaceViewModel.user.account.password}" />
+							<h:message  for="floatingInput02" styleClass="errorBlock" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
+							<h:message for="floatingInput02" styleClass="errorBlock" />
+						</div>
+
+						<h:commandButton class="btn btn-warning" value="Me connecter" style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
+							action="#{spaceUser.authenticateOnSpace()}" />
+
+						<h:link class="text-center" outcome="index.xhtml">Mot de passe oublié ?</h:link>
+					</div>
+				</div>
+			</h:form>
+		</div>
+		</div>
+		</main>
 	</ui:define>
 
 </ui:composition>

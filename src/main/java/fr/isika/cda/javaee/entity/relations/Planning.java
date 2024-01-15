@@ -8,6 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import fr.isika.cda.javaee.entity.plateform.Activity;
+
+/**
+ * Object keeping all lessons of the fitness space.
+ * 
+ * @author Charef
+ *
+ */
 @Entity
 public class Planning {
 
@@ -16,8 +24,25 @@ public class Planning {
 	private Long planningId;
 
 	@OneToMany
-	private List<ActivityTest> activitiesList = new ArrayList<ActivityTest>();
+	private List<Activity> activitiesList = new ArrayList<Activity>();
 
+//*******************************************************************
+	/**
+	 * Empty constructor for JEE.
+	 */
+	public Planning() {
+	}
+
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param isActive (: boolean)
+	 */
+	public Planning(boolean isForViewModel) {
+		this.activitiesList = new ArrayList<Activity>();
+	}
+
+//*******************************************************************
 	public Long getPlanningId() {
 		return planningId;
 	}
@@ -26,11 +51,11 @@ public class Planning {
 		this.planningId = planningId;
 	}
 
-	public List<ActivityTest> getActivitiesList() {
+	public List<Activity> getActivitiesList() {
 		return activitiesList;
 	}
 
-	public void setActivitiesList(List<ActivityTest> activitiesList) {
+	public void setActivitiesList(List<Activity> activitiesList) {
 		this.activitiesList = activitiesList;
 	}
 

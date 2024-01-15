@@ -4,6 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Administrativez data of a Space
+ * 
+ * @author Nene
+ *
+ */
 @Entity
 public class Administrative {
 
@@ -13,8 +19,9 @@ public class Administrative {
 
 	private String siret;
 
-	private String siren;
+	private String address;
 
+//**************************************************************
 	public Long getId() {
 		return id;
 	}
@@ -23,12 +30,12 @@ public class Administrative {
 		this.id = id;
 	}
 
-	public String getSiren() {
-		return siren;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setSiren(String siren) {
-		this.siren = siren;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getSiret() {

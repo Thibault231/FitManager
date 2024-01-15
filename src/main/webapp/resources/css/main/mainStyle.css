@@ -16,7 +16,10 @@
 	font-weight: 800;
 }
 
-
+.bando{
+	background: rgb(255,255,255);
+	background: linear-gradient(0deg, rgba(255,255,255,1) 5%, rgba(122,252,23,0) 56%);
+}
 
 
 .menus {
@@ -51,15 +54,26 @@
     justify-content: space-around;
 }
 
+
 .dualimgcontainer> img{
+	padding: 14em auto;
+    float: inline-start;
+    object-fit: cover;
     height: 20em;
     width: 43%;
 }
+
 
 .imgdecaler{
     right: -32%;
     top: -52%;
 }
+
+.imgdecaler2{
+       margin: 3em 2em 0 -18em;
+}
+
+
 
 .navBar{
     height: 4em;
@@ -80,7 +94,7 @@
 	
 	
 .scrollElement{
-    height: 25em;
+    height: 16em;
     overflow-y: scroll;
 }
 * {
@@ -116,9 +130,9 @@
 
 .imgAccueil{
 	 
-            height: 80vh;
-            width: 100vw;
-            object-fit: cover;
+    height: 80vh;
+    width: 100vw;
+    object-fit: cover;
 }
 
 .card {
@@ -175,6 +189,20 @@
            padding-right: 2em;
            transform: rotate(270deg);
         }
+        
+        .subtitle{
+
+        float: left;
+    /* display: contents; */
+    position: absolute;
+    /* margin: 1em; */
+    top: 65vw;
+    background-color: black;
+    padding: 3px 15px;
+    left: 8vw;
+    font-size: 1vw;
+
+}
 
 
 
@@ -188,28 +216,55 @@
          margin-top:inherit;
     }
 
-  /*  .dualimgcontainer> img{
-        position: relative;
-        height: 21em;
-        width: 34%;
-    }*/
+ 
+	.imgdecaler2{
+   		margin: -16em 9em;
+	}
     
     .desable{
-	transition: all 1s ease-out;
-    flex: 0 0 auto;
-    width: 10%;
-}
+		transition: all 1s ease-out;
+		flex: 0 0 auto;
+    	width: 10%;
+	}
 
     .contain{
         height: 80vh;
     }
+    
+    .subtitle{
+
+        float: left;
+    /* display: contents; */
+    	position: absolute;
+    /* margin: 1em; */
+    	top: 11.5vw;
+    	background-color: black;
+   	 	padding: 3px 15px;
+    	left: 46vw;
+    	font-size: 1vw;
+	}
 
 }
 
 /* **********************************************  A replacer**************** Désolé Loic, je ne savais pas où les mettre */
-.img_index{
-	max-width: 50%;
-	max-height: 50%;
+.img_index {
+       border-radius: 57px;
+    width: 49px;
+    height: 106px;
+    max-width: 50%;
+    max-height: 50%;
+    margin: 0 1.5em 0 1.5em;
+    transition: all 0.3s ease; 
+    }
+    
+
+.img_index:hover {
+	position:absolute;
+	
+    width: 100px;
+    height: 100px;
+    max-width: 50%;
+    max-height: 50%;
 }
 
 .img_index_content{
@@ -227,8 +282,9 @@
 
 .index_slogan{
 	font-size : 1.25rem;
-	margin-left: 2%;
-	margin-right: 5%;
+	margin:auto 2%;
+	
+	
 	color: var(--orange);
 	text-align: center;
 }
@@ -237,3 +293,153 @@
 	display: inline-block;
 }
 
+.cardAbonnement{
+	background-color:#ffffffd9;
+	margin:2em auto;
+	margin-top: 2em;
+    display: flex;
+    width: 22%;
+    /* height: 18em; */
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5em;
+    
+    backdrop-filter: blur(2px);
+    
+    box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
+	-webkit-box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
+	-moz-box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
+		
+}
+
+
+
+.cardAbonnement:hover {
+	background-color:var(--orange);
+    backdrop-filter: blur(0px);
+    color: white;
+   		
+}
+
+
+
+
+.cardAbonnement>h3{
+    margin-bottom: 1em;
+    color: var(--bleuFonce);
+		
+}
+
+.titre2{
+	color: var(--orange);
+    font-size: 5vw;
+    text-transform: uppercase;
+
+    
+}
+
+.titre3{
+	color: var(--bleuFonce);
+ 
+    text-transform: uppercase;
+
+    
+}
+
+.bg-orangeTheme{
+	
+	background-color:var(--orange);
+	
+}
+
+.bg-bleuTheme{
+	
+	background-color:var(--bleuFonce);
+	
+}
+
+
+
+.clippy{
+
+    height: 6em;
+    bottom: 32%;
+    width: 101vw;
+    right: 37%;
+    background-color: var(--bleuFonce);
+    position: relative;
+    z-index: -1;
+    clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+    backdrop-filter: blur(2px);
+
+}
+
+.clippy div{
+	
+	height: -1em;
+    bottom: 32%;
+    width: 101vw;
+    right: 37%;
+    position: relative;
+    z-index: -1;
+    clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+    backdrop-filter: blur(2px);
+	
+	
+}
+
+
+
+.plateform_Button {
+	box-shadow:inset 0px 1px 0px 0px #bee2f9;
+	background:linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
+	background-color:#63b8ee;
+	border-radius:6px;
+	border:1px solid #3866a3;
+	display:inline-block;
+	cursor:pointer;
+	color:#14396a;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:14px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #7cacde;
+}
+.plateform_Button:hover {
+	background:linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
+	background-color:#468ccf;
+}
+.plateform_Button:active {
+	position:relative;
+	top:1px;
+}
+
+.manager-form-cadre{
+	-webkit-box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52); 
+	box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52);
+	width: 1000px;
+	
+}
+
+.bg-bleuLight{
+	background-color:#1c3659d4;
+	backdrop-filter: blur(4px);
+	color:white
+}
+
+
+.redirect_box{
+	-webkit-box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52); 
+	box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52);
+	text-align: center;
+	height: 200px;
+	width: 20%;
+	-webkit-border-radius: 16px 16px 16px 16px;
+	-moz-border-radius: 16px 16px 16px 16px;
+	border-radius: 16px 16px 16px 16px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 40%;
+	padding:1%
+}

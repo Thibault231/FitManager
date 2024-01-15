@@ -4,16 +4,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Adress of any entity of the fitness space.
+ * 
+ * @author Alex
+ *
+ */
 @Entity
 public class Address {
 	@Id
 	@GeneratedValue
 	private Long adressId;
+
 	private String street;
+
 	private int zipCode;
+
 	private String city;
 
-//****************************************
+//*******************************************************************	
 	public String getStreet() {
 		return street;
 	}

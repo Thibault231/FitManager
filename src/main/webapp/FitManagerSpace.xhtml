@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" lang="fr">
+
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+	<ui:define name="titleValue">Fit MAnager : Redirect To Space</ui:define>
+	<!-- Corp de la page -->
+	<ui:define name="content">
+   <div class="border d-flex  text-emphasis-primary justify-content-center align-items-center"
+				style="height: 100vh; width: 100vw">
+				<div class="w-25" style="justify-content: center">
+   <div class= "mb-5 shadow-4 mb-2 mt-2 login-card"
+						style="margin-top: 200px; border-radius: 10px; padding: 1em;
+						height:450px; width: 480px; justify-content: center;
+						box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white;">
+    <f:metadata>
+      <f:viewParam name="no" value="#{goToSpaceView.no}" />
+    </f:metadata>
+  <div class="d-flex mb-3" style="justify-content: center; text-align: center" >
+    	<h1>Bienvenue sur votre espace #{spaceController.getSpaceById(goToSpaceView.no).infos.configuration.fitnessName}</h1>
+	</div>
+	<div class="d-flex mb-5" style="justify-content: center" >
+			<p:graphicImage library="documents" name="#{spaceController.getSpaceById(goToSpaceView.no).infos.configuration.logo}" 	class="rounded float-start" />
+	</div>
+	<div class="d-flex mb-5" style="justify-content: center" >
+		   <h:form>
+				<h:commandButton class="plateform_Button" value="ENTRER"
+					action="#{spaceController.goToSpaceIndex()}">
+					<f:param name="spaceId" value="#{goToSpaceView.no}" />
+				</h:commandButton>
+			</h:form>
+			</div>	
+		
+   </div>
+   </div>
+   </div>
+  </ui:define>
+</ui:composition>
+</html>

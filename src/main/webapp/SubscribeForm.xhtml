@@ -1,37 +1,52 @@
-<ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" 
+	lang="fr">
 
-
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
+	<ui:define name="titleValue">Fit Manager - souscription </ui:define>
+	<ui:define name="spaceContent">
 	
-	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
-		<!-- Corp de la page -->
-	<ui:define name="wrapper">
-	
 
-		<ui:repeat value="#{subscriptionController.allActiveSubscription}"
-			var="subscription">
-			<div
-				class="col-sm-4 position-relative card text-bg-white mb-4 reset-margin mx-0 detail"
-				style="background-color: yellow;">
-				<div class="card-header">
-					<h1>#{subscription.subscriptionName}</h1>
-				</div>
-				<div class="card-body">
-					<p>#{subscription.description}</p>
-					<p>#{subscription.engagement}</p>
-				</div>
-				<div class="card-footer">
-					<p>#{subscription.price.monthlyPrice}</p>
-				</div>
-				<h:form>
-					<h:commandButton action="#{subscriptionController.subscribe(subscription.subscriptionId)}" class="btn btn-warning" value="Choisir cet abonnement #{subscription.subscriptionId}"/>
-						
+		<div class="mb-5 shadow-4 mb-2 mt-4 card-AbonnementSpace"
+						style="border-radius: 20px; padding: 1em; margin-top: 20px; margin-top: 20px; box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127); background-color:white;">
+						<p></p>
+						<div class="text-900 font-bold text-5xl  text-center">
+							<H3>Nos abonnements exclusifs pour libérer votre potentiel !</H3>
+						</div>
+						<div class="d-flex mt-4 mb-4 h-full"	style="gap: 50px; justify-content: center;">
+							<ui:repeat	value="#{subscriptionController.allActiveSubscription}"	var="subscription">
+								<div class="shadow-2 h-full flex flex-column surface-card"	style="margin-top:0px; border-radius: 10px; padding: 1em; box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127); background-color:white;">
+									
+									<div class="card-header" style="padding-top: 20px; margin-top:15px; border-radius: 10px; color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; ">
+										
+										<h2>
+											<b>#{subscription.subscriptionName}</b>
+										</h2>
+										<h3>#{subscription.price.monthlyPrice}&#x20AC; par mois</h3>
+									</div>
+
+									<div class="card-body d-flex align-items-center">
+										<p>#{subscription.description}</p>
+									</div>
+									<div class="card-footer">
+										<h:form>
+					<h:commandButton action="#{subscriptionController.subscribe(subscription.subscriptionId)}" class="btn btn-warning" value="Choisir cet abonnement"
+					style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
 				</h:form>
-			</div>
-		</ui:repeat>
-	</ui:define>
+									</div>
+								</div>
+							</ui:repeat>
+						</div>
 
+					</div>
+					<p></p>
+					<p></p>
+	</ui:define>
 </ui:composition>
+</html>

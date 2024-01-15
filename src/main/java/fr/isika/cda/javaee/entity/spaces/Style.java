@@ -3,8 +3,15 @@ package fr.isika.cda.javaee.entity.spaces;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
+import fr.isika.cda.javaee.presentation.util.DefaultConfig;
+
+/**
+ * Customizable data of a Space, type of font and colors.
+ * 
+ * @author Nene
+ *
+ */
 @Entity
 public class Style {
 
@@ -12,8 +19,22 @@ public class Style {
 	@GeneratedValue
 	private long id;
 
-	private String navbarColor;
+	private String mainColor = DefaultConfig.DEFAULT_MAIN_COLOR;
 
+	private String secondColor = DefaultConfig.DEFAULT_SECOND_COLOR;
+
+	private String thirdcolor = DefaultConfig.DEFAULT_THIRD_COLOR;
+
+	private String font = DefaultConfig.DEFAULT_FONT;
+
+//*******************************************************************	
+	/**
+	 * Empty constructor for JEE.
+	 */
+	public Style() {
+	}
+
+//*******************************************************************	
 	public long getId() {
 		return id;
 	}
@@ -22,20 +43,36 @@ public class Style {
 		this.id = id;
 	}
 
-	public String getNavbarColor() {
-		return navbarColor;
+	public String getMainColor() {
+		return mainColor;
 	}
 
-	public void setNavbarColor(String navbarColor) {
-		this.navbarColor = navbarColor;
+	public void setMainColor(String mainColor) {
+		this.mainColor = mainColor;
 	}
 
-//	public Color getColor() {
-//		return color;
-//	}
-//
-//	public void setColor(Color color) {
-//		this.color = color;
-//	}
+	public String getSecondColor() {
+		return secondColor;
+	}
+
+	public void setSecondColor(String secondColor) {
+		this.secondColor = secondColor;
+	}
+
+	public String getThirdcolor() {
+		return thirdcolor;
+	}
+
+	public void setThirdcolor(String thirdcolor) {
+		this.thirdcolor = thirdcolor;
+	}
+
+	public String getFont() {
+		return font;
+	}
+
+	public void setFont(String font) {
+		this.font = font;
+	}
 
 }

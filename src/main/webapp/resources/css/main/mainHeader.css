@@ -1,8 +1,9 @@
 @charset "ISO-8859-1";
 
 .header {
-	/* variables définies dans le mainStyle.css */
+	/* variables dï¿½finies dans le mainStyle.css */
 	background-color: var(--bleuClair);
+	padding: 3em;
 	height: 15vh;
 	width: 100%;
 	gap: 60px;
@@ -12,15 +13,11 @@
 
 .logoContainer {
 	height: 100%;
-	width: 120px;
-	margin-left: 50px;
-	border-radius: 50%;
-	margin-top:5px;
+    width: 20em;
 }
 
 .logoContainer img {
-	height: 100%;
-	width: 100%;
+	
 	object-fit: contain;
 	border-radius: 50px;
 }

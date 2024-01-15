@@ -3,18 +3,25 @@ package fr.isika.cda.javaee.entity.users;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
+/**
+ * Contact datas of a user.
+ * 
+ * @author Alex Thibault
+ *
+ */
 @Entity
 public class Contact {
 
 	@Id
 	@GeneratedValue
 	private Long contactId;
+
 	private String phoneNumber;
+
 	private String email;
 
-	// Getters and setters
+//*******************************************************************	
 
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -38,14 +45,6 @@ public class Contact {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "Contact [contactId=" + contactId + ", phoneNumber=" + phoneNumber + ", email=" + email
-				+ ", getPhoneNumber()=" + getPhoneNumber() + ", getContactId()=" + getContactId() + ", getEmail()="
-				+ getEmail() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
 	}
 
 }

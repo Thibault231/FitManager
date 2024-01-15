@@ -11,23 +11,32 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Login and administrative datas of a user.
+ * 
+ * @author Alex Thibault
+ *
+ */
 @Entity
 public class Account {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long accountId;
+
 	@NotNull
 	private String login;
+
 	@NotNull
-	@Size(min = 5, max = 12)
 	private String password;
+
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private AdministrativeDocument administrativeDocument;
 
+//*******************************************************************	
 	public String getLogin() {
 		return login;
 	}

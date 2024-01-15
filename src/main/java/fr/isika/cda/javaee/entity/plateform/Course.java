@@ -10,6 +10,12 @@ import javax.persistence.ManyToOne;
 
 import fr.isika.cda.javaee.entity.users.User;
 
+/**
+ * Booking lesson's activity.
+ * 
+ * @author Charef Thibault
+ *
+ */
 @Entity
 public class Course {
 
@@ -25,16 +31,30 @@ public class Course {
 	@ManyToOne
 	private User coach;
 
-//*****************************************************************
+//*******************************************************************
+	/**
+	 * Empty constructor for JEE.
+	 */
 	public Course() {
 	}
 
+	/**
+	 * Constructor for specifics methods.
+	 * 
+	 * @param id   (:Long)
+	 * @param name (:String)
+	 */
 	public Course(Long id, String name) {
 		this.id = id;
 		this.name = name;
 		this.coach = new User();
 	}
 
+	/**
+	 * Constructor for Controller and Service
+	 * 
+	 * @param isActive (: boolean)
+	 */
 	public Course(boolean isForViewModel) {
 		this.coach = new User();
 	}

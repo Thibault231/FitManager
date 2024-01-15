@@ -1,64 +1,24 @@
-
-<ui:composition template="WEB-INF/templates/wrapGestionnaire.xhtml"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui" lang="fr">
 
 
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 	<ui:define name="menus">
-
 	</ui:define>
 	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
-	<ui:define name="header">
-
-
-	</ui:define>
-
 	<ui:define name="content">
 
-		<div class="d-flex">
-
-			<div id="menus" class=" menus desable">
-				<div
-					class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sticky-top"
-					style="width: 100%; height: 100vh">
-					<a href="/"
-						class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-						<svg class="bi pe-none me-2">	
-						</svg> <span class="fs-4"> Logo</span>
-					</a>
-					<div class=" m-auto h-75">
-						<ul class="nav nav-pills flex-column mb-auto ">
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="index.xhtml"> Accueil </h:link></li>
-							<li class="nav-item mb-2"><a> Mon profil </a></li>
-							<li class="nav-item mb-2"></li>
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="ManagerSpacesList.xhtml">Mes espaces</h:link></li>
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="CreateSpaceForm.xhtml"> Créer un espace </h:link></li>
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="ManagerSubscriptionList.xhtml">Mes abonnements</h:link></li>
-							<li class="nav-item mb-2"><h:link class="dropdown-item"
-									outcome="CreateSubscriptionForm.xhtml">Créer un abonnement</h:link></li>
-							<li class="nav-item mb-2"><a> Tableau de bord </a></li>
-							<h:panelGrid columns="1" cellpadding="5">
-								<p:commandButton value="Modifier mon profil" type="button"
-									onclick="PF('popupUpdate').show();" />
-							</h:panelGrid>
-						</ul>
-					</div>
-				</div>
-			</div>
-
+		<div class="container">
 			<div class="col p-5">
-				<h2>Bienvenue #{sessionScope.name}</h2>
-
+				<h1>
+					<span> Bienvenue</span> #{sessionScope.name}
+				</h1>
 				<div class="d-flex w-100 justify-content-end pt-1">
-
-
 					<div class="d-flex justify-content-around">
 						<a class=" m-1">#{sessionScope.role}</a>
 						<div class="dropdown">
@@ -69,14 +29,40 @@
 								class="rounded-circle me-2"></img> <strong>mdo</strong>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-								<li><h:link class="dropdown-item"
-										outcome="CreateSpaceForm.xhtml">Nouveau projet...</h:link></li>
-								<li><a class="dropdown-item" href="#">Paramètres</a></li>
-								<li><a class="dropdown-item" href="#">Profil</a></li>
-								<li><h:link class="dropdown-item"
-										outcome="UsersAccounts.xhtml">Comptes utilisateurs</h:link></li>
-								<li><h:link class="dropdown-item"
-										outcome="RegisterCoach.xhtml">Créer un compte coach</h:link></li>
+								<li>
+									<div class=" p-2 ">
+										<h2>Informations</h2>
+										<div id="1">
+											<p>Nom:
+												#{userController.userViewModel.user.profile.civility.name}</p>
+											<p>Prenom:
+												#{userController.userViewModel.user.profile.civility.forename}</p>
+											<p>
+												Date de naissance:
+												<h:outputText
+													value="#{userController.userViewModel.user.profile.civility.birthday}">
+													<f:convertDateTime timeZone="#{referenceData.timezone}"
+														pattern="dd MMM yyyy" />
+												</h:outputText>
+											</p>
+											<p>Email:
+												#{userController.userViewModel.user.profile.contact.email}</p>
+											<p>Adresse:
+												#{userController.userViewModel.user.profile.adress.street}</p>
+											<p>Code postal:
+												#{userController.userViewModel.user.profile.adress.zipCode}</p>
+											<p>Ville:
+												#{userController.userViewModel.user.profile.adress.city}</p>
+										</div>
+									</div>
+								</li>
+
+								<li><h:panelGrid columns="1" cellpadding="5">
+										<p:commandButton value="Modifier mon profil" type="button"
+											onclick="PF('UpdateAccount').show();" />
+									</h:panelGrid></li>
+
+
 								<li><hr class="dropdown-divider" /></li>
 								<li><h:form>
 										<h:commandLink class="dropdown-item"
@@ -88,361 +74,257 @@
 				</div>
 
 				<!-- Contenu spécifique de la page -->
-				<div class="row w-100 pt-5">
-					<div
-						class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 mb-4 h-75">
-						<div class="container  text-center">
-							<div class="row ">
-								<div class="card p-3">
-									<div
-										class="d-flex justify-content-around align-items-center w-100">
-										<h4>8888888888</h4>
-										<div>
-											<p class="fs-6">Chiffre d’affaire</p>
-											<p class="fs-6">88/88/8888 - 88/88/8888</p>
-										</div>
+
+				<div class="mb-3 mt-3">
+					<div class=" mb-2 mt-4 card-AbonnementSpace full "
+						style="border-radius: 0px; margin-top: 20px; box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white; height: 100%">
+
+						<div class="card-header h-full d-flex"
+							style="align-items: center; justify-content: center; height: 50px; border-radius: 5px; color: white; background-color: #1C3659">
+							<h3>Mes informations</h3>
+						</div>
+
+						<div class="row g-0" style="height: 100%">
+							<div class="col-md-4">
+								<p:graphicImage library="documents"
+									name="#{userController.userViewModel.user.profilePicture}"
+									class="rounded-bottom float-start"
+									style="max-width: 100%; height: 100%" />
+							</div>
+							<div class="col-md-8" style="height: 100%">
+								<div class="card-body2" style="padding: 20px">
+									<div class="input-group mb-3 " style="width: 100%">
+
+										<span
+											class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+											style="width: 23%"><b>Nom</b></span> <span
+											class="input-group-text"
+											style="width: 77%; background-color: white">
+											#{userController.userViewModel.user.profile.civility.name}</span>
+									</div>
+									<div class="input-group mb-3" style="width: 100%">
+										<span
+											class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+											style="width: 23%"><b>Prénom</b></span> <span
+											class="input-group-text"
+											style="width: 77%; background-color: white">
+											#{userController.userViewModel.user.profile.civility.forename}</span>
+									</div>
+									<div class="input-group mb-3" style="width: 100%">
+										<span
+											class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+											style="width: 23%"><b> Date de naissance</b></span> <span
+											class="input-group-text"
+											style="width: 77%; background-color: white"> <h:outputText
+												value="#{userController.userViewModel.user.profile.civility.birthday}">
+												<f:convertDateTime timeZone="#{referenceData.timezone}"
+													pattern="dd MMM yyyy" />
+											</h:outputText>
+										</span>
+									</div>
+									<div class="input-group mb-3" style="width: 100%">
+										<span
+											class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+											style="width: 23%"><b>Email</b></span> <span
+											class="input-group-text"
+											style="width: 77%; background-color: white">
+											#{userController.userViewModel.user.profile.contact.email}</span>
+									</div>
+									<div class="input-group mb-3" style="width: 100%">
+										<span
+											class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+											style="width: 23%"><b>Téléphone</b></span> <span
+											class="input-group-text"
+											style="width: 77%; background-color: white">
+											#{userController.userViewModel.user.profile.contact.phoneNumber}</span>
+									</div>
+									<div class="input-group mb-3" style="width: 100%">
+										<span
+											class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+											style="width: 23%"><b>Adresse</b></span> <span
+											class="input-group-text"
+											style="width: 77%; background-color: white">#{userController.userViewModel.user.profile.adress.street}</span>
+									</div>
+									<div class="input-group mb-3" style="width: 100%">
+										<span
+											class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+											style="width: 23%"><b>Code postal</b></span> <span
+											class="input-group-text"
+											style="width: 77%; background-color: white">
+											#{userController.userViewModel.user.profile.adress.zipCode}</span>
+									</div>
+									<div class="input-group mb-3" style="width: 100%">
+										<span
+											class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+											style="width: 23%"><b>Ville</b></span> <span
+											class="input-group-text"
+											style="width: 77%; background-color: white">#{userController.userViewModel.user.profile.adress.city}</span>
+									</div>
+									<div>
+										<p:commandButton value="Modifier mon profil" type="button"
+											styleClass="ui-button-raised ui-button custom-white-text"
+											style="background-color:  #1C3659; margin-bottom:20px "
+											onclick="PF('UpdateAccount').show();" />
 									</div>
 								</div>
+
 							</div>
 						</div>
-					</div>
 
-					<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
-
-						<div class="row gx-5 h-100">
-							<div
-								class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 mb-4  ">
-								<div class="card p-3 h-100">
-									<div
-										class="d-flex justify-content-around align-items-center w-100">
-										<h4>88888</h4>
-										<div>
-											<p class="fs-6">Fin de contrats</p>
-											<p class="fs-6">8888 - 8888</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div
-								class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6 pb-4">
-								<div class="card p-3 h-100 ">
-									<div
-										class="d-flex justify-content-around align-items-center w-100">
-										<h4>88888</h4>
-										<div>
-											<p class="fs-6">Résiliation</p>
-											<p class="fs-6">8888 - 8888</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 
 				</div>
 
-				<div class="row mb-4">
-					<div class="container text-center">
-						<div class="row gy-5">
-							<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-								<div class="card p-3">
-									<canvas id="ChartBar" class="w-100 h-50 p-auto"></canvas>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-lg-6 ">
-								<div class="card p-3">
-									<canvas id="Chartline" class="w-100 h-50 p-auto"></canvas>
-								</div>
-							</div>
+				<div class=" mb-2 mt-4 card-AbonnementSpace full "
+					style="border-radius: 0px; margin-top: 20px; box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white; height: 100%">
+					<div class="card-header h-full mb-4 d-flex"
+						style="align-items: center; justify-content: center; height: 50px; border-radius: 5px; color: white; background-color: #1C3659">
+						<h3>Mes salles fitness</h3>
+					</div>
+					<h:form id="activityCreationForm">
+						<div>
+							<p:dataTable var="space"
+								value="#{spaceController.allActiveSpacesOfManager}">
+								<p:column headerText="Logo">
+									<div class="logoContainer">
+										<p:graphicImage library="documents"
+											name="#{space.infos.configuration.logo}" width="50px"
+											height="50px" class="img_index" />
+									</div>
+								</p:column>
+								<p:column headerText="Nom">
+									<h:outputText value="#{space.infos.configuration.fitnessName}" />
+								</p:column>
+								<p:column headerText="Mes Couleurs">
+									<div class="d-flex">
+										<div
+											style="margin:2px; width: 2rem; height: 2rem; background-color:#{space.infos.configuration.style.mainColor};"></div>
+										<div
+											style="margin:2px; width: 2rem; height: 2rem; background-color:#{space.infos.configuration.style.secondColor};"></div>
+										<div
+											style="margin:2px; width: 2rem; height: 2rem; background-color:#{space.infos.configuration.style.thirdcolor};"></div>
+									</div>
+								</p:column>
+								<p:column headerText="Adresse">
+									<h:outputText value="#{space.infos.administrative.address}" />
+								</p:column>
+								<p:column headerText="Liens vers l'espace">
+									<h:commandButton class="plateform_Button"
+										value="Lien vers espace"
+										action="#{spaceController.goToSpaceIndex()}">
+										<f:param name="spaceId" value="#{space.spaceId}" />
+									</h:commandButton>
+								</p:column>
+							</p:dataTable>
+
 						</div>
+					</h:form>
+					<p></p>
+					<div style="margin: 0 auto; text-align: center;">
+						<p:commandButton value="Créer une salle" type="button"
+							styleClass="ui-button-raised ui-button custom-white-text"
+							style="background-color:  #1C3659; margin-bottom:20px "
+							onclick="PF('createSpace').show();" />
+
 					</div>
 				</div>
 
+				<div class=" mb-2 mt-4 card-AbonnementSpace full "
+					style="border-radius: 0px; margin-top: 20px; box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white; height: 100%">
+					<div class="card-header h-full mb-6 d-flex"
+						style="align-items: center; justify-content: center; height: 50px; border-radius: 5px; color: white; background-color: #1C3659">
+						<h3>Mes statistiques</h3>
+					</div>
+					<div class="card-body h-full mt-4 mb-4 d-flex"
+						style="padding: 20px; align-items: center; justify-content: center">
+						<span> <p:graphicImage library="documents"
+								name="Graphique1.png" class="rounded-bottom float-start"
+								style="width: 100%; height: 100%" />
+						</span> <span> <p:graphicImage library="documents"
+								name="Graphique2.png" class="rounded-bottom float-start"
+								style="width: 100%; height: 100%" />
+						</span>
+					</div>
+				</div>
+			
+			<div class=" mb-5 card-AbonnementSpace "
+				style="border-radius: 0px; margin-top: 20px; box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white; height: 100%;">
+				<div class="card-header h-full mb-6 d-flex"
+					style="align-items: center; justify-content: center; height: 50px; border-radius: 5px; color: white; background-color: #1C3659">
+					<h3>Mon adhésion</h3>
+				</div>
 				<div class="row">
-					<div class="container  text-center">
-						<div class="row gy-5">
-							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
-								<div class="card p-3">
-
-									<h3 class="text-start mb-3 fw-lighter">Scéance</h3>
-									<table class="table w-100">
-
-										<tbody>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-danger border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-danger border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-success border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-danger border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-success border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-success border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row">Mark</th>
-												<td>Mark</td>
-												<td>Salle pizza</td>
-												<td>13h00</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-success border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-
-
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
-								<div class="card p-3">
-
-									<h3 class="text-start mb-3 fw-lighter">Coach</h3>
-									<table class="table">
-
-										<tbody>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
+					<div class="col-sm-6 mb-3 mb-sm-0 d-flex"
+						style="padding: 20px; width: 40%; align-items: center; justify-content: space-around">
+						<div
+							class="card text-primary-emphasis bs-primary-border-subtle border border-primary-subtle rounded-3 border-3">
+							<div class="card-body"
+								style="align-items: center; justify-content: center">
+								<h3 class="card-title">Durée d'abonnement</h3>
+								<p></p>
+								<h6 class="card-subtitle mb-2 text-body-secondary">Date de
+									début d'adhésion</h6>
+								<p class="card-text">01/01/2022</p>
+								<p></p>
+								<h6 class="card-subtitle mb-2 text-body-secondary">Date de
+									fin d'adhésion</h6>
+								<p class="card-text">31/12/2024</p>
 							</div>
 						</div>
 					</div>
-
-
+					
+					<div class="col-sm-6 mb-3 mb-sm-0 d-flex"
+						style="padding: 20px; width: 60%; align-items: center; justify-content: space-around">
+						<div
+							class="card text-primary-emphasis bs-primary-border-subtle border border-primary-subtle rounded-3 border-3">
+							<div class="card-body"
+								style="align-items: center; justify-content: center">
+								<h3 class="card-title">Vos services</h3>
+								<p></p>
+								<h6>
+									<span>Espace web personnalisable, dédié à vos salles</span>
+								</h6>
+								<h6>
+									<span>Personnalisation intantanée des couleurs et des
+										photos de votre site web</span>
+								</h6>
+								<h6>
+									<span>Accès à un planning hebdomadaire pour vos clients</span>
+								</h6>
+								<h6>
+									<span>Un compte gestionnaire pour créer et gérer vos
+										activités</span>
+								</h6>
+								<h6>
+									<span>Possibilité de créer des comptes pour vos coachs</span>
+								</h6>
+								<h6>
+									<span>Création et gestion des cours par les coachs</span>
+								</h6>
+								<h6>
+									<span> Accès à un planning annuel</span>
+								</h6>
+								<h6>
+									<span>Vos clients peuvent créer leur propre compte</span>
+								</h6>
+								<h6>
+									<span>Dashboard gestionnaire avec suivi des comptes et
+										des cours</span>
+								</h6>
+								</div>
+							</div>
+						</div>
 				</div>
-
-
 			</div>
-
 		</div>
 
-		<p:dialog header="Modification de mon profil " widgetVar="popupUpdate" modal="true"
-			height="600" resizable="false" showEffect="fade" hideEffect="fade"
+
+			
+
+
+		<p:dialog header="Modification de mon profil "
+			widgetVar="UpdateAccount" modal="true" height="600" resizable="false"
+			showEffect="fade" hideEffect="fade"
 			style="max-width: 1000px; min-width: 700px;">
 			<h:form>
 				<div>
@@ -474,13 +356,12 @@
 							<h:inputText class="form-control" id="floatingInput04"
 								placeholder="Date de naissance" size="20"
 								value="#{userController.userViewModel.user.profile.civility.birthday}">
-								<f:convertDateTime pattern="dd-mm-yyyy" />
+								<f:convertDateTime pattern="dd MMM yyyy" />
 							</h:inputText>
 							<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 						</div>
 						<div class="form-floating ">
 							<h:inputText class="form-control" id="floatingInput06" size="20"
-								placeholder="#{userController.userViewModel.user.account.password}"
 								maxlength="12"
 								value="#{userController.userViewModel.user.account.password}">
 								<f:validateLength minimum="5"></f:validateLength>
@@ -505,6 +386,14 @@
 								value="#{userController.userViewModel.user.profile.adress.city}" />
 							<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 						</div>
+
+						<div class="field">
+							<h:outputLabel class="outputLabel" for="photoInput">VOTRE PHOTO</h:outputLabel>
+							<p:fileUpload
+								listener="#{userController.uploadAdministrativeDocument()}"
+								styleClass="w-100" mode="advanced" dragDropSupport="false" />
+						</div>
+
 						<h:commandButton class="btn btn-warning"
 							value="Enregistrer les modifications"
 							action="#{userController.updateUser()}" />
@@ -515,13 +404,101 @@
 			</h:form>
 		</p:dialog>
 
+		<p:dialog header="creation de salle " widgetVar="createSpace"
+			modal="true" height="470" resizable="false" showEffect="fade"
+			hideEffect="fade" style="max-width: 1000px; min-width: 700px;">
+			<h:form>
+				<div>
+					<div class="d-grid gap-2">
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput01"
+								placeholder="NOM DE VOTRE ESPACE" required="true" size="20"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.fitnessName}" />
+							<h:outputLabel class="outputLabel" for="floatingInput01">NOM DE VOTRE ESPACE</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput02"
+								placeholder="VOTRE SLOGAN" size="20" required="true"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.slogan}" />
+							<h:outputLabel class="outputLabel" for="floatingInput02">SLOGAN</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput08"
+								placeholder="VOTRE SLOGAN" rsize="20" required="true"
+								value="#{spaceController.spaceViewModel.space.infos.administrative.address}" />
+							<h:outputLabel class="outputLabel" for="floatingInput08">ADRESSE</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput03"
+								placeholder="VOTRE COULEUR PRINCIPALE" size="20" required="true"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.style.mainColor}" />
+							<h:outputLabel class="outputLabel" for="floatingInput03">COULEUR PRINCIPALE</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput04"
+								placeholder="VOTRE COULEUR SECONDAIRE" size="20" required="true"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.style.secondColor}" />
+							<h:outputLabel class="outputLabel" for="floatingInput04">COULEUR SECONDAIRE</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput12"
+								placeholder="VOTRE COULEUR TERTIAIRE" size="20" required="true"
+								value="#{spaceController.spaceViewModel.space.infos.configuration.style.thirdcolor}" />
+							<h:outputLabel class="outputLabel" for="floatingInput12">COULEUR TERTIAIRE</h:outputLabel>
+						</div>
+
+						<div class="form-floating">
+							<h:inputText class="form-control" id="floatingInput05"
+								placeholder="SIRET" size="20"
+								value="#{spaceController.spaceViewModel.space.infos.administrative.siret}" />
+							<h:outputLabel class="outputLabel" for="floatingInput05">SIRET</h:outputLabel>
+						</div>
+
+						<h:outputLabel class="outputLabel" for="floatingInput06">VOTRE LOGO</h:outputLabel>
+						<p:fileUpload listener="#{spaceController.uploadSpaceLogo}"
+							styleClass="w-100" id="floatingInput06" mode="advanced"
+							dragDropSupport="false" />
+
+						<h:outputLabel class="outputLabel" for="floatingInput07">VOTRE IMAGE ACCUEIL</h:outputLabel>
+						<p:fileUpload listener="#{spaceController.uploadSpaceMainPicture}"
+							styleClass="w-100" id="floatingInput07" mode="advanced"
+							dragDropSupport="false" />
+
+						<h:outputLabel class="outputLabel" for="floatingInput09">IMAGE DE VOTRE SALLE 1</h:outputLabel>
+						<p:fileUpload
+							listener="#{spaceController.uploadSpaceFirstPicture}"
+							styleClass="w-100" id="floatingInput09" mode="advanced"
+							dragDropSupport="false" />
+
+						<h:outputLabel class="outputLabel" for="floatingInput10">IMAGE DE VOTRE SALLE 2</h:outputLabel>
+						<p:fileUpload
+							listener="#{spaceController.uploadSpaceSecondPicture}"
+							styleClass="w-100" id="floatingInput10" mode="advanced"
+							dragDropSupport="false" />
+
+						<h:outputLabel class="outputLabel" for="floatingInput11">IMAGE DE VOTRE SALLE 3</h:outputLabel>
+						<p:fileUpload
+							listener="#{spaceController.uploadSpaceThirdPicture}"
+							styleClass="w-100" id="floatingInput11" mode="advanced"
+							dragDropSupport="false" />
+
+
+						<h:commandButton class="btn btn-warning"
+							value="Créer un espace fitness"
+							action="#{spaceController.createSpace()}" />
+
+						<h:link class="text-center" outcome="ManagerDashBoard.xhtml">Annuler</h:link>
+					</div>
+				</div>
+			</h:form>
+		</p:dialog>
+		</div>
 
 	</ui:define>
-	<ui:define name="footer">
-		<!-- Contenu spécifique du footer de la page -->
-		<h:outputText value="Mon Footer" />
-	</ui:define>
-
-
-
 </ui:composition>
+</html>

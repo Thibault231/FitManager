@@ -15,8 +15,13 @@ import javax.persistence.OneToOne;
 
 import fr.isika.cda.javaee.entity.relations.Schedulde;
 import fr.isika.cda.javaee.entity.spaces.Space;
-import fr.isika.cda.javaee.entity.subscription.Subscription;
 
+/**
+ * Person of a fitness space, regardless it's role.
+ * 
+ * @author Thibault
+ *
+ */
 @Entity
 public class User {
 
@@ -36,12 +41,14 @@ public class User {
 	@ManyToMany(mappedBy = "users")
 	private List<Space> linkedSpaces;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Schedulde schedulde;
 
 	private Long currentSubScriptionId;
 
-//******************************************************	
+	private String profilePicture;
+
+//*******************************************************************		
 	/**
 	 * Empty constructor for JEE.
 	 */
@@ -64,7 +71,7 @@ public class User {
 		this.linkedSpaces = new ArrayList<Space>();
 	}
 
-//******************************************************	
+//*******************************************************************		
 	public Long getUserId() {
 		return userId;
 	}
@@ -119,6 +126,15 @@ public class User {
 
 	public void setCurrentSubScriptionId(Long currentSubScriptionId) {
 		this.currentSubScriptionId = currentSubScriptionId;
+
+	}
+
+	public String getProfilePicture() {
+		return profilePicture;
+	}
+
+	public void setProfilePicture(String profilePicture) {
+		this.profilePicture = profilePicture;
 	}
 
 }

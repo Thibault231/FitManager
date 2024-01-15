@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * Datas of a fitness Space.
+ * 
+ * @author Nene
+ *
+ */
 @Entity
 public class Infos {
 
@@ -18,6 +24,7 @@ public class Infos {
 	@OneToOne
 	Configuration configuration;
 
+//**************************************************************************
 	public Long getId() {
 		return id;
 	}
