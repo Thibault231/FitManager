@@ -184,18 +184,6 @@ public class UserOnSpaceController implements Serializable {
 	}
 
 	/**
-	 * Return an unencrypted user's password, for update form.<br/>
-	 * <b>
-	 * 
-	 * @param currentUserId
-	 * @return
-	 */
-	public String getDecryptedUserPassword(Long currentUserId) {
-		String currentUserPassword = userDao.getUserById(currentUserId).getAccount().getPassword();
-		return Crypto.DecryptDataInWords(currentUserPassword);
-	}
-
-	/**
 	 * Return the view of a user dashboard, using it's role.
 	 * 
 	 * @param userRole (:Role ENUM)

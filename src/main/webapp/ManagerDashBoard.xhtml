@@ -55,17 +55,13 @@
 									</h:panelGrid>
 								</li>
 								
-								
-								
+						
 								<li><hr class="dropdown-divider" /></li>
 								<li>
 									<h:form>
 										<h:commandLink class="dropdown-item" action="#{userController.logout()}">Se déconnecter</h:commandLink>
 									</h:form>
 								</li>
-								
-								
-								
 							</ul>
 						</div>
 					</div>
@@ -305,7 +301,6 @@
 						</div>
 						<div class="form-floating ">
 							<h:inputText class="form-control" id="floatingInput06" size="20"
-								placeholder="#{userController.userViewModel.user.account.password}"
 								maxlength="12"
 								value="#{userController.userViewModel.user.account.password}">
 								<f:validateLength minimum="5"></f:validateLength>

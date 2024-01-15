@@ -225,9 +225,16 @@
 								<p:column headerText="Actions">
 									
 								    <div class="d-flex">
+										
 										<p:commandLink value="Modifier" oncomplete="PF('UpdateSubscription').show();" 
-											action="#{subscriptionController.selectSubscription(subscription.subscriptionId)}"
-											style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
+											update=":updateSubscriptionForm:updateSubscriptionPanel" process="@this" 
+											style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}">
+																					
+											<f:setPropertyActionListener value="#{subscription}" target="#{subscriptionController.subscriptionViewModel.selectedSubscription}" />
+											<p:resetInput target=":updateSubscriptionForm:updateSubscriptionPanel" />
+											
+										</p:commandLink>
+											
 										<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
 										<p:confirmDialog id="confirmationDialogSub" widgetVar="confirmationVarSub" header="Confirmation"
 											message="Êtes-vous sûr de vouloir supprimer cet abonnement?" severity="alert">
@@ -476,10 +483,8 @@
 								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 							</div>
 							<div class="form-floating ">
-								<h:inputText class="form-control" id="floatingInput06" size="20"
-									placeholder="#{spaceUser.spaceViewModel.user.account.password}"
-									maxlength="12"
-									value="#{spaceUser.spaceViewModel.user.account.password}">
+								<h:inputText class="form-control" id="floatingInput06" size="20" maxlength="12"
+									placeholder="31500" value=" ">
 									<f:validateLength minimum="5"></f:validateLength>
 								</h:inputText>
 								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
@@ -515,49 +520,49 @@
 				</h:form>
 			</p:dialog>
 			
-			<p:dialog header="Modification d'abonnement "
-				widgetVar="UpdateSubscription" modal="true" height="350"
-				resizable="false" showEffect="fade" hideEffect="fade"
-				style="max-width: 1000px; min-width: 400px;">
-				<h:form>
-					<div>
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput01"
-								placeholder="#{subscriptionController.subscriptionViewModel.selectedSubscription.subscriptionName}" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.selectedSubscription.subscriptionName}" />
-							<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+			<h:form id="updateSubscriptionForm">
+				<p:dialog header="Modification d'abonnement "
+					widgetVar="UpdateSubscription" modal="true" height="350"
+					resizable="false" showEffect="fade" hideEffect="fade"
+					style="max-width: 1000px; min-width: 400px;">
+					<p:outputPanel id="updateSubscriptionPanel">
+						<div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput01"
+									placeholder="Nom de l'abonnement" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.selectedSubscription.subscriptionName}" />
+								<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+							</div>
+	
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput02"
+									placeholder="Description" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.selectedSubscription.description}" />
+								<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
+							</div>
+	
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput03"
+									placeholder="Engagement" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.selectedSubscription.engagement}" />
+								<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
+							</div>
+	
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput04"
+									placeholder="Prix mensuel" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.selectedSubscription.price.monthlyPrice}" />
+								<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
+							</div>
+							<div class="d-flex justify-content-around m-4">
+							<h:commandButton class="btn btn-warning"
+								value="Modifier abonnement"
+								action="#{subscriptionController.updateSuscription()}" />
+							</div>
 						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput02"
-								placeholder="#{subscriptionController.subscriptionViewModel.selectedSubscription.description}" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.selectedSubscription.description}" />
-							<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput03"
-								placeholder="#{subscriptionController.subscriptionViewModel.selectedSubscription.engagement}" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.selectedSubscription.engagement}" />
-							<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput04"
-								placeholder="#{subscriptionController.subscriptionViewModel.selectedSubscription.price.monthlyPrice}" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.selectedSubscription.price.monthlyPrice}" />
-							<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
-						</div>
-						<div class="d-flex justify-content-around m-4">
-						<h:commandButton class="btn btn-warning"
-							value="Modifier abonnement"
-							action="#{subscriptionController.updateSuscription(subscriptionController.subscriptionViewModel.selectedSubscription.subscriptionId)}" />
-						<h:link class="text-center" outcome="AdherentDashboard"
-							value="ANNULER" />
-						</div>
-					</div>
-				</h:form>
-			</p:dialog>
+					</p:outputPanel>
+				</p:dialog>
+			</h:form>
 				
 		</div>
 	</ui:define>

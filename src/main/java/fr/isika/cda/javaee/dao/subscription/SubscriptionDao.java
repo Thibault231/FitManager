@@ -60,8 +60,7 @@ public class SubscriptionDao implements IDaoSubscription {
 	}
 
 	@Override
-	public void updateSubscription(Long subscriptionToUpdateId) {
-		Subscription subscriptionToUpdate = getSubscriptionById(subscriptionToUpdateId);
+	public void updateSubscription(Subscription subscriptionToUpdate) {
 		em.merge(subscriptionToUpdate);
 	}
 

@@ -23,6 +23,7 @@ import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
+import fr.isika.cda.javaee.presentation.util.Crypto;
 import fr.isika.cda.javaee.presentation.util.FileUploadUtils;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.UserViewModel;
@@ -100,6 +101,8 @@ public class UserController implements Serializable {
 					fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
 					// chargement du viewmodel avec le user.
 					userViewModel.setUser(userToLog);
+					userViewModel.getUser().getAccount()
+							.setPassword(Crypto.DecryptDataInWords(userToLog.getAccount().getPassword()));
 					return "ManagerDashBoard.xhtml?faces-redirect=true";
 				}
 				message = "Mot de passe erroné. ";
