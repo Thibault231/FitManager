@@ -98,16 +98,17 @@
 			<p:tabView>
 				<p:tab title="Mes réservations">
 					<h:panelGrid columns="1" cellpadding="5">
-						<p:link value="Réserver un cours" outcome="BookingCalendar.xhtml"
-							type="button" />
+						<ui:fragment rendered="#{subscriptionController.hasSubscription()}">
+							<p:link value="Réserver un cours" outcome="BookingCalendar.xhtml"
+								type="button" />
+						</ui:fragment>
 						<h:form>
 						<p:dataTable var="booking" value="#{bookingController.allBookingOfAMember}"  widgetVar="bookingsTable">
 						
 							<f:facet name="header">
 				                <div class="flex align-items-center justify-content-between">
 				                    <div>
-				                    <p:inputText id="globalFilter" onkeyup="PF('bookingsTable').filter()" style="width:10rem"
-				                                 placeholder="Enter keyword" />
+				                    <p:inputText id="globalFilter" onkeyup="PF('bookingsTable').filter()" style="width:10rem" />
 				                    <p:commandButton value="Rechercher générale" update="@form" action="true"
 				                    	styleClass="ui-button-raised ui-button custom-white-text"
 										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
