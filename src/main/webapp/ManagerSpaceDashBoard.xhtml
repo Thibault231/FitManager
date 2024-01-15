@@ -138,8 +138,13 @@
 								<h:outputText value="#{user.account.role}" />
 							</p:column>
 							<p:column headerText="Action">
-									<p:commandLink value="Supprimer" onclick="PF('confirmationVarUser').show();"
-										style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
+									<p:commandLink value="Supprimer" onclick="PF('confirmationVarMember').show();"
+										style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>
+									<p:confirmDialog id="confirmationDialogUser" widgetVar="confirmationVarMember" header="Confirmation"
+										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?" severity="alert">
+										<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarUser').hide()" />
+										<p:commandButton value="Oui" oncomplete="PF('confirmationVarUser').hide()"	action="#{userController.deleteUser(user.userId)}" />
+									</p:confirmDialog>	
 							</p:column>
 						</p:dataTable>
 						</h:form>
@@ -180,6 +185,11 @@
 							</p:column>
 							<p:column headerText="Action">
 									<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarUser').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
+									<p:confirmDialog id="confirmationDialogUser" widgetVar="confirmationVarUser" header="Confirmation"
+										message="Êtes-vous sûr de vouloir supprimer cet utilisateur?" severity="alert">
+										<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarUser').hide()" />
+										<p:commandButton value="Oui" oncomplete="PF('confirmationVarUser').hide()"	action="#{userController.deleteUser(user.userId)}" />
+									</p:confirmDialog>
 							</p:column>
 						</p:dataTable>
 						</h:form>
@@ -208,12 +218,19 @@
 									<h:outputText value="#{subscription.price.monthlyPrice}" />
 								</p:column>
 								<p:column headerText="Actions">
-									<h:form>
+									
 								    <div class="d-flex">
 										<p:commandLink value="Modifier" type="button" onclick="PF('UpdateSubscription').show();" style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
 										<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
-									</div>	
-									</h:form>					
+										<p:confirmDialog id="confirmationDialogSub" widgetVar="confirmationVarSub" header="Confirmation"
+											message="Êtes-vous sûr de vouloir supprimer cet abonnement?" severity="alert">
+											<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarSub').hide()" />
+											<p:commandButton value="Oui"
+												oncomplete="PF('confirmationVarSub').hide()"
+												action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
+										</p:confirmDialog>
+
+									</div>						
 								</p:column>
 							</p:dataTable>
 						</h:panelGrid>
@@ -492,65 +509,48 @@
 			</p:dialog>
 			
 			<p:dialog header="Modification d'abonnement "
-				widgetVar="UpdateSubscription" modal="true" height="600"
-				resizable="false" showEffect="fade" hideEffect="fade"
-				style="max-width: 1000px; min-width: 700px;">
-				<h:form>
-					<div>
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput01"
-								placeholder="#{subscription.subscriptionName}" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
-							<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput02"
-								placeholder="#{subscription.description}" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
-							<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput03"
-								placeholder="#{subscription.engagement}" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
-							<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput04"
-								placeholder="#{subscription.price.monthlyPrice}" required="true" size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
-							<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
-						</div>
-
-						<h:commandButton class="btn btn-warning"
-							value="Modifier abonnement"
-							action="#{subscriptionController.updateSuscription()}" />
-						<h:link class="text-center" outcome="AdherentDashboard"
-							value="ANNULER" />
-					</div>
-				</h:form>
-			</p:dialog>
-			
-			
-			
-			
-			<p:confirmDialog id="confirmationDialogUser" widgetVar="confirmationVarUser" header="Confirmation"
-				message="Êtes-vous sûr de vouloir supprimer cet utilisateur?" severity="alert">
-				<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarUser').hide()" />
-				<p:commandButton value="Oui" oncomplete="PF('confirmationVarUser').hide()"	action="#{userController.deleteUser(user.userId)}" />
-			</p:confirmDialog>
-
-			<p:confirmDialog id="confirmationDialogSub" widgetVar="confirmationVarSub" header="Confirmation"
-				message="Êtes-vous sûr de vouloir supprimer cet abonnement?" severity="alert">
-				<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarSub').hide()" />
-				<p:commandButton value="Oui"
-					oncomplete="PF('confirmationVarSub').hide()"
-					action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
-			</p:confirmDialog>				
-
+											widgetVar="UpdateSubscription" modal="true" height="600"
+											resizable="false" showEffect="fade" hideEffect="fade"
+											style="max-width: 1000px; min-width: 700px;">
+											<h:form>
+												<div>
+													<div class="form-floating">
+														<h:inputText class="form-control" id="floatingInput01"
+															placeholder="#{subscription.subscriptionName}" required="true" size="20"
+															value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
+														<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+													</div>
+							
+													<div class="form-floating">
+														<h:inputText class="form-control" id="floatingInput02"
+															placeholder="#{subscription.description}" required="true" size="20"
+															value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
+														<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
+													</div>
+							
+													<div class="form-floating">
+														<h:inputText class="form-control" id="floatingInput03"
+															placeholder="#{subscription.engagement}" required="true" size="20"
+															value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
+														<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
+													</div>
+							
+													<div class="form-floating">
+														<h:inputText class="form-control" id="floatingInput04"
+															placeholder="#{subscription.price.monthlyPrice}" required="true" size="20"
+															value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
+														<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
+													</div>
+							
+													<h:commandButton class="btn btn-warning"
+														value="Modifier abonnement"
+														action="#{subscriptionController.updateSuscription()}" />
+													<h:link class="text-center" outcome="AdherentDashboard"
+														value="ANNULER" />
+												</div>
+											</h:form>
+										</p:dialog>
+				
 		</div>
 	</ui:define>
 </ui:composition>

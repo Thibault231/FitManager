@@ -136,7 +136,7 @@ public class UserOnSpaceController implements Serializable {
 			Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
 			Space currentSpace = spaceDao.getSpaceWithMembers(currentSpaceId);
 			// Persist le nouveau coach
-			Long createdUserId = userSvc.createUser(spaceViewModel.getNewUser());
+			Long createdUserId = userSvc.createUserOnPlateform(spaceViewModel.getNewUser());
 			// Lie le coach et la salle courante
 			User createdUser = userDao.getUserByIdWithLinkedSpaces(createdUserId);
 			currentSpace.getUsers().add(createdUser);
@@ -167,7 +167,7 @@ public class UserOnSpaceController implements Serializable {
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Adherent);
 
 		try {
-			Long createdUserId = userSvc.createUser(spaceViewModel.getUser());
+			Long createdUserId = userSvc.createUserOnPlateform(spaceViewModel.getUser());
 			User createdUser = userDao.getUserByIdWithLinkedSpaces(createdUserId);
 			currentSpace.getUsers().add(createdUser);
 			createdUser.getLinkedSpaces().add(currentSpace);

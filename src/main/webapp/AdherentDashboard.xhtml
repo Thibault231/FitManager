@@ -85,14 +85,12 @@
 				<h5>Votre abonnement comprend:</h5>
 				<p>#{subscriptionController.currentMemberSubscription.description}</p>
 			</ui:fragment>
-			<p>
-				<h:form>
-					<h:commandButton outcome="SubscribeForm.xhtml"
-						styleClass="ui-button-raised ui-button custom-white-text"
-						style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
+				
+					<h:link outcome="SubscribeForm?faces-redirect=true" 
+						styleClass="ui-button-raised ui-button custom-white-text" 
+						style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" 
 						value="Souscrire à un abonnement" />
-				</h:form>
-			</p>
+				
 			<hr />
 			<p:tabView>
 				<p:tab title="Mes réservations">

@@ -29,6 +29,8 @@ public class SubscriptionDao implements IDaoSubscription {
 
 	@Override
 	public boolean deleteSubscription(Long subscriptionToDeleteId) {
+		em.createNativeQuery("DELETE FROM space_subscription WHERE subscriptions_subscriptionId = :subscriptionId")
+				.setParameter("subscriptionId", subscriptionToDeleteId).executeUpdate();
 		Subscription subscriptionToDelete = getSubscriptionById(subscriptionToDeleteId);
 		if (subscriptionToDelete != null) {
 			em.remove(subscriptionToDelete);

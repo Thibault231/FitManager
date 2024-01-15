@@ -88,6 +88,20 @@ public class SubscriptionController implements Serializable {
 		subscriptionDao.createSubscription(subscriptionToCreate);
 		currentSpace.getSubscriptions().add(subscriptionToCreate);
 		spaceDao.updateSpace(currentSpace);
+		subscriptionViewModel.setSubscription(new Subscription(true));
+	}
+
+	/**
+	 * Delete a subscription from the current space, using the subscription's id.
+	 * 
+	 * @param subscriptionToDeleteId
+	 * @return user's dashboard url (:String)
+	 */
+	public String deleteSubscription(Long subscriptionToDeleteId) {
+		subscriptionDao.deleteSubscription(subscriptionToDeleteId);
+
+		subscriptionViewModel.setSubscription(new Subscription(true));
+		return SessionUtils.redirectToDashBoard();
 	}
 
 	/**
@@ -178,25 +192,6 @@ public class SubscriptionController implements Serializable {
 
 		// 3 - rediriger vers la page du space en question
 		return "Subscription.xhtml?faces-redirect=true&amp;subscriptionId=" + subscriptionId;
-	}
-
-	/**
-	 * Delete a subscription from the current space, using the subscription's id.
-	 * 
-	 * @param subscriptionToDeleteId
-	 * @return user's dashboard url (:String)
-	 */
-	public String deleteSubscription(Long subscriptionToDeleteId) {
-		Space currentSpace = spaceDao.getSpaceWithSubscription(SessionUtils.getSpaceIdFromSession());
-		for (int i = 0; i < currentSpace.getSubscriptions().size(); i++) {
-			Subscription sub = currentSpace.getSubscriptions().get(i);
-			if (sub.getSubscriptionId() == subscriptionToDeleteId) {
-				currentSpace.getSubscriptions().remove(sub);
-			}
-		}
-		spaceDao.updateSpace(currentSpace);
-		// subscriptionDao.deleteSubscription(subscriptionToDeleteId);
-		return SessionUtils.redirectToDashBoard();
 	}
 
 	/**

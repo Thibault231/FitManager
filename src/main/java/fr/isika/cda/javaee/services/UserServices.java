@@ -5,11 +5,14 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import fr.isika.cda.javaee.dao.spaces.IDaoSpace;
 import fr.isika.cda.javaee.dao.user.IDaoUser;
+import fr.isika.cda.javaee.entity.spaces.Space;
 import fr.isika.cda.javaee.entity.users.Sex;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
 import fr.isika.cda.javaee.presentation.util.Crypto;
+import fr.isika.cda.javaee.presentation.util.SessionUtils;
 
 /**
  * Service for user management between userDao and Controllers
@@ -21,6 +24,9 @@ import fr.isika.cda.javaee.presentation.util.Crypto;
 public class UserServices {
 	@Inject
 	private IDaoUser userDao;
+
+	@Inject
+	private IDaoSpace spaceDao;
 
 	/**
 	 * Compare the unencrypted password given by the user login form to the
@@ -61,7 +67,47 @@ public class UserServices {
 			return userDao.createUser(userToCreate);
 		}
 		throw new UserExistsException(
-				String.format("L'uilisateur avec le login (%s) existe déjà", userFromForm.getAccount().getLogin()));
+				String.format("L'utilisateur avec le login (%s) existe déjà", userFromForm.getAccount().getLogin()));
+	}
+
+	/**
+	 * Create a new user object if it not already exist in the database then fill it
+	 * from a form and call the userDao for persistence.
+	 * 
+	 * @param userViewModel (: UserViewModel)
+	 * @return
+	 */
+	public Long createUserOnPlateform(User userFromForm) throws UserExistsException {
+		User previousUser = userDao.getUserByEmail(userFromForm.getAccount().getLogin());
+		Space currentSpace = spaceDao.getSpaceWithMembers(SessionUtils.getSpaceIdFromSession());
+
+		// The new user doesn't exist in any space
+		if (previousUser == null) {
+			// copy datas from the form
+			User userToCreate = new User(true);
+			userToCreate.setProfile(userFromForm.getProfile());
+			userToCreate.setAccount(userFromForm.getAccount());
+			userToCreate.setLinkedSpaces(userFromForm.getLinkedSpaces());
+			userToCreate.getProfile().getContact().setEmail(userFromForm.getAccount().getLogin());
+
+			// encrypt password
+			userToCreate.getAccount()
+					.setPassword(Crypto.EncryptDataInNumbers(userFromForm.getAccount().getPassword(), 12));
+			return userDao.createUser(userToCreate);
+		}
+		// The user already exist in an other space
+		if (previousUser != null && !currentSpace.getUsers().contains(previousUser)) {
+			currentSpace.getUsers().add(previousUser);
+			previousUser.getLinkedSpaces().add(currentSpace);
+			spaceDao.updateSpace(currentSpace);
+			userDao.updateUser(previousUser);
+			return previousUser.getUserId();
+
+		}
+		// The user already exist in this space
+		throw new UserExistsException(
+				String.format("L'utilisateur avec le login (%s) existe déjà", userFromForm.getAccount().getLogin()));
+
 	}
 
 	/**

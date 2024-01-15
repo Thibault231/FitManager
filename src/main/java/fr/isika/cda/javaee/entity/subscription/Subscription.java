@@ -1,5 +1,6 @@
 package fr.isika.cda.javaee.entity.subscription;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Subscription {
 
 	private String promotion;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Price price;
 
 //*******************************************************************	
