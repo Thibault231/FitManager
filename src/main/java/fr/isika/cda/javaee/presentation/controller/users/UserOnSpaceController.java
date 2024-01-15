@@ -190,8 +190,13 @@ public class UserOnSpaceController implements Serializable {
 	 * @return url of the user dashboard (:String)
 	 */
 	public String redirectToRightDashBoard(Role userRole) {
-		this.spaceViewModel.setUser(userDao.getUserById(SessionUtils.getUserIdFromSession()));
+		// Fill the view models with the current user.
+		User userToLog = userDao.getUserById(SessionUtils.getUserIdFromSession());
+		this.spaceViewModel.setUser(userToLog);
+		this.spaceViewModel.getUser().getAccount()
+				.setPassword(Crypto.DecryptDataInWords(userToLog.getAccount().getPassword()));
 		this.spaceViewModel.setSpace(spaceDao.getSpaceWithSubscription(SessionUtils.getSpaceIdFromSession()));
+		// redirect to right dashboard
 		return SessionUtils.redirectToDashBoard();
 	}
 
