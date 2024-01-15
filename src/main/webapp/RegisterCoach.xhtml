@@ -44,17 +44,15 @@
 								</div>
 
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput03">GENRE</h:outputLabel>
-									<h:selectOneMenu id="sex"
-										value="#{userController.userViewModel.user.profile.civility.sex}">
-										<div>
-											<f:selectItem itemLabel="" />
-											<f:selectItem itemLabel="Homme" itemValue="Homme" />
-											<f:selectItem itemLabel="Femme" itemValue="Femme" />
-											<f:selectItem itemLabel="Autre" itemValue="Autre" />
-										</div>
-									</h:selectOneMenu>
-								</div>
+								<h:outputLabel for="sex" value="Genre" />
+								<h:selectOneMenu id="sex"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
+									<f:selectItem itemLabel="" />
+									<f:selectItem itemLabel="Homme" itemValue="Man" />
+									<f:selectItem itemLabel="Femme" itemValue="Woman" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
+							</div>
 
 								<div class="field">
 									<h:outputLabel class="outputLabel" for="floatingInput04">DATE DE NAISSANCE</h:outputLabel>

@@ -9,7 +9,7 @@
 	lang="fr">
 
 <ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
-	<ui:define name="titleValue">Fit Manager - Adherent dashboard </ui:define>
+	<ui:define name="titleValue">Fit Manager - Coach dashboard </ui:define>
 	<ui:define name="spaceContent">
 
 		<div class="container">
@@ -142,10 +142,15 @@
 								<h:outputText value="#{course.description}"/>
 							</p:column>
 							<p:column headerText="Actions">
-									<p:commandButton value="Supprimer"
-										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
-										action="#{courseController.deleteCourse(course.id)}">
-									</p:commandButton>		
+							
+							<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>	
+										<p:confirmDialog id="confirmationDialogSub" widgetVar="confirmationVarSub" header="Confirmation"
+											message="Êtes-vous sûr de vouloir supprimer ce cours?" severity="alert">
+											<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarSub').hide()" />
+											<p:commandButton value="Oui"
+												oncomplete="PF('confirmationVarSub').hide()"
+												action="#{courseController.deleteCourse(course.id)}" />
+										</p:confirmDialog>									
 							</p:column>
 						</p:dataTable>
 						</h:form>
@@ -162,8 +167,7 @@
 				resizable="false" showEffect="fade" hideEffect="fade"
 				style="max-width: 1000px; min-width: 700px;">
 				<h:form>
-					<div>
-            
+					<div>         
 						<div class="manager-form">
 							<div class="d-grid gap-2">
 								<div class="field">
@@ -207,8 +211,6 @@
 											locale="fr" />
 									</div>
 								</div>
-
-
 								<div class="field">
 									<h:outputLabel class="outputLabel" for="floatingInput06">MOT DE PASSE</h:outputLabel>
 									<p:password class="form-control" id="floatingInput06" size="20"
@@ -254,7 +256,6 @@
 								</div>
 							</div>
 						</div>
-
 				</h:form>
 			</p:dialog>
 		</div>
