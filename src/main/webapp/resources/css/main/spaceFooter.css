@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 
-/* variables définies dans le mainStyle.css */
+/* variables dï¿½finies dans le mainStyle.css */
 .socialMedia {
 	height: 5vh;
 	display: flex;
@@ -55,7 +55,7 @@
 	width: 17px;
 }
 
-/* variables définies dans le mainStyle.css */
+/* variables dï¿½finies dans le mainStyle.css */
 .socialSvg path {
 	fill: var(--rouge);
 }

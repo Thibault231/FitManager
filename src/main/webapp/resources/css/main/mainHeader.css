@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 .header {
-	/* variables définies dans le mainStyle.css */
+	/* variables dï¿½finies dans le mainStyle.css */
 	background-color: var(--bleuClair);
 	padding: 3em;
 	height: 15vh;
@@ -21,4 +21,3 @@
 	object-fit: contain;
 	border-radius: 50px;
 }
-
