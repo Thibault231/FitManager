@@ -58,6 +58,6 @@ public interface IDaoSubscription {
 	 * 
 	 * @param subscriptionToUpdate (:Subscription)
 	 */
-	void updateSubscription(Subscription subscriptionToUpdate);
+	void updateSubscription(Long subscriptionToUpdateId);
 
 }

@@ -21,6 +21,7 @@ import fr.isika.cda.javaee.entity.users.Account;
 import fr.isika.cda.javaee.entity.users.Role;
 import fr.isika.cda.javaee.entity.users.User;
 import fr.isika.cda.javaee.exceptions.UserExistsException;
+import fr.isika.cda.javaee.presentation.util.Crypto;
 import fr.isika.cda.javaee.presentation.util.FileUploadUtils;
 import fr.isika.cda.javaee.presentation.util.SessionUtils;
 import fr.isika.cda.javaee.presentation.viewmodel.SpaceViewModel;
@@ -180,6 +181,18 @@ public class UserOnSpaceController implements Serializable {
 			System.out.println("Exception : " + e.getMessage());
 			return "RegisterMemberForm?faces-redirect=true";
 		}
+	}
+
+	/**
+	 * Return an unencrypted user's password, for update form.<br/>
+	 * <b>
+	 * 
+	 * @param currentUserId
+	 * @return
+	 */
+	public String getDecryptedUserPassword(Long currentUserId) {
+		String currentUserPassword = userDao.getUserById(currentUserId).getAccount().getPassword();
+		return Crypto.DecryptDataInWords(currentUserPassword);
 	}
 
 	/**
