@@ -166,95 +166,77 @@
 				widgetVar="UpdateAccount" modal="true" height="600"
 				resizable="false" showEffect="fade" hideEffect="fade"
 				style="max-width: 1000px; min-width: 700px;">
-				<h:form>        
-					<div class="manager-form">
-							<div class="d-grid gap-2">
-								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput01">NOM</h:outputLabel>
-									<h:inputText class="form-control form-control-sm"
-										id="floatingInput01" placeholder="Nom" required="true"
-										size="20" style="width: 450px;"
-										requiredMessage="La saisie du NOM est obligatoire !"
-										value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
-									<h:message for="floatingInput01" styleClass="errorBlock" />
-								</div>
-
-								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput02">PRENOM</h:outputLabel>
-									<h:inputText class="form-control" id="floatingInput02"
-										placeholder="Prenom" required="true" size="20"
-										requiredMessage="La saisie du PRENOM est obligatoire !"
-										value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
-									<h:message for="floatingInput02" styleClass="errorBlock" />
-								</div>
-
-								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput03">GENRE</h:outputLabel>
-									<h:selectOneMenu id="sex"
-										value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
-										<div>
-											<f:selectItem itemLabel="" />
-											<f:selectItem itemLabel="Homme" itemValue="Homme" />
-											<f:selectItem itemLabel="Femme" itemValue="Femme" />
-											<f:selectItem itemLabel="Autre" itemValue="Autre" />
-										</div>
-									</h:selectOneMenu>
-								</div>
-
-								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput04">DATE DE NAISSANCE</h:outputLabel>
-									<div>
-										<p:calendar id="floatingInput04"
-											value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}"
-											showOn="button" navigator="true" yearRange="c-100:c+10"
-											locale="fr" />
-									</div>
-								</div>
-								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput06">MOT DE PASSE</h:outputLabel>
-									<p:password class="form-control" id="floatingInput06" size="20"
-										placeholder="MOT DE PASSE" required="true" maxlength="12"
-										requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
-										validatorMessage="Votre mot de passe doit contenir entre 5 à 12 caractères"
-										value="#{spaceUser.spaceViewModel.user.account.password}">
-										<f:validateLength minimum="5" maximum="12" />
-										<h:message for="floatingInput06" styleClass="errorBlock" />
-									</p:password>
-
-								</div>
+				<h:form>
+					<div>
+						<div class="d-grid gap-2">
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput01"
+									placeholder="Nom non renseigné"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
+								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
 							</div>
-
-							<div class="d-grid gap-2">
-								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput11">TELEPHONE</h:outputLabel>
-									<h:inputText class="form-control" id="floatingInput11"
-										placeholder="Adresse" size="20"
-										value="#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}" />
-								</div>
-
-								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput07">ADRESSE</h:outputLabel>
-									<h:inputText class="form-control" id="floatingInput07"
-										placeholder="Adresse" size="20"
-										value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
-
-								</div>
-
-								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput08">CODE POSTAL</h:outputLabel>
-									<h:inputText class="form-control" id="floatingInput08"
-										placeholder="CODE POSTAL" size="20"
-										value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
-
-								</div>
-
-								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput09">VILLE</h:outputLabel>
-									<h:inputText class="form-control" id="floatingInput09"
-										value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
-								</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput02"
+									placeholder="Prénom non renseigné"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
+								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 							</div>
+							<div class="field">
+								<h:outputLabel for="sex" value="Genre" />
+								<h:selectOneMenu id="sex"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
+									<f:selectItem itemLabel="" />
+									<f:selectItem itemLabel="Homme" itemValue="Man" />
+									<f:selectItem itemLabel="Femme" itemValue="Woman" />
+									<f:selectItem itemLabel="Autre" itemValue="Other" />
+								</h:selectOneMenu>
+							</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput04"
+									placeholder="Anniversaire non renseigné"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
+									<f:convertDateTime pattern="dd-mm-yyyy" />
+								</h:inputText>
+								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+							</div>
+							<div class="form-floating ">
+								<h:inputText class="form-control" id="floatingInput06" size="20" maxlength="12"
+									value="#{spaceUser.spaceViewModel.user.account.password}">
+									<f:validateLength minimum="5"></f:validateLength>
+								</h:inputText>
+								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
+							</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput07"
+									placeholder="Adresse non renseignée"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
+								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
+							</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput08"
+									placeholder="Code postal non renseigné"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
+								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
+							</div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput09"
+									placeholder="Ville nn renseignée"
+									size="20"
+									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
+								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+							</div>
+							<h:commandButton class="btn btn-warning"
+								value="Enregistrer les modifications"
+								action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
+							<h:link class="text-center" outcome="AdherentDashboard"
+								value="ANNULER" />
 						</div>
+					</div>
 				</h:form>
 			</p:dialog>
 		</div>

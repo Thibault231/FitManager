@@ -202,8 +202,7 @@
 							</div>
 							<div class="form-floating ">
 								<h:inputText class="form-control" id="floatingInput06" size="20" maxlength="12"
-									placeholder="Mot de passe inexistant" 
-									value="#{spaceUser.spaceViewModel.user.account.password} ">
+									value="#{spaceUser.spaceViewModel.user.account.password}">
 									<f:validateLength minimum="5"></f:validateLength>
 								</h:inputText>
 								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
@@ -217,13 +216,15 @@
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput08"
-									placeholder="Code postal non renseigné"	size="20"
+									placeholder="Code postal non renseigné"
+									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
 								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput09"
-									placeholder="Ville nn renseignée" size="20"
+									placeholder="Ville nn renseignée"
+									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 							</div>
