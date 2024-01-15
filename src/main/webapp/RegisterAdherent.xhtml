@@ -132,8 +132,10 @@
 							</div>
 						</div>
 
-						<div class="manager-form">
-							<h:commandButton class="btn btn-warning" value="Créer mon compte"
+
+							<h:commandButton class="btn btn-warning"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
+								value="Créer mon compte"
 								action="#{spaceUser.createMemberAccount()}" />
 							<h:link class="text-center btn btn-secondary"
 								outcome="index.xhtml">Annuler</h:link>

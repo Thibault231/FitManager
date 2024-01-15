@@ -36,7 +36,8 @@
 									</div>
 									<div class="card-footer">
 										<h:form>
-					<h:commandButton action="#{subscriptionController.subscribe(subscription.subscriptionId)}" class="btn btn-warning" value="Choisir cet abonnement"/>
+					<h:commandButton action="#{subscriptionController.subscribe(subscription.subscriptionId)}" class="btn btn-warning" value="Choisir cet abonnement"
+					style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
 				</h:form>
 									</div>
 								</div>

@@ -13,69 +13,135 @@
 	<ui:define name="spaceContent">
 
 		<div class="container">
-			<h2 class="mb-5">Mon tableau de bord Coach</h2>
-			<div class="row">
-				<div class="col-4">
-					<div
-						class="d-flex justify-content-center align-items-center w-100 h-100 ">
-						<img src="resources/images/Accueil.jpg"
-							style="max-width: 12em; height: 12em" />
-					</div>
+			<h2 class="mb-3 mt-3">Mon tableau de bord Coach</h2>
+			<div class=" mb-2 mt-4 card-AbonnementSpace full "
+				style="border-radius: 20px; margin-top: 20px; box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white; height: 100%">
+				<div class="card-header h-full"
+					style="height:40px; border-radius: 5px; color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; ">
+					<h3>Mes informations</h3>
 				</div>
-				<div id="1" class="col-6">
-					<h2>Mes informations</h2>
-					<div class="card p-2"
-						style="background-color: #A9DEF9; color: white;">
-						<p>Nom: #{spaceUser.spaceViewModel.user.profile.civility.name}</p>
-						<p>Prenom:
-							#{spaceUser.spaceViewModel.user.profile.civility.forename}</p>
-						<p>Date de naissance:
-							#{spaceUser.spaceViewModel.user.profile.civility.birthday}</p>
-						<p>Email:
-							#{spaceUser.spaceViewModel.user.profile.contact.email}</p>
-							<p>Téléphone:
-							#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}</p>
-						<p>Adresse:
-							#{spaceUser.spaceViewModel.user.profile.adress.street}</p>
-						<p>Code postal:
-							#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</p>
-						<p>Ville: #{spaceUser.spaceViewModel.user.profile.adress.city}</p>
-						<div class="d-flex w-100 justify-content-center">
-							<h:panelGrid columns="1" cellpadding="5">
-								<p:commandButton value="Modifier mon profil" type="button"
-									onclick="PF('UpdateAccount').show();" />
-							</h:panelGrid>
+
+				<div class="row g-0" style="height: 100%">
+					<div class="col-md-4">
+						<img class="rounded-bottom float-start"
+							src="resources/images/Accueil.jpg"
+							style="max-width: 100%; height: 100%" />
+					</div>
+					<div class="col-md-8" style="height: 100%">
+						<div class="card-body2" style="padding: 20px">
+							<div class="input-group mb-3 " style="width: 100%">
+
+								<span
+									class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Nom</b></span> 
+									<span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{spaceUser.spaceViewModel.user.profile.civility.name}</span>
+</div>
+								<div class="input-group mb-3" style="width: 100%">
+									<span
+										class="input-group-text p-2"
+										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Prénom</b></span> <span
+										class="input-group-text"
+										style="width: 80%; background-color: white">
+										#{spaceUser.spaceViewModel.user.profile.civility.forename}</span>
+								</div>
+								<div class="input-group mb-3" style="width: 100%">
+									<span
+										class="input-group-text p-2"
+										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b> Date de naissance</b></span> <span
+										class="input-group-text"
+										style="width: 80%; background-color: white">
+										#{spaceUser.spaceViewModel.user.profile.civility.birthday}</span>
+								</div>
+								<div class="input-group mb-3" style="width: 100%">
+									<span
+										class="input-group-text p-2"
+										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span> <span
+										class="input-group-text"
+										style="width: 80%; background-color: white">
+										#{spaceUser.spaceViewModel.user.profile.contact.email}</span>
+								</div>
+								<div class="input-group mb-3" style="width: 100%">
+									<span
+										class="input-group-text p-2"
+										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Téléphone</b></span> <span
+										class="input-group-text"
+										style="width: 80%; background-color: white">
+										#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}</span>
+								</div>
+								<div class="input-group mb-3" style="width: 100%">
+									<span
+										class="input-group-text p-2"
+										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Adresse</b></span> <span
+										class="input-group-text"
+										style="width: 80%; background-color: white">
+										#{spaceUser.spaceViewModel.user.profile.adress.street}</span>
+								</div>
+								<div class="input-group mb-3" style="width: 100%">
+									<span
+										class="input-group-text p-2"
+										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Code postal</b></span> 
+										<span class="input-group-text" style="width: 80%; background-color: white">
+										#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</span>
+								</div>
+								<div class="input-group mb-3" style="width: 100%">
+									<span
+										class="input-group-text p-2"
+										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Ville</b></span> <span
+										class="input-group-text"
+										style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.city}</span>
+								</div>
+									<div>
+										<p:commandButton value="Modifier mon profil" type="button"
+									styleClass="ui-button"
+									style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor};"
+											onclick="PF('UpdateAccount').show();" />
+									</div>
+								</div>
+
+							</div>
 						</div>
-
 					</div>
-				</div>
-			</div>
-
 			<p:tabView>
 				<p:tab title="Cours">
 					<h:panelGrid columns="1" cellpadding="5">
-						<p:dataTable value="#{courseController.allCoachCourses}"
-							var="course">
-							<p:column headerText="Dénomination">
-								<h:outputText value="#{course.name}" />
+						<h:form>
+						<p:dataTable value="#{courseController.allCoachCourses}" var="course"  widgetVar="coursesTable">
+						
+							<f:facet name="header">
+				                <div class="flex align-items-center justify-content-between">
+				                    <div>
+				                    <p:inputText id="globalFilter" onkeyup="PF('coursesTable').filter()" style="width:10rem"
+				                                 placeholder="Enter keyword" />
+				                    <p:commandButton value="Rechercher générale" update="@form"  action="true"
+				                   		styleClass="ui-button-raised ui-button custom-white-text"
+										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"/>
+				                    </div>
+				                </div>
+				            </f:facet>
+				           
+							<p:column headerText="Dénomination" filterBy="#{course.name}">
+								<h:outputText value="#{course.name}"/>
 							</p:column>
-							<p:column headerText="Date et horaire">
-								<h:outputText value="#{course.startDate}" />
+							<p:column headerText="Début du cours" filterBy="#{course.startDate}">
+								<h:outputText value="#{course.startDate}"/>
 							</p:column>
-							<p:column headerText="Dénomination">
-								<h:outputText value="#{course.endDate}" />
+							<p:column headerText="Fin de cours" filterBy="#{course.endDate}">
+								<h:outputText value="#{course.endDate}"/>
 							</p:column>
 							<p:column headerText="Description">
-								<h:outputText value="#{course.description}" />
+								<h:outputText value="#{course.description}"/>
 							</p:column>
 							<p:column headerText="Actions">
-								<h:form>
 									<p:commandButton value="Supprimer"
+										style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 										action="#{courseController.deleteCourse(course.id)}">
-									</p:commandButton>
-								</h:form>
+									</p:commandButton>		
 							</p:column>
 						</p:dataTable>
+						</h:form>
 					</h:panelGrid>
 				</p:tab>
 			</p:tabView>

@@ -16,24 +16,7 @@
 	<ui:define name="titleValue">Accueil - Fit Manager</ui:define>
 
 	<ui:define name="content">
-		<div class="d-flex">
-			<div id="menus" class=" menus desable">
-				<div
-					class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sticky-top"
-					style="width: 100%; height: 100vh">
-					<div class=" m-auto h-75">
-						<ul class="nav nav-pills flex-column mb-auto ">
-							<li class="nav-item mb-2">
-								<h:link class="dropdown-item" outcome="ManagerSpacesList.xhtml">Mes espaces</h:link>
-							</li>
-							<li class="nav-item mb-2">
-								<p:commandButton value="creation de salle" type="button" onclick="PF('createSpace').show();" />
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
+	<div class="container">
 			<div class="col p-5">
 				<h1> <span> Bienvenue</span> #{sessionScope.name} </h1>
 				<div class="d-flex w-100 justify-content-end pt-1">
@@ -137,27 +120,126 @@
 				</div>
 
 				
+				<div class="mb-3 mt-3">
+			<div class=" mb-2 mt-4 card-AbonnementSpace full "
+				style="border-radius: 0px; margin-top: 20px; box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white; height: 100%">
+				<div class="card-header h-full"
+					style="height:40px; border-radius: 5px; color: white; background-color: #1C3659">
+					<h3>Mes informations</h3>
+				</div>
+
+				<div class="row g-0" style="height: 100%">
+					<div class="col-md-4">
+						<img class="rounded-bottom float-start"
+							src="resources/images/Image-Profil-2.jpg"
+							style="max-width: 100%; height: 100%" />
+					</div>
+					<div class="col-md-8" style="height: 100%">
+						<div class="card-body2" style="padding: 20px">
+							<div class="input-group mb-3 " style="width: 100%">
+
+								<span
+									class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+									style="width: 20%"><b>Nom</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white"> #{userController.userViewModel.user.profile.civility.name}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+									style="width: 20%"><b>Prénom</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{userController.userViewModel.user.profile.civility.forename}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+									style="width: 20%"><b> Date de naissance</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{userController.userViewModel.user.profile.civility.birthday}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+									style="width: 20%"><b>Email</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{userController.userViewModel.user.profile.contact.email}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+									style="width: 20%"><b>Téléphone</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{userController.userViewModel.user.profile.contact.phoneNumber}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+									style="width: 20%"><b>Adresse</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">#{userController.userViewModel.user.profile.adress.street}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+									style="width: 20%"><b>Code postal</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{userController.userViewModel.user.profile.adress.zipCode}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+									style="width: 20%"><b>Ville</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">#{userController.userViewModel.user.profile.adress.city}</span>
+							</div>
+							<div>
+										<p:commandButton value="Modifier mon profil" type="button"
+									styleClass="ui-button-raised ui-button custom-white-text" 
+							style="background-color:  #1C3659; margin-bottom:20px "
+									onclick="PF('UpdateAccount').show();" />
+							</div>
+						</div>
+
+					</div>
+			</div>
+			</div>
+				
+</div>
 				
 
 
-				<div class="row">
-					<div class="container  text-center">
-						<div class="row gy-5">
-							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
-								<div class="card p-3">
+				<div class="mb-5 shadow-4 mb-2 mt-4 card-AbonnementSpace"
+						style="border-radius: 0px; padding: 1em; margin-top: 20px; margin-top: 20px; box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127); background-color:white;">
 
-									<h3 class="text-start mb-3 fw-lighter">Scéance</h3>
+									<h3 class="text-start mb-3 fw-lighter">Mes salles fitness</h3>
+									<p:commandButton value="Créer une salle" type="button" styleClass="ui-button-raised ui-button custom-white-text" 
+							style="background-color:  #1C3659; margin-bottom:20px "
+							onclick="PF('createSpace').show();" />
+									
 									<h:form id="activityCreationForm">
 					<div>
 						<p:dataTable var="space"
 							value="#{spaceController.allActiveSpacesOfManager}">
 							<p:column headerText="Logo">
 							<div class="logoContainer">
-									<p:graphicImage library="images" name="logo/#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index" />
+									<p:graphicImage library="documents" name="#{space.infos.configuration.logo}" width="50px" height="50px"	class="img_index" />
 							</div>
 							</p:column>
 							<p:column headerText="Nom">
 								<h:outputText value="#{space.infos.configuration.fitnessName}" />
+							</p:column>
+							<p:column headerText="Mes Couleurs">
+							<div class="d-flex">
+								<div style="width: 2rem; height: 2rem; background-color:#{space.infos.configuration.style.mainColor};"></div>
+								<div style="width: 2rem; height: 2rem; background-color:#{space.infos.configuration.style.secondColor};"></div>
+								<div style="width: 2rem; height: 2rem; background-color:#{space.infos.configuration.style.thirdcolor};"></div>
+							</div>
 							</p:column>
 							<p:column headerText="Adresse">
 								<h:outputText value="#{space.infos.administrative.address}" />
@@ -173,57 +255,11 @@
 					</div>
 				 </h:form>
 				
-								</div>
-							</div>
-							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 col-xxl-6">
-								<div class="card p-3">
-
-									<h3 class="text-start mb-3 fw-lighter">Coach</h3>
-									<table class="table">
-
-										<tbody>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div class=" p-2 bg-warning border border-light rounded-circle " style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											<tr class="p-1">
-												<th scope="row"><a href="#"
-													class="d-flex align-items-center text-white text-decoration-none"
-													data-bs-toggle="dropdown" aria-expanded="false"> <img
-														src="https://github.com/mdo.png" alt="" width="32"
-														height="32" class="rounded-circle me-2" />
-												</a></th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>Body-pump</td>
-												<td>88/88/8888</td>
-												<td>
-													<div
-														class=" p-2 bg-warning border border-light rounded-circle "
-														style="height: 10px; width: 10px"></div>
-												</td>
-											</tr>
-											
-										</tbody>
-									</table>
-								</div>
-							</div>
+							
+							
 						</div>
-					</div>
-				</div>
 			</div>
-		</div>
+		
 
 		<p:dialog header="Modification de mon profil " widgetVar="UpdateAccount" modal="true"
 			height="600" resizable="false" showEffect="fade" hideEffect="fade"
@@ -388,7 +424,7 @@
 				</div>
 			</h:form>
 		</p:dialog>
-		
+		</div>
 	</ui:define>
 
 </ui:composition>

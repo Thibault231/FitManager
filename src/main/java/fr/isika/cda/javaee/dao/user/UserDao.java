@@ -37,15 +37,14 @@ public class UserDao implements IDaoUser {
 
 	@Override
 	public boolean deleteUser(Long userToDeleteId) {
+		em.createNativeQuery("DELETE FROM space_user WHERE users_userId = :userId")
+				.setParameter("userId", userToDeleteId).executeUpdate();
+		em.createNativeQuery("DELETE FROM course WHERE coach_userId = :userId").setParameter("userId", userToDeleteId)
+				.executeUpdate();
 		User userTodelete = getUserByIdWithLinkedSpaces(userToDeleteId);
 
 		if (userTodelete != null) {
-			if (userTodelete.getLinkedSpaces() != null) {
-				userTodelete.setActive(false);
-				updateUser(userTodelete);
-			} else {
-				em.remove(userTodelete);
-			}
+			em.remove(userTodelete);
 			return true;
 		} else {
 			return false;

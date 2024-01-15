@@ -59,7 +59,7 @@
 							<ui:repeat	value="#{subscriptionController.allActiveSubscription}"	var="subscription">
 								<div class="shadow-2 h-full flex flex-column surface-card"	style="margin-top:0px; border-radius: 10px; padding: 1em; box-shadow: 10px 10px 19px -7px  rgb(131, 127, 127); background-color:white;">
 									
-									<div class="card-header" style="padding-top: 20px; margin-top:15px; border-radius: 10px; color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; ">
+									<div class="card-header" style="padding-top: 20px; margin-top:15px; border-radius: 10px; color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.secondColor}; ">
 										
 										<h2>
 											<b>#{subscription.subscriptionName}</b>
@@ -186,21 +186,21 @@
 							<h:inputText class="form-control" id="floatingInput03"
 								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.style.mainColor}" size="20" required="true"
 								value="#{spaceController.spaceViewModel.space.infos.configuration.style.mainColor}" />
-							<h:outputLabel class="outputLabel" for="floatingInput03">COULEUR PRINCIPALE</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput03">COULEUR HEADER AND FOOTER</h:outputLabel>
 						</div>
 
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput04"
 								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.style.secondColor}" size="20" required="true"
 								value="#{spaceController.spaceViewModel.space.infos.configuration.style.secondColor}" />
-							<h:outputLabel class="outputLabel" for="floatingInput04">COULEUR SECONDAIRE</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput04">COULEUR ELEMENTS</h:outputLabel>
 						</div>
 						
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput12"
 								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.style.thirdcolor}" size="20" required="true"
 								value="#{spaceController.spaceViewModel.space.infos.configuration.style.thirdcolor}" />
-							<h:outputLabel class="outputLabel" for="floatingInput12">COULEUR TERTIAIRE</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput12">COULEUR BOUTONS</h:outputLabel>
 						</div>
 
 						<div class="form-floating">
