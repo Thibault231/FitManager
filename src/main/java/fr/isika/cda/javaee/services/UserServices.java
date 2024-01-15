@@ -156,6 +156,7 @@ public class UserServices {
 			String newCity = userToUpdate.getProfile().getAdress().getCity();
 			currentUser.getProfile().getAdress().setStreet(newCity);
 		}
+
 		userDao.updateUser(currentUser);
 	}
 

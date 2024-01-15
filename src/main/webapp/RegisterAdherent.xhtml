@@ -13,15 +13,16 @@
 	<ui:define name="spaceContent">
 
 
-		<main class=" d-flex  text-emphasis-primary justify-content-center align-items-center"
+		<main
+			class=" d-flex  text-emphasis-primary justify-content-center align-items-center"
 			style="margin-bottom: 1em">
 			<div class="w-50">
-				<h:form class="manager-form-cadre p-5 main-shadow">
+				<h:form class="manager-form-cadre p-5  m-5 main-shadow">
 					<style>
-						.main-shadow {
-						box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-						}
-						</style>
+.main-shadow {
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+</style>
 
 					<div>
 						<div class="manager-form">
@@ -82,14 +83,15 @@
 
 								<div class="field">
 									<h:outputLabel class="outputLabel" for="floatingInput06">MOT DE PASSE</h:outputLabel>
-									<p:password class="form-control" id="floatingInput06" size="20"
-										placeholder="MOT DE PASSE" required="true" maxlength="12"
+									<h:inputText class="form-control" id="floatingInput06"
+										size="20" placeholder="MOT DE PASSE" required="true"
+										maxlength="12"
 										requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
 										validatorMessage="Votre mot de passe doit contenir entre 5 à 12 caractères"
 										value="#{spaceUser.spaceViewModel.user.account.password}">
 										<f:validateLength minimum="5" maximum="12" />
 										<h:message for="floatingInput06" styleClass="errorBlock" />
-									</p:password>
+									</h:inputText>
 
 								</div>
 							</div>
@@ -134,13 +136,14 @@
 							</div>
 						</div>
 
-
-						<h:commandButton class="btn btn-warning"
-							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
-							value="Créer mon compte"
-							action="#{spaceUser.createMemberAccount()}" />
-						<h:link class="text-center btn btn-secondary"
-							outcome="index.xhtml">Annuler</h:link>
+						<div class="d-flex justify-content-around m-4">
+							<h:commandButton class="btn btn-warning"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
+								value="Créer mon compte"
+								action="#{spaceUser.createMemberAccount()}" />
+							<h:link class="text-center btn btn-secondary"
+								outcome="index.xhtml">Annuler</h:link>
+						</div>
 					</div>
 				</h:form>
 			</div>

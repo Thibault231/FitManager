@@ -100,8 +100,6 @@
 								styleClass="ui-button"
 								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor};"
 										onclick="PF('UpdateAccount').show();" />
-
-                  
 								</div>
 							</div>
 
@@ -203,6 +201,7 @@
 								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 							</div>
 							
+
 							<div class="form-floating ">
 								<h:inputText class="form-control" id="floatingInput06" size="20" maxlength="12"
 									value="#{spaceUser.spaceViewModel.user.account.password}">
@@ -211,6 +210,7 @@
 								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 							</div>
 							
+
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput07"
 									placeholder="Adresse non renseignée"
@@ -232,7 +232,6 @@
 									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 							</div>
-							
 							<div class="field">
 								<h:outputLabel class="outputLabel" for="photoInput">VOTRE PHOTO</h:outputLabel>
 								<p:fileUpload

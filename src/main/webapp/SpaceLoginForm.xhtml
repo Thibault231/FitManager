@@ -35,6 +35,7 @@
 								placeholder="Utilisateur" size="20" required="true"
 								requiredMessage="La saisie du LOGIN est obligatoire !"
 								value="#{spaceUser.spaceViewModel.user.account.login}" />
+							<h:message  for="floatingInput01" styleClass="errorBlock" />
 							<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
 							<h:message for="floatingInput01" styleClass="errorBlock" />
 						</div>
@@ -44,6 +45,7 @@
 								placeholder="Mot de passe" size="5" required="true"
 								requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
 								value="#{spaceUser.spaceViewModel.user.account.password}" />
+							<h:message  for="floatingInput02" styleClass="errorBlock" />
 							<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
 							<h:message for="floatingInput02" styleClass="errorBlock" />
 						</div>

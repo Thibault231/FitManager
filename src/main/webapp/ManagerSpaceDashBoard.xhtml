@@ -251,9 +251,7 @@
 								<p:column headerText="Prix mensuel">
 									<h:outputText value="#{subscription.price.monthlyPrice}" />
 								</p:column>
-								<p:column headerText="Actions">
-								    <div class="d-flex">
-										
+								<p:column headerText="Actions" class="d-flex">
 										<p:commandLink value="Modifier" oncomplete="PF('UpdateSubscription').show();" 
 											update=":updateSubscriptionForm:updateSubscriptionPanel" process="@this" 
 											style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}">									
@@ -275,6 +273,7 @@
 												action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
 										</p:confirmDialog>
 									</div>
+
 								</p:column>
 							</p:dataTable>
 						</h:panelGrid>
@@ -568,6 +567,7 @@
 					</div>
 				</h:form>
 			</p:dialog>
+			
 			<h:form id="updateSubscriptionForm">
 				<p:dialog header="Modification d'abonnement "
 					widgetVar="UpdateSubscription" modal="true" height="350"
@@ -611,7 +611,6 @@
 					</p:outputPanel>
 				</p:dialog>
 			</h:form>
-
 		</div>
 	</ui:define>
 </ui:composition>
