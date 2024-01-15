@@ -453,19 +453,7 @@
 							</div>
 
 							<div class="field">
-								<h:outputLabel for="type" value="Document administratif" />
-								<h:selectOneMenu id="type"
-									value="#{spaceUser.spaceViewModel.newUser.account.administrativeDocument.type}">
-									<f:selectItem itemLabel="Selectionnez un type de document" />
-									<f:selectItem itemLabel="Diplôme" itemValue="Diploma" />
-									<f:selectItem itemLabel="Pièce d'identité" itemValue="Id" />
-									<f:selectItem itemLabel="Certificat médical"
-										itemValue="MedicalCertificate" />
-									<f:selectItem itemLabel="RIB" itemValue="BankDetails" />
-									<f:selectItem itemLabel="Autre" itemValue="Other" />
-								</h:selectOneMenu>
-								<hr />
-								<h:outputLabel id="fileUploadLbl" class="outputLabel">File : </h:outputLabel>
+								<h:outputLabel id="fileUploadLbl" class="outputLabel">Photo de profil : </h:outputLabel>
 								<p:fileUpload
 									listener="#{spaceUser.uploadPicture}"
 									styleClass="w-100" mode="advanced" dragDropSupport="false" />
@@ -554,7 +542,7 @@
 							<div class="field">
 								<h:outputLabel class="outputLabel" for="photoInput">VOTRE PHOTO</h:outputLabel>
 								<p:fileUpload
-									listener="#{userController.uploadAdministrativeDocument()}"
+									listener="#{spaceUser.uploadAdministrativeDocument}"
 									styleClass="w-100" mode="advanced" dragDropSupport="false" />
 							</div>
 							
