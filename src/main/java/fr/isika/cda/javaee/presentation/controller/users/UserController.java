@@ -270,6 +270,8 @@ public class UserController implements Serializable {
 			fc.getExternalContext().getSessionMap().put("id", userToLog.getUserId());
 			fc.getExternalContext().getSessionMap().put("name", userToLog.getProfile().getCivility().getName());
 			userViewModel.setUser(userToLog);
+			userViewModel.getUser().getAccount()
+					.setPassword(Crypto.DecryptDataInWords(userToLog.getAccount().getPassword()));
 			return true;
 		} else {
 			return false;
