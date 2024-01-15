@@ -50,8 +50,7 @@
 </style>
 </h:head>
 <h:form>
-<h:body style="margin-top: 100px;">
-<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor};">
+<h:body style="margin-top: 100px;">	
 	
 	
   <nav class="navbar navbar-expand-lg fixed-top " style="background-color:#{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}; height:7em">
@@ -66,54 +65,44 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page"><h:link class="nav-link" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}"></h:link>
+          <a class="nav-link active" aria-current="page"><h:link class="nav-link" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
 </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"><h:link class="nav-link" outcome="Calendar.xhtml"> </h:link></a>
+          <a class="nav-link"><h:link class="nav-link" outcome="Calendar.xhtml">PLANNING</h:link></a>
         </li>
          <li class="nav-item">
-          <a class="nav-link"><h:link class="nav-link" outcome="Calendar.xhtml"> </h:link></a>
+          <a class="nav-link"><h:link class="nav-link" outcome="Calendar.xhtml">PLANNING</h:link></a>
         </li>
       </ul>
       <span class="navbar-text d-flex w-5 flex-wrap">
   
-             <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page"><h:link class="nav-link text-light" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"><h:link class="nav-link text-light" outcome="Calendar.xhtml">PLANNING</h:link></a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link"><h:link class="nav-link text-light" outcome="Calendar.xhtml">PLANNING</h:link></a>
-        </li>
-        
-        		 <ui:fragment rendered="#{not spaceController.isUserConnected()}">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">compte</a>
+            <ul class="dropdown-menu" style="left:90%">
+            
+            <ui:fragment rendered="#{not spaceController.isUserConnected()}">
 					<li class="nav-item">
-						<a class="nav-link"><h:link class="nav-link text-light" outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link></a>
+						<h:link class="nav-link" outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link"><h:link class="nav-link text-light" outcome="RegisterAdherent.xhtml">S'INSCRIRE A LA SALLE</h:link></a>
+					<li class="nav-item" style="margin-right: 15px">
+						<h:link class="nav-link" outcome="RegisterAdherent.xhtml">S'INSCRIRE A LA SALLE</h:link>
 					</li>
 				</ui:fragment>
-				
 				<ui:fragment rendered="#{spaceController.isUserConnected()}">
 					<li class="nav-item">
-						<a class="nav-link"><h:commandLink class="nav-link text-light" action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">MON COMPTE</h:commandLink></a>
+						<h:commandLink class="nav-link" action="#{spaceController.redirectToRightDashBoard(sessionScope.role)}">MON COMPTE</h:commandLink>
 					</li>
-					<li class="nav-item" >
-						<a class="nav-link"><h:commandLink class="nav-link text-light" action="#{spaceController.simpleSpacelogout()}">SE DECONNECTER</h:commandLink></a>
+					<li class="nav-item" style="margin-right: 15px">
+						<h:commandLink class="nav-link" action="#{spaceController.simpleSpacelogout()}">SE DECONNECTER</h:commandLink>
 					</li>
 				</ui:fragment>
-				
 				<ui:fragment rendered="#{spaceController.managerOfTheSpaceConnected}">
 					<li class="nav-item">
-						<a class="nav-link"><h:commandLink  class="nav-link text-light" action="#{spaceController.goToUpdateSpaceForm()}" value="MODIFIER MON ESPACE" /></a>
+						<h:commandLink  class="nav-link" action="#{spaceController.goToUpdateSpaceForm()}" value="MODIFIER MON ESPACE" />
 					</li>
 				</ui:fragment>
-
-      </ul>
+     
+            </ul>
       </span>
     </div>
   </div>
