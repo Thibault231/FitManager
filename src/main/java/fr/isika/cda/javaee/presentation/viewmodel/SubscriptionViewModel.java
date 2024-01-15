@@ -14,6 +14,8 @@ public class SubscriptionViewModel {
 
 	private Subscription subscription;
 
+	private Subscription selectedSubscription;
+
 //******************************************************
 	public SubscriptionViewModel() {
 		this.subscription = new Subscription(true);
@@ -34,6 +36,14 @@ public class SubscriptionViewModel {
 
 	public void setSubscription(Subscription subscription) {
 		this.subscription = subscription;
+	}
+
+	public Subscription getSelectedSubscription() {
+		return selectedSubscription;
+	}
+
+	public void setSelectedSubscription(Subscription selectedSubscription) {
+		this.selectedSubscription = selectedSubscription;
 	}
 
 }

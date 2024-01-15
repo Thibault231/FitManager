@@ -11,9 +11,9 @@ public class DefaultConfig {
 	public static final String DEFAULT_PROFILE_PICTURE = "default.jpg";
 
 	public static final String DEFAULT_MAIN_PICTURE = "Image10.jpg";
-	public static final String DEFAULT_CARROUSEL_ONE = "Image1.jpg";
-	public static final String DEFAULT_CARROUSEL_TWO = "Image2.jpg";
-	public static final String DEFAULT_CARROUSEL_THREE = "Image3.jpg";
+	public static final String DEFAULT_CARROUSEL_ONE = "Img1.jpg";
+	public static final String DEFAULT_CARROUSEL_TWO = "Img2.jpg";
+	public static final String DEFAULT_CARROUSEL_THREE = "Img3.jpg";
 	public static final String DEFAULT_MAIN_COLOR = "#FFC107;";
 	public static final String DEFAULT_SECOND_COLOR = "#FFC107;";
 	public static final String DEFAULT_THIRD_COLOR = "#FFC107;";

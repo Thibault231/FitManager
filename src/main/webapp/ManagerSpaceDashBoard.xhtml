@@ -31,61 +31,67 @@
 						<div class="card-body2" style="padding: 20px">
 							<div class="input-group mb-3 " style="width: 100%">
 
-								<span class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Nom</b></span>
-								<span class="input-group-text"
-									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.civility.name}</span>
+								<span
+									class="input-group-text p-2"
+									style="width: 21%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Nom</b></span> <span
+									class="input-group-text"
+									style="width: 79%; background-color: white">#{spaceUser.spaceViewModel.user.profile.civility.name}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Prénom</b></span>
-								<span class="input-group-text"
-									style="width: 80%; background-color: white">
+								<span
+									class="input-group-text p-2"
+									style="width: 21%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Prénom</b></span> <span
+									class="input-group-text"
+									style="width: 79%; background-color: white">
 									#{spaceUser.spaceViewModel.user.profile.civility.forename}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>
-										Date de naissance</b></span> <span class="input-group-text"
-									style="width: 80%; background-color: white"> <h:outputText
-										value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
-										<f:convertDateTime timeZone="#{referenceData.timezone}"
-											pattern="dd MMM yyyy" />
+								<span
+									class="input-group-text p-2"
+									style="width: 21%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b> Date de naissance</b></span> <span
+									class="input-group-text" style="width: 79%; background-color: white">
+									<h:outputText value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
+									        <f:convertDateTime timeZone="#{referenceData.timezone}" pattern="dd MMM yyyy" />
 									</h:outputText>
 								</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span>
-								<span class="input-group-text"
-									style="width: 80%; background-color: white">
+								<span
+									class="input-group-text p-2"
+									style="width: 21%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span> <span
+									class="input-group-text"
+									style="width: 79%; background-color: white">
 									#{spaceUser.spaceViewModel.user.profile.contact.email}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Téléphone</b></span>
-								<span class="input-group-text"
-									style="width: 80%; background-color: white">
+								<span
+									class="input-group-text p-2"
+									style="width: 21%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Téléphone</b></span> <span
+									class="input-group-text"
+									style="width: 79%; background-color: white">
 									#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Adresse</b></span>
-								<span class="input-group-text"
-									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.street}</span>
+								<span
+									class="input-group-text p-2"
+									style="width: 21%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Adresse</b></span> <span
+									class="input-group-text"
+									style="width: 79%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.street}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Code
-										postal</b></span> <span class="input-group-text"
-									style="width: 80%; background-color: white">
+								<span
+									class="input-group-text p-2"
+									style="width: 21%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Code postal</b></span> <span
+									class="input-group-text"
+									style="width: 79%; background-color: white">
 									#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
-								<span class="input-group-text p-2"
-									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Ville</b></span>
-								<span class="input-group-text"
-									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.city}</span>
+								<span
+									class="input-group-text p-2"
+									style="width: 21%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Ville</b></span> <span
+									class="input-group-text"
+									style="width: 79%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.city}</span>
 							</div>
 							<div>
 								<p:commandButton value="Modifier mon profil" type="button"
@@ -248,20 +254,22 @@
 									<h:outputText value="#{subscription.price.monthlyPrice}" />
 								</p:column>
 								<p:column headerText="Actions">
+								    <div class="d-flex">
+										
+										<p:commandLink value="Modifier" oncomplete="PF('UpdateSubscription').show();" 
+											update=":updateSubscriptionForm:updateSubscriptionPanel" process="@this" 
+											style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}">
+																					
+											<f:setPropertyActionListener value="#{subscription}" target="#{subscriptionController.subscriptionViewModel.selectedSubscription}" />
+											<p:resetInput target=":updateSubscriptionForm:updateSubscriptionPanel" />
+											
+										</p:commandLink>
+											
+										<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
+										<p:confirmDialog id="confirmationDialogSub" widgetVar="confirmationVarSub" header="Confirmation"
+											message="Êtes-vous sûr de vouloir supprimer cet abonnement?" severity="alert">
+											<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarSub').hide()" />
 
-									<div class="d-flex">
-										<p:commandLink value="Modifier" type="button"
-											onclick="PF('UpdateSubscription').show();"
-											style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}" />
-										<p:commandLink type="button" value="Supprimer"
-											onclick="PF('confirmationVarSub').show();"
-											style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}" />
-										<p:confirmDialog id="confirmationDialogSub"
-											widgetVar="confirmationVarSub" header="Confirmation"
-											message="Êtes-vous sûr de vouloir supprimer cet abonnement?"
-											severity="alert">
-											<p:commandButton value="Annuler" type="button"
-												onclick="PF('confirmationVarSub').hide()" />
 											<p:commandButton value="Oui"
 												oncomplete="PF('confirmationVarSub').hide()"
 												action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
@@ -276,9 +284,6 @@
 
 				<p:tab title="Cours">
 					<h:panelGrid columns="1" cellpadding="5">
-<!-- 						<p:commandButton value="Ajouter un cours" type="button" -->
-<!-- 							styleClass="ui-button-raised ui-button custom-white-text" -->
-<!-- 							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}" /> -->
 						<h:form>
 							<p:dataTable value="#{courseController.allCourses}" var="course"
 								widgetVar="subsTable">
@@ -489,14 +494,14 @@
 						<div class="d-grid gap-2">
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput01"
-									placeholder="#{spaceUser.spaceViewModel.user.profile.civility.name}"
+									placeholder="Nom non renseigné"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
 								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput02"
-									placeholder="spaceUser.spaceViewModel.user.profile.civility.forename"
+									placeholder="Prénom non renseigné"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
 								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
@@ -513,7 +518,7 @@
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput04"
-									placeholder="spaceUser.spaceViewModel.user.profile.civility.birthday"
+									placeholder="Anniversaire non renseigné"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
 									<f:convertDateTime pattern="dd-mm-yyyy" />
@@ -521,31 +526,30 @@
 								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 							</div>
 							<div class="form-floating ">
-								<h:inputText class="form-control" id="floatingInput06" size="20"
-									placeholder="#{spaceUser.spaceViewModel.user.account.password}"
-									maxlength="12"
-									value="#{spaceUser.spaceViewModel.user.account.password}">
+								<h:inputText class="form-control" id="floatingInput06" size="20" maxlength="12"
+									placeholder="Mot de passe inexistant" 
+									value="#{spaceUser.spaceViewModel.user.account.password} ">
 									<f:validateLength minimum="5"></f:validateLength>
 								</h:inputText>
 								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput07"
-									placeholder="spaceUser.spaceViewModel.user.profile.adress.street"
+									placeholder="Adresse non renseignée"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
 								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput08"
-									placeholder="spaceUser.spaceViewModel.user.profile.adress.zipCode"
+									placeholder="Code postal non renseigné"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
 								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput09"
-									placeholder="spaceUser.spaceViewModel.user.profile.adress.city"
+									placeholder="Ville nn renseignée"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
@@ -559,54 +563,49 @@
 					</div>
 				</h:form>
 			</p:dialog>
-
-			<p:dialog header="Modification d'abonnement "
-				widgetVar="UpdateSubscription" modal="true" height="600"
-				resizable="false" showEffect="fade" hideEffect="fade"
-				style="max-width: 1000px; min-width: 700px;">
-				<h:form>
-					<div>
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput01"
-								placeholder="#{subscription.subscriptionName}" required="true"
-								size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.subscriptionName}" />
-							<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+			<h:form id="updateSubscriptionForm">
+				<p:dialog header="Modification d'abonnement "
+					widgetVar="UpdateSubscription" modal="true" height="350"
+					resizable="false" showEffect="fade" hideEffect="fade"
+					style="max-width: 1000px; min-width: 400px;">
+					<p:outputPanel id="updateSubscriptionPanel">
+						<div>
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput01"
+									placeholder="Nom de l'abonnement" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.selectedSubscription.subscriptionName}" />
+								<h:outputLabel class="outputLabel" for="floatingInput01">Nom de l'abonnement</h:outputLabel>
+							</div>
+	
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput02"
+									placeholder="Description" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.selectedSubscription.description}" />
+								<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
+							</div>
+	
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput03"
+									placeholder="Engagement" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.selectedSubscription.engagement}" />
+								<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
+							</div>
+	
+							<div class="form-floating">
+								<h:inputText class="form-control" id="floatingInput04"
+									placeholder="Prix mensuel" required="true" size="20"
+									value="#{subscriptionController.subscriptionViewModel.selectedSubscription.price.monthlyPrice}" />
+								<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
+							</div>
+							<div class="d-flex justify-content-around m-4">
+							<h:commandButton class="btn btn-warning"
+								value="Modifier abonnement"
+								action="#{subscriptionController.updateSuscription()}" />
+							</div>
 						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput02"
-								placeholder="#{subscription.description}" required="true"
-								size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.description}" />
-							<h:outputLabel class="outputLabel" for="floatingInput02">Description</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput03"
-								placeholder="#{subscription.engagement}" required="true"
-								size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.engagement}" />
-							<h:outputLabel class="outputLabel" for="floatingInput03">Durée d'engagement</h:outputLabel>
-						</div>
-
-						<div class="form-floating">
-							<h:inputText class="form-control" id="floatingInput04"
-								placeholder="#{subscription.price.monthlyPrice}" required="true"
-								size="20"
-								value="#{subscriptionController.subscriptionViewModel.subscription.price.monthlyPrice}" />
-							<h:outputLabel class="outputLabel" for="floatingInput04">Prix Mensuel</h:outputLabel>
-						</div>
-
-						<h:commandButton class="btn btn-warning"
-							value="Modifier abonnement"
-							action="#{subscriptionController.updateSuscription()}" />
-						<h:link class="text-center" outcome="AdherentDashboard"
-							value="ANNULER" />
-					</div>
-				</h:form>
-			</p:dialog>
-
+					</p:outputPanel>
+				</p:dialog>
+			</h:form>
 		</div>
 	</ui:define>
 </ui:composition>
