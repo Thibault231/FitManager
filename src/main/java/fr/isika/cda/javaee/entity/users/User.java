@@ -41,7 +41,7 @@ public class User {
 	@ManyToMany(mappedBy = "users")
 	private List<Space> linkedSpaces;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Schedulde schedulde;
 
 	private Long currentSubScriptionId;
