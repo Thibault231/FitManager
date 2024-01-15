@@ -55,34 +55,31 @@
 
 <!-- 		<div class="container-fluid"> -->
 		
+<nav>
+	<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.logo}" class="img_navBar" />
+	<div class="flex justify-content-center text-center" >
+		<h4 style="color:white; margin-bottom: 0; font-family: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.font} !important">#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</h4>
+		<h6 style="color:white; font-family: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.font} !important">#{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</h6>
 
-		<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.logo}" class="img_navBar" />
-		<div class="flex justify-content-center text-center" >
-			<h4 style="color:white; margin-bottom: 0; font-family: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.font} !important">#{spaceController.currentSpaceWithSubscriptions.infos.configuration.fitnessName}</h4>
-			<h6 style="color:white; font-family: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.font} !important">#{spaceController.currentSpaceWithSubscriptions.infos.configuration.slogan}</h6>
-
-		</div>
+	</div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page"><h:link class="nav-link" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link>
-</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"><h:link class="nav-link" outcome="Calendar.xhtml">PLANNING</h:link></a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link"><h:link class="nav-link" outcome="Calendar.xhtml">PLANNING</h:link></a>
-        </li>
-      </ul>
-      <span class="navbar-text d-flex w-5 flex-wrap">
-  
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">compte</a>
-            <ul class="dropdown-menu" style="left:90%">
-            
+	    <ul class="navbar-nav me-auto ml-3 mb-2 mb-lg-0">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page"><h:link class="nav-link" outcome="SpaceView.xhtml?faces-redirect=true&amp;spaceId=#{sessionScope.spaceId}">ACCUEIL</h:link></a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link"><h:link class="nav-link" outcome="Calendar.xhtml">PLANNING</h:link></a>
+	        </li>
+	         <li class="nav-item">
+	          <a class="nav-link"><h:link class="nav-link" outcome="Calendar.xhtml">PLANNING</h:link></a>
+	        </li>
+	      </ul>
+	   <span class="navbar-text d-flex w-5 flex-wrap">
+         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">compte</a>
+         <ul class="dropdown-menu" style="left:90%">
             <ui:fragment rendered="#{not spaceController.isUserConnected()}">
 					<li class="nav-item">
 						<h:link class="nav-link" outcome="SpaceLoginForm.xhtml">SE CONNECTER</h:link>
@@ -103,12 +100,10 @@
 					<li class="nav-item">
 						<h:commandLink  class="nav-link" action="#{spaceController.goToUpdateSpaceForm()}" value="MODIFIER MON ESPACE" />
 					</li>
-				</ui:fragment>
-     
+			</ui:fragment>
             </ul>
-      </span>
+       </span>
     </div>
-  </div>
 </nav>
 
 </h:body>
