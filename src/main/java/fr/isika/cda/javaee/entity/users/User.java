@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 
 import fr.isika.cda.javaee.entity.relations.Schedulde;
 import fr.isika.cda.javaee.entity.spaces.Space;
+import fr.isika.cda.javaee.presentation.util.DefaultConfig;
 
 /**
  * Person of a fitness space, regardless it's role.
@@ -46,7 +47,7 @@ public class User {
 
 	private Long currentSubScriptionId;
 
-	private String profilePicture;
+	private String profilePicture = DefaultConfig.DEFAULT_PROFILE_PICTURE;
 
 //*******************************************************************		
 	/**

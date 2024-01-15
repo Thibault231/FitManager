@@ -120,6 +120,7 @@ public class UserServices {
 	 */
 	public void updateUserOnPlateform(User userToUpdate, Long currentUserId) {
 		User currentUser = userDao.getUserById(currentUserId);
+
 		if (userToUpdate.getProfilePicture() != null) {
 			String newPicture = userToUpdate.getProfilePicture();
 			currentUser.setProfilePicture(newPicture);
@@ -161,7 +162,7 @@ public class UserServices {
 		}
 		if (userToUpdate.getProfile().getAdress().getCity() != null) {
 			String newCity = userToUpdate.getProfile().getAdress().getCity();
-			currentUser.getProfile().getAdress().setStreet(newCity);
+			currentUser.getProfile().getAdress().setCity(newCity);
 		}
 
 		userDao.updateUser(currentUser);

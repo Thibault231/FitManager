@@ -142,10 +142,12 @@ public class UserOnSpaceController implements Serializable {
 			User createdUser = userDao.getUserByIdWithLinkedSpaces(createdUserId);
 			currentSpace.getUsers().add(createdUser);
 			createdUser.getLinkedSpaces().add(currentSpace);
+
 			spaceDao.updateSpace(currentSpace);
 			userDao.updateUser(createdUser);
 			// Réinitialise le formulaire du viewmodel
 			this.spaceViewModel.setNewUser(new User(true));
+
 			return "ManagerSpaceDashBoard?faces-redirect=true";
 		} catch (UserExistsException e) {
 			System.out.println("Exception : " + e.getMessage());
@@ -162,12 +164,11 @@ public class UserOnSpaceController implements Serializable {
 	 * @return url (:String)
 	 */
 	public String createMemberAccount() {
-		Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
-
-		Space currentSpace = spaceDao.getSpaceWithMembers(currentSpaceId);
 		this.spaceViewModel.getUser().getAccount().setRole(Role.Adherent);
 
 		try {
+			Long currentSpaceId = SessionUtils.getSpaceIdFromSession();
+			Space currentSpace = spaceDao.getSpaceWithMembers(currentSpaceId);
 			Long createdUserId = userSvc.createUserOnPlateform(spaceViewModel.getUser());
 			User createdUser = userDao.getUserByIdWithLinkedSpaces(createdUserId);
 			currentSpace.getUsers().add(createdUser);
@@ -228,6 +229,20 @@ public class UserOnSpaceController implements Serializable {
 		UploadedFile uploadedFile = event.getFile();
 		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
 		spaceViewModel.getUser().setProfilePicture(fileName);
+		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
+	}
+
+	/**
+	 * Upload administrative document for User-coach, then rename and stock it.
+	 * 
+	 * @param event (:FileUploadEvent)
+	 * @throws Exception
+	 */
+	public void uploadPicture(FileUploadEvent event) throws Exception {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+		UploadedFile uploadedFile = event.getFile();
+		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
+		spaceViewModel.getNewUser().setProfilePicture(fileName);
 		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 

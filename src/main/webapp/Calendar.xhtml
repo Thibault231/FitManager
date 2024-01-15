@@ -26,7 +26,7 @@
 			<h:form>
 				<p:growl id="messages" showDetail="true" />
 				<h:panelGrid columnClasses="value">
-					<p:schedule id="schedule" value="#{scheduleJava8View.eventModel}"
+					<p:schedule id="schedule" value="#{courseController.eventModel}"
 						widgetVar="myschedule">
 
 						<p:ajax event="dateSelect"
