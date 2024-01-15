@@ -92,18 +92,6 @@ public class SubscriptionController implements Serializable {
 	}
 
 	/**
-	 * Set a specific subscription in the selectedSubscription object of the view
-	 * model. <br/>
-	 * This method should be use in form or dialogs.
-	 * 
-	 * @param subsubscriptionToSelectIdId
-	 */
-	public void selectSubscription(Long subsubscriptionToSelectIdId) {
-		this.subscriptionViewModel
-				.setSelectedSubscription(subscriptionDao.getSubscriptionById(subsubscriptionToSelectIdId));
-	}
-
-	/**
 	 * Delete a subscription from the current space, using the subscription's id.
 	 * 
 	 * @param subscriptionToDeleteId
@@ -212,9 +200,8 @@ public class SubscriptionController implements Serializable {
 	 * 
 	 * @return url (:String)
 	 */
-	public String updateSuscription(Long subscriptionToUpdateId) {
-		subscriptionDao.updateSubscription(subscriptionToUpdateId);
+	public String updateSuscription() {
+		subscriptionDao.updateSubscription(this.subscriptionViewModel.getSelectedSubscription());
 		return SessionUtils.redirectToDashBoard();
 	}
-
 }

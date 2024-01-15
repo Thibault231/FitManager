@@ -148,14 +148,14 @@
 						<div class="d-grid gap-2">
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput01"
-									placeholder="#{spaceUser.spaceViewModel.user.profile.civility.name}"
+									placeholder="Nom non renseigné"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
 								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput02"
-									placeholder="spaceUser.spaceViewModel.user.profile.civility.forename"
+									placeholder="Prénom non renseigné"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
 								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
@@ -172,7 +172,7 @@
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput04"
-									placeholder="spaceUser.spaceViewModel.user.profile.civility.birthday"
+									placeholder="Anniversaire non renseigné"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
 									<f:convertDateTime pattern="dd-mm-yyyy" />
@@ -180,37 +180,33 @@
 								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 							</div>
 							<div class="form-floating ">
-								<h:inputText class="form-control" id="floatingInput06" size="20"
-									placeholder="#{spaceUser.spaceViewModel.user.account.password}"
-									maxlength="12"
-									value="#{spaceUser.spaceViewModel.user.account.password}">
+								<h:inputText class="form-control" id="floatingInput06" size="20" maxlength="12"
+									placeholder="Mot de passe inexistant" 
+									value="#{spaceUser.spaceViewModel.user.account.password} ">
 									<f:validateLength minimum="5"></f:validateLength>
 								</h:inputText>
 								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput07"
-									placeholder="spaceUser.spaceViewModel.user.profile.adress.street"
+									placeholder="Adresse non renseignée"
 									size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
 								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput08"
-									placeholder="spaceUser.spaceViewModel.user.profile.adress.zipCode"
-									size="20"
+									placeholder="Code postal non renseigné"	size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
 								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
 							</div>
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput09"
-									placeholder="spaceUser.spaceViewModel.user.profile.adress.city"
-									size="20"
+									placeholder="Ville nn renseignée" size="20"
 									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 							</div>
 							<h:commandButton class="btn btn-warning"
-								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 								value="Enregistrer les modifications"
 								action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
 							<h:link class="text-center" outcome="AdherentDashboard"

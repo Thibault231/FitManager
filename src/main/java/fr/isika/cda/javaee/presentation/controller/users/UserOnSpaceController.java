@@ -184,26 +184,19 @@ public class UserOnSpaceController implements Serializable {
 	}
 
 	/**
-	 * Return an unencrypted user's password, for update form.<br/>
-	 * <b>
-	 * 
-	 * @param currentUserId
-	 * @return
-	 */
-	public String getDecryptedUserPassword(Long currentUserId) {
-		String currentUserPassword = userDao.getUserById(currentUserId).getAccount().getPassword();
-		return Crypto.DecryptDataInWords(currentUserPassword);
-	}
-
-	/**
 	 * Return the view of a user dashboard, using it's role.
 	 * 
 	 * @param userRole (:Role ENUM)
 	 * @return url of the user dashboard (:String)
 	 */
 	public String redirectToRightDashBoard(Role userRole) {
-		this.spaceViewModel.setUser(userDao.getUserById(SessionUtils.getUserIdFromSession()));
+		// Fill the view models with the current user.
+		User userToLog = userDao.getUserById(SessionUtils.getUserIdFromSession());
+		this.spaceViewModel.setUser(userToLog);
+		this.spaceViewModel.getUser().getAccount()
+				.setPassword(Crypto.DecryptDataInWords(userToLog.getAccount().getPassword()));
 		this.spaceViewModel.setSpace(spaceDao.getSpaceWithSubscription(SessionUtils.getSpaceIdFromSession()));
+		// redirect to right dashboard
 		return SessionUtils.redirectToDashBoard();
 	}
 
