@@ -23,7 +23,7 @@
 				<div class="row g-0" style="height: 100%">
 					<div class="col-md-4">
 						<p:graphicImage library="documents"
-							name="#{spaceUser.spaceViewModel.user.profile.civility.profilePicture}"
+							name="#{spaceUser.spaceViewModel.user.profilePicture}"
 							class="rounded-bottom float-start"
 							style="max-width: 100%; height: 100%" />
 					</div>
@@ -272,9 +272,8 @@
 												oncomplete="PF('confirmationVarSub').hide()"
 												action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
 										</p:confirmDialog>
-									</div>
-
-								</p:column>
+									
+									</p:column>
 							</p:dataTable>
 						</h:panelGrid>
 					</h:form>

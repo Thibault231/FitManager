@@ -227,7 +227,7 @@ public class UserOnSpaceController implements Serializable {
 		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
 		UploadedFile uploadedFile = event.getFile();
 		String fileName = String.join("_", timestamp, uploadedFile.getFileName());
-		spaceViewModel.getUser().getAccount().getAdministrativeDocument().setFilePath(fileName);
+		spaceViewModel.getUser().setProfilePicture(fileName);
 		FileUploadUtils.uploadFileToApp(uploadedFile, fileName);
 	}
 

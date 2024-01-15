@@ -53,8 +53,10 @@
 		</ui:fragment>
 		
 		<ui:fragment rendered="#{spaceController.isUserConnected()}">
-			<li><a class="dropdown-item" href="#"><h:link class="nav-link" outcome="ManagerDashBoard.xhtml">MON COMPTE</h:link></a></li>
+			<li><a class="nav-link" href="#"><h:link class="nav-link text-light" outcome="ManagerDashBoard.xhtml">MON COMPTE</h:link></a></li>
+			<h:form>
             <li><a class="nav-link"><h:commandLink class="nav-link text-light" action="#{userController.logout()}">SE DECONNECTER</h:commandLink></a></li>
+            </h:form>
 		</ui:fragment>
 				
 				
