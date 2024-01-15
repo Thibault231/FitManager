@@ -89,12 +89,18 @@
 					!</h4>
 				<h5>Votre abonnement comprend:</h5>
 				<p>#{subscriptionController.currentMemberSubscription.description}</p>
+				<h:link outcome="SubscribeForm?faces-redirect=true"
+					styleClass="ui-button-raised ui-button custom-white-text"
+					style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
+					value="Modifier votre abonnement" />
 			</ui:fragment>
 
+			<ui:fragment rendered="#{! subscriptionController.hasSubscription()}">
 			<h:link outcome="SubscribeForm?faces-redirect=true"
 				styleClass="ui-button-raised ui-button custom-white-text"
 				style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
 				value="Souscrire à un abonnement" />
+			</ui:fragment>
 			<hr />
 			<p:tabView>
 				<p:tab title="Mes réservations">
