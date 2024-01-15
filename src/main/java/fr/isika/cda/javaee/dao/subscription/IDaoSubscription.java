@@ -54,7 +54,7 @@ public interface IDaoSubscription {
 	List<Subscription> getAllSubscriptions();
 
 	/**
-	 * Update a Subscription in the DB, using the updated Subscrption object.
+	 * Update a Subscription in the DB, using the updated Subscription object.
 	 * 
 	 * @param subscriptionToUpdate (:Subscription)
 	 */

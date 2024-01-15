@@ -35,76 +35,77 @@
 									<span
 									class="input-group-text"
 									style="width: 80%; background-color: white">
-									#{spaceUser.spaceViewModel.user.profile.civility.name}</span>
-</div>
-								<div class="input-group mb-3" style="width: 100%">
-									<span
-										class="input-group-text p-2"
-										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Prénom</b></span> <span
-										class="input-group-text"
-										style="width: 80%; background-color: white">
-										#{spaceUser.spaceViewModel.user.profile.civility.forename}</span>
-								</div>
-								<div class="input-group mb-3" style="width: 100%">
-									<span
-										class="input-group-text p-2"
-										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b> Date de naissance</b></span> 
-										<span class="input-group-text" style="width: 80%; background-color: white">
-										<h:outputText value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
-									        <f:convertDateTime timeZone="#{referenceData.timezone}"
-									            pattern="dd MMM yyyy" />
-									    </h:outputText>
-										</span>
-								</div>
-								<div class="input-group mb-3" style="width: 100%">
-									<span
-										class="input-group-text p-2"
-										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span> <span
-										class="input-group-text"
-										style="width: 80%; background-color: white">
-										#{spaceUser.spaceViewModel.user.profile.contact.email}</span>
-								</div>
-								<div class="input-group mb-3" style="width: 100%">
-									<span
-										class="input-group-text p-2"
-										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Téléphone</b></span> <span
-										class="input-group-text"
-										style="width: 80%; background-color: white">
-										#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}</span>
-								</div>
-								<div class="input-group mb-3" style="width: 100%">
-									<span
-										class="input-group-text p-2"
-										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Adresse</b></span> <span
-										class="input-group-text"
-										style="width: 80%; background-color: white">
-										#{spaceUser.spaceViewModel.user.profile.adress.street}</span>
-								</div>
-								<div class="input-group mb-3" style="width: 100%">
-									<span
-										class="input-group-text p-2"
-										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Code postal</b></span> 
-										<span class="input-group-text" style="width: 80%; background-color: white">
-										#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</span>
-								</div>
-								<div class="input-group mb-3" style="width: 100%">
-									<span
-										class="input-group-text p-2"
-										style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Ville</b></span> <span
-										class="input-group-text"
-										style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.city}</span>
-								</div>
-									<div>
-										<p:commandButton value="Modifier mon profil" type="button"
-									styleClass="ui-button"
-									style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor};"
-											onclick="PF('UpdateAccount').show();" />
-									</div>
-								</div>
-
+									#{spaceUser.spaceViewModel.user.profile.civility.name}
+								</span>
 							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Prénom</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{spaceUser.spaceViewModel.user.profile.civility.forename}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b> Date de naissance</b></span> 
+									<span class="input-group-text" style="width: 80%; background-color: white">
+									<h:outputText value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
+								        <f:convertDateTime timeZone="#{referenceData.timezone}"
+								            pattern="dd MMM yyyy" />
+								    </h:outputText>
+									</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{spaceUser.spaceViewModel.user.profile.contact.email}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Téléphone</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Adresse</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">
+									#{spaceUser.spaceViewModel.user.profile.adress.street}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Code postal</b></span> 
+									<span class="input-group-text" style="width: 80%; background-color: white">
+									#{spaceUser.spaceViewModel.user.profile.adress.zipCode}</span>
+							</div>
+							<div class="input-group mb-3" style="width: 100%">
+								<span
+									class="input-group-text p-2"
+									style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Ville</b></span> <span
+									class="input-group-text"
+									style="width: 80%; background-color: white">#{spaceUser.spaceViewModel.user.profile.adress.city}</span>
+							</div>
+								<div>
+									<p:commandButton value="Modifier mon profil" type="button"
+								styleClass="ui-button"
+								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor};"
+										onclick="PF('UpdateAccount').show();" />
+								</div>
+							</div>
+
 						</div>
-					</div>
+				</div>
+			</div>
 			<p:tabView>
 				<p:tab title="Cours">
 					<h:panelGrid columns="1" cellpadding="5">
@@ -160,6 +161,7 @@
 				style="max-width: 1000px; min-width: 700px;">
 				<h:form>
 					<div>
+            
 						<div class="manager-form">
 							<div class="d-grid gap-2">
 								<div class="field">

@@ -139,7 +139,7 @@ public class UserServices {
 		}
 
 		if (userToUpdate.getAccount().getPassword() != null) {
-			String newPassword = userToUpdate.getAccount().getPassword();
+			String newPassword = Crypto.EncryptDataInNumbers(userToUpdate.getAccount().getPassword(), 12);
 			currentUser.getAccount().setPassword(newPassword);
 		}
 
