@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui" lang="fr">
 
-<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
 
 	<ui:define name="titleValue">Register Member - Fit Manager</ui:define>
-	<ui:define name="content">
+	<!-- Corps de la page -->
+	<ui:define name="spaceContent">
+
 
 		<main
 			class="border d-flex  text-emphasis-primary justify-content-center align-items-center"
@@ -20,16 +22,23 @@
 					<a>Design your fitness</a>
 
 				</div>
-				<h:form class="manager-form-cadre">
+				<h:form class="manager-form-cadre p-5 main-shadow">
+					<style>
+						.main-shadow {
+						box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+						}
+						</style>
+
 					<div>
 						<div class="manager-form">
 							<div class="d-grid gap-2">
 								<div class="field">
 									<h:outputLabel class="outputLabel" for="floatingInput01">NOM</h:outputLabel>
-									<h:inputText class="form-control" id="floatingInput01"
-										placeholder="Nom" required="true" size="20"
+									<h:inputText class="form-control form-control-sm"
+										id="floatingInput01" placeholder="Nom" required="true"
+										size="20" style="width: 450px;"
 										requiredMessage="La saisie du NOM est obligatoire !"
-										value="#{userController.userViewModel.user.profile.civility.name}" />
+										value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
 									<h:message for="floatingInput01" styleClass="errorBlock" />
 								</div>
 
@@ -38,14 +47,14 @@
 									<h:inputText class="form-control" id="floatingInput02"
 										placeholder="Prenom" required="true" size="20"
 										requiredMessage="La saisie du PRENOM est obligatoire !"
-										value="#{userController.userViewModel.user.profile.civility.forename}" />
+										value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
 									<h:message for="floatingInput02" styleClass="errorBlock" />
 								</div>
 
 								<div class="field">
 									<h:outputLabel class="outputLabel" for="floatingInput03">GENRE</h:outputLabel>
 									<h:selectOneMenu id="sex"
-										value="#{userController.userViewModel.user.profile.civility.sex}">
+										value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
 										<div>
 											<f:selectItem itemLabel="" />
 											<f:selectItem itemLabel="Homme" itemValue="Homme" />
@@ -59,7 +68,7 @@
 									<h:outputLabel class="outputLabel" for="floatingInput04">DATE DE NAISSANCE</h:outputLabel>
 									<div>
 										<p:calendar id="floatingInput04"
-											value="#{userController.userViewModel.user.profile.civility.birthday}"
+											value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}"
 											showOn="button" navigator="true" yearRange="c-100:c+10"
 											locale="fr" />
 									</div>
@@ -71,7 +80,7 @@
 										placeholder="EMAIL" required="true" size="20"
 										requiredMessage="La saisie de l'EMAIL est obligatoire !"
 										validatorMessage="Le login doit correspondre à un email avec un format : ****@****.**** "
-										value="#{userController.userViewModel.user.account.login}">
+										value="#{spaceUser.spaceViewModel.user.account.login}">
 										<f:validateRegex pattern="^[\w.+-]+@[\w.+-]+\.[a-z]{2,}$" />
 									</h:inputText>
 									<h:message for="floatingInput05" styleClass="errorBlock" />
@@ -83,7 +92,7 @@
 										placeholder="MOT DE PASSE" required="true" maxlength="12"
 										requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
 										validatorMessage="Votre mot de passe doit contenir entre 5 à 12 caractères"
-										value="#{userController.userViewModel.user.account.password}">
+										value="#{spaceUser.spaceViewModel.user.account.password}">
 										<f:validateLength minimum="5" maximum="12" />
 										<h:message for="floatingInput06" styleClass="errorBlock" />
 									</p:password>
@@ -96,14 +105,14 @@
 									<h:outputLabel class="outputLabel" for="floatingInput11">TELEPHONE</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput11"
 										placeholder="Adresse" size="20"
-										value="#{userController.userViewModel.user.profile.contact.phoneNumber}" />
+										value="#{spaceUser.spaceViewModel.user.profile.contact.phoneNumber}" />
 								</div>
 
 								<div class="field">
 									<h:outputLabel class="outputLabel" for="floatingInput07">ADRESSE</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput07"
 										placeholder="Adresse" size="20"
-										value="#{userController.userViewModel.user.profile.adress.street}" />
+										value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
 
 								</div>
 
@@ -111,14 +120,14 @@
 									<h:outputLabel class="outputLabel" for="floatingInput08">CODE POSTAL</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput08"
 										placeholder="CODE POSTAL" size="20"
-										value="#{userController.userViewModel.user.profile.adress.zipCode}" />
+										value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
 
 								</div>
 
 								<div class="field">
 									<h:outputLabel class="outputLabel" for="floatingInput09">VILLE</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput09"
-										value="#{userController.userViewModel.user.profile.adress.city}" />
+										value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
 
 								</div>
 
@@ -132,12 +141,12 @@
 						</div>
 
 
-							<h:commandButton class="btn btn-warning"
-								style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
-								value="Créer mon compte"
-								action="#{spaceUser.createMemberAccount()}" />
-							<h:link class="text-center btn btn-secondary"
-								outcome="index.xhtml">Annuler</h:link>
+						<h:commandButton class="btn btn-warning"
+							style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}"
+							value="Créer mon compte"
+							action="#{spaceUser.createMemberAccount()}" />
+						<h:link class="text-center btn btn-secondary"
+							outcome="index.xhtml">Annuler</h:link>
 					</div>
 				</h:form>
 			</div>
