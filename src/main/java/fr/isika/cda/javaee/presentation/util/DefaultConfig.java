@@ -8,6 +8,8 @@ package fr.isika.cda.javaee.presentation.util;
  */
 public class DefaultConfig {
 	public static final String DEFAULT_PASSWORD = Crypto.EncryptDataInNumbers("31500", 12);
+	public static final String DEFAULT_PROFILE_PICTURE = "default.jpg";
+
 	public static final String DEFAULT_MAIN_PICTURE = "Image10.jpg";
 	public static final String DEFAULT_CARROUSEL_ONE = "Image1.jpg";
 	public static final String DEFAULT_CARROUSEL_TWO = "Image2.jpg";

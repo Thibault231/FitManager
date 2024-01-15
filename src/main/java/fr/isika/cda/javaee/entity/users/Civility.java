@@ -12,6 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import fr.isika.cda.javaee.presentation.util.DefaultConfig;
+
 /**
  * Personal datas of a user.
  * 
@@ -37,7 +39,8 @@ public class Civility {
 
 	@Enumerated(EnumType.STRING)
 	private Sex sex;
-	private String ProfilePicture;
+
+	private String ProfilePicture = DefaultConfig.DEFAULT_PROFILE_PICTURE;
 
 //*******************************************************************	
 
