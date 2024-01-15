@@ -53,33 +53,36 @@ public class InitDb {
 			 * Création de quelques espaces pour la vue allCourses (Calendar)
 			 */
 			Space spaceOne = new Space(true);
-			spaceOne.getInfos().getConfiguration().setFitnessName("KingFit");
-			spaceOne.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
-			spaceOne.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
+			spaceOne.getInfos().getConfiguration().setFitnessName("PowerFit");
+			spaceOne.getInfos().getConfiguration().setLogo("Power.jpg");
+			spaceOne.getInfos().getConfiguration().setSlogan("Sculptez votre avenir");
 			spaceOne.getInfos().getAdministrative().setAddress("TOULOUSE 20 rue du Taure,31500 ");
-			spaceOne.getInfos().getConfiguration().getStyle().setMainColor("#255929");
+			spaceOne.getInfos().getConfiguration().getStyle().setMainColor("#FFC107");
 			spaceOne.getInfos().getConfiguration().getStyle().setSecondColor("#F28B30");
-			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("#1C4AA6");
+			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("#FFC107");
+			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img1.jpg");
+			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img2.jpg");
+			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img3.jpg");
 			spaceDao.createSpace(spaceOne);
 
 			Space spaceOneBis = new Space(true);
-			spaceOneBis.getInfos().getConfiguration().setFitnessName("KingFit");
-			spaceOneBis.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
-			spaceOneBis.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
+			spaceOneBis.getInfos().getConfiguration().setFitnessName("PowerFit");
+			spaceOneBis.getInfos().getConfiguration().setLogo("Power.jpg");
+			spaceOneBis.getInfos().getConfiguration().setSlogan("Sculptez votre avenir");
 			spaceOneBis.getInfos().getAdministrative().setAddress("PARIS 100 rue des Chiffons ,75500 ");
-			spaceOneBis.getInfos().getConfiguration().getStyle().setMainColor("#255929");
+			spaceOneBis.getInfos().getConfiguration().getStyle().setMainColor("#FFC107");
 			spaceOneBis.getInfos().getConfiguration().getStyle().setSecondColor("#F28B30");
-			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("#1C4AA6");
+			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("#FFC107");
 			spaceDao.createSpace(spaceOneBis);
 
 			Space spaceOneTer = new Space(true);
-			spaceOneTer.getInfos().getConfiguration().setFitnessName("KingFit");
-			spaceOneTer.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
-			spaceOneTer.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
+			spaceOneTer.getInfos().getConfiguration().setFitnessName("PowerFit");
+			spaceOneTer.getInfos().getConfiguration().setLogo("Power.jpg");
+			spaceOneTer.getInfos().getConfiguration().setSlogan("Sculptez votre avenir");
 			spaceOneTer.getInfos().getAdministrative().setAddress("LYON 10 avenue de la République ,69000 ");
-			spaceOneTer.getInfos().getConfiguration().getStyle().setMainColor("#255929");
+			spaceOneTer.getInfos().getConfiguration().getStyle().setMainColor("#FFC107");
 			spaceOneTer.getInfos().getConfiguration().getStyle().setSecondColor("#F28B30");
-			spaceOneTer.getInfos().getConfiguration().getStyle().setThirdcolor("#1C4AA6");
+			spaceOneTer.getInfos().getConfiguration().getStyle().setThirdcolor("#FFC107");
 			spaceDao.createSpace(spaceOneTer);
 
 			Space spaceTwo = new Space(true);
@@ -92,7 +95,7 @@ public class InitDb {
 			Space spaceThree = new Space(true);
 			spaceThree.getInfos().getConfiguration().setFitnessName("Water&Fitness");
 			spaceThree.getInfos().getConfiguration().setLogo("muscleYouLogo.jpg");
-			spaceThree.getInfos().getConfiguration().setSlogan("Sculptez votre avenir, repoussez vos limites");
+			spaceThree.getInfos().getConfiguration().setSlogan("Repoussez vos limites");
 			spaceThree.getInfos().getAdministrative().setAddress("25 rue des marais, Saint-Gratien");
 			spaceDao.createSpace(spaceThree);
 
@@ -160,9 +163,9 @@ public class InitDb {
 			spaceDao.createSpace(spaceTwelve);
 
 			Space spaceThirteen = new Space(true);
-			spaceThirteen.getInfos().getConfiguration().setFitnessName("Power");
-			spaceThirteen.getInfos().getConfiguration().setLogo("Power.jpg");
-			spaceThirteen.getInfos().getConfiguration().setSlogan("Inspirez la confiance, expirez les excuses");
+			spaceThirteen.getInfos().getConfiguration().setFitnessName("KingFit");
+			spaceThirteen.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
+			spaceThirteen.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
 			spaceThirteen.getInfos().getAdministrative().setAddress("18 Rue de la Pompe, 49000 Angers");
 			spaceDao.createSpace(spaceThirteen);
 

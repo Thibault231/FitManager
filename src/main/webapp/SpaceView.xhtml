@@ -12,16 +12,15 @@
 	<ui:define name="spaceContent">
 
 		<!-- cet élement sera remplacé par le contenu des pages, dynamiquement -->
+
 		
+		<div class="container-fluid p-5 justify-space-beetwen">
 		<ui:fragment rendered="#{spaceController.managerOfTheSpaceConnected}">
-			<h:panelGrid columns="1" cellpadding="5">
 				<p:commandButton value="Modifier le style de la page" type="button" styleClass="ui-button-raised ui-button custom-white-text" 
 					style="background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; "
 					onclick="PF('popupUpdateStyle').show();" />
-			</h:panelGrid>
 		</ui:fragment>
-		<div class="container-fluid p-5 justify-space-beetwen">
-			<div class="row pt-5 mt-3 contain-80">
+			<div class="row contain-80">
 			
 				<div class="col-lg-6 col-sm-12 mt-auto mb-auto mb-5 space-welcome-text" style="white-space:pre-line;">
 <h2 class="text-uppercase">NOTRE PHILOSOPHIE</h2>
