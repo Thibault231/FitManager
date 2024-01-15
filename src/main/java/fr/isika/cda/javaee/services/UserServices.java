@@ -152,9 +152,9 @@ public class UserServices {
 			int newZipCode = userToUpdate.getProfile().getAdress().getZipCode();
 			currentUser.getProfile().getAdress().setZipCode(newZipCode);
 		}
-		if (userToUpdate.getProfile().getAdress().getStreet() != null) {
-			String newStreet = userToUpdate.getProfile().getAdress().getCity();
-			currentUser.getProfile().getAdress().setStreet(newStreet);
+		if (userToUpdate.getProfile().getAdress().getCity() != null) {
+			String newCity = userToUpdate.getProfile().getAdress().getCity();
+			currentUser.getProfile().getAdress().setStreet(newCity);
 		}
 		userDao.updateUser(currentUser);
 	}

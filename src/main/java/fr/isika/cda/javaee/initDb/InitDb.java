@@ -73,6 +73,9 @@ public class InitDb {
 			spaceOneBis.getInfos().getConfiguration().getStyle().setMainColor("#FFC107");
 			spaceOneBis.getInfos().getConfiguration().getStyle().setSecondColor("#F28B30");
 			spaceOne.getInfos().getConfiguration().getStyle().setThirdcolor("#FFC107");
+			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img4.jpg");
+			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img5.jpg");
+			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img6.jpg");
 			spaceDao.createSpace(spaceOneBis);
 
 			Space spaceOneTer = new Space(true);
@@ -83,6 +86,9 @@ public class InitDb {
 			spaceOneTer.getInfos().getConfiguration().getStyle().setMainColor("#FFC107");
 			spaceOneTer.getInfos().getConfiguration().getStyle().setSecondColor("#F28B30");
 			spaceOneTer.getInfos().getConfiguration().getStyle().setThirdcolor("#FFC107");
+			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img7.jpg");
+			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img8.jpg");
+			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img9.jpg");
 			spaceDao.createSpace(spaceOneTer);
 
 			Space spaceTwo = new Space(true);
@@ -203,7 +209,6 @@ public class InitDb {
 			userManager.getProfile().getAdress().setStreet("29 rue beaurepaire");
 			userManager.getProfile().getAdress().setZipCode(31500);
 			userManager.getProfile().getAdress().setCity("Balma");
-
 			userDao.createUser(userManager);
 			spaceOne.getUsers().add(userManager);
 			spaceOneBis.getUsers().add(userManager);
@@ -235,7 +240,12 @@ public class InitDb {
 			userCoach.getProfile().getCivility().setForename("Nene");
 			userCoach.getProfile().getCivility().setName("Sacko");
 			userCoach.getProfile().getCivility().setBirthday(new Date());
-			userManager.getProfile().getCivility().setProfilePicture("coach2.jpg");
+			userCoach.getProfile().getCivility().setProfilePicture("CoachNéné.jpg");
+			userCoach.getProfile().getContact().setPhoneNumber("0758246910");
+			userCoach.getProfile().getContact().setEmail("nene@gmail.com");
+			userCoach.getProfile().getAdress().setStreet("185 Avenu de Tulipes");
+			userCoach.getProfile().getAdress().setZipCode(95000);
+			userCoach.getProfile().getAdress().setCity("Saint Gratien");
 			userDao.createUser(userCoach);
 			spaceOne.getUsers().add(userCoach);
 			spaceDao.updateSpace(spaceOne);
@@ -452,7 +462,7 @@ public class InitDb {
 			userMember.getProfile().getAdress().setZipCode(31500);
 			userMember.getProfile().getAdress().setStreet("Toulouse");
 			userMember.getProfile().getContact().setPhoneNumber("0618462597");
-			userManager.getProfile().getCivility().setProfilePicture("ad6.jpg");
+			userMember.getProfile().getCivility().setProfilePicture("Adhérent1.jpg");
 			userDao.createUser(userMember);
 			spaceOne.getUsers().add(userMember);
 			spaceDao.updateSpace(spaceOne);

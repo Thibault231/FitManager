@@ -35,16 +35,20 @@
 
 									<div class="form-floating">
 										<h:inputText class="form-control" id="floatingInput01"
-											placeholder="Utilisateur" size="20"
+											placeholder="Utilisateur" size="20" required="true"
+											requiredMessage="La saisie du LOGIN est obligatoire !"
 											value="#{userController.userViewModel.email}" />
 										<h:outputLabel class="outputLabel" for="floatingInput01">Utilisateur</h:outputLabel>
+										<h:message for="floatingInput01" styleClass="errorBlock" />
 									</div>
 
 									<div class="form-floating ">
 										<h:inputSecret class="form-control" id="floatingInput02"
-											placeholder="Mot de passe" size="5"
+											placeholder="Mot de passe" size="5" required="true"
+											requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
 											value="#{userController.userViewModel.password}" />
 										<h:outputLabel class="outputLabel" for="floatingInput02">Mot de passe</h:outputLabel>
+										<h:message for="floatingInput02" styleClass="errorBlock" />
 									</div>
 
 									<h:commandButton class="btn btn-warning" value="Me connecter"
