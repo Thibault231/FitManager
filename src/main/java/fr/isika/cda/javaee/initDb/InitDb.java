@@ -193,6 +193,7 @@ public class InitDb {
 			userManager.getLinkedSpaces().add(spaceOneTer);
 			userManager.getProfile().getCivility().setForename("Marc");
 			userManager.getProfile().getCivility().setName("Argenteur");
+			userManager.getProfile().getCivility().setBirthday(new Date());
 			userManager.getProfile().getContact().setPhoneNumber("0756229072");
 			userManager.getProfile().getAdress().setStreet("29 rue beaurepaire");
 			userManager.getProfile().getAdress().setZipCode(31500);

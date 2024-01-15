@@ -42,7 +42,12 @@
 							<div class="input-group mb-3" style="width: 100%">
 								<span class="input-group-text p-2" style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>
 								Date de naissance</b></span>
-									<span class="input-group-text" style="width: 80%; background-color:white">#{spaceUser.spaceViewModel.user.profile.civility.birthday}</span>
+									<span class="input-group-text" style="width: 80%; background-color:white">
+										<h:outputText value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
+										        <f:convertDateTime timeZone="#{referenceData.timezone}"
+										            pattern="dd MMM yyyy" />
+										</h:outputText>
+									</span>
 							</div>
 							<div class="input-group mb-3" style="width: 100%">
 								<span class="input-group-text p-2" style="width: 20%; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; color: white"><b>Email</b></span> <span
