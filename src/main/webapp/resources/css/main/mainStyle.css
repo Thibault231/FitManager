@@ -247,9 +247,24 @@
 }
 
 /* **********************************************  A replacer**************** Désolé Loic, je ne savais pas où les mettre */
-.img_index{
-	max-width: 50%;
-	max-height: 50%;
+.img_index {
+       border-radius: 57px;
+    width: 49px;
+    height: 106px;
+    max-width: 50%;
+    max-height: 50%;
+    margin: 0 1.5em 0 1.5em;
+    transition: all 0.3s ease; 
+    }
+    
+
+.img_index:hover {
+	position:absolute;
+	
+    width: 100px;
+    height: 100px;
+    max-width: 50%;
+    max-height: 50%;
 }
 
 .img_index_content{
@@ -279,7 +294,7 @@
 }
 
 .cardAbonnement{
-	background-color:white;
+	background-color:#ffffffd9;
 	margin:2em auto;
 	margin-top: 2em;
     display: flex;
@@ -287,7 +302,9 @@
     /* height: 18em; */
     flex-direction: column;
     align-items: center;
-    padding: 1em;
+    padding: 1.5em;
+    
+    backdrop-filter: blur(2px);
     
     box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
 	-webkit-box-shadow: 10px 10px 19px -7px rgba(131,127,127,0.89);
@@ -295,8 +312,21 @@
 		
 }
 
+
+
+.cardAbonnement:hover {
+	background-color:var(--orange);
+    backdrop-filter: blur(0px);
+    color: white;
+   		
+}
+
+
+
+
 .cardAbonnement>h3{
     margin-bottom: 1em;
+    color: var(--bleuFonce);
 		
 }
 
@@ -306,6 +336,56 @@
     text-transform: uppercase;
 
     
+}
+
+.titre3{
+	color: var(--bleuFonce);
+ 
+    text-transform: uppercase;
+
+    
+}
+
+.bg-orangeTheme{
+	
+	background-color:var(--orange);
+	
+}
+
+.bg-bleuTheme{
+	
+	background-color:var(--bleuFonce);
+	
+}
+
+
+
+.clippy{
+
+    height: 6em;
+    bottom: 32%;
+    width: 101vw;
+    right: 37%;
+    background-color: var(--bleuFonce);
+    position: relative;
+    z-index: -1;
+    clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+    backdrop-filter: blur(2px);
+
+}
+
+.clippy div{
+	
+	height: -1em;
+    bottom: 32%;
+    width: 101vw;
+    right: 37%;
+    position: relative;
+    z-index: -1;
+    clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+    backdrop-filter: blur(2px);
+	
+	
 }
 
 
@@ -341,6 +421,13 @@
 	width: 1000px;
 	
 }
+
+.bg-bleuLight{
+	background-color:#1c3659d4;
+	backdrop-filter: blur(4px);
+	color:white
+}
+
 
 .redirect_box{
 	-webkit-box-shadow: -3px 6px 24px 5px rgba(0,0,0,0.52); 
