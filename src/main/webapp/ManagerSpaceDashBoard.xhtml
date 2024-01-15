@@ -272,7 +272,8 @@
 												oncomplete="PF('confirmationVarSub').hide()"
 												action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
 										</p:confirmDialog>
-								
+									</div>
+
 								</p:column>
 							</p:dataTable>
 						</h:panelGrid>
@@ -549,10 +550,18 @@
 									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 							</div>
+							
+							<div class="field">
+								<h:outputLabel class="outputLabel" for="photoInput">VOTRE PHOTO</h:outputLabel>
+								<p:fileUpload
+									listener="#{userController.uploadAdministrativeDocument()}"
+									styleClass="w-100" mode="advanced" dragDropSupport="false" />
+							</div>
+							
 							<h:commandButton class="btn btn-warning"
 								value="Enregistrer les modifications"
 								action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
-							<h:link class="text-center" outcome="AdherentDashboard"
+							<h:link class="text-center" outcome="ManagerSpaceDashBoard"
 								value="ANNULER" />
 						</div>
 					</div>
@@ -602,8 +611,6 @@
 					</p:outputPanel>
 				</p:dialog>
 			</h:form>
-
-
 		</div>
 	</ui:define>
 </ui:composition>
