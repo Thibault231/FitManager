@@ -139,7 +139,7 @@ public class UserServices {
 		}
 
 		if (userToUpdate.getAccount().getPassword() != null) {
-			String newPassword = userToUpdate.getAccount().getPassword();
+			String newPassword = Crypto.EncryptDataInNumbers(userToUpdate.getAccount().getPassword(), 12);
 			currentUser.getAccount().setPassword(newPassword);
 		}
 
@@ -156,7 +156,7 @@ public class UserServices {
 			String newStreet = userToUpdate.getProfile().getAdress().getCity();
 			currentUser.getProfile().getAdress().setStreet(newStreet);
 		}
-		userDao.updateUser(userToUpdate);
+		userDao.updateUser(currentUser);
 	}
 
 }

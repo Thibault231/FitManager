@@ -3,7 +3,14 @@ package fr.isika.cda.javaee.presentation.util;
 import java.text.MessageFormat;
 import java.util.Random;
 
+import javax.inject.Inject;
+
+import fr.isika.cda.javaee.dao.user.IDaoUser;
+
 public class Crypto {
+	@Inject
+	private static IDaoUser userDao;
+
 	public static String BLUR_FOR_LENGTH = "3657";
 	public static int UNIT_MASK_VALUE = 100;
 	public static int CHARACTER_FORMAT_SIZE = 2;

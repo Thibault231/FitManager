@@ -201,8 +201,7 @@ public class SubscriptionController implements Serializable {
 	 * @return url (:String)
 	 */
 	public String updateSuscription() {
-		subscriptionDao.updateSubscription(this.subscriptionViewModel.getSubscription());
+		subscriptionDao.updateSubscription(this.subscriptionViewModel.getSelectedSubscription());
 		return SessionUtils.redirectToDashBoard();
 	}
-
 }
