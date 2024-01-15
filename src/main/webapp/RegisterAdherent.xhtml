@@ -1,118 +1,147 @@
 <!DOCTYPE html>
-<html xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" lang="fr">
+	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="WEB-INF/templates/spaceTemplate.xhtml">
-	<ui:define name="titleValue">Account Adherent - Fit Manager</ui:define>
-	<ui:define name="spaceContent">
+<ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
+
+	<ui:define name="titleValue">Register Member - Fit Manager</ui:define>
+	<ui:define name="content">
+
 		<main
-			class="border d-flex text-emphasis-primary justify-content-center align-items-center"
+			class="border d-flex  text-emphasis-primary justify-content-center align-items-center"
 			style="height: 100vh; width: 100vw">
-			<div class="w-25">
+			<div class="w-50">
 				<div class="text-center mb-4">
 					<h2>Fit Manager</h2>
 					<a>Design your fitness</a>
 
 				</div>
-				<h:form>
+				<h:form class="manager-form-cadre">
+
 					<div>
-						<div class="d-grid gap-2">
+						<div class="manager-form">
+							<div class="d-grid gap-2">
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput01">NOM</h:outputLabel>
+									<h:inputText class="form-control" id="floatingInput01"
+										placeholder="Nom" required="true" size="20"
+										requiredMessage="La saisie du NOM est obligatoire !"
+										value="#{userController.userViewModel.user.profile.civility.name}" />
+									<h:message for="floatingInput01" styleClass="errorBlock" />
+								</div>
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput01"
-									placeholder="Nom" required="true" size="20"
-									value="#{spaceUser.spaceViewModel.user.profile.civility.name}" />
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput02">PRENOM</h:outputLabel>
+									<h:inputText class="form-control" id="floatingInput02"
+										placeholder="Prenom" required="true" size="20"
+										requiredMessage="La saisie du PRENOM est obligatoire !"
+										value="#{userController.userViewModel.user.profile.civility.forename}" />
+									<h:message for="floatingInput02" styleClass="errorBlock" />
+								</div>
 
-								<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput03">GENRE</h:outputLabel>
+									<h:selectOneMenu id="sex"
+										value="#{userController.userViewModel.user.profile.civility.sex}">
+										<div>
+											<f:selectItem itemLabel="" />
+											<f:selectItem itemLabel="Homme" itemValue="Homme" />
+											<f:selectItem itemLabel="Femme" itemValue="Femme" />
+											<f:selectItem itemLabel="Autre" itemValue="Autre" />
+										</div>
+									</h:selectOneMenu>
+								</div>
+
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput04">DATE DE NAISSANCE</h:outputLabel>
+									<div>
+										<p:calendar id="floatingInput04"
+											value="#{userController.userViewModel.user.profile.civility.birthday}"
+											showOn="button" navigator="true" yearRange="c-100:c+10"
+											locale="fr" />
+									</div>
+								</div>
+
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput05">EMAIL</h:outputLabel>
+									<h:inputText class="form-control" id="floatingInput05"
+										placeholder="EMAIL" required="true" size="20"
+										requiredMessage="La saisie de l'EMAIL est obligatoire !"
+										validatorMessage="Le login doit correspondre à un email avec un format : ****@****.**** "
+										value="#{userController.userViewModel.user.account.login}">
+										<f:validateRegex pattern="^[\w.+-]+@[\w.+-]+\.[a-z]{2,}$" />
+									</h:inputText>
+									<h:message for="floatingInput05" styleClass="errorBlock" />
+								</div>
+
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput06">MOT DE PASSE</h:outputLabel>
+									<p:password class="form-control" id="floatingInput06" size="20"
+										placeholder="MOT DE PASSE" required="true" maxlength="12"
+										requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
+										validatorMessage="Votre mot de passe doit contenir entre 5 à 12 caractères"
+										value="#{userController.userViewModel.user.account.password}">
+										<f:validateLength minimum="5" maximum="12" />
+										<h:message for="floatingInput06" styleClass="errorBlock" />
+									</p:password>
+
+								</div>
 							</div>
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput02"
-									placeholder="Prénom" required="true" size="20"
-									value="#{spaceUser.spaceViewModel.user.profile.civility.forename}" />
-								<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
-							</div>
+							<div class="d-grid gap-2">
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput11">TELEPHONE</h:outputLabel>
+									<h:inputText class="form-control" id="floatingInput11"
+										placeholder="Adresse" size="20"
+										value="#{userController.userViewModel.user.profile.contact.phoneNumber}" />
+								</div>
 
-							<div class="form-floating">
-								<!-- 								<h:inputText class="form-control" id="floatingInput03" placeholder="Sexe" size="20" -->
-								<!-- 									value="#{spaceUser.spaceViewModel.user.profile.civility.sex}" /> -->
-								<!-- 								<h:outputLabel class="outputLabel" for="floatingInput03">Sexe</h:outputLabel> -->
-								<h:selectOneMenu id="sex"
-									value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
-									<f:selectItem itemLabel="Sexe" />
-									<f:selectItem itemLabel="Homme" itemValue="Man" />
-									<f:selectItem itemLabel="Femme" itemValue="Woman" />
-									<f:selectItem itemLabel="Autre" itemValue="Other" />
-								</h:selectOneMenu>
-							</div>
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput07">ADRESSE</h:outputLabel>
+									<h:inputText class="form-control" id="floatingInput07"
+										placeholder="Adresse" size="20"
+										value="#{userController.userViewModel.user.profile.adress.street}" />
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput04"
-									placeholder="Date de naissance" size="20"
-									value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
-									<f:convertDateTime pattern="dd/mm/yyyy" />
-								</h:inputText>
-								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
-							</div>
+								</div>
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput05"
-									placeholder="Email" required="true" size="20"
-									value="#{spaceUser.spaceViewModel.user.account.login}" />
-								<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
-							</div>
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput08">CODE POSTAL</h:outputLabel>
+									<h:inputText class="form-control" id="floatingInput08"
+										placeholder="CODE POSTAL" size="20"
+										value="#{userController.userViewModel.user.profile.adress.zipCode}" />
 
-							<div class="form-floating ">
-								<p:password class="form-control" id="floatingInput06" size="20"
-									placeholder="Mot de passe" required="true" maxlength="12"
-									value="#{spaceUser.spaceViewModel.user.account.password}">
-									<f:validateLength minimum="5"></f:validateLength>
-								</p:password>
-								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
-							</div>
+								</div>
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput07"
-									placeholder="Adresse" size="20"
-									value="#{spaceUser.spaceViewModel.user.profile.adress.street}" />
-								<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
-							</div>
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput09">VILLE</h:outputLabel>
+									<h:inputText class="form-control" id="floatingInput09"
+										value="#{userController.userViewModel.user.profile.adress.city}" />
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput08"
-									placeholder="Code postal" size="20"
-									value="#{spaceUser.spaceViewModel.user.profile.adress.zipCode}" />
-								<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
-							</div>
+								</div>
 
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput09"
-									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
-								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
+								<div class="field">
+									<h:outputLabel class="outputLabel" for="photoInput">VOTRE PHOTO</h:outputLabel>
+									<p:fileUpload
+										listener="#{spaceUser.uploadAdministrativeDocument}"
+										styleClass="w-100" mode="advanced" dragDropSupport="false" />
+								</div>
 							</div>
+						</div>
 
-							<div class="form-floating d-flex w-100">
-								<input type="file" id="photoInput" name="photo" accept="image/*" />
-								<h:outputLabel class="outputLabel" for="photoInput">Choisir une photo</h:outputLabel>
-							</div>
-
-							<h:commandButton class="btn btn-warning"
-								value="Créer mon compte"
+						<div class="manager-form">
+							<h:commandButton class="btn btn-warning" value="Créer mon compte"
 								action="#{spaceUser.createMemberAccount()}" />
-							<h:link class="text-center" outcome="index.xhtml">Annuler</h:link>
+							<h:link class="text-center btn btn-secondary"
+								outcome="index.xhtml">Annuler</h:link>
 						</div>
 					</div>
+
 				</h:form>
 			</div>
-<!-- 			<div  > -->
-<!-- 						<img class= "Styleimg" -->
-<!-- 							src="https://i.pinimg.com/564x/d2/04/13/d204131a139b6b4149df2545d4269d08.jpg" -->
-<!-- 							alt="" />  -->
-							
-<!-- 					</div> -->
 		</main>
 	</ui:define>
 </ui:composition>
