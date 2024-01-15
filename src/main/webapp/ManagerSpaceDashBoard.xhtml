@@ -256,23 +256,15 @@
 										
 										<p:commandLink value="Modifier" oncomplete="PF('UpdateSubscription').show();" 
 											update=":updateSubscriptionForm:updateSubscriptionPanel" process="@this" 
-											style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}">
-																					
+											style="margin-right:20px; color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}">									
 											<f:setPropertyActionListener value="#{subscription}" target="#{subscriptionController.subscriptionViewModel.selectedSubscription}" />
 											<p:resetInput target=":updateSubscriptionForm:updateSubscriptionPanel" />
-											
 										</p:commandLink>
-											
-										<p:commandLink type="button" value="Supprimer" onclick="PF('confirmationVarSub').show();" style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}"/>	
-										<p:confirmDialog id="confirmationDialogSub" widgetVar="confirmationVarSub" header="Confirmation"
-											message="Êtes-vous sûr de vouloir supprimer cet abonnement?" severity="alert">
-											<p:commandButton value="Annuler" type="button"	onclick="PF('confirmationVarSub').hide()" />
-
-											<p:commandButton value="Oui"
-												oncomplete="PF('confirmationVarSub').hide()"
-												action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
-										</p:confirmDialog>
-
+									
+										<p:commandLink type="button" value="Supprimer"
+											onclick="PF('confirmationVarSub').show();"
+											style="color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.mainColor}" />
+									
 									</div>
 								</p:column>
 							</p:dataTable>
@@ -603,6 +595,18 @@
 					</p:outputPanel>
 				</p:dialog>
 			</h:form>
+		
+			<p:confirmDialog id="confirmationDialogSub"
+				widgetVar="confirmationVarSub" header="Confirmation"
+				message="Êtes-vous sûr de vouloir supprimer cet abonnement?"
+				severity="alert">
+				<p:commandButton value="Annuler" type="button"
+					onclick="PF('confirmationVarSub').hide()" />
+				<p:commandButton value="Oui"
+					oncomplete="PF('confirmationVarSub').hide()"
+					action="#{subscriptionController.deleteSubscription(subscription.subscriptionId)}" />
+			</p:confirmDialog>
+
 		</div>
 	</ui:define>
 </ui:composition>
