@@ -203,7 +203,7 @@ public class InitDb {
 			userManager.getProfile().getCivility().setForename("Marc");
 			userManager.getProfile().getCivility().setName("Argenteur");
 			userManager.getProfile().getCivility().setBirthday(new Date());
-			userManager.getProfile().getCivility().setProfilePicture("coach1.jpg");
+			userManager.setProfilePicture("coach1.jpg");
 			userManager.getProfile().getContact().setPhoneNumber("0756229072");
 			userManager.getProfile().getContact().setEmail("titou@gmail.com");
 			userManager.getProfile().getAdress().setStreet("29 rue beaurepaire");
@@ -240,7 +240,7 @@ public class InitDb {
 			userCoach.getProfile().getCivility().setForename("Nene");
 			userCoach.getProfile().getCivility().setName("Sacko");
 			userCoach.getProfile().getCivility().setBirthday(new Date());
-			userCoach.getProfile().getCivility().setProfilePicture("CoachNéné.jpg");
+			userCoach.setProfilePicture("CoachNéné.jpg");
 			userCoach.getProfile().getContact().setPhoneNumber("0758246910");
 			userCoach.getProfile().getContact().setEmail("nene@gmail.com");
 			userCoach.getProfile().getAdress().setStreet("185 Avenu de Tulipes");
@@ -462,7 +462,7 @@ public class InitDb {
 			userMember.getProfile().getAdress().setZipCode(31500);
 			userMember.getProfile().getAdress().setStreet("Toulouse");
 			userMember.getProfile().getContact().setPhoneNumber("0618462597");
-			userMember.getProfile().getCivility().setProfilePicture("Adhérent1.jpg");
+			userMember.setProfilePicture("Adherent1.png");
 			userDao.createUser(userMember);
 			spaceOne.getUsers().add(userMember);
 			spaceDao.updateSpace(spaceOne);
