@@ -143,16 +143,19 @@ public class UserController implements Serializable {
 	 * @param dashboard url (:String)
 	 */
 	public String updateUser() {
+		Long currentuserId = SessionUtils.getUserIdFromSession();
 		// mettre à jour le user
-		userSvc.updateUserOnPlateform(userViewModel.getUser(), SessionUtils.getUserIdFromSession());
-
+		userSvc.updateUserOnPlateform(userViewModel.getUser(), currentuserId);
+		userViewModel.setUser(userDao.getUserById(currentuserId));
+		userViewModel.getUser().getAccount()
+				.setPassword(Crypto.DecryptDataInWords(userViewModel.getUser().getAccount().getPassword()));
 		// mettre à jour la session si le nom est changé
 		if (userViewModel.getUser().getProfile().getCivility().getName() != null) {
 			String newName = userViewModel.getUser().getProfile().getCivility().getName();
 			FacesContext fc = FacesContext.getCurrentInstance();
 			fc.getExternalContext().getSessionMap().put("name", newName);
 		}
-		return "ManagerDashBoard.xhtml";
+		return "ManagerDashBoard.xhtml?faces-redirect=true";
 	}
 
 	/**
@@ -276,7 +279,6 @@ public class UserController implements Serializable {
 		} else {
 			return false;
 		}
-
 	}
 
 	/**

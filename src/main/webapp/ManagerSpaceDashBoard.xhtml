@@ -512,14 +512,14 @@
 									<f:selectItem itemLabel="Autre" itemValue="Other" />
 								</h:selectOneMenu>
 							</div>
-							<div class="form-floating">
-								<h:inputText class="form-control" id="floatingInput04"
-									placeholder="Anniversaire non renseigné"
-									size="20"
-									value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}">
-									<f:convertDateTime pattern="dd-mm-yyyy" />
-								</h:inputText>
-								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+							<div class="field">
+									<h:outputLabel class="outputLabel" for="floatingInput04">DATE DE NAISSANCE</h:outputLabel>
+									<div>
+										<p:calendar id="floatingInput04"
+											value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}"
+											showOn="button" navigator="true" yearRange="c-100:c+10"
+											locale="fr" />
+									</div>
 							</div>
 							<div class="form-floating ">
 								<h:inputText class="form-control" id="floatingInput06" size="20" maxlength="12"

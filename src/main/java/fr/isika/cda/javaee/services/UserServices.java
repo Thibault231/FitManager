@@ -86,6 +86,9 @@ public class UserServices {
 		if (previousUser == null) {
 			// copy datas from the form
 			User userToCreate = new User(true);
+			if (userFromForm.getProfilePicture() != null) {
+				userToCreate.setProfilePicture(userFromForm.getProfilePicture());
+			}
 			userToCreate.setProfilePicture(userFromForm.getProfilePicture());
 			userToCreate.setProfile(userFromForm.getProfile());
 			userToCreate.setAccount(userFromForm.getAccount());
@@ -120,6 +123,7 @@ public class UserServices {
 	 */
 	public void updateUserOnPlateform(User userToUpdate, Long currentUserId) {
 		User currentUser = userDao.getUserById(currentUserId);
+
 		if (userToUpdate.getProfilePicture() != null) {
 			String newPicture = userToUpdate.getProfilePicture();
 			currentUser.setProfilePicture(newPicture);
@@ -161,7 +165,7 @@ public class UserServices {
 		}
 		if (userToUpdate.getProfile().getAdress().getCity() != null) {
 			String newCity = userToUpdate.getProfile().getAdress().getCity();
-			currentUser.getProfile().getAdress().setStreet(newCity);
+			currentUser.getProfile().getAdress().setCity(newCity);
 		}
 
 		userDao.updateUser(currentUser);
