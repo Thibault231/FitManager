@@ -20,76 +20,76 @@
 							<h:inputText class="form-control" id="floatingInput01"
 								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.fitnessName}" required="true" size="20"
 								value="#{spaceController.spaceViewModel.space.infos.configuration.fitnessName}" />
-							<h:outputLabel class="outputLabel" for="floatingInput01">NOM DE VOTRE ESPACE</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput01">Nom de votre espace</h:outputLabel>
 						</div>
 
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput02"
 								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.slogan}" size="20" required="true"
 								value="#{spaceController.spaceViewModel.space.infos.configuration.slogan}" />
-							<h:outputLabel class="outputLabel" for="floatingInput02">SLOGAN</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput02">Slogan</h:outputLabel>
 						</div>
 						
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput08"
 								placeholder="#{spaceController.spaceViewModel.space.infos.administrative.address}" rsize="20" required="true"
 								value="#{spaceController.spaceViewModel.space.infos.administrative.address}" />
-							<h:outputLabel class="outputLabel" for="floatingInput08">ADRESSE</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput08">Adresse</h:outputLabel>
 						</div>
 
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput03"
 								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.style.mainColor}" size="20" required="true"
 								value="#{spaceController.spaceViewModel.space.infos.configuration.style.mainColor}" />
-							<h:outputLabel class="outputLabel" for="floatingInput03">COULEUR PRINCIPALE</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput03">Couleur principale</h:outputLabel>
 						</div>
 
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput04"
 								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.style.secondColor}" size="20" required="true"
 								value="#{spaceController.spaceViewModel.space.infos.configuration.style.secondColor}" />
-							<h:outputLabel class="outputLabel" for="floatingInput04">COULEUR SECONDAIRE</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput04">Couleur secondaire</h:outputLabel>
 						</div>
 						
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput12"
 								placeholder="#{spaceController.spaceViewModel.space.infos.configuration.style.thirdcolor}" size="20" required="true"
 								value="#{spaceController.spaceViewModel.space.infos.configuration.style.thirdcolor}" />
-							<h:outputLabel class="outputLabel" for="floatingInput12">COULEUR TERTIAIRE</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput12">Couleur tertiaire</h:outputLabel>
 						</div>
 
 						<div class="form-floating">
 							<h:inputText class="form-control" id="floatingInput05"
 								placeholder="#{spaceController.spaceViewModel.space.infos.administrative.siret}" size="20"
 								value="#{spaceController.spaceViewModel.space.infos.administrative.siret}" />
-							<h:outputLabel class="outputLabel" for="floatingInput05">SIRET</h:outputLabel>
+							<h:outputLabel class="outputLabel" for="floatingInput05">Siret</h:outputLabel>
 						</div>
 
-						<h:outputLabel class="outputLabel" for="floatingInput06">VOTRE LOGO</h:outputLabel>
+						<h:outputLabel class="outputLabel" for="floatingInput06">Votre logo</h:outputLabel>
 						<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.logo}" width="50px" height="50px" class="img_index" />
 						<p:fileUpload listener="#{spaceController.uploadSpaceLogo}"
 							styleClass="w-100" id="floatingInput06" mode="advanced"
 							dragDropSupport="false" />
 							
-						<h:outputLabel class="outputLabel" for="floatingInput07">VOTRE IMAGE ACCUEIL</h:outputLabel>
+						<h:outputLabel class="outputLabel" for="floatingInput07">Votre image accueil</h:outputLabel>
 						<h:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.mainPicture}" width="50px" height="50px" class="img_index"/>
 						<p:fileUpload listener="#{spaceController.uploadSpaceMainPicture}"
 							styleClass="w-100" id="floatingInput07" mode="advanced"
 							dragDropSupport="false" />
 							
-						<h:outputLabel class="outputLabel" for="floatingInput09">IMAGE DE VOTRE SALLE 1</h:outputLabel>
+						<h:outputLabel class="outputLabel" for="floatingInput09">Image de votre salle 1</h:outputLabel>
 						<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.carrouselOne}" width="50px" height="50px" class="img_index" />
 						<p:fileUpload listener="#{spaceController.uploadSpaceFirstPicture}"
 							styleClass="w-100" id="floatingInput09" mode="advanced"
 							dragDropSupport="false" />
 							
-						<h:outputLabel class="outputLabel" for="floatingInput10">IMAGE DE VOTRE SALLE 2</h:outputLabel>
+						<h:outputLabel class="outputLabel" for="floatingInput10">Image de votre salle 2</h:outputLabel>
 						<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.carrouselTwo}" width="50px" height="50px" class="img_index" />
 						<p:fileUpload listener="#{spaceController.uploadSpaceSecondPicture}"
 							styleClass="w-100" id="floatingInput10" mode="advanced"
 							dragDropSupport="false" />
 							
-						<h:outputLabel class="outputLabel" for="floatingInput11">IMAGE DE VOTRE SALLE 3</h:outputLabel>
+						<h:outputLabel class="outputLabel" for="floatingInput11">Image de votre salle 3</h:outputLabel>
 						<p:graphicImage library="documents" name="#{spaceController.currentSpaceWithSubscriptions.infos.configuration.carrouselThree}" width="50px" height="50px" class="img_index" />
 						<p:fileUpload listener="#{spaceController.uploadSpaceThirdPicture}"
 							styleClass="w-100" id="floatingInput11" mode="advanced"

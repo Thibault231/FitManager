@@ -7,7 +7,7 @@
 
 <ui:composition template="WEB-INF/templates/mainTemplate.xhtml">
 	<ui:define name="titleValue">Fit MAnager : Redirect To Space</ui:define>
-	<!-- Corp de la page -->
+	<!-- Corps de la page -->
 	<ui:define name="content">
    <div class="border d-flex  text-emphasis-primary justify-content-center align-items-center"
 				style="height: 100vh; width: 100vw">
@@ -20,14 +20,14 @@
       <f:viewParam name="no" value="#{goToSpaceView.no}" />
     </f:metadata>
   <div class="d-flex mb-3" style="justify-content: center; text-align: center" >
-    	<h1>Bienvenue sur votre espace #{spaceController.getSpaceById(goToSpaceView.no).infos.configuration.fitnessName}</h1>
+    	<h3>Bienvenue sur votre espace #{spaceController.getSpaceById(goToSpaceView.no).infos.configuration.fitnessName}</h3>
 	</div>
 	<div class="d-flex mb-5" style="justify-content: center" >
 			<p:graphicImage library="documents" name="#{spaceController.getSpaceById(goToSpaceView.no).infos.configuration.logo}" 	class="rounded float-start" />
 	</div>
 	<div class="d-flex mb-5" style="justify-content: center" >
 		   <h:form>
-				<h:commandButton class="plateform_Button" value="ENTRER"
+				<h:commandButton class="plateform_Button" value="Entrer"
 					action="#{spaceController.goToSpaceIndex()}">
 					<f:param name="spaceId" value="#{goToSpaceView.no}" />
 				</h:commandButton>

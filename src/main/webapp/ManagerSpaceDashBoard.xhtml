@@ -12,7 +12,7 @@
 	<ui:define name="spaceContent">
 		<div class="container">
 
-			<h2 class="mb-3 mt-3">Mon tableau de bord Gestionnaire</h2>
+			<h3 class="mb-3 mt-3">Mon tableau de bord Gestionnaire</h3>
 			<div class=" mb-2 mt-4 card-AbonnementSpace full "
 				style="border-radius: 20px; margin-top: 20px; box-shadow: 10px 10px 19px -7px rgb(131, 127, 127); background-color: white; height: 100%">
 				<div class="card-header h-full"
@@ -135,7 +135,7 @@
 									filterBy="#{user.profile.civility.forename}">
 									<h:outputText value="#{user.profile.civility.name}" />
 								</p:column>
-								<p:column headerText="Prenom"
+								<p:column headerText="Prénom"
 									filterBy="#{user.profile.civility.forename}">
 									<h:outputText value="#{user.profile.civility.forename}" />
 								</p:column>
@@ -196,7 +196,7 @@
 									filterBy="#{user.profile.civility.name}">
 									<h:outputText value="#{user.profile.civility.name}" />
 								</p:column>
-								<p:column headerText="Prenom"
+								<p:column headerText="Prénom"
 									filterBy="#{user.profile.civility.forename}">
 									<h:outputText value="#{user.profile.civility.forename}" />
 								</p:column>
@@ -242,7 +242,7 @@
 								<p:column headerText="Dénomination">
 									<h:outputText value="#{subscription.subscriptionName}" />
 								</p:column>
-								<p:column headerText="Descrition">
+								<p:column headerText="Description">
 									<h:outputText value="#{subscription.description}" />
 								</p:column>
 								<p:column headerText="Type d'engagement">
@@ -305,13 +305,13 @@
 									filterBy="#{course.startDate}">
 									<h:outputText value="#{course.startDate}" />
 								</p:column>
-								<p:column headerText="Fin de cours" filterBy="#{course.endDate}">
+								<p:column headerText="Fin du cours" filterBy="#{course.endDate}">
 									<h:outputText value="#{course.endDate}" />
 								</p:column>
 								<p:column headerText="Description">
 									<h:outputText value="#{course.description}" />
 								</p:column>
-								<p:column headerText="Actions">
+								<p:column headerText="Action">
 									<div class="d-flex">
 										<p:commandLink type="button" value="Supprimer"
 											onclick="PF('confirmationVarSub').show();"
@@ -337,7 +337,7 @@
 			</p:tabView>
 			<hr />
 
-			<p:dialog header="Creation d'abonnement "
+			<p:dialog header="Création d'abonnement "
 				widgetVar="CreateSubscription" modal="true" height="600"
 				resizable="false" showEffect="fade" hideEffect="fade"
 				style="max-width: 1000px; min-width: 700px;">
@@ -407,15 +407,17 @@
 								<h:outputLabel for="sex" value="Genre" />
 								<h:selectOneMenu id="sex"
 									value="#{spaceUser.spaceViewModel.newUser.profile.civility.sex}">
-									<f:selectItem itemLabel="" />
-									<f:selectItem itemLabel="Homme" itemValue="Man" />
-									<f:selectItem itemLabel="Femme" itemValue="Woman" />
-									<f:selectItem itemLabel="Autre" itemValue="Other" />
+									<div>
+										<f:selectItem itemLabel="" />
+										<f:selectItem itemLabel="Homme" itemValue="Homme" />
+										<f:selectItem itemLabel="Femme" itemValue="Femme" />
+										<f:selectItem itemLabel="Autre" itemValue="Autre" />
+									</div>
 								</h:selectOneMenu>
 							</div>
 
 							<div class="field">
-								<h:outputLabel class="outputLabel" for="floatingInput04">DATE DE NAISSANCE</h:outputLabel>
+								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 								<div>
 									<p:calendar id="floatingInput04"
 										value="#{spaceUser.spaceViewModel.newUser.profile.civility.birthday}"
@@ -464,7 +466,7 @@
 								action="#{spaceUser.createCoachAccount()}" />
 
 							<h:link class="text-center" outcome="ManagerSpaceDashBoard"
-								value="ANNULER" />
+								value="Annuler" />
 						</div>
 					</div>
 				</h:form>
@@ -502,7 +504,7 @@
 								</h:selectOneMenu>
 							</div>
 							<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput04">DATE DE NAISSANCE</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 									<div>
 										<p:calendar id="floatingInput04"
 											value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}"
@@ -540,7 +542,7 @@
 							</div>
 							
 							<div class="field">
-								<h:outputLabel class="outputLabel" for="photoInput">VOTRE PHOTO</h:outputLabel>
+								<h:outputLabel class="outputLabel" for="photoInput">Votre photo</h:outputLabel>
 								<p:fileUpload
 									listener="#{spaceUser.uploadAdministrativeDocument}"
 									styleClass="w-100" mode="advanced" dragDropSupport="false" />
