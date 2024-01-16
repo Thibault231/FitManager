@@ -213,6 +213,19 @@ public class SpaceController implements Serializable {
 	}
 
 	/**
+	 * Check if a user is connected as the member of the space. Method used for
+	 * conditional display in views.
+	 * 
+	 * @return (:boolean)
+	 */
+	public boolean isMemberOfTheSpaceConnected() {
+
+		return SessionUtils.getUserIdFromSession() != null
+				&& SessionUtils.getUserRoleFromSession().equals(Role.Adherent);
+
+	}
+
+	/**
 	 * Return the view of a user dashboard, using it's role.
 	 * 
 	 * @param userRole (:Role ENUM)

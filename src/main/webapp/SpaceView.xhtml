@@ -70,11 +70,13 @@
 										<p>#{subscription.description}</p>
 									</div>
 									<div class="card-footer">
+										<ui:fragment rendered="#{spaceController.memberOfTheSpaceConnected}">
 										<h:form>
 											<h:commandButton
 												action="#{subscriptionController.subscribe(subscription.subscriptionId)}"
 												class="btn" role="button" data-bs-toggle="button" style="color: white; background-color: #{spaceController.currentSpaceWithSubscriptions.infos.configuration.style.thirdcolor}; " value="S'ABONNER" />
 										</h:form>
+										</ui:fragment>
 									</div>
 								</div>
 							</ui:repeat>
