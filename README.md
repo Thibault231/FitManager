@@ -1,7 +1,9 @@
 # FitManager
 A plateform for easy creating fitness web sites. 
 
+![Logo Fit manager](logo.png)<br/>
 Welcome on FitManager APP.
+This readme will help you to install FitManager App and test it with the demo version.
 
 ##Versions
 
@@ -42,7 +44,9 @@ __e.g with Eclipse__
  
  _2-Add server:_
  Click on "No serveur available..." then select WildFly 18
- 
+ <br/>
+ ![Index view](addapp0.png)
+ <br/>
  _3-Add app:_
  Right click on "Wildfly 18"
  Select "Add and remove"
@@ -59,7 +63,9 @@ Before launching proceed to:
 * Select /FitManager at the line _Context Root:_
 
 You should access the following view in navigator:
-
+<br/>
+![Index view](index.png)
+<br/>
 
 ##Try demo version
 
