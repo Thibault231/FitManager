@@ -407,10 +407,12 @@
 								<h:outputLabel for="sex" value="Genre" />
 								<h:selectOneMenu id="sex"
 									value="#{spaceUser.spaceViewModel.newUser.profile.civility.sex}">
-									<f:selectItem itemLabel="" />
-									<f:selectItem itemLabel="Homme" itemValue="Man" />
-									<f:selectItem itemLabel="Femme" itemValue="Woman" />
-									<f:selectItem itemLabel="Autre" itemValue="Other" />
+									<div>
+										<f:selectItem itemLabel="" />
+										<f:selectItem itemLabel="Homme" itemValue="Homme" />
+										<f:selectItem itemLabel="Femme" itemValue="Femme" />
+										<f:selectItem itemLabel="Autre" itemValue="Autre" />
+									</div>
 								</h:selectOneMenu>
 							</div>
 
