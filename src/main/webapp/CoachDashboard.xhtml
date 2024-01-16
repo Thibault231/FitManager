@@ -192,16 +192,14 @@
 								</h:selectOneMenu>
 							</div>
 							<div class="field">
-								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
-								<div>
-									<p:calendar id="floatingInput04"
-										value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}"
-										showOn="button" navigator="true" yearRange="c-100:c+10"
-										locale="fr" />
-								</div>
+									<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+									<div>
+										<p:calendar id="floatingInput04"
+											value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}"
+											showOn="button" navigator="true" yearRange="c-100:c+10"
+											locale="fr" />
+									</div>
 							</div>
-							
-
 							<div class="form-floating ">
 								<h:inputText class="form-control" id="floatingInput06" size="20" maxlength="12"
 									value="#{spaceUser.spaceViewModel.user.account.password}">
@@ -209,8 +207,6 @@
 								</h:inputText>
 								<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 							</div>
-							
-
 							<div class="form-floating">
 								<h:inputText class="form-control" id="floatingInput07"
 									placeholder="Adresse non renseignée"
@@ -232,6 +228,7 @@
 									value="#{spaceUser.spaceViewModel.user.profile.adress.city}" />
 								<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 							</div>
+							
 							<div class="field">
 								<h:outputLabel class="outputLabel" for="photoInput">Votre photo</h:outputLabel>
 								<p:fileUpload
@@ -242,8 +239,10 @@
 							<h:commandButton class="btn btn-warning"
 								value="Enregistrer les modifications"
 								action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
-							<h:link class="text-center" outcome="AdherentDashboard"
+
+							<h:link class="text-center" outcome="CoachDashBoard"
 								value="Annuler" />
+
 						</div>
 					</div>
 				</h:form>

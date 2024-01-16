@@ -194,19 +194,19 @@
 								<h:selectOneMenu id="sex"
 									value="#{spaceUser.spaceViewModel.user.profile.civility.sex}">
 									<f:selectItem itemLabel="" />
-									<f:selectItem itemLabel="Homme" itemValue="Man" />
-									<f:selectItem itemLabel="Femme" itemValue="Woman" />
-									<f:selectItem itemLabel="Autre" itemValue="Other" />
+									<f:selectItem itemLabel="Homme" itemValue="Homme" />
+									<f:selectItem itemLabel="Femme" itemValue="Femme" />
+									<f:selectItem itemLabel="Autre" itemValue="Autre" />
 								</h:selectOneMenu>
 							</div>
 							<div class="field">
-								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
-								<div>
-									<p:calendar id="floatingInput04"
-										value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}"
-										showOn="button" navigator="true" yearRange="c-100:c+10"
-										locale="fr" />
-								</div>
+									<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
+									<div>
+										<p:calendar id="floatingInput04"
+											value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}"
+											showOn="button" navigator="true" yearRange="c-100:c+10"
+											locale="fr" />
+									</div>
 							</div>
 							<div class="form-floating ">
 								<h:inputText class="form-control" id="floatingInput06" size="20" maxlength="12"
@@ -247,6 +247,7 @@
 							<h:commandButton class="btn btn-warning"
 								value="Enregistrer les modifications"
 								action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
+
 							<h:link class="text-center" outcome="AdherentDashboard"
 								value="Annuler" />
 						</div>

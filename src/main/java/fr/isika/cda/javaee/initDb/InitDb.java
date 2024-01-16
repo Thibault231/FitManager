@@ -91,104 +91,104 @@ public class InitDb {
 			spaceOne.getInfos().getConfiguration().setCarrouselOne("Img9.jpg");
 			spaceDao.createSpace(spaceOneTer);
 
-//			Space spaceTwo = new Space(true);
-//			spaceTwo.getInfos().getConfiguration().setFitnessName("Calypso");
-//			spaceTwo.getInfos().getConfiguration().setLogo("calypsoLogo.jpg");
-//			spaceTwo.getInfos().getConfiguration().setSlogan("WaterAndFitNess");
-//			spaceTwo.getInfos().getAdministrative().setAddress("15 Rue Sainte-Catherine, 33000 Bordeaux");
-//			spaceDao.createSpace(spaceTwo);
-//
-//			Space spaceThree = new Space(true);
-//			spaceThree.getInfos().getConfiguration().setFitnessName("Water&Fitness");
-//			spaceThree.getInfos().getConfiguration().setLogo("muscleYouLogo.jpg");
-//			spaceThree.getInfos().getConfiguration().setSlogan("Repoussez vos limites");
-//			spaceThree.getInfos().getAdministrative().setAddress("25 rue des marais, Saint-Gratien");
-//			spaceDao.createSpace(spaceThree);
-//
-//			Space spaceFor = new Space(true);
-//			spaceFor.getInfos().getConfiguration().setFitnessName("Spartan");
-//			spaceFor.getInfos().getConfiguration().setLogo("spartanLogo.jpg");
-//			spaceFor.getInfos().getConfiguration().setSlogan("Stronger than you");
-//			spaceFor.getInfos().getAdministrative().setAddress("56 rue l'éventail, 72000 Le Mans");
-//			spaceDao.createSpace(spaceFor);
-//
+			Space spaceTwo = new Space(true);
+			spaceTwo.getInfos().getConfiguration().setFitnessName("Calypso");
+			spaceTwo.getInfos().getConfiguration().setLogo("calypsoLogo.jpg");
+			spaceTwo.getInfos().getConfiguration().setSlogan("WaterAndFitNess");
+			spaceTwo.getInfos().getAdministrative().setAddress(" Bordeaux, 15 Rue Sainte-Catherine, 33000");
+			spaceDao.createSpace(spaceTwo);
+
+			Space spaceThree = new Space(true);
+			spaceThree.getInfos().getConfiguration().setFitnessName("Water&Fitness");
+			spaceThree.getInfos().getConfiguration().setLogo("muscleYouLogo.jpg");
+			spaceThree.getInfos().getConfiguration().setSlogan("Repoussez vos limites");
+			spaceThree.getInfos().getAdministrative().setAddress("Saint-Gratien, 25 rue des marais");
+			spaceDao.createSpace(spaceThree);
+
+			Space spaceFor = new Space(true);
+			spaceFor.getInfos().getConfiguration().setFitnessName("Spartan");
+			spaceFor.getInfos().getConfiguration().setLogo("spartanLogo.jpg");
+			spaceFor.getInfos().getConfiguration().setSlogan("Stronger than you");
+			spaceFor.getInfos().getAdministrative().setAddress("Le Mans, 56 rue l'éventail, 72000");
+			spaceDao.createSpace(spaceFor);
+
 			Space spaceFive = new Space(true);
 			spaceFive.getInfos().getConfiguration().setFitnessName("XperienceZumbas");
 			spaceFive.getInfos().getConfiguration().setLogo("XperienceZumbaLogo.jpg");
 			spaceFive.getInfos().getConfiguration().setSlogan("ZumbasYouR");
-			spaceFive.getInfos().getAdministrative().setAddress("200 route des Banderilles, 31000 Toulouse");
+			spaceFive.getInfos().getAdministrative().setAddress("Toulouse, 200 route des Banderilles, 31000 ");
 			spaceDao.createSpace(spaceFive);
-//
-//			Space spaceSix = new Space(true);
-//			spaceSix.getInfos().getConfiguration().setFitnessName("Explorers");
-//			spaceSix.getInfos().getConfiguration().setLogo("Explorers.jpg");
-//			spaceSix.getInfos().getConfiguration().setSlogan("Transformez votre corps, changez votre vie");
-//			spaceSix.getInfos().getAdministrative().setAddress("12 Rue de la Liberté, 75001 Paris");
-//			spaceDao.createSpace(spaceSix);
-//
-//			Space spaceSeven = new Space(true);
-//			spaceSeven.getInfos().getConfiguration().setFitnessName("FitnessClub");
-//			spaceSeven.getInfos().getConfiguration().setLogo("FitnessClub.jpg");
-//			spaceSeven.getInfos().getConfiguration().setSlogan("Soyez fort, soyez en forme, soyez vous-même");
-//			spaceSeven.getInfos().getAdministrative().setAddress("28 Rue du Faubourg Saint-Honoré, 72000 Le Mans");
-//			spaceDao.createSpace(spaceSeven);
-//
-//			Space spaceEight = new Space(true);
-//			spaceEight.getInfos().getConfiguration().setFitnessName("FitnessGym");
-//			spaceEight.getInfos().getConfiguration().setLogo("MaSalle.jpg");
-//			spaceEight.getInfos().getConfiguration().setSlogan("Votre parcours vers la forme physique commence ici");
-//			spaceEight.getInfos().getAdministrative().setAddress("45 Avenue des Champs-élysées, 75008 Paris");
-//			spaceDao.createSpace(spaceEight);
-//
-//			Space spaceNine = new Space(true);
-//			spaceNine.getInfos().getConfiguration().setFitnessName("XperienceZumbas");
-//			spaceNine.getInfos().getConfiguration().setLogo("Gym.jpg");
-//			spaceNine.getInfos().getConfiguration().setSlogan("Dépassez vos limites, atteignez vos objectifs");
-//			spaceNine.getInfos().getAdministrative().setAddress("22 Rue de la République, 69002 Lyon");
-//			spaceDao.createSpace(spaceNine);
-//
-//			Space spaceTen = new Space(true);
-//			spaceTen.getInfos().getConfiguration().setFitnessName("LaSalle");
-//			spaceTen.getInfos().getConfiguration().setLogo("LaSalle.jpg");
-//			spaceTen.getInfos().getConfiguration().setSlogan("Vivez fort, vivez sainement, vivez pleinement");
-//			spaceTen.getInfos().getAdministrative().setAddress("9 Quai des Berges, 67000 Strasbourg");
-//			spaceDao.createSpace(spaceTen);
-//
-//			Space spaceEleven = new Space(true);
-//			spaceEleven.getInfos().getConfiguration().setFitnessName("FitnessGym");
-//			spaceEleven.getInfos().getConfiguration().setLogo("FitnessGym.jpg");
-//			spaceEleven.getInfos().getConfiguration().setSlogan("Brisez la sueur, libérez la force intérieure");
-//			spaceEleven.getInfos().getAdministrative().setAddress("14 Rue du Vieux Port, 13002 Marseille");
-//			spaceDao.createSpace(spaceEleven);
-//
-//			Space spaceTwelve = new Space(true);
-//			spaceTwelve.getInfos().getConfiguration().setFitnessName("OnAir");
-//			spaceTwelve.getInfos().getConfiguration().setLogo("OnAir.jpg");
-//			spaceTwelve.getInfos().getConfiguration().setSlogan("Chaque goutte de sueur vous rapproche de la reussite");
-//			spaceTwelve.getInfos().getAdministrative().setAddress("5 Place de la Concorde, 75008 Paris");
-//			spaceDao.createSpace(spaceTwelve);
-//
-//			Space spaceThirteen = new Space(true);
-//			spaceThirteen.getInfos().getConfiguration().setFitnessName("KingFit");
-//			spaceThirteen.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
-//			spaceThirteen.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
-//			spaceThirteen.getInfos().getAdministrative().setAddress("18 Rue de la Pompe, 49000 Angers");
-//			spaceDao.createSpace(spaceThirteen);
-//
-//			Space spaceFourteen = new Space(true);
-//			spaceFourteen.getInfos().getConfiguration().setFitnessName("SportInside");
-//			spaceFourteen.getInfos().getConfiguration().setLogo("SportInside.jpg");
-//			spaceFourteen.getInfos().getConfiguration().setSlogan("La motivation vient de la persévérance");
-//			spaceFourteen.getInfos().getAdministrative().setAddress("25 Rue du Capitole, 31000 Toulouse");
-//			spaceDao.createSpace(spaceFourteen);
-//
-//			Space spaceFifteen = new Space(true);
-//			spaceFifteen.getInfos().getConfiguration().setFitnessName("Underground");
-//			spaceFifteen.getInfos().getConfiguration().setLogo("Underground.jpg");
-//			spaceFifteen.getInfos().getConfiguration()
-//					.setSlogan("Votre meilleur jour commence ici, dans notre salle de sport");
-//			spaceFifteen.getInfos().getAdministrative().setAddress("42 Quai de la Douane, 33000 Bordeaux");
-//			spaceDao.createSpace(spaceFifteen);
+
+			Space spaceSix = new Space(true);
+			spaceSix.getInfos().getConfiguration().setFitnessName("Explorers");
+			spaceSix.getInfos().getConfiguration().setLogo("Explorers.jpg");
+			spaceSix.getInfos().getConfiguration().setSlogan("Transformez votre corps, changez votre vie");
+			spaceSix.getInfos().getAdministrative().setAddress("Paris, 12 Rue de la Liberté, 75001");
+			spaceDao.createSpace(spaceSix);
+
+			Space spaceSeven = new Space(true);
+			spaceSeven.getInfos().getConfiguration().setFitnessName("FitnessClub");
+			spaceSeven.getInfos().getConfiguration().setLogo("FitnessClub.jpg");
+			spaceSeven.getInfos().getConfiguration().setSlogan("Soyez fort, soyez en forme, soyez vous-même");
+			spaceSeven.getInfos().getAdministrative().setAddress("Le Mans, 28 Rue du Faubourg Saint-Honoré, 72000");
+			spaceDao.createSpace(spaceSeven);
+
+			Space spaceEight = new Space(true);
+			spaceEight.getInfos().getConfiguration().setFitnessName("FitnessGym");
+			spaceEight.getInfos().getConfiguration().setLogo("MaSalle.jpg");
+			spaceEight.getInfos().getConfiguration().setSlogan("Votre parcours vers la forme physique commence ici");
+			spaceEight.getInfos().getAdministrative().setAddress("Paris, 45 Avenue des Champs-élysées, 75008");
+			spaceDao.createSpace(spaceEight);
+
+			Space spaceNine = new Space(true);
+			spaceNine.getInfos().getConfiguration().setFitnessName("XperienceZumbas");
+			spaceNine.getInfos().getConfiguration().setLogo("Gym.jpg");
+			spaceNine.getInfos().getConfiguration().setSlogan("Dépassez vos limites, atteignez vos objectifs");
+			spaceNine.getInfos().getAdministrative().setAddress("Lyon, 22 Rue de la République, 69002");
+			spaceDao.createSpace(spaceNine);
+
+			Space spaceTen = new Space(true);
+			spaceTen.getInfos().getConfiguration().setFitnessName("LaSalle");
+			spaceTen.getInfos().getConfiguration().setLogo("LaSalle.jpg");
+			spaceTen.getInfos().getConfiguration().setSlogan("Vivez fort, vivez sainement, vivez pleinement");
+			spaceTen.getInfos().getAdministrative().setAddress("Strasbourg, 9 Quai des Berges, 67000");
+			spaceDao.createSpace(spaceTen);
+
+			Space spaceEleven = new Space(true);
+			spaceEleven.getInfos().getConfiguration().setFitnessName("FitnessGym");
+			spaceEleven.getInfos().getConfiguration().setLogo("FitnessGym.jpg");
+			spaceEleven.getInfos().getConfiguration().setSlogan("Brisez la sueur, libérez la force intérieure");
+			spaceEleven.getInfos().getAdministrative().setAddress("Marseille, 14 Rue du Vieux Port, 13002");
+			spaceDao.createSpace(spaceEleven);
+
+			Space spaceTwelve = new Space(true);
+			spaceTwelve.getInfos().getConfiguration().setFitnessName("OnAir");
+			spaceTwelve.getInfos().getConfiguration().setLogo("OnAir.jpg");
+			spaceTwelve.getInfos().getConfiguration().setSlogan("Chaque goutte de sueur vous rapproche de la reussite");
+			spaceTwelve.getInfos().getAdministrative().setAddress("Paris, 5 Place de la Concorde, 75008");
+			spaceDao.createSpace(spaceTwelve);
+
+			Space spaceThirteen = new Space(true);
+			spaceThirteen.getInfos().getConfiguration().setFitnessName("KingFit");
+			spaceThirteen.getInfos().getConfiguration().setLogo("kingFitLogo.jpg");
+			spaceThirteen.getInfos().getConfiguration().setSlogan("Muscles for King & Queen");
+			spaceThirteen.getInfos().getAdministrative().setAddress("Angers, 18 Rue de la Pompe, 49000 ");
+			spaceDao.createSpace(spaceThirteen);
+
+			Space spaceFourteen = new Space(true);
+			spaceFourteen.getInfos().getConfiguration().setFitnessName("SportInside");
+			spaceFourteen.getInfos().getConfiguration().setLogo("SportInside.jpg");
+			spaceFourteen.getInfos().getConfiguration().setSlogan("La motivation vient de la persévérance");
+			spaceFourteen.getInfos().getAdministrative().setAddress("Toulouse, 25 Rue du Capitole, 31000");
+			spaceDao.createSpace(spaceFourteen);
+
+			Space spaceFifteen = new Space(true);
+			spaceFifteen.getInfos().getConfiguration().setFitnessName("Underground");
+			spaceFifteen.getInfos().getConfiguration().setLogo("Underground.jpg");
+			spaceFifteen.getInfos().getConfiguration()
+					.setSlogan("Votre meilleur jour commence ici, dans notre salle de sport");
+			spaceFifteen.getInfos().getAdministrative().setAddress("Bordeaux, 42 Quai de la Douane, 33000 ");
+			spaceDao.createSpace(spaceFifteen);
 
 			/*
 			 * Création de quelques Gestionnaires pour la vue allCourses (Calendar)
@@ -458,11 +458,13 @@ public class InitDb {
 			userMember.getProfile().getCivility().setName("Senouci");
 			userMember.getProfile().getCivility().setBirthday(new Date());
 			userMember.getProfile().getCivility().setSex(Sex.Homme);
+			userMember.getProfile().getContact().setEmail("charef@gmail.com");
 			userMember.getProfile().getAdress().setStreet("18 rue du commandant zizou");
 			userMember.getProfile().getAdress().setZipCode(31500);
-			userMember.getProfile().getAdress().setStreet("Toulouse");
+			userMember.getProfile().getAdress().setStreet("12 quai du canal du midi");
+			userMember.getProfile().getAdress().setCity("Toulouse");
 			userMember.getProfile().getContact().setPhoneNumber("0618462597");
-			userMember.setProfilePicture("Adherent1.png");
+			userMember.setProfilePicture("coach7.jpg");
 			userDao.createUser(userMember);
 			spaceOne.getUsers().add(userMember);
 			spaceDao.updateSpace(spaceOne);
@@ -1074,7 +1076,7 @@ public class InitDb {
 
 			Course c3 = new Course();
 			c3.setName("Cours de bodypump");
-			c3.setLinkedSpaceId(14L);
+			c3.setLinkedSpaceId(6L);
 			c3.setCoach(userCoach);
 			c3.setStartDate(LocalDateTime.now().plusDays(2));
 			c3.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
@@ -1092,12 +1094,58 @@ public class InitDb {
 
 			Course c5 = new Course();
 			c5.setName("Cours de yoga");
-			c5.setLinkedSpaceId(14L);
+			c5.setLinkedSpaceId(6L);
 			c5.setCoach(userCoach);
 			c5.setStartDate(LocalDateTime.now().plusDays(2));
 			c5.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
 			c5.setDescription("yoga");
 			em.persist(c5);
+
+			Course c6 = new Course();
+			c6.setName("Cours de dance");
+			c6.setLinkedSpaceId(6L);
+			c6.setCoach(userCoach);
+			c6.setStartDate(LocalDateTime.now());
+			c6.setStartDate(LocalDateTime.now().plusDays(1));
+			c6.setEndDate(LocalDateTime.now().plusHours(4));
+			c6.setDescription("Break");
+			em.persist(c6);
+
+			Course c7 = new Course();
+			c7.setName("Cours de muscu");
+			c7.setLinkedSpaceId(6L);
+			c7.setCoach(userCoach);
+			c7.setStartDate(LocalDateTime.now().plusDays(1));
+			c7.setEndDate(LocalDateTime.now().plusDays(1).plusHours(5));
+			c7.setDescription("Muscu");
+			em.persist(c7);
+
+			Course c8 = new Course();
+			c8.setName("Cours de bodypump");
+			c8.setLinkedSpaceId(6L);
+			c8.setCoach(userCoach);
+			c8.setStartDate(LocalDateTime.now().plusDays(3));
+			c8.setEndDate(LocalDateTime.now().plusDays(2).plusHours(-5));
+			c8.setDescription("Body Pump");
+			em.persist(c8);
+
+			Course c9 = new Course();
+			c9.setName("Cours de kickboxing");
+			c9.setLinkedSpaceId(6L);
+			c9.setCoach(userCoach);
+			c9.setStartDate(LocalDateTime.now());
+			c9.setEndDate(LocalDateTime.now().plusHours(-2));
+			c9.setDescription("kickboxing");
+			em.persist(c9);
+
+			Course c10 = new Course();
+			c10.setName("Cours de yoga");
+			c10.setLinkedSpaceId(6L);
+			c10.setCoach(userCoach);
+			c10.setStartDate(LocalDateTime.now().plusDays(6));
+			c10.setEndDate(LocalDateTime.now().plusDays(2).plusHours(10));
+			c10.setDescription("yoga");
+			em.persist(c10);
 
 			/*
 			 * Fin création des cours
