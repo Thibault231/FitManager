@@ -200,7 +200,7 @@
 								</h:selectOneMenu>
 							</div>
 							<div class="field">
-								<h:outputLabel class="outputLabel" for="floatingInput04">DATE DE NAISSANCE</h:outputLabel>
+								<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 								<div>
 									<p:calendar id="floatingInput04"
 										value="#{spaceUser.spaceViewModel.user.profile.civility.birthday}"
@@ -238,7 +238,7 @@
 							</div>
 							
 							<div class="field">
-								<h:outputLabel class="outputLabel" for="photoInput">VOTRE PHOTO</h:outputLabel>
+								<h:outputLabel class="outputLabel" for="photoInput">Votre photo</h:outputLabel>
 								<p:fileUpload
 									listener="#{spaceUser.uploadAdministrativeDocument}"
 									styleClass="w-100" mode="advanced" dragDropSupport="false" />
@@ -248,7 +248,7 @@
 								value="Enregistrer les modifications"
 								action="#{spaceUser.updateUser(spaceUser.spaceViewModel.user.userId)}" />
 							<h:link class="text-center" outcome="AdherentDashboard"
-								value="ANNULER" />
+								value="Annuler" />
 						</div>
 					</div>
 				</h:form>

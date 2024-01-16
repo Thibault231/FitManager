@@ -30,7 +30,7 @@
 			</div>
 			
 			<div class="col p-5">
-				<h1> <span> Bienvenue</span> #{sessionScope.name} </h1>
+				<h3> <span> Bienvenue</span> #{sessionScope.name} </h3>
 				<div class="d-flex w-100 justify-content-end pt-1">
 					<div class="d-flex justify-content-around">
 						<a class=" m-1">#{sessionScope.role}</a>
@@ -44,7 +44,7 @@
 							<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
 								<li>
 									<div class=" p-2 ">
-											<h2>Informations</h2>
+											<h3> Mes informations</h3>
 										<div id="1">
 											<p>Nom: #{userController.userViewModel.user.profile.civility.name}</p>
 											<p>Prenom: #{userController.userViewModel.user.profile.civility.forename}</p>					

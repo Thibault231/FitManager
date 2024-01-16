@@ -25,7 +25,7 @@
 						<div class="manager-form">
 							<div class="d-grid gap-2">
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput01">NOM</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput01">Nom</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput01"
 										placeholder="Nom" required="true" size="20"
 										requiredMessage="La saisie du NOM est obligatoire !"
@@ -34,7 +34,7 @@
 								</div>
 
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput02">PRENOM</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput02">Prénom</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput02"
 										placeholder="Prenom" required="true" size="20"
 										requiredMessage="La saisie du PRENOM est obligatoire !"
@@ -54,7 +54,7 @@
 							</div>
 
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput04">DATE DE NAISSANCE</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput04">Date de naissance</h:outputLabel>
 									<div>
 										<p:calendar id="floatingInput04"
 											value="#{userController.userViewModel.user.profile.civility.birthday}"
@@ -64,7 +64,7 @@
 								</div>
 
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput05">EMAIL</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput05">Email</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput05"
 										placeholder="EMAIL" required="true" size="20"
 										requiredMessage="La saisie de l'EMAIL est obligatoire !"
@@ -76,7 +76,7 @@
 								</div>
 
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput06">MOT DE PASSE</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput06">Mot de passe</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput06" size="20"
 										placeholder="MOT DE PASSE" required="true" maxlength="12"
 										requiredMessage="La saisie du MOT DE PASSE est obligatoire !"
@@ -91,34 +91,34 @@
 
 							<div class="d-grid gap-2">
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput11">TELEPHONE</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput11">Téléphone</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput11"
 										placeholder="Adresse" size="20"
 										value="#{userController.userViewModel.user.profile.contact.phoneNumber}" />
 								</div>
 
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput07">ADRESSE</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput07">Adresse</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput07"
 										placeholder="Adresse" size="20"
 										value="#{userController.userViewModel.user.profile.adress.street}" />
 								</div>
 
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput08">CODE POSTAL</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput08">Code postal</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput08"
 										placeholder="CODE POSTAL" size="20"
 										value="#{userController.userViewModel.user.profile.adress.zipCode}" />
 								</div>
 
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="floatingInput09">VILLE</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="floatingInput09">Ville</h:outputLabel>
 									<h:inputText class="form-control" id="floatingInput09"
 										value="#{userController.userViewModel.user.profile.adress.city}" />
 								</div>
 
 								<div class="field">
-									<h:outputLabel class="outputLabel" for="photoInput">VOTRE PHOTO</h:outputLabel>
+									<h:outputLabel class="outputLabel" for="photoInput">Votre photo</h:outputLabel>
 									<p:fileUpload
 										listener="#{spaceUser.uploadAdministrativeDocument}"
 										styleClass="w-100" mode="advanced" dragDropSupport="false" />
