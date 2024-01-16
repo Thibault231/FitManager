@@ -36,6 +36,8 @@ public class CourseDao implements IDaoCourse {
 
 	@Override
 	public void deleteCourses(Long courseToDeleteId) {
+		em.createNativeQuery("DELETE FROM booking WHERE linkedCourse_id = :courseToDeleteId")
+				.setParameter("courseToDeleteId", courseToDeleteId).executeUpdate();
 		em.remove(getCourseById(courseToDeleteId));
 	}
 
