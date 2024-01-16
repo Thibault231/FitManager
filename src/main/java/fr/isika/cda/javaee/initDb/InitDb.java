@@ -458,6 +458,7 @@ public class InitDb {
 			userMember.getProfile().getCivility().setName("Senouci");
 			userMember.getProfile().getCivility().setBirthday(new Date());
 			userMember.getProfile().getCivility().setSex(Sex.Homme);
+			userMember.getProfile().getContact().setEmail("charef@gmail.com");
 			userMember.getProfile().getAdress().setStreet("18 rue du commandant zizou");
 			userMember.getProfile().getAdress().setZipCode(31500);
 			userMember.getProfile().getAdress().setStreet("Toulouse");
