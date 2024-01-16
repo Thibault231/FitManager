@@ -135,10 +135,15 @@
 									filterBy="#{booking.registrationDate.toString()}">
 									<h:outputText value="#{booking.registrationDate.toString()}" />
 								</p:column>
-								<p:column headerText="Date et Horaire du cours"
-									filterBy="#{booking.linkedCourse.startDate.toString()}">
-									<h:outputText
-										value="#{booking.linkedCourse.startDate.toString()}" />
+								<p:column headerText="Début de cours" filterBy="#{booking.linkedCourse.startDate}">
+								<h:outputText value="#{booking.linkedCourse.endDate}" pattern="MMM dd, yyyy HH:mm:ss" >
+								      <f:convertDateTime type="localDateTime" pattern="MMM dd, yyyy HH:mm:ss" /> 
+								</h:outputText>
+								</p:column>
+								<p:column headerText="Fin de cours" filterBy="#{booking.linkedCourse.endDate}">
+								<h:outputText value="#{booking.linkedCourse.endDate}" pattern="MMM dd, yyyy HH:mm:ss" >
+								      <f:convertDateTime type="localDateTime" pattern="MMM dd, yyyy HH:mm:ss" /> 
+								</h:outputText>
 								</p:column>
 								<p:column headerText="Action">
 									<div class="d-flex">
