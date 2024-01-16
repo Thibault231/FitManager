@@ -133,7 +133,7 @@
 							</p:column>
 							<p:column headerText="Fin du cours" filterBy="#{course.endDate}">
 								<h:outputText value="#{course.endDate}" pattern="MMM dd, yyyy HH:mm:ss" >
-								      <f:convertDateTime type="localDateTime" pattern="MMM dd, yyyy HH:mm:ss" /> 
+								      <f:convertDateTime type="localDateTime" pattern="d MMM yyyy - HH 'h' : mm 'mins'" />
 								</h:outputText>
 							</p:column>
 							<p:column headerText="Description">
