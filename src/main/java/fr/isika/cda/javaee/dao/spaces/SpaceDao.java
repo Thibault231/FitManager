@@ -27,7 +27,6 @@ public class SpaceDao implements IDaoSpace {
 		em.persist(spaceToCreate.getInfos().getConfiguration().getStyle());
 		em.persist(spaceToCreate.getInfos().getAdministrative());
 		em.persist(spaceToCreate.getInfos().getConfiguration());
-		em.persist(spaceToCreate.getPlanning());
 		em.persist(spaceToCreate.getInfos());
 		em.persist(spaceToCreate);
 		return spaceToCreate.getSpaceId();
