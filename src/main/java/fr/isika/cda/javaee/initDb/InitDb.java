@@ -1076,7 +1076,7 @@ public class InitDb {
 
 			Course c3 = new Course();
 			c3.setName("Cours de bodypump");
-			c3.setLinkedSpaceId(14L);
+			c3.setLinkedSpaceId(6L);
 			c3.setCoach(userCoach);
 			c3.setStartDate(LocalDateTime.now().plusDays(2));
 			c3.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
@@ -1094,12 +1094,58 @@ public class InitDb {
 
 			Course c5 = new Course();
 			c5.setName("Cours de yoga");
-			c5.setLinkedSpaceId(14L);
+			c5.setLinkedSpaceId(6L);
 			c5.setCoach(userCoach);
 			c5.setStartDate(LocalDateTime.now().plusDays(2));
 			c5.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
 			c5.setDescription("yoga");
 			em.persist(c5);
+
+			Course c6 = new Course();
+			c6.setName("Cours de dance");
+			c6.setLinkedSpaceId(6L);
+			c6.setCoach(userCoach);
+			c6.setStartDate(LocalDateTime.now());
+			c6.setStartDate(LocalDateTime.now().plusDays(1));
+			c6.setEndDate(LocalDateTime.now().plusHours(4));
+			c6.setDescription("Break");
+			em.persist(c6);
+
+			Course c7 = new Course();
+			c7.setName("Cours de muscu");
+			c7.setLinkedSpaceId(6L);
+			c7.setCoach(userCoach);
+			c7.setStartDate(LocalDateTime.now().plusDays(1));
+			c7.setEndDate(LocalDateTime.now().plusDays(1).plusHours(5));
+			c7.setDescription("Muscu");
+			em.persist(c7);
+
+			Course c8 = new Course();
+			c8.setName("Cours de bodypump");
+			c8.setLinkedSpaceId(6L);
+			c8.setCoach(userCoach);
+			c8.setStartDate(LocalDateTime.now().plusDays(3));
+			c8.setEndDate(LocalDateTime.now().plusDays(2).plusHours(-5));
+			c8.setDescription("Body Pump");
+			em.persist(c8);
+
+			Course c9 = new Course();
+			c9.setName("Cours de kickboxing");
+			c9.setLinkedSpaceId(6L);
+			c9.setCoach(userCoach);
+			c9.setStartDate(LocalDateTime.now());
+			c9.setEndDate(LocalDateTime.now().plusHours(-2));
+			c9.setDescription("kickboxing");
+			em.persist(c9);
+
+			Course c10 = new Course();
+			c10.setName("Cours de yoga");
+			c10.setLinkedSpaceId(6L);
+			c10.setCoach(userCoach);
+			c10.setStartDate(LocalDateTime.now().plusDays(6));
+			c10.setEndDate(LocalDateTime.now().plusDays(2).plusHours(10));
+			c10.setDescription("yoga");
+			em.persist(c10);
 
 			/*
 			 * Fin création des cours
