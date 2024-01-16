@@ -64,7 +64,7 @@ Before launching proceed to:
 
 You should access the following view in navigator:
 <br/>
-![Index view](index.png)
+![Index view](./src/main/webapp/resources/images/readme/index.png)
 <br/>
 
 ##Try demo version
