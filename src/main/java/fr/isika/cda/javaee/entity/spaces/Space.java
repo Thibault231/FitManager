@@ -11,9 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import fr.isika.cda.javaee.entity.plateform.Activity;
 import fr.isika.cda.javaee.entity.plateform.Course;
-import fr.isika.cda.javaee.entity.relations.Planning;
 import fr.isika.cda.javaee.entity.subscription.Subscription;
 import fr.isika.cda.javaee.entity.users.User;
 
@@ -26,15 +24,6 @@ public class Space {
 
 	@OneToOne
 	private Infos infos;
-
-	@OneToOne
-	private Planning planning;
-
-	@OneToOne
-	Style style;
-
-	@OneToMany
-	private List<Activity> activities;
 
 	@OneToMany
 	private List<Course> courses;
@@ -61,7 +50,6 @@ public class Space {
 	public Space(boolean isViewModel) {
 		Configuration configuration = new Configuration();
 		configuration.setStyle(new Style());
-		this.planning = new Planning();
 		this.infos = new Infos();
 		this.infos.setAdministrative(new Administrative());
 		this.infos.setConfiguration(configuration);
@@ -76,14 +64,6 @@ public class Space {
 
 	public void setSpaceId(Long spaceId) {
 		this.spaceId = spaceId;
-	}
-
-	public Planning getPlanning() {
-		return planning;
-	}
-
-	public void setPlanning(Planning planning) {
-		this.planning = planning;
 	}
 
 	public Infos getInfos() {
@@ -108,21 +88,6 @@ public class Space {
 
 	public void setSubscriptions(List<Subscription> subscriptions) {
 		this.subscriptions = subscriptions;
-	}
-
-	public Style getStyle() {
-		return style;
-	}
-
-	public void setStyle(Style style) {
-		this.style = style;
-	}
-
-	@Override
-	public String toString() {
-		return "Space [spaceId=" + spaceId + ", infos=" + infos + ", planning=" + planning + ", style=" + style
-				+ ", activities=" + activities + ", courses=" + courses + ", subscriptions=" + subscriptions
-				+ ", users=" + users + "]";
 	}
 
 }

@@ -90,7 +90,7 @@ public class SpaceController implements Serializable {
 		spaceDao.updateSpace(createdSpace);
 		userDao.updateUser(createdUser);
 
-		return "ManagerSpacesList.xhtml?faces-redirect=true";
+		return "ManagerDashBoard.xtml?faces-redirect=true";
 	}
 
 	/**

@@ -301,12 +301,15 @@
 								<p:column headerText="Dénomination" filterBy="#{course.name}">
 									<h:outputText value="#{course.name}" />
 								</p:column>
-								<p:column headerText="Début du cours"
-									filterBy="#{course.startDate}">
-									<h:outputText value="#{course.startDate}" />
+								<p:column headerText="Début du cours"	filterBy="#{course.startDate}">
+									<h:outputText value="#{course.startDate}" >
+								      <f:convertDateTime type="localDateTime" pattern="d MMM yyyy - HH 'h' : mm 'mins'" />
+									</h:outputText>
 								</p:column>
 								<p:column headerText="Fin du cours" filterBy="#{course.endDate}">
-									<h:outputText value="#{course.endDate}" />
+									<h:outputText value="#{course.endDate}" >
+								      <f:convertDateTime type="localDateTime" pattern="d MMM yyyy - HH 'h' : mm 'mins'" />
+									</h:outputText>
 								</p:column>
 								<p:column headerText="Description">
 									<h:outputText value="#{course.description}" />

@@ -1058,7 +1058,7 @@ public class InitDb {
 			 */
 			Course c = new Course();
 			c.setName("Cours de dance");
-			c.setLinkedSpaceId(6L);
+			c.setLinkedSpaceId(5L);
 			c.setCoach(userCoach);
 			c.setStartDate(LocalDateTime.now());
 			c.setEndDate(LocalDateTime.now().plusHours(2));
@@ -1067,7 +1067,7 @@ public class InitDb {
 
 			Course c2 = new Course();
 			c2.setName("Cours de muscu");
-			c2.setLinkedSpaceId(6L);
+			c2.setLinkedSpaceId(5L);
 			c2.setCoach(userCoach);
 			c2.setStartDate(LocalDateTime.now().plusDays(1));
 			c2.setEndDate(LocalDateTime.now().plusDays(1).plusHours(2));
@@ -1076,7 +1076,7 @@ public class InitDb {
 
 			Course c3 = new Course();
 			c3.setName("Cours de bodypump");
-			c3.setLinkedSpaceId(6L);
+			c3.setLinkedSpaceId(5L);
 			c3.setCoach(userCoach);
 			c3.setStartDate(LocalDateTime.now().plusDays(2));
 			c3.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
@@ -1085,7 +1085,7 @@ public class InitDb {
 
 			Course c4 = new Course();
 			c4.setName("Cours de kickboxing");
-			c4.setLinkedSpaceId(6L);
+			c4.setLinkedSpaceId(5L);
 			c4.setCoach(userCoach);
 			c4.setStartDate(LocalDateTime.now());
 			c4.setEndDate(LocalDateTime.now().plusHours(2));
@@ -1094,7 +1094,7 @@ public class InitDb {
 
 			Course c5 = new Course();
 			c5.setName("Cours de yoga");
-			c5.setLinkedSpaceId(6L);
+			c5.setLinkedSpaceId(5L);
 			c5.setCoach(userCoach);
 			c5.setStartDate(LocalDateTime.now().plusDays(2));
 			c5.setEndDate(LocalDateTime.now().plusDays(2).plusHours(1));
@@ -1103,7 +1103,7 @@ public class InitDb {
 
 			Course c6 = new Course();
 			c6.setName("Cours de dance");
-			c6.setLinkedSpaceId(6L);
+			c6.setLinkedSpaceId(5L);
 			c6.setCoach(userCoach);
 			c6.setStartDate(LocalDateTime.now());
 			c6.setStartDate(LocalDateTime.now().plusDays(1));
@@ -1113,7 +1113,7 @@ public class InitDb {
 
 			Course c7 = new Course();
 			c7.setName("Cours de muscu");
-			c7.setLinkedSpaceId(6L);
+			c7.setLinkedSpaceId(5L);
 			c7.setCoach(userCoach);
 			c7.setStartDate(LocalDateTime.now().plusDays(1));
 			c7.setEndDate(LocalDateTime.now().plusDays(1).plusHours(5));
@@ -1122,7 +1122,7 @@ public class InitDb {
 
 			Course c8 = new Course();
 			c8.setName("Cours de bodypump");
-			c8.setLinkedSpaceId(6L);
+			c8.setLinkedSpaceId(5L);
 			c8.setCoach(userCoach);
 			c8.setStartDate(LocalDateTime.now().plusDays(3));
 			c8.setEndDate(LocalDateTime.now().plusDays(2).plusHours(-5));
@@ -1131,7 +1131,7 @@ public class InitDb {
 
 			Course c9 = new Course();
 			c9.setName("Cours de kickboxing");
-			c9.setLinkedSpaceId(6L);
+			c9.setLinkedSpaceId(5L);
 			c9.setCoach(userCoach);
 			c9.setStartDate(LocalDateTime.now());
 			c9.setEndDate(LocalDateTime.now().plusHours(-2));
@@ -1140,7 +1140,7 @@ public class InitDb {
 
 			Course c10 = new Course();
 			c10.setName("Cours de yoga");
-			c10.setLinkedSpaceId(6L);
+			c10.setLinkedSpaceId(5L);
 			c10.setCoach(userCoach);
 			c10.setStartDate(LocalDateTime.now().plusDays(6));
 			c10.setEndDate(LocalDateTime.now().plusDays(2).plusHours(10));
