@@ -1,7 +1,7 @@
 # FitManager
 A plateform for easy creating fitness web sites. 
 
-![Logo Fit manager](./src/main/webapp/resources/images/readme/logo.png)<br/>
+![Logo Fit manager](./src/main/webapp/resources/images/logo.png)<br/>
 Welcome on FitManager APP.
 This readme will help you to install FitManager App and test it with the demo version.
 
