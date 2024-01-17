@@ -1,7 +1,7 @@
 # FitManager
 A plateform for easy creating fitness web sites. 
 
-![Logo Fit manager](logo.png)<br/>
+![Logo Fit manager](./src/main/webapp/resources/images/readme/logo.png)<br/>
 Welcome on FitManager APP.
 This readme will help you to install FitManager App and test it with the demo version.
 
@@ -45,7 +45,7 @@ __e.g with Eclipse__
  _2-Add server:_
  Click on "No serveur available..." then select WildFly 18
  <br/>
- ![Index view](addapp0.png)
+ ![Index view](./src/main/webapp/resources/images/readme/addapp0.png)
  <br/>
  _3-Add app:_
  Right click on "Wildfly 18"
@@ -81,7 +81,13 @@ Following space link to the manager have been created with lessons inside:
 
 >NB: All lessons are linked to the user "Coach".
 
+##Access a space and plateform:
+For accessing the plateform:
+Directly enter the following url : _http://127.0.0.1:8080/FitManager_
 
+For accessing a specific space you can:
++ Select it in the list of spaces on the plateform.
++ Directly enter the following url : _http://127.0.0.1:8080/FitManager/FitManagerSpace.xhtml?no=_ __ID OF THE SPACE__
 
 #ENJOY FITMANAGER EXPERIENCE
 
