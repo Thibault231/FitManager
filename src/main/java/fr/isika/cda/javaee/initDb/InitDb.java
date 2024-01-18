@@ -366,19 +366,19 @@ public class InitDb {
 //			userDao.createUser(userCoach9);
 //			spaceOne.getUsers().add(userCoach9);
 //			spaceDao.updateSpace(spaceOne);
-//
-//			User userCoach10 = new User(true);
-//			userCoach10.getAccount().setLogin("marc.rousseau@gmail.com");
-//			userCoach10.getAccount().setPassword(DefaultConfig.DEFAULT_PASSWORD);
-//			userCoach10.getAccount().setRole(Role.Coach);
-//			userCoach10.getLinkedSpaces().add(spaceOne);
-//			userCoach10.getProfile().getCivility().setForename("Marc");
-//			userCoach10.getProfile().getCivility().setName("Rousseau");
-//			userCoach10.getProfile().getCivility().setBirthday(new Date());
-//			userManager.getProfile().getCivility().setProfilePicture("coach10.jpg");
-//			userDao.createUser(userCoach10);
-//			spaceOne.getUsers().add(userCoach10);
-//			spaceDao.updateSpace(spaceOne);
+
+			User userCoach10 = new User(true);
+			userCoach10.getAccount().setLogin("marc.rousseau@gmail.com");
+			userCoach10.getAccount().setPassword(DefaultConfig.DEFAULT_PASSWORD);
+			userCoach10.getAccount().setRole(Role.Coach);
+			userCoach10.getLinkedSpaces().add(spaceOne);
+			userCoach10.getProfile().getCivility().setForename("Marc");
+			userCoach10.getProfile().getCivility().setName("Rousseau");
+			userCoach10.getProfile().getCivility().setBirthday(new Date());
+			userManager.getProfile().getCivility().setProfilePicture("coach10.jpg");
+			userDao.createUser(userCoach10);
+			spaceOne.getUsers().add(userCoach10);
+			spaceDao.updateSpace(spaceOne);
 //
 //			User userCoach11 = new User(true);
 //			userCoach11.getAccount().setLogin("pierre.dubois@hotmail.com");
